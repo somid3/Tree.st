@@ -7,6 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Code" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application_server_libraries" name="Tomcat 6" />
+          <element id="library" level="project" name="Production" />
+          <element id="library" level="project" name="Web" />
+        </element>
       </element>
     </root>
   </artifact>
