@@ -3,3 +3,8 @@
 Business/.dropbox
 
 Code/.idea
+
+Code/out
+
+*.iml
+
