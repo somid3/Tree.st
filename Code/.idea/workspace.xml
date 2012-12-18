@@ -20,13 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/js/login.js" afterPath="$PROJECT_DIR$/web/d/login/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code.iml" afterPath="$PROJECT_DIR$/Code.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/css/basic.css" afterPath="$PROJECT_DIR$/web/d/css/basic.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
-    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355793888002" ignored="false" />
+    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355793939152" ignored="false" />
+    <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355797167604" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,10 +87,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="login.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="2" selection-start="212" selection-end="212" vertical-scroll-proportion="0.21765417">
+            <state line="30" column="0" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BrowserAcceptanceEnum.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/BrowserAcceptanceEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="6" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/welcome/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="37" selection-start="758" selection-end="758" vertical-scroll-proportion="-11.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browser_check.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/d/includes/browser_check.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="24" selection-start="426" selection-end="426" vertical-scroll-proportion="0.23493975">
               <folding />
             </state>
           </provider>
@@ -113,7 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/questy/html/HtmlId.java" />
         <option value="$PROJECT_DIR$/test/com/questy/Sandbox.java" />
         <option value="$PROJECT_DIR$/src/com/questy/enums/AppEnum.java" />
         <option value="$PROJECT_DIR$/src/com/questy/domain/AppResource.java" />
@@ -129,6 +176,7 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$USER_HOME$/Applications/Apache/Tomcat/6.0.35/conf/server.xml" />
         <option value="$PROJECT_DIR$/web/d/login/js/login.js" />
+        <option value="$PROJECT_DIR$/web/d/css/basic.css" />
       </list>
     </option>
   </component>
@@ -161,10 +209,46 @@
             <id>AOP</id>
           </State>
           <State>
+            <id>Abstraction issues</id>
+          </State>
+          <State>
+            <id>CDI(Contexts and Dependency Injection) issues</id>
+          </State>
+          <State>
+            <id>Class metrics</id>
+          </State>
+          <State>
+            <id>Class structure</id>
+          </State>
+          <State>
+            <id>Cloning issues</id>
+          </State>
+          <State>
+            <id>Code style issues</id>
+          </State>
+          <State>
+            <id>Control flow issues</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
             <id>Data flow issues</id>
           </State>
           <State>
+            <id>Data flow issuesGroovy</id>
+          </State>
+          <State>
+            <id>Declaration redundancy</id>
+          </State>
+          <State>
+            <id>Error handling</id>
+          </State>
+          <State>
             <id>General</id>
+          </State>
+          <State>
+            <id>Google Web Toolkit issues</id>
           </State>
           <State>
             <id>Groovy</id>
@@ -176,10 +260,58 @@
             <id>Imports</id>
           </State>
           <State>
+            <id>Initialization issues</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>J2ME issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
+          </State>
+          <State>
             <id>JavaScript</id>
           </State>
           <State>
+            <id>Logging issues</id>
+          </State>
+          <State>
+            <id>Numeric issues</id>
+          </State>
+          <State>
+            <id>Performance issues</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
             <id>Probable bugs</id>
+          </State>
+          <State>
+            <id>Probable bugsGroovy</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>Resource management issues</id>
+          </State>
+          <State>
+            <id>Serialization issues</id>
+          </State>
+          <State>
+            <id>Spring MVCSpring Model</id>
+          </State>
+          <State>
+            <id>Spring Model</id>
+          </State>
+          <State>
+            <id>Threading issues</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -286,7 +418,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
+              <option name="myItemId" value="welcome" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -308,11 +440,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -334,7 +462,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,19 +538,20 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="project.propCompiler" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -454,7 +583,7 @@
       <recent name="$PROJECT_DIR$/web/resources/networks/1" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 6 Local">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 6">
     <configuration default="false" name="Sandbox" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -744,7 +873,7 @@
     </configuration>
     <configuration default="false" name="Tomcat 6 Local JavaScript" type="JavascriptDebugSession" factoryName="Remote">
       <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
+        <option name="engineId" value="firefox" />
         <option name="fileUrl" value="http://localhost:8080/" />
         <mapping local-file="$PROJECT_DIR$/web" url="http://localhost:8080/" />
       </JSRemoteDebuggerConfigurationSettings>
@@ -752,82 +881,88 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Tomcat 6 Local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 6">
+    <configuration default="false" name="Tomcat 6" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 6">
       <option name="OPEN_IN_BROWSER" value="false" />
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
-      <option name="START_JAVASCRIPT_DEBUGGER" value="true" />
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Code:war">
+        <artifact name="Code:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Code6c522ffa1" />
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_6_Code" />
       </server-settings>
-      <log_file path="$USER_HOME$/.IntelliJIdea90/system/tomcat/Unnamed_Code6c522ffa1/logs/localhost*" checked="true" skipped="false" show_all="false" alias="Tomcat Log" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51144" />
+        <option name="DEBUG_PORT" value="60919" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="C:/Program Files/Java/jdk1.6.0_11/bin/java" />
+          <option name="SCRIPT" value="" />
           <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value=" -Dcatalina.base=C:\Users\Omid\.IntelliJIdea90\system\tomcat\Unnamed_Code6c522ffa1 &quot;-Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 6.0&quot; &quot;-Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 6.0\temp&quot; -jar &quot;C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin\bootstrap.jar&quot; start" />
+          <option name="PROGRAM_PARAMETERS" value="" />
         </STARTUP>
         <SHUTDOWN>
           <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="C:/Program Files/Java/jdk1.6.0_11/bin/java" />
+          <option name="SCRIPT" value="" />
           <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value=" -Dcatalina.base=C:\Users\Omid\.IntelliJIdea90\system\tomcat\Unnamed_Code6c522ffa1 &quot;-Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 6.0&quot; &quot;-Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 6.0\temp&quot; -jar &quot;C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin\bootstrap.jar&quot; stop" />
+          <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="C:/Program Files/Java/jdk1.6.0_11/bin/java" />
+          <option name="SCRIPT" value="" />
           <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value=" -Dcatalina.base=C:\Users\Omid\.IntelliJIdea90\system\tomcat\Unnamed_Code6c522ffa1 &quot;-Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 6.0&quot; &quot;-Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 6.0\temp&quot; -jar &quot;C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin\bootstrap.jar&quot; start" />
+          <option name="PROGRAM_PARAMETERS" value="" />
         </STARTUP>
         <SHUTDOWN>
           <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="C:/Program Files/Java/jdk1.6.0_11/bin/java" />
+          <option name="SCRIPT" value="" />
           <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value=" -Dcatalina.base=C:\Users\Omid\.IntelliJIdea90\system\tomcat\Unnamed_Code6c522ffa1 &quot;-Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 6.0&quot; &quot;-Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 6.0\temp&quot; -jar &quot;C:\Program Files\Apache Software Foundation\Tomcat 6.0\bin\bootstrap.jar&quot; stop" />
+          <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
-        <EnvironmentVariables>
-          <option name="NAME" value="CATALINA_BASE" />
-          <option name="VALUE" value="%IDEA_RUN:TOMCAT_HOME%" />
-          <option name="IS_PREDEFINED" value="false" />
-        </EnvironmentVariables>
       </ConfigurationWrapper>
       <method>
-        <option name="Make" enabled="false" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Code:war" />
+          <artifact name="Code:war exploded" />
         </option>
       </method>
     </configuration>
     <list size="8">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.AskQuestionUtilsTest" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Tomcat 6 Local JavaScript" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6 Local" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Sandbox" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.createNetwork" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.testCreateNetwork" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.quickie" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.testSimpleNetwork" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Sandbox" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.AskQuestionUtilsTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.createNetwork" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.testCreateNetwork" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.quickie" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.testSimpleNetwork" />
+      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.Tomcat 6 Local JavaScript" />
+      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -872,6 +1007,11 @@
       <created>1324680138345</created>
       <updated>1324680138345</updated>
     </task>
+    <task id="LOCAL-00001" summary="intellij test">
+      <created>1355793973443</created>
+      <updated>1355793973443</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -901,6 +1041,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30147058" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981949" sideWeight="0.66448444" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35357738" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -909,19 +1050,18 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32352942" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22222222" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17546013" sideWeight="0.52986723" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15908124" sideWeight="0.6764706" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15908124" sideWeight="0.6985294" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32271242" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="298" y="122" width="1934" height="1140" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30185497" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1023,34 +1163,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/AppResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="106" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/AppResourceTypeEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="30" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/user_panel/js/user_panel_dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Applications/Apache/Tomcat/6.0.35/conf/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -1123,13 +1235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/BrowserAcceptanceEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="10" selection-start="164" selection-end="164" vertical-scroll-proportion="0.06132461">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/questy/dao/AnswerDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
@@ -1139,7 +1244,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="2" selection-start="212" selection-end="212" vertical-scroll-proportion="0.21765417">
+        <state line="30" column="0" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/welcome/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="37" selection-start="758" selection-end="758" vertical-scroll-proportion="-11.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/BrowserAcceptanceEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="6" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/includes/browser_check.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="426" selection-end="426" vertical-scroll-proportion="0.23493975">
           <folding />
         </state>
       </provider>
@@ -1150,7 +1292,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Code:war</last-edited>
+          <last-edited>Code:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1164,7 +1306,7 @@
       <state key="Copyright.UI" />
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Web</last-edited>
+          <last-edited>ROOT (Code)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

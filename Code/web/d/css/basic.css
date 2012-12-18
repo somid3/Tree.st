@@ -3,13 +3,8 @@
 
 /* Global */
 @font-face {
-    font-family: 'airplanes';
-	src: url('../assets/amazone.ttf');
-}
-
-@font-face {
     font-family: 'adam';
-	src: url('../assets/adamwarrenpro.ttf');
+	src: url('../assets/adamwarrenpro.ttf') format("truetype");
 }
 
 body {
