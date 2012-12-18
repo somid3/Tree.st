@@ -129,7 +129,7 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hCon
     $.post('./modules/user_links/actions/create_link.jsp', parameters, function(response) {
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Did an error occur

@@ -35,8 +35,14 @@
     <title><%= Vars.name %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
 </head>
-<script type="text/javascript" src="../js/jquery-1.7.1.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.8.18.min.js?<%= Vars.rev %>"></script>
+<%--<script type="text/javascript" src="../js/jquery-1.7.1.js?<%= Vars.rev %>"></script>--%>
+
+<script type="text/javascript" src="../js/jquery-1.8.3.js?<%= Vars.rev %>"></script>
+
+<%--<script type="text/javascript" src="../js/jquery-ui-1.8.18.min.js?<%= Vars.rev %>"></script>--%>
+
+<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
+
 <script type="text/javascript" src="./modules/user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-plugins.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>

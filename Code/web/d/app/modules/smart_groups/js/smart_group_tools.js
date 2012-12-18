@@ -69,7 +69,7 @@ function SmartGroupTools () {
             $div.appendTo("#smart_groups_canvas");
 
             // Have we reached the end? If so, lock down future requests
-            if (response.trim().length == 0) {
+            if ($.trim(response).length == 0) {
                 Pagination.unbindScrollPagination();
             }
 

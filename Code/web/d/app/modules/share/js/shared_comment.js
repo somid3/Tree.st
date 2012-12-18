@@ -60,7 +60,7 @@ SharedComment.addSharedComment = function (event, networkId, smartGroupRef, shar
 
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Was there an error?
@@ -116,7 +116,7 @@ SharedComment.hideSharedComment = function (event, networkId, smartGroupRef, sha
     $.post("./modules/share/actions/hide_shared_comment.jsp", parameters, function(response) {
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Was there an error?

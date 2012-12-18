@@ -35,7 +35,7 @@ function SharedItem () {
         $.post("./modules/share/actions/add_shared_item.jsp", parameters, function(response) {
 
             // Parsing the results
-            var responseDoc = $.parseXML(response.trim());
+            var responseDoc = $.parseXML($.trim(response));
             var $response = $(responseDoc);
 
             // Was there an error?
@@ -95,7 +95,7 @@ function SharedItem () {
         $.post("./modules/share/actions/hide_shared_item.jsp", parameters, function(response) {
 
             // Parsing the results
-            var responseDoc = $.parseXML(response.trim());
+            var responseDoc = $.parseXML($.trim(response));
             var $response = $(responseDoc);
 
             // Was there an error?
@@ -160,7 +160,7 @@ function SharedItem () {
             $div.appendTo("#share_canvas");
 
             // Have we reached the end? If so, lock down future requests
-            if (response.trim().length == 0) {
+            if ($.trim(response).length == 0) {
                 Pagination.unbindScrollPagination();
             }
 

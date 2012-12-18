@@ -165,7 +165,8 @@ public class Vars {
         sendEmails = false;
         logSentEmails = true;
 
-        reloadCss = true;
+//        reloadCss = true;
+        reloadCss = false;
         mockUserAgent = null;
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows

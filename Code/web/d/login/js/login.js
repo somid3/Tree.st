@@ -40,7 +40,7 @@ Login.login = function (event) {
 
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Did an error occur

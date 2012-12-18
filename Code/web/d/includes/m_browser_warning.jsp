@@ -8,8 +8,8 @@
 
 %>
 
-    <div id="browser_warning">
-        <span class="dim"><%= m_message %> &mdash;</span>
+    <div id="browser_warning" class="square">
+        <span class="white"><%= m_message %> &mdash;</span>
         <a href="/d/browser" target="_blank"><span class="highlight2">view supported browsers</span></a>
     </div>
 

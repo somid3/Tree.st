@@ -235,7 +235,7 @@ function QuestionDisplay () {
                         fadeIn(250);
 
                     // Parsing the results
-                    var responseDoc = $.parseXML(response.trim());
+                    var responseDoc = $.parseXML($.trim(response));
                     var $response = $(responseDoc);
 
                     // Extracting whether this question was being answered again, and the points gained

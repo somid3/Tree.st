@@ -48,7 +48,7 @@ function Tooltips () {
             tmp_this.hide(hContainerId, hTooltipId, callback);
 
             // Parsing the results
-            var responseDoc = $.parseXML(response.trim());
+            var responseDoc = $.parseXML($.trim(response));
             var $response = $(responseDoc);
 
             // Extracting next tooltip value

@@ -33,7 +33,7 @@ Forgot.send = function (event) {
         $error.fadeOut();
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Did an error occur
@@ -84,7 +84,7 @@ Forgot.set = function (event, userId, checksum) {
         $error.fadeOut();
 
         // Parsing the results
-        var responseDoc = $.parseXML(response.trim());
+        var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
 
         // Did an error occur
