@@ -1,0 +1,117 @@
+<%@page contentType="text/css" %>
+
+body {
+    background-image : url(../../assets/background.jpg);
+}
+
+#main {
+    margin: auto;
+    width: 800px;
+}
+
+/* Header */
+#header {
+    width: 100%;
+    float: left;
+}
+
+#header #logo {
+    float: left;
+    padding: 5px 10px 5px 10px;
+    background-color: #fff;
+    /*border: 2px solid white;*/
+}
+
+#footer {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#footer .content {
+    width:  50%;
+    margin: auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#container {
+    width: 800px;
+    padding-top: 10px;
+    margin: auto;
+    display: inline-block;
+
+}
+
+#content {
+    float: left;
+    width: 520px;
+}
+
+#messages {
+    display: inline-block;
+    width: 520px;
+}
+
+#messages #welcome {
+    float: left;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+#messages #welcome div {
+    margin: 1px;
+    background-color: #fff;
+    float: left;
+    padding: 5px;
+}
+
+.do {
+    display: block;
+    float: right;
+    padding: 10px;
+    width: 220px;
+    background-color: rgba(2,147,69,0.8);
+}
+
+p.note, {
+    line-height: 1.3em;
+}
+
+#forgot {
+    display: block; 
+    float: right;
+    padding: 10px;
+    width: 220px;
+    background-color: #fff;
+    border-bottom: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+}
+
+#form {
+}
+
+#form #error {
+    padding: 5px;
+}
+
+#form .note {
+    line-height: 1.3em;
+}
+
+#form #button {
+    width: 160px;
+}
+
+#form .text {
+    padding-bottom: 4px;
+}
+
+#form .element {
+    margin-bottom: 15px;
+}
+
+#email, #pass, #pass_again {
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}

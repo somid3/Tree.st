@@ -1,0 +1,196 @@
+<%@include file="../../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+/* Current question container */
+#current_question {
+
+}
+
+/* Question Display */
+.question_display {
+    display: inline-block;
+    margin-bottom: 5px;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #bbb;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    width: 587px;
+}
+
+.question_display .input {
+    float: left;
+    width: 415px;
+    padding-left: 10px;
+}
+
+.question_display .input .is_set {
+    border: 2px solid #339900;
+    background: green;
+    color: white;
+}
+
+.question_display .input .question {
+    margin: 0;
+    padding: 10px 5px 5px 5px;
+    width: 370px;
+    display: inline-block;
+}
+
+.question_display .input .question .pts{
+    width: 80px;
+    display: inline-block;
+}
+
+
+.question_display .input .answer_status {
+
+    padding: 5px 0 10px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+.question_display .input .question span {
+    margin-right: 5px;
+    line-height: 1.5em;
+}
+
+.question_display .input .options_wrap {
+    margin-top: 5px;
+}
+
+.question_display .input .options_wrap .filter_options {
+    border: 1px dashed #bbb;
+    padding-left: 15px;
+    margin: 0 2px 5px 2px;
+    display: inline-block;
+    width: 355px;
+}
+
+.question_display .input .options_wrap .options {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.question_display .input .option {
+    padding: 6px;
+    padding-left: 15px;
+    margin: 2px;
+    border: 2px solid #bbb;
+    display: inline-block;
+    width: 350px;
+    cursor: hand;
+}
+
+.question_display .input .option:hover {
+    border: 2px solid #339900;
+}
+
+.question_display .input .abc {
+    float: left;
+    margin: 4px;
+}
+
+.question_display .input .add_option {
+    padding-left: 20px;
+    margin: 10px 2px 0 2px;
+    border: 1px dashed #bbb;
+    display: inline-block;
+    width: 350px;
+}
+
+.question_display .input .add_option .add {
+    float: right;
+    display: none;
+    margin: 3px;
+}
+
+.question_display .input .answer {
+    width: 383px;
+    margin: 10px 0 0 0;
+    float: left;
+    padding: 2px;
+
+}
+
+.question_display .input .answer .buttons {
+    display: inline-block;
+    width: 100%;
+}
+
+.question_display .input .answer .buttons .skip {
+    float: right;
+}
+
+.question_display .input .answer .buttons .submit {
+    float: right;
+    margin-left: 5px;
+}
+
+.question_display .input .answer .settings {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+
+.question_display .input .answer .settings .visibility {
+    float: right;
+}
+
+.question_display .input .answer .settings .visibility img {
+    width: 16px;
+    height: 16px;
+}
+
+.question_display .input .details .content {
+    float: right;
+    padding: 2px 10px 2px 0;
+    color: #888;
+    font-size: 16px;
+}
+
+
+.question_display .output {
+    float: right;
+    width: 130px;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    left: 100px;
+    top: 60px;
+}
+
+.question_display .output .similar {
+    margin: 5px 0;
+}
+
+.question_display .output .first {
+    text-align: center;
+    font-family: adam;
+    line-height: 1.3em;
+}
+
+.question_note {
+    width: 100%;
+}
+
+.question_note .container {
+    border: 2px dashed <%= HtmlDesign.dim %>;
+    padding: 20px;
+}
+
+.question_note .container div {
+    margin-bottom: 15px;
+    font-family: adam;
+    text-align: center;
+    line-height: 1.3em;
+}
+
+.question_note .container img {
+}
+
+
+
+
+
+

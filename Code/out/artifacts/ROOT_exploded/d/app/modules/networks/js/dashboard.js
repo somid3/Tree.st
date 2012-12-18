@@ -1,0 +1,150 @@
+NetworkDashboard.Section = {
+    QUESTIONS: 1,
+    SMART_SEARCH: 2,
+    SMART_GROUPS: 3,
+    SMART_GROUP: 4,
+    SHARE: 5,
+    ANSWERS: 6,
+    TOP: 7,
+    SEARCH: 8
+};
+
+function NetworkDashboard () {
+
+    this.networkId = null;
+
+    this.search = null;
+        
+    /**
+     * Removes selected class from all items on the network dashboard
+     * and adds the selected class to the selector provided
+     */
+    this.clickItem = function (event, selector, url, parameters, callback) {
+
+        Event.preventDefault(event);
+
+        CurrentlyMenu.unhighlightAll();
+
+        NetworkDashboard.unhighlightAll();
+
+        Header.unhighlightAll();
+
+        // Display the canvas loading display
+        NetworkDashboard.displayLoading();
+
+        // Creating a callback that hides the canvas loading
+        var newCallback = function () {
+            if (callback) callback();
+            NetworkDashboard.hideLoading();
+        };
+
+        // Is the search input field loaded?
+        if (this.search) {
+
+            // If no search input has been provided, then reset the search field
+            if (!parameters || (parameters && !parameters.s))
+                this.search.setupSearchInput();
+        }
+
+        // Add highlight to the selected box
+        if (selector) {
+            $(selector).addClass("selected", 250);
+        }
+
+        var data = {};
+        data.nid = this.networkId;
+        data = $.extend(data, parameters);
+
+        /*
+         * Do not use fading with this loading event since slower machines have
+         * trouble fading such large areas of space
+         */
+        Transitions.load('#canvas', url, data, newCallback);
+    };
+
+    /**
+     * Displays the network profile of the user id provided
+     * @param userId
+     */
+    this.viewProfile = function (event, viewUserId, parameters, callback) {
+
+        Event.preventDefault(event);
+
+        var data = {};
+        data.vuid = viewUserId;
+        data = $.extend(data, parameters);
+
+        this.go(event, NetworkDashboard.Section.ANSWERS, data, callback);
+
+    };
+
+    this.go = function (event, sendTo, parameters, callback) {
+
+        /* Setting up the general user interface */
+
+        // Scroll to the top of the page
+        Animations.scrollToTop();
+
+        // Add full opacity to the left menu
+        LeftMenu.fullOpacity();
+
+        if (sendTo == null  || sendTo == NetworkDashboard.Section.QUESTIONS)
+
+            this.clickItem(event, '#network_shortcut_questions', './modules/collaborate/question_display.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.SMART_SEARCH)
+
+            this.clickItem(event, "#network_shortcut_smart_search", './modules/smart_groups/smart_search.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.SMART_GROUPS)
+
+            this.clickItem(event, '#network_shortcut_smart_groups', './modules/smart_groups/by_network.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.SMART_GROUP)
+
+            this.clickItem(event, '#network_shortcut_smart_groups', './modules/smart_groups/dashboard.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.SHARE)
+
+            this.clickItem(event, '#network_shortcut_share', './modules/share/by_network.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.ANSWERS)
+
+            this.clickItem(event, '#network_shortcut_profile', './modules/profiles/dashboard.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.TOP)
+
+             this.clickItem(event, '#network_shortcut_top', './modules/top/by_network.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.SEARCH)
+
+             this.clickItem(event, null, './modules/search/search.jsp', parameters, callback);
+
+    };
+
+}
+
+NetworkDashboard.unhighlightAll = function () {
+
+    $("#view_all").removeClass("selected");
+    $("#smart_search_button").removeClass("selected");
+
+};
+
+NetworkDashboard.displayLoading = function () {
+    var $canvasLoading = $("#canvas_loading");
+    var $canvas = $("#canvas");
+
+    $canvas.empty();
+    $canvasLoading.show();
+};
+
+NetworkDashboard.hideLoading = function () {
+    var $canvasLoading = $("#canvas_loading");
+    $canvasLoading.hide();
+};
+
+NetworkDashboard.toggleAward = function () {
+    var $award = $("#award");
+    $award.fadeToggle();
+};

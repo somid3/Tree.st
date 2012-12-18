@@ -1,0 +1,416 @@
+<%@include file="../../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+#share_canvas {
+    /*padding: 5px;*/
+}
+
+#share_something {
+    background-color: #fff;
+    width: 588px;
+    margin-bottom: 7px;
+    padding: 15px 0 0 10px;
+    border-right: 2px #bbb solid;
+    border-bottom: 2px #bbb solid;
+}
+
+#share_something #tell_me {
+    width: 555px;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+}
+
+#share_something .arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid green;
+    padding: 5px;
+    width: 585px;
+
+}
+
+#share_something .arrow_box:after,
+#share_something .arrow_box:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+#share_something .arrow_box:after {
+    border-top-color: #fff;
+    border-width: 15px;
+    left: 10%;
+    margin-left: -15px;
+}
+
+#share_something .arrow_box:before {
+    border-top-color: green;
+    border-width: 17px;
+    left: 10%;
+    margin-left: -17px;
+}
+
+#share_something .share_population {
+    display: inline-block;
+    margin-top: 15px;
+    width: 550px;
+}
+
+#share_something .share_tools {
+    display: inline-block;
+    width: 550px;
+}
+
+
+#share_something .share_population .me {
+    margin-left: 20px;
+    float: left;
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+}
+
+#share_something .share_population .share_with {
+    width: 70px;
+    text-align: center;
+    float: left;
+    padding: 10px 5px 5px 5px;
+}
+
+#share_something .share_population .share_others {
+    float: left;
+    width: 370px;
+    display: inline-block;
+
+}
+
+#share_something .share_population .share_others .more {
+    padding: 8px;
+    font-style: italic;
+    float: left;
+    line-height: 1.5em;
+}
+
+#share_something .share_error {
+    margin-right: 10px;
+    padding: 5px;
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
+    display: none;
+    float: right;
+}
+
+#share_something .share_loading {
+    margin-left: 10px;
+    float: right;
+    position: relative;
+    top: -2px;
+    left: -10px;
+    display: none;
+}
+
+#share_something .share_it {
+    float: right;
+    width: 100px;
+    position: relative;
+    top: -10px;
+}
+
+
+
+
+
+
+/* Shared Item */
+.shared_item {
+    background-color: #fff;
+    width: 593px;
+    display: inline-block;
+    padding: 5px 0 5px 5px;
+    border-right: 2px #bbb solid;
+    border-bottom: 2px #bbb solid;
+    margin-bottom: 5px;
+}
+
+.shared_item .left {
+    float: left;
+    margin-top: 20px;
+}
+
+.shared_item .right {
+    float: left;
+    width: 520px;
+    margin-left: 10px;
+}
+
+.shared_item .right .top {
+    display: inline-block;
+    margin: 2px 0 0 0;
+    width: 500px;
+}
+
+.shared_item .right .top .name {
+    float: left;
+}
+
+.shared_item .right .top .in {
+    float: left;
+    margin: 0 5px;
+}
+
+.shared_item .right .top .via {
+    float: left;
+}
+
+.shared_item .right .top .delete {
+    float: right;
+}
+
+.shared_item .right .content {
+    display: inline-block;
+}
+
+.shared_item .right .content .box {
+    float: left;
+    width: 500px;
+}
+
+.shared_item .right .content .box .arrow_box {
+    position: relative;
+    background: #fff;
+    border: 1px solid #bbb;
+    padding: 10px;
+    line-height: 1.3em;
+}
+
+.shared_item .right .content .box .arrow_box:after,
+.shared_item .right .content .box .arrow_box:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.shared_item .right .content .box .arrow_box:after {
+    border-right-color: #fff;
+    border-width: 10px;
+    top: 20px;
+    margin-top: -10px;
+}
+
+.shared_item .right .content .box .arrow_box:before {
+    border-right-color: #bbb;
+    border-width: 11px;
+    top: 20px;
+    margin-top: -11px;
+}
+
+
+.shared_item .right .details {
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+.shared_item .right .details .comment {
+    float: left;
+    margin-right: 10px;
+}
+
+.shared_item .right .details .ago {
+    float: left;
+}
+
+.shared_item .comments {
+    margin-top: 5px;
+}
+
+
+
+/* Shared Item Add Comment */
+.shared_item .add_comment {
+    display: none;
+    width: 510px;
+}
+
+.shared_item .caca {
+    display: block;
+    position: relative;
+}
+
+.shared_item .add_comment .caca .error {
+    margin-left: 25px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
+    display: none;
+    width: 200px;
+}
+
+.shared_item .add_comment .caca .loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+}
+
+.shared_item .add_comment .left {
+    margin: 0 5px 0 25px;
+    padding: 0;
+    float: left;
+}
+
+.shared_item .add_comment .left .face img {
+    width: 30px;
+    height: 30px;
+}
+
+.shared_item .add_comment .right {
+    float: left;
+    width: 400px;
+    margin-left: 10px;
+}
+
+.shared_item .add_comment .right .box {
+    padding: 2px;
+
+}
+
+.shared_item .add_comment .right .box .tell_me {
+    width: 365px;
+    border: none;
+    font-size: 12px;
+    /*height: 12px;*/
+    /*padding: 2px;*/
+}
+
+
+.shared_item .add_comment .right .box .arrow_box {
+    position: relative;
+    background: #fff;
+    border: 1px solid #bbb;
+    padding: 10px 0 5px 5px;
+}
+
+.shared_item .add_comment .right .box .arrow_box:after,
+.shared_item .add_comment .right .box .arrow_box:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.shared_item .add_comment .right .box .arrow_box:after {
+    border-right-color: #fff;
+    border-width: 5px;
+    top: 10px;
+    margin-top: -5px;
+}
+
+.shared_item .add_comment .right .box .arrow_box:before {
+    border-right-color: #bbb;
+    border-width: 6px;
+    top: 10px;
+    margin-top: -6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Shared comment */
+.shared_comment {
+    margin-bottom: 2px;
+    display: inline-block;
+    width: 500px;
+}
+
+.shared_comment .left {
+    margin-top: -10px;
+    padding: 0;
+    float: left;
+}
+
+.shared_comment .right {
+    width: 420px;
+    margin-left: 10px;
+    float: left;
+}
+
+.shared_comment .right .box {
+    width: 420px;
+    display: inline-block;
+}
+
+.shared_comment .right .box .delete {
+    float: left;
+}
+
+.shared_comment .right .box .arrow_box {
+    width: 380px;
+    float: left;
+    position: relative;
+    background: #fff;
+    border: 1px solid #bbb;
+    padding: 5px;
+    line-height: 1.5em;
+    /*letter-spacing: 1px;*/
+}
+
+.shared_comment .right .box .arrow_box:after,
+.shared_comment .right .box .arrow_box:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.shared_comment .right .box .arrow_box:after {
+    border-right-color: #fff;
+    border-width: 5px;
+    top: 10px;
+    margin-top: -5px;
+}
+
+.shared_comment .right .box .arrow_box:before {
+    border-right-color: #bbb;
+    border-width: 6px;
+    top: 10px;
+    margin-top: -6px;
+}
+
+.shared_item .right .box .delete {
+    float: right;
+}
+
+.shared_comment .right .details {
+    display: inline-block;
+    /*margin-top: 0;*/
+}
+
+.shared_comment .right .details .name, .ago {
+    float: left;
+    margin-right: 10px;
+}

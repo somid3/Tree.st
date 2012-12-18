@@ -1,0 +1,161 @@
+<%@page contentType="text/css" %>
+
+#left {
+    width: 185px;
+    float: left;
+    margin-right: 15px;
+}
+
+/* List of networks the user is in */
+#networks {
+    position: relative;
+    top: -1000px;
+}
+
+#networks .help {
+    position: absolute;
+}
+
+#networks .help-rel {
+    position: relative;
+    left: -30px;
+    top: -5px;
+}
+
+#networks .networks {
+    border: 1px solid #669933;
+    border-right: 2px solid #669933;
+    border-bottom: 2px solid #669933;
+    background-color: #fff;
+    padding: 4px;
+}
+
+#networks .networks .tab {
+    position: relative;
+    top: -13px;
+    background-color: #fff;
+    border-right: 2px solid #a7cd77;
+    padding-top: 5px;
+    width: 130px;
+    text-align: center;
+}
+
+#networks .item {
+    padding: 3px 2px;
+    margin: 2px;
+    cursor: hand;
+}
+
+#networks .item .contents {
+    display: inline-block;
+}
+
+#networks .item .contents .name {
+    float: left;
+    padding: 3px 0 0 5px;
+}
+
+#networks .item .contents .icon {
+    float: left;
+    width: 16px;
+    height: 16px;
+    padding: 3px 0 1px 5px;
+}
+
+#networks .item .bullet {
+    float: right;
+    margin-right: 5px;
+    padding-top: 3px;
+    position: relative;
+    z-index: 1;
+}
+
+#networks .selected {
+    background-color: #669933;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* Displays the current networks of the user*/
+#currently {
+    border: 1px solid #bbb;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    background-color: #fff;
+    padding: 4px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+#currently .help {
+    position: absolute;
+}
+
+#currently .help-rel {
+    position: relative;
+    left: -30px;
+    /*top: -2px;*/
+}
+
+#currently .header {
+    margin-bottom: 5px;
+    background-color: #444;
+    padding: 5px;
+}
+
+#currently .shortcut {
+    margin: 2px;
+    padding: 0;
+}
+
+#currently .shortcut .contents {
+    display: inline-block;
+}
+
+#currently .shortcut .contents .name {
+    float: left;
+    padding: 3px 0 0 5px;
+}
+
+#currently .shortcut .contents .icon {
+    float: left;
+    width: 16px;
+    height: 16px;
+    padding: 3px 0 1px 5px;
+}
+
+#currently .shortcut .bullet {
+    float: right;
+    margin-right: 5px;
+    padding-top: 3px;
+    position: relative;
+    z-index: 1;
+}
+
+#currently .shortcut .contents .icon img {
+    width: 16px;
+    height: 16px;
+}
+
+
+#currently .selected {
+    background-color: #D8DFEA;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+

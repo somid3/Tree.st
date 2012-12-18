@@ -1,0 +1,171 @@
+<%@page contentType="text/css" %>
+
+#main {
+    margin: auto;
+    width: 800px;
+}
+
+/* Header */
+#header {
+    float: left;
+    background-color: white;
+    padding: 5px;
+}
+
+#logo {
+    float: left;
+}
+
+#path {
+    float: left;
+    margin: 5px;
+}
+
+
+#footer {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#footer .content {
+    width:  50%;
+    margin: auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#container {
+    width: 800px;
+    padding-top: 10px;
+    margin: auto;
+    display: inline-block;
+
+}
+
+#content {
+    float: left;
+    width: 520px;
+    margin-right: 20px;
+}
+
+#messages {
+    display: inline-block;
+    width: 520px;
+}
+
+#messages #welcome {
+    float: left;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 500px;
+    padding: 10px;
+}
+
+#messages #welcome div {
+    background-color: #fff;
+    float: left;
+    padding: 5px;
+    margin: 1px;
+}
+
+
+#messages #demo {
+    float: left;
+    padding: 15px 20px 15px 20px;
+    line-height: 20px;
+    background-color: rgba(200,0,0,0.5);
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#manifesto_title {
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 5px;
+    text-align: center;
+    width: 250px;
+}
+
+#manifesto {
+    width: 500px;
+    display: none;
+    margin-top: 5px;
+}
+
+#messages #system {
+    float: left;
+    padding: 15px 20px 15px 20px;
+    line-height: 20px;
+    background-color: rgba(225,206,0,0.5);
+    margin-bottom: 10px;
+    color: black;
+}
+
+#video {
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+}
+
+.do {
+    display: block;
+    float: right;
+    padding: 10px;
+    width: 220px;
+    background-color: rgba(2,147,69,0.8);
+}
+
+p.note, {
+    line-height: 1.3em;
+}
+
+#action {
+    position: relative;
+    display: inline-block;
+}
+
+#start {
+    display: block; 
+    float: right;
+    padding: 10px;
+    width: 220px;
+    background-color: #fff;
+    border-bottom: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+    top: -1000px;
+    position: relative;
+}
+
+#form {
+}
+
+#form #error {
+    padding: 5px;
+}
+
+#form .note {
+    line-height: 18px;
+}
+
+#form #button {
+    width: 80px;
+}
+
+#form .text {
+    padding-bottom: 4px;
+}
+
+#form .element {
+    margin-bottom: 15px;
+}
+
+#forgot-begin {
+    display: block;
+    text-align: center;
+}
+
+#email, #first, #last, #pass {
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}

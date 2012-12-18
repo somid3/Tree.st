@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/d/404.jsp</location>
+    </error-page>
+
+    <error-page>
+   		<exception-type>java.lang.Exception</exception-type>
+   		<location>/d/error.jsp</location>
+   	</error-page>
+
+    <filter>
+       <filter-name>NoCacheFilter</filter-name>
+       <filter-class>com.questy.web.NoCacheFilter</filter-class>
+    </filter>
+
+    <!-- Preventing any caching from .jsp results -->
+    <filter-mapping>
+       <filter-name>NoCacheFilter</filter-name>
+       <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- Preventing any caching from .css files -->
+    <filter-mapping>
+       <filter-name>NoCacheFilter</filter-name>
+       <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+
+    <!-- Preventing any caching from .js files -->
+    <filter-mapping>
+       <filter-name>NoCacheFilter</filter-name>
+       <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+
+</web-app>

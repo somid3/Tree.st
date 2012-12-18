@@ -1,0 +1,191 @@
+<%@include file="../../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+/* User face */
+.user_face {
+    float: left;
+    margin: 4px;
+    position: relative;
+}
+
+.user_face .mini_face {
+    border-right: 2px #bbb solid;
+    border-bottom: 2px #bbb solid;
+    width: 50px;
+    height: 50px;
+}
+
+.user_face .mini_face img {
+    width: 50px;
+    height: 50px;
+}
+
+/* User card holder */
+.user_card_holder {
+    position: absolute;
+    z-index: 100;
+    left: -305px;
+}
+
+
+
+
+
+
+/* Smart Group User Links */
+.user_links {
+    display: inline-block;
+}
+
+.user_link {
+    margin: 5px 0 5px 5px;
+    float: left;
+}
+
+
+
+
+#smart_search_results {
+    display: inline-block;
+}
+
+#smart_search_results .smart_search_result {
+    margin: 3px 3px 0 5px;
+    float: left;
+    width: 290px;
+}
+
+#smart_search_results .smart_search_result .result_details {
+    margin-top: -3px;
+    float: right;
+    background: #eee;
+    border-bottom: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+    padding: 3px;
+    position: relative;
+    top: -5px;
+}
+
+#smart_search_results .smart_search_result .result_details .flares {
+    padding: 1px;
+    display: inline-block;
+    float: right;
+}
+
+#smart_search_results .smart_search_result .result_details .flares .flare {
+    float: right;
+    margin: 2px;
+    padding: 4px;
+    background-color: <%= HtmlDesign.highlight3 %>;
+}
+
+#smart_search_results .smart_search_result .result_details .since {
+    float: right;
+}
+
+
+/* User card */
+.user_card {
+    width: 280px;
+    background-color: #fff;
+    border-right: 2px #bbb solid;
+    border-bottom: 2px #bbb solid;
+    display: inline-block;
+    padding: 5px;
+    position: relative;
+    float: left;
+    margin-bottom: -4px;
+}
+
+.user_card .card_left {
+    float: left;
+    position: relative;
+}
+
+.user_card .card_left .card_face img {
+    width: 100px;
+    height: 100px;
+}
+
+.user_card .card_left .card_face .points {
+    padding: 2px;
+    background-color: #8C8C80;
+    position: relative;
+    border-top: 1px solid white;
+    top: -10px;
+    left: 15px;
+    width: 70px;
+    text-align: center;
+}
+
+.user_card .card_right {
+    float: left;
+    margin-left: 10px;
+    width: 170px;
+}
+
+.user_card .error {
+    margin: 5px;
+    padding: 5px;
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
+    color: white;
+}
+
+.user_card .card_right .card_viewed_date {
+   margin-top: 10px;
+   text-align: center;
+}
+
+
+.user_card .card_right .card_shortcuts {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.user_card .card_right .card_shortcuts .card_shortcut {
+    float: left;
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    margin: 2px;
+    background-color: white;
+    display: inline-block;
+}
+
+.user_card .card_right .card_shortcuts .card_shortcut .text {
+    float: left;
+    padding: 3px;
+}
+
+.user_card .card_right .card_shortcuts .card_shortcut .count {
+    float: left;
+    background-color: <%= HtmlDesign.dim2 %>;
+    padding: 2px 3px;
+    position: relative;
+    left: 2px;
+}
+
+.user_card .card_right .card_create {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.user_card .card_right .card_create .loading {
+    float: left;
+    position: relative;
+    left: -5px;
+    top: 5px;
+    display: none;
+}
+
+
+.user_card .card_right .card_create .connect {
+    text-align: center;
+    width: 100px;
+    margin: 0 auto;
+}
+
+
+.user_card .card_right .card_create .requires {
+    margin-top: 5px;
+    text-align: center;
+}

@@ -1,0 +1,113 @@
+<%@ include file="../../all.jsp" %>
+<%@ include file="./load.jsp" %>
+<%
+    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+
+    String hOfficialId = HtmlUtils.getRandomId();
+    String hSharedId = HtmlUtils.getRandomId();
+    String hPrivateId = HtmlUtils.getRandomId();
+
+    String hFavoritesId = HtmlUtils.getRandomId();
+    String hMatchId = HtmlUtils.getRandomId();
+    String hFlaggedId = HtmlUtils.getRandomId();
+    String hShuffleId = HtmlUtils.getRandomId();
+
+    // Mini tool tip variables
+    String app_d_title = null;
+    String app_d_message = null;
+    HtmlDesign.Positions app_d_position = null;
+
+%>
+
+<div id="smart_group_tools" class="canvas_container">
+    <div class="keys">
+        <span class="title sm_text dim2">Key: </span>
+        <span class="key"><img src="./modules/smart_groups/img/tree.png" alt="Auto-matched!"></span>
+        <span class="sm_text dim">Auto-matched</span>
+
+        <%
+            app_d_title = "Auto-Matched Smart Groups";
+            app_d_message = "Based on your profile, you are automatically added to certain smart groups. These 'auto-matched' smart groups will display a small tree on their upper right hand corner.<br/><br/>When messages are shared in these smart groups, you will be notified. To remove yourself from an auto-matched smart group click on the blue flag.";
+            app_d_position = HtmlDesign.Positions.BOTTOM;
+        %>
+        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+        <span class="key"><img src="./modules/smart_groups/img/star_on.png" alt="Manually added"></span>
+        <span class="sm_text dim">Manually added</span>
+
+        <%
+            app_d_title = "Manually Added Smart Groups";
+            app_d_message = "If you would like to manually make yourself a member of smart group, you must favorite it by clicking on the star.<br/><br/>When you manually add yourself to a smart group you will receive a notification when a message is shared.";
+            app_d_position = HtmlDesign.Positions.BOTTOM;
+        %>
+        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+        <span class="key"><img src="./modules/smart_groups/img/flag_on.png" alt="Manually ignored"></span>
+        <span class="sm_text dim">Manually ignored</span>
+
+        <%
+            app_d_title = "Flagged Smart Groups";
+            app_d_message = "To ensure you are never a member of a particular smart group, even if you are qualified to be auto-matched, click on the blue flag.<br/><br/>Your will never receive a notification when a message is shared in a flagged smart group.";
+            app_d_position = HtmlDesign.Positions.BOTTOM;
+        %>
+        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+    </div>
+
+    <span class="title sm_text dim2">Visibility:</span>
+    <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view smd_text dim">Official</div></a>
+    <a href="#" onclick=""><div id="<%= hSharedId %>" class="view smd_text dim">Shared</div></a>
+    <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view smd_text dim">Yours</div></a>
+    <div class="sep">&nbsp;</div>
+    <span class="title sm_text dim2">Display:</span>
+    <a href="#" onclick=""><div id="<%= hFavoritesId %>" class="view smd_text dim">Favorites</div></a>
+    <a href="#" onclick=""><div id="<%= hMatchId %>" class="view smd_text dim">Auto-Matched</div></a>
+    <a href="#" onclick=""><div id="<%= hFlaggedId %>" class="view smd_text dim">Flagged</div></a>
+
+</div>
+
+<script type="text/javascript">
+
+    // Beginning the smart groups tools
+    SGT = new SmartGroupTools();
+    SGT.networkId = <%= networkId %>;
+    SGT.changeView(null, "<%= hSharedId %>", <%= SmartGroupsViewEnum.SHARED.getValue() %>);
+    SGT.displaySmartGroups();
+
+    $("#<%= hOfficialId %>").click(function (event) {
+        SGT.changeView(event, "<%= hOfficialId %>", <%= SmartGroupsViewEnum.OFFICIAL.getValue() %>);
+        SGT.displaySmartGroups();
+    });
+
+    $("#<%= hSharedId %>").click(function (event) {
+        SGT.changeView(event, "<%= hSharedId %>", <%= SmartGroupsViewEnum.SHARED.getValue() %>);
+        SGT.displaySmartGroups();
+    });
+
+    $("#<%= hPrivateId %>").click(function (event) {
+        SGT.changeView(event, "<%= hPrivateId %>", <%= SmartGroupsViewEnum.YOURS.getValue() %>);
+        SGT.displaySmartGroups();
+    });
+
+    $("#<%= hMatchId %>").click(function (event) {
+            SGT.changeView(event, "<%= hMatchId %>", <%= SmartGroupsViewEnum.MATCHED.getValue() %>);
+            SGT.displaySmartGroups();
+        });
+
+    $("#<%= hFavoritesId %>").click(function (event) {
+        SGT.changeView(event, "<%= hFavoritesId %>", <%= SmartGroupsViewEnum.FAVORITES.getValue() %>);
+        SGT.displaySmartGroups();
+    });
+
+    $("#<%= hFlaggedId %>").click(function (event) {
+        SGT.changeView(event, "<%= hFlaggedId %>", <%= SmartGroupsViewEnum.FLAGS.getValue() %>);
+        SGT.displaySmartGroups();
+    });
+
+</script>
+
+<div id="smart_groups_canvas"></div>
+
+
+
+

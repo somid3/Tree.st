@@ -1,0 +1,196 @@
+<%@page contentType="text/css" %>
+
+#face_upload_container {
+    overflow: visible;
+}
+
+#face_upload_container .message {
+    margin: 20px;
+    line-height: 1.5em;
+}
+
+#face_upload_container .container {
+    margin: 0 auto;
+    width: 500px;
+}
+
+#face_upload_container #error {
+    margin: 0 auto;
+    width:75%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#face_upload_container .container .top {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+#face_upload_container .container .top #upload_button {
+    margin-left: 125px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#face_upload_container .container .top #set_button {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    margin-top: 20px;
+
+}
+
+#face_upload_container .container .bottom {
+}
+
+#face_upload_container .container .bottom .temp_scaled {
+    margin: 0 auto;
+}
+
+#face_upload_container .container .bottom .temp_scaled img {
+
+    /*
+     * Do not define image dimensions as it will throw
+     * off the cropping mechanism and the coordinates
+     * passed to the server
+     */
+}
+
+#face_upload_container .container .thumbs {
+    float: left;
+    display: inline-block;
+    /*margin-top: 5px;*/
+}
+
+#face_upload_container .container .thumb {
+    overflow: hidden;
+    margin-right: 5px;
+    border: 1px solid #bbb;
+    float: left;
+}
+
+
+
+#face_upload_container .x60 img {
+    width: 60px;
+    height: 60px;
+}
+
+#face_upload_container .x40 img {
+    width: 40px;
+    height: 40px;
+}
+
+#face_upload_container .x20 img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* User Panel Dashboard */
+#user_panel_dashboard {
+    background-color: #fff;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    padding: 5px 5px 0 5px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+#user_panel_dashboard .name {
+}
+
+#user_panel_dashboard .value {
+}
+
+#user_panel_dashboard .details {
+    display: inline-block;
+    width: 100%;
+}
+
+#user_panel_dashboard .menu {
+    position: absolute;
+    top: 48px;
+    left: -5px;
+    width: 100%;
+}
+
+#user_panel_dashboard .shortcuts {
+    display: inline-block;
+    width: 100%;
+    /*top: -40px;*/
+    /*z-index: 1;*/
+}
+
+#user_panel_dashboard .shortcuts .shortcut {
+    float: right;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+#user_panel_dashboard .shortcuts .selected {
+    background-color: #336699;
+    color: #fff;
+}
+
+#user_panel_dashboard .details #message {
+    float: left;
+    padding: 5px;
+    display: inherit;
+    width: 350px;
+    position: relative;
+}
+
+#user_panel_dashboard .details #message .thumbnail {
+    float: left;
+    border: 1px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+    background-color: #fff;
+    width: 60px;
+    height: 60px;
+}
+
+#user_panel_dashboard .details #message .thumbnail img {
+    width: 60px;
+    height: 60px;
+}
+
+#user_panel_dashboard .details #message .title {
+    margin-left: 70px;
+    margin-bottom: 5px;
+}
+
+#user_panel_dashboard .details #message .comment {
+    margin-left: 70px;
+}
+
+
+#user_panel_dashboard .details .settings {
+    float: right;
+    /*padding: 6px 10px 3px 10px;*/
+    /*width: 90px;*/
+}
+
+#user_panel_dashboard .details .setting {
+    padding: 3px 6px;
+    text-align: center;
+    border: 1px solid #ccc;
+    float: right;
+}

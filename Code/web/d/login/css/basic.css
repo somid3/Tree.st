@@ -1,0 +1,108 @@
+<%@include file="../all.jsp" %>
+<%@page contentType="text/css" %>
+
+body {
+    background-image : url(../../assets/background.jpg);
+}
+
+
+#action {
+    margin: auto;
+}
+
+
+#logo {
+    margin: 10px auto;
+    width: 160px;
+    position: relative;
+    top: -1000px;
+}
+
+#outer-login {
+    position: relative;
+    margin: 0 auto;
+    width: 250px;
+}
+
+#login {
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    border-bottom: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+}
+
+#form {
+}
+
+#form #error {
+    padding: 5px;
+}
+
+#form .note {
+    line-height: 1.3em;
+    margin-bottom: 15px;
+}
+
+#form #button {
+    width: 80px;
+}
+
+#form .text {
+    padding-bottom: 4px;
+}
+
+#form .element {
+    margin-bottom: 15px;
+}
+
+#email, #pass {
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}
+
+#form #button {
+    width: 80px;
+}
+
+#form .text {
+    padding-bottom: 4px;
+}
+
+#form .element {
+    margin-bottom: 15px;
+}
+
+#email, #pass {
+    width: 200px;
+    border: 1px solid #ccc;
+}
+
+#features {
+    display: inline-block;
+}
+
+#features #button {
+    float: left;
+}
+
+#features #keepme {
+    float: right;
+    display: inline-block;
+    padding: 5px 0 0 10px;
+}
+
+#features #keepme #checkbox {
+    float: left;
+}
+
+#features #keepme #text {
+    float: left;
+    padding: 1px 0 0 3px;
+}
+
+
+#forgot-begin {
+    display: block;
+    text-align: center;
+}

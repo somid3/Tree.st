@@ -1,0 +1,471 @@
+<%@include file="../../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+/* Smart Groups */
+
+#smart_groups_display .header {
+    display: inline-block;
+}
+
+#smart_groups_display .header .left {
+    float: left;
+    margin: 3px;
+}
+
+#smart_groups_display .details {
+    padding: 0 2px;
+}
+
+#smart_groups_display .member {
+    float: right;
+    margin: 3px;
+}
+
+.smart_group_favorite {
+    float: right;
+    margin: 1px;
+}
+
+.smart_group_favorite img {
+    width: 24px;
+    height: 24px;
+
+}
+
+
+.smart_group_box {
+    height: 250px;
+    width: 193px;
+    background-color: #fff;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    position: relative;
+    float: left;
+    margin: 2px;
+}
+
+.smart_group_box .header {
+    display: inline-block;
+    width: 185px;
+    padding: 5px 5px 0 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.smart_group_box .visibility {
+    float: left;
+}
+
+.smart_group_box .name {
+    padding: 5px;
+}
+
+.smart_group_box .description {
+    padding: 2px 5px 25px 5px;
+    line-height: 1.5em;
+    height: 20px;
+}
+
+.smart_group_box .minifaces {
+    position: absolute;
+    display: inline-block;
+    top: 170px;
+    width: 100%;
+    background-color: #eee;
+    height: 125px;
+    padding: 5px;
+}
+
+.smart_group_box .minifaces .miniface img {
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+}
+
+.smart_group_box .minifaces .more {
+    float: left;
+    padding: 10px 0 0 5px;
+    font-style: italic;
+}
+
+
+
+
+.smart_group_line {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px dotted #bbb;
+}
+
+.smart_group_line .name {
+    padding-top: 5px;
+    float: left;
+    width: 270px;
+}
+
+.smart_group_line .minifaces {
+    float: left;
+    display: inline-block;
+}
+
+.smart_group_line .minifaces .miniface {
+    float: left;
+}
+
+.smart_group_line .minifaces .miniface img {
+    float: left;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+}
+
+.smart_group_line .minifaces .more {
+    float: left;
+    padding: 10px 0 0 5px;
+    font-style: italic;
+}
+
+
+
+
+
+
+/* Smart Search welcome*/
+#smart_search_welcome { display: none; margin-bottom: 5px; }
+
+/* Smart Search error */
+#smart_search_error { display: none; margin-bottom: 5px; }
+
+#smart_search_working img {
+    display: block;
+    margin: 20px auto;
+}
+
+
+/* Smart Group Categories */
+#smart_group_tools {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#smart_group_tools .keys {
+    margin-bottom: 8px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #ddd;
+}
+
+#smart_group_tools .key {
+    margin-left: 10px;
+}
+
+#smart_group_tools .key img {
+    height: 16px;
+    width: 16px;
+}
+
+#smart_group_tools span.title {
+    float: left;
+    margin-right: 5px;
+}
+
+#smart_group_tools .sep {
+    width: 50px;
+    float: left;
+}
+
+#smart_group_tools .view {
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    padding: 3px 5px 3px 5px;
+    float: left;
+}
+
+#smart_group_tools .selected {
+    background-color: #888;
+    color: #fff;
+}
+
+/* Smart Search Tools */
+#smart_search_tools {
+}
+
+#smart_search_tools .container {
+    display: inline-block;
+}
+
+#smart_search_tools span.title {
+    float: left;
+    margin-right: 5px;
+}
+
+#smart_search_tools .tool {
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    padding: 3px 5px;
+    float: left;
+}
+
+
+/* Smart Group */
+
+#create_smart_group {
+    background-color: <%= HtmlDesign.dim2 %>;
+    padding: 5px;
+    position: relative;
+    border: 4px solid <%= HtmlDesign.dim %>;
+    margin-bottom: 15px;
+    width: 580px;
+}
+
+#create_smart_group .message {
+    padding: 10px 20px 10px 20px;
+    line-height: 1.5em;
+    margin: auto;
+}
+
+#smart_group_questions #added_questions {
+    /*width: 330px;*/
+    float: left;
+}
+
+
+
+#smart_group_faces {
+    /*width: 260px;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Question Query */
+.question_query {
+    display: inline-block;
+    width: 400px;
+    background-color: #fff;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    padding: 10px;
+    position: relative;
+}
+
+.question_query .score {
+    float: left;
+    margin: 0;
+    background-color: #ddd;
+    font-size: 12px;
+    padding: 3px;
+    border: 1px solid white;
+    border-bottom: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    display: none;
+    width: 15px;
+    text-align: center;
+    z-index: 1;
+}
+
+.question_query .slider {
+    display: none;
+    margin: 0;
+    padding: 5px;
+    border-bottom: 2px solid #444;
+    border-right: 2px solid #444;
+    background-color: #ddd;
+    position: absolute;
+    left: 23px;
+    top: -5px;
+    z-index: 2;
+}
+
+.question_query .slider .ticks {
+    /*width: 230px;*/
+}
+
+.question_query .slider .tick {
+    float: left;
+    margin: 0;
+    border: 0;
+    color: #fff;
+    padding: 5px;
+    width: 12px;
+    text-align: center;
+}
+
+.question_query .t01 { background-color: #999695; }
+.question_query .t10 { background-color: #968b83; }
+.question_query .t20 { background-color: #99876f; }
+.question_query .t30 { background-color: #998450; }
+.question_query .t40 { background-color: #998e4e; }
+.question_query .t50 { background-color: #999922; }
+.question_query .t60 { background-color: #99aa22; }
+.question_query .t70 { background-color: #99bb22; }
+.question_query .t80 { background-color: #99cc22; color: #bbb; }
+.question_query .t90 { background-color: #99dd22; color: #bbb; }
+.question_query .t99 { background-color: #99ee22; color: #bbb; }
+
+.question_query .slider .labels {
+    margin-top: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.question_query .slider .label {
+}
+
+.question_query .question {
+    display: inline-block;
+    position: relative;
+    margin: 10px 0 10px 0;
+}
+
+.question_query .question .text {
+    width: 350px;
+    float: left;
+    margin: 0 5px 5px 5px;
+    padding: 2px;
+}
+
+.question_query .options {
+    overflow: auto;
+    max-height: 400px;
+}
+
+.question_query .options .option {
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+}
+
+.question_query .options .option .bar {
+    background: url("../img/option-bar.png");
+    background-repeat: repeat-y;
+    background-color: #bbb;
+
+    float: left;
+    padding: 5px;
+    margin: 2px 5px;
+    border: 1px #bbb solid;
+    width: 320px;
+    position: relative;
+}
+
+.question_query .options .option .is_set {
+    border: 2px <%= HtmlDesign.highlight %> solid;
+    background-color: #a8ff8f;
+}
+
+.question_query .options .option .bar .stats {
+    padding: 1px;
+    float: right;
+    background-color: white;
+}
+
+.question_query .tools {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 170px;
+
+}
+
+.question_query .tools .submit, .cancel {
+    float: left;
+    margin-left: 5px;
+    border-right: 2px <%= HtmlDesign.dim %> solid;
+    border-bottom: 2px <%= HtmlDesign.dim %> solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Smart Group Dashboard */
+#smart_group_dashboard {
+    background-color: #fff;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    padding: 5px 5px 0 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#smart_group_dashboard .name {
+}
+
+#smart_group_dashboard .value {
+}
+
+#smart_group_dashboard .details {
+    display: inline-block;
+    width: 100%;
+}
+
+#smart_group_dashboard .menu {
+    width: 100%;
+}
+
+#smart_group_dashboard .shortcuts {
+    display: inline-block;
+    width: 100%;
+}
+
+#smart_group_dashboard .shortcuts .shortcut {
+    float: right;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+#smart_group_dashboard .shortcuts .selected {
+    background-color: #336699;
+    color: #fff;
+}
+
+#smart_group_dashboard .details .message {
+    float: left;
+    display: inherit;
+    width: 450px;
+    position: relative;
+}
+
+#smart_group_dashboard .details .message .title {
+    margin-bottom: 5px;
+}
+
+
+#smart_group_dashboard .details .settings {
+    float: right;
+}
+
+#smart_group_dashboard .details .setting {
+    float: right;
+    padding: 3px 6px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
