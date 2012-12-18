@@ -10,7 +10,7 @@ Login.begin = function (event) {
     // Displaying the login div
     $("#login").show();
 
-}
+};
 
 
 Login.login = function (event) {
@@ -34,9 +34,9 @@ Login.login = function (event) {
         // Hiding error
         $error.fadeOut();
 
-        console.log(response);
-        console.log(response.trim());
-        console.log($.parseXML(response.trim()));
+//        console.log(response);
+//        console.log(response.trim());
+//        console.log($.parseXML(response.trim()));
 
 
         // Parsing the results
