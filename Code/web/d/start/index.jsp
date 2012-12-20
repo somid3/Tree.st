@@ -36,15 +36,7 @@
 <%@ include file="../includes/browser_check.jsp"%>
 <div id="main">
     <div id="header">
-
-        <a href="/">
-            <div id="logo"><img src="/d/assets/logo.png"></div>
-        </a>
-
-        <div id="path">
-            <span class="sp_text dim">/</span>
-            <span class="sp_header dim"><%= StringUtils.concat(network.getName(), 20, "&hellip;")%></span>
-        </div>
+        <span class="sp_header dim"><%= StringUtils.concat(network.getName(), 20, "&hellip;")%></span>
     </div>
     <div id="container">
         <div id="content">
@@ -72,7 +64,7 @@
 
             <% if (!manifestoTitle.isEmpty()) { %>
                 <a href="#" onclick="Start.toggleManifesto(event, <%= networkId %>, '<%= networkChecksum %>')">
-                    <div id="manifesto_title" class="md_header highlight2">
+                    <div id="manifesto_title" class="canvas_container sp_header highlight2">
                         <%= manifestoTitle %>
                     </div>
                 </a>

@@ -50,25 +50,32 @@ public class EmailScheduledReminders {
         calendar.setTime(new Date());
         Integer dayNow = calendar.get(Calendar.DAY_OF_YEAR);
 
-        // Sending message every 3 days
+        // Sending message every 5 days
         if (dayNow % 5 != 0)
             return;
 
         // Retrieve all faceless users
         List<User> facelessUsers = UserDao.getAllFaceless(null);
         Boolean isEmailConfirmed = null;
+        Integer remindersSent = null;
 
         for (User facelessUser : facelessUsers) {
 
-            // Making sure user has confirmed his/her email
-            isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(facelessUser.getId());
-
             // Do not sent a message to users who have not confirmed their email
+            isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(facelessUser.getId());
             if (!isEmailConfirmed)
                 continue;
 
+            // Has the user received too many reminders?
+            remindersSent = UserIntegerSettingEnum.NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT.getValueByUserId(facelessUser.getId());
+            if (remindersSent >= 10)
+                continue;
+
             // Sending email
-            EmailServices.photoUpload(facelessUser.getId());
+            EmailServices.firstPhotoUpload(facelessUser.getId());
+
+            // Update count of reminders sent
+            UserIntegerSettingEnum.NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT.incrementValueByUserId(facelessUser.getId(), 1);
 
         }
     }

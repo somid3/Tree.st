@@ -2,13 +2,10 @@ package com.questy.services.email;
 
 import com.questy.dao.*;
 import com.questy.domain.*;
-import com.questy.enums.EmailMimeEnum;
-import com.questy.enums.EmailNotificationRateEnum;
-import com.questy.enums.GlobalEventEnum;
-import com.questy.enums.NetworkEventEnum;
-import com.questy.web.HtmlUtils;
+import com.questy.enums.*;
 import com.questy.services.ParentService;
 import com.questy.utils.*;
+import com.questy.web.HtmlUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -131,7 +128,7 @@ public class EmailServices extends ParentService {
 
     }
 
-    public static void photoUpload (Integer userId) throws SQLException {
+    public static void firstPhotoUpload(Integer userId) throws SQLException {
 
         final GlobalEventEnum event = GlobalEventEnum.PHOTO_UPLOAD_REMINDER;
 
@@ -139,8 +136,8 @@ public class EmailServices extends ParentService {
         Connection conn = null;
 
         // Should this email be stopped?
-        EmailStop stop = EmailStopDao.getByUserIdAndEmailEvent(conn, userId, event);
-        if (stop != null) return;
+        Boolean stop = UserIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_FIRST_PHOTO_UPLOAD_EMAILS.getBooleanByUserId(userId);
+        if (stop) return;
 
         // Retrieving user
         User user = UserDao.getById(conn, userId);
@@ -148,7 +145,7 @@ public class EmailServices extends ParentService {
         // Creating message
         UrlQuery query = new UrlQuery();
         query.add("ge", event.getValue());
-        String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/photo_upload.jsp?" + query);
+        String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/first_photo_upload.jsp?" + query);
 
         // Creating runnable to send email on new thread
         AmazonMailSender ser = new AmazonMailSender();

@@ -20,47 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/domain/UserAlphaSetting.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserAlphaSettingDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserAlphaSettingEnum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/enums/UserAlphaSettingEnumTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/enums/UserIntegerSettingEnumTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/services/UserWebServicesTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/questy/dao/EmailConfirmationDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/questy/domain/EmailConfirmation.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb.bak" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/e/global/photo_upload.jsp" afterPath="$PROJECT_DIR$/web/e/global/first_photo_upload.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" afterPath="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/UserServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/UserServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/css/basic.css" afterPath="$PROJECT_DIR$/web/d/app/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" afterPath="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/css/basic.css" afterPath="$PROJECT_DIR$/web/d/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/css/basic.css" afterPath="$PROJECT_DIR$/web/d/login/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/css/basic.css" afterPath="$PROJECT_DIR$/web/d/start/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" afterPath="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" afterPath="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/global/email_confirmation.jsp" afterPath="$PROJECT_DIR$/web/e/global/email_confirmation.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/index.jsp" afterPath="$PROJECT_DIR$/web/d/app/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/index.jsp" afterPath="$PROJECT_DIR$/web/d/login/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/js/login.js" afterPath="$PROJECT_DIR$/web/d/login/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/actions/login.jsp" afterPath="$PROJECT_DIR$/web/d/login/actions/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/index.jsp" afterPath="$PROJECT_DIR$/web/d/start/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
-    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355951061375" ignored="false" />
+    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979895489" ignored="false" />
     <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977213474" ignored="false" />
     <file path="/basic.css" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979842044" ignored="false" />
     <file path="/dashboard.js" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355798879279" ignored="false" />
     <file path="/m_browser_warning.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355799205510" ignored="false" />
-    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979030739" ignored="false" />
+    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355980720366" ignored="false" />
     <file path="/Vars.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800584411" ignored="false" />
     <file path="/UserIntegerSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355971808126" ignored="false" />
     <file path="/ParentEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355956880142" ignored="false" />
@@ -71,7 +47,7 @@
     <file path="/UserAlphaSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972670879" ignored="false" />
     <file path="/UserAlphaSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972711599" ignored="false" />
     <file path="/EmailConfirmationServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355969847178" ignored="false" />
-    <file path="/EmailScheduledReminders.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355970210788" ignored="false" />
+    <file path="/EmailScheduledReminders.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355981574389" ignored="false" />
     <file path="/EmailConfirmation.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355969830806" ignored="false" />
     <file path="/email_confirmation.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355970101175" ignored="false" />
     <file path="/UserIntegerSettingEnumTest" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355971516339" ignored="false" />
@@ -81,6 +57,7 @@
     <file path="/tt_l_tooltip.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355976572232" ignored="false" />
     <file path="/login.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977408924" ignored="false" />
     <file path="/confirm.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979645186" ignored="false" />
+    <file path="/EmailServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355981292760" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,91 +117,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
+      <file leaf-file-name="EmailServices.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.0">
+            <state line="130" column="29" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
+      <file leaf-file-name="EmailConfirmationServices.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="26" selection-start="3425" selection-end="3425" vertical-scroll-proportion="-10.625">
+            <state line="40" column="29" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailScheduledReminders.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="33" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.6990553">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/d/start/css/basic.css">
+      <file leaf-file-name="first_photo_upload.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/e/global/first_photo_upload.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="11" selection-start="251" selection-end="251" vertical-scroll-proportion="0.38961038">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlDesign.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java">
+      <file leaf-file-name="GlobalEventEnum.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="36" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+            <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
+      <file leaf-file-name="EmailStop.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/domain/EmailStop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirm.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/start/renders/confirm.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/css/basic.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="14" selection-start="2826" selection-end="2826" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="16" selection-start="4069" selection-end="4097" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirm.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/login/renders/confirm.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="by_user.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_user.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="6" column="18" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -248,8 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" />
         <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" />
         <option value="$PROJECT_DIR$/web/d/app/css/basic.css" />
         <option value="$PROJECT_DIR$/web/d/app/index.jsp" />
@@ -261,9 +202,11 @@
         <option value="$PROJECT_DIR$/web/d/css/basic.css" />
         <option value="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" />
         <option value="$PROJECT_DIR$/web/d/login/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/start/index.jsp" />
         <option value="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" />
         <option value="$PROJECT_DIR$/web/d/start/css/basic.css" />
+        <option value="$PROJECT_DIR$/web/d/start/index.jsp" />
+        <option value="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" />
       </list>
     </option>
   </component>
@@ -483,7 +426,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
+              <option name="myItemId" value="e" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,251 +444,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
+              <option name="myItemId" value="e" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="renders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="renders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="global" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -764,6 +467,98 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enums" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1360,7 +1155,11 @@
       <created>1355801265977</created>
       <updated>1355801265977</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lots of updates">
+      <created>1355979922522</created>
+      <updated>1355979922522</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1406,8 +1205,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17788461" sideWeight="0.5487805" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4512195" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17788461" sideWeight="0.75406504" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24593496" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="298" y="122" width="1934" height="1140" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1458,7 +1257,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="making ie8 friendly" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots of updates" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1474,6 +1273,7 @@
     <MESSAGE value="intellij test" />
     <MESSAGE value="updates" />
     <MESSAGE value="making ie8 friendly" />
+    <MESSAGE value="lots of updates" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1517,53 +1317,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/d/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/actions/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="7" selection-start="688" selection-end="688" vertical-scroll-proportion="-15.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="4" selection-start="1026" selection-end="1026" vertical-scroll-proportion="-12.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="26" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/actions/start.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="36" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_user.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1585,20 +1338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="26" selection-start="3425" selection-end="3425" vertical-scroll-proportion="-10.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/d/login/renders/confirm.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.625">
@@ -1613,16 +1352,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
+    <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.0">
+        <state line="63" column="26" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/d/start/css/basic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="251" selection-end="251" vertical-scroll-proportion="0.38961038">
+        <state line="16" column="0" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="10" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.69902915">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.027829314">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/EmailStop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="18" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/e/global/first_photo_upload.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="29" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="29" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="33" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.6990553">
           <folding />
         </state>
       </provider>
