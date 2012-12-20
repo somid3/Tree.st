@@ -5,7 +5,7 @@ public class HtmlDesign {
     public static final String backgroundColor = "#eeeeee";
     public static final String errorBackgroundColor = "#ff734a";
 
-    public static final String highlight = "green";
+    public static final String highlight = "#029345";
     public static final String highlight2 = "#336699";
     public static final String highlight3 = "#669933";
     public static final String highlight4 = "#003366";

@@ -1,19 +1,18 @@
 package com.questy.services;
 
-import com.questy.dao.EmailConfirmationDao;
 import com.questy.dao.NetworkDao;
 import com.questy.dao.UserDao;
 import com.questy.dao.UserSessionDao;
-import com.questy.domain.EmailConfirmation;
 import com.questy.domain.Network;
 import com.questy.domain.User;
 import com.questy.domain.UserSession;
 import com.questy.enums.RoleEnum;
+import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
-import com.questy.web.WebUtils;
 import com.questy.services.email.EmailConfirmationServices;
 import com.questy.utils.StringUtils;
+import com.questy.web.WebUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -72,7 +71,7 @@ public class UserWebServices extends ParentService {
     }
 
     public static String addUser (
-            WebUtils wu,
+            WebUtils webUtils,
             Integer networkId,
             String networkChecksum,
             String email,
@@ -116,13 +115,15 @@ public class UserWebServices extends ParentService {
         // Does the user already exist?
         if (user != null) {
 
+            // Yes, the user already exists...
+
             Boolean persistent = true;
 
             // Create password hash
             String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
 
             // Yes, but was the provided password correct?
-            UserSession userSession = UserWebServices.authenticateAndCreateSession(wu, user.getEmail(), providedPasswordHash, persistent);
+            UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
             if (userSession == null)
                 throw new UIException("Provide the correct password for this email address");
 
@@ -130,20 +131,12 @@ public class UserWebServices extends ParentService {
             NetworkServices.addUserToNonGlobalNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
             // Has the user been confirmed by email?
-            EmailConfirmation ec = EmailConfirmationDao.getByUserId(conn, user.getId());
+            Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(user.getId());
 
-            if (ec == null) {
+            if (!isEmailConfirmed) {
 
-                // Not even began... begin the email confirmation process
-                EmailConfirmationServices.beginEmailConfirmation(user.getId());
-
-                // Add email confirmation action to response
-                buf.append("<confirm/>");
-
-            } else if (!ec.isConfirmed()) {
-
-                // No, sending another pair of email confirmations
-                EmailConfirmationServices.sendConfirmationEmail(user.getId(), 2);
+                // Send confirmation email
+                EmailConfirmationServices.sendConfirmationEmail(user.getId());
 
                 // Add email confirmation action to response
                 buf.append("<confirm/>");
@@ -151,7 +144,7 @@ public class UserWebServices extends ParentService {
             } else {
 
                 // Install login cookies at client
-                UserWebServices.installCookies(wu, user.getId(), userSession.getChecksum(), persistent);
+                UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
                 // Add send to application action in response
                 buf.append("<app/>");
@@ -188,6 +181,65 @@ public class UserWebServices extends ParentService {
             buf.append("<confirm/>");
 
         }
+
+        return buf.toString();
+    }
+
+    public static String login (
+            WebUtils webUtils,
+            String email,
+            String passwordText,
+            Boolean keep) throws SQLException {
+
+        StringBuilder buf = new StringBuilder();
+
+           // Validating email
+        if (!StringUtils.isEmail(email))
+            throw new UIException("Email is not valid");
+
+        // Retrieving user to get salt
+        User user = UserDao.getByEmail(null, email);
+
+        // Validating password
+        if (StringUtils.emptyIfNull(passwordText).isEmpty())
+            throw new UIException("Please provide a password");
+
+        // Validating credentials
+        if (user == null)
+            throw new UIException("Incorrect email address or password");
+
+        // Creating hashed password for login
+        String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+
+        // Logging user in, creating a new user session
+        UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, email, providedPasswordHash, keep);
+        if (userSession == null)
+            throw new UIException("Incorrect email address or password");
+
+        /* Yay! Credentials are correct */
+
+        // Has the user been confirmed by email?
+        Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(user.getId());
+
+        // Has the user been confirmed by email?
+        if (!isEmailConfirmed) {
+
+            // No, sending another pair of email confirmations
+            EmailConfirmationServices.sendConfirmationEmail(user.getId());
+
+            // Add email confirmation action to response
+            buf.append("<confirm/>");
+
+        } else {
+
+            // Install login cookies at client
+            UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
+
+            // Add send to application action in response
+            buf.append("<app/>");
+
+        }
+
 
         return buf.toString();
     }

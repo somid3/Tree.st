@@ -61,9 +61,9 @@ Login.login = function (event) {
             Animations.outTop("#login", function () {
 
                 // Display message that user needs to confirm account
-                var $action = $("#action");
-                $action.css('display', 'none').load("./renders/confirm.jsp", function () {
-                    $action.fadeIn();
+                var $outer = $("#outer-container");
+                $outer.css('display', 'none').load("./renders/confirm.jsp", function () {
+                    $outer.fadeIn();
                 });
 
             });

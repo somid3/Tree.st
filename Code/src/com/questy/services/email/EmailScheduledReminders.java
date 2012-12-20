@@ -1,12 +1,11 @@
 package com.questy.services.email;
 
 
-import com.questy.dao.EmailConfirmationDao;
 import com.questy.dao.UserDao;
-import com.questy.domain.EmailConfirmation;
+import com.questy.dao.UserIntegerSettingDao;
 import com.questy.domain.User;
-import com.questy.domain.UserSession;
-import com.questy.services.UserServices;
+import com.questy.domain.UserIntegerSetting;
+import com.questy.enums.UserIntegerSettingEnum;
 
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -19,7 +18,7 @@ public class EmailScheduledReminders {
     public static void calledDailyConfirmationEmail() throws SQLException {
 
         // Retrieve all non-confirmed email confirmations
-        List<EmailConfirmation> nons = EmailConfirmationDao.getAllNonConfirmed(null);
+        List<UserIntegerSetting> nonConfirmed = UserIntegerSettingDao.getBySettingEnumAndValue(null, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED, 0);
 
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(new Date());
@@ -29,12 +28,15 @@ public class EmailScheduledReminders {
         if (dayNow % 2 != 0)
             return;
 
-        for (EmailConfirmation non : nons) {
+        Integer emailCount = null;
+        for (UserIntegerSetting non : nonConfirmed) {
 
-            if (non.getMessageCount() < 3) {
+            // Ensure user has not received too many messages
+            emailCount = UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.getValueByUserId(non.getUserId());
 
-                // Send a message every 5 hours
-                EmailConfirmationServices.sendConfirmationEmail(non.getUserId(), 1);
+            if (emailCount < 5) {
+
+                EmailConfirmationServices.sendConfirmationEmail(non.getUserId());
 
             }
 
@@ -54,23 +56,19 @@ public class EmailScheduledReminders {
 
         // Retrieve all faceless users
         List<User> facelessUsers = UserDao.getAllFaceless(null);
-        EmailConfirmation ec = null;
+        Boolean isEmailConfirmed = null;
 
         for (User facelessUser : facelessUsers) {
 
             // Making sure user has confirmed his/her email
-            ec = EmailConfirmationDao.getByUserId(null, facelessUser.getId());
+            isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(facelessUser.getId());
 
             // Do not sent a message to users who have not confirmed their email
-            if (ec == null || !ec.isConfirmed())
+            if (!isEmailConfirmed)
                 continue;
 
             // Sending email
-            // TODO: fix this, do send the photo upload reminders
-            // TODO: fix this, do send the photo upload reminders
-            // TODO: fix this, do send the photo upload reminders
-            // TODO: fix this, do send the photo upload reminders
-//            EmailServices.photoUpload(facelessUser.getId());
+            EmailServices.photoUpload(facelessUser.getId());
 
         }
     }

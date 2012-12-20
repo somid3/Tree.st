@@ -20,34 +20,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/d/js/jquery-1.8.3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/d/js/jquery-ui-1.9.2.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/utils/Vars.java" afterPath="$PROJECT_DIR$/src/com/questy/utils/Vars.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/domain/UserAlphaSetting.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserAlphaSettingDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserAlphaSettingEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/enums/UserAlphaSettingEnumTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/enums/UserIntegerSettingEnumTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/questy/services/UserWebServicesTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/questy/dao/EmailConfirmationDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/questy/domain/EmailConfirmation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb.bak" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" afterPath="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/UserServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/UserServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/css/basic.css" afterPath="$PROJECT_DIR$/web/d/app/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" afterPath="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/css/basic.css" afterPath="$PROJECT_DIR$/web/d/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/profiles/js/dashboard.js" afterPath="$PROJECT_DIR$/web/d/app/modules/profiles/js/dashboard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/forgot/js/forgot.js" afterPath="$PROJECT_DIR$/web/d/forgot/js/forgot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/css/basic.css" afterPath="$PROJECT_DIR$/web/d/login/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/css/basic.css" afterPath="$PROJECT_DIR$/web/d/start/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" afterPath="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" afterPath="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/global/email_confirmation.jsp" afterPath="$PROJECT_DIR$/web/e/global/email_confirmation.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/index.jsp" afterPath="$PROJECT_DIR$/web/d/app/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/index.jsp" afterPath="$PROJECT_DIR$/web/d/login/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/js/login.js" afterPath="$PROJECT_DIR$/web/d/login/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/includes/m_browser_warning.jsp" afterPath="$PROJECT_DIR$/web/d/includes/m_browser_warning.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/collaborate/js/question_display.js" afterPath="$PROJECT_DIR$/web/d/app/modules/collaborate/js/question_display.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/share/js/shared_comment.js" afterPath="$PROJECT_DIR$/web/d/app/modules/share/js/shared_comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/share/js/shared_item.js" afterPath="$PROJECT_DIR$/web/d/app/modules/share/js/shared_item.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/js/smart_group_tools.js" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/js/smart_group_tools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/js/start.js" afterPath="$PROJECT_DIR$/web/d/start/js/start.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/tooltips/js/tooltips.js" afterPath="$PROJECT_DIR$/web/d/app/modules/tooltips/js/tooltips.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/user_links/js/user_links.js" afterPath="$PROJECT_DIR$/web/d/app/modules/user_links/js/user_links.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/login/actions/login.jsp" afterPath="$PROJECT_DIR$/web/d/login/actions/login.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
-    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355797483394" ignored="false" />
-    <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800424490" ignored="false" />
-    <file path="/basic.css" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800280553" ignored="false" />
+    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355951061375" ignored="false" />
+    <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977213474" ignored="false" />
+    <file path="/basic.css" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979842044" ignored="false" />
     <file path="/dashboard.js" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355798879279" ignored="false" />
     <file path="/m_browser_warning.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355799205510" ignored="false" />
-    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800108430" ignored="false" />
+    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979030739" ignored="false" />
     <file path="/Vars.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800584411" ignored="false" />
+    <file path="/UserIntegerSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355971808126" ignored="false" />
+    <file path="/ParentEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355956880142" ignored="false" />
+    <file path="/UserIntegerSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972253369" ignored="false" />
+    <file path="/UserWebServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977317246" ignored="false" />
+    <file path="/fragment.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972543019" ignored="false" />
+    <file path="/UserAlphaSetting.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355960486235" ignored="false" />
+    <file path="/UserAlphaSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972670879" ignored="false" />
+    <file path="/UserAlphaSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972711599" ignored="false" />
+    <file path="/EmailConfirmationServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355969847178" ignored="false" />
+    <file path="/EmailScheduledReminders.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355970210788" ignored="false" />
+    <file path="/EmailConfirmation.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355969830806" ignored="false" />
+    <file path="/email_confirmation.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355970101175" ignored="false" />
+    <file path="/UserIntegerSettingEnumTest" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355971516339" ignored="false" />
+    <file path="/UserIntegerSettingEnumTest.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972148976" ignored="false" />
+    <file path="/UserAlphaSettingEnumTest.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972612671" ignored="false" />
+    <file path="/WebUtils.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355973172398" ignored="false" />
+    <file path="/tt_l_tooltip.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355976572232" ignored="false" />
+    <file path="/login.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977408924" ignored="false" />
+    <file path="/confirm.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979645186" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +95,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -98,6 +129,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -107,55 +140,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="shared_item.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/modules/share/js/shared_item.js">
+      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="16" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="smart_group_tools.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/js/smart_group_tools.js">
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="16" selection-start="2088" selection-end="2088" vertical-scroll-proportion="0.0">
+            <state line="95" column="26" selection-start="3425" selection-end="3425" vertical-scroll-proportion="-10.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tooltips.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/modules/tooltips/js/tooltips.js">
+      <file leaf-file-name="basic.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/d/start/css/basic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="41" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
+            <state line="15" column="11" selection-start="251" selection-end="251" vertical-scroll-proportion="0.38961038">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_links.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/app/modules/user_links/js/user_links.js">
+      <file leaf-file-name="HtmlDesign.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="37" selection-start="3031" selection-end="3031" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forgot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/forgot/js/forgot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="37" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="33" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+            <state line="22" column="36" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -164,16 +179,16 @@
       <file leaf-file-name="start.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="48" selection-start="1065" selection-end="1065" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Vars.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/utils/Vars.java">
+      <file leaf-file-name="confirm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/start/renders/confirm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="176" column="25" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.0">
+            <state line="1" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
@@ -182,16 +197,34 @@
       <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/d/app/css/basic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="6" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
+            <state line="184" column="14" selection-start="2826" selection-end="2826" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="basic.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="423" column="191" selection-start="6311" selection-end="6311" vertical-scroll-proportion="5.1086955">
+            <state line="279" column="16" selection-start="4069" selection-end="4097" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="confirm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/login/renders/confirm.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="by_user.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_user.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -215,31 +248,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$USER_HOME$/Applications/Apache/Tomcat/6.0.35/conf/server.xml" />
-        <option value="$PROJECT_DIR$/web/d/login/js/login.js" />
-        <option value="$PROJECT_DIR$/web/d/includes/m_browser_warning.jsp" />
-        <option value="$PROJECT_DIR$/web/d/app/index.jsp" />
+        <option value="$PROJECT_DIR$/web/d/app/modules/smart_groups/includes/sgroup_a_criterion.jsp" />
+        <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/includes/tt_l_tooltip.jsp" />
+        <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" />
         <option value="$PROJECT_DIR$/web/d/app/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/collaborate/js/question_display.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/profiles/js/dashboard.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/share/js/shared_comment.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/share/js/shared_item.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/smart_groups/js/smart_group_tools.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/js/tooltips.js" />
-        <option value="$PROJECT_DIR$/web/d/app/modules/user_links/js/user_links.js" />
-        <option value="$PROJECT_DIR$/web/d/forgot/js/forgot.js" />
-        <option value="$PROJECT_DIR$/web/d/start/js/start.js" />
-        <option value="$PROJECT_DIR$/src/com/questy/utils/Vars.java" />
+        <option value="$PROJECT_DIR$/web/d/app/index.jsp" />
+        <option value="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" />
+        <option value="$PROJECT_DIR$/web/d/login/actions/login.jsp" />
+        <option value="$PROJECT_DIR$/web/d/login/index.jsp" />
+        <option value="$PROJECT_DIR$/web/d/login/js/login.js" />
+        <option value="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" />
         <option value="$PROJECT_DIR$/web/d/css/basic.css" />
+        <option value="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" />
+        <option value="$PROJECT_DIR$/web/d/login/css/basic.css" />
+        <option value="$PROJECT_DIR$/web/d/start/index.jsp" />
+        <option value="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" />
+        <option value="$PROJECT_DIR$/web/d/start/css/basic.css" />
       </list>
     </option>
   </component>
   <component name="JspContextManager">
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/login/all.jsp" context-file="file://$PROJECT_DIR$/web/d/login/actions/login.jsp" />
-    <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/load.jsp" context-file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_network.jsp" />
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/app/all.jsp" context-file="file://$PROJECT_DIR$/web/d/app/index.jsp" />
-    <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/start/all.jsp" context-file="file://$PROJECT_DIR$/web/d/start/index.jsp" />
+    <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/load.jsp" context-file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_network.jsp" />
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/app/modules/share/load.jsp" context-file="file://$PROJECT_DIR$/web/d/app/modules/share/by_network.jsp" />
+    <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/start/all.jsp" context-file="file://$PROJECT_DIR$/web/d/start/index.jsp" />
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/web/d/all.jsp" context-file="file://$PROJECT_DIR$/web/d/app/all.jsp" />
   </component>
   <component name="ModuleEditorState">
@@ -247,10 +280,9 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
     <option name="y" value="22" />
-    <option name="width" value="2399" />
-    <option name="height" value="1344" />
+    <option name="width" value="1920" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -404,6 +436,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -472,7 +505,247 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="renders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="start" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="renders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -496,7 +769,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -562,20 +834,20 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.questy.enums" />
-      <recent name="com.questy.services" />
       <recent name="com.questy.dao" />
       <recent name="com.questy.domain" />
+      <recent name="com.questy.services" />
       <recent name="com.questy.admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -594,121 +866,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 6">
-    <configuration default="false" name="Sandbox" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.questy.Sandbox" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Code" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlowRuleUnitTestSimpleNetwork.createNetwork" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="Code" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questy.services" />
-      <option name="MAIN_CLASS_NAME" value="com.questy.services.FlowRuleUnitTestSimpleNetwork" />
-      <option name="METHOD_NAME" value="createNetwork" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlowRuleUnitTestSimpleNetwork.testCreateNetwork" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="Code" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questy.services" />
-      <option name="MAIN_CLASS_NAME" value="com.questy.services.FlowRuleUnitTestSimpleNetwork" />
-      <option name="METHOD_NAME" value="testCreateNetwork" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlowRuleServicesTest.quickie" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="Code" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questy.services" />
-      <option name="MAIN_CLASS_NAME" value="com.questy.services.FlowRuleServicesTest" />
-      <option name="METHOD_NAME" value="quickie" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51017" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="FlowRuleServicesTest.testSimpleNetwork" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -723,6 +880,122 @@
       <option name="PACKAGE_NAME" value="com.questy.services" />
       <option name="MAIN_CLASS_NAME" value="com.questy.services.FlowRuleServicesTest" />
       <option name="METHOD_NAME" value="testSimpleNetwork" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserIntegerSettingEnumTest.getSetUpdateDelete" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="Code" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.questy.enums" />
+      <option name="MAIN_CLASS_NAME" value="com.questy.enums.UserIntegerSettingEnumTest" />
+      <option name="METHOD_NAME" value="getSetUpdateDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserAlphaSettingEnumTest.getSetUpdateDelete" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="Code" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.questy.enums" />
+      <option name="MAIN_CLASS_NAME" value="com.questy.enums.UserAlphaSettingEnumTest" />
+      <option name="METHOD_NAME" value="getSetUpdateDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserWebServicesTest.addUser" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="Code" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.questy.services" />
+      <option name="MAIN_CLASS_NAME" value="com.questy.services.UserWebServicesTest" />
+      <option name="METHOD_NAME" value="addUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserWebServicesTest.addUserWithNewEmail" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="Code" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.questy.services" />
+      <option name="MAIN_CLASS_NAME" value="com.questy.services.UserWebServicesTest" />
+      <option name="METHOD_NAME" value="addUserWithNewEmail" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -759,19 +1032,6 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <extension name="snapshooter" />
@@ -799,6 +1059,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1014,15 +1287,24 @@
       <method />
     </configuration>
     <list size="8">
-      <item index="0" class="java.lang.String" itemvalue="Application.Sandbox" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.AskQuestionUtilsTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.createNetwork" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.FlowRuleUnitTestSimpleNetwork.testCreateNetwork" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.quickie" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.testSimpleNetwork" />
-      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.Tomcat 6 Local JavaScript" />
-      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.AskQuestionUtilsTest" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Tomcat 6 Local JavaScript" />
+      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.testSimpleNetwork" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
     </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -1074,7 +1356,11 @@
       <created>1355797493821</created>
       <updated>1355797493821</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="making ie8 friendly">
+      <created>1355801265977</created>
+      <updated>1355801265977</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1098,38 +1384,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="22" width="2399" height="1344" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="1104" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30147058" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30081302" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981949" sideWeight="0.66448444" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35357738" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22222222" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22154471" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17546013" sideWeight="0.52986723" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15908124" sideWeight="0.6772876" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32271242" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17788461" sideWeight="0.5487805" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4512195" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="298" y="122" width="1934" height="1140" />
+      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39934534" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1169,9 +1458,9 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="making ie8 friendly" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1184,6 +1473,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="intellij test" />
     <MESSAGE value="updates" />
+    <MESSAGE value="making ie8 friendly" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1227,13 +1517,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/d/includes/m_browser_warning.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="18" selection-start="350" selection-end="350" vertical-scroll-proportion="-6.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/d/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1241,100 +1524,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/index.jsp">
+    <entry file="file://$PROJECT_DIR$/web/d/login/actions/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="16" selection-start="9424" selection-end="9424" vertical-scroll-proportion="-32.5">
+        <state line="25" column="7" selection-start="688" selection-end="688" vertical-scroll-proportion="-15.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/collaborate/js/question_display.js">
+    <entry file="file://$PROJECT_DIR$/web/d/login/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="49" selection-start="7516" selection-end="7516" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/profiles/js/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="16" selection-start="3675" selection-end="3675" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/share/js/shared_comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="37" selection-start="3722" selection-end="3722" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/share/js/shared_item.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="16" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/js/smart_group_tools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="16" selection-start="2088" selection-end="2088" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/tooltips/js/tooltips.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="41" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/user_links/js/user_links.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="37" selection-start="3031" selection-end="3031" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/forgot/js/forgot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="37" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
+        <state line="33" column="4" selection-start="1026" selection-end="1026" vertical-scroll-proportion="-12.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="33" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+        <state line="63" column="26" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
+    <entry file="file://$PROJECT_DIR$/web/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/actions/start.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="48" selection-start="1065" selection-end="1065" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/utils/Vars.java">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="176" column="25" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.0">
+        <state line="22" column="36" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/d/app/css/basic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="6" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
+        <state line="184" column="14" selection-start="2826" selection-end="2826" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/renders/confirm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="26" selection-start="3425" selection-end="3425" vertical-scroll-proportion="-10.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/login/renders/confirm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="423" column="191" selection-start="6311" selection-end="6311" vertical-scroll-proportion="5.1086955">
+        <state line="279" column="16" selection-start="4069" selection-end="4097" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/d/start/css/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="11" selection-start="251" selection-end="251" vertical-scroll-proportion="0.38961038">
           <folding />
         </state>
       </provider>

@@ -1,5 +1,5 @@
 <%@ include file="../all.jsp" %>
-<div class="do">
+<div id="confirm">
     <div><span class="sp_text white">Confirm</span></div>
 
     <p class="note lg_text white">Visit your email inbox and click on the provided link.</p>

@@ -57,19 +57,6 @@ public class UserServices extends ParentService  {
         return updates == 1;
     }
 
-    public static UserSession createSession (Integer userId, String httpAgent, Boolean persistent) throws SQLException {
-
-         // Create session checksum
-        String checksum = StringUtils.random();
-
-        // Create user session
-        UserSessionDao.insert(null, userId, checksum, httpAgent, persistent);
-        UserSession out = UserSessionDao.getByUserIdAndChecksum (null, userId, checksum);
-
-        return out;
-    }
-
-
 
     // TODO: this does not belong here, create other class
     public static void deleteUserAnswers(Integer userId) throws SQLException {

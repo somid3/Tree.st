@@ -19,16 +19,17 @@
 %>
 
 <div id="<%= tt_l_tooltip.getContainerHtmlId() %>">
-    <div class="tooltip" id="<%= tt_l_tooltip.getTooltipHtmlId() %>" style="width: <%= tt_l_width %>px; left: <%= tt_l_left %>px; top: <%= tt_l_top %>px; <%= tt_l_style%>">
+    <div class="tooltip glow4" id="<%= tt_l_tooltip.getTooltipHtmlId() %>" style="width: <%= tt_l_width %>px; left: <%= tt_l_left %>px; top: <%= tt_l_top %>px; <%= tt_l_style%>">
         <a href="#" onclick="TT.next(event, '<%= tt_l_tooltip.getContainerHtmlId() %>', '<%= tt_l_tooltip.getTooltipHtmlId() %>', '<%= tt_l_tooltip.getValue() %>');">
 
             <% if (tt_l_title != null) { %>
                 <div class="title smd_text"><%= tt_l_title %></div>
             <% } %>
 
-            <div class="<%= tt_l_direction %> lg_glow4">
+            <div class="<%= tt_l_direction %>">
                 <div class="box lg_text"><%= tt_l_message %></div>
             </div>
+
             <div class="tools">
                 <% if (tt_l_gotit != null) { %>
                     <div class="gotit lg_shadow md_text"><%= tt_l_gotit %></div>

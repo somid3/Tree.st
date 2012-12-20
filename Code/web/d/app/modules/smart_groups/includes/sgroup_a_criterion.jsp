@@ -12,7 +12,7 @@
 %>
 <div id="smart_search_criterion" class="canvas_container">
 
-    <div id="edit_criteria" class="popup lg_glow4"></div>
+    <div id="edit_criteria" class="popup glow4"></div>
 
     <div id="save_as"></div>
 

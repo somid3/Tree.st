@@ -35,12 +35,7 @@
     <title><%= Vars.name %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
 </head>
-<%--<script type="text/javascript" src="../js/jquery-1.7.1.js?<%= Vars.rev %>"></script>--%>
-
 <script type="text/javascript" src="../js/jquery-1.8.3.js?<%= Vars.rev %>"></script>
-
-<%--<script type="text/javascript" src="../js/jquery-ui-1.8.18.min.js?<%= Vars.rev %>"></script>--%>
-
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 
 <script type="text/javascript" src="./modules/user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
@@ -151,9 +146,9 @@
                 tt_l_tooltip = TooltipEnum.EVERYTHING;
                 tt_l_width = 400;
                 tt_l_left = 120;
-                tt_l_top = 170;
+                tt_l_top = 65;
                 tt_l_title = "Intro. 4 of 4";
-                tt_l_message = "The 'everything' button and search bar allow you to quickly find people by qualities or name.<br/><br/>Search for 'Brazil' and click on the first quality, then search for 'Soccer'... Let's see who you find.";
+                tt_l_message = "The 'All' button and search bar allow you to quickly find people by qualities or name.<br/><br/>Search for 'Brazil' and click on the first quality, then search for 'Soccer'... Let's see who you find.";
                 tt_l_gotit = "Cool!";
                 tt_l_direction = "tip_top";
                 tt_l_style = null;
@@ -168,8 +163,7 @@
                 tt_l_title = "That's it, thanks!";
                 tt_l_message =
                     "Thats the end of this tutorial, if other people are confused please help them.<br/><br/>" +
-                    "Have fun, and let's make MIT a more collaborative place!<br/><br/>" +
-                    "Cheers,<br/>Tree.st oxoxo";
+                    "Cheers,<br/>Tree.st";
                 tt_l_gotit = "Finish tutorial!";
                 tt_l_direction = "tip_none";
                 tt_l_style = null;
@@ -179,7 +173,7 @@
             <%
                 tt_l_tooltip = TooltipEnum.UPLOAD_PHOTO;
                 tt_l_width = 350;
-                tt_l_left = 220;
+                tt_l_left = 280;
                 tt_l_top = 5;
                 tt_l_title = null;
                 tt_l_message = "Oh ya! Upload your photo now!";
@@ -210,7 +204,7 @@
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
                 </div>
                 <div class="details">
-                    <div class="detail smd_header white"><%= user.getName() %></div>
+                    <div class="detail smd_header white"><%= StringUtils.concat(user.getName(), 16, "&hellip;")  %></div>
                     <div class="detail sm_text white" style="float: right">Settings</div>
                 </div>
             </div>

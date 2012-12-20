@@ -2,14 +2,14 @@
 <%
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
 
-    // Retrieve email confirmation object
-    EmailConfirmation ec = EmailConfirmationDao.getByUserId(null, userId);
+    // Retrieve email confirmation checksum
+    String emailChecksum = UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.getValueByUserId(userId);
 
     String hConfirmLink = null;
     {
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
-        query.add("xcs", ec.getChecksum());
+        query.add("xcs", emailChecksum);
         hConfirmLink = "http://" + Vars.domain + "/r/confirm/?" + query;
         hConfirmLink = HtmlUtils.createHref(hConfirmLink);
     }

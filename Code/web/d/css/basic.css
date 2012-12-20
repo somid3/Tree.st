@@ -272,12 +272,12 @@ input.w50 {
 }
 
 .active_button {
-    background: #336699;
+    background: <%= HtmlDesign.highlight %>;
     color: #fff;
 }
 
 .submit_button {
-    background: green;
+    background: <%= HtmlDesign.highlight %>;
     color: #fff;
 }
 
@@ -408,8 +408,6 @@ div.glow {
     -moz-box-shadow:    0px 0px 20px 5px <%= HtmlDesign.highlight %>;
     -webkit-box-shadow: 0px 0px 20px 5px <%= HtmlDesign.highlight %>;
     box-shadow:         0px 0px 20px 5px <%= HtmlDesign.highlight %>;
-
-    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='<%= HtmlDesign.highlight %>')";
 }
 
 div.sm_glow {
@@ -440,13 +438,6 @@ div.glow4 {
     -moz-box-shadow:    0px 0px 20px 5px #444;
     -webkit-box-shadow: 0px 0px 20px 5px #444;
     box-shadow:         0px 0px 20px 5px #444;
-}
-
-   Ê
-div.lg_glow4 {
-    -moz-box-shadow:    0px 0px 40px 20px #444;
-    -webkit-box-shadow: 0px 0px 40px 20px #444;
-    box-shadow:         0px 0px 40px 20px #444;
 }
 
 div.sm_glow6 {

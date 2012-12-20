@@ -30,7 +30,7 @@
     </div>
 </a>
 
-<div id="outer-login">
+<div id="outer-container">
     <div id="login">
         <div id="form">
             <div class="element">
