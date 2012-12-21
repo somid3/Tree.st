@@ -4,24 +4,18 @@
 
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String saltChecksum = StringUtils.parseString(request.getParameter("scs"));
-    GlobalEventEnum globalEvent = GlobalEventEnum.getByValue(StringUtils.parseInt(request.getParameter("ge")));
 
     // Retrieving user
     User user = UserDao.getByIdAndSaltChecksum(null, userId, saltChecksum);
 
     if (user == null) {
 
-        wu.redirect("/");
+        wu.redirect("/d/logout");
 
     } else {
 
-        // Does the user already contain a stop for this email type?
-        EmailStop es = EmailStopDao.getByUserIdAndEmailEvent(null, user.getId(), globalEvent);
-        if (es == null) {
 
-            // Adding the email stop request
-            EmailStopDao.insert(null, user.getId(), globalEvent);
-        }
+
 
         Boolean persistent = false;
 
