@@ -9,29 +9,29 @@ public enum SmartGroupVisibilityEnum {
     SHARED (3, "Shared"),
     PRIVATE (0, "Private");
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private SmartGroupVisibilityEnum(Integer value, String name) {
-        this.value = value;
+    private SmartGroupVisibilityEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static SmartGroupVisibilityEnum getByValue (Integer value) {
+    public static SmartGroupVisibilityEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return PRIVATE;
 
         for (SmartGroupVisibilityEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

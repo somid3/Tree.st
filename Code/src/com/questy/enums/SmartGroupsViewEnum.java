@@ -10,24 +10,23 @@ public enum SmartGroupsViewEnum {
     SHARED    (3),
     YOURS     (0);
 
-    private Integer value;
-    private String name;
+    private Integer id;
 
-    private SmartGroupsViewEnum(Integer value) {
-        this.value = value;
+    private SmartGroupsViewEnum(Integer id) {
+        this.id = id;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
-    public static SmartGroupsViewEnum getByValue (Integer value) {
+    public static SmartGroupsViewEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return YOURS;
 
         for (SmartGroupsViewEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

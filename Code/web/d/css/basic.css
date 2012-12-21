@@ -272,7 +272,7 @@ input.w50 {
 }
 
 .active_button {
-    background: <%= HtmlDesign.highlight %>;
+    background: <%= HtmlDesign.highlight2 %>;
     color: #fff;
 }
 

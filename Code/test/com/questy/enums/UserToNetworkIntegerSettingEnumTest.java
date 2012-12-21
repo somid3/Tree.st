@@ -13,24 +13,25 @@ public class UserToNetworkIntegerSettingEnumTest {
     public void getSetUpdateDelete() throws SQLException {
 
         Integer userId = UserDao.insert(null, "test@email.com", "password", "Test", "Tester");
+        Integer networkId = 1;
 
         // Testing default value of get
-        Assert.assertEquals(UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getIfNull(), UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getValueByUserId(userId));
-        Assert.assertEquals(false, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(userId));
+        Assert.assertEquals(UserToNetworkIntegerSettingEnum.TEST.getIfNull(), UserToNetworkIntegerSettingEnum.TEST.getValueByUserIdAndNetworkId(userId, networkId));
+        Assert.assertEquals(false, UserToNetworkIntegerSettingEnum.TEST.getBooleanByUserIdAndNetworkId(userId, networkId));
 
         // Testing initial set
-        UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 1);
-        Assert.assertEquals((Integer) 1, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getValueByUserId(userId));
-        Assert.assertEquals(true, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(userId));
+        UserToNetworkIntegerSettingEnum.TEST.setValueByUserIdAndNetworkId(userId, networkId, 1);
+        Assert.assertEquals((Integer) 1, UserToNetworkIntegerSettingEnum.TEST.getValueByUserIdAndNetworkId(userId, networkId));
+        Assert.assertEquals(true, UserToNetworkIntegerSettingEnum.TEST.getBooleanByUserIdAndNetworkId(userId, networkId));
 
         // Testing updated value
-        UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 2);
-        Assert.assertEquals((Integer) 2, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getValueByUserId(userId));
-        Assert.assertEquals(true, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(userId));
+        UserToNetworkIntegerSettingEnum.TEST.setValueByUserIdAndNetworkId(userId, networkId, 2);
+        Assert.assertEquals((Integer) 2, UserToNetworkIntegerSettingEnum.TEST.getValueByUserIdAndNetworkId(userId, networkId));
+        Assert.assertEquals(true, UserToNetworkIntegerSettingEnum.TEST.getBooleanByUserIdAndNetworkId(userId, networkId));
 
         // Testing delete
-        UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.deleteByUserId(userId);
-        Assert.assertEquals(UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getIfNull(), UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getValueByUserId(userId));
+        UserToNetworkIntegerSettingEnum.TEST.deleteByUserIdAndNetworkId(userId, networkId);
+        Assert.assertEquals(UserToNetworkIntegerSettingEnum.TEST.getIfNull(), UserToNetworkIntegerSettingEnum.TEST.getValueByUserIdAndNetworkId(userId, networkId));
 
     }
 }

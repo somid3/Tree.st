@@ -5,6 +5,7 @@ import com.questy.enums.NetworkEventEnum;
 
 import java.util.Date;
 
+@Deprecated
 public class EmailNotificationRate extends Parent {
 
     private Date createdOn;

@@ -130,8 +130,6 @@ public class EmailServices extends ParentService {
 
     public static void firstPhotoUpload(Integer userId) throws SQLException {
 
-        final GlobalEventEnum event = GlobalEventEnum.PHOTO_UPLOAD_REMINDER;
-
         // Currently non-transactional
         Connection conn = null;
 
@@ -144,7 +142,6 @@ public class EmailServices extends ParentService {
 
         // Creating message
         UrlQuery query = new UrlQuery();
-        query.add("ge", event.getValue());
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/first_photo_upload.jsp?" + query);
 
         // Creating runnable to send email on new thread
@@ -185,7 +182,7 @@ public class EmailServices extends ParentService {
 
          // Creating message
         UrlQuery query = new UrlQuery();
-        query.add("ne", event.getValue());
+        query.add("ne", event.getId());
         query.add("fuid", fromUserId);
         query.add("nid", networkId);
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_link.jsp?" + query);
@@ -230,8 +227,8 @@ public class EmailServices extends ParentService {
 
          // Creating message
         UrlQuery query = new UrlQuery();
-        query.add("ne", event.getValue());
-        query.add("cr", callingRate.getValue());
+        query.add("ne", event.getId());
+        query.add("cr", callingRate.getId());
         query.add("nid", networkId);
         query.add("uid", userId);
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_smart_group_mappings.jsp?" + query);
@@ -262,7 +259,7 @@ public class EmailServices extends ParentService {
 
         // Creating email message
         UrlQuery query = new UrlQuery();
-        query.add("ne", event.getValue());
+        query.add("ne", event.getId());
         query.add("nid", networkId);
         query.add("sgr", smartGroupRef);
         query.add("sir", sharedItemRef);
@@ -317,7 +314,7 @@ public class EmailServices extends ParentService {
 
         // Creating email message
         UrlQuery query = new UrlQuery();
-        query.add("ne", event.getValue());
+        query.add("ne", event.getId());
         query.add("nid", networkId);
         query.add("sgr", smartGroupRef);
         query.add("sir", sharedItemRef);
@@ -385,7 +382,7 @@ public class EmailServices extends ParentService {
 
         // Creating email message
         UrlQuery query = new UrlQuery();
-        query.add("ne", event.getValue());
+        query.add("ne", event.getId());
         query.add("nid", networkId);
         query.add("sgr", smartGroupRef);
         query.add("sir", sharedItemRef);
@@ -449,29 +446,32 @@ public class EmailServices extends ParentService {
 
 
 
-    public static String globalEventStopUrl (GlobalEventEnum event) {
+    public static String createActionUrl(EmailActionEnum actionEnum, UrlQuery parameters) {
 
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("ge", event.getValue());
-        return "http://" + Vars.domain + "/r/stop/?" + query;
+        query.add("aid", actionEnum.getId());
+        query.addAll(parameters);
+        return "http://" + Vars.domain + "/r/action/?" + query;
 
     }
 
+    @Deprecated
     public static String networkEventRateUrl (Integer networkId, Integer smartGroupRef, NetworkEventEnum event, EmailNotificationRateEnum rate) {
 
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("ne", event.getValue());
-        query.add("ra", rate.getValue());
+        query.add("ne", event.getId());
+        query.add("ra", rate.getId());
         query.add("nid", networkId);
         query.add("sgr", smartGroupRef);
         return "http://" + Vars.domain + "/r/rate/?" + query;
 
     }
 
+    @Deprecated
     public static String networkEventRateLinks(Integer networkId, Integer smartGroupRef, NetworkEventEnum event) {
 
         StringBuilder builder = new StringBuilder();
@@ -492,6 +492,13 @@ public class EmailServices extends ParentService {
         return out;
     }
 
+    /**
+     * All emails will contain keywords that are placeholders of the
+     * user id, user checksum, user first name, among other variables
+     *
+     * This method updates the placeholders with the actual values
+     * that belong to a user
+     */
     public static String customizeMessage (String message, User user) {
 
         message = message.replaceAll(EmailServices.TO_USER_ID, user.getId().toString());

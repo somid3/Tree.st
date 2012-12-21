@@ -32,8 +32,8 @@ public class AppResourceDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, app.getValue());
-        ps.setInt(3, type.getValue());
+        ps.setInt(2, app.getId());
+        ps.setInt(3, type.getId());
         ps.setBoolean(4, isTemporary);
         ResultSet rs = ps.executeQuery();
 
@@ -68,8 +68,8 @@ public class AppResourceDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, app.getValue());
-        ps.setInt(3, type.getValue());
+        ps.setInt(2, app.getId());
+        ps.setInt(3, type.getId());
         ps.setInt(4, ref);
         ps.setString(5, checksum);
         ResultSet rs = ps.executeQuery();
@@ -104,8 +104,8 @@ public class AppResourceDao extends ParentDao {
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
-            ps.setInt(2, app.getValue());
-            ps.setInt(3, type.getValue());
+            ps.setInt(2, app.getId());
+            ps.setInt(3, type.getId());
             ps.setInt(4, ref);
             ResultSet rs = ps.executeQuery();
 
@@ -138,7 +138,7 @@ public class AppResourceDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setBoolean(1, hidden);
         ps.setInt(2, userId);
-        ps.setInt(3, app.getValue());
+        ps.setInt(3, app.getId());
         ps.setBoolean(4, isTemporary);
         Integer out = ps.executeUpdate();
 
@@ -165,7 +165,7 @@ public class AppResourceDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setBoolean(1, hidden);
         ps.setInt(2, userId);
-        ps.setInt(3, app.getValue());
+        ps.setInt(3, app.getId());
         ps.setInt(4, ref);
         Integer out = ps.executeUpdate();
 
@@ -194,8 +194,8 @@ public class AppResourceDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setBoolean(1, hidden);
         ps.setInt(2, userId);
-        ps.setInt(3, app.getValue());
-        ps.setInt(4, type.getValue());
+        ps.setInt(3, app.getId());
+        ps.setInt(4, type.getId());
         ps.setInt(5, ref);
         Integer out = ps.executeUpdate();
 
@@ -223,7 +223,7 @@ public class AppResourceDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setBoolean(1, isTemporary);
         ps.setInt(2, userId);
-        ps.setInt(3, app.getValue());
+        ps.setInt(3, app.getId());
         ps.setInt(4, ref);
         Integer out = ps.executeUpdate();
 
@@ -246,7 +246,7 @@ public class AppResourceDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, app.getValue());
+        ps.setInt(2, app.getId());
         ResultSet rs = ps.executeQuery();
 
         Integer max = null;
@@ -297,10 +297,10 @@ public class AppResourceDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, userId);
-        ps.setInt(2, application.getValue());
+        ps.setInt(2, application.getId());
         ps.setInt(3, ref);
         ps.setString(4, checksum);
-        ps.setInt(5, type.getValue());
+        ps.setInt(5, type.getId());
         ps.setBoolean(6, isTemporary);
         ps.execute();
 
@@ -317,8 +317,8 @@ public class AppResourceDao extends ParentDao {
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setRef(DatabaseUtils.getInt(rs, "ref"));
         out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
-        out.setApp(AppEnum.getByValue(DatabaseUtils.getInt(rs, "app")));
-        out.setType(AppResourceTypeEnum.getByValue(DatabaseUtils.getInt(rs, "type")));
+        out.setApp(AppEnum.getById(DatabaseUtils.getInt(rs, "app")));
+        out.setType(AppResourceTypeEnum.getById(DatabaseUtils.getInt(rs, "type")));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
         out.setTemporary(DatabaseUtils.getBoolean(rs, "temporary"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));

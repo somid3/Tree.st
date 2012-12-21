@@ -1,6 +1,5 @@
 <%@ include file="../../all.jsp"%>
 <%
-    GlobalEventEnum event = GlobalEventEnum.getByValue(StringUtils.parseInt(request.getParameter("ge")));
 
     String hActionLink = null;
     {
@@ -55,10 +54,12 @@
 </tr>
 
 <%
-    String hStopLink = HtmlUtils.createHref(EmailServices.globalEventStopUrl(event));
+    String unsubscribeLink = HtmlUtils.createHref(
+        "Unsubscribe",
+        EmailServices.createActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_FIRST_PHOTO_UPLOAD_EMAILS, null));
 
     List<String> d_removals = new ArrayList<String>();
-    d_removals.add("We respect your inbox, to stop receiving '" + event.getName() + "' visit " + hStopLink);
+    d_removals.add(unsubscribeLink + " from 'photo upload' reminders");
 %>
 <%@ include file="includes/d_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

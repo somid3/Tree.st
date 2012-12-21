@@ -7,18 +7,18 @@ public enum AppResourceTypeEnum {
     FACE_ORIGINAL (3, "orig", "jpg"),
     FACE_UPLOADED(0, "tmp", "unkn");
 
-    private Integer value;
+    private Integer id;
     private String name;
     private String extension;
 
-    private AppResourceTypeEnum(Integer value, String name, String extension) {
-        this.value = value;
+    private AppResourceTypeEnum(Integer id, String name, String extension) {
+        this.id = id;
         this.name = name;
         this.extension = extension;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,19 +33,19 @@ public enum AppResourceTypeEnum {
 
         if (input == null) throw new RuntimeException("Can not compare with null input");
 
-        if (this.getValue() < input.getValue())
+        if (this.getId() < input.getId())
             return true;
         else
             return false;
     }
 
-    public static AppResourceTypeEnum getByValue (Integer value) {
+    public static AppResourceTypeEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return null;
 
         for (AppResourceTypeEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

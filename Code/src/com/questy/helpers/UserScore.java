@@ -43,7 +43,7 @@ public class UserScore {
 
     public void analyzeVisibility(AnswerVisibilityEnum visibility) {
 
-        if (lowestVisibility.getValue() > visibility.getValue())
+        if (lowestVisibility.getId() > visibility.getId())
             lowestVisibility = visibility;
 
     }

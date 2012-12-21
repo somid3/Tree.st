@@ -73,7 +73,7 @@ public class NetworkDependsDao extends ParentDao {
 
         ps.setInt(1, network_id);
         ps.setInt(2, depends_on);
-        ps.setInt(3, role.getValue());
+        ps.setInt(3, role.getId());
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());

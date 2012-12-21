@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp" %>
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    SmartGroupsViewEnum view = SmartGroupsViewEnum.getByValue(StringUtils.parseInt(request.getParameter("sgv")));
+    SmartGroupsViewEnum view = SmartGroupsViewEnum.getById(StringUtils.parseInt(request.getParameter("sgv")));
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));
 
     Integer count = null;

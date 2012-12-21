@@ -1,7 +1,6 @@
 package com.questy.enums;
 
 import com.questy.domain.Network;
-import com.questy.utils.StringUtils;
 
 public enum AnswerVisibilityEnum {
     PUBLIC    (9, "Public",      "Available to the world",                   "Available to the world"),
@@ -9,21 +8,21 @@ public enum AnswerVisibilityEnum {
     ANONYMOUS (3, "Anonymously", "Answer Anonymously",                       "Answer Anonymously"),
     PRIVATE   (0, "Private",     "Only for me",                              "Only for me");
 
-    private int value;
+    private int id;
     private String name;
     private String privateDescription;
     private String globalDescription;
 
 
-    private AnswerVisibilityEnum(int value, String name, String privateDescription, String globalDescription) {
-        this.value = value;
+    private AnswerVisibilityEnum(int id, String name, String privateDescription, String globalDescription) {
+        this.id = id;
         this.name = name;
         this.privateDescription = privateDescription;
         this.globalDescription = globalDescription;
     }
 
-    public int getValue() {
-        return value;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -42,19 +41,19 @@ public enum AnswerVisibilityEnum {
 
         if (input == null) throw new RuntimeException("Can not compare with null input");
 
-        if (this.getValue() < input.getValue())
+        if (this.getId() < input.getId())
             return true;
         else
             return false;
     }
 
-    public static AnswerVisibilityEnum getByValue (Integer value) {
+    public static AnswerVisibilityEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return PRIVATE;
                 
         for (AnswerVisibilityEnum ve : values()) {
-            if (ve.getValue() == value)
+            if (ve.getId() == id)
                 return ve;
         }
 

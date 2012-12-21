@@ -1,6 +1,6 @@
 <%@ include file="../../all.jsp"%>
 <%
-    NetworkEventEnum event = NetworkEventEnum.getByValue(StringUtils.parseInt(request.getParameter("ne")));
+    NetworkEventEnum event = NetworkEventEnum.getById(StringUtils.parseInt(request.getParameter("ne")));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     Integer sharedItemRef = StringUtils.parseInt(request.getParameter("sir"));

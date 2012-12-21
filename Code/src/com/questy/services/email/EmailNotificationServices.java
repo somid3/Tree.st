@@ -12,6 +12,7 @@ import com.questy.enums.UserToSmartGroupStateEnum;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@Deprecated
 public class EmailNotificationServices {
 
     /**

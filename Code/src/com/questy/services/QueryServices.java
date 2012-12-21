@@ -10,7 +10,10 @@ import com.questy.xml.query.OptionXml;
 import com.questy.xml.query.QueryXml;
 import com.questy.xml.query.QuestionXml;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -177,7 +180,7 @@ public class QueryServices extends ParentService {
         while (rs.next()) {
 
             userId = rs.getInt("user_id");
-            visibility = AnswerVisibilityEnum.getByValue(rs.getInt("visibility"));
+            visibility = AnswerVisibilityEnum.getById(rs.getInt("visibility"));
             createdOn = rs.getTimestamp("created_on");
             flare = generateFlare(questionNetworkId, questionRef, optionRef);
             userScores.isSetCriteria(userId, optionScore, visibility, createdOn, flare);

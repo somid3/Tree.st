@@ -117,7 +117,7 @@
                         <div class="question">
                         <div class="text smd_text dim"><%= question.getText() %></div>
                         <div class="qualities">
-                            <div class="visibility"><img src="./img/visibility/<%= viewedUserAnswer.getVisibility().getValue() %>.png" alt=""></div>
+                            <div class="visibility"><img src="./img/visibility/<%= viewedUserAnswer.getVisibility().getId() %>.png" alt=""></div>
                             <div class="visibility sm_text dim2"><%= viewedUserAnswer.getVisibility().getDescription(approvedNetwork) %></div>
                             <div class="date sm_text dim2">&mdash; <%= PrettyDate.toString(viewedUserAnswer.getCreatedOn()) %></div>
                         </div>

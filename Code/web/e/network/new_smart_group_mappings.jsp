@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp"%>
 <%
-    NetworkEventEnum event = NetworkEventEnum.getByValue(StringUtils.parseInt(request.getParameter("ne")));
-    EmailNotificationRateEnum callingRate = EmailNotificationRateEnum.getByValue(StringUtils.parseInt(request.getParameter("cr")));
+    NetworkEventEnum event = NetworkEventEnum.getById(StringUtils.parseInt(request.getParameter("ne")));
+    EmailNotificationRateEnum callingRate = EmailNotificationRateEnum.getById(StringUtils.parseInt(request.getParameter("cr")));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
 

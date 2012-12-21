@@ -87,7 +87,7 @@ public class SmartGroupDao extends ParentDao {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, networkId);
             ps.setInt(2, createdByUserId);
-            ps.setInt(3, lowestVisibility.getValue());
+            ps.setInt(3, lowestVisibility.getId());
             ps.setString(4, searchName);
             ps.setString(5, SmartGroupDao.SEARCH_NAME);
             rs = ps.executeQuery();
@@ -105,7 +105,7 @@ public class SmartGroupDao extends ParentDao {
 
             ps = conn.prepareStatement(sql);
             ps.setInt(1, networkId);
-            ps.setInt(2, lowestVisibility.getValue());
+            ps.setInt(2, lowestVisibility.getId());
             ps.setString(3, searchName);
             ps.setString(4, SmartGroupDao.SEARCH_NAME);
             rs = ps.executeQuery();
@@ -143,7 +143,7 @@ public class SmartGroupDao extends ParentDao {
 
         ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
-        ps.setInt(2, lowestVisibility.getValue());
+        ps.setInt(2, lowestVisibility.getId());
         rs = ps.executeQuery();
 
 
@@ -180,7 +180,7 @@ public class SmartGroupDao extends ParentDao {
 
         ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
-        ps.setInt(2, visibility.getValue());
+        ps.setInt(2, visibility.getId());
         ps.setInt(3, limit.getStartFrom());
         ps.setInt(4, limit.getDuration());
         rs = ps.executeQuery();
@@ -279,7 +279,7 @@ public class SmartGroupDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
-        ps.setInt(3, lowestVisibility.getValue());
+        ps.setInt(3, lowestVisibility.getId());
         ResultSet rs = ps.executeQuery();
 
         SmartGroup out = null;
@@ -345,7 +345,7 @@ public class SmartGroupDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, name);
         ps.setString(2, description);
-        ps.setInt(3, visibility.getValue());
+        ps.setInt(3, visibility.getId());
         ps.setInt(4, networkId);
         ps.setInt(5, smartGroupRef);
         ps.execute();
@@ -484,7 +484,7 @@ public class SmartGroupDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
-        ps.setInt(2, visibility.getValue());
+        ps.setInt(2, visibility.getId());
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;
@@ -556,7 +556,7 @@ public class SmartGroupDao extends ParentDao {
         out.setIconOn(DatabaseUtils.getTimestamp(rs, "icon_on"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));
         out.setVisibility(
-            SmartGroupVisibilityEnum.getByValue(DatabaseUtils.getInt(rs, "visibility"))
+            SmartGroupVisibilityEnum.getById(DatabaseUtils.getInt(rs, "visibility"))
         );
         out.setResultsCount(DatabaseUtils.getInt(rs, "results_count"));
 

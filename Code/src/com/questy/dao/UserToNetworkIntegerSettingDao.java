@@ -1,35 +1,36 @@
 package com.questy.dao;
 
-import com.questy.domain.UserIntegerSetting;
-import com.questy.enums.UserIntegerSettingEnum;
+import com.questy.domain.UserToNetworkIntegerSetting;
+import com.questy.enums.UserToNetworkIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserToNetworkIntegerSettingDao extends ParentDao {
 
-    public static UserIntegerSetting getByUserIdAndSettingEnum(
+    public static UserToNetworkIntegerSetting getByUserIdAndNetworkIdAndSettingEnum (
         Connection conn,
         Integer userId,
-        UserIntegerSettingEnum settingEnum) throws SQLException {
+        Integer networkId,
+        UserToNetworkIntegerSettingEnum settingEnum) throws SQLException {
 
         conn = start(conn);
 
         String sql =
             "select * " +
-            "from `user_integer_settings` " +
+            "from `user_to_network_integer_settings` " +
             "where `user_id` = ? " +
+            "and `network_id` = ? " +
             "and `setting_id` = ? " +
             "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, settingEnum.getId());
+        ps.setInt(2, networkId);
+        ps.setInt(3, settingEnum.getId());
         ResultSet rs = ps.executeQuery();
 
-        UserIntegerSetting out = null;
+        UserToNetworkIntegerSetting out = null;
 
         while (rs.next())
             out = loadPrimitives(rs);
@@ -38,73 +39,52 @@ public class UserToNetworkIntegerSettingDao extends ParentDao {
         return out;
     }
 
-    public static List<UserIntegerSetting> getBySettingEnumAndValue(
-        Connection conn,
-        UserIntegerSettingEnum settingEnum,
-        Integer value) throws SQLException {
-
-        conn = start(conn);
-
-        String sql =
-            "select * " +
-            "from `user_integer_settings` " +
-            "where `setting_id` = ? " +
-            "and `setting_value` = ?;";
-
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, settingEnum.getId());
-        ps.setInt(2, value);
-
-        ResultSet rs = ps.executeQuery();
-
-        List<UserIntegerSetting> out = new ArrayList<UserIntegerSetting>();
-        while (rs.next())
-            out.add(loadPrimitives(rs));
-
-        end(conn, ps, rs);
-        return out;
-    }
-
-    public static void updateByUserIdAndSetting(
+    public static void updateByUserIdAndNetworkIdAndSetting(
         Connection conn,
         Integer userId,
-        UserIntegerSettingEnum settingEnum,
+        Integer networkId,
+        UserToNetworkIntegerSettingEnum settingEnum,
         Integer settingValue) throws SQLException {
 
         conn = start(conn);
 
         String sql =
-            "update `user_integer_settings` " +
+            "update `user_to_network_integer_settings` " +
             "set `setting_value` = ? " +
             "where `user_id` = ? " +
+            "and `network_id` = ? " +
             "and `setting_id` = ? " +
             "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, settingValue);
         ps.setInt(2, userId);
-        ps.setInt(3, settingEnum.getId());
+        ps.setInt(3, networkId);
+        ps.setInt(4, settingEnum.getId());
         ps.execute();
 
         end(conn, ps, null);
     }
 
-    public static Integer deleteByUserIdAndSettingEnum(
+    public static Integer deleteByUserIdAndNetworkIdAndSettingEnum(
         Connection conn,
         Integer userId,
-        UserIntegerSettingEnum settingEnum) throws SQLException {
+        Integer networkId,
+        UserToNetworkIntegerSettingEnum settingEnum) throws SQLException {
 
         conn = start(conn);
 
         String sql =
             "delete " +
-            "from `user_integer_settings` " +
+            "from `user_to_network_integer_settings` " +
             "where `user_id` = ? " +
+            "and `network_id` = ? " +
             "and `setting_id` = ?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, settingEnum.getId());
+        ps.setInt(2, networkId);
+        ps.setInt(3, settingEnum.getId());
         Integer out = ps.executeUpdate();
 
         end(conn, ps, null);
@@ -116,22 +96,25 @@ public class UserToNetworkIntegerSettingDao extends ParentDao {
     public static Integer insert (
         Connection conn,
         Integer userId,
-        UserIntegerSettingEnum settingEnum,
+        Integer networkId,
+        UserToNetworkIntegerSettingEnum settingEnum,
         Integer settingValue) throws SQLException {
 
         conn = start(conn);
 
         String sql =
-            "insert into `user_integer_settings` (" +
+            "insert into `user_to_network_integer_settings` (" +
             "`user_id`, " +
+            "`network_id`, " +
             "`setting_id`, " +
             "`setting_value` " +
-            ") values (?, ?, ?);";
+            ") values (?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, userId);
-        ps.setInt(2, settingEnum.getId());
-        ps.setInt(3, settingValue);
+        ps.setInt(2, networkId);
+        ps.setInt(3, settingEnum.getId());
+        ps.setInt(4, settingValue);
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -140,13 +123,14 @@ public class UserToNetworkIntegerSettingDao extends ParentDao {
         return generatedId;
     }
 
-    private static UserIntegerSetting loadPrimitives (ResultSet rs) throws SQLException {
-        UserIntegerSetting out = new UserIntegerSetting();
+    private static UserToNetworkIntegerSetting loadPrimitives (ResultSet rs) throws SQLException {
+        UserToNetworkIntegerSetting out = new UserToNetworkIntegerSetting();
 
         out.setId(DatabaseUtils.getInt(rs, "id"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
+        out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setValue(DatabaseUtils.getInt(rs, "setting_value"));
-        out.setSettingEnum(UserIntegerSettingEnum.getById(DatabaseUtils.getInt(rs, "setting_id")));
+        out.setSettingEnum(UserToNetworkIntegerSettingEnum.getById(DatabaseUtils.getInt(rs, "setting_id")));
 
         return out;
     }

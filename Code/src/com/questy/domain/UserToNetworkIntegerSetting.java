@@ -1,18 +1,19 @@
 package com.questy.domain;
 
-import com.questy.enums.UserIntegerSettingEnum;
+import com.questy.enums.UserToNetworkIntegerSettingEnum;
 
 public class UserToNetworkIntegerSetting extends Parent {
 
     private Integer userId;
-    private UserIntegerSettingEnum settingEnum;
+    private Integer networkId;
+    private UserToNetworkIntegerSettingEnum settingEnum;
     private Integer value;
 
-    public UserIntegerSettingEnum getSettingEnum() {
+    public UserToNetworkIntegerSettingEnum getSettingEnum() {
         return settingEnum;
     }
 
-    public void setSettingEnum(UserIntegerSettingEnum settingEnum) {
+    public void setSettingEnum(UserToNetworkIntegerSettingEnum settingEnum) {
         this.settingEnum = settingEnum;
     }
 
@@ -30,5 +31,13 @@ public class UserToNetworkIntegerSetting extends Parent {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getNetworkId() {
+        return networkId;
+    }
+
+    public void setNetworkId(Integer networkId) {
+        this.networkId = networkId;
     }
 }

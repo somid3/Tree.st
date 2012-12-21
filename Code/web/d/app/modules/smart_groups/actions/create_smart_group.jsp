@@ -4,7 +4,7 @@
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     String name = StringUtils.parseString(request.getParameter("name"));
     String description = StringUtils.parseString(request.getParameter("desc"));
-    SmartGroupVisibilityEnum visibility = SmartGroupVisibilityEnum.getByValue(StringUtils.parseInt(request.getParameter("share")));
+    SmartGroupVisibilityEnum visibility = SmartGroupVisibilityEnum.getById(StringUtils.parseInt(request.getParameter("share")));
 
     // Convert search to smart group
     SmartGroupServices.convertSearchToSmartGroup(

@@ -3,7 +3,7 @@
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer answeredQuestionRef = StringUtils.parseInt(request.getParameter("aqr"));
     List<Integer> optionRefs = StringUtils.parseInts(request.getParameterValues("ors[]"));
-    AnswerVisibilityEnum visibility = AnswerVisibilityEnum.getByValue(StringUtils.parseInt(request.getParameter("vis")));
+    AnswerVisibilityEnum visibility = AnswerVisibilityEnum.getById(StringUtils.parseInt(request.getParameter("vis")));
 
     Tuple<Boolean, Integer> againAndPoints = AnswerServices.answer(userId, networkId, answeredQuestionRef, optionRefs, visibility);
 

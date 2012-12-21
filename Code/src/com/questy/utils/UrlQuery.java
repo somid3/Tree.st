@@ -6,7 +6,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class UrlQuery {
 
@@ -14,6 +13,14 @@ public class UrlQuery {
 
     public void add(String param, Object value) {
         params.add(new Tuple<String, Object>(param, value));
+    }
+
+    public void addAll(UrlQuery urlQuery) {
+
+        if (urlQuery == null)
+            return;
+
+        params.addAll(urlQuery.getParams());
     }
 
     @Override
