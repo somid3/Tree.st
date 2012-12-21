@@ -161,14 +161,14 @@
 
                                 for (AnswerVisibilityEnum ave : AnswerVisibilityEnum.values()) {
 
-                                    if (maxVisibility >= ave.getValue()) {
+                                    if (maxVisibility >= ave.getId()) {
 
-                                        if (defaultVisibility == ave.getValue())
+                                        if (defaultVisibility == ave.getId())
                                             selected = " selected";
                                         else
                                             selected = ""; %>
 
-                                        <option value="<%= ave.getValue() %>"<%= selected %>><%= ave.getDescription(network) %></option>
+                                        <option value="<%= ave.getId() %>"<%= selected %>><%= ave.getDescription(network) %></option>
                                     <% } %>
                                 <% } %>
                         </select>

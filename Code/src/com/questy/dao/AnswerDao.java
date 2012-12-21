@@ -248,7 +248,7 @@ public class AnswerDao extends ParentDao {
         ps.setInt(2, networkId);
         ps.setInt(3, userId);
         ps.setInt(4, ref);
-        ps.setInt(5, visibility.getValue());
+        ps.setInt(5, visibility.getId());
         ps.setBoolean(6, again);
         ps.execute();
 
@@ -268,7 +268,7 @@ public class AnswerDao extends ParentDao {
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setAgain(DatabaseUtils.getBoolean(rs, "again"));
         out.setVisibility(
-            AnswerVisibilityEnum.getByValue(DatabaseUtils.getInt(rs, "visibility"))
+            AnswerVisibilityEnum.getById(DatabaseUtils.getInt(rs, "visibility"))
         );
         return out;
     }

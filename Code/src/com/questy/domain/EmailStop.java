@@ -4,6 +4,7 @@ import com.questy.enums.GlobalEventEnum;
 
 import java.util.Date;
 
+@Deprecated
 public class EmailStop extends Parent {
 
     private Date createdOn;

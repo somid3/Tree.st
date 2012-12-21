@@ -1,55 +1,31 @@
 package com.questy.enums;
 
 
-import com.questy.dao.UserIntegerSettingDao;
-import com.questy.domain.UserIntegerSetting;
+import com.questy.dao.UserToNetworkIntegerSettingDao;
+import com.questy.domain.UserToNetworkIntegerSetting;
 
 import java.sql.SQLException;
 
 /**
- * Integer based settings for each user. For each type of
- * setting the user can have at most only one value. If a user
- * does not have any value set for the setting, then the setting's
+ * Integer based settings for each user within a network. For each type of
+ * setting the user can have at most only one value for each network. If a user
+ * within a network does not have any value set for the setting, then the setting's
  * default value is returned
  *
  */
 public enum UserToNetworkIntegerSettingEnum {
 
-    // Email confirmation settings
+    /*
+     * Used for testing
+     */
+    TEST (0, 0),
 
     /*
-     * Whether the user has confirmed the main email address point of
-     * contact
+     * Whether the user has requested to not receive any more email
+     * notifications when a new user link is created
      */
-    IS_EMAIL_CONFIRMED (100, 0),
+    IS_UNSUBSCRIBED_FROM_NEW_USER_LINK_EMAIL_NOTIFICATIONS (101, 0),
 
-    /*
-     * Total number of email confirmation requests that the user has
-     * received
-     */
-    NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT (101, 0),
-
-
-
-    // Face photo settings
-
-    /*
-     * Number photo upload reminder emails that the user has received so far.
-     * After a certain number of requests the user will stop receiving
-     * photo upload requests
-     */
-    NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT (200, 0),
-
-    /*
-     * Whether the user has requested to not receive any more reminders
-     * to upload his or her first photo
-     */
-    IS_UNSUBSCRIBED_FROM_FIRST_PHOTO_UPLOAD_EMAILS (201, 0),
-
-    /*
-     * Total number of photos the user has uploaded to the profile
-     */
-    NUMBER_OF_PHOTOS_UPLOADED (202, 0),
 
 
 
@@ -72,9 +48,9 @@ public enum UserToNetworkIntegerSettingEnum {
         return ifNull;
     }
 
-    public Integer getValueByUserId (Integer userId) throws SQLException {
+    public Integer getValueByUserIdAndNetworkId (Integer userId, Integer networkId) throws SQLException {
 
-        UserIntegerSetting setting = UserIntegerSettingDao.getByUserIdAndSettingEnum(null, userId, this);
+        UserToNetworkIntegerSetting setting = UserToNetworkIntegerSettingDao.getByUserIdAndNetworkIdAndSettingEnum(null, userId, networkId, this);
 
         // If the setting is not set for the network, return the code's default
         if (setting == null)
@@ -83,46 +59,46 @@ public enum UserToNetworkIntegerSettingEnum {
         return setting.getValue();
     }
 
-    public Boolean getBooleanByUserId (Integer userId) throws SQLException {
+    public Boolean getBooleanByUserIdAndNetworkId (Integer userId, Integer networkId) throws SQLException {
 
-        Integer value = getValueByUserId(userId);
+        Integer value = getValueByUserIdAndNetworkId(userId, networkId);
 
         return !(value == null || value == 0);
     }
 
-    public void setValueByUserId (Integer userId, Integer value) throws SQLException {
+    public void setValueByUserIdAndNetworkId (Integer userId, Integer networkId, Integer value) throws SQLException {
 
         // Attempt to get value
-        UserIntegerSetting setting = UserIntegerSettingDao.getByUserIdAndSettingEnum(null, userId, this);
+        UserToNetworkIntegerSetting setting = UserToNetworkIntegerSettingDao.getByUserIdAndNetworkIdAndSettingEnum(null, userId, networkId, this);
 
         // Does the value already exist?
         if (setting != null) {
 
             // Yes, update the value
-            UserIntegerSettingDao.updateByUserIdAndSetting(null, userId, this, value);
+            UserToNetworkIntegerSettingDao.updateByUserIdAndNetworkIdAndSetting(null, userId, networkId, this, value);
 
         } else {
 
             // No, insert the value
-            UserIntegerSettingDao.insert(null, userId, this, value);
+            UserToNetworkIntegerSettingDao.insert(null, userId, networkId, this, value);
 
         }
 
     }
 
-    public void incrementValueByUserId (Integer userId, Integer incrementBy) throws SQLException {
+    public void incrementValueByUserIdAndNetworkId (Integer userId, Integer networkId, Integer incrementBy) throws SQLException {
 
         // Get setting's value
-        Integer value = this.getValueByUserId(userId);
+        Integer value = this.getValueByUserIdAndNetworkId(userId, networkId);
 
         // Set value
-        this.setValueByUserId(userId, value + incrementBy);
+        this.setValueByUserIdAndNetworkId(userId, networkId, value + incrementBy);
 
     }
 
-    public void deleteByUserId (Integer userId) throws SQLException  {
+    public void deleteByUserIdAndNetworkId (Integer userId, Integer networkId) throws SQLException  {
 
-        UserIntegerSettingDao.deleteByUserIdAndSettingEnum(null, userId, this);
+        UserToNetworkIntegerSettingDao.deleteByUserIdAndNetworkIdAndSettingEnum(null, userId, networkId, this);
 
     }
 

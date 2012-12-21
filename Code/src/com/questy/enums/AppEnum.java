@@ -4,16 +4,16 @@ public enum AppEnum {
 
     FACES (1, "faces");
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private AppEnum(Integer value, String name) {
-        this.value = value;
+    private AppEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -24,19 +24,19 @@ public enum AppEnum {
 
         if (input == null) throw new RuntimeException("Can not compare with null input");
 
-        if (this.getValue() < input.getValue())
+        if (this.getId() < input.getId())
             return true;
         else
             return false;
     }
 
-    public static AppEnum getByValue (Integer value) {
+    public static AppEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return null;
 
         for (AppEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

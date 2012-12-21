@@ -1,4 +1,3 @@
-<%@ page import="java.sql.SQLException" %>
 <%@ include file="../all.jsp"%>
 <%
     WebUtils wu = new WebUtils(request, response);
@@ -9,8 +8,8 @@
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String saltChecksum = StringUtils.parseString(request.getParameter("scs"));
 
-    NetworkEventEnum event = NetworkEventEnum.getByValue(StringUtils.parseInt(request.getParameter("ne")));
-    EmailNotificationRateEnum newRate = EmailNotificationRateEnum.getByValue(StringUtils.parseInt(request.getParameter("ra")));
+    NetworkEventEnum event = NetworkEventEnum.getById(StringUtils.parseInt(request.getParameter("ne")));
+    EmailNotificationRateEnum newRate = EmailNotificationRateEnum.getById(StringUtils.parseInt(request.getParameter("ra")));
 
     // Retrieving user
     User user = UserDao.getByIdAndSaltChecksum(null, userId, saltChecksum);

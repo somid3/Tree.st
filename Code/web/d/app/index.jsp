@@ -204,7 +204,7 @@
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
                 </div>
                 <div class="details">
-                    <div class="detail smd_header white"><%= StringUtils.concat(user.getName(), 16, "&hellip;")  %></div>
+                    <div class="detail smd_header white"><%= StringUtils.concat(user.getName(), 10, "&hellip;")  %></div>
                     <div class="detail sm_text white" style="float: right">Settings</div>
                 </div>
             </div>

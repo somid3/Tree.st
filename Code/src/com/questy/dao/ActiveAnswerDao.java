@@ -54,7 +54,7 @@ public class ActiveAnswerDao extends ParentDao {
         ps.setInt(1, networkId);
         ps.setInt(2, questionRef);
         ps.setInt(3, optionRef);
-        ps.setInt(4, lowestVisibility.getValue());
+        ps.setInt(4, lowestVisibility.getId());
         ps.setInt(5, limit);
 
         ResultSet rs = ps.executeQuery();
@@ -91,7 +91,7 @@ public class ActiveAnswerDao extends ParentDao {
             ps.setInt(1, networkId);
             ps.setInt(2, questionRef);
             ps.setInt(3, userId);
-            ps.setInt(4, lowestVisibility.getValue());
+            ps.setInt(4, lowestVisibility.getId());
             ps.setInt(5, limit.getStartFrom());
             ps.setInt(6, limit.getDuration());
 
@@ -177,7 +177,7 @@ public class ActiveAnswerDao extends ParentDao {
         ps.setInt(2, questionRef);
         ps.setInt(3, optionRef);
         ps.setInt(4, userId);
-        ps.setInt(5, visibility.getValue());
+        ps.setInt(5, visibility.getId());
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -195,7 +195,7 @@ public class ActiveAnswerDao extends ParentDao {
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
         out.setVisibility(
-            AnswerVisibilityEnum.getByValue(DatabaseUtils.getInt(rs, "visibility"))
+            AnswerVisibilityEnum.getById(DatabaseUtils.getInt(rs, "visibility"))
         );
         return out;
     }

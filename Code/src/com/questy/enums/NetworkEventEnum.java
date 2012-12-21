@@ -84,28 +84,28 @@ public enum NetworkEventEnum {
 
 
 
-    private Integer value;
+    private Integer id;
     private String name;
     private EmailNotificationRateEnum[] acceptedRates;
     private EmailNotificationRateEnum defaultRate;
     private boolean forNetworkOnly = false;
 
     private NetworkEventEnum(
-        Integer value,
+        Integer id,
         String name,
         EmailNotificationRateEnum[] acceptedRates,
         EmailNotificationRateEnum defaultRate,
         boolean forNetworkOnly) {
 
-        this.value = value;
+        this.id = id;
         this.name = name;
         this.acceptedRates = acceptedRates;
         this.defaultRate = defaultRate;
         this.forNetworkOnly = forNetworkOnly;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -116,13 +116,13 @@ public enum NetworkEventEnum {
         return defaultRate;
     }
 
-    public static NetworkEventEnum getByValue (Integer value) {
+    public static NetworkEventEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return null;
 
         for (NetworkEventEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

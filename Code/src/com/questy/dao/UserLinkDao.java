@@ -7,9 +7,7 @@ import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserLinkDao extends ParentDao {
 
@@ -31,7 +29,7 @@ public class UserLinkDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
-        ps.setInt(3, notDirection.getValue());
+        ps.setInt(3, notDirection.getId());
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;
@@ -65,7 +63,7 @@ public class UserLinkDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
-        ps.setInt(3, direction.getValue());
+        ps.setInt(3, direction.getId());
         ps.setInt(4, limit.getStartFrom());
         ps.setInt(5, limit.getDuration());
 
@@ -105,7 +103,7 @@ public class UserLinkDao extends ParentDao {
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
         ps.setTimestamp(3, createdAfterSql);
-        ps.setInt(4, notDirection.getValue());
+        ps.setInt(4, notDirection.getId());
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;
@@ -199,7 +197,7 @@ public class UserLinkDao extends ParentDao {
             "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, direction.getValue());
+        ps.setInt(1, direction.getId());
         ps.setInt(2, networkId);
         ps.setInt(3, fromUserId);
         ps.setInt(4, toUserId);
@@ -230,7 +228,7 @@ public class UserLinkDao extends ParentDao {
         ps.setInt(1, networkId);
         ps.setInt(2, fromUserId);
         ps.setInt(3, toUserId);
-        ps.setInt(4, direction.getValue());
+        ps.setInt(4, direction.getId());
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -247,7 +245,7 @@ public class UserLinkDao extends ParentDao {
         out.setFromUserId(DatabaseUtils.getInt(rs, "from_user_id"));
         out.setToUserId(DatabaseUtils.getInt(rs, "to_user_id"));
         out.setDirection(
-            UserLinkDirectionEnum.getByValue(DatabaseUtils.getInt(rs, "direction"))
+            UserLinkDirectionEnum.getById(DatabaseUtils.getInt(rs, "direction"))
         );
         return out;
     }

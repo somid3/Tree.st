@@ -10,16 +10,16 @@ public enum RoleEnum {
 
     VISITOR (0, "Visitor");
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private RoleEnum(Integer value, String name) {
-        this.value = value;
+    private RoleEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,19 +30,19 @@ public enum RoleEnum {
 
         if (input == null) throw new RuntimeException("Can not compare with null input");
 
-        if (this.getValue() < input.getValue())
+        if (this.getId() < input.getId())
             return true;
         else
             return false;
     }
 
-    public static RoleEnum getByValue (Integer value) {
+    public static RoleEnum getByValue (Integer id) {
 
-        if (value == null)
+        if (id == null)
             return VISITOR;
 
         for (RoleEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

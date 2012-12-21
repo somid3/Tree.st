@@ -20,29 +20,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Database/questy.mwb.bak" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/e/global/photo_upload.jsp" afterPath="$PROJECT_DIR$/web/e/global/first_photo_upload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/d/assets/adamwarrenpro.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/ActiveAnswerDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/ActiveAnswerDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/AnswerDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/AnswerDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/AnswerVisibilityEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/AnswerVisibilityEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/AppEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/AppEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/AppResourceDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/AppResourceDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/AppResourceTypeEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/AppResourceTypeEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/EmailActionEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/EmailActionEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/domain/EmailNotificationRate.java" afterPath="$PROJECT_DIR$/src/com/questy/domain/EmailNotificationRate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/EmailNotificationRateDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/EmailNotificationRateDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/EmailNotificationRateEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/EmailNotificationRateEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailNotificationServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailNotificationServices.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/css/basic.css" afterPath="$PROJECT_DIR$/web/d/start/css/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/start/index.jsp" afterPath="$PROJECT_DIR$/web/d/start/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/domain/EmailStop.java" afterPath="$PROJECT_DIR$/src/com/questy/domain/EmailStop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/NetworkDependsDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/NetworkDependsDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/NetworkEventEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/NetworkEventEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/services/QueryServices.java" afterPath="$PROJECT_DIR$/src/com/questy/services/QueryServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/QuestionDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/QuestionDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/RoleEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/RoleEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/questy/Sandbox.java" afterPath="$PROJECT_DIR$/test/com/questy/Sandbox.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/SmartGroupDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/SmartGroupDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/SmartGroupResultDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/SmartGroupResultDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/SmartGroupVisibilityEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/SmartGroupVisibilityEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/SmartGroupsViewEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/SmartGroupsViewEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/utils/UrlQuery.java" afterPath="$PROJECT_DIR$/src/com/questy/utils/UrlQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/UserLinkDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserLinkDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/UserLinkDirectionEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserLinkDirectionEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/helpers/UserScore.java" afterPath="$PROJECT_DIR$/src/com/questy/helpers/UserScore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/UserToNetworkDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserToNetworkDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/domain/UserToNetworkIntegerSetting.java" afterPath="$PROJECT_DIR$/src/com/questy/domain/UserToNetworkIntegerSetting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/dao/UserToNetworkIntegerSettingDao.java" afterPath="$PROJECT_DIR$/src/com/questy/dao/UserToNetworkIntegerSettingDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/questy/enums/UserToNetworkIntegerSettingEnum.java" afterPath="$PROJECT_DIR$/src/com/questy/enums/UserToNetworkIntegerSettingEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/questy/enums/UserToNetworkIntegerSettingEnumTest.java" afterPath="$PROJECT_DIR$/test/com/questy/enums/UserToNetworkIntegerSettingEnumTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/collaborate/actions/answer.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/collaborate/actions/answer.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/profiles/answers.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/profiles/answers.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/css/basic.css" afterPath="$PROJECT_DIR$/web/d/app/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/css/basic.css" afterPath="$PROJECT_DIR$/web/d/css/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/by_network.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/by_network.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/user_links/actions/create_link.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/user_links/actions/create_link.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/actions/create_smart_group.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/actions/create_smart_group.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/global/first_photo_upload.jsp" afterPath="$PROJECT_DIR$/web/e/global/first_photo_upload.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/index.jsp" afterPath="$PROJECT_DIR$/web/d/app/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/r/action/index.jsp" afterPath="$PROJECT_DIR$/web/r/action/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/r/rate/index.jsp" afterPath="$PROJECT_DIR$/web/r/rate/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/network/new_shared_item.jsp" afterPath="$PROJECT_DIR$/web/e/network/new_shared_item.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/network/new_smart_group_mappings.jsp" afterPath="$PROJECT_DIR$/web/e/network/new_smart_group_mappings.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/e/network/new_user_link.jsp" afterPath="$PROJECT_DIR$/web/e/network/new_user_link.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/collaborate/question_display.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/collaborate/question_display.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/d/app/modules/smart_groups/smart_groups_display.jsp" afterPath="$PROJECT_DIR$/web/d/app/modules/smart_groups/smart_groups_display.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
-    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979895489" ignored="false" />
-    <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977213474" ignored="false" />
+    <file path="/Dummy.txt" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356119513256" ignored="false" />
+    <file path="/a.dummy" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356065383124" ignored="false" />
     <file path="/basic.css" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979842044" ignored="false" />
     <file path="/dashboard.js" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355798879279" ignored="false" />
     <file path="/m_browser_warning.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355799205510" ignored="false" />
-    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355980720366" ignored="false" />
+    <file path="/index.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356067308413" ignored="false" />
     <file path="/Vars.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355800584411" ignored="false" />
     <file path="/UserIntegerSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355971808126" ignored="false" />
     <file path="/ParentEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355956880142" ignored="false" />
     <file path="/UserIntegerSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972253369" ignored="false" />
     <file path="/UserWebServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977317246" ignored="false" />
-    <file path="/fragment.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972543019" ignored="false" />
+    <file path="/fragment.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356115592487" ignored="false" />
     <file path="/UserAlphaSetting.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355960486235" ignored="false" />
     <file path="/UserAlphaSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972670879" ignored="false" />
     <file path="/UserAlphaSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355972711599" ignored="false" />
@@ -57,7 +100,20 @@
     <file path="/tt_l_tooltip.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355976572232" ignored="false" />
     <file path="/login.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355977408924" ignored="false" />
     <file path="/confirm.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355979645186" ignored="false" />
-    <file path="/EmailServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355981292760" ignored="false" />
+    <file path="/EmailServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356064714250" ignored="false" />
+    <file path="/GlobalEventEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355984831418" ignored="false" />
+    <file path="/EmailStop.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1355984842950" ignored="false" />
+    <file path="/first_photo_upload.jsp" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356065958086" ignored="false" />
+    <file path="/EmailActionEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356064297587" ignored="false" />
+    <file path="/UrlQuery.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356065970348" ignored="false" />
+    <file path="/EmailNotificationServices.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356065660638" ignored="false" />
+    <file path="/EmailNotificationRate.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356065681543" ignored="false" />
+    <file path="/Sandbox.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356066257144" ignored="false" />
+    <file path="/EmailNotificationRateDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356114300724" ignored="false" />
+    <file path="/UserToNetworkIntegerSettingEnum.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356116837487" ignored="false" />
+    <file path="/UserToNetworkIntegerSetting.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356115480832" ignored="false" />
+    <file path="/UserToNetworkIntegerSettingEnumTest.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356115769363" ignored="false" />
+    <file path="/UserToNetworkIntegerSettingDao.java" changelist="d58bb8a4-bcc0-4edf-a568-34e4c69ed8f4" time="1356116820207" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +128,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -106,7 +163,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -117,57 +173,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EmailServices.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java">
+      <file leaf-file-name="UserIntegerSettingEnum.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="29" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.0">
+            <state line="15" column="12" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmailConfirmationServices.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java">
+      <file leaf-file-name="UserToNetworkIntegerSettingEnum.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserToNetworkIntegerSettingEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="29" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailScheduledReminders.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="33" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.6990553">
+            <state line="82" column="75" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="first_photo_upload.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/e/global/first_photo_upload.jsp">
+      <file leaf-file-name="UserIntegerSetting.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/domain/UserIntegerSetting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.5">
+            <state line="4" column="13" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GlobalEventEnum.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java">
+      <file leaf-file-name="UserToNetworkIntegerSetting.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/domain/UserToNetworkIntegerSetting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+            <state line="15" column="62" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmailStop.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/questy/domain/EmailStop.java">
+      <file leaf-file-name="UserIntegerSettingDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="18" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+            <state line="10" column="13" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnswerOptionDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/dao/AnswerOptionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserToNetworkIntegerSettingDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/dao/UserToNetworkIntegerSettingDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="31" selection-start="3153" selection-end="3153" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserToNetworkIntegerSettingEnumTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/com/questy/enums/UserToNetworkIntegerSettingEnumTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="24" selection-start="260" selection-end="260" vertical-scroll-proportion="0.13705584">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserIntegerSettingEnumTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/questy/enums/UserIntegerSettingEnumTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserLinkDirectionEnum.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserLinkDirectionEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -191,22 +281,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/d/app/modules/tooltips/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/app/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/app/index.jsp" />
-        <option value="$PROJECT_DIR$/src/com/questy/services/UserWebServices.java" />
-        <option value="$PROJECT_DIR$/web/d/login/actions/login.jsp" />
-        <option value="$PROJECT_DIR$/web/d/login/index.jsp" />
-        <option value="$PROJECT_DIR$/web/d/login/js/login.js" />
-        <option value="$PROJECT_DIR$/src/com/questy/web/HtmlDesign.java" />
-        <option value="$PROJECT_DIR$/web/d/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/login/renders/confirm.jsp" />
-        <option value="$PROJECT_DIR$/web/d/login/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/start/renders/confirm.jsp" />
-        <option value="$PROJECT_DIR$/web/d/start/css/basic.css" />
-        <option value="$PROJECT_DIR$/web/d/start/index.jsp" />
-        <option value="$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java" />
-        <option value="$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java" />
+        <option value="$PROJECT_DIR$/web/r/action/index.jsp" />
+        <option value="$PROJECT_DIR$/src/com/questy/dao/EmailNotificationRateDao.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/AnswerVisibilityEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/AppEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/AppResourceTypeEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/EmailNotificationRateEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/NetworkEventEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/RoleEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/SmartGroupsViewEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/SmartGroupVisibilityEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/UserLinkDirectionEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/domain/UserToNetworkIntegerSetting.java" />
+        <option value="$PROJECT_DIR$/test/com/questy/enums/UserToNetworkIntegerSettingEnumTest.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/enums/UserToNetworkIntegerSettingEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/questy/dao/UserToNetworkIntegerSettingDao.java" />
       </list>
     </option>
   </component>
@@ -235,119 +325,9 @@
             <id />
           </State>
           <State>
-            <id>AOP</id>
-          </State>
-          <State>
-            <id>Abstraction issues</id>
-          </State>
-          <State>
-            <id>CDI(Contexts and Dependency Injection) issues</id>
-          </State>
-          <State>
-            <id>Class metrics</id>
-          </State>
-          <State>
-            <id>Class structure</id>
-          </State>
-          <State>
-            <id>Cloning issues</id>
-          </State>
-          <State>
-            <id>Code style issues</id>
-          </State>
-          <State>
-            <id>Control flow issues</id>
-          </State>
-          <State>
-            <id>Control flow issuesJavaScript</id>
-          </State>
-          <State>
-            <id>Data flow issues</id>
-          </State>
-          <State>
-            <id>Data flow issuesGroovy</id>
-          </State>
-          <State>
-            <id>Declaration redundancy</id>
-          </State>
-          <State>
-            <id>Error handling</id>
-          </State>
-          <State>
-            <id>General</id>
-          </State>
-          <State>
-            <id>Google Web Toolkit issues</id>
-          </State>
-          <State>
-            <id>Groovy</id>
-          </State>
-          <State>
-            <id>HTML</id>
-          </State>
-          <State>
-            <id>Imports</id>
-          </State>
-          <State>
-            <id>Initialization issues</id>
-          </State>
-          <State>
-            <id>Internationalization issues</id>
-          </State>
-          <State>
-            <id>J2ME issues</id>
-          </State>
-          <State>
-            <id>JUnit issues</id>
-          </State>
-          <State>
-            <id>JavaScript</id>
-          </State>
-          <State>
-            <id>Logging issues</id>
-          </State>
-          <State>
-            <id>Numeric issues</id>
-          </State>
-          <State>
-            <id>Performance issues</id>
-          </State>
-          <State>
-            <id>Potentially confusing code constructsJavaScript</id>
-          </State>
-          <State>
-            <id>Probable bugs</id>
-          </State>
-          <State>
-            <id>Probable bugsGroovy</id>
-          </State>
-          <State>
-            <id>Probable bugsJavaScript</id>
-          </State>
-          <State>
-            <id>Resource management issues</id>
-          </State>
-          <State>
-            <id>Serialization issues</id>
-          </State>
-          <State>
-            <id>Spring MVCSpring Model</id>
-          </State>
-          <State>
-            <id>Spring Model</id>
-          </State>
-          <State>
-            <id>Threading issues</id>
-          </State>
-          <State>
-            <id>Threading issuesGroovy</id>
+            <id>JSP Inspections</id>
           </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>Abstraction issues</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -379,6 +359,52 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -426,7 +452,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="e" />
+              <option name="myItemId" value="r" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="r" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="action" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -447,8 +495,84 @@
               <option name="myItemId" value="e" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="global" />
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enums" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -467,54 +591,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="questy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="email" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -562,50 +638,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com.questy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemId" value="questy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.questy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -621,7 +673,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propCompiler" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -629,13 +681,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="dynamic.classpath" value="false" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -660,65 +712,7 @@
       <recent name="$PROJECT_DIR$/web/resources/networks/102" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 6">
-    <configuration default="false" name="FlowRuleServicesTest.testSimpleNetwork" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="Code" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questy.services" />
-      <option name="MAIN_CLASS_NAME" value="com.questy.services.FlowRuleServicesTest" />
-      <option name="METHOD_NAME" value="testSimpleNetwork" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserIntegerSettingEnumTest.getSetUpdateDelete" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.questy.enums.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="Code" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questy.enums" />
-      <option name="MAIN_CLASS_NAME" value="com.questy.enums.UserIntegerSettingEnumTest" />
-      <option name="METHOD_NAME" value="getSetUpdateDelete" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.UserToNetworkIntegerSettingEnumTest.getSetUpdateDelete">
     <configuration default="false" name="UserAlphaSettingEnumTest.getSetUpdateDelete" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -806,6 +800,57 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="Sandbox" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.questy.Sandbox" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Code" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserToNetworkIntegerSettingEnumTest.getSetUpdateDelete" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.questy.enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="Code" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.questy.enums" />
+      <option name="MAIN_CLASS_NAME" value="com.questy.enums.UserToNetworkIntegerSettingEnumTest" />
+      <option name="METHOD_NAME" value="getSetUpdateDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -825,6 +870,19 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -854,19 +912,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1024,6 +1069,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_6_Code" />
+        <option name="DEPLOY_TOMCAT_APPS" value="true" />
       </server-settings>
       <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1085,19 +1131,19 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.AskQuestionUtilsTest" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Tomcat 6 Local JavaScript" />
       <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.FlowRuleServicesTest.testSimpleNetwork" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Sandbox" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.UserToNetworkIntegerSettingEnumTest.getSetUpdateDelete" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.UserIntegerSettingEnumTest.getSetUpdateDelete" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UserToNetworkIntegerSettingEnumTest.getSetUpdateDelete" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Sandbox" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUserWithNewEmail" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserWebServicesTest.addUser" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserAlphaSettingEnumTest.getSetUpdateDelete" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1159,7 +1205,15 @@
       <created>1355979922522</created>
       <updated>1355979922522</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="lots of updates">
+      <created>1355981960862</created>
+      <updated>1355981960862</updated>
+    </task>
+    <task id="LOCAL-00006" summary="lots of updates">
+      <created>1356118482463</created>
+      <updated>1356118482463</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1189,7 +1243,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30081302" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981949" sideWeight="0.66448444" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35357738" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1198,20 +1251,21 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22154471" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17546013" sideWeight="0.52986723" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1923077" sideWeight="0.3306288" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17788461" sideWeight="0.75406504" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24593496" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1923077" sideWeight="0.6622718" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26263627" sideWeight="0.9979242" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="298" y="122" width="1934" height="1140" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30081302" sideWeight="0.98710483" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22154471" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39934534" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1317,116 +1371,116 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/d/app/modules/smart_groups/by_user.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/RoleEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="38" column="49" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/app/css/basic.css">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/SmartGroupsViewEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="14" selection-start="2826" selection-end="2826" vertical-scroll-proportion="0.0">
+        <state line="22" column="56" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/renders/confirm.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/SmartGroupVisibilityEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="16" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.625">
+        <state line="27" column="61" selection-start="497" selection-end="497" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/renders/confirm.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/TooltipEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="-0.625">
+        <state line="2" column="12" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/css/basic.css">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserAlphaSettingEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="16" selection-start="4069" selection-end="4097" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="26" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/js/start.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/css/basic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/start/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="10" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.69902915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/d/login/css/basic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="0" selection-end="32" vertical-scroll-proportion="0.027829314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/EmailStop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="18" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/GlobalEventEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/e/global/first_photo_upload.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailConfirmationServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="29" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+        <state line="15" column="12" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailServices.java">
+    <entry file="file://$PROJECT_DIR$/web/d/app/modules/user_links/actions/create_link.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="29" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.0">
+        <state line="14" column="72" selection-start="552" selection-end="552" vertical-scroll-proportion="-8.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/questy/services/email/EmailScheduledReminders.java">
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserLinkDirectionEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="33" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.6990553">
+        <state line="32" column="0" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserIntegerSettingEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="12" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/dao/UserIntegerSettingDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/UserToNetworkIntegerSetting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="62" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/questy/enums/UserIntegerSettingEnumTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/enums/UserToNetworkIntegerSettingEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="75" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/dao/UserToNetworkIntegerSettingDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="31" selection-start="3153" selection-end="3153" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/dao/AnswerOptionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/questy/domain/UserIntegerSetting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/questy/enums/UserToNetworkIntegerSettingEnumTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="260" selection-end="260" vertical-scroll-proportion="0.13705584">
           <folding />
         </state>
       </provider>

@@ -2,12 +2,12 @@ package com.questy.dao;
 
 import com.questy.domain.EmailNotificationRate;
 import com.questy.enums.EmailNotificationRateEnum;
-import com.questy.enums.GlobalEventEnum;
 import com.questy.enums.NetworkEventEnum;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
 
+@Deprecated
 public class EmailNotificationRateDao extends ParentDao {
 
     public static EmailNotificationRate getByNetworkIdAndSmartGroupRefAndUserIdAndEvent (
@@ -32,7 +32,7 @@ public class EmailNotificationRateDao extends ParentDao {
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
         ps.setInt(3, userId);
-        ps.setInt(4, event.getValue());
+        ps.setInt(4, event.getId());
         ResultSet rs = ps.executeQuery();
 
         EmailNotificationRate out = null;
@@ -64,11 +64,11 @@ public class EmailNotificationRateDao extends ParentDao {
          "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, rate.getValue());
+        ps.setInt(1, rate.getId());
         ps.setInt(2, networkId);
         ps.setInt(3, smartGroupRef);
         ps.setInt(4, userId);
-        ps.setInt(5, event.getValue());
+        ps.setInt(5, event.getId());
         ps.execute();
 
         end(conn, ps, null);
@@ -99,8 +99,8 @@ public class EmailNotificationRateDao extends ParentDao {
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
         ps.setInt(3, userId);
-        ps.setInt(4, event.getValue());
-        ps.setInt(5, rate.getValue());
+        ps.setInt(4, event.getId());
+        ps.setInt(5, rate.getId());
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -117,8 +117,8 @@ public class EmailNotificationRateDao extends ParentDao {
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setSmartGroupId(DatabaseUtils.getInt(rs, "smart_group_ref"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
-        out.setEvent(NetworkEventEnum.getByValue(DatabaseUtils.getInt(rs, "event")));
-        out.setRate(EmailNotificationRateEnum.getByValue(DatabaseUtils.getInt(rs, "rate")));
+        out.setEvent(NetworkEventEnum.getById(DatabaseUtils.getInt(rs, "event")));
+        out.setRate(EmailNotificationRateEnum.getById(DatabaseUtils.getInt(rs, "rate")));
         return out;
     }
 

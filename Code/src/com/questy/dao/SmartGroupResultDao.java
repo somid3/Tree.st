@@ -127,7 +127,7 @@ public class SmartGroupResultDao extends  ParentDao {
         ps.setInt(2, smartGroupRef);
         ps.setInt(3, score.getUserId());
         ps.setDouble(4,  score.getScore());
-        ps.setInt(5, score.getLowestVisibility().getValue());
+        ps.setInt(5, score.getLowestVisibility().getId());
         ps.setTimestamp(6, sqlDate);
         ps.setInt(7,  score.getTotalOptionsMet());
         ps.setInt(8,  score.getTotalQuestionsMet());
@@ -148,7 +148,7 @@ public class SmartGroupResultDao extends  ParentDao {
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setScore(DatabaseUtils.getDouble(rs, "score"));
         out.setLowestVisibility(
-            AnswerVisibilityEnum.getByValue(DatabaseUtils.getInt(rs, "lowest_visibility"))
+            AnswerVisibilityEnum.getById(DatabaseUtils.getInt(rs, "lowest_visibility"))
         );
         out.setLatestDate(DatabaseUtils.getTimestamp(rs, "latest_date"));
         out.setTotalOptionsMet(DatabaseUtils.getInt(rs, "total_options_met"));

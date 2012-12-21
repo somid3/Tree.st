@@ -1,12 +1,9 @@
 package com.questy.enums;
 
+@Deprecated
 public enum GlobalEventEnum {
 
-
-
     PHOTO_UPLOAD_REMINDER (10, "photo upload reminders");
-
-
 
     private Integer value;
     private String name;

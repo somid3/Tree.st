@@ -173,12 +173,12 @@ public class QuestionDao extends ParentDao {
         ps.setString(4, text.trim());
         ps.setInt(5, points);
         ps.setInt(6, maxSelectedOptions);
-        ps.setInt(7, maxVisibility.getValue());
+        ps.setInt(7, maxVisibility.getId());
 
         if (defaultVisibility == null)
             ps.setNull(8, Types.INTEGER);
         else
-            ps.setInt(8, defaultVisibility.getValue());
+            ps.setInt(8, defaultVisibility.getId());
 
         ps.setBoolean(9, allowAddOptions);
         ps.execute();

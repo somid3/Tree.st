@@ -1,97 +1,80 @@
 package com.questy.enums;
 
-import java.util.Calendar;
-import java.util.Date;
-
+/**
+ * Every link on an email that requires multiple settings to be updated
+ * is recorded as an action. Actions can be at the following levels:
+ *
+ * - Global user actions: these update the global settings of a user
+ *
+ * - User to Network actions: these update the network settings of a user
+ *
+ * - Network actions: these update settings of a network
+ */
 public enum EmailActionEnum {
 
-    INSTANTLY (10, "Instantly"),
-
-    EVERY_HOUR (60, "Every hour"),
-
-    EVERY_FOUR_HOURS (240, "Every four hours"),
-
-    EVERY_EIGHT_HOURS (480, "Every eight hours"),
-
-    EVERY_TWELVE_HOURS (720, "Every twelve hours"),
-
-    EVERY_DAY (1440, "Every day"),
-
-    EVERY_OTHER_DAY (2880, "Every other day"),
-
-    EVERY_THREE_DAYS (4320, "Every three days"),
-
-    EVERY_WEEK (10080, "Every week"),
-
-    EVERY_OTHER_WEEK (20160, "Every other week"),
-
-    NEVER (99999, "Never");
-
-    private Integer value;
-    private String name;
-
-    private EmailActionEnum(Integer value, String name) {
-        this.value = value;
-        this.name = name;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public String getName() {
-        return name;
-    }
+    /*********************
+     * Global user actions
+     *********************/
 
     /**
-     * Returns the date after which this rate would encompass
+     * Ensure that the user does not receive any more first photo upload reminders
      */
-    public Date getBoundaryDate() {
+    UNSUBSCRIBE_FROM_FIRST_PHOTO_UPLOAD_EMAILS (100),
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
 
-        switch (this) {
-            case INSTANTLY: break;
-            case EVERY_HOUR:           cal.add(Calendar.HOUR, -1); break;
-            case EVERY_FOUR_HOURS:     cal.add(Calendar.HOUR, -4); break;
-            case EVERY_EIGHT_HOURS:    cal.add(Calendar.HOUR, -8); break;
-            case EVERY_TWELVE_HOURS:   cal.add(Calendar.HOUR, -12); break;
-            case EVERY_DAY:            cal.add(Calendar.DATE, -1); break;
-            case EVERY_OTHER_DAY:      cal.add(Calendar.DATE, -2); break;
-            case EVERY_THREE_DAYS:     cal.add(Calendar.DATE, -3); break;
-            case EVERY_WEEK:           cal.add(Calendar.DATE, -7); break;
-            case EVERY_OTHER_WEEK:     cal.add(Calendar.DATE, -14); break;
-            case NEVER:                cal.add(Calendar.YEAR, 100); break;
-        }
+    /*************************
+     * User to network actions
+     *************************/
 
-        return cal.getTime();
+    /**
+     * Ensure that the user no longer receives new user link notifications
+     * from the particular network
+     */
+    UNSUBSCRIBE_FROM_NEW_USER_LINK_NOTIFICATIONS (200),
+
+    /**
+     * Ensure that the user no longer receives a notification when
+     * it has been auto-magically added to a smart group
+     */
+    UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS (201),
+
+    /**
+     * Flags a smart group for the user
+     */
+    FLAG_SMART_GROUP (202),
+
+    /**
+     * Allows the user to change the digest rate it receives
+     * from all the smart groups it is a member of
+     */
+    CHANGE_MEMBER_OR_FAVORITE_SMART_GROUP_DIGEST_RATE (202),
+
+
+
+    ;
+    private Integer id;
+
+    private EmailActionEnum(Integer id) {
+        this.id = id;
     }
 
-    public static EmailActionEnum getByValue (Integer value) {
+    public Integer getId() {
+        return id;
+    }
 
-        if (value == null)
+
+    public static EmailActionEnum getById(Integer id) {
+
+        if (id == null)
             return null;
 
         for (EmailActionEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 
         return null;
     }
-
-    public static EmailActionEnum next (EmailActionEnum input) {
-
-        int nextOrdinal = input.ordinal() + 1;
-
-        if (nextOrdinal >= EmailActionEnum.values().length)
-            return null;
-        else
-            return EmailActionEnum.values()[nextOrdinal];
-
-    }
-
 
 }
 

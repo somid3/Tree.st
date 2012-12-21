@@ -5,41 +5,30 @@ public enum UserLinkDirectionEnum {
     TARGET_TO_ME (2, "TARGET_TO_ME"),
     BOTH (3, "BOTH");
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private UserLinkDirectionEnum(Integer value, String name) {
-        this.value = value;
+    private UserLinkDirectionEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static UserLinkDirectionEnum getByValue (Integer value) {
+    public static UserLinkDirectionEnum getById(Integer id) {
 
         for (UserLinkDirectionEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 
         return null;
     }
 
-    public Boolean isFromMe() {
-        return (UserLinkDirectionEnum.isFromMe(this));
-    }
-
-    public static Boolean isFromMe(UserLinkDirectionEnum direction) {
-
-        return (direction != null &&
-               (UserLinkDirectionEnum.ME_TO_TARGET.equals(direction) ||
-                UserLinkDirectionEnum.BOTH.equals(direction)));
-
-    }
 }

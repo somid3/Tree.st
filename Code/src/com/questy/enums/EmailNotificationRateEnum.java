@@ -27,16 +27,16 @@ public enum EmailNotificationRateEnum {
 
     NEVER (99999, "Never");
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private EmailNotificationRateEnum(Integer value, String name) {
-        this.value = value;
+    private EmailNotificationRateEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -68,13 +68,13 @@ public enum EmailNotificationRateEnum {
         return cal.getTime();
     }
 
-    public static EmailNotificationRateEnum getByValue (Integer value) {
+    public static EmailNotificationRateEnum getById(Integer id) {
 
-        if (value == null)
+        if (id == null)
             return null;
 
         for (EmailNotificationRateEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(id))
                 return ve;
         }
 

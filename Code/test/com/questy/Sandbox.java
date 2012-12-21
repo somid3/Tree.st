@@ -1,18 +1,13 @@
 package com.questy;
 
-import com.questy.admin.*;
-import com.questy.dao.*;
-import com.questy.enums.NetworkAlphaSettingEnum;
-import com.questy.enums.NetworkIntegerSettingEnum;
-import com.questy.helpers.UIException;
-import com.questy.services.FlowRuleServices;
-import com.questy.services.UserServices;
-import com.questy.services.cron.*;
-import com.questy.utils.DateUtils;
+import com.questy.admin.AdminServices;
+import com.questy.admin.MIT;
+import com.questy.services.cron.CronServices;
+import com.questy.services.email.EmailServices;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Sandbox {
 
@@ -22,10 +17,12 @@ public class Sandbox {
 
 //        UserServices.deleteUserAnswers(3);
 
-        Integer smartGroupsCount = UserToSmartGroupDao.countByNetworkIdAndUserIdAndMember(null, 2000, 3, true);
+//        Integer smartGroupsCount = UserToSmartGroupDao.countByNetworkIdAndUserIdAndMember(null, 2000, 3, true);
+//
+//        System.out.println(smartGroupsCount);
 
-        System.out.println(smartGroupsCount);
 
+        EmailServices.firstPhotoUpload(3);
 
 
 

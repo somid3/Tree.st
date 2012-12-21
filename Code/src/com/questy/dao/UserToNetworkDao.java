@@ -57,7 +57,7 @@ public class UserToNetworkDao extends ParentDao {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setInt(2, lowestRole.getValue());
+        ps.setInt(2, lowestRole.getId());
         ResultSet rs = ps.executeQuery();
 
         List<UserToNetwork> out = new ArrayList<UserToNetwork>();
@@ -117,7 +117,7 @@ public class UserToNetworkDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, userId);
         ps.setInt(2, networkId);
-        ps.setDouble(3,  role.getValue());
+        ps.setDouble(3,  role.getId());
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
