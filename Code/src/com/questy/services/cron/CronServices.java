@@ -15,7 +15,10 @@ import com.questy.services.email.EmailServices;
 import com.questy.xml.query.QueryXml;
 import com.questy.xml.query.QueryXmlReader;
 
-import java.util.*;
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CronServices {
 
@@ -78,9 +81,22 @@ public class CronServices {
             for (Integer userId : userIds) {
 
                 // Trigger the new smart group mapping email notification
-                EmailServices.newSmartGroupMappings(callingRate, network.getId(), userId);
+                EmailServices.newSmartGroupMappings(network.getId(), userId, callingRate);
 
             }
+        }
+    }
+
+    public static void sharedItemDigest (EmailNotificationRateEnum callingRate) throws SQLException {
+
+        // Retrieving all networks
+        List<Network> networks = NetworkDao.getAll(null);
+
+        // Looping over each network
+        for (Network network : networks) {
+
+            EmailServices.sharedItemDigest(network.getId(), callingRate);
+
         }
     }
 }

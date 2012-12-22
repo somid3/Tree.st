@@ -10,7 +10,7 @@
     SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
 
     // Retrieving total number of shared items
-    Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRef(null, networkId, smartGroupRef);
+    Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, networkId, smartGroupRef, DateUtils.BEGINNING_OF_TIME);
 
     // People in the smart group to whom a shared item would be visible...
     List<SmartGroupResult> others = SmartGroupResultDao.getByNetworkIdAndRef(null, networkId, smartGroupRef, new SqlLimit(0, 6));
@@ -92,9 +92,6 @@
 
     <script type="text/javascript">
         SI.displaySharedItems();
-
-        // Allows the share something text area to expand
-        $("#" + SI.hTellMeId).TextAreaExpander(30, 500);
     </script>
 
 <% } else {
@@ -107,3 +104,9 @@
 <% } %>
 </div>
 
+<script type="text/javascript">
+
+    // Allows the share something text area to expand
+    $("#" + SI.hTellMeId).TextAreaExpander(30, 500);
+
+</script>

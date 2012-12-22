@@ -11,9 +11,10 @@ import java.util.List;
 
 public class UserToNetworkDao extends ParentDao {
 
-    public static List<UserToNetwork> getByNetworkIdOrderedByPoints(
+    public static List<UserToNetwork> getByNetworkIdAndLowestRoleOrderedByPoints(
             Connection conn,
             Integer networkId,
+            RoleEnum lowestRole,
             SqlLimit limit) throws SQLException {
 
         conn = start(conn);
@@ -22,14 +23,16 @@ public class UserToNetworkDao extends ParentDao {
             "select * " +
             "from `users_to_networks` " +
             "where `network_id` = ? " +
+            "and `role` >= ? " +
             "and `removed_on` is null " +
             "order by `current_points` desc, `id` desc " +
             "limit ?, ?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
-        ps.setInt(2, limit.getStartFrom());
-        ps.setInt(3, limit.getDuration());
+        ps.setInt(2, lowestRole.getId());
+        ps.setInt(3, limit.getStartFrom());
+        ps.setInt(4, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<UserToNetwork> out = new ArrayList<UserToNetwork>();

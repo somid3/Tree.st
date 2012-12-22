@@ -67,10 +67,11 @@ public class SharedItemDao extends ParentDao {
         return out;
     }
 
-    public static Integer countByNetworkIdAndSmartGroupRef (
-        Connection conn,
-        Integer networkId,
-        Integer smartGroupRef) throws SQLException {
+    public static Integer countByNetworkIdAndSmartGroupRefAndCreatedAfter(
+            Connection conn,
+            Integer networkId,
+            Integer smartGroupRef,
+            java.util.Date createdAfter) throws SQLException {
 
         conn = start(conn);
 
@@ -79,11 +80,16 @@ public class SharedItemDao extends ParentDao {
             "from `shared_items` " +
             "where `network_id` = ? " +
             "and `smart_group_ref` = ? " +
+            "and `created_on` >= ? " +
             "and `hidden` is not true;";
+
+        // Converting to sql timestamp
+        Timestamp createdAfterSql = new Timestamp(createdAfter.getTime());
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
+        ps.setTimestamp(3, createdAfterSql);
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;

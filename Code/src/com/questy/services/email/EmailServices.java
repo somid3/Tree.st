@@ -22,7 +22,6 @@ public class EmailServices extends ParentService {
     public static String TO_USER_SALT_CHECKSUM = "--user_salt_checksum--";
     public static String TO_USER_FIRST_NAME = "--user_first_name--";
 
-
     public static void confirmationEmail(Integer userId) throws SQLException {
 
         // Currently non-transactional
@@ -205,9 +204,9 @@ public class EmailServices extends ParentService {
      * @param callingRate the rate at which this method is being called
      */
     public static void newSmartGroupMappings (
-        EmailNotificationRateEnum callingRate,
         Integer networkId,
-        Integer userId) throws SQLException {
+        Integer userId,
+        EmailNotificationRateEnum callingRate) throws SQLException {
 
 
         // Currently non-transactional
@@ -395,11 +394,6 @@ public class EmailServices extends ParentService {
             if (rate != EmailNotificationRateEnum.INSTANTLY)
                 continue;
 
-            // Does the message receiver wish to receive any messages from this network?
-            unsubscribed = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_SHARED_ITEM_EMAIL_NOTIFICATIONS.getBooleanByUserIdAndNetworkId(userToSmartGroup.getUserId(), userToSmartGroup.getNetworkId());
-            if (unsubscribed)
-                continue;
-
             // Retrieving user to receive email       Ê
             toUser = UserDao.getById(null, userToSmartGroup.getUserId());
 
@@ -423,6 +417,85 @@ public class EmailServices extends ParentService {
             Thread thread = new Thread(ser);
             thread.start();
 
+        }
+
+    }
+
+    public static void sharedItemDigest (
+            Integer networkId,
+            EmailNotificationRateEnum callingRate) throws SQLException {
+
+        // Retrieving network
+        Network network = NetworkDao.getById(null, networkId);
+
+        // Looping through all network users
+        User toUser = null;
+        EmailNotificationRateEnum userRate = null;
+        String customizeMessage = null;
+        List<UserToNetwork> userToNetworks = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, networkId, RoleEnum.VISITOR, SqlLimit.ALL);
+        for (UserToNetwork userToNetwork : userToNetworks) {
+
+            // Does the message receiver wish to receive a digest at the same rate as the calling rate?
+            userRate = EmailNotificationRateEnum.getById(UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.getValueByUserIdAndNetworkId(userToNetwork.getUserId(), userToNetwork.getNetworkId()));
+            if (userRate != callingRate)
+                continue;
+
+            // Used to count the total number of shared items to be included in this digest
+            Integer digestTotalSmartGroupCount = 0;
+            Integer digestTotalSharedItemCount = 0;
+
+            // Retrieving all active smart groups for user
+            List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, networkId, userToNetwork.getUserId(), SqlLimit.ALL);
+
+            // Counting the number of messages in the digest
+            for (UserToSmartGroup activeUserToSmartGroup : activeUserToSmartGroups) {
+
+                // Retrieving the number of shared items that should be included in the digest
+                Integer digestSharedItemCount = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, networkId, activeUserToSmartGroup.getSmartGroupRef(), userRate.getBoundaryDate());
+
+                // Rallying up the total count of smart groups and messages in the digest
+                if (digestSharedItemCount > 0) {
+                    digestTotalSmartGroupCount += 1;
+                    digestTotalSharedItemCount += digestSharedItemCount;
+                }
+
+            }
+
+            // Should a digest be sent for this user?
+            if (digestTotalSharedItemCount > 0)
+                continue;
+
+            // Creating email message
+            UrlQuery query = new UrlQuery();
+            query.add("nid", networkId);
+            query.add("uid", userToNetwork.getUserId());
+            query.add("rate", userRate);
+            String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/shared_item_digest.jsp?" + query);
+
+            // Retrieving user to receive email       Ê
+            toUser = UserDao.getById(null, userToNetwork.getUserId());
+
+            // Creating runnable to send email on new thread
+            AmazonMailSender ser = new AmazonMailSender();
+            ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
+            ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+            ser.setFromEmail(Vars.supportEmail);
+            ser.addRecipient(toUser.getEmail());
+
+            // Creating subject
+            ser.setSubject(
+                network.getName() + " digest with " +
+                digestTotalSharedItemCount + " messages in " +
+                digestTotalSmartGroupCount + " smart groups"
+            );
+
+            // Customizing the message with receiver information
+            customizeMessage = EmailServices.customizeMessage(message, toUser);
+
+            // Sending the email
+            ser.setMessageText(customizeMessage);
+            Thread thread = new Thread(ser);
+            thread.start();
         }
 
     }

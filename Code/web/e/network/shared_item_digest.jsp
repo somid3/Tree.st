@@ -8,6 +8,8 @@
 
     // Retrieving network
     Network network = NetworkDao.getById(null, networkId);
+
+    // Shared item count, used to
  %>
 
 <%@ include file="../includes/a_container_start.jsp"%>

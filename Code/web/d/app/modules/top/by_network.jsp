@@ -4,7 +4,7 @@
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
 
     // Retrieving top users
-    List<UserToNetwork> results = UserToNetworkDao.getByNetworkIdOrderedByPoints(null, networkId, new SqlLimit(0, 50));
+    List<UserToNetwork> results = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, networkId, RoleEnum.MEMBER, new SqlLimit(0, 50));
 
     // Retrieve award description
     String awardDescription = NetworkAlphaSettingEnum.AWARD_DESCRIPTION.getValueByNetwork(networkId);

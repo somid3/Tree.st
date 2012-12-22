@@ -97,10 +97,6 @@ public class SharedItemServices extends ParentService  {
         // Decrease points
         UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPerSharedItem);
 
-        // TODO: hide all shared comments of this shared item!
-        // TODO: hide all shared comments of this shared item!
-        // TODO: hide all shared comments of this shared item!
-
         Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(sharedItemRef, pointsPerSharedItem);
 
         return out;

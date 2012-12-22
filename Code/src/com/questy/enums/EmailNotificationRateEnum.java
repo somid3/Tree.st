@@ -27,6 +27,9 @@ public enum EmailNotificationRateEnum {
 
     EVERY_YEAR (525600, "Every year"),
 
+
+    NEVER (99999999, "Never"),
+
     ;
 
     private Integer id;

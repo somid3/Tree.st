@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class DateUtils {
 
+    public static final Date BEGINNING_OF_TIME = yearsAgo(1000);
 
     public static Date minutesAgo (Integer minutes) {
         Calendar cal = Calendar.getInstance();

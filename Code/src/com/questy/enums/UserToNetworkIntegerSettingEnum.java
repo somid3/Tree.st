@@ -32,16 +32,14 @@ public enum UserToNetworkIntegerSettingEnum {
      */
     IS_UNSUBSCRIBED_FROM_NEW_SMART_GROUP_MAPPINGS_EMAIL_NOTIFICATIONS(102, 0),
 
-    /*
-     * Whether the user has requested to not receive any more email
-     * notifications dealing with shared item notifications
-     */
-    IS_UNSUBSCRIBED_FROM_SHARED_ITEM_EMAIL_NOTIFICATIONS(103, 0),
-
-
     /**
      * Rate at which a member of a smart group will receive new shared item
-     * notifications by email
+     * notifications by email. The value of setting is defined by:
+     *
+     * {@link EmailNotificationRateEnum}
+     *
+     * To completely unsubscribe from all shared item
+     * notifications the user can use the {@link EmailNotificationRateEnum#NEVER} rate.
      */
     NEW_SHARED_ITEM_DIGEST_EMAIL_RATE (200, 10)
 

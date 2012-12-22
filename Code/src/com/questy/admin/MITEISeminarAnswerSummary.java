@@ -9,6 +9,7 @@ import com.questy.domain.QuestionOption;
 import com.questy.domain.User;
 import com.questy.domain.UserToNetwork;
 import com.questy.enums.AnswerVisibilityEnum;
+import com.questy.enums.RoleEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.ValueComparator;
 
@@ -26,7 +27,7 @@ public class MITEISeminarAnswerSummary {
 
 
         // Retrieve all E&I Track students
-        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdOrderedByPoints(null, usersNetworkId, SqlLimit.ALL);
+        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, usersNetworkId, RoleEnum.VISITOR, SqlLimit.ALL);
 
         Map<User, String> unsortedMap = new HashMap<User, String>();
         ValueComparator vc = new ValueComparator(unsortedMap);
