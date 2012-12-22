@@ -25,7 +25,9 @@ public enum EmailNotificationRateEnum {
 
     EVERY_OTHER_WEEK (20160, "Every other week"),
 
-    NEVER (99999, "Never");
+    EVERY_YEAR (525600, "Every year"),
+
+    ;
 
     private Integer id;
     private String name;
@@ -62,7 +64,7 @@ public enum EmailNotificationRateEnum {
             case EVERY_THREE_DAYS:     cal.add(Calendar.DATE, -3); break;
             case EVERY_WEEK:           cal.add(Calendar.DATE, -7); break;
             case EVERY_OTHER_WEEK:     cal.add(Calendar.DATE, -14); break;
-            case NEVER:                cal.add(Calendar.YEAR, 100); break;
+            case EVERY_YEAR:           cal.add(Calendar.YEAR, -1); break;
         }
 
         return cal.getTime();

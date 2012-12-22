@@ -12,10 +12,11 @@ import java.util.List;
 public class UserToSmartGroupDao extends ParentDao {
 
 
-    public static List<UserToSmartGroup> getByNetworkIdAndSmartGroupRef (
+    public static List<UserToSmartGroup> getActiveByNetworkIdAndSmartGroupRef (
             Connection conn,
             Integer networkId,
-            Integer smartGroupRef) throws SQLException {
+            Integer smartGroupRef,
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -23,11 +24,17 @@ public class UserToSmartGroupDao extends ParentDao {
             "select * " +
             "from `user_to_smart_groups` " +
             "where `network_id` = ? " +
-            "and `smart_group_ref` = ?;";
+            "and `smart_group_ref` = ? " +
+            "and (`member` is true or `state` = ?) " +
+            "order by `state` desc " +
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
+        ps.setInt(3, UserToSmartGroupStateEnum.FAVORITE.getId());
+        ps.setInt(4, limit.getStartFrom());
+        ps.setInt(5, limit.getDuration());
 
         ResultSet rs = ps.executeQuery();
 
@@ -66,6 +73,40 @@ public class UserToSmartGroupDao extends ParentDao {
         return out;
     }
 
+    public static List<UserToSmartGroup> getActiveByNetworkIdAndUserId (
+            Connection conn,
+            Integer networkId,
+            Integer userId,
+            SqlLimit limit) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `user_to_smart_groups` " +
+            "where `network_id` = ? " +
+            "and `user_id` = ? " +
+            "and (`member` is true or `state` = ?) " +
+            "order by `state` desc " +
+            "limit ?,?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ps.setInt(2, userId);
+        ps.setInt(3, UserToSmartGroupStateEnum.FAVORITE.getId());
+        ps.setInt(4, limit.getStartFrom());
+        ps.setInt(5, limit.getDuration());
+
+        ResultSet rs = ps.executeQuery();
+
+        List<UserToSmartGroup> out = new ArrayList<UserToSmartGroup>();
+        while (rs.next())
+            out.add(loadPrimitives(rs));
+
+        end(conn, ps, rs);
+        return out;
+    }
+
     public static List<UserToSmartGroup> getByNetworkIdAndUserIdAndState (
             Connection conn,
             Integer networkId,
@@ -86,7 +127,7 @@ public class UserToSmartGroupDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
-        ps.setInt(3, state.getValue());
+        ps.setInt(3, state.getId());
         ps.setInt(4, limit.getStartFrom());
         ps.setInt(5, limit.getDuration());
 
@@ -118,7 +159,7 @@ public class UserToSmartGroupDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
-        ps.setInt(3, state.getValue());
+        ps.setInt(3, state.getId());
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;
@@ -191,7 +232,7 @@ public class UserToSmartGroupDao extends ParentDao {
         return out;
     }
 
-    public static List<UserToSmartGroup> getMembersByNetworkIdAndCreatedAfter(
+    public static List<UserToSmartGroup> getMembersByNetworkIdAndCreatedAfter (
             Connection conn,
             Integer networkId,
             java.util.Date updatedAfter) throws SQLException {
@@ -307,7 +348,7 @@ public class UserToSmartGroupDao extends ParentDao {
             "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, state.getValue());
+        ps.setInt(1, state.getId());
         ps.setInt(2, networkId);
         ps.setInt(3, smartGroupRef);
         ps.setInt(4, userId);

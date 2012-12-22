@@ -2,8 +2,10 @@ package com.questy;
 
 import com.questy.admin.AdminServices;
 import com.questy.admin.MIT;
+import com.questy.dao.UserToSmartGroupDao;
+import com.questy.domain.UserToSmartGroup;
+import com.questy.helpers.SqlLimit;
 import com.questy.services.cron.CronServices;
-import com.questy.services.email.EmailServices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,12 @@ public class Sandbox {
 //        System.out.println(smartGroupsCount);
 
 
-        EmailServices.firstPhotoUpload(3);
+        List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, 2000, 3, SqlLimit.ALL);
+
+        System.out.println(activeUserToSmartGroups.size());
+
+
+//        EmailServices.firstPhotoUpload(3);
 
 
 

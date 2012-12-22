@@ -1,7 +1,6 @@
 package com.questy.dao;
 
 import com.questy.domain.SharedItem;
-import com.questy.enums.UserLinkDirectionEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 
@@ -95,6 +94,43 @@ public class SharedItemDao extends ParentDao {
         end(conn, ps, rs);
         return out;
     }
+
+    public static List<SharedItem> getByNetworkIdAndSmartGroupRefAndCreatedAfter (
+         Connection conn,
+         Integer networkId,
+         Integer smartGroupRef,
+         java.util.Date createdAfter,
+         SqlLimit limit) throws SQLException {
+
+         conn = start(conn);
+
+         String sql =
+             "select * " +
+             "from `shared_items` " +
+             "where `network_id` = ? " +
+             "and `smart_group_ref` = ? " +
+             "and `created_on` >= ? " +
+             "limit ?,?;";
+
+         // Converting to sql timestamp
+         Timestamp createdAfterSql = new Timestamp(createdAfter.getTime());
+
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ps.setInt(1, networkId);
+         ps.setInt(2, smartGroupRef);
+         ps.setTimestamp(3, createdAfterSql);
+         ps.setInt(4, limit.getStartFrom());
+         ps.setInt(5, limit.getDuration());
+         ResultSet rs = ps.executeQuery();
+
+         List<SharedItem> out = new ArrayList<SharedItem>();
+
+         while (rs.next())
+             out.add(loadPrimitives(rs));
+
+         end(conn, ps, rs);
+         return out;
+     }
 
     public static Integer countByNetworkIdAndUserId (
         Connection conn,

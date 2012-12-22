@@ -16,18 +16,18 @@
 
         <% if (sgroup_e_mapping == null || sgroup_e_mapping.getState() == null || sgroup_e_mapping.getState() == UserToSmartGroupStateEnum.NONE) { %>
 
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_off.png" alt="Favorite"></a>
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_off.png" alt="Flag"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_off.png" alt="Favorite"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_off.png" alt="Flag"></a>
 
         <% } else if (sgroup_e_mapping.getState() == UserToSmartGroupStateEnum.FAVORITE) { %>
 
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_on.png" alt="Favorite"></a>
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_off.png" alt="Flag"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_on.png" alt="Favorite"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_off.png" alt="Flag"></a>
 
         <% } else if (sgroup_e_mapping.getState() == UserToSmartGroupStateEnum.FLAGGED) { %>
 
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_off.png" alt="Favorite"></a>
-            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getValue() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_on.png" alt="Flag"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FAVORITE.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/star_off.png" alt="Favorite"></a>
+            <a href="#" onclick="SGT.toggleState(event, <%= UserToSmartGroupStateEnum.FLAGGED.getId() %>, '<%= sgroup_e_hFavoriteId%>', <%= sgroup_e_networkId %>, <%= sgroup_e_smartGroupRef %>)"><img src="./modules/smart_groups/img/flag_on.png" alt="Flag"></a>
 
         <% } %>
 

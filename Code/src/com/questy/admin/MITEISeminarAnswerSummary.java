@@ -20,14 +20,13 @@ public class MITEISeminarAnswerSummary {
     public static void main (String[] args) throws SQLException {
 
 
-        SqlLimit noLimit = new SqlLimit(0, 10000);
         Integer usersNetworkId = 2003;
         Integer questionNetworkId = 2003;
         Integer questionRef = 1;
 
 
         // Retrieve all E&I Track students
-        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdOrderedByPoints(null, usersNetworkId, noLimit);
+        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdOrderedByPoints(null, usersNetworkId, SqlLimit.ALL);
 
         Map<User, String> unsortedMap = new HashMap<User, String>();
         ValueComparator vc = new ValueComparator(unsortedMap);
@@ -51,7 +50,7 @@ public class MITEISeminarAnswerSummary {
         String optionText = null;
         for (User user : sortedUsers) {
 
-            aas = ActiveAnswerDao.getByNetworkIdAndQuestionRefAndUserId(null, questionNetworkId, questionRef, user.getId(), AnswerVisibilityEnum.PRIVATE, noLimit);
+            aas = ActiveAnswerDao.getByNetworkIdAndQuestionRefAndUserId(null, questionNetworkId, questionRef, user.getId(), AnswerVisibilityEnum.PRIVATE, SqlLimit.ALL);
 
             System.out.println(user.getName());
 

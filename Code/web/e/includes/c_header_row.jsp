@@ -27,14 +27,11 @@
 
 %>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
     <td>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td
-                    style="
-                    border-bottom: 2px solid #ddd;">
+                <td>
 
                     <span
                         style="
@@ -90,4 +87,5 @@
         </table>
     </td>
 </tr>
+<%@ include file="d_line_row.jsp"%>
 <% } %>

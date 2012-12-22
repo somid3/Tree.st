@@ -9,16 +9,16 @@ public enum UserToSmartGroupStateEnum {
     FLAGGED (-10, "Flagged");
 
 
-    private Integer value;
+    private Integer id;
     private String name;
 
-    private UserToSmartGroupStateEnum(Integer value, String name) {
-        this.value = value;
+    private UserToSmartGroupStateEnum(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -31,7 +31,7 @@ public enum UserToSmartGroupStateEnum {
             return null;
 
         for (UserToSmartGroupStateEnum ve : values()) {
-            if (ve.getValue().equals(value))
+            if (ve.getId().equals(value))
                 return ve;
         }
 

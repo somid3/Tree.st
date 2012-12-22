@@ -73,7 +73,7 @@ public class UserServices extends ParentService  {
         List<Integer> optionRefs = new ArrayList<Integer>();
         for (Network n : networks) {
 
-            answers = AnswerDao.getLastByUserIdAndNetworkId(conn, userId, n.getId(), new SqlLimit(0, 10000));
+            answers = AnswerDao.getLastByUserIdAndNetworkId(conn, userId, n.getId(), SqlLimit.ALL);
 
             for (Answer answer : answers) {
 

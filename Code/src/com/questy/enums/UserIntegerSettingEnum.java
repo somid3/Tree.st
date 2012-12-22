@@ -15,6 +15,8 @@ import java.sql.SQLException;
  */
 public enum UserIntegerSettingEnum {
 
+    TEST (0, 0),
+
     // Email confirmation settings
 
     /*

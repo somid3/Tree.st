@@ -65,7 +65,7 @@ public class UserToSmartGroup extends Parent {
         this.member = member;
     }
 
-    public Boolean isFavoriteOrMember() {
+    public Boolean isActive() {
 
         if (member || state == UserToSmartGroupStateEnum.FAVORITE)
             return true;

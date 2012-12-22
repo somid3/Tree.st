@@ -1,6 +1,5 @@
 <%@ include file="../../all.jsp"%>
 <%
-    NetworkEventEnum event = NetworkEventEnum.getById(StringUtils.parseInt(request.getParameter("ne")));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer fromUserId = StringUtils.parseInt(request.getParameter("fuid"));
 
@@ -61,9 +60,12 @@
 </tr>
 
 <%
-    Network e_network = network;
-    SmartGroup e_smartGroup = null;
-    NetworkEventEnum e_event = event;
+    UrlQuery parameters = new UrlQuery();
+    parameters.add("nid", networkId);
+    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_USER_LINK_NOTIFICATIONS, parameters));
+
+    List<String> e_removals = new ArrayList<String>();
+    e_removals.add(unsubscribeLink + " from 'viewed you...' notifications at " + StringUtils.concat(network.getName(), 15, "..."));
 %>
-<%@ include file="./includes/e_footer_row.jsp"%>
+<%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

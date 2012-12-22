@@ -32,22 +32,55 @@
     else if (action == EmailActionEnum.UNSUBSCRIBE_FROM_NEW_USER_LINK_NOTIFICATIONS) {
 
         Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+        UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_USER_LINK_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
 
-    } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS) {
+
+
+
+
+    } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS_NOTIFICATIONS) {
 
         Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+        UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_SMART_GROUP_MAPPINGS_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
+
+
+
+
+
+     } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SHARED_ITEM_NOTIFICATIONS) {
+
+         Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+         UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_SHARED_ITEM_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
+
+
+
+
 
     } else if (action == EmailActionEnum.FLAG_SMART_GROUP) {
 
          Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
          Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
+         UserToSmartGroupServices.toggleState(UserToSmartGroupStateEnum.FLAGGED, networkId, smartGroupRef, userId);
 
-    } else if (action == EmailActionEnum.CHANGE_MEMBER_OR_FAVORITE_SMART_GROUP_DIGEST_RATE) {
+
+
+
+
+    } else if (action == EmailActionEnum.CHANGE_ACTIVE_SMART_GROUP_DIGEST_RATE) {
 
          Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-         EmailNotificationRateEnum rate = EmailNotificationRateEnum.EVERY_THREE_DAYS.
+         EmailNotificationRateEnum rate = EmailNotificationRateEnum.getById(
+                 StringUtils.parseInt(request.getParameter("rate"))
+         );
+         UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.setValueByUserIdAndNetworkId(userId, networkId, rate.getId());
 
-    };
+
+
+
+
+
+
+    }
 
 
 

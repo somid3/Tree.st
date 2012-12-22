@@ -15,7 +15,7 @@
     for (UserToSmartGroup userToSmartGroup : userToSmartGroups) {
 
         // Ensuring smart group mapping occurs because user is interested
-        if (userToSmartGroup.isFavoriteOrMember()) {
+        if (userToSmartGroup.isActive()) {
 
             // Ensuring smart group has correct visibility
             group = SmartGroupDao.getNonHiddenByNetworkIdAndRefAndLowestVisibility(null, userToSmartGroup.getNetworkId(), userToSmartGroup.getSmartGroupRef(), SmartGroupVisibilityEnum.SHARED);

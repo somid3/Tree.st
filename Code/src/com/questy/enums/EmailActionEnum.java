@@ -36,18 +36,24 @@ public enum EmailActionEnum {
      * Ensure that the user no longer receives a notification when
      * it has been auto-magically added to a smart group
      */
-    UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS (201),
+    UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS_NOTIFICATIONS (201),
+
+    /**
+     * Ensurses user does not receive any notifications that have
+     * to do with the shared items
+     */
+    UNSUBSCRIBE_FROM_NEW_SHARED_ITEM_NOTIFICATIONS (202),
 
     /**
      * Flags a smart group for the user
      */
-    FLAG_SMART_GROUP (202),
+    FLAG_SMART_GROUP (203),
 
     /**
      * Allows the user to change the digest rate it receives
      * from all the smart groups it is a member of
      */
-    CHANGE_MEMBER_OR_FAVORITE_SMART_GROUP_DIGEST_RATE (202),
+    CHANGE_ACTIVE_SMART_GROUP_DIGEST_RATE(204),
 
 
 

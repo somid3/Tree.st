@@ -82,7 +82,7 @@ public class FlowRuleServices extends ParentService {
          * the user answered. This can occur if a user enters a new branch of the decision tree
          * of questions by answering the question at the fork "again" but with a different option
          */
-        List<Answer> latestAnswers = AnswerDao.getLastByUserIdAndNetworkId(conn, userId, networkId, new SqlLimit(0, 1));
+        List<Answer> latestAnswers = AnswerDao.getLastByUserIdAndNetworkId(conn, userId, networkId, SqlLimit.FIRST);
         if (!latestAnswers.isEmpty() && nextRef != null &&
             latestAnswers.get(0).getQuestionRef().equals(nextRef))
             nextRef = null;
@@ -103,7 +103,7 @@ public class FlowRuleServices extends ParentService {
     private static Integer getNextQuestionRef(Connection conn, Integer userId, Integer networkId, Boolean again) throws SQLException {
 
         // Get user's latest answer
-        List<Answer> latestAnswers = AnswerDao.getLastByUserIdAndNetworkIdAndAgain(conn, userId, networkId, again, new SqlLimit(0, 1));
+        List<Answer> latestAnswers = AnswerDao.getLastByUserIdAndNetworkIdAndAgain(conn, userId, networkId, again, SqlLimit.FIRST);
 
         // Has the user answered any questions?
         Answer answer = null;

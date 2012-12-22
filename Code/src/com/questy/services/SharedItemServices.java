@@ -68,7 +68,7 @@ public class SharedItemServices extends ParentService  {
         UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPerSharedItem);
 
         // Sending notification emails
-        EmailServices.newSharedItemForSmartGroup(networkId, smartGroupRef, nextRef);
+        EmailServices.newSharedItemForActiveUserToSmartGroups(networkId, smartGroupRef, nextRef);
 
         Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(nextRef, pointsPerSharedItem);
 

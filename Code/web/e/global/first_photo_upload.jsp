@@ -54,12 +54,10 @@
 </tr>
 
 <%
-    String unsubscribeLink = HtmlUtils.createHref(
-        "Unsubscribe",
-        EmailServices.createActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_FIRST_PHOTO_UPLOAD_EMAILS, null));
+    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_FIRST_PHOTO_UPLOAD_EMAILS, null));
 
-    List<String> d_removals = new ArrayList<String>();
-    d_removals.add(unsubscribeLink + " from 'photo upload' reminders");
+    List<String> e_removals = new ArrayList<String>();
+    e_removals.add(unsubscribeLink + " from 'photo upload' reminders");
 %>
-<%@ include file="includes/d_footer_row.jsp"%>
+<%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

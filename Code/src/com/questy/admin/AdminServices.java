@@ -5,12 +5,11 @@ import com.questy.domain.*;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
-import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
-import com.questy.web.HtmlUtils;
 import com.questy.services.*;
 import com.questy.utils.Vars;
+import com.questy.web.HtmlUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -1481,19 +1480,6 @@ public class AdminServices {
         randomInt = randomInt + 3;
         User user = UserDao.getById(null, randomInt);
         AdminServices.log("User id: " + user.getId() + ".");
-
-        return user;
-    };
-
-    private static User getRandomUserByNetworkId(Connection conn, Integer networkId) throws SQLException {
-
-        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdOrderedByPoints(
-                conn,
-                networkId,
-                new SqlLimit(0, 10000));
-
-        int randomInt = randomGenerator.nextInt(utns.size());
-        User user = UserDao.getById(null, utns.get(randomInt).getUserId());
 
         return user;
     };

@@ -87,7 +87,7 @@ public class UserToSmartGroupServices extends ParentService {
             return;
 
         // Retrieve smart group results
-        List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, networkId, smartGroupRef, new SqlLimit(0, 100000));
+        List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, networkId, smartGroupRef, SqlLimit.ALL);
 
         // Update all user of the smart group mappings as non-members
         UserToSmartGroupDao.updateMemberByNetworkIdAndSmartGroupRef(null, networkId, smartGroupRef, false);

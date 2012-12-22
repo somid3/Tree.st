@@ -1,6 +1,5 @@
 <%@ include file="../../all.jsp"%>
 <%
-    NetworkEventEnum event = NetworkEventEnum.getById(StringUtils.parseInt(request.getParameter("ne")));
     EmailNotificationRateEnum callingRate = EmailNotificationRateEnum.getById(StringUtils.parseInt(request.getParameter("cr")));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
@@ -67,9 +66,12 @@
 <% } %>
 
 <%
-    Network e_network = network;
-    SmartGroup e_smartGroup = null;
-    NetworkEventEnum e_event = event;
+    UrlQuery parameters = new UrlQuery();
+    parameters.add("nid", networkId);
+    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS, parameters));
+
+    List<String> e_removals = new ArrayList<String>();
+    e_removals.add(unsubscribeLink + " from 'smart group mapping' notifications at " + StringUtils.concat(network.getName(), 15, "..."));
 %>
-<%@ include file="./includes/e_footer_row.jsp"%>
+<%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

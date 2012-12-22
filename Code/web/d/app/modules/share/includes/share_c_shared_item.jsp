@@ -99,7 +99,7 @@
         <div class="comments" id="<%= share_c_hSharedCommentsId %>">
 
             <%
-                List<SharedComment> scs = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getRef());
+                List<SharedComment> scs = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getRef(), SqlLimit.ALL);
 
                 SharedComment share_a_sharedComment = null;
                 User share_a_me = share_c_me;

@@ -1,6 +1,7 @@
 package com.questy.dao;
 
 import com.questy.domain.SharedComment;
+import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
@@ -51,7 +52,8 @@ public class SharedCommentDao extends ParentDao {
             Connection conn,
             Integer networkId,
             Integer smartGroupRef,
-            Integer sharedItemRef) throws SQLException {
+            Integer sharedItemRef,
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -62,12 +64,15 @@ public class SharedCommentDao extends ParentDao {
             "and `smart_group_ref` = ? " +
             "and `shared_item_ref` = ? " +
             "and `hidden` is not true " +
-            "order by `created_on` asc, `id` asc;";
+            "order by `created_on` asc, `id` asc " +
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, smartGroupRef);
         ps.setInt(3, sharedItemRef);
+        ps.setInt(4, limit.getStartFrom());
+        ps.setInt(5, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<SharedComment> out = new ArrayList<SharedComment>();

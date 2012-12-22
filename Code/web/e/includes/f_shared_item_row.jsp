@@ -12,6 +12,19 @@
 
     // Create link to take user to the author's profile
     String f_hSharedCommentAuthorLink = null;
+
+     // Creating shared item link
+    String f_hSharedItemLink = null;
+    {
+        UrlQuery query = new UrlQuery();
+        query.add("uid", EmailServices.TO_USER_ID);
+        query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
+        query.add("nid", sharedItem.getNetworkId());
+        query.add("sgr", sharedItem.getSmartGroupRef());
+        query.add("sir", sharedItem.getRef());
+        f_hSharedItemLink = "http://" + Vars.domain + "/r/go/?" + query;
+    }
+
     String f_hSharedItemAuthorLink = null;
     {
         UrlQuery query = new UrlQuery();
@@ -24,10 +37,7 @@
 
     // Retrieving shared item comments
     List<SharedComment> f_sharedComments = null;
-    if (f_smartGroup != null)
-        f_sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, f_network.getId(), f_smartGroup.getRef(), f_sharedItem.getRef());
-    else
-        f_sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, f_network.getId(), SmartGroupDao.ANY_SMART_GROUP_REF, f_sharedItem.getRef());
+    f_sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, f_network.getId(), f_smartGroup.getRef(), f_sharedItem.getRef(), SqlLimit.FIRST_TEN);
 %>
 <tr>
     <td>
@@ -62,7 +72,7 @@
             <td></td>
             <td valign="top" align="center">
                 <br/>
-                <%= EmailDesign.aBegin(hSharedItemLink)%>
+                <%= EmailDesign.aBegin(f_hSharedItemLink)%>
                     <%= EmailDesign.spanButtonBegin() %>
 
                         Comment
