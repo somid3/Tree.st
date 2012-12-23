@@ -33,7 +33,6 @@
                 <div class="name smd_header white">Purpose or mission</div>
                 <div class="input">
                     <div class="field"><input type="text" class="smd_input w150" maxlength="150" name="desc" /></div>
-                    <div class="example"></div>
                 </div>
                 <div class="example vsm_text white">
                     i.e.: inter-disciplinary discussion...

@@ -1,4 +1,4 @@
-function UserPanel () {
+function PhotoUpload () {
 
     this.ref = null;
     this.checksum = null;

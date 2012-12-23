@@ -17,5 +17,5 @@
 
     // Setting environment variables for the app
     Integer userId = wu.getCookieValueAsInteger("uid");
-    String userChecksum = wu.getCookieValue("ucs");
+    String userChecksum = wu.getCookieValue("scs");
 %>

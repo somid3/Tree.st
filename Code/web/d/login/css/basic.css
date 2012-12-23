@@ -67,21 +67,6 @@ body {
 #email, #pass {
     border: 1px solid #ccc;
     margin-left: 5px;
-}
-
-#form #button {
-    width: 80px;
-}
-
-#form .text {
-    padding-bottom: 4px;
-}
-
-#form .element {
-    margin-bottom: 15px;
-}
-
-#email, #pass {
     width: 200px;
     border: 1px solid #ccc;
 }

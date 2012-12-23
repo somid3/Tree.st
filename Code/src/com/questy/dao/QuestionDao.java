@@ -224,8 +224,8 @@ public class QuestionDao extends ParentDao {
         out.setPoints(DatabaseUtils.getInt(rs, "points"));
         out.setMaxSelectedOptions(DatabaseUtils.getInt(rs, "max_selected_options"));
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
-        out.setMaxVisibility(DatabaseUtils.getInt(rs, "max_visibility"));
-        out.setDefaultVisibility(DatabaseUtils.getInt(rs, "default_visibility"));
+        out.setMaxVisibility(AnswerVisibilityEnum.getById(DatabaseUtils.getInt(rs, "max_visibility")));
+        out.setDefaultVisibility(AnswerVisibilityEnum.getById(DatabaseUtils.getInt(rs, "default_visibility")));
         out.setAllowAddOptions(DatabaseUtils.getBoolean(rs, "allow_add_options"));
         return out;
     }

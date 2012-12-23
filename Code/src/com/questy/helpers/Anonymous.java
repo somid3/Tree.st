@@ -29,8 +29,8 @@ public class Anonymous extends User {
         return "Anonymous";
     }
 
-    public String getChecksum () {
-        return user.getChecksum();
+    public String getSaltChecksum () {
+        return user.getSaltChecksum();
     }
 
     public Date getFaceOn() {

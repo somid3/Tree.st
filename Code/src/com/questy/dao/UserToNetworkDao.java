@@ -56,7 +56,8 @@ public class UserToNetworkDao extends ParentDao {
             "from `users_to_networks` " +
             "where `user_id` = ? " +
             "and `role` >= ? " +
-            "and `removed_on` is null;";
+            "and `removed_on` is null " +
+            "order by `network_id` desc;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);

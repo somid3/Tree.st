@@ -51,7 +51,8 @@
 <link rel=stylesheet type="text/css" href="./modules/search/css/basic.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./modules/user_panel/js/user_panel_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/user_panel/js/user_panel.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./modules/user_panel/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./modules/user_panel/js/photo_upload.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/user_panel/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/user_panel/css/basic.css?<%= Vars.rev %>">

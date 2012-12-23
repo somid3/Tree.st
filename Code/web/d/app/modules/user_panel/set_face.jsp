@@ -74,7 +74,7 @@
 
     <script type="text/javascript">
 
-        UP = new UserPanel();
+        UP = new PhotoUpload();
         UP.ref = <%= scaled.getRef() %>;
         UP.checksum = "<%= scaled.getChecksum() %>";
         UP.hScaledImageId = '<%= hScaledImageId %>';

@@ -6,7 +6,7 @@
     wu.deleteCookieByName("uid");
 
     // Removing cookie with user checksum
-    wu.deleteCookieByName("ucs");
+    wu.deleteCookieByName("scs");
 
     // Removing cookie with user's email
     wu.deleteCookieByName("ue");

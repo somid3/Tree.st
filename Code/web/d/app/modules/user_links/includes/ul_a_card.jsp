@@ -62,7 +62,7 @@
 
                        <a href="#" onclick="ND.viewProfile(event, <%= ul_a_toUser.getId() %>, {go: ProfileDashboard.Section.QUESTIONS})">
                            <div class="card_shortcut">
-                               <div class="text sm_text dim">Profile</div>
+                               <div class="text sm_text highlight2">Profile</div>
                            </div>
                        </a>
 

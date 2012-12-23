@@ -1,5 +1,7 @@
 package com.questy.domain;
 
+import com.questy.enums.AnswerVisibilityEnum;
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +16,8 @@ public class Question extends Parent {
     private String text;
     private Integer maxSelectedOptions;
     private List<QuestionOption> options;
-    private Integer maxVisibility;
-    private Integer defaultVisibility;
+    private AnswerVisibilityEnum maxVisibility;
+    private AnswerVisibilityEnum defaultVisibility;
     private Boolean allowAddOptions;
 
     public Integer getRef() {
@@ -98,19 +100,19 @@ public class Question extends Parent {
         this.maxSelectedOptions = maxSelectedOptions;
     }
 
-    public Integer getMaxVisibility() {
+    public AnswerVisibilityEnum getMaxVisibility() {
         return maxVisibility;
     }
 
-    public void setMaxVisibility(Integer maxVisibility) {
+    public void setMaxVisibility(AnswerVisibilityEnum maxVisibility) {
         this.maxVisibility = maxVisibility;
     }
 
-    public Integer getDefaultVisibility() {
+    public AnswerVisibilityEnum getDefaultVisibility() {
         return defaultVisibility;
     }
 
-    public void setDefaultVisibility(Integer defaultVisibility) {
+    public void setDefaultVisibility(AnswerVisibilityEnum defaultVisibility) {
         this.defaultVisibility = defaultVisibility;
     }
 

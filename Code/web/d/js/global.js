@@ -639,7 +639,6 @@ Pagination.bindScrollPagination = function (callbackOnScroll) {
 Pagination.unbindScrollPagination = function () {
     $(window).unbind("scroll");
     clearTimeout($.data(this, 'scrollPagination'));
-    console.log("unbinded pagination");
 };
 
 

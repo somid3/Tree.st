@@ -1,4 +1,4 @@
-<%
+<% {
 /* Inputs variables
  *
  *   String app_d_title = null;
@@ -6,7 +6,6 @@
  *   HmltDesign.Position app_d_position = null;
  *
  */
-{
     String app_d_hMiniTooltipId = HtmlUtils.getRandomId();
 
     Integer app_d_top = 1;

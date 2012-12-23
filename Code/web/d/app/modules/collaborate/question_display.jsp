@@ -96,7 +96,7 @@
                     QD.optionsFilter('<%= hFilterOptionsInputId %>');
                 </script>
 
-                <div class="options">
+                <div class="options lg_shadow">
                 <% for (QuestionOption collab_a_qo : question.getOptions()) { %>
                         <%@ include file="includes/collab_a_question_display_option.jsp"%>
                 <% } %>
@@ -105,7 +105,8 @@
                 <script type="text/javascript">
                     Divs.maxHeight(".options", 400, 300,
                         function() { $(".filter_options").hide() },
-                        function() { $(".filter_options").show() });
+                        function() { $(".filter_options").show() }
+                    );
                 </script>
 
                 <%
@@ -150,8 +151,8 @@
                         <select name="visibility" class="smd_text">
                             <%
                                 String selected = "";
-                                Integer maxVisibility = 9;
-                                Integer defaultVisibility = 6;
+                                AnswerVisibilityEnum maxVisibility = AnswerVisibilityEnum.PUBLIC;
+                                AnswerVisibilityEnum defaultVisibility = AnswerVisibilityEnum.PROTECTED;
 
                                 if (question.getMaxVisibility() != null)
                                     maxVisibility = question.getMaxVisibility();
@@ -161,9 +162,9 @@
 
                                 for (AnswerVisibilityEnum ave : AnswerVisibilityEnum.values()) {
 
-                                    if (maxVisibility >= ave.getId()) {
+                                    if (ave.isLowerThan(maxVisibility)) {
 
-                                        if (defaultVisibility == ave.getId())
+                                        if (defaultVisibility == ave)
                                             selected = " selected";
                                         else
                                             selected = ""; %>

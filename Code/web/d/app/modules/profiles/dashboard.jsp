@@ -57,7 +57,7 @@
 
             <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">
                 <div class="shortcut" id="profile_shortcut_answers">
-                    <div class="text sm_text dim">Profile</div>
+                    <div class="text sm_text highlight2">Profile</div>
                 </div>
             </a>
 
@@ -71,7 +71,7 @@
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
                     <div class="shortcut" id="profile_shortcut_user_links">
-                        <div class="text sm_text dim">Viewed</div>
+                        <div class="text sm_text highlight2">Viewed</div>
                         <div class="count vsm_text white"><%= countViewedUsers %></div>
                     </div>
                 </a>
@@ -84,7 +84,7 @@
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
                     <div class="shortcut" id="profile_shortcut_shared">
-                        <div class="text sm_text dim">Shared</div>
+                        <div class="text sm_text highlight2">Shared</div>
                         <div class="count vsm_text white"><%= countSharedItems %></div>
                     </div>
                 </a>

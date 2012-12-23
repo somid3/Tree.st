@@ -11,7 +11,6 @@ public class User extends Parent {
     private String passwordSalt;
     private String firstName;
     private String lastName;
-    private String checksum;
     private String faceUrl;
     private Date faceOn;
     private Integer faceRef;
@@ -54,14 +53,6 @@ public class User extends Parent {
 
     public String getName() {
         return getFirstName() + " " + getLastName();
-    }
-
-    public String getChecksum() {
-        return checksum;
-    }
-
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
     }
 
     public String getFirstName() {

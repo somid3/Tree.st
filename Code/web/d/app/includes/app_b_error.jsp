@@ -1,11 +1,11 @@
-<%
+<% {
 /* Inputs variables
  *
  *   String app_b_message = null;
  *   boolean app_b_withCanvasContainer = true;
  *
  */
-{ %>
+ %>
 
 <div class="canvas_error">
 

@@ -94,14 +94,6 @@ div.rounded {
     display: inline-block;
 }
 
-.form-hor .title {
-    font-weight: bold;
-    margin-bottom: 2px;
-    font-size: 14px;
-    color: #888;
-    border-bottom: 1px solid #bbb;
-}
-
 .form-hor .element {
     float: left;
     vertical-align: top;
@@ -116,26 +108,12 @@ div.rounded {
     height: 25px;
 }
 
-.form-hor .element .example {
-    font-style: italic;
-}
-
-
-.form-hor .element .input input {
-    padding: 4px;
-    font-size: 12px;
-    margin: 0;
-    border: 1px solid #bbb;
-    background-color: #fff;
-}
-
 .form-hor .element .field {
 }
 
 .form-hor .element .example {
-}
-
-.form-hor .element .desc {
+    margin-top: 2px;
+    font-style: italic;
 }
 
 .form-hor .actionable {
@@ -144,10 +122,50 @@ div.rounded {
     margin: 4px;
 }
 
-.form-hor .error {
-    padding: 4px 10px;
+
+/* Form: Vertical Horizontal */
+.form-verhor {
+    width: 100%;
+}
+
+.form-verhor .element {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-verhor .element .name {
+    float: left;
+}
+
+.form-verhor .element .input {
     float: right;
 }
+
+.form-verhor .element .input .field {
+}
+
+.form-verhor .element .example {
+    font-style: italic;
+}
+
+.form-verhor .actionable {
+    width: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Inputs */
 input.lg_input {

@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 
-    UP = new UserPanel();
+    UP = new PhotoUpload();
     UP.init();
 
     $(function() {

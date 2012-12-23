@@ -1,3 +1,4 @@
+<%@include file="../../../../all.jsp" %>
 <%@page contentType="text/css" %>
 
 #face_upload_container {
@@ -133,8 +134,6 @@
 #user_panel_dashboard .shortcuts {
     display: inline-block;
     width: 100%;
-    /*top: -40px;*/
-    /*z-index: 1;*/
 }
 
 #user_panel_dashboard .shortcuts .shortcut {
@@ -184,8 +183,6 @@
 
 #user_panel_dashboard .details .settings {
     float: right;
-    /*padding: 6px 10px 3px 10px;*/
-    /*width: 90px;*/
 }
 
 #user_panel_dashboard .details .setting {
@@ -193,4 +190,53 @@
     text-align: center;
     border: 1px solid #ccc;
     float: right;
+}
+
+
+
+
+
+
+
+#user_networks {
+
+}
+
+.user_network {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.user_network .top {
+    margin-bottom: 10px;
+}
+
+.user_network .shortcuts {
+    display: inline-block;
+    width: 100%;
+}
+
+.user_network .shortcuts .shortcut {
+    float: left;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.user_network .shortcuts .selected {
+    background-color: <%= HtmlDesign.highlight2 %>;
+    color: #fff;
+}
+
+.user_network .user_network_container {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 550px;
+
+
+
 }

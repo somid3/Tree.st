@@ -47,7 +47,7 @@ public class UserWebServices extends ParentService {
         webUtils.createCookie("uid", user.getId().toString(), maxAge, "/");
 
         // Setting cookie with user checksum
-        webUtils.createCookie("ucs", user.getChecksum(), maxAge, "/");
+        webUtils.createCookie("scs", user.getSaltChecksum(), maxAge, "/");
 
         // Persistently setting cookie with user's email for the next time the login screen is used */
         webUtils.createCookie("ue", user.getEmail(), WebUtils.SECONDS_IN_YEAR, "/");

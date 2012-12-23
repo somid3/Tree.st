@@ -55,14 +55,14 @@
     </div>
 
     <span class="title sm_text dim2">Visibility:</span>
-    <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view smd_text dim">Official</div></a>
-    <a href="#" onclick=""><div id="<%= hSharedId %>" class="view smd_text dim">Shared</div></a>
-    <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view smd_text dim">Yours</div></a>
+    <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view sm_text highlight2">Official</div></a>
+    <a href="#" onclick=""><div id="<%= hSharedId %>" class="view sm_text highlight2">Shared</div></a>
+    <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view sm_text highlight2">Yours</div></a>
     <div class="sep">&nbsp;</div>
     <span class="title sm_text dim2">Display:</span>
-    <a href="#" onclick=""><div id="<%= hFavoritesId %>" class="view smd_text dim">Favorites</div></a>
-    <a href="#" onclick=""><div id="<%= hMatchId %>" class="view smd_text dim">Auto-Matched</div></a>
-    <a href="#" onclick=""><div id="<%= hFlaggedId %>" class="view smd_text dim">Flagged</div></a>
+    <a href="#" onclick=""><div id="<%= hFavoritesId %>" class="view sm_text highlight2">Favorites</div></a>
+    <a href="#" onclick=""><div id="<%= hMatchId %>" class="view sm_text highlight2">Auto-Matched</div></a>
+    <a href="#" onclick=""><div id="<%= hFlaggedId %>" class="view sm_text highlight2">Flagged</div></a>
 
 </div>
 

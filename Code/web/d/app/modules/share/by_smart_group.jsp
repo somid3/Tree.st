@@ -107,6 +107,6 @@
 <script type="text/javascript">
 
     // Allows the share something text area to expand
-    $("#" + SI.hTellMeId).TextAreaExpander(30, 500);
+    $("#" + SI.hTellMeId).TextAreaExpander(30, 200);
 
 </script>

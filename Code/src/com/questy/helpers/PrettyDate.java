@@ -22,29 +22,44 @@ public class PrettyDate {
          */
 
         if(diff > 31536000) {
-            amount = (int)(diff/31536000);
+
+            amount = (int)(diff / 31536000);
             what = "year";
-        } else if(diff > 31536000) {
-            amount = (int)(diff/31536000);
+
+        } else if(diff > 2419200) {
+
+            amount = (int)(diff / 2419200);
             what = "month";
+
         } else if(diff > 604800) {
-            amount = (int)(diff/604800);
+
+            amount = (int)(diff / 604800);
             what = "week";
+
         } else if(diff > 86400) {
-            amount = (int)(diff/86400);
+
+            amount = (int)(diff / 86400);
             what = "day";
+
         } else if(diff > 3600) {
-            amount = (int)(diff/3600);
+
+            amount = (int)(diff / 3600);
             what = "hour";
+
         } else if(diff > 60) {
-            amount = (int)(diff/60);
+
+            amount = (int)(diff / 60);
             what = "minute";
+
         } else {
+
             amount = (int)diff;
             what = "second";
-            if(amount < 6) {
+
+            if(amount < 10) {
                 return "Just now";
             }
+
         }
 
         if(amount == 1) {

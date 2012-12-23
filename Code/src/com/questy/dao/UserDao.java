@@ -5,9 +5,7 @@ import com.questy.utils.DatabaseUtils;
 import com.questy.utils.StringUtils;
 import org.apache.commons.codec.binary.Base64;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -329,7 +327,6 @@ public class UserDao extends ParentDao {
         out.setPasswordSalt(DatabaseUtils.getString(rs, "password_salt"));
         out.setFirstName(DatabaseUtils.getString(rs, "first_name"));
         out.setLastName(DatabaseUtils.getString(rs, "last_name"));
-        out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
         out.setFaceUrl(DatabaseUtils.getString(rs, "face_url"));
         out.setFaceOn(DatabaseUtils.getTimestamp(rs, "face_on"));
         out.setFaceRef(DatabaseUtils.getInt(rs, "face_ref"));

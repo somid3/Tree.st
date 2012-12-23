@@ -23,7 +23,7 @@ function UserPanelDashboard () {
         var parameters = {};
         parameters = $.extend(parameters, data);
 
-        Transitions.load('#user_canvas', url, parameters);
+        Transitions.load('#user_panel_canvas', url, parameters);
     };
 
 
@@ -38,7 +38,7 @@ function UserPanelDashboard () {
                 $("#" + hPhotoId).fadeOut();
 
             });
-    }
+    };
 
     this.setProfile = function (event, ref, checksum) {
 
