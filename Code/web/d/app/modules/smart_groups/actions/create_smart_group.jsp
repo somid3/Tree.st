@@ -6,12 +6,29 @@
     String description = StringUtils.parseString(request.getParameter("desc"));
     SmartGroupVisibilityEnum visibility = SmartGroupVisibilityEnum.getById(StringUtils.parseInt(request.getParameter("share")));
 
-    // Convert search to smart group
-    SmartGroupServices.convertSearchToSmartGroup(
-        networkId,
-        smartGroupRef,
-        name,
-        description,
-        visibility);
+    StringBuilder buf = new StringBuilder();
 
+    try {
+
+        // Convert search to smart group
+        SmartGroupServices.convertSearchToSmartGroup(
+            networkId,
+            smartGroupRef,
+            name,
+            description,
+            visibility);
+
+       } catch (UIException e) {
+
+           // Documenting error
+           buf = new StringBuilder();
+           buf.append("<error>");
+           buf.append(e.getMessage());
+           buf.append("</error>");
+
+       }
 %>
+<?xml version="1.0"?>
+<create_smart_group>
+   <%= buf.toString() %>
+</create_smart_group>

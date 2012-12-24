@@ -96,7 +96,7 @@
                     QD.optionsFilter('<%= hFilterOptionsInputId %>');
                 </script>
 
-                <div class="options lg_shadow">
+                <div class="options">
                 <% for (QuestionOption collab_a_qo : question.getOptions()) { %>
                         <%@ include file="includes/collab_a_question_display_option.jsp"%>
                 <% } %>

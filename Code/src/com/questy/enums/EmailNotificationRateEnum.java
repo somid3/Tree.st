@@ -6,28 +6,16 @@ import java.util.Date;
 public enum EmailNotificationRateEnum {
 
     INSTANTLY (10, "Instantly"),
-
     EVERY_HOUR (60, "Every hour"),
-
     EVERY_FOUR_HOURS (240, "Every four hours"),
-
     EVERY_EIGHT_HOURS (480, "Every eight hours"),
-
     EVERY_TWELVE_HOURS (720, "Every twelve hours"),
-
     EVERY_DAY (1440, "Every day"),
-
     EVERY_OTHER_DAY (2880, "Every other day"),
-
     EVERY_THREE_DAYS (4320, "Every three days"),
-
     EVERY_WEEK (10080, "Every week"),
-
     EVERY_OTHER_WEEK (20160, "Every other week"),
-
     EVERY_YEAR (525600, "Every year"),
-
-
     NEVER (99999999, "Never"),
 
     ;

@@ -120,13 +120,34 @@ div.rounded {
     float: right;
     padding: 4px 10px;
     margin: 4px;
+    display: inline-block;
 }
 
+.form-hor .actionable .error {
+    float: left;
+    margin-right: 5px;
+}
+
+.form-hor .actionable .loading {
+    float: left;
+    margin-top: 2px;
+    margin-right: 5px;
+    display: none;
+}
+
+.form-hor .actionable .action {
+    float: left;
+}
 
 /* Form: Vertical Horizontal */
 .form-verhor {
     width: 100%;
 }
+
+.form-verhor .error {
+  margin-bottom: 5px;
+}
+
 
 .form-verhor .element {
     display: inline-block;
@@ -149,8 +170,19 @@ div.rounded {
 }
 
 .form-verhor .actionable {
-    width: 150px;
+    display: inline-block;
 }
+
+.form-verhor .actionable .loading {
+    float: left;
+    margin: 2px 5px;
+    display: none;
+}
+
+.form-verhor .actionable .action {
+    float: left;
+}
+
 
 
 
@@ -524,6 +556,7 @@ div.error {
     background-color: <%= HtmlDesign.errorBackgroundColor %>;
     color: #fff;
     text-align: center;
+    padding: 5px;
     display: none;
 }
 

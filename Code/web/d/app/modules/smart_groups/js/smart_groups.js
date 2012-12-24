@@ -8,47 +8,53 @@ function SmartGroups () {
 
         Event.preventDefault(event);
 
+        var $form = $("#" + hFormId);
+        var $errorDiv = $form.find(".error");
+        var $loadingDiv = $form.find(".loading");
+
+        // Hiding error
+        $errorDiv.hide();
+
+        // Show loading
+        $loadingDiv.show();
+
+        // Adding system parameters to data
+        var parameters = Forms.serialize($form);
+        parameters.nid = this.networkId;
+        parameters.sgr = this.smartGroupRef;
+
+        // Submit request
         var tmp_this = this;
-        $("#" + hSaveButtonId).click( function(event) {
+        $.post('./modules/smart_groups/actions/create_smart_group.jsp', parameters, function(response) {
 
-            Event.preventDefault(event);
+            // Parsing the results
+            var responseDoc = $.parseXML($.trim(response));
+            var $response = $(responseDoc);
 
-            // Retrieving form and all inputs
-            var $form = $("#" + hFormId);
-            var data = Forms.serialize($form);
+            // Did an error occur
+            if($response.find("error").length > 0) {
 
-            // Retrieving error
-            var $errorDiv = $form.find(".error");
+                // Present the error
+                var errorResponse = $response.find("error").text();
+                $errorDiv.text(errorResponse).fadeIn();
+                $loadingDiv.hide();
 
-            // Validating
-            if (data["name"].length == 0) {
-
-                $errorDiv.text("Please provide a name");
-                $errorDiv.fadeIn();
-                Animations.shake("#" + hSaveButtonId);
                 return false;
-            }
 
-            // Adding system parameters to data
-            data["nid"] = tmp_this.networkId;
-            data["sgr"] = tmp_this.smartGroupRef;
+            } else {
 
-            // Submit request
-            $.post('./modules/smart_groups/actions/create_smart_group.jsp', data,
-                function() {
+                // Move create smart group form to the short cut
+                Animations.flyToTarget(event, "#create_smart_group", "#network_shortcut_smart_groups", false, true, function() {
 
-                    // Highlighting smart groups shortcut
-                    $("#network_shortcut_smart_groups").addClass("selected", 500).removeClass("selected", 500);
-
-                    // Move create smart group form to the short cut
-                    Animations.flyToTarget(event, "#create_smart_group", "#network_shortcut_smart_groups", false, true, function() {
-
-                        // Changing page to smart group display
-                        tmp_this.networkDashboard.go(event, NetworkDashboard.Section.SMART_GROUPS)
-
-                    });
+                    // Changing page to smart group display
+                    tmp_this.networkDashboard.go(event, NetworkDashboard.Section.SMART_GROUPS)
 
                 });
+
+            }
+
         });
+
     };
+
 }

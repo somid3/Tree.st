@@ -1,8 +1,12 @@
 package com.questy.services;
 
-import com.questy.dao.*;
+import com.questy.dao.NetworkDao;
+import com.questy.dao.SmartGroupDao;
+import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.SmartGroup;
+import com.questy.domain.UserToNetwork;
+import com.questy.enums.RoleEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
 import com.questy.helpers.UIException;
 
@@ -88,12 +92,23 @@ public class SmartGroupServices extends ParentService  {
         String description,
         SmartGroupVisibilityEnum visibility) throws SQLException {
 
+        if (name == null || name.isEmpty())
+            throw new UIException("No name provided");
+
+        if (description == null || description.isEmpty())
+            throw new UIException("No description provided");
+
+        // Retrieve smart group
+        SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
+
+        // Retrieving user to network of smart group creator
+        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, smartGroup.getUserId(), smartGroup.getNetworkId());
+
+        if (utn.getRole().isLowerThan(RoleEnum.EDITOR) && visibility == SmartGroupVisibilityEnum.OFFICIAL)
+            throw new UIException("Can not create an official smart group");
+
         // Updating the smart group's name and details...
         SmartGroupDao.updateDetailsByNetworkIdAndRef(null, networkId, smartGroupRef, name, description, visibility);
-
-        // Create the smart group mappings
-        UserToSmartGroupServices.createSmartGroupMappings(networkId, smartGroupRef);
-
     }
 
 

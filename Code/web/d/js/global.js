@@ -115,10 +115,11 @@ Textareas.autosize = function (selector, minHeight) {
 function Forms() {}
 
 /* Serializes a form into a hash */
-Forms.serialize = function (selector) {
+Forms.serialize = function (formSelector) {
 
-    var $obj = $(selector);
-    var array = $obj.serializeArray();
+    var $form = $(formSelector);
+
+    var array = $form.serializeArray();
     var data = {};
 
     for(i=0; i<array.length; i++) {

@@ -29,7 +29,7 @@
         // Analyzing new query
         QueryXml queryXml = QueryXmlReader.parseAndLoad(queryString);
 
-        // Run search, but store only 100 results
+        // Run search and store results
         UserScores userScores = QueryServices.createScores (networkId, smartGroupRef, queryXml);
 
     }

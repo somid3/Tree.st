@@ -34,11 +34,6 @@ Login.login = function (event) {
         // Hiding error
         $error.fadeOut();
 
-//        console.log(response);
-//        console.log(response.trim());
-//        console.log($.parseXML(response.trim()));
-
-
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
