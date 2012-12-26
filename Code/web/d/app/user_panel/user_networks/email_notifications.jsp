@@ -1,4 +1,4 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
@@ -14,7 +14,7 @@
     Map<String, Object> app_e_options = new LinkedHashMap<String, Object>();
 %>
 
-<div id="<%= hSettingsId %>" class="user_network_container form-verhor">
+<div id="<%= hSettingsId %>" class="user_setting_container form-verhor">
     <form id="<%= hFormId%>">
 
         <div class="error smd_text"></div>
@@ -33,10 +33,10 @@
                     app_e_options.put("Receive", 0);
                     app_e_options.put("Do not receive", 1);
                 %>
-                <%@ include file="../../../includes/app_d_mini_tooltip.jsp"%>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
-                <select name="view_notif" class="field">
-                    <%@ include file="../../../includes/app_e_options.jsp"%>
+                <select name="ulink_notif" class="field">
+                    <%@ include file="../../includes/app_e_options.jsp"%>
                 </select>
             </div>
         </div>
@@ -55,10 +55,10 @@
                     app_e_options.put("Receive", 0);
                     app_e_options.put("Do not receive", 1);
                 %>
-                <%@ include file="../../../includes/app_d_mini_tooltip.jsp"%>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
                 <select name="sgroup_notif" class="field">
-                    <%@ include file="../../../includes/app_e_options.jsp"%>
+                    <%@ include file="../../includes/app_e_options.jsp"%>
                 </select>
             </div>
         </div>
@@ -86,10 +86,10 @@
                     app_e_options.put(EmailNotificationRateEnum.EVERY_OTHER_WEEK.getName(),      EmailNotificationRateEnum.EVERY_OTHER_WEEK.getId());
                     app_e_options.put(EmailNotificationRateEnum.NEVER.getName(),                 EmailNotificationRateEnum.NEVER.getId());
                 %>
-                <%@ include file="../../../includes/app_d_mini_tooltip.jsp"%>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
                 <select name="digest_rate" class="field">
-                    <%@ include file="../../../includes/app_e_options.jsp"%>
+                    <%@ include file="../../includes/app_e_options.jsp"%>
                 </select>
             </div>
         </div>

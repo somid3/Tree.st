@@ -1,5 +1,5 @@
 <%@ include file="../../all.jsp" %>
-<%@ include file="./load.jsp" %>
+<%@ include file="load.jsp" %>
 
 <div id="face_upload_container" class="canvas_container">
 

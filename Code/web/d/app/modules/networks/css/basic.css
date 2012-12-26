@@ -8,8 +8,7 @@
 
 /* List of networks the user is in */
 #networks {
-    position: relative;
-    top: -1000px;
+
 }
 
 #networks .help {

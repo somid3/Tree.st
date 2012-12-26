@@ -38,7 +38,6 @@
 <script type="text/javascript" src="../js/jquery-1.8.3.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 
-<script type="text/javascript" src="./modules/user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-plugins.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
 
@@ -50,14 +49,16 @@
 <script type="text/javascript" src="./modules/search/js/search.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/search/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="./modules/user_panel/js/user_panel_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/user_panel/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/user_panel/js/photo_upload.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/user_panel/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
-<link rel=stylesheet type="text/css" href="./modules/user_panel/css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./modules/user_panel/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./modules/user_panel/css/uploadifive.css?<%= Vars.rev %>">
+<script type="text/javascript" src="./user_panel/js/user_panel_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/photo_upload.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
+<link rel=stylesheet type="text/css" href="./user_panel/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="./user_panel/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="./user_panel/css/uploadifive.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./modules/user_links/js/user_links.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/user_links/css/basic.css?<%= Vars.rev %>">

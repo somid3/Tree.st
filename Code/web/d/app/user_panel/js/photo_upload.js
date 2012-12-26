@@ -130,7 +130,7 @@ function PhotoUpload () {
 
         var parameters = {};
         parameters.uploaded = "true";
-        UPD.clickItem(null, "#user_panel_shortcut_upload_face", "./modules/user_panel/set_face.jsp", parameters);
+        UPD.clickItem(null, "#user_panel_shortcut_upload_face", "./user_panel/set_face.jsp", parameters);
 
     };
 

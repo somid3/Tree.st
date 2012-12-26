@@ -1,5 +1,5 @@
-<%@ include file="../../all.jsp" %>
-<%@ include file="./load.jsp" %>
+<%@ include file="../all.jsp" %>
+<%@ include file="load.jsp" %>
 <%
 
     // Retrieving user face photos that are not temporary

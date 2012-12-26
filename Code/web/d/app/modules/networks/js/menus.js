@@ -49,7 +49,7 @@ Header.viewUserPanel = function (event) {
 
     $("#header .user").addClass("selected");
 
-    Transitions.load("#canvas", "./modules/user_panel/dashboard.jsp");
+    Transitions.load("#canvas", "./user_panel/dashboard.jsp");
 
     LeftMenu.halfOpacity();
 };

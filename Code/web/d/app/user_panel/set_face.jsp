@@ -1,5 +1,5 @@
-<%@ include file="../../all.jsp" %>
-<%@ include file="./load.jsp" %>
+<%@ include file="../all.jsp" %>
+<%@ include file="load.jsp" %>
 <%
     Integer ref = StringUtils.parseInt(request.getParameter("r"));
     String checksum = StringUtils.parseString(request.getParameter("cs"));

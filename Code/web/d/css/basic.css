@@ -151,7 +151,9 @@ div.rounded {
 
 .form-verhor .element {
     display: inline-block;
-    width: 100%;
+    width: 98%;
+    border-bottom: 1px dotted #ccc;
+    padding: 5px;
 }
 
 .form-verhor .element .name {
@@ -268,6 +270,9 @@ input.w50 {
     width: 50px;
 }
 
+input.bottom_line {
+    border-bottom: 2px solid <%= HtmlDesign.dim2 %>;
+}
 
 
 /*input.placeholder {*/

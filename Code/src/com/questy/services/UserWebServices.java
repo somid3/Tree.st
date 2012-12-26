@@ -19,7 +19,11 @@ import java.sql.SQLException;
 
 public class UserWebServices extends ParentService {
 
-    public static UserSession authenticateAndCreateSession(WebUtils webUtils, String email, String passwordHash, Boolean persistent) throws SQLException {
+    public static UserSession authenticateAndCreateSession(
+        WebUtils webUtils,
+        String email,
+        String passwordHash,
+        Boolean persistent) throws SQLException {
 
         String httpAgent = webUtils.getUserAgent();
 
@@ -27,7 +31,11 @@ public class UserWebServices extends ParentService {
         return UserServices.authenticateAndCreateSession(email, passwordHash, httpAgent, persistent);
     }
 
-    public static UserSession installCookies(WebUtils webUtils, Integer userId, String sessionChecksum, Boolean persistent) throws SQLException {
+    public static UserSession installCookies(
+        WebUtils webUtils,
+        Integer userId,
+        String sessionChecksum,
+        Boolean persistent) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;

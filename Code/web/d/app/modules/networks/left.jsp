@@ -12,6 +12,4 @@
         LeftMenu.offsetItems();
     });
 
-    Animations.inTopAndBounce("#networks", 30);
-
 </script>

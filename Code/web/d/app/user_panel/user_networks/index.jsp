@@ -1,4 +1,4 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
 
@@ -7,21 +7,22 @@
 
     Network network = null;
     String hTargetId = null;
-    String hSelectorId = null;
+    String hShortcutsId = null;
+    String hShortcutId = null;
 
 %>
 
 <script type="text/javascript">
     UND = new UserNetworksDashboard();
 </script>
-<div id="user_networks" class="canvas_container">
+<div class="canvas_container">
 
     <% for (UserToNetwork userToNetwork : userToNetworks) {
 
         network = NetworkDao.getById(null, userToNetwork.getNetworkId());
         hTargetId = "settings" + network.getId(); %>
 
-        <div class="user_network">
+        <div class="user_setting">
 
             <div class="top">
 
@@ -35,9 +36,10 @@
 
             </div>
 
-            <div class="shortcuts">
-                <% hSelectorId = HtmlUtils.getRandomId(); %>
-                <a href="#" onclick="UND.clickItem(event, '<%= hSelectorId%>', '<%= hTargetId %>', './modules/user_panel/user_networks/email_notifications.jsp', {nid: <%= network.getId() %>})"><div id="<%= hSelectorId %>" class="shortcut sm_text highlight2">Email Notifications</div></a>
+            <% hShortcutsId = HtmlUtils.getRandomId(); %>
+            <div id="<%= hShortcutsId %>" class="shortcuts">
+                <% hShortcutId = HtmlUtils.getRandomId(); %>
+                <a href="#" onclick="UND.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_networks/email_notifications.jsp', {nid: <%= network.getId() %>})"><div id="<%= hShortcutId %>" class="shortcut sm_text highlight2">Email Notifications</div></a>
             </div>
 
             <div id="<%= hTargetId %>"></div>
