@@ -18,32 +18,32 @@
         <div class="error smd_text"></div>
 
         <div class="element">
-            <div class="name sm_text dim">Your first name</div>
+            <div class="name sm_text dim">New password:</div>
             <div class="input">
 
                 <%
-                    app_d_title = "First name";
-                    app_d_message = "Enter your first name, if you have a middle name, or many middle names, write them one after another. For example, 'Ariel Joy', where 'Ariel is the first name and 'Joy' the middle name.";
+                    app_d_title = "New password";
+                    app_d_message = "Please ensure your new password is hard to guess, and it is longer than 5 characters.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
                 %>
                 <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
-                <input name="fname" class="md_input w250 bottom_line" value="<%= user.getFirstName() %>">
+                <input name="new_pass1" type="password" class="md_input w250 bottom_line">
             </div>
         </div>
 
         <div class="element">
-            <div class="name sm_text dim">Your last name</div>
+            <div class="name sm_text dim">New password again:</div>
             <div class="input">
 
                 <%
-                    app_d_title = "Last name";
-                    app_d_message = "Based on your profile you can automatically be added to very specific smart groups. When this occurs you will be notified.";
+                    app_d_title = "New password again";
+                    app_d_message = "To make sure there are no mistakes, please enter your new password once again.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
                 %>
                 <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
-                <input name="lname" class="md_input w250 bottom_line" value="<%= user.getLastName() %>">
+                <input name="new_pass2" type="password" class="md_input w250 bottom_line">
             </div>
         </div>
 
@@ -53,7 +53,7 @@
 
                 <%
                     app_d_title = "Current Password";
-                    app_d_message = "Smart groups are the places of great conversations. Here set the rate at which you receive new message notifications or digests.";
+                    app_d_message = "Given that this change can alter your login capability, we ask all our users to enter their current password again.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
                 %>
                 <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
@@ -63,13 +63,12 @@
         </div>
 
         <div class="note sm_text dim">
-            After you save your settings the application<br/>
-            will refresh itself and all your changes will take effect.
+            After your settings are saved you will be<br/>
+            automatically logged out and requested to log back in
         </div>
 
-
         <div class="actionable">
-            <a href="#" onclick="UGD.submitNameChange(event, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
+            <a href="#" onclick="UGD.submitPasswordChange(event, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
             <div class="loading"><img src="./img/sm_loading.gif"></div>
         </div>
 
@@ -81,7 +80,7 @@
 $('#<%= hFormId %>').keypress( function(event) {
     if(event.which == $.ui.keyCode.ENTER){
         Event.preventDefault(event);
-        UGD.submitNameChange(event, '<%= hSettingsId %>', '<%= hFormId %>');
+        UGD.submitPasswordChange(event, '<%= hSettingsId %>', '<%= hFormId %>');
         return false;
     }
 });

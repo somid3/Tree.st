@@ -4,6 +4,8 @@ import com.questy.dao.*;
 import com.questy.domain.*;
 import com.questy.enums.RoleEnum;
 import com.questy.helpers.SqlLimit;
+import com.questy.helpers.UIException;
+import com.questy.services.email.EmailConfirmationServices;
 import com.questy.utils.StringUtils;
 
 import java.sql.Connection;
@@ -111,4 +113,70 @@ public class UserServices extends ParentService  {
         }
     }
 
+    public static void nameChange (Integer userId, String passwordText, String firstName, String lastName) throws SQLException {
+
+        // Authenticate password
+        authenticateForUI(userId, passwordText);
+
+        // Validating
+        if (StringUtils.isEmpty(firstName))
+            throw new UIException("First name can not be empty");
+
+        if (StringUtils.isEmpty(lastName))
+            throw new UIException("Last name can not be empty");
+
+        // Updating user name
+        UserDao.updateNameByUserId(null, userId, firstName, lastName);
+
+    }
+
+    public static void emailChange (Integer userId, String passwordText, String newEmail1, String newEmail2) throws SQLException {
+
+        // Authenticate password
+        authenticateForUI(userId, passwordText);
+
+        // Validating
+        if (!StringUtils.isEmail(newEmail1))
+            throw new UIException("Provided email does not have the correct format");
+
+        if (!newEmail1.equals(newEmail2))
+            throw new UIException("Both emails are not identical");
+
+        // Begin email update
+        EmailConfirmationServices.beginEmailChangeConfirmation(userId, newEmail1);
+
+    }
+
+    public static void passwordChange (Integer userId, String passwordText, String newPassword1, String newPassword2) throws SQLException {
+
+        // Authenticate password
+        authenticateForUI(userId, passwordText);
+
+        // Validating
+        if (StringUtils.isEmpty(newPassword1))
+            throw new UIException("New password can not be empty");
+
+        if (passwordText.length() < 6)
+            throw new UIException("Password needs to be greater than five characters in length");
+
+        if (!newPassword1.equals(newPassword2))
+            throw new UIException("Both password are not identical");
+
+        // Updating user name
+        UserDao.updatePasswordByUserId(null, userId, newPassword1);
+
+    }
+
+    private static void authenticateForUI (Integer userId, String passwordText) throws SQLException {
+
+        // Retrieving user
+        User user = UserDao.getById(null, userId);
+
+        // Converting provided password
+        String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+
+        if (!providedPasswordHash.equals(user.getPasswordHash()))
+            throw new UIException("Incorrect password");
+
+    }
 }

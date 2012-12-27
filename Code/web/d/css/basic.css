@@ -145,7 +145,10 @@ div.rounded {
 }
 
 .form-verhor .error {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 
@@ -170,6 +173,14 @@ div.rounded {
 .form-verhor .element .example {
     font-style: italic;
 }
+
+.form-verhor .note {
+    width: 98%;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+
 
 .form-verhor .actionable {
     display: inline-block;
@@ -271,7 +282,7 @@ input.w50 {
 }
 
 input.bottom_line {
-    border-bottom: 2px solid <%= HtmlDesign.dim2 %>;
+    border-bottom: 2px dotted <%= HtmlDesign.dim2 %>;
 }
 
 

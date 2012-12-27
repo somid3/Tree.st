@@ -104,7 +104,7 @@ public class UserWebServices extends ParentService {
             throw new UIException("Network could not be found");
 
         // Validate email length
-        if (email.isEmpty())
+        if (StringUtils.isEmpty(email))
             throw new UIException("Please provide a valid email address");
 
         // Validating if email ends correctly

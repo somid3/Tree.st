@@ -15,6 +15,7 @@ public class HtmlDesign {
     public static final String dim = "#444";
     public static final String dim2 = "#888";
     public static final String dim3 = "#bbb";
+    public static final String dim4 = "#ddd";
 
     public static final String fontFamily = "sans-serif";
 

@@ -65,6 +65,8 @@ public class UserDao extends ParentDao {
         return out;
     }
 
+
+
     public static User getById (
             Connection conn,
             Integer userId) throws SQLException {
@@ -267,6 +269,51 @@ public class UserDao extends ParentDao {
         ps.setString(1, passwordHash);
         ps.setString(2, passwordSalt);
         ps.setInt(3, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void updateNameByUserId (
+            Connection conn,
+            Integer userId,
+            String firstName,
+            String lastName) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users` " +
+            "set `first_name` = ?, " +
+            "`last_name` = ? " +
+            "where `id` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, firstName);
+        ps.setString(2, lastName);
+        ps.setInt(3, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void updateEmailByUserId (
+            Connection conn,
+            Integer userId,
+            String email) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users` " +
+            "set `email` = ? " +
+            "where `id` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, email);
+        ps.setInt(2, userId);
         ps.execute();
 
         end(conn, ps, null);

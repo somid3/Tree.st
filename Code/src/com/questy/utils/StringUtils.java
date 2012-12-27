@@ -4,10 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -179,5 +176,11 @@ public class StringUtils {
         out = out + postfix;
 
       return out;
+    }
+
+    public static Boolean isEmpty (String input) {
+
+        return (input == null || input.isEmpty());
+
     }
 }

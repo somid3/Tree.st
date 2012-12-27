@@ -61,5 +61,5 @@
 <%
     List<String> d_removals = new ArrayList<String>();
 %>
-<%@ include file="includes/d_footer_row.jsp"%>
+<%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

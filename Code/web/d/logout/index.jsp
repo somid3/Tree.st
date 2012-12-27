@@ -14,6 +14,6 @@
     // Removing cookie with user session checksum
     wu.deleteCookieByName("uscs");
 
-    // Sending user to root
-    wu.redirect("/");
+    // Sending user to login page
+    wu.redirect("/d/login");
 %>

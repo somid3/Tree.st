@@ -10,7 +10,14 @@ import java.sql.SQLException;
 
 public class EmailConfirmationServices {
 
-
+    /**
+     * Used to confirm the email address a user supplied when joining
+     * a network. This is used for new users, not for the process involved
+     * in changing or updating a user's email address
+     *
+     * @param userId
+     * @throws SQLException
+     */
     public static void beginEmailConfirmation (Integer userId) throws SQLException {
 
         // Currently non-transactional
@@ -27,10 +34,12 @@ public class EmailConfirmationServices {
          */
         UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 0);
 
-        // Send first confirmation email twice
+        // Send first confirmation email
         sendConfirmationEmail(userId);
 
     }
+
+
 
     public static void sendConfirmationEmail (Integer userId) throws SQLException {
 
@@ -61,8 +70,38 @@ public class EmailConfirmationServices {
         if (!validChecksum.equals(providedChecksum))
             throw new UIException("Confirmation checksum failed");
 
+        // TODO: if email change to exists, update the user's email
+        // TODO: if email change to exists, update the user's email
+        // TODO: if email change to exists, update the user's email
+
         // Confirm user
         UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 1);
+
+    }
+
+    /**
+     * Used to begin the process of changing a user's email address
+     *
+     * @param userId
+     * @throws SQLException
+     */
+    public static void beginEmailChangeConfirmation (Integer userId, String newEmail) throws SQLException {
+
+        // Currently non-transactional
+        Connection conn = null;
+
+        // Save email confirmation checksum for user
+        String checksum = StringUtils.random();
+        UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, checksum);
+
+        /*
+         * Used to temporarily store an email address while the user confirms it.
+         *
+         */
+        UserAlphaSettingEnum.CHANGE_EMAIL_TO.setValueByUserId(userId, newEmail);
+
+        // Send first confirmation email
+        sendConfirmationEmail(userId);
 
     }
 

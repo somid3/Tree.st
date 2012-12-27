@@ -22,6 +22,12 @@ public enum UserAlphaSettingEnum {
      */
     EMAIL_CONFIRMATION_CHECKSUM (100, ""),
 
+    /*
+     * Temporarily stores the email address the user wishes to update
+     * as its main email contact. This is a temporary variable that
+     * will remain until the user confirms the email address
+     */
+    CHANGE_EMAIL_TO (101, ""),
 
     ;
 
