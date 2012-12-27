@@ -30,6 +30,9 @@ public class EmailServices extends ParentService {
         // Retrieving user
         User user = UserDao.getById(conn, userId);
 
+        // Retrieve email that needs to be confirmed
+        String emailToConfirm = UserAlphaSettingEnum.EMAIL_TO_BE_CONFIRMED.getValueByUserId(user.getId());
+
         // Creating message
         UrlQuery query = new UrlQuery();
         query.add("uid", userId);
@@ -40,7 +43,7 @@ public class EmailServices extends ParentService {
         ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
         ser.setFromName(Vars.supportEmailName);
         ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(user.getEmail());
+        ser.addRecipient(emailToConfirm);
         ser.setSubject("Confirm your email at Tree.st");
         ser.setMessageText(EmailServices.customizeMessage(message, user));
 
@@ -50,36 +53,7 @@ public class EmailServices extends ParentService {
 
     }
 
-    public static void confirmationEmailChange(Integer userId) throws SQLException {
 
-        // Currently non-transactional
-        Connection conn = null;
-
-        // Retrieving user
-        User user = UserDao.getById(conn, userId);
-
-        // Retrieve email change
-        String emailChangeTo = UserAlphaSettingEnum.CHANGE_EMAIL_TO.getValueByUserId(user.getId());
-
-        // Creating message
-        UrlQuery query = new UrlQuery();
-        query.add("uid", userId);
-        String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/email_change_confirmation.jsp?" + query);
-
-        // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(emailChangeTo);
-        ser.setSubject("Confirm your email at Tree.st");
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
-
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
-    }
 
     public static void passwordResetNotFound (String email) throws SQLException {
 

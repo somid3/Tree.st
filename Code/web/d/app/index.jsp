@@ -110,7 +110,7 @@
                 tt_l_left = 300;
                 tt_l_top = 30;
                 tt_l_title = "Intro. 1 of 4";
-                tt_l_message = "Welcome to Tree.st! This brief 4 step introduction will show you around.<br/><br/>Have fun!<br/>The Tree x0x0";
+                tt_l_message = "Welcome to Tree.st! This brief 4 step introduction will show you around.<br/><br/>Have fun!<br/>The Tree";
                 tt_l_gotit = "Let's continue...";
                 tt_l_direction = "tip_none";
                 tt_l_style = null;
@@ -165,7 +165,7 @@
                 tt_l_title = "That's it, thanks!";
                 tt_l_message =
                     "Thats the end of this tutorial, if other people are confused please help them.<br/><br/>" +
-                    "Cheers,<br/>Tree.st";
+                    "Cheers,<br/>Tree";
                 tt_l_gotit = "Finish tutorial!";
                 tt_l_direction = "tip_none";
                 tt_l_style = null;

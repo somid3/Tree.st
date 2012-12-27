@@ -27,7 +27,7 @@ public enum UserAlphaSettingEnum {
      * as its main email contact. This is a temporary variable that
      * will remain until the user confirms the email address
      */
-    CHANGE_EMAIL_TO (101, ""),
+    EMAIL_TO_BE_CONFIRMED(101, ""),
 
     ;
 

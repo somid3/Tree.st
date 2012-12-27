@@ -82,7 +82,7 @@ public class UserWebServices extends ParentService {
             WebUtils webUtils,
             Integer networkId,
             String networkChecksum,
-            String email,
+            String emailToConfirm,
             String passwordText,
             String first,
             String last) throws SQLException {
@@ -96,19 +96,15 @@ public class UserWebServices extends ParentService {
         Network network = NetworkDao.getByIdAndChecksum(conn, networkId, networkChecksum);
 
         // Validating email
-        if (!StringUtils.isEmail(email))
+        if (!StringUtils.isEmail(emailToConfirm))
             throw new UIException("Email address is not valid");
 
         // Validating network
         if (network == null)
             throw new UIException("Network could not be found");
 
-        // Validate email length
-        if (StringUtils.isEmpty(email))
-            throw new UIException("Please provide a valid email address");
-
         // Validating if email ends correctly
-        Tuple<Boolean, String> emailEndingTest = NetworkServices.isEmailEndingGood(networkId, email);
+        Tuple<Boolean, String> emailEndingTest = NetworkServices.isEmailEndingGood(networkId, emailToConfirm);
 
         if (!emailEndingTest.getX())
             throw new UIException("Please use an email that ends with " + emailEndingTest.getY());
@@ -118,7 +114,7 @@ public class UserWebServices extends ParentService {
             throw new UIException("Your password needs to be greater than five characters in length");
 
         // Check if the email already exists as an account
-        User user = UserDao.getByEmail(null, email);
+        User user = UserDao.getByEmail(null, emailToConfirm);
 
         // Does the user already exist?
         if (user != null) {
@@ -139,12 +135,12 @@ public class UserWebServices extends ParentService {
             NetworkServices.addUserToNonGlobalNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
             // Has the user been confirmed by email?
-            Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(user.getId());
+            Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
 
             if (!isEmailConfirmed) {
 
                 // Send confirmation email
-                EmailConfirmationServices.sendConfirmationEmail(user.getId());
+                EmailConfirmationServices.sendEmailConfirmation(user.getId());
 
                 // Add email confirmation action to response
                 buf.append("<confirm/>");
@@ -171,7 +167,7 @@ public class UserWebServices extends ParentService {
                 throw new UIException("Please provide your last name");
 
             // Create user account
-            Integer userId = UserDao.insert(null, email, passwordText, first, last);
+            Integer userId = UserDao.insert(null, emailToConfirm, passwordText, first, last);
 
             // Retrieve new user
             user = UserDao.getById(null, userId);
@@ -183,7 +179,7 @@ public class UserWebServices extends ParentService {
             NetworkServices.addUserToNonGlobalNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
             // Sending first email confirmation
-            EmailConfirmationServices.beginEmailConfirmation(user.getId());
+            EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
 
             // Add email confirmation action to response
             buf.append("<confirm/>");
@@ -227,13 +223,13 @@ public class UserWebServices extends ParentService {
         /* Yay! Credentials are correct */
 
         // Has the user been confirmed by email?
-        Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(user.getId());
+        Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
 
         // Has the user been confirmed by email?
         if (!isEmailConfirmed) {
 
             // No, sending another pair of email confirmations
-            EmailConfirmationServices.sendConfirmationEmail(user.getId());
+            EmailConfirmationServices.sendEmailConfirmation(user.getId());
 
             // Add email confirmation action to response
             buf.append("<confirm/>");

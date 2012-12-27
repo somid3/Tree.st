@@ -2,9 +2,12 @@ package com.questy.dao;
 
 import com.questy.domain.UserAlphaSetting;
 import com.questy.enums.UserAlphaSettingEnum;
+import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserAlphaSettingDao extends ParentDao {
 
@@ -31,6 +34,34 @@ public class UserAlphaSettingDao extends ParentDao {
 
         while (rs.next())
             out = loadPrimitives(rs);
+
+        end(conn, ps, rs);
+        return out;
+    }
+
+    public static List<UserAlphaSetting> getBySettingEnum (
+        Connection conn,
+        UserAlphaSettingEnum settingEnum,
+        SqlLimit limit) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `user_alpha_settings` " +
+            "where `setting_id` = ? " +
+            "order by `user_id` desc " +
+            "limit ?,?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, settingEnum.getId());
+        ps.setInt(2, limit.getStartFrom());
+        ps.setInt(3, limit.getDuration());
+        ResultSet rs = ps.executeQuery();
+
+        List<UserAlphaSetting> out = new ArrayList<UserAlphaSetting>();
+        while (rs.next())
+            out.add(loadPrimitives(rs));
 
         end(conn, ps, rs);
         return out;

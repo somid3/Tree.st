@@ -142,8 +142,8 @@ public class UserServices extends ParentService  {
         if (!newEmail1.equals(newEmail2))
             throw new UIException("Both emails are not identical");
 
-        // Begin email update
-        EmailConfirmationServices.beginEmailChangeConfirmation(userId, newEmail1);
+        // Begin email confirmation
+        EmailConfirmationServices.beginEmailConfirmation(userId, newEmail1);
 
     }
 

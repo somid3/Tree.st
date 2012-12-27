@@ -14,7 +14,7 @@
         hConfirmLink = HtmlUtils.createHref(hConfirmLink);
     }
 
-    String hLoginLink = HtmlUtils.createHref("http://" + Vars.domain);
+    String hLoginLink = HtmlUtils.createHref("http://" + Vars.domain + "/d/login");
 %>
 <%@ include file="../includes/a_container_start.jsp"%>
 
@@ -60,7 +60,7 @@
 </tr>
 
 <%
-    List<String> d_removals = new ArrayList<String>();
+    List<String> e_removals = new ArrayList<String>();
 %>
 <%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

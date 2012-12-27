@@ -23,7 +23,7 @@ public enum UserIntegerSettingEnum {
      * Whether the user has confirmed the main email address point of
      * contact
      */
-    IS_EMAIL_CONFIRMED (100, 0),
+    IS_ACCOUNT_CONFIRMED(100, 0),
 
     /*
      * Total number of email confirmation requests that the user has

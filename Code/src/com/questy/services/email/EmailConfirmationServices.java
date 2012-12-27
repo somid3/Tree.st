@@ -1,5 +1,6 @@
 package com.questy.services.email;
 
+import com.questy.dao.UserDao;
 import com.questy.enums.UserAlphaSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.helpers.UIException;
@@ -8,6 +9,12 @@ import com.questy.utils.StringUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * This class deals with confirming the mail email address a user defines. This is
+ * the main point of contact for a user. This class also helps update the main
+ * email address of a user
+ *
+ */
 public class EmailConfirmationServices {
 
     /**
@@ -18,33 +25,31 @@ public class EmailConfirmationServices {
      * @param userId
      * @throws SQLException
      */
-    public static void beginEmailConfirmation (Integer userId) throws SQLException {
+    public static void beginEmailConfirmation (Integer userId, String emailToConfirm) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
 
         // Save email confirmation checksum for user
-        String checksum = StringUtils.random();
-        UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, checksum);
+        UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, StringUtils.random());
 
-        /*
-         * Set that the user has not confirmed its email address, this value is important
-         * as the daily function will only email individuals who have not confirmed their
-         * email yet
+        // Saving email that needs to be confirmed
+        UserAlphaSettingEnum.EMAIL_TO_BE_CONFIRMED.setValueByUserId(userId,  emailToConfirm);
+
+        /**
+         * Reset the number of email confirmations the user has received. This is reset for
+         * situations where the user wishes to update its email address
          */
-        UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 0);
+        UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.setValueByUserId(userId, 0);
 
         // Send first confirmation email
-        sendConfirmationEmail(userId);
+        sendEmailConfirmation(userId);
 
     }
 
 
 
-    public static void sendConfirmationEmail (Integer userId) throws SQLException {
-
-        // Currently non-transactional
-        Connection conn = null;
+    public static void sendEmailConfirmation(Integer userId) throws SQLException {
 
         // Send email
         EmailServices.confirmationEmail(userId);
@@ -54,7 +59,7 @@ public class EmailConfirmationServices {
 
     }
 
-    public static void confirmEmail (Integer userId, String providedChecksum) throws SQLException {
+    public static void confirmEmail(Integer userId, String providedChecksum) throws SQLException {
 
         // Validating
         if (userId == null) throw new UIException("User id not provided");
@@ -70,39 +75,22 @@ public class EmailConfirmationServices {
         if (!validChecksum.equals(providedChecksum))
             throw new UIException("Confirmation checksum failed");
 
-        // TODO: if email change to exists, update the user's email
-        // TODO: if email change to exists, update the user's email
-        // TODO: if email change to exists, update the user's email
+        // Retrieve email that needs to be updated to user's email attribute
+        String newEmail = UserAlphaSettingEnum.EMAIL_TO_BE_CONFIRMED.getValueByUserId(userId);
+        if (StringUtils.isEmpty(newEmail))
+            throw new UIException("No email needs to be confirmed");
 
-        // Confirm user
-        UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.setValueByUserId(userId, 1);
+        // Updating user's email address
+        UserDao.updateEmailByUserId(conn, userId, newEmail);
 
-    }
+        // Clearing the email to be confirmed setting
+        UserAlphaSettingEnum.EMAIL_TO_BE_CONFIRMED.deleteByUserId(userId);
 
-    /**
-     * Used to begin the process of changing a user's email address
-     *
-     * @param userId
-     * @throws SQLException
-     */
-    public static void beginEmailChangeConfirmation (Integer userId, String newEmail) throws SQLException {
+        // Clearing the email checksum setting
+        UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.deleteByUserId(userId);
 
-        // Currently non-transactional
-        Connection conn = null;
-
-        // Save email confirmation checksum for user
-        String checksum = StringUtils.random();
-        UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, checksum);
-
-        /*
-         * Used to temporarily store an email address while the user confirms it.
-         *
-         */
-        UserAlphaSettingEnum.CHANGE_EMAIL_TO.setValueByUserId(userId, newEmail);
-
-        // Send first confirmation email
-        sendConfirmationEmail(userId);
-
+        // Confirm account
+        UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.setValueByUserId(userId, 1);
     }
 
 }

@@ -26,7 +26,7 @@ public class UserWebServicesTest {
        User user = UserDao.getByEmail(null, newEmail);
 
        // Ensuring user's email is not confirmed
-       Assert.assertEquals(false, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(user.getId()));
+       Assert.assertEquals(false, UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId()));
 
        // Ensuring user has been emailed a confirmation
        Assert.assertEquals((Integer) 1, UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.getValueByUserId(user.getId()));

@@ -1,11 +1,13 @@
 package com.questy.services.email;
 
 
+import com.questy.dao.UserAlphaSettingDao;
 import com.questy.dao.UserDao;
-import com.questy.dao.UserIntegerSettingDao;
 import com.questy.domain.User;
-import com.questy.domain.UserIntegerSetting;
+import com.questy.domain.UserAlphaSetting;
+import com.questy.enums.UserAlphaSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
+import com.questy.helpers.SqlLimit;
 
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -18,7 +20,7 @@ public class EmailScheduledReminders {
     public static void calledDailyConfirmationEmail() throws SQLException {
 
         // Retrieve all non-confirmed email confirmations
-        List<UserIntegerSetting> nonConfirmed = UserIntegerSettingDao.getBySettingEnumAndValue(null, UserIntegerSettingEnum.IS_EMAIL_CONFIRMED, 0);
+        List<UserAlphaSetting> emailsToConfirm = UserAlphaSettingDao.getBySettingEnum(null, UserAlphaSettingEnum.EMAIL_TO_BE_CONFIRMED, SqlLimit.ALL);
 
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(new Date());
@@ -29,14 +31,14 @@ public class EmailScheduledReminders {
             return;
 
         Integer emailCount = null;
-        for (UserIntegerSetting non : nonConfirmed) {
+        for (UserAlphaSetting emailToConfirm : emailsToConfirm) {
 
             // Ensure user has not received too many messages
-            emailCount = UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.getValueByUserId(non.getUserId());
+            emailCount = UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.getValueByUserId(emailToConfirm.getUserId());
 
             if (emailCount < 5) {
 
-                EmailConfirmationServices.sendConfirmationEmail(non.getUserId());
+                EmailConfirmationServices.sendEmailConfirmation(emailToConfirm.getUserId());
 
             }
 
@@ -62,7 +64,7 @@ public class EmailScheduledReminders {
         for (User facelessUser : facelessUsers) {
 
             // Do not sent a message to users who have not confirmed their email
-            isEmailConfirmed = UserIntegerSettingEnum.IS_EMAIL_CONFIRMED.getBooleanByUserId(facelessUser.getId());
+            isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(facelessUser.getId());
             if (!isEmailConfirmed)
                 continue;
 
