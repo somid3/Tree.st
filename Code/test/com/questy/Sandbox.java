@@ -2,9 +2,7 @@ package com.questy;
 
 import com.questy.admin.AdminServices;
 import com.questy.admin.MIT;
-import com.questy.dao.UserToSmartGroupDao;
-import com.questy.domain.UserToSmartGroup;
-import com.questy.helpers.SqlLimit;
+import com.questy.enums.EmailNotificationRateEnum;
 import com.questy.services.cron.CronServices;
 
 import java.util.ArrayList;
@@ -17,6 +15,8 @@ public class Sandbox {
 
     public static void main(String[] args) throws Exception {
 
+        CronServices.sharedItemDigest(EmailNotificationRateEnum.EVERY_OTHER_WEEK);
+
 //        UserServices.deleteUserAnswers(3);
 
 //        Integer smartGroupsCount = UserToSmartGroupDao.countByNetworkIdAndUserIdAndMember(null, 2000, 3, true);
@@ -24,9 +24,10 @@ public class Sandbox {
 //        System.out.println(smartGroupsCount);
 
 
-        List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, 2000, 3, SqlLimit.ALL);
-
-        System.out.println(activeUserToSmartGroups.size());
+//
+//        List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, 2000, 3, SqlLimit.ALL);
+//
+//        System.out.println(activeUserToSmartGroups.size());
 
 
 //        EmailServices.firstPhotoUpload(3);

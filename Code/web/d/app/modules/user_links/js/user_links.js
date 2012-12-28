@@ -151,9 +151,6 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hCon
             // Update points
             Points.increment(usedPoints);
 
-            // Highlighting connections shortcut
-            $("#network_shortcut_profile").addClass("selected", 500).removeClass("selected", 500);
-
             if (!callback) {
 
                 // Display contact details in the card itself

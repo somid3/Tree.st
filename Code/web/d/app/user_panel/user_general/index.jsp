@@ -16,10 +16,7 @@
     <div class="user_setting">
 
         <div class="top">
-
-            <img src=""/>
             <span class="md_header dim">Credentials & Identity</span>
-
         </div>
 
         <% hShortcutsId = HtmlUtils.getRandomId(); %>

@@ -66,7 +66,7 @@
     if (scaleds.isEmpty()) {
         String app_a_message = "You haven't uploaded any photos yet!";
         boolean app_a_withCanvasContainer = false; %>
-        <%@ include file="../../includes/app_a_mini_message.jsp" %>
+        <%@ include file="../includes/app_a_mini_message.jsp" %>
     <% } %>
 
 

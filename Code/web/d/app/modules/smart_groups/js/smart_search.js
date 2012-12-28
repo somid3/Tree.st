@@ -72,20 +72,21 @@ function SmartSearch () {
         var $criteriaSearchQuestionId = $("#" + hCriteriaSearchQuestionId);
         $criteriaSearchQuestionId.remove();
 
-        /* Adding the new question
-         *
-         * Hack: the fadein delay has to be a second to conflict parallel
-         * jQuery functions to completely remove the question being added,
-         * this is critical for slow devices such as mobile
+        /* Adding the new question - Before we submit the new search,
+         * we MUST wait for the load() to finish since the XML query
+         * requires the new DOM
          */
         var tmp_this = this;
-        $("<div/>")
+        var $div = $("<div/>");
+        $div
         .hide()
-        .load("./modules/smart_groups/actions/add_criteria.jsp", parameters)
-        .appendTo("#smart_search_criterion")
-        .fadeIn(1000, function() {
+        .load("./modules/smart_groups/actions/add_criteria.jsp", parameters, function() {
+
+            $div.appendTo("#smart_search_criterion").show();
             tmp_this.generateAndSubmit(hostingNetworkId, hostingSmartGroupRef);
-        });
+
+        })
+
     };
 
 

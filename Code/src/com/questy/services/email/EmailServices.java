@@ -445,12 +445,20 @@ public class EmailServices extends ParentService {
             if (userRate != callingRate)
                 continue;
 
+            System.out.println(
+                userToNetwork.getUserId() + " " + userToNetwork.getNetworkId()
+            );
+
             // Used to count the total number of shared items to be included in this digest
             Integer digestTotalSmartGroupCount = 0;
             Integer digestTotalSharedItemCount = 0;
 
             // Retrieving all active smart groups for user
             List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, networkId, userToNetwork.getUserId(), SqlLimit.ALL);
+
+            System.out.println(
+                "active smart groups " + activeUserToSmartGroups.size()
+            );
 
             // Counting the number of messages in the digest
             for (UserToSmartGroup activeUserToSmartGroup : activeUserToSmartGroups) {
@@ -460,21 +468,21 @@ public class EmailServices extends ParentService {
 
                 // Rallying up the total count of smart groups and messages in the digest
                 if (digestSharedItemCount > 0) {
-                    digestTotalSmartGroupCount += 1;
-                    digestTotalSharedItemCount += digestSharedItemCount;
+                    digestTotalSmartGroupCount =+ 1;
+                    digestTotalSharedItemCount =+ digestSharedItemCount;
                 }
 
             }
 
             // Should a digest be sent for this user?
-            if (digestTotalSharedItemCount > 0)
+            if (digestTotalSharedItemCount == 0)
                 continue;
 
             // Creating email message
             UrlQuery query = new UrlQuery();
             query.add("nid", networkId);
             query.add("uid", userToNetwork.getUserId());
-            query.add("rate", userRate);
+            query.add("rate", userRate.getId());
             String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/shared_item_digest.jsp?" + query);
 
             // Retrieving user to receive email       Ê

@@ -42,7 +42,7 @@
 
             <% if (!awardDescription.isEmpty()) { %>
 
-            <div style="position: absolute; left: 37px; top: 35px">
+            <div style="position: absolute; left: -30px; top: 35px">
 
                 <a href="#" onclick="NetworkDashboard.toggleAward()">
                         <img src="./modules/networks/img/award.png">

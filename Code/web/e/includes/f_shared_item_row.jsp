@@ -60,7 +60,7 @@
 
                 &mdash; <i><%= EmailDesign.aBegin(f_hSharedItemAuthorLink)%><%= f_author.getName() %><%= EmailDesign.aEnd %></i>
 
-                <span style="color: <%= HtmlDesign.dim2%>">, <%= PrettyDate.toString(f_sharedItem.getCreatedOn()) %></span>
+                <span style="color: <%= HtmlDesign.dim2%>"> / <%= PrettyDate.toString(f_sharedItem.getCreatedOn()) %></span>
 
                 </span>
 
@@ -125,7 +125,7 @@
 
                     &mdash; <i><%= EmailDesign.aBegin(f_hSharedCommentAuthorLink)%><%= f_commentator.getName() %><%= EmailDesign.aEnd %></i>
 
-                    <span style="color: <%= HtmlDesign.dim2%>">, <%= PrettyDate.toString(f_sharedComment.getCreatedOn()) %></span>
+                    <span style="color: <%= HtmlDesign.dim2%>"> / <%= PrettyDate.toString(f_sharedComment.getCreatedOn()) %></span>
 
                     </span>
                     <br/>
