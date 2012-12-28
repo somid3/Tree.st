@@ -63,7 +63,13 @@ public class UserLinkServices extends ParentService  {
 
         // Check that the from user has the required number of points
         UserToNetwork fromUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(conn, fromUserId, networkId);
-        if (fromUserToNetwork.getCurrentPoints() < pointsForLink) {
+
+        /*
+         * Here we multiply the points for link by negative one because we wish to make sure
+         * we only check for points when the "to user" will actually reduce points from the
+         * "from user"
+         */
+        if (fromUserToNetwork.getCurrentPoints() < (pointsForLink * -1)) {
 
             // User does not have enough points, return null
             throw new UIException("Not enough points");

@@ -80,7 +80,6 @@
 <script type="text/javascript">
 $('#<%= hFormId %>').keypress( function(event) {
     if(event.which == $.ui.keyCode.ENTER){
-        Event.preventDefault(event);
         UGD.submitNameChange(event, '<%= hSettingsId %>', '<%= hFormId %>');
         return false;
     }

@@ -2,7 +2,7 @@
 <%@ include file="../load.jsp" %>
 
 <%
-    String hTargetId = null;
+    String hTargetId = HtmlUtils.getRandomId();
     String hShortcutsId = null;
     String hShortcutId = null;
 %>

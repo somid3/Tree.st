@@ -649,7 +649,12 @@ Pagination.unbindScrollPagination = function () {
 function Event () {};
 Event.preventDefault = function (event) {
 
-    if (event != null && event.preventDefault)
-       event.preventDefault();
+    if (event != null && event.preventDefault) {
+
+        try {
+            event.preventDefault();
+        } catch (e) {}
+
+    }
 
 };

@@ -1,10 +1,10 @@
 package com.questy.enums;
 
-import cz.mallat.uasparser.CachingOnlineUpdateUASparser;
 import cz.mallat.uasparser.UASparser;
 import cz.mallat.uasparser.UserAgentInfo;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BrowserAcceptanceEnum {
 
@@ -85,8 +85,8 @@ public class BrowserAcceptanceEnum {
         SAFARI              (Status.FULL,           "Safari",                 null),
 
         EXPLORER_10         (Status.FULL,           "IE 10.",                 null),
-        EXPLORER_9          (Status.BUGGY,          "IE 9.",                  new String[] {"No photo upload", "No custom fonts"}),
-        EXPLORER_8          (Status.BUGGY,          "IE 8.",                  new String[] {"No rounded corners", "No photo upload", "No custom fonts"}),
+        EXPLORER_9          (Status.FULL,           "IE 9.",                  new String[] {"No photo upload", "No custom fonts"}),
+        EXPLORER_8          (Status.BUGGY,          "IE 8.",                  new String[] {"No rounded corners", "No photo upload"}),
         EXPLORER_7          (Status.DENIED,         "IE 7.",                  null),
         EXPLORER_6          (Status.DENIED,         "IE 6.",                  null),
         EXPLORER            (Status.BUGGY,          "IE",                     null),

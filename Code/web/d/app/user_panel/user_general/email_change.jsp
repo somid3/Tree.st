@@ -63,8 +63,8 @@
         </div>
 
         <div class="note sm_text dim">
-            After you save your settings the application<br/>
-            will refresh itself and all your changes will take effect.
+            After you save your settings we will require you<br/>
+            to confirm your new email address.
         </div>
 
         <div class="actionable">
@@ -79,7 +79,6 @@
 <script type="text/javascript">
 $('#<%= hFormId %>').keypress( function(event) {
     if(event.which == $.ui.keyCode.ENTER){
-        Event.preventDefault(event);
         UGD.submitEmailChange(event, '<%= hSettingsId %>', '<%= hFormId %>');
         return false;
     }

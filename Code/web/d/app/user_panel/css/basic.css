@@ -234,3 +234,8 @@
     padding: 5px;
     width: 550px;
 }
+
+.user_setting .user_setting_container .confirm {
+    background-color: <%= HtmlDesign.highlight %>;
+}
+

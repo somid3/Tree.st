@@ -24,7 +24,7 @@
         UserWebServices.installCookies(wu, user.getId(), userSession.getChecksum(), persistent);
 
         // Sending user to application
-        wu.redirect("/d/app?new");
+        wu.redirect("/d/app?confirmed");
 
     } catch (UIException e) {
 

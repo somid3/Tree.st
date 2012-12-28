@@ -4,9 +4,17 @@
 /* Global */
 @font-face {
     font-family: 'adam';
-	src:
-	    url('../assets/adamwarrenpro.eot')  format('embedded-opentype'),
-	    url('../assets/adamwarrenpro.ttf') format("truetype");
+
+    /* Required for IE8 */
+    src: url('../assets/adamwarrenpro.eot');
+
+    /* Required for IE9 */
+	src: url('../assets/adamwarrenpro.eot')  format('embedded-opentype'),
+
+         /* Required for all other browsers */
+      	 url('../assets/adamwarrenpro.ttf') format("truetype");
+
+
 }
 
 body {

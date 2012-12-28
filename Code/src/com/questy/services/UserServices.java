@@ -139,8 +139,14 @@ public class UserServices extends ParentService  {
         if (!StringUtils.isEmail(newEmail1))
             throw new UIException("Provided email does not have the correct format");
 
+        // Ensuring both emails are identical, no typos
         if (!newEmail1.equals(newEmail2))
             throw new UIException("Both emails are not identical");
+
+        // Ensuring another user does not exist with same email
+        User user = UserDao.getByEmail(null, newEmail1);
+        if (user != null)
+            throw new UIException("Email is already registered to another user");
 
         // Begin email confirmation
         EmailConfirmationServices.beginEmailConfirmation(userId, newEmail1);

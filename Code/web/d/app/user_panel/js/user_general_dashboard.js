@@ -26,10 +26,13 @@ function UserGeneralDashboard () {
         Transitions.load('#' + hTargetId, url, parameters);
     };
 
-    this.submitNameChange = function (
+
+    this.submitSetting = function (
         event,
         hSettingsId,
-        hFormId) {
+        hFormId,
+        url,
+        callback) {
 
         Event.preventDefault(event);
 
@@ -48,7 +51,7 @@ function UserGeneralDashboard () {
 
         // Submit request
         var tmp_this = this;
-        $.post('./user_panel/user_general/actions/name_change.jsp', parameters, function(response) {
+        $.post(url, parameters, function(response) {
 
             // Parsing the results
             var responseDoc = $.parseXML($.trim(response));
@@ -66,12 +69,28 @@ function UserGeneralDashboard () {
 
             } else {
 
-               URL.redirect("/d/app");
+               if (callback) callback(parameters);
 
             }
 
         });
 
+    };
+
+    this.submitNameChange = function (
+        event,
+        hSettingsId,
+        hFormId) {
+
+        this.submitSetting (
+            event,
+            hSettingsId,
+            hFormId,
+            './user_panel/user_general/actions/name_change.jsp',
+            function () {
+                URL.redirect("/d/app")
+            }
+        );
     };
 
     this.submitEmailChange = function (
@@ -79,47 +98,21 @@ function UserGeneralDashboard () {
         hSettingsId,
         hFormId) {
 
-        Event.preventDefault(event);
+        this.submitSetting (
+            event,
+            hSettingsId,
+            hFormId,
+            './user_panel/user_general/actions/email_change.jsp',
+            function (parameters) {
 
-        var $settingsDiv = $('#' + hSettingsId);
-        var $loadingDiv = $settingsDiv.find('.loading');
-        var $errorDiv = $settingsDiv.find('.error');
-
-        // Hide error
-        $errorDiv.hide();
-
-        // Display loading
-        $loadingDiv.show();
-
-        // Retrieving form and all inputs
-        var parameters = Forms.serialize('#' + hFormId);
-
-        // Submit request
-        var tmp_this = this;
-        $.post('./user_panel/user_general/actions/email_change.jsp', parameters, function(response) {
-
-            // Parsing the results
-            var responseDoc = $.parseXML($.trim(response));
-            var $response = $(responseDoc);
-
-            // Did an error occur
-            if($response.find("error").length > 0) {
-
-                // Present the error
-                var errorResponse = $response.find("error").text();
-                $errorDiv.text(errorResponse).fadeIn();
-                $loadingDiv.hide();
-
-                return false;
-
-            } else {
-
-               URL.redirect("/d/logout");
+                Transitions.loadFadeIn(
+                    '#' + hSettingsId,
+                    './user_panel/user_general/email_change_confirm.jsp',
+                    {email: parameters.email1}
+                );
 
             }
-
-        });
-
+        );
     };
 
     this.submitPasswordChange = function (
@@ -127,47 +120,15 @@ function UserGeneralDashboard () {
         hSettingsId,
         hFormId) {
 
-        Event.preventDefault(event);
-
-        var $settingsDiv = $('#' + hSettingsId);
-        var $loadingDiv = $settingsDiv.find('.loading');
-        var $errorDiv = $settingsDiv.find('.error');
-
-        // Hide error
-        $errorDiv.hide();
-
-        // Display loading
-        $loadingDiv.show();
-
-        // Retrieving form and all inputs
-        var parameters = Forms.serialize('#' + hFormId);
-
-        // Submit request
-        var tmp_this = this;
-        $.post('./user_panel/user_general/actions/password_change.jsp', parameters, function(response) {
-
-            // Parsing the results
-            var responseDoc = $.parseXML($.trim(response));
-            var $response = $(responseDoc);
-
-            // Did an error occur
-            if($response.find("error").length > 0) {
-
-                // Present the error
-                var errorResponse = $response.find("error").text();
-                $errorDiv.text(errorResponse).fadeIn();
-                $loadingDiv.hide();
-
-                return false;
-
-            } else {
-
-               URL.redirect("/d/logout");
-
+        this.submitSetting (
+            event,
+            hSettingsId,
+            hFormId,
+            './user_panel/user_general/actions/password_change.jsp',
+            function () {
+                URL.redirect("/d/logout")
             }
-
-        });
-
-    }
+        );
+    };
 
 }
