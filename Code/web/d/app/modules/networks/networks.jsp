@@ -61,7 +61,17 @@
     <% } %>
 
     <div style="border-top: 1px dotted #aaa; width: 50%; margin: 5px auto;"></div>
-    <div class="sm_text dim2">About you</div>
+    <div class="sm_text dim2">
+
+        About you
+
+        <%
+            String app_d_title = "About you";
+            String app_d_message = "These general purpose communities are only meant to gather broad details about you. In any community you can use any of these qualities to search for people.";
+            HtmlDesign.Positions app_d_position = HtmlDesign.Positions.RIGHT; %>
+        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+    </div>
 
     <% for (Network network : globalNetworks) {
 

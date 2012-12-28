@@ -32,7 +32,7 @@ function UserPanelDashboard () {
         Event.preventDefault(event);
 
         // Sending request to hide photo
-        $.post('./user_panel/actions/delete_photo.jsp', {r: ref, cs: checksum},
+        $.post('./user_panel/actions/delete_photo.jsp', {r: ref, rcs: checksum},
             function(data) {
 
                 $("#" + hPhotoId).fadeOut();
@@ -45,7 +45,7 @@ function UserPanelDashboard () {
         Event.preventDefault(event);
 
         // Sending request to hide photo
-        $.post('./user_panel/actions/set_profile.jsp', {r: ref, cs: checksum},
+        $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
             function(data) {
 
                 URL.redirect("/d/app");

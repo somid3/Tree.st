@@ -1,4 +1,4 @@
-<%@ include file="../../../all.jsp"%>
+<%@ include file="../../all.jsp"%>
 <%
     Integer ref = AppResourceServices.saveTemporaryFace(userId, request);
 %>

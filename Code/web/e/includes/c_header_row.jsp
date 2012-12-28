@@ -91,22 +91,21 @@
 <tr>
     <td>
         <table width="100%" border="0" cellpadding="2" cellspacing="0">
-                    <tr>
-                        <td align="center">
+            <tr>
+                <td align="center">
 
-                            <span
-                                style="
-                                font-family: <%= HtmlDesign.fontFamily %>;
-                                font-size: 12px;
-                                color: <%= HtmlDesign.dim%>">
+                    <span
+                        style="
+                        font-family: <%= HtmlDesign.fontFamily %>;
+                        font-size: 12px;
+                        color: <%= HtmlDesign.dim%>">
 
-                                For security reasons, do not forward this email
+                        For security reasons, do not forward this email
 
-                            </span>
-                        </td>
-                    </tr>
+                    </span>
+                </td>
+            </tr>
         </table>
-
     </td>
 </tr>
 <%@ include file="d_line_row.jsp"%>

@@ -69,8 +69,9 @@
 
 
         <div class="actionable">
-            <a href="#" onclick="UGD.submitNameChange(event, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
             <div class="loading"><img src="./img/sm_loading.gif"></div>
+            <a href="#" onclick="UGD.submitNameChange(event, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
+            <a href="#" onclick="UGD.cancelSetting(event, '<%= hSettingsId %>')"><div class="action md_button light_button">Cancel</div></a>
         </div>
 
     </form>

@@ -1,7 +1,7 @@
-<%@ include file="../../../all.jsp"%>
+<%@ include file="../../all.jsp"%>
 <%
     Integer ref = StringUtils.parseInt(request.getParameter("r"));
-    String checksum = StringUtils.parseString(request.getParameter("cs"));
+    String checksum = StringUtils.parseString(request.getParameter("rcs"));
 
     // Saving new face resource to database
     AppResource faceResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE, ref, checksum);

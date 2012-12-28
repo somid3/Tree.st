@@ -159,7 +159,7 @@ public class Vars {
         domain = "localhost:8080";
         emailTemplateDomain = "localhost:8080";
 
-        resourcesFilePath = "/Users/omid/Dropbox/Projects/Tree.st/Resources/";
+        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
         resourcesTempFilePath = "/Users/omid/Desktop/";
 
         sendEmails = false;
@@ -181,6 +181,7 @@ public class Vars {
         reloadCss = false;
         sendEmails = true;
         logSentEmails = true;
+        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
         sendAllEmailsTo = "omid@mit.edu";
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows

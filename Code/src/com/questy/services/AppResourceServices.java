@@ -1,7 +1,9 @@
 package com.questy.services;
 
-import com.questy.dao.*;
-import com.questy.domain.*;
+import com.questy.dao.AppResourceDao;
+import com.questy.dao.UserDao;
+import com.questy.domain.AppResource;
+import com.questy.domain.User;
 import com.questy.enums.AppEnum;
 import com.questy.enums.AppResourceTypeEnum;
 import com.questy.helpers.Tuple;
@@ -43,7 +45,7 @@ public class AppResourceServices extends ParentService  {
     public static void setFace (
             Integer userId,
             Integer ref,
-            String checksum,
+            String resourceChecksum,
             Integer x1,
             Integer y1,
             Integer width,
@@ -60,7 +62,7 @@ public class AppResourceServices extends ParentService  {
          */
 
         // Reading scaled image
-        AppResource scaledResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(conn, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, ref, checksum);
+        AppResource scaledResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(conn, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, ref, resourceChecksum);
         String scaledFilePath = scaledResource.getFilePath();
         BufferedImage scaledImage = ImageIO.read(new File(scaledFilePath));
 

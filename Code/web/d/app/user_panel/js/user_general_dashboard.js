@@ -27,6 +27,14 @@ function UserGeneralDashboard () {
     };
 
 
+    this.cancelSetting = function (
+        event,
+        hSettingsId) {
+
+        $('#' + hSettingsId).fadeOut();
+
+    };
+
     this.submitSetting = function (
         event,
         hSettingsId,
@@ -89,28 +97,6 @@ function UserGeneralDashboard () {
             './user_panel/user_general/actions/name_change.jsp',
             function () {
                 URL.redirect("/d/app")
-            }
-        );
-    };
-
-    this.submitEmailChange = function (
-        event,
-        hSettingsId,
-        hFormId) {
-
-        this.submitSetting (
-            event,
-            hSettingsId,
-            hFormId,
-            './user_panel/user_general/actions/email_change.jsp',
-            function (parameters) {
-
-                Transitions.loadFadeIn(
-                    '#' + hSettingsId,
-                    './user_panel/user_general/email_change_confirm.jsp',
-                    {email: parameters.email1}
-                );
-
             }
         );
     };

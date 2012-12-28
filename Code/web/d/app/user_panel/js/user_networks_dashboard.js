@@ -26,11 +26,21 @@ function UserNetworksDashboard () {
         Transitions.load('#' + hTargetId, url, parameters);
     };
 
-    this.submitEmailNotifications = function (
+    this.cancelSetting = function (
+        event,
+        hSettingsId) {
+
+        $('#' + hSettingsId).fadeOut();
+
+    };
+
+    this.submitSetting = function (
         event,
         networkId,
         hSettingsId,
-        hFormId) {
+        hFormId,
+        url,
+        callback) {
 
         Event.preventDefault(event);
 
@@ -50,7 +60,7 @@ function UserNetworksDashboard () {
 
         // Submit request
         var tmp_this = this;
-        $.post('./user_panel/user_networks/actions/email_notifications.jsp', parameters, function(response) {
+        $.post(url, parameters, function(response) {
 
             // Parsing the results
             var responseDoc = $.parseXML($.trim(response));
@@ -68,12 +78,30 @@ function UserNetworksDashboard () {
 
             } else {
 
-                $settingsDiv.fadeOut();
+               if (callback) callback(parameters);
 
             }
 
         });
 
-    }
+    };
+
+    this.submitEmailNotifications = function (
+        event,
+        networkId,
+        hSettingsId,
+        hFormId) {
+
+        this.submitSetting (
+            event,
+            networkId,
+            hSettingsId,
+            hFormId,
+            './user_panel/user_networks/actions/email_notifications.jsp',
+            function () {
+                $('#' + hSettingsId).fadeOut();
+            }
+        );
+    };
 
 }
