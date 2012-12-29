@@ -22,7 +22,6 @@ public class EmailConfirmationServices {
      * a network. This is used for new users, not for the process involved
      * in changing or updating a user's email address
      *
-     * @param userId
      * @throws SQLException
      */
     public static void beginEmailConfirmation (Integer userId, String emailToConfirm) throws SQLException {
@@ -47,16 +46,21 @@ public class EmailConfirmationServices {
 
     }
 
-
-
     public static void sendEmailConfirmation(Integer userId) throws SQLException {
 
-        // Send email
-        EmailServices.confirmationEmail(userId);
+        // Check email checksum is defined
+        String emailChecksum = UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.getValueByUserId(userId);
+        if (!emailChecksum.isEmpty()) {
+
+            // Save email confirmation checksum for user
+            UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, StringUtils.random());
+        }
 
         // Update confirmation email count
         UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.incrementValueByUserId(userId, 1);
 
+        // Send email
+        EmailServices.confirmationEmail(userId);
     }
 
     public static void confirmEmail(Integer userId, String providedChecksum) throws SQLException {

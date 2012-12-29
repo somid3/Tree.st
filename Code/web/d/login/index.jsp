@@ -24,11 +24,9 @@
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
 
-<a href="/">
-    <div id="logo">
-        <img src="/d/assets/logo.png">
-    </div>
-</a>
+<div id="logo">
+    <a href="/"><img src="/d/assets/logo.png"></a>
+</div>
 
 <div id="outer-container">
     <div id="login">
