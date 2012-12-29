@@ -58,19 +58,19 @@ public class EmailScheduledReminders {
 
         // Retrieve all faceless users
         List<User> facelessUsers = UserDao.getAllFaceless(null);
-        Boolean isEmailConfirmed = null;
+        Boolean isAccountConfirmed = null;
         Integer remindersSent = null;
 
         for (User facelessUser : facelessUsers) {
 
             // Do not sent a message to users who have not confirmed their email
-            isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(facelessUser.getId());
-            if (!isEmailConfirmed)
+            isAccountConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(facelessUser.getId());
+            if (!isAccountConfirmed)
                 continue;
 
             // Has the user received too many reminders?
             remindersSent = UserIntegerSettingEnum.NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT.getValueByUserId(facelessUser.getId());
-            if (remindersSent >= 10)
+            if (remindersSent >= 5)
                 continue;
 
             // Sending email

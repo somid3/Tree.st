@@ -133,9 +133,9 @@ public class Vars {
     /**
      * If the system is in development mode or not
      */
-//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 

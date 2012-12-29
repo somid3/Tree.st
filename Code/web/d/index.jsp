@@ -20,6 +20,5 @@
 
         // Send user to login
         wu.redirect("/d/welcome");
-
     }
 %>
