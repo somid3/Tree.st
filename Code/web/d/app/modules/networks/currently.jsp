@@ -120,11 +120,30 @@
 
     Animations.toPosition("#currently", 0, 0, 600);
 
-    // Is there an automatic redirection set?
+    /**
+     * Is there a particular region we need to move the user
+     * to? This redirects the user to a particular smart
+     * groups, people finder, etc. It also sends the user
+     * to a particular location in the user panel
+     */
+
+    // Redirect user to user panel?
+    var goSetFace = Go.checkAndRemove("go_face");
+    var goPhotoUpload = Go.checkAndRemove("go_photo");
+
+    // Redirect user to particular module?
     var goSgr = Go.checkAndRemove("go_sgr");
     var goVuid = Go.checkAndRemove("go_vuid");
 
-    if (goVuid != null) {
+    if (goSetFace != null) {
+
+
+
+    } else if (goPhotoUpload != null) {
+
+
+
+    } else if (goVuid != null) {
 
         ND.viewProfile(null, goVuid);
 

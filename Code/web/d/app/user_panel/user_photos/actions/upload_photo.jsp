@@ -1,5 +1,6 @@
-<%@ include file="../../all.jsp"%>
+<%@ include file="../../../all.jsp"%>
 <%
     Integer ref = AppResourceServices.saveTemporaryFace(userId, request);
+
+    wu.redirect("/d/app/?go_face");
 %>
-<upload_photo ref="<%= ref %>" />

@@ -1,4 +1,4 @@
-function UserPanelDashboard () {
+function UserPanel () {
 
     /**
      * Removes selected class from all items on the network dashboard
@@ -25,31 +25,35 @@ function UserPanelDashboard () {
 
         Transitions.load('#user_panel_canvas', url, parameters);
     };
-
-
-    this.deletePhoto = function (event, hPhotoId, ref, checksum) {
-
-        Event.preventDefault(event);
-
-        // Sending request to hide photo
-        $.post('./user_panel/actions/delete_photo.jsp', {r: ref, rcs: checksum},
-            function(data) {
-
-                $("#" + hPhotoId).fadeOut();
-
-            });
-    };
-
-    this.setProfile = function (event, ref, checksum) {
-
-        Event.preventDefault(event);
-
-        // Sending request to hide photo
-        $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
-            function(data) {
-
-                URL.redirect("/d/app");
-
-            });
-    }
 }
+
+
+/**
+ * Unhighlights the user panel on the header
+ */
+UserPanel.unhighlight = function () {
+
+    $("#header .user").each(
+        function() {
+            $(this).removeClass("selected");
+        }
+    );
+
+};
+
+/**
+ * Displays the user panel dashboard
+ */
+UserPanel.view = function (event) {
+
+    Event.preventDefault(event);
+
+    $("#header .user").addClass("selected");
+
+    Transitions.load("#canvas", "./user_panel/dashboard.jsp");
+
+    LeftMenu.halfOpacity();
+};
+
+
+

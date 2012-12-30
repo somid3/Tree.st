@@ -23,7 +23,7 @@
         UserWebServices.installCookies(wu, userId, userSession.getChecksum(), persistent);
 
         // Sending user to application
-        wu.redirect("/d/app?photo");
+        wu.redirect("/d/app?go_photo");
 
     }
 %>

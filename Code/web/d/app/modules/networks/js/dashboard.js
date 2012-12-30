@@ -27,7 +27,7 @@ function NetworkDashboard () {
 
         NetworkDashboard.unhighlightAll();
 
-        Header.unhighlightAll();
+        UserPanel.unhighlight();
 
         // Display the canvas loading display
         NetworkDashboard.displayLoading();

@@ -1,4 +1,4 @@
-<%@ include file="../../all.jsp"%>
+<%@ include file="../../../all.jsp"%>
 <%
     Integer ref = StringUtils.parseInt(request.getParameter("r"));
     String resourceChecksum = StringUtils.parseString(request.getParameter("rcs"));

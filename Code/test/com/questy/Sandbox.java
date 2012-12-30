@@ -2,7 +2,11 @@ package com.questy;
 
 import com.questy.admin.AdminServices;
 import com.questy.admin.MIT;
+import com.questy.domain.AppResource;
+import com.questy.enums.AppEnum;
+import com.questy.enums.AppResourceTypeEnum;
 import com.questy.enums.EmailNotificationRateEnum;
+import com.questy.services.AppResourceServices;
 import com.questy.services.cron.CronServices;
 
 import java.util.ArrayList;
@@ -15,7 +19,15 @@ public class Sandbox {
 
     public static void main(String[] args) throws Exception {
 
-        CronServices.sharedItemDigest(EmailNotificationRateEnum.EVERY_OTHER_WEEK);
+        AppResource resource = AppResourceServices.insertAndRetrieve(3, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, 20, true);
+        String filePath = resource.getFilePath();
+
+        System.out.println(filePath);
+
+
+
+
+//        CronServices.sharedItemDigest(EmailNotificationRateEnum.EVERY_OTHER_WEEK);
 
 //        UserServices.deleteUserAnswers(3);
 
