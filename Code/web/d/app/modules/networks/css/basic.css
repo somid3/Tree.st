@@ -8,7 +8,6 @@
 
 /* List of networks the user is in */
 #networks {
-
 }
 
 #networks .help {
@@ -90,7 +89,6 @@
     padding: 4px;
     margin-bottom: 15px;
     position: relative;
-    z-index: -10;
 }
 
 #currently .help {

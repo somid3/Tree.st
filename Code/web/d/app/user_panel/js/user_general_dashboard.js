@@ -85,6 +85,28 @@ function UserGeneralDashboard () {
 
     };
 
+    this.submitEmailChange = function (
+        event,
+        hSettingsId,
+        hFormId) {
+
+        this.submitSetting (
+            event,
+            hSettingsId,
+            hFormId,
+            './user_panel/user_general/actions/email_change.jsp',
+            function (parameters) {
+
+                Transitions.loadFadeIn(
+                    '#' + hSettingsId,
+                    './user_panel/user_general/email_change_confirm.jsp',
+                    {email: parameters.email1}
+                );
+
+            }
+        );
+    };
+
     this.submitNameChange = function (
         event,
         hSettingsId,

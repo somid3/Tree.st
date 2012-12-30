@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp"%>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer fromUserId = StringUtils.parseInt(request.getParameter("fuid"));
+    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
 
     // Retrieving from user
     User fromUser = UserDao.getById(null, fromUserId);

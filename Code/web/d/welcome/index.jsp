@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="attention square glow">
+<div class="attention square glow4">
     <div class="w800 center">
         <div class="left lg_text white">
             <div class="quote lg_text dim">I can quickly find the right people and get the best advice, all in one place. It's instant. It's great!</div>

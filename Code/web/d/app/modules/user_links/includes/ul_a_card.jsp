@@ -107,7 +107,7 @@
                        </a>
 
                        <% if (ul_a_pointsForLink < 0) { %>
-                           <div class="requires sm_text highlight2">Requires <span class="vl_header"><%= ul_a_pointsForLink %></span> points</div>
+                           <div class="requires sm_text highlight2">Requires <span class="vl_header"><%= ul_a_pointsForLink * -1 %></span> points</div>
                        <% } %>
 
                        <% if (ul_a_pointsForLink > 0) { %>

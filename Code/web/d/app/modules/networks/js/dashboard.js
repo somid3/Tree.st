@@ -80,7 +80,7 @@ function NetworkDashboard () {
 
     this.go = function (event, sendTo, parameters, callback) {
 
-        /* Setting up the general user interface */
+        Event.preventDefault(event);
 
         // Scroll to the top of the page
         Animations.scrollToTop();

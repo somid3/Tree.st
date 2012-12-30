@@ -35,7 +35,7 @@
 
 <% if (!network.isGlobal()) { %>
 
-    <a href="#" onclick="ND.go(null, NetworkDashboard.Section.TOP);">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.TOP);">
         <div class="shortcut" id="network_shortcut_top">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/premium.png" alt="Top"></div>
@@ -50,7 +50,7 @@
             <a href="/d/how/#share" target="_help"><img src="./img/help.png" alt="Help"></a>
         </div>
     </div>
-    <a href="#" onclick="ND.go(null, NetworkDashboard.Section.SHARE);">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SHARE);">
         <div class="shortcut" id="network_shortcut_share">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/share.png" alt="Share"></div>
@@ -64,7 +64,7 @@
             <a href="/d/how/#groups" target="_help"><img src="./img/help.png" alt="Help"></a>
         </div>
     </div>
-    <a href="#" onclick="ND.go(null, NetworkDashboard.Section.SMART_GROUPS);">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUPS);">
         <div class="shortcut" id="network_shortcut_smart_groups">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/smart_groups.png" alt="Smart Groups"></div>
@@ -78,7 +78,7 @@
             <a href="/d/how/#finder" target="_help"><img src="./img/help.png" alt="Help"></a>
         </div>
     </div>
-    <a href="#" onclick="ND.go(null, NetworkDashboard.Section.SMART_SEARCH);">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_SEARCH);">
         <div class="shortcut" id="network_shortcut_smart_search">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/smart_search.png" alt="Smart Search"></div>
@@ -92,7 +92,7 @@
 <% } %>
 
 <% if (nextQuestionRef != null) { %>
-    <a href="#" onclick="ND.go(null, NetworkDashboard.Section.QUESTIONS);">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.QUESTIONS);">
         <div class="shortcut" id="network_shortcut_questions">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/collaborate.png" alt="Collaborate"></div>
