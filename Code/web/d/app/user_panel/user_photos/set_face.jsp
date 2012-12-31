@@ -21,6 +21,14 @@
     String hScaledImageId = HtmlUtils.getRandomId();
     String scaledFaceUrl = scaled.getUrl();
 %>
+
+<script type="text/javascript">
+    UPH = new UserPhotos();
+    UPH.resourceRef = <%= scaled.getRef() %>;
+    UPH.resourceChecksum = '<%= scaled.getChecksum() %>';
+    UPH.hScaledImageId = '<%= hScaledImageId %>';
+</script>
+
 <div class="user_setting_container">
 
     <div id="face_upload_container">
@@ -59,7 +67,7 @@
                 </div>
 
                 <div style="float: right">
-                    <a href="#"><div id="set_button" class="lg_button submit_button">Set face</div></a>
+                    <a href="#" onclick="UPH.submitSetFace(event)"><div id="set_button" class="lg_button submit_button">Set face</div></a>
                 </div>
 
             </div>
@@ -73,13 +81,7 @@
     </div>
 
     <script type="text/javascript">
-
-        UPH = new UserPhotos();
-        UPH.ref = <%= scaled.getRef() %>;
-        UPH.checksum = "<%= scaled.getChecksum() %>";
-        UPH.hScaledImageId = '<%= hScaledImageId %>';
-        UPH.initPhotoUpload();
-
+        UPH.initSetFace();
     </script>
 
 </div>

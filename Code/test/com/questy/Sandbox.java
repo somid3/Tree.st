@@ -2,6 +2,7 @@ package com.questy;
 
 import com.questy.admin.AdminServices;
 import com.questy.admin.MIT;
+import com.questy.dao.AppResourceDao;
 import com.questy.domain.AppResource;
 import com.questy.enums.AppEnum;
 import com.questy.enums.AppResourceTypeEnum;
@@ -19,10 +20,15 @@ public class Sandbox {
 
     public static void main(String[] args) throws Exception {
 
-        AppResource resource = AppResourceServices.insertAndRetrieve(3, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, 20, true);
-        String filePath = resource.getFilePath();
 
-        System.out.println(filePath);
+//        AppResource resource = AppResourceServices.insertAndRetrieve(3, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, 20, true);
+//        String filePath = resource.getFilePath();
+
+        AppResource scaledResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, 3, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, 29, "x0POzKzVdtmu3ei1WlnEzkzBU");
+        String scaledFilePath = scaledResource.getFilePath();
+
+
+        System.out.println(scaledFilePath);
 
 
 

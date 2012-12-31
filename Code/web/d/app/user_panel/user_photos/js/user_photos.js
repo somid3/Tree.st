@@ -6,8 +6,8 @@ UserPhotos.Section = {
 
 function UserPhotos () {
 
-    this.ref = null;
-    this.checksum = null;
+    this.resourceRef = null;
+    this.resourceChecksum = null;
     this.hScaledImageId = null;
 
     this.coordinates = null;
@@ -22,7 +22,7 @@ function UserPhotos () {
      * cropped. Also binds the Jcrop mechanism to
      * such image
      */
-    this.initPhotoUpload = function () {
+    this.initSetFace = function () {
 
         var tmp_this = this;
 
@@ -38,42 +38,41 @@ function UserPhotos () {
             setSelect: [ 10, 10, 70, 70 ]
 
         });
+    };
 
-        /**
-         * Binding the set face mechanism to the set button. This
-         * retrieves the set coordinates and passes it to the server
-         * to create the new thumbnail
-         */
-        $("#set_button").bind("click", function(event) {
+    /**
+     * Binding the set face mechanism to the set button. This
+     * retrieves the set coordinates and passes it to the server
+     * to create the new thumbnail
+     */
+    this.submitSetFace = function(event) {
 
-            Event.preventDefault(event);
+        Event.preventDefault(event);
 
-            // Set parameters for calling the set face action
-            var parameters = {};
+        // Set parameters for calling the set face action
+        var parameters = {};
 
-            // Passing user face details
-            parameters.r = tmp_this.ref;
-            parameters.cs = tmp_this.checksum;
+        // Passing user face details
+        parameters.rr = this.resourceRef;
+        parameters.rcs = this.resourceChecksum;
 
-            // Passing coordinates
-            var coords = tmp_this.coordinates;
+        // Passing coordinates
+        var coords = this.coordinates;
 
-            parameters.x1 = Math.round(coords.x);
-            parameters.y1 = Math.round(coords.y);
-            parameters.x2 = Math.round(coords.x2);
-            parameters.y2 = Math.round(coords.y2);
-            parameters.w =  Math.round(coords.w);
-            parameters.h =  Math.round(coords.h);
+        parameters.x1 = Math.round(coords.x);
+        parameters.y1 = Math.round(coords.y);
+        parameters.x2 = Math.round(coords.x2);
+        parameters.y2 = Math.round(coords.y2);
+        parameters.w =  Math.round(coords.w);
+        parameters.h =  Math.round(coords.h);
 
-            // Call the set face action
-            $.post('./user_panel/actions/set_face.jsp', parameters, function() {
+        // Call the set face action
+        $.post('./user_panel/user_photos/actions/set_face.jsp', parameters, function() {
 
-                // Refresh the application
-                URL.redirect("/d/app/");
+            // Refresh the application
+   //         URL.redirect("/d/app/");
 
-            })
-
-        });
+        })
 
     };
 
@@ -159,12 +158,12 @@ function UserPhotos () {
 /**
  * Hides a particular photo of a user
  */
-UserPhotos.hidePhoto = function (event, hPhotoId, ref, checksum) {
+UserPhotos.hidePhoto = function (event, hPhotoId, resourceRef, checksum) {
 
    Event.preventDefault(event);
 
    // Sending request to hide photo
-   $.post('./user_panel/actions/hide_photo.jsp', {r: ref, rcs: checksum},
+   $.post('./user_panel/user_photos/actions/hide_photo.jsp', {rr: resourceRef, rcs: checksum},
        function(data) {
 
            $("#" + hPhotoId).fadeOut();
@@ -175,19 +174,18 @@ UserPhotos.hidePhoto = function (event, hPhotoId, ref, checksum) {
 /**
  * Sets a particular face as the main face for a user
  */
-UserPhotos.setProfile = function (event, ref, checksum) {
+UserPhotos.setProfile = function (event, resourceRef, checksum) {
 
     Event.preventDefault(event);
 
     // Sending request to hide photo
-    $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
+    $.post('./user_panel/user_photos/actions/set_profile.jsp', {rr: resourceRef, rcs: checksum},
         function(data) {
 
             URL.redirect("/d/app");
 
         });
 };
-
 
 /**
  * Removes selected class from all items on the network dashboard
@@ -219,14 +217,11 @@ UserPhotos.go = function (event, sendTo, parameters, callback) {
 
         this.clickItem(event, '#user_photos_upload', './user_panel/user_photos/upload.jsp', parameters, callback);
 
-    else if (sendTo == UserPhotos.Section.VIEW_ALL) {
-
-        console.log($('#user_photos_canvas'));
-        console.log($('#user_photos_dashboard'));
+    else if (sendTo == UserPhotos.Section.VIEW_ALL)
 
         this.clickItem(event, "#user_photos_view", './user_panel/user_photos/photos.jsp', parameters, callback);
 
-    } else if (sendTo == UserPhotos.Section.SET_FACE)
+    else if (sendTo == UserPhotos.Section.SET_FACE)
 
         this.clickItem(event, "#user_photos_view", './user_panel/user_photos/set_face.jsp', parameters, callback);
 

@@ -31,6 +31,6 @@
 <script type="text/javascript">
 
     UPH = new UserPhotos();
-    UPH.initPhotoUpload();
+    UPH.initSetFace();
 
 </script>

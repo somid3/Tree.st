@@ -31,7 +31,7 @@
 
                 </div>
 
-                <a href="#" onclick='UserPhotos.go(event, UserPhotos.Section.SET_FACE, {r: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
+                <a href="#" onclick='UserPhotos.go(event, UserPhotos.Section.SET_FACE, {rr: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
                 <a href="#" onclick='UserPhotos.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'><div class="sm_text dim">Set profile</div></a>
             </div>
 
@@ -60,7 +60,6 @@
 
     <% } %>
 
-
     <%
     // If user has no photos uploaded
     if (scaleds.isEmpty()) {
@@ -68,6 +67,4 @@
         boolean app_a_withCanvasContainer = false; %>
         <%@ include file="../../includes/app_a_mini_message.jsp" %>
     <% } %>
-
-
 </div>
