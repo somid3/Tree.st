@@ -1,34 +1,17 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 
-<%
-    String hTargetId = HtmlUtils.getRandomId();
-    String hShortcutsId = null;
-    String hShortcutId = null;
-%>
+<div class="user_setting canvas_container">
 
-<script type="text/javascript">
-    UPH = new UserPhotos();
-</script>
-
-<div class="canvas_container">
-
-    <div class="user_setting">
-
-        <% hShortcutsId = HtmlUtils.getRandomId(); %>
-        <div id="<%= hShortcutsId %>" class="shortcuts">
-            <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UPH.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/name_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text highlight2">Name change</div></a>
-
-            <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UPH.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/email_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text highlight2">Email change</div></a>
-
-            <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UPH.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/password_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text highlight2">Password update</div></a>
-        </div>
-
-        <div id="<%= hTargetId %>"></div>
-
+    <div id="user_photos_dashboard" class="shortcuts">
+        <a href="#" onclick="UserPhotos.go(event, UserPhotos.Section.UPLOAD)"><div id="user_photos_upload" class="shortcut sm_text highlight2">Upload Photo</div></a>
+        <a href="#" onclick="UserPhotos.go(event, UserPhotos.Section.VIEW_ALL)"><div id="user_photos_view" class="shortcut sm_text highlight2">View Photos</div></a>
     </div>
 
+    <div id="user_photos_canvas"></div>
+
 </div>
+
+<script type="text/javascript">
+    UserPhotos.go(null, UserPhotos.Section.UPLOAD);
+</script>

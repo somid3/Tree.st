@@ -11,7 +11,7 @@
 %>
 
 
-<div class="canvas_container">
+<div class="user_setting_container">
 
     <% for (AppResource scaled : scaleds) {
 

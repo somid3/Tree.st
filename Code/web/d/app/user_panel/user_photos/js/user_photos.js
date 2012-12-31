@@ -1,3 +1,9 @@
+UserPhotos.Section = {
+    UPLOAD: 1,
+    VIEW_ALL: 2,
+    SET_FACE: 3
+};
+
 function UserPhotos () {
 
     this.ref = null;
@@ -40,7 +46,7 @@ function UserPhotos () {
      * cropped. Also binds the Jcrop mechanism to
      * such image
      */
-    this.init = function () {
+    this.initPhotoUpload = function () {
 
         var tmp_this = this;
 
@@ -84,7 +90,7 @@ function UserPhotos () {
             parameters.h =  Math.round(coords.h);
 
             // Call the set face action
-            $.post('./modules/user_panel/actions/set_face.jsp', parameters, function() {
+            $.post('./user_panel/actions/set_face.jsp', parameters, function() {
 
                 // Refresh the application
                 URL.redirect("/d/app/");
@@ -139,17 +145,6 @@ function UserPhotos () {
         parent.coordinates = coords;
     };
 
-    this.onAddQueueItem = function () {
-
-        this.locked = false;
-
-        var $container = $("#face_upload_container");
-
-        var $error = $container.find(".error:first");
-
-        $error.fadeOut();
-
-    };
 
     this.onError = function (errorType) {
 
@@ -183,5 +178,61 @@ function UserPhotos () {
 
         $error.fadeIn();
     }
-
 }
+
+/**
+ * Removes selected class from all items on the network dashboard
+ * and adds the selected class to the selector provided
+ */
+UserPhotos.clickItem = function (event, selector, url, parameters, callback) {
+
+    Event.preventDefault(event);
+
+    UserPhotos.unhighlightAll();
+
+
+    // Creating a callback that hides the canvas loading
+    var newCallback = function () {
+        if (callback) callback();
+    };
+
+    // Add highlight to the selected box
+    if (selector) {
+        $(selector).addClass("selected", 250);
+    }
+
+    var data = {};
+    data = $.extend(data, parameters);
+
+    Transitions.load('#user_photos_canvas', url, data, newCallback());
+
+};
+
+UserPhotos.go = function (event, sendTo, parameters, callback) {
+
+    Event.preventDefault(event);
+
+    if (sendTo == null  || sendTo == UserPhotos.Section.UPLOAD)
+
+        this.clickItem(event, '#user_photos_upload', './user_panel/user_photos/upload.jsp', parameters, callback);
+
+    else if (sendTo == UserPhotos.Section.VIEW_ALL)
+
+        this.clickItem(event, "#user_photos_view", './user_panel/user_photos/photos.jsp', parameters, callback);
+
+    else if (sendTo == UserPhotos.Section.SET_FACE)
+
+        this.clickItem(event, "#user_photos_view", './user_panel/user_photos/set_face.jsp', parameters, callback);
+
+};
+
+UserPhotos.unhighlightAll = function () {
+
+    // Remove all highlights from network dash board
+    $("#user_photos_dashboard .shortcut").each(
+        function() {
+            $(this).removeClass("selected");
+        }
+    );
+
+};

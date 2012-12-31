@@ -3,9 +3,6 @@
 <%
     User me = UserDao.getById(null, userId);
 %>
-<script type="text/javascript">
-    UP = new UserPanel();
-</script>
 <div id="user_panel_dashboard">
     <div class="details">
         <div id="message">
@@ -20,9 +17,9 @@
     <div class="menu">
         <div class="shortcuts">
 
-            <a href="#" onclick="UP.go(event, UserPanel.Section.NETWORKS);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_networks">Communities</div></a>
-            <a href="#" onclick="UP.go(event, UserPanel.Section.PHOTOS);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_photos">Your photos</div></a>
-            <a href="#" onclick="UP.go(event, UserPanel.Section.GENERAL);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_general">General</div></a>
+            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.NETWORKS);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_networks">Communities</div></a>
+            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.PHOTOS);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_photos">Your photos</div></a>
+            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.GENERAL);"><div class="shortcut sm_text highlight2" id="user_panel_shortcut_general">General</div></a>
 
         </div>
     </div>
@@ -31,5 +28,5 @@
 <div id="user_panel_canvas"></div>
 
 <script type="text/javascript">
-    UP.go(null, UserPanel.Section.PHOTOS);
+    UserPanel.go(null, UserPanel.Section.PHOTOS);
 </script>

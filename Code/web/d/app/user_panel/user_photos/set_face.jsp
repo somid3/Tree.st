@@ -78,7 +78,7 @@
         UPH.ref = <%= scaled.getRef() %>;
         UPH.checksum = "<%= scaled.getChecksum() %>";
         UPH.hScaledImageId = '<%= hScaledImageId %>';
-        UPH.init();
+        UPH.initPhotoUpload();
 
     </script>
 

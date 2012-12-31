@@ -1,77 +1,73 @@
 UserPanel.Section = {
 
-    PHOTOS: 1,
-    NETWORKS: 2,
-    GENERAL: 3
+    DASHBOARD: 1,
+    PHOTOS: 2,
+    NETWORKS: 3,
+    GENERAL: 4};
+
+function UserPanel () {}
+
+/**
+ * Removes selected class from all items on the network dashboard
+ * and adds the selected class to the selector provided
+ */
+UserPanel.clickItem = function (event, selector, url, parameters, callback) {
+
+    Event.preventDefault(event);
+
+    CurrentlyMenu.unhighlightAll();
+
+    UserPanel.unhighlightAll();
+
+    // Add full opacity to the left menu
+    LeftMenu.halfOpacity();
+
+    // Scroll to the top of the page
+    Animations.scrollToTop();
+
+    // Display the canvas loading display
+    UserPanel.displayLoading();
+
+    // Creating a callback that hides the canvas loading
+    var newCallback = function () {
+        if (callback) callback();
+        UserPanel.hideLoading();
+    };
+
+    // Add highlight to the selected box
+    if (selector) {
+        $(selector).addClass("selected", 250);
+    }
+
+    var data = {};
+    data = $.extend(data, parameters);
+
+    Transitions.load('#user_panel_canvas', url, data, newCallback());
+
 };
 
-function UserPanel () {
+UserPanel.go = function (event, sendTo, parameters, callback) {
 
-    /**
-     * Removes selected class from all items on the network dashboard
-     * and adds the selected class to the selector provided
-     */
-    this.clickItem = function (event, selector, url, parameters, callback) {
+    Event.preventDefault(event);
 
-        Event.preventDefault(event);
+    if (sendTo == null  || sendTo == UserPanel.Section.PHOTOS)
 
-        CurrentlyMenu.unhighlightAll();
+        this.clickItem(event, '#user_panel_shortcut_photos', './user_panel/user_photos/index.jsp', parameters, callback);
 
-        NetworkDashboard.unhighlightAll();
+    else if (sendTo == UserPanel.Section.NETWORKS)
 
-        UserPanel.unhighlightDashboard();
+        this.clickItem(event, "#user_panel_shortcut_networks", './user_panel/user_networks/index.jsp', parameters, callback);
 
-        // Add full opacity to the left menu
-        LeftMenu.fullOpacity();
+    else if (sendTo == UserPanel.Section.GENERAL)
 
-        // Scroll to the top of the page
-        Animations.scrollToTop();
+        this.clickItem(event, "#user_panel_shortcut_general", './user_panel/user_general/index.jsp', parameters, callback);
 
-        // Display the canvas loading display
-        UserPanel.displayLoading();
-
-        // Creating a callback that hides the canvas loading
-        var newCallback = function () {
-            if (callback) callback();
-            UserPanel.hideLoading();
-        };
-
-        // Add highlight to the selected box
-        if (selector) {
-            $(selector).addClass("selected", 250);
-        }
-
-        var data = {};
-        data = $.extend(data, parameters);
-
-        Transitions.load('#user_panel_canvas', url, data, newCallback());
-
-    };
-
-    this.go = function (event, sendTo, parameters, callback) {
-
-        Event.preventDefault(event);
-
-        if (sendTo == null  || sendTo == UserPanel.Section.PHOTOS)
-
-            this.clickItem(event, '#user_panel_shortcut_photos', './modules/user_panel/user_photos/index.jsp', parameters, callback);
-
-        else if (sendTo == UserPanel.Section.NETWORKS)
-
-            this.clickItem(event, "#user_panel_shortcut_networks", './modules/user_panel/user_networks/index.jsp', parameters, callback);
-
-        else if (sendTo == UserPanel.Section.GENERAL)
-
-            this.clickItem(event, "#user_panel_shortcut_general", './modules/user_panel/user_general/index.jsp', parameters, callback);
-
-    };
-
-}
+};
 
 /**
  * Unhighlights the user panel on the header
  */
-UserPanel.unhighlight = function () {
+UserPanel.unhighlightUser = function () {
 
     $("#header .user").each(
         function() {
@@ -81,7 +77,7 @@ UserPanel.unhighlight = function () {
 
 };
 
-UserPanel.unhighlightDashboard = function () {
+UserPanel.unhighlightAll = function () {
 
     // Remove all highlights from network dash board
     $("#user_panel_dashboard .shortcut").each(
@@ -101,22 +97,27 @@ UserPanel.view = function (event) {
 
     $("#header .user").addClass("selected");
 
+    NetworkDashboard.displayLoading();
+
     Transitions.load("#canvas", "./user_panel/dashboard.jsp");
 
     LeftMenu.halfOpacity();
+
+    NetworkDashboard.hideLoading();
+
 };
 
 
 UserPanel.displayLoading = function () {
-    var $canvasLoading = $("#canvas_loading");
-    var $canvas = $("#canvas");
+    var $canvasLoading = $("#user_panel_canvas_loading");
+    var $canvas = $("#user_panel_canvas");
 
     $canvas.empty();
     $canvasLoading.show();
 };
 
 UserPanel.hideLoading = function () {
-    var $canvasLoading = $("#canvas_loading");
+    var $canvasLoading = $("#user_panel_canvas_loading");
     $canvasLoading.hide();
 };
 

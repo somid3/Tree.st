@@ -89,7 +89,7 @@ LeftMenu.highlightItem = function (selector) {
 
     CurrentlyMenu.unhighlightAll();
 
-    UserPanel.unhighlight();
+    UserPanel.unhighlightUser();
 
     LeftMenu.fullOpacity();
 

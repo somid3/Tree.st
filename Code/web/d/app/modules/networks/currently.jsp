@@ -128,8 +128,8 @@
      */
 
     // Redirect user to user panel?
-    var goSetFace = Go.checkAndRemove("go_face");
-    var goPhotoUpload = Go.checkAndRemove("go_photo");
+    var goSetFace = Go.checkAndRemove("go_set_face");
+    var goPhotoUpload = Go.checkAndRemove("go_photo_upload");
 
     // Redirect user to particular module?
     var goSgr = Go.checkAndRemove("go_sgr");
@@ -137,7 +137,9 @@
 
     if (goSetFace != null) {
 
-
+        UserPanel.go(null, UserPanel.Section.PHOTOS, function() {
+            UserPhotos.go(null, UserPhotos.Section.SET_FACE);
+        })
 
     } else if (goPhotoUpload != null) {
 

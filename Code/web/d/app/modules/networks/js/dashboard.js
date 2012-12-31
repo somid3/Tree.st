@@ -27,7 +27,7 @@ function NetworkDashboard () {
 
         NetworkDashboard.unhighlightAll();
 
-        UserPanel.unhighlight();
+        UserPanel.unhighlightUser();
 
         // Add full opacity to the left menu
         LeftMenu.fullOpacity();
