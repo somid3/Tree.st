@@ -1,12 +1,12 @@
-<%@ include file="../all.jsp" %>
-<%@ include file="load.jsp" %>
+<%@ include file="../../all.jsp" %>
+<%@ include file="../load.jsp" %>
 <%
-    Integer ref = StringUtils.parseInt(request.getParameter("r"));
+    Integer faceRef = StringUtils.parseInt(request.getParameter("r"));
     String checksum = StringUtils.parseString(request.getParameter("cs"));
 
     // Get user photo whose face will be set
     AppResource scaled = null;
-    if (ref == null) {
+    if (faceRef == null) {
 
         // If no face reference is provided, get the latest non-hidden temporary face
         List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
@@ -15,7 +15,7 @@
     } else {
 
         // Retrieve the scaled image of the resource whose face needs to be set
-        scaled = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, ref, checksum);
+        scaled = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, faceRef, checksum);
     }
 
     String hScaledImageId = HtmlUtils.getRandomId();
@@ -74,11 +74,12 @@
 
     <script type="text/javascript">
 
-        UP = new PhotoUpload();
+        UP = new UserPhotos();
         UP.ref = <%= scaled.getRef() %>;
         UP.checksum = "<%= scaled.getChecksum() %>";
         UP.hScaledImageId = '<%= hScaledImageId %>';
         UP.init();
+
     </script>
 
 </div>

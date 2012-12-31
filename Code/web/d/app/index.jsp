@@ -49,16 +49,22 @@
 <script type="text/javascript" src="./modules/search/js/search.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/search/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="./user_panel/js/user_panel_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/photo_upload.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/js/jquery.uploadifive.min.js?<%= Vars.rev %>"></script>
+
+
+
+<script type="text/javascript" src="user_panel/js/user_panel.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="user_panel/user_general/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="user_panel/user_networks/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
+
+<script type="text/javascript" src="user_panel/user_photos/js/user_photos.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/user_photos/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
+
 <link rel=stylesheet type="text/css" href="./user_panel/css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./user_panel/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./user_panel/css/uploadifive.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="user_panel/user_photos/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
+
+
+
+
 
 <script type="text/javascript" src="./modules/user_links/js/user_links.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/user_links/css/basic.css?<%= Vars.rev %>">
@@ -200,7 +206,7 @@
 
         <div id="dashboard"></div>
 
-        <a href="#" onclick="Header.viewUserPanel(event)">
+        <a href="#" onclick="UserPanel.view(event)">
             <div class="user">
                 <div class="face">
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
@@ -253,13 +259,6 @@
 
     // Load the left side menu
     Transitions.loadFadeIn("#left", "./modules/networks/left.jsp");
-
-    <% if (photo != null) { %>
-
-        // Directing the user to upload photo
-        setTimeout(function() { Header.viewUserPanel(null); }, 2000);
-
-    <% } %>
 </script>
 
 </body>

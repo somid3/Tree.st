@@ -28,14 +28,6 @@
     width: 100%;
 }
 
-#face_upload_container .container .top #upload_button {
-    margin-left: 125px;
-    margin-top: 20px;
-    margin-bottom: 100px;
-    height: 30px;
-    line-height: 30px;
-}
-
 #face_upload_container .container .top #set_button {
     width: 200px;
     height: 30px;

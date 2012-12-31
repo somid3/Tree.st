@@ -1,4 +1,4 @@
-function PhotoUpload () {
+function UserPhotos () {
 
     this.ref = null;
     this.checksum = null;
@@ -6,6 +6,34 @@ function PhotoUpload () {
 
     this.coordinates = null;
     this.locked = false;
+
+
+    this.deletePhoto = function (event, hPhotoId, ref, checksum) {
+
+       Event.preventDefault(event);
+
+       // Sending request to hide photo
+       $.post('./user_panel/actions/delete_photo.jsp', {r: ref, rcs: checksum},
+           function(data) {
+
+               $("#" + hPhotoId).fadeOut();
+
+           });
+    };
+
+    this.setProfile = function (event, ref, checksum) {
+
+        Event.preventDefault(event);
+
+        // Sending request to hide photo
+        $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
+            function(data) {
+
+                URL.redirect("/d/app");
+
+            });
+    };
+
 
     /**
      * Saves the html id of the image that will be
@@ -120,17 +148,6 @@ function PhotoUpload () {
         var $error = $container.find(".error:first");
 
         $error.fadeOut();
-
-    };
-
-    this.queueComplete = function () {
-
-        if (this.locked)
-            return false;
-
-        var parameters = {};
-        parameters.uploaded = "true";
-        UPD.clickItem(null, "#user_panel_shortcut_upload_face", "./user_panel/set_face.jsp", parameters);
 
     };
 

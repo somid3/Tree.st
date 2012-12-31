@@ -28,36 +28,6 @@ NetworksMenu.unhighlightAll = function () {
 };
 
 
-
-
-
-function Header () {}
-
-Header.unhighlightAll = function () {
-
-    $("#header .user").each(
-        function() {
-            $(this).removeClass("selected");
-        }
-    );
-
-};
-
-Header.viewUserPanel = function (event) {
-
-    Event.preventDefault(event);
-
-    $("#header .user").addClass("selected");
-
-    Transitions.load("#canvas", "./user_panel/dashboard.jsp");
-
-    LeftMenu.halfOpacity();
-};
-
-
-
-
-
 function Go () {}
 
 /**
@@ -119,7 +89,7 @@ LeftMenu.highlightItem = function (selector) {
 
     CurrentlyMenu.unhighlightAll();
 
-    Header.unhighlightAll();
+    UserPanel.unhighlight();
 
     LeftMenu.fullOpacity();
 

@@ -174,7 +174,12 @@ public class AppResourceServices extends ParentService  {
 
     }
 
-    private static AppResource insertAndRetrieve (
+    /**
+     * Creates a new user resource and returns it
+     *
+     * @throws SQLException
+     */
+    public static AppResource insertAndRetrieve (
         Integer userId,
         AppEnum application,
         AppResourceTypeEnum type,

@@ -1,5 +1,5 @@
-<%@ include file="../all.jsp" %>
-<%@ include file="load.jsp" %>
+<%@ include file="../../all.jsp" %>
+<%@ include file="../load.jsp" %>
 <%
 
     // Retrieving user face photos that are not temporary
@@ -31,8 +31,8 @@
 
                 </div>
 
-                <a href="#" onclick='UPD.clickItem(event, null, "./modules/user_panel/set_face.jsp", {r: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
-                <a href="#" onclick='UPD.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'><div class="sm_text dim">Set profile</div></a>
+                <a href="#" onclick='UP.clickItem(event, null, "./modules/user_panel/set_face.jsp", {r: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
+                <a href="#" onclick='UP.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'><div class="sm_text dim">Set profile</div></a>
             </div>
 
             <div class="photo" style="
@@ -47,7 +47,7 @@
                 ">
 
                     <span class="sm_text dim">Uploaded <%= PrettyDate.toString(scaled.getCreatedOn()).toLowerCase() %></span>
-                    <a href="#" onclick='UPD.deletePhoto(event, "<%= hPhotoId %>", <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
+                    <a href="#" onclick='UP.deletePhoto(event, "<%= hPhotoId %>", <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
                         <span class="sm_text dim2" style="margin-left: 30px;">Remove</span>
                     </a>
                 </div>
@@ -66,7 +66,7 @@
     if (scaleds.isEmpty()) {
         String app_a_message = "You haven't uploaded any photos yet!";
         boolean app_a_withCanvasContainer = false; %>
-        <%@ include file="../includes/app_a_mini_message.jsp" %>
+        <%@ include file="../../includes/app_a_mini_message.jsp" %>
     <% } %>
 
 
