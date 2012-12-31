@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 
-    UP = new UserPhotos();
-    UP.init();
+    UPH = new UserPhotos();
+    UPH.init();
 
 </script>

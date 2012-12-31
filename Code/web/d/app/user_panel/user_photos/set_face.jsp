@@ -74,11 +74,11 @@
 
     <script type="text/javascript">
 
-        UP = new UserPhotos();
-        UP.ref = <%= scaled.getRef() %>;
-        UP.checksum = "<%= scaled.getChecksum() %>";
-        UP.hScaledImageId = '<%= hScaledImageId %>';
-        UP.init();
+        UPH = new UserPhotos();
+        UPH.ref = <%= scaled.getRef() %>;
+        UPH.checksum = "<%= scaled.getChecksum() %>";
+        UPH.hScaledImageId = '<%= hScaledImageId %>';
+        UPH.init();
 
     </script>
 
