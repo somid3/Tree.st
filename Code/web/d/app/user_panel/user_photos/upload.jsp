@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 
-<form action="./user_panel/user_photos/actions/upload_photo.jsp" method="post" enctype="multipart/form-data">
+<form action="./user_panel/user_photos/actions/upload.jsp" method="post" enctype="multipart/form-data">
 
     <div id="face_upload_container" class="user_setting_container">
 

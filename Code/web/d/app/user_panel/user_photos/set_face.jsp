@@ -21,7 +21,7 @@
     String hScaledImageId = HtmlUtils.getRandomId();
     String scaledFaceUrl = scaled.getUrl();
 %>
-<div class="canvas_container">
+<div class="user_setting_container">
 
     <div id="face_upload_container">
 

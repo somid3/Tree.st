@@ -14,31 +14,7 @@ function UserPhotos () {
     this.locked = false;
 
 
-    this.deletePhoto = function (event, hPhotoId, ref, checksum) {
 
-       Event.preventDefault(event);
-
-       // Sending request to hide photo
-       $.post('./user_panel/actions/delete_photo.jsp', {r: ref, rcs: checksum},
-           function(data) {
-
-               $("#" + hPhotoId).fadeOut();
-
-           });
-    };
-
-    this.setProfile = function (event, ref, checksum) {
-
-        Event.preventDefault(event);
-
-        // Sending request to hide photo
-        $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
-            function(data) {
-
-                URL.redirect("/d/app");
-
-            });
-    };
 
 
     /**
@@ -181,6 +157,39 @@ function UserPhotos () {
 }
 
 /**
+ * Hides a particular photo of a user
+ */
+UserPhotos.hidePhoto = function (event, hPhotoId, ref, checksum) {
+
+   Event.preventDefault(event);
+
+   // Sending request to hide photo
+   $.post('./user_panel/actions/hide_photo.jsp', {r: ref, rcs: checksum},
+       function(data) {
+
+           $("#" + hPhotoId).fadeOut();
+
+       });
+};
+
+/**
+ * Sets a particular face as the main face for a user
+ */
+UserPhotos.setProfile = function (event, ref, checksum) {
+
+    Event.preventDefault(event);
+
+    // Sending request to hide photo
+    $.post('./user_panel/actions/set_profile.jsp', {r: ref, rcs: checksum},
+        function(data) {
+
+            URL.redirect("/d/app");
+
+        });
+};
+
+
+/**
  * Removes selected class from all items on the network dashboard
  * and adds the selected class to the selector provided
  */
@@ -190,21 +199,15 @@ UserPhotos.clickItem = function (event, selector, url, parameters, callback) {
 
     UserPhotos.unhighlightAll();
 
-
-    // Creating a callback that hides the canvas loading
-    var newCallback = function () {
-        if (callback) callback();
-    };
-
     // Add highlight to the selected box
     if (selector) {
-        $(selector).addClass("selected", 250);
+        $(selector).addClass("selected");
     }
 
     var data = {};
     data = $.extend(data, parameters);
 
-    Transitions.load('#user_photos_canvas', url, data, newCallback());
+    Transitions.load('#user_photos_canvas', url, data, callback);
 
 };
 
@@ -216,11 +219,14 @@ UserPhotos.go = function (event, sendTo, parameters, callback) {
 
         this.clickItem(event, '#user_photos_upload', './user_panel/user_photos/upload.jsp', parameters, callback);
 
-    else if (sendTo == UserPhotos.Section.VIEW_ALL)
+    else if (sendTo == UserPhotos.Section.VIEW_ALL) {
+
+        console.log($('#user_photos_canvas'));
+        console.log($('#user_photos_dashboard'));
 
         this.clickItem(event, "#user_photos_view", './user_panel/user_photos/photos.jsp', parameters, callback);
 
-    else if (sendTo == UserPhotos.Section.SET_FACE)
+    } else if (sendTo == UserPhotos.Section.SET_FACE)
 
         this.clickItem(event, "#user_photos_view", './user_panel/user_photos/set_face.jsp', parameters, callback);
 

@@ -31,8 +31,8 @@
 
                 </div>
 
-                <a href="#" onclick='UP.clickItem(event, null, "./modules/user_panel/set_face.jsp", {r: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
-                <a href="#" onclick='UP.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'><div class="sm_text dim">Set profile</div></a>
+                <a href="#" onclick='UserPhotos.go(event, UserPhotos.Section.SET_FACE, {r: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'><div class="sm_text dim" style="margin: 5px 0">Edit face</div></a>
+                <a href="#" onclick='UserPhotos.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'><div class="sm_text dim">Set profile</div></a>
             </div>
 
             <div class="photo" style="
@@ -47,7 +47,7 @@
                 ">
 
                     <span class="sm_text dim">Uploaded <%= PrettyDate.toString(scaled.getCreatedOn()).toLowerCase() %></span>
-                    <a href="#" onclick='UP.deletePhoto(event, "<%= hPhotoId %>", <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
+                    <a href="#" onclick='UserPhotos.hidePhoto(event, "<%= hPhotoId %>", <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
                         <span class="sm_text dim2" style="margin-left: 30px;">Remove</span>
                     </a>
                 </div>

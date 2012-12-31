@@ -1,6 +1,4 @@
 UserPanel.Section = {
-
-    DASHBOARD: 1,
     PHOTOS: 2,
     NETWORKS: 3,
     GENERAL: 4};
@@ -36,13 +34,13 @@ UserPanel.clickItem = function (event, selector, url, parameters, callback) {
 
     // Add highlight to the selected box
     if (selector) {
-        $(selector).addClass("selected", 250);
+        $(selector).addClass("selected");
     }
 
     var data = {};
     data = $.extend(data, parameters);
 
-    Transitions.load('#user_panel_canvas', url, data, newCallback());
+    Transitions.load('#user_panel_canvas', url, data, newCallback);
 
 };
 
@@ -91,7 +89,7 @@ UserPanel.unhighlightAll = function () {
 /**
  * Displays the user panel dashboard
  */
-UserPanel.view = function (event) {
+UserPanel.view = function (event, callback) {
 
     Event.preventDefault(event);
 
@@ -99,12 +97,11 @@ UserPanel.view = function (event) {
 
     NetworkDashboard.displayLoading();
 
-    Transitions.load("#canvas", "./user_panel/dashboard.jsp");
-
     LeftMenu.halfOpacity();
 
-    NetworkDashboard.hideLoading();
+    Transitions.load("#canvas", "./user_panel/dashboard.jsp", callback);
 
+    NetworkDashboard.hideLoading();
 };
 
 
