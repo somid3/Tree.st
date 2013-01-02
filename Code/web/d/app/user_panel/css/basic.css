@@ -1,88 +1,6 @@
 <%@include file="../../../../all.jsp" %>
 <%@page contentType="text/css" %>
 
-#face_upload_container {
-    overflow: visible;
-}
-
-#face_upload_container .message {
-    margin: 20px;
-    line-height: 1.5em;
-}
-
-#face_upload_container .container {
-    margin: 0 auto;
-    width: 500px;
-}
-
-#face_upload_container #error {
-    margin: 0 auto;
-    width:75%;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-#face_upload_container .container .top {
-    margin-bottom: 5px;
-    display: inline-block;
-    width: 100%;
-}
-
-#face_upload_container .container .top #set_button {
-    width: 200px;
-    height: 30px;
-    line-height: 30px;
-    float: right;
-    margin-top: 20px;
-
-}
-
-#face_upload_container .container .bottom {
-}
-
-#face_upload_container .container .bottom .temp_scaled {
-    margin: 0 auto;
-}
-
-#face_upload_container .container .bottom .temp_scaled img {
-
-    /*
-     * Do not define image dimensions as it will throw
-     * off the cropping mechanism and the coordinates
-     * passed to the server
-     */
-}
-
-#face_upload_container .container .thumbs {
-    float: left;
-    display: inline-block;
-    /*margin-top: 5px;*/
-}
-
-#face_upload_container .container .thumb {
-    overflow: hidden;
-    margin-right: 5px;
-    border: 1px solid #bbb;
-    float: left;
-}
-
-
-
-#face_upload_container .x60 img {
-    width: 60px;
-    height: 60px;
-}
-
-#face_upload_container .x40 img {
-    width: 40px;
-    height: 40px;
-}
-
-#face_upload_container .x20 img {
-    width: 20px;
-    height: 20px;
-}
-
 
 
 
@@ -231,3 +149,132 @@
     background-color: <%= HtmlDesign.highlight %>;
 }
 
+
+
+
+
+
+
+
+
+
+/*************
+ * User Photos
+ *************/
+
+/* List of photos */
+.user_photos {
+
+}
+
+.user_photos .user_photo {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.user_photos .user_photo .face_summary {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.user_photos .user_photo .face_summary .face {
+    margin-right: 10px;
+    float: left;
+}
+
+.user_photos .user_photo .face_summary .face_shortcuts {
+    float: right;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.user_photos .user_photo .face_summary .face_shortcuts .face_shortcut {
+    float: left;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.user_photos .user_photo .photo {
+}
+
+
+/* Container used to upload photos that will become the user's face */
+#face_upload_container {
+    overflow: visible;
+}
+
+#face_upload_container .message {
+    margin: 20px;
+    line-height: 1.5em;
+}
+
+#face_upload_container .container {
+    margin: 0 auto;
+    width: 500px;
+}
+
+#face_upload_container #error {
+    margin: 0 auto;
+    width:75%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#face_upload_container .container .top {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+#face_upload_container .container .top #set_button {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    margin-top: 20px;
+
+}
+
+#face_upload_container .container .bottom {
+}
+
+#face_upload_container .container .bottom .temp_scaled {
+    margin: 0 auto;
+}
+
+#face_upload_container .container .bottom .temp_scaled img {
+
+    /*
+     * Do not define image dimensions as it will throw
+     * off the cropping mechanism and the coordinates
+     * passed to the server
+     */
+}
+
+#face_upload_container .container .thumbs {
+    float: left;
+    display: inline-block;
+    /*margin-top: 5px;*/
+}
+
+#face_upload_container .container .thumb {
+    overflow: hidden;
+    margin-right: 5px;
+    border: 1px solid #bbb;
+    float: left;
+}
+
+#face_upload_container .x60 img {
+    width: 60px;
+    height: 60px;
+}
+
+#face_upload_container .x40 img {
+    width: 40px;
+    height: 40px;
+}
+
+#face_upload_container .x20 img {
+    width: 20px;
+    height: 20px;
+}

@@ -70,7 +70,7 @@ function UserPhotos () {
         $.post('./user_panel/user_photos/actions/set_face.jsp', parameters, function() {
 
             // Refresh the application
-   //         URL.redirect("/d/app/");
+            URL.redirect("/d/app/");
 
         })
 

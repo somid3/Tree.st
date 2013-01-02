@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
-    Integer faceRef = StringUtils.parseInt(request.getParameter("r"));
+    Integer faceRef = StringUtils.parseInt(request.getParameter("rr"));
     String checksum = StringUtils.parseString(request.getParameter("cs"));
 
     // Get user photo whose face will be set
@@ -10,6 +10,11 @@
 
         // If no face reference is provided, get the latest non-hidden temporary face
         List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
+
+        // If there are no temp images send user to app without any "go_" parameters
+        if (faces.isEmpty())
+            wu.redirect("/d/app");
+
         scaled = faces.get(0);
 
     } else {
