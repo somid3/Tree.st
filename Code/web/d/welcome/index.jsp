@@ -16,6 +16,7 @@
 
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
+
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
 
@@ -37,13 +38,6 @@
         <div id="playing-video" class="left shadow">
             <iframe src="http://player.vimeo.com/video/46590201?autoplay=true" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
-    <!--
-        <div class="left lg_text white">
-            <div class="quote lg_text dim">I can quickly find the right people and get the best advice, all in one place. It's instant. It's great!</div>
-            <div class="info smd_text white">Sarah is a research manager at a Boston law firm</div>
-            <img class="persona" src="">
-        </div>
-    -->
         <div class="right">
             <div class="actions">
                 <a href="#request">
@@ -58,13 +52,6 @@
                         <div><span class="md_text white">Discover others around you</span></div>
                     </div>
                 </a>
-            <!--
-                <a href="#" onclick="Welcome.displayVideo(event, 'playing-video', '46590201');">
-                     <div id="begin-case">
-                        <span class="smd_text white">View a 1-min. Case-Study Video</span>
-                     </div>
-                </a>
-            -->
             </div>
         </div>
     </div>
@@ -111,46 +98,35 @@
 
 <div class="w800 center">
     <div class="benefits">
-        <!-- <a href="#" onclick="Welcome.displayVideo(event, 'playing-video', '46590201');"> -->
             <div class="step shadow">
                 <div class="title md_header dim">Gather The Details</div>
                 <div class="desc sm_text dim">Ask the members of your community any question, and create a unique profile based on a tree of questions.</div>
                 <div class="img">
-                    <!-- <div class="play glow2"><img src="./img/play.png"></div>     -->
                     <img src="./img/profile.png">
                 </div>
             </div>
-        <!-- </a>  -->
-        <!-- <a href="#" onclick="Welcome.displayVideo(event, 'playing-video', '46590201');">  -->
             <div class="step shadow">
                 <div class="title md_header dim">Enable Searching</div>
                 <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search allows all your members to find who they are looking for.</div>
                 <div class="img">
-                    <!-- <div class="play glow2"><img src="./img/play.png"></div>   -->
                     <img src="./img/finder.png">
                 </div>
             </div>
-        <!-- </a>    -->
-        <!-- <a href="#" onclick="Welcome.displayVideo(event, 'playing-video', '46590201');">    -->
             <div class="step shadow">
                 <div class="title md_header dim">"Smart" Groups</div>
                 <div class="desc sm_text dim">Stop individually adding members to groups. Group them automatically based on qualities.</div>
                 <div class="img">
-                    <!-- <div class="play glow2"><img src="./img/play.png"></div>    -->
                     <img src="./img/groups.png">
                 </div>
             </div>
         </a>
-        <!-- <a href="#" onclick="Welcome.displayVideo(event, 'playing-video', '46590201');">     -->
             <div class="step shadow">
                 <div class="title md_header dim">Communicate</div>
                 <div class="desc sm_text dim">Foster communication within "Smart" groups with challenges and awards, and see what's trending in each group!</div>
                 <div class="img">
-                    <!-- <div class="play glow2"><img src="./img/play.png"></div>       -->
                     <img src="./img/communicate.png">
                 </div>
             </div>
-        <!-- </a>     -->
     </div>
 
 
