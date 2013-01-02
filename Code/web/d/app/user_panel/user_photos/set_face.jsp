@@ -1,7 +1,7 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
-    Integer faceRef = StringUtils.parseInt(request.getParameter("r"));
+    Integer faceRef = StringUtils.parseInt(request.getParameter("rr"));
     String checksum = StringUtils.parseString(request.getParameter("cs"));
 
     // Get user photo whose face will be set
@@ -10,6 +10,11 @@
 
         // If no face reference is provided, get the latest non-hidden temporary face
         List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
+
+        // If there are no temp images send user to app without any "go_" parameters
+        if (faces.isEmpty())
+            wu.redirect("/d/app");
+
         scaled = faces.get(0);
 
     } else {
@@ -21,7 +26,15 @@
     String hScaledImageId = HtmlUtils.getRandomId();
     String scaledFaceUrl = scaled.getUrl();
 %>
-<div class="canvas_container">
+
+<script type="text/javascript">
+    UPH = new UserPhotos();
+    UPH.resourceRef = <%= scaled.getRef() %>;
+    UPH.resourceChecksum = '<%= scaled.getChecksum() %>';
+    UPH.hScaledImageId = '<%= hScaledImageId %>';
+</script>
+
+<div class="user_setting_container">
 
     <div id="face_upload_container">
 
@@ -59,7 +72,7 @@
                 </div>
 
                 <div style="float: right">
-                    <a href="#"><div id="set_button" class="lg_button submit_button">Set face</div></a>
+                    <a href="#" onclick="UPH.submitSetFace(event)"><div id="set_button" class="lg_button submit_button">Set face</div></a>
                 </div>
 
             </div>
@@ -73,13 +86,7 @@
     </div>
 
     <script type="text/javascript">
-
-        UP = new UserPhotos();
-        UP.ref = <%= scaled.getRef() %>;
-        UP.checksum = "<%= scaled.getChecksum() %>";
-        UP.hScaledImageId = '<%= hScaledImageId %>';
-        UP.init();
-
+        UPH.initSetFace();
     </script>
 
 </div>

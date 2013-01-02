@@ -17,7 +17,7 @@ function UserNetworksDashboard () {
 
         // Add highlight to the selected box
         if (hShortcutId) {
-            $('#' + hShortcutId).addClass("selected", 250);
+            $('#' + hShortcutId).addClass("selected");
         }
 
         var parameters = {};

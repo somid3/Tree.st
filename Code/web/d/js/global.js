@@ -18,9 +18,9 @@ Transitions.postFadeIn = function (selector, postUrl, parameters, callback) {
 /*
  * Quickly replaces the contents of the page
  */
-Transitions.load = function (selector, loadUrl, parameters, callback) {
+Transitions.load = function (selector, loadUrl, parameters, onCompleteCallback) {
 
-    $(selector).load(loadUrl, parameters, callback);
+    $(selector).load(loadUrl, parameters, onCompleteCallback);
 
 };
 

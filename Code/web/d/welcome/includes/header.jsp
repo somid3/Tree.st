@@ -8,10 +8,6 @@
     String header_active = "";
 { %>
 
-<%--<div id="status" class="w400 lg_text white">--%>
-    <%--Under construction until January 5th, 2013--%>
-<%--</div>--%>
-
 <div id="outer-header" class="square">
     <div class="w800 center">
         <div id="header" class="w800">

@@ -128,20 +128,28 @@
      */
 
     // Redirect user to user panel?
-    var goSetFace = Go.checkAndRemove("go_face");
-    var goPhotoUpload = Go.checkAndRemove("go_photo");
+    var goSetFace = Go.checkAndRemove("go_set_face");
+    var goPhotoUpload = Go.checkAndRemove("go_photo_upload");
 
     // Redirect user to particular module?
     var goSgr = Go.checkAndRemove("go_sgr");
     var goVuid = Go.checkAndRemove("go_vuid");
 
+    // Doing the redirections
     if (goSetFace != null) {
 
-
+        // Go to the page where user crops face
+        UserPanel.view(null, function () {
+            UserPanel.go(null, UserPanel.Section.PHOTOS, null, function() {
+                setTimeout(function() { UserPhotos.go(null, UserPhotos.Section.SET_FACE); }, 500);
+            });
+        });
 
     } else if (goPhotoUpload != null) {
 
-
+        UserPanel.view(null, function () {
+            UserPanel.go(null, UserPanel.Section.PHOTOS);
+        });
 
     } else if (goVuid != null) {
 

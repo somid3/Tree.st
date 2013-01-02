@@ -27,7 +27,13 @@ function NetworkDashboard () {
 
         NetworkDashboard.unhighlightAll();
 
-        UserPanel.unhighlight();
+        UserPanel.unhighlightUser();
+
+        // Add full opacity to the left menu
+        LeftMenu.fullOpacity();
+
+        // Scroll to the top of the page
+        Animations.scrollToTop();
 
         // Display the canvas loading display
         NetworkDashboard.displayLoading();
@@ -81,12 +87,6 @@ function NetworkDashboard () {
     this.go = function (event, sendTo, parameters, callback) {
 
         Event.preventDefault(event);
-
-        // Scroll to the top of the page
-        Animations.scrollToTop();
-
-        // Add full opacity to the left menu
-        LeftMenu.fullOpacity();
 
         if (sendTo == null  || sendTo == NetworkDashboard.Section.QUESTIONS)
 
