@@ -25,8 +25,8 @@
 <div class="main-block">
     <div class="w800 center">
         <div class="block">
-            <div class="main gg_header white">Get to Know Everyone.</div>
-            <div class="sub vl_text white">Find & group people by their qualities &mdash; and create amazing bonds.</div>
+            <div class="main gg_header white">Find anyone.</div>
+            <div class="sub vl_text white">Discover & group people by their qualities<br/>&mdash; and create amazing connections.</div>
         </div>
     </div>
 </div>
@@ -35,7 +35,7 @@
 
     <div class="w800 center">
         <div id="playing-video" class="left shadow">
-            <iframe src="http://player.vimeo.com/video/46590201?autoplay=true" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            <iframe src="http://player.vimeo.com/video/56698814?autoplay=true" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
         <div class="right">
             <div class="actions">
@@ -43,7 +43,7 @@
                     <div class="action glow">
                         <img class="today" src="./img/today.png">
                         <div><span class="lg_header white">Start Your Community Today!</span></div>
-                        <div><span class="smd_text white">Our engineers will help you at every step of the way. In less than 48 hours your solution &mdash; delivered.</span></div>
+                        <div><span class="smd_text white">Our engineers will help you every step of the way. In less than 48 hours &mdash; your solution delivered.</span></div>
                     </div>
                 </a>
                 <br/>
@@ -61,8 +61,8 @@
 
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">Case Studies By Industry</div>
-        <div class="sub smd_text dim">Tree.st can adapt to many needs, here are few examples</div>
+        <div class="main sp_header">Specific To Your Organization</div>
+        <div class="sub smd_text dim">Tree.st can adapt to any industry, here are a few examples:</div>
     </div>
 </div>
 
@@ -77,7 +77,7 @@
                 online.</p>
 
                 <p>Offer a feature-rich searchable directory to your members.
-                Attract more members, increase donations and reduce costs.</p>
+                Attract more members, increase donations, and reduce costs.</p>
             </div>
         </div>
         <div class="solution shadow">
@@ -85,27 +85,58 @@
             <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
             <div class="desc sm_text dim">
                 <div class="img"><img src="./img/education.png"></div>
-                <p>Allow your students to find one another based on their interests, goals, and knowledge.</p>
-                <p>Build a stronger alumni community, mentoring and advisorship programs.</p>
+                <p>Allow your students to find one another and communicate based on their interests, goals, and knowledge.</p>
+                <p>Build a stronger alumni community, streamline research efforts, and create mentorship opportunities.</p>
             </div>
         </div>
         <div class="solution shadow">
             <div class="title md_header dim">Conferences & Trade Shows</div>
-            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
             <div class="desc sm_text dim">
                 <div class="img">
                     <img src="./img/conferences.png">
                 </div>
-                <p>Empower your participants to have purposeful, subject-specific, conversations by creating groups that join together individuals with common qualities.</p>
-                <p>Participants specifically who they would like to meet and do business with.</p>
+                <p>Participants can seamlessly discover and connect with specific individuals before they even arrive on site.</p>
+                <p>Empower your participants to have purposeful conversations by uniting groups with shared qualities.</p>
             </div>
+        </div>
+    </div>
+    <div class="solutions">
+        <div class="solution shadow">
+            <div class="title lg_header dim">Mentoring Groups</div>
+            <div class="desc sm_text dim">
+                <div class="img"><img src="./img/mentoring.png"></div>
+                <p>Automatically find the best mentor for a mentee.</p>
+
+                <p>Easily discover the needs of all your mentees and group them together so that they may also help one another.</p>
+            </div>
+        </div>
+        <div class="solution shadow">
+            <div class="title md_header dim">Healthcare & Biotech</div>
+            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
+            <div class="desc sm_text dim">
+                <div class="img"><img src="./img/health.png"></div>
+                <p>Create patient, practitioner, and research communities that improve healthcare outcomes.</p>
+                <p>Gain valuable insights and improve care by allowing patients, care-givers, and practitioners to focus on subject-specific conversations within private communities.</p>
+            </div>
+        </div>
+        <div class="solution shadow">
+            <div class="title md_header dim">Business Enterprises</div>
+            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
+            <div class="desc sm_text dim">
+                <div class="img">
+                    <img src="./img/business.png">
+                </div>
+                <p>Break business silos and allow different functional groups to innovate together.</p>
+                <p>Drive business-value by leveraging your human capital to find solutions to multi-disciplinary problems.</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="w800 center">
     <div class="statement">
         <div class="main sp_header">Our Four-Step Approach</div>
-        <div class="sub smd_text dim">These simple steps will allow you to build a thriving community online.</div>
+        <div class="sub smd_text dim">These simple steps will allow you to build a dynamic community.</div>
     </div>
 </div>
 
@@ -120,13 +151,13 @@
             </div>
             <div class="step shadow">
                 <div class="title md_header dim">Enable Searching</div>
-                <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search engine will allow your members to find exactly who they are looking for.</div>
+                <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search engine will enable your members to find exactly who they are looking for.</div>
                 <div class="img">
                     <img src="./img/finder.png">
                 </div>
             </div>
             <div class="step shadow">
-                <div class="title md_header dim">"Smart" Groups</div>
+                <div class="title md_header dim">Build "Smart" Groups</div>
                 <div class="desc sm_text dim">Stop individually adding members to groups. Automatically group all your members based on their qualities.</div>
                 <div class="img">
                     <img src="./img/groups.png">
@@ -134,8 +165,8 @@
             </div>
         </a>
             <div class="step shadow">
-                <div class="title md_header dim">Communicate</div>
-                <div class="desc sm_text dim">Empower thematic conversations withing your Smart Groups via challenges and awards, and watch as your members share their interests.</div>
+                <div class="title md_header dim">Collaborate</div>
+                <div class="desc sm_text dim">Empower meaningful conversations within your Smart Groups via challenges and rewards, and watch as your members communicate like never before.</div>
                 <div class="img">
                     <img src="./img/communicate.png">
                 </div>
@@ -146,7 +177,7 @@
 <a name="request"></a>
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">So Let's Begin...</div>
+        <div class="main sp_header">So, Let's Get Started...</div>
         <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
     </div>
 </div>

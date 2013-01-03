@@ -34,7 +34,7 @@
 
  <div class="w800 center">
      <div class="statement">
-         <div class="sub md_text dim">Due to customizations, all accounts require a one-time $99 dollar setup fee.</div>
+         <div class="sub md_text dim">All accounts require a one-time $99 dollar setup fee.</div>
      </div>
  </div>
 
