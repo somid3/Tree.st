@@ -41,15 +41,18 @@
         <div class="right">
             <div class="actions">
                 <a href="#request">
-                    <div class="action">
-                        <div><span class="lg_header white">Start Your Community</span></div>
-                        <div><span class="md_text white">30-day free trial.</span></div>
+                    <div class="action glow">
+                        <img class="today" src="./img/today.png">
+                        <div><span class="lg_header white">Start Your Community Today!</span></div>
+                        <div><span class="smd_text white">Our engineers will help you at every step of the way. In less than 48 hours your solution &mdash; delivered.</span></div>
                     </div>
                 </a>
-                <a href="/d/hello">
+                <br/>
+                <a href="/d/hello" target="_new">
                     <div class="action">
+                        <img class="tree" src="./img/tree.png">
                         <div><span class="lg_header white">Experience a Demo</span></div>
-                        <div><span class="md_text white">Discover others around you</span></div>
+                        <div><span class="smd_text white">Find others around the world!</span></div>
                     </div>
                 </a>
             </div>
@@ -59,7 +62,7 @@
 
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">Our Solutions</div>
+        <div class="main sp_header">Case Studies By Industry</div>
         <div class="sub smd_text dim">Tree.st can adapt to many needs, here are few examples</div>
     </div>
 </div>
@@ -67,32 +70,43 @@
 <div class="w800 center">
     <div class="solutions">
         <div class="solution shadow">
-            <div class="title lg_header dim">Searchable Directories</div>
-            <div class="desc sm_text dim">Create a feature-rich directory for you organization and enable anyone to find others based on their knowledge and qualities.</div>
-            <div class="img"><img src="./img/solution-search2.jpg"></div>
+            <div class="title lg_header dim">Associations</div>
+            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
+            <div class="desc sm_text dim">
+                <div class="img"><img src="./img/associations.png"></div>
+                <p>Save thousands of dollars every year and move your membership paper-based directory
+                online.</p>
+
+                <p>Offer a feature-rich searchable directory to your members.
+                Attract more members, increase donations and reduce costs.</p>
+            </div>
         </div>
         <div class="solution shadow">
-            <div class="title md_header dim">Coaching & Mentoring</div>
-            <div class="desc sm_text dim">Develop communities where you members can organize themselves by their needs and goals, and allow them to help one another.</div>
-            <div class="img"><img src="./img/solution-mentoring2.jpg"></div>
+            <div class="title md_header dim">Educational Institutions</div>
+            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
+            <div class="desc sm_text dim">
+                <div class="img"><img src="./img/education.png"></div>
+                <p>Allow your students to find one another based on their interests, goals, and knowledge.</p>
+                <p>Build a stronger alumni community, mentoring and advisorship programs.</p>
+            </div>
         </div>
         <div class="solution shadow">
-            <div class="title md_header dim">"Smart" Communities</div>
-            <div class="desc sm_text dim">Empower your members to have purposeful, subject-specific, conversations by creating groups that join together individuals with common qualities.</div>
-            <div class="img"><img src="./img/solution-smart.jpg"></div>
-        </div>
+            <div class="title md_header dim">Conferences & Trade Shows</div>
+            <div class="title sm_text highlight2"><img src="./img/pdf.png"> Summary Brochure</div>
+            <div class="desc sm_text dim">
+                <div class="img">
+                    <img src="./img/conferences.png">
+                </div>
+                <p>Empower your participants to have purposeful, subject-specific, conversations by creating groups that join together individuals with common qualities.</p>
+                <p>Participants specifically who they would like to meet and do business with.</p>
+            </div>
+    </div>
 </div>
-
-
-
-
-
-
 
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">Benefits & Demo Videos</div>
-        <div class="sub smd_text dim">Click on any image to view our 1-minute demos</div>
+        <div class="main sp_header">Our Four-Step Approach</div>
+        <div class="sub smd_text dim">These simple steps will allow you to build a thriving community online.</div>
     </div>
 </div>
 
@@ -107,14 +121,14 @@
             </div>
             <div class="step shadow">
                 <div class="title md_header dim">Enable Searching</div>
-                <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search allows all your members to find who they are looking for.</div>
+                <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search engine will allow your members to find exactly who they are looking for.</div>
                 <div class="img">
                     <img src="./img/finder.png">
                 </div>
             </div>
             <div class="step shadow">
                 <div class="title md_header dim">"Smart" Groups</div>
-                <div class="desc sm_text dim">Stop individually adding members to groups. Group them automatically based on qualities.</div>
+                <div class="desc sm_text dim">Stop individually adding members to groups. Automatically group all your members based on their qualities.</div>
                 <div class="img">
                     <img src="./img/groups.png">
                 </div>
@@ -122,71 +136,73 @@
         </a>
             <div class="step shadow">
                 <div class="title md_header dim">Communicate</div>
-                <div class="desc sm_text dim">Foster communication within "Smart" groups with challenges and awards, and see what's trending in each group!</div>
+                <div class="desc sm_text dim">Empower thematic conversations withing your Smart Groups via challenges and awards, and watch as your members share their interests.</div>
                 <div class="img">
                     <img src="./img/communicate.png">
                 </div>
             </div>
     </div>
-
-
-
-
-    <a name="request"></a>
-    <div class="w600 center contact shadow">
-        <br/>
-        <br/>
-        <br/>
-        <div id="wufoo-z7x3p9">
-        <a href="http://treest.wufoo.com/forms/z7x3p9">Loading form...</a>.
-        </div>
-        <script type="text/javascript">var z7x3p9;(function(d, t) {
-        var s = d.createElement(t), options = {
-        'userName':'treest',
-        'formHash':'z7x3p9',
-        'autoResize':true,
-        'height':'828',
-        'async':true,
-        'header':'show'};
-        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
-        s.onload = s.onreadystatechange = function() {
-        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-        try { z7x3p9 = new WufooForm();z7x3p9.initialize(options);z7x3p9.display(); } catch (e) {}};
-        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-        })(document, 'script');</script>
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-
 </div>
+
+<a name="request"></a>
+<div class="w800 center">
+    <div class="statement">
+        <div class="main sp_header">So Let's Begin...</div>
+        <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
+    </div>
+</div>
+
+<div class="w800 center contact shadow">
+    <img style="float: right" src="/d/assets/logo.png">
+    <div id="wufoo-z7x3p9">
+    <a href="http://treest.wufoo.com/forms/z7x3p9">Loading form...</a>.
+    </div>
+    <script type="text/javascript">var z7x3p9;(function(d, t) {
+    var s = d.createElement(t), options = {
+    'userName':'treest',
+    'formHash':'z7x3p9',
+    'autoResize':true,
+    'height':'828',
+    'async':true,
+    'header':'show'};
+    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+    s.onload = s.onreadystatechange = function() {
+    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+    try { z7x3p9 = new WufooForm();z7x3p9.initialize(options);z7x3p9.display(); } catch (e) {}};
+    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');</script>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 <%@ include file="./includes/footer.jsp"%>
 </body>

@@ -1,133 +1,100 @@
+<%@include file="../../all.jsp" %>
 <%@page contentType="text/css" %>
 
-.price-box{
-    height:580px;
-    width: 780px;
-    display:inline-block
+.packages {
+    display:inline-block;
+    margin-top: 50px;
 }
 
-
-.price-box .price-left{
+.packages .package {
     position:relative;
-    height:550px;
-    width: 260px;
-    background-color: #A3A3A3;
+    width: 250px;
+    background-color: white;
     float: left;
-    left:10px;
-    z-index:1;
 }
 
-.price-box .price-middle{
+.packages .package1 {
+}
+
+.packages .package2 {
+    width: 300px;
+    top:-20px;
+    z-index: 3;
+}
+
+.packages .package3 {
+}
+
+.packages .top {
+    position: relative;
+    border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
+    padding: 10px 5px;
+    margin: 5px;
+}
+
+.packages .middle {
     position:relative;
-    height:580px;
-    width: 260px;
-    background-color: #666666;
-    float: left;
-    top:-10px;
-    z-index:3;
+    margin: 0 10px;
+    padding: 10px;
 }
 
-.price-box .price-right{
-    position:relative;
-    height:550px;
-    width: 260px;
-    background-color: #A3A3A3;
-    float: left;
-    left:-10px;
-    z-index:2;
-}
-
-.middle-box-shadow {
-    -webkit-box-shadow: 4px 6px 6px -6px black;
-    -moz-box-shadow: 4px 6px 6px -6px black;
-    box-shadow: 4px 6px 6px -6px black;
-}
-
-.left-box-shadow {
-    -webkit-box-shadow: -4px 6px 6px -6px black;
-    -moz-box-shadow: -4px 6px 6px -6px black;
-    box-shadow: -4px 6px 6px -6px black;
-}
-
-.right-box-shadow {
-    -webkit-box-shadow: 4px 6px 6px -6px black;
-    -moz-box-shadow: 4px 6px 6px -6px black;
-    box-shadow: 4px 6px 6px -6px black;
-}
-
-.price-box .top{
-    position:relative;
-    height:100px;
-}
-.price-box .middle{
-    position:relative;
-    background-color:whitesmoke;
-    margin-left: 5px;
-    margin-right: 5px;
-    height:350px;
-}
-.price-box .bottom{
-    position:relative;
-    height:100px;
-}
-
-.price-box .price-middle .top{
-    position:relative;
-    height:100px;
-
-}
-.price-box .price-middle .middle{
-    position:relative;
-    margin-left: 5px;
-    margin-right: 5px;
-    height:380px;
-}
-.price-box .price-middle .bottom{
-    position:relative;
-    height:100px;
-}
-
-
-.price-box .top .title{
+.packages .middle .feature-title {
+    font-family: adam;
     text-align: center;
-    font-size: 60px;
-    color: #adff2f;
-    text-shadow: 3px 3px 2px #666666;
-}
-.price-box .top .price{
-    text-align: center;
-    font-size:large;
-    color: #666666;
-    text-shadow: 3px 3px 3px gray;
 }
 
-.price-box .price-middle .top .title{
-    text-align: center;
-    font-size: 60px;
-    color: #C247C2;
-    text-shadow: 3px 3px 2px gray;
-}
-.price-box .price-middle .top .price{
-    text-align: center;
-    font-size:large;
-    color: #A3A3A3;
-    text-shadow: 3px 3px 3px gray;
-}
-
-.price-box .bottom .signup{
-    margin-top:40px;
-    background-color: #adff2f;
-    color: #666666;
-    font-size: 30px;
-    text-align: center;
+.packages .middle .features {
+    margin: 10px 0;
+    height: 250px;
 
 }
 
-.price-box .price-middle .bottom .signup{
-    margin-top:40px;
-    background-color: #C247C2;
-    color: #A3A3A3;
-    font-size: 30px;
-    text-align: center;
 
+.packages .middle .features .feature {
+    border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
+    padding: 8px 0 8px 25px;
+    background: url("../img/check.png");
+    background-repeat: no-repeat;
+    background-position: 5px;
+}
+
+.packages .middle .features .non-feature {
+    border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
+    padding: 5px 0 5px 25px;
+    background: url("../img/cross.png");
+    background-repeat: no-repeat;
+    background-position: 5px;
+    text-decoration: line-through;
+}
+
+.packages .middle .features .highlight {
+    color: <%= HtmlDesign.highlight2 %>;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.packages .bottom {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.packages .bottom2 {
+    text-align: center;
+    margin: 30px auto;
+    padding: 10px;
+    width: 180px;
+}
+
+
+.packages .package .top .title {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.packages .package .top .price {
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
 }
