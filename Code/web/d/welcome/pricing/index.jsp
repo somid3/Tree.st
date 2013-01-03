@@ -19,7 +19,6 @@
 <link rel=stylesheet type="text/css" href="./css/pricing.css">
 
 <body>
- <%@ include file="../../includes/browser_check.jsp"%>
 
  <% String header_path = "pricing"; %>
  <%@ include file="../includes/header.jsp"%>

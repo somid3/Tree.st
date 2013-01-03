@@ -17,7 +17,6 @@
 <link rel=stylesheet type="text/css" href="../../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./../css/basic.css?<%= Vars.rev %>">
 <body>
-<%@ include file="../../includes/browser_check.jsp"%>
 
 <% String header_path = "features"; %>
 <%@ include file="../includes/header.jsp"%>
