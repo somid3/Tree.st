@@ -99,7 +99,7 @@
 
             <div class="top">
                 <div class="title dim">Enterprise</div>
-                <div class="price dim">$1,500+ per month</div>
+                <div class="price dim">$1,499+ per month</div>
             </div>
 
             <div class="middle">
