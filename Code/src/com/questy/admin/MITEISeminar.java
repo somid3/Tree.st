@@ -51,7 +51,6 @@ public class MITEISeminar {
             // Adding question to list
             questions.put("industries", addedQuestion);
         }
-
             {
                  // Adding question
                  addedQuestionRef = QuestionServices.insert(userId, networkId, "What 'Consumer' sectors are you most interested in?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
