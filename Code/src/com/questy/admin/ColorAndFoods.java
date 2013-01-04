@@ -24,7 +24,7 @@ public class ColorAndFoods {
         // Creating network
         String checksum = StringUtils.random();
         Date date = new Date();
-        Integer networkId = NetworkDao.insert(null, "Colors And Foods! - " + date.getTime(), false, checksum);
+        Integer networkId = NetworkDao.insert(null, "Colors - " + date.getTime(), false, checksum);
         String pathName = "colors";
 
 
@@ -36,7 +36,7 @@ public class ColorAndFoods {
         NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.URL_PATH, pathName);
 
         // Adding main message
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE, "Meet others around the world by their color and cuisine preferences!");
+        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE, "Meet others around the world by their favorite color and cuisine preferences!");
         NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_BODY, "");
 
         // Adding manifesto title

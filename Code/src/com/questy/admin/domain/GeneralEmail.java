@@ -1,18 +1,17 @@
 package com.questy.admin.domain;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Shlomo
- * Date: 1/3/13
- * Time: 4:35 PM
-
- * To change this template use File | Settings | File Templates.
- */
 
 public class GeneralEmail {
+
     private Integer id;
-    private String first_name, organization, email, url;
+    private String email;
+    private String fromUrl;
+    private String industry;
+    private String keyword1;
+    private String keyword2;
+    private String keyword3;
+    private Date sentOn;
 
     public Date getSentOn() {
         return sentOn;
@@ -20,46 +19,6 @@ public class GeneralEmail {
 
     public void setSentOn(Date sentOn) {
         this.sentOn = sentOn;
-    }
-
-    private Date sentOn;
-
-    public GeneralEmail(String firstn, String organizationn, String emailn, String urln) {
-        first_name = firstn;
-        organization = organizationn;
-        email = emailn;
-        url = urln;
-    }
-
-    public GeneralEmail(String emailn, String urln) {
-        first_name = "";
-        url = urln;
-        email = emailn;
-        organization = "";
-
-    }
-
-    public GeneralEmail() {
-        first_name = "";
-        organization = "";
-        email = "";
-        url = "";
-    }
-
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(String organization) {
-        this.organization = organization;
     }
 
     public String getEmail() {
@@ -70,12 +29,12 @@ public class GeneralEmail {
         this.email = email;
     }
 
-    public String getUrl() {
-        return url;
+    public String getFromUrl() {
+        return fromUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setFromUrl(String url) {
+        this.fromUrl = url;
     }
 
     public Integer getId() {
@@ -84,5 +43,37 @@ public class GeneralEmail {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getKeyword1() {
+        return keyword1;
+    }
+
+    public void setKeyword1(String keyword1) {
+        this.keyword1 = keyword1;
+    }
+
+    public String getKeyword2() {
+        return keyword2;
+    }
+
+    public void setKeyword2(String keyword2) {
+        this.keyword2 = keyword2;
+    }
+
+    public String getKeyword3() {
+        return keyword3;
+    }
+
+    public void setKeyword3(String keyword3) {
+        this.keyword3 = keyword3;
     }
 }

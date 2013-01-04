@@ -2,20 +2,37 @@
 package com.questy.utils;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Properties;
 
 public class Vars {
 
     /**
-     * Documents the deployment state of the current release
+     * Documents the deployment stage of the current release
      */
     public enum DeploymentStages {DEVELOPMENT, STAGING, PRODUCTION}
+
+    /**
+     * Overall properties used to define all the variable parameters
+     */
+    public static final Properties settings = new Properties();
 
     /**
      * Last production revision number, current format is the date
      * of the last push to production
      */
-    public static Long rev = 20121012L;
+    public static Long rev = 20130130L;
+
+    /**
+     * Current stage
+     */
+    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+
 
 
 
@@ -34,11 +51,17 @@ public class Vars {
 
 
 
+
+
+
     /***********************************
      * Administration related variables
      **********************************/
 
     public static final String adminChecksum = "Il0v3.Pe@n6tVYt!3R";
+
+
+
 
 
 
@@ -57,10 +80,15 @@ public class Vars {
 
 
 
-    /**
-     * User agent the server will believe the client is forcefully using
-     */
+
+
+
+    /***********************
+     * User agent parameters
+     **********************/
+
     public static String mockUserAgent = null;
+
 
 
 
@@ -111,16 +139,17 @@ public class Vars {
      */
     public static int emailAmazonQueueCount;
 
-    public static final String supportEmail = "help@tree.st";
+    public static String supportEmail = "help@tree.st";
 
-    public static final String supportEmailName = "Tree.st";
+    public static String supportEmailName = "Tree.st";
 
-    public static final String supportEmailPassword = "s.U7-%lL+e!23~ha,rd";
+
+
+
 
 
     /***************************
      * CSS related variables
-     *
      **************************/
 
     /**
@@ -130,31 +159,38 @@ public class Vars {
     public static boolean reloadCss = false;
 
 
-    /**
-     * If the system is in development mode or not
-     */
-    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+
 
 
 
     static {
 
-        // Setting up the global variables
-        if (Vars.isInDevelopment())
-            setToDevelopment();
-        else if (Vars.isInStaging())
-            setToStaging();
-        else if (Vars.isInProduction())
-            setToProduction();
+        try {
+
+            // Setting up the global variables
+            if (Vars.isInDevelopment())
+                setToDevelopment();
+            else if (Vars.isInStaging())
+                setToStaging();
+            else if (Vars.isInProduction())
+                setToProduction();
+
+            // Display in the console the stage
+            yell();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
 
 
 
-    private static void setToDevelopment () {
+    private static void setToDevelopment () throws IOException {
+
+
+        settings.load(new FileInputStream("dev.properties"));
 
         domain = "localhost:8080";
         emailTemplateDomain = "localhost:8080";
@@ -171,12 +207,11 @@ public class Vars {
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 8 on Windows
 
-        yell();
     }
 
-    private static void setToStaging () {
+    private static void setToStaging () throws IOException {
 
-        setToDevelopment();
+        settings.load(new FileInputStream("stage.properties"));
 
         reloadCss = false;
         sendEmails = true;
@@ -186,11 +221,10 @@ public class Vars {
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 
-        yell();
     }
 
-    private static void setToProduction() {
-        yell();
+    private static void setToProduction() throws IOException {
+        settings.load(new FileInputStream("prod.properties"));
     }
 
 

@@ -1,4 +1,4 @@
-package com.questy.admin.scrapper;
+package com.questy.admin.marketing;
 
 import com.questy.admin.dao.MITEmailDao;
 import com.questy.admin.domain.MITEmail;
@@ -18,7 +18,6 @@ public class MITEmailSender {
         sendEmails(1);
 
     }
-
 
     public static void sendEmails(Integer count) throws SQLException {
 

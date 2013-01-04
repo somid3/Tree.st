@@ -2,29 +2,33 @@ package com.questy.admin.dao;
 
 import com.questy.admin.domain.GeneralEmail;
 import com.questy.dao.ParentDao;
+import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
-import com.sun.corba.se.pept.transport.ContactInfo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Created with IntelliJ IDEA.
- * User: Shlomo
- * Date: 1/3/13
- * Time: 5:02 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class GeneralEmailDao extends ParentDao{
-    public static List<GeneralEmail> getUnsent(Connection conn) throws SQLException {
+
+    public static List<GeneralEmail> getUnsentByIndustry(
+            Connection conn,
+            String industry,
+            SqlLimit limit) throws SQLException {
+
         conn = start(conn);
 
         String sql =
-                "select * " +
-                        "from `general_emails` " +
-                        "where `sent_on` is null;";
+            "select * " +
+            "from `general_emails` " +
+            "where `sent_on` is null " +
+            "and `industry` = ? " +
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, industry);
+        ps.setInt(2, limit.getStartFrom());
+        ps.setInt(3, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<GeneralEmail> out = new ArrayList<GeneralEmail>();
@@ -47,9 +51,9 @@ public class GeneralEmailDao extends ParentDao{
         Timestamp sentOnSql = new Timestamp(sentOn.getTime());
 
         String sql =
-                "update `general_emails` " +
-                        "set `sent_on` = ? " +
-                        "where `id` = ?;";
+            "update `general_emails` " +
+            "set `sent_on` = ? " +
+            "where `id` = ?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -61,48 +65,60 @@ public class GeneralEmailDao extends ParentDao{
         end(conn, ps, null);
     }
 
-    public static boolean exists(GeneralEmail c)  throws SQLException
-    {
-        Connection conn = null;
-        int count = 0;
-        conn = start(conn);
-
-        String sql = "SELECT " + "*" + " FROM " + "`general_emails`" + " WHERE " + "email = ?";
-
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1,c.getEmail());
-        ResultSet rs = ps.executeQuery();
-        while(rs.next())
-        {
-            count++;
-        }
-
-        if(count==0)
-            return false;
-        return true;
-    }
-
-    public static Integer insert(
-            Connection conn, GeneralEmail c
-    ) throws SQLException {
+    public static Integer getCountByEmail(
+            Connection conn,
+            String email)  throws SQLException {
 
         conn = start(conn);
 
         String sql =
-                "insert into `general_emails` (" +
-                        "`first_name`, " +
-                        "`email`, " +
-                        "`organization`, " +
-                        "`url` " +
-                        ") values (?, ?, ?, ?);";
+            "select count(*) as `count` " +
+            "from `general_emails` " +
+            "where `email` = ?";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+
+        Integer out = null;
+
+        while (rs.next())
+            out = DatabaseUtils.getInt(rs, "count");
+
+        end(conn, ps, rs);
+        return out;
+    }
+
+    public static Integer insert (
+        Connection conn,
+        String email,
+        String fromUrl,
+        String industry,
+        String keyword1,
+        String keyword2,
+        String keyword3) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "insert into `general_emails` (" +
+            "`email`, " +
+            "`from_url`, " +
+            "`industry`, " +
+            "`keyword_1`, " +
+            "`keyword_2`, " +
+            "`keyword_3` " +
+            ") values (?, ?, ?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 
-        ps.setString(1, c.getFirst_name());
-        ps.setString(2, c.getEmail());
-        ps.setString(3, c.getOrganization());
-        ps.setString(4, c.getUrl());
+        ps.setString(1, email);
+        ps.setString(2, fromUrl);
+        ps.setString(3, industry);
+        ps.setString(4, keyword1);
+        ps.setString(5, keyword2);
+        ps.setString(6, keyword3);
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -114,10 +130,11 @@ public class GeneralEmailDao extends ParentDao{
     private static GeneralEmail loadPrimitives (ResultSet rs) throws SQLException {
         GeneralEmail out = new GeneralEmail();
         out.setId(DatabaseUtils.getInt(rs, "id"));
-        out.setFirst_name(DatabaseUtils.getString(rs, "first_name"));
         out.setEmail(DatabaseUtils.getString(rs, "email"));
-        out.setOrganization(DatabaseUtils.getString(rs, "organization"));
-        out.setUrl(DatabaseUtils.getString(rs, "url"));
+        out.setFromUrl(DatabaseUtils.getString(rs, "from_url"));
+        out.setKeyword1(DatabaseUtils.getString(rs, "keyword_1"));
+        out.setKeyword2(DatabaseUtils.getString(rs, "keyword_2"));
+        out.setKeyword3(DatabaseUtils.getString(rs, "keyword_3"));
         out.setSentOn(DatabaseUtils.getTimestamp(rs, "sent_on"));
         return out;
     }

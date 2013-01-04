@@ -1,4 +1,4 @@
-<%@ page import="com.questy.admin.scrapper.MITEmailSender" %>
+<%@ page import="com.questy.admin.marketing.MITEmailSender" %>
 <%@ include file="./all.jsp" %>
 <%
     Integer count = StringUtils.parseInt(request.getParameter("count"));

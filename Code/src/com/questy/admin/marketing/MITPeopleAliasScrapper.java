@@ -1,4 +1,4 @@
-package com.questy.admin.scrapper;
+package com.questy.admin.marketing;
 
 
 import org.apache.commons.io.FileUtils;

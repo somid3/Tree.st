@@ -1,4 +1,4 @@
-package com.questy.admin.scrapper;
+package com.questy.admin.marketing;
 
 import com.questy.utils.StringUtils;
 import org.apache.commons.io.FileUtils;
@@ -9,7 +9,7 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 
-public class MITPeopleAliasScrapperThread implements Runnable {
+public class MITPeopleScrapperThread implements Runnable {
 
     private String proxyHost;
     private int proxyPort;
@@ -17,7 +17,7 @@ public class MITPeopleAliasScrapperThread implements Runnable {
 
     public void run () {
 
-        String content = null;
+        String threeLetter = null;
 
         try {
 
@@ -26,29 +26,27 @@ public class MITPeopleAliasScrapperThread implements Runnable {
                 // Sleeping
                 Thread.sleep(sleep);
 
-                // Requesting new content
-                content = MITPeopleAliasScrapper.content.remove(0);
+                // Requesting new three letters
+                threeLetter = MITPeopleScrapper.content.remove(0);
 
                 // Are any three letters available? If no, break...
-                if (content == null) {
+                if (threeLetter == null)
                     System.out.println(proxyHost + ": could not get content...");
-                    continue;
-                }
 
                 // Doing the http request
-                doRequest(content);
+                doRequest(threeLetter);
             }
 
         } catch (Exception e) {
 
-            System.out.println(proxyHost + ": error with " + content);
+            System.out.println(proxyHost + ": error with " + threeLetter);
 //            e.printStackTrace();
 
             // Adding three letter to pool
-            MITPeopleAliasScrapper.content.add(0, content);
+            MITPeopleScrapper.content.add(0, threeLetter);
 
             // Re-spawn this thread
-            MITPeopleAliasScrapperThread.spawn(proxyHost, proxyPort, 60000);
+            MITPeopleScrapperThread.spawn(proxyHost, proxyPort, 60000);
         }
 
     }
@@ -58,7 +56,7 @@ public class MITPeopleAliasScrapperThread implements Runnable {
         HttpURLConnection connection = null;
         try {
 
-            String queryUrl = "http://web.mit.edu/bin/cgicso?query=alias" + content + "*";
+            String queryUrl = "http://web.mit.edu/bin/cgicso?options=general&query=" + content + "*";
 
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
 
@@ -116,7 +114,7 @@ public class MITPeopleAliasScrapperThread implements Runnable {
 
     public static void spawn (String proxyHost, int proxyPort, int sleep) {
 
-        MITPeopleAliasScrapperThread mpst = new MITPeopleAliasScrapperThread();
+        MITPeopleScrapperThread mpst = new MITPeopleScrapperThread();
         mpst.setProxyHost(proxyHost);
         mpst.setProxyPort(proxyPort);
         mpst.setSleep(sleep);

@@ -1,4 +1,4 @@
-package com.questy.admin.scrapper;
+package com.questy.admin.marketing;
 
 import com.questy.admin.dao.MITEmailDao;
 import com.questy.admin.domain.MITEmail;
