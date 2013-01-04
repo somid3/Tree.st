@@ -2,6 +2,7 @@ package com.questy.dao;
 
 import com.questy.domain.NetworkAlphaSetting;
 import com.questy.enums.NetworkAlphaSettingEnum;
+import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
@@ -55,6 +56,58 @@ public class NetworkAlphaSettingDao extends ParentDao {
         end(conn, ps, rs);
         return out;
     }
+
+
+    public static Integer deleteByValue (
+            Connection conn,
+            NetworkAlphaSettingEnum settingEnum,
+            String value) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `network_alpha_settings` " +
+            "where `setting_id` = ? " +
+            "and `setting_value` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, settingEnum.getId());
+        ps.setString(2, value);
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
+
+
+    public static Integer insert (
+        Connection conn,
+        Integer networkId,
+        NetworkAlphaSettingEnum settingEnum,
+        String settingValue) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "insert into `network_alpha_settings` (" +
+            "`network_id`, " +
+            "`setting_id`, " +
+            "`setting_value` " +
+            ") values (?, ?, ?);";
+
+        PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, networkId);
+        ps.setInt(2, settingEnum.getId());
+        ps.setString(3, settingValue);
+        ps.execute();
+
+        Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
+
+        end(conn, ps, null);
+        return generatedId;
+    }
+
 
     private static NetworkAlphaSetting loadPrimitives (ResultSet rs) throws SQLException {
         NetworkAlphaSetting out = new NetworkAlphaSetting();

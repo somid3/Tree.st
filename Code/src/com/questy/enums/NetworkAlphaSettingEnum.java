@@ -21,9 +21,29 @@ public enum NetworkAlphaSettingEnum {
      */
     URL_PATH(3, null),
 
+    /**
+     * System message in case there are outages to be expected for the community
+     */
+    SYSTEM_MESSAGE(5, ""),
 
+    /**
+     * Message that appears on main page of community, above the manifesto
+     */
+    START_MESSAGE(4, ""),
 
+    /**
+     * Layout that appears below the manifesto but is the main page of the community
+     */
+    START_BODY(5, ""),
+
+    /**
+     * Word used to describe a singular user
+     */
     VOCAB_USER_SINGULAR (1000, "User"),
+
+    /**
+     * Word used to describe a plural user
+     */
     VOCAB_USER_PLURAL (1001, "People");
 
 

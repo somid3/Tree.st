@@ -22,10 +22,10 @@
                 <a href="/d/welcome"><div class="shortcut lg_text <%= header_active %> highlight2">Welcome</div></a>
 
                 <% header_active = header_path.contains("features") ? "active" : ""; %>
-                <a href="/d/welcome/features"><div class="shortcut lg_text <%= header_active %>  highlight2">Features</div></a>
+                <a href="/d/welcome/features"><div class="shortcut lg_text <%= header_active %> highlight2">Features</div></a>
 
-                <% header_active = header_path.contains("pricing.css") ? "active" : ""; %>
-                <a href="/d/welcome/pricing"><div class="shortcut lg_text <%= header_active %>  highlight2">Pricing</div></a>
+                <% header_active = header_path.contains("pricing") ? "active" : ""; %>
+                <a href="/d/welcome/pricing"><div class="shortcut lg_text <%= header_active %> highlight2">Pricing</div></a>
 
                 <a href="http://blog.tree.st"><div class="shortcut lg_text highlight2">Blog</div></a>
 

@@ -19,8 +19,9 @@
             <div class="top">
                     <input id="file_upload" name="face" type="file" value="">
             </div>
+
             <div class="bottom">
-                <input type="submit" value="Upload button">
+                <input type="submit" class="submit_button" value="Upload button">
             </div>
 
         </div>
