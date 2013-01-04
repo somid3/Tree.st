@@ -17,6 +17,12 @@
     // Validating variables
     if (network == null)
         wu.redirect("./notfound.jsp");
+
+    // Retrieving alpha settings for the main page
+    String systemMessage = NetworkAlphaSettingEnum.SYSTEM_MESSAGE.getValueByNetwork(networkId);
+    String startMessage = NetworkAlphaSettingEnum.START_MESSAGE.getValueByNetwork(networkId);
+    String startBody = NetworkAlphaSettingEnum.START_BODY.getValueByNetwork(networkId);
+
 %>
 
 <!DOCTYPE HTML>
@@ -45,24 +51,15 @@
         <div id="content">
 
             <div id="messages">
-                <% if (network.getDemoMessage() != null) { %>
-                    <div id="demo" class="smd_text">
-                         <%= network.getDemoMessage() %>
-                    </div>
+
+                <% if (!systemMessage.isEmpty()) { %>
+                    <div id="system" class="canvas_container smd_text dim"><%= systemMessage %></div>
                 <% } %>
 
-                <% if (network.getStartMessage() != null) { %>
-                    <div id="welcome" class="canvas_container sp_header dim">
-                        <%= network.getStartMessage() %>
-                    </div>
-
-               <% } %>
-
-                <% if (network.getSystemMessage() != null) { %>
-                    <div id="system" class="smd_text dim">
-                         <%= network.getSystemMessage() %>
-                    </div>
+                <% if (!startMessage.isEmpty()) { %>
+                    <div id="welcome" class="canvas_container sp_header dim"><%= startMessage %></div>
                 <% } %>
+
             </div>
 
             <% if (!manifestoTitle.isEmpty()) { %>
@@ -79,11 +76,9 @@
                 </a>
             <% } %>
 
-
-
-            <div id="video" class="glow">
-                <%= network.getStartVideoCode() %>
-            </div>
+            <% if (!startBody.isEmpty()) { %>
+                <%= startBody %>
+            <% } %>
 
         </div>
 

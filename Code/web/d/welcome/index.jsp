@@ -41,17 +41,19 @@
             <div class="actions">
                 <a href="#request">
                     <div class="action glow">
-                        <img class="today" src="./img/today.png">
+                        <img id="join" class="today" src="./img/today.png">
                         <div><span class="lg_header white">Start Your Community Today!</span></div>
                         <div><span class="smd_text white">Our engineers will help you every step of the way. In less than 48 hours &mdash; your solution delivered.</span></div>
                     </div>
                 </a>
+
                 <br/>
-                <a href="/d/hello" target="_new">
+
+                <a href="/colors" target="_new">
                     <div class="action">
-                        <img class="tree" src="./img/tree.png">
+                        <img class="demo" src="./img/muffin.png">
                         <div><span class="lg_header white">Experience a Demo</span></div>
-                        <div><span class="smd_text white">Find others around the world!</span></div>
+                        <div><span class="smd_text white">Connect with others around the world via their favorite colors and foods!</span></div>
                     </div>
                 </a>
             </div>

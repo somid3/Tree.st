@@ -31,7 +31,15 @@ public class QuestionServices extends ParentService  {
         return question;
     }
 
-    public static Integer insert(Integer userId, Integer networkId, String text, Integer points, Integer maxSelectedOptions, AnswerVisibilityEnum maxVisibility, AnswerVisibilityEnum defaultVisibility, Boolean allowAddOptions) throws SQLException {
+    public static Integer insert(
+            Integer userId,
+            Integer networkId,
+            String text,
+            Integer points,
+            Integer maxSelectedOptions,
+            AnswerVisibilityEnum maxVisibility,
+            AnswerVisibilityEnum defaultVisibility,
+            Boolean allowAddOptions) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;

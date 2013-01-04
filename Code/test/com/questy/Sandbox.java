@@ -1,6 +1,7 @@
 package com.questy;
 
 import com.questy.admin.AdminServices;
+import com.questy.admin.ColorAndFoods;
 import com.questy.admin.MIT;
 import com.questy.dao.AppResourceDao;
 import com.questy.domain.AppResource;
@@ -21,14 +22,17 @@ public class Sandbox {
     public static void main(String[] args) throws Exception {
 
 
+        ColorAndFoods.create(3);
+
+
 //        AppResource resource = AppResourceServices.insertAndRetrieve(3, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, 20, true);
 //        String filePath = resource.getFilePath();
 
-        AppResource scaledResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, 3, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, 29, "x0POzKzVdtmu3ei1WlnEzkzBU");
-        String scaledFilePath = scaledResource.getFilePath();
+//        AppResource scaledResource = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, 3, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, 29, "x0POzKzVdtmu3ei1WlnEzkzBU");
+//        String scaledFilePath = scaledResource.getFilePath();
 
 
-        System.out.println(scaledFilePath);
+//        System.out.println(scaledFilePath);
 
 
 //        CronServices.sharedItemDigest(EmailNotificationRateEnum.EVERY_OTHER_WEEK);

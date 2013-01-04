@@ -12,13 +12,6 @@ public class Network extends Parent {
     private Integer totalMembers;
     private String checksum;
 
-    private String startMessage;
-    private String startVideoCode;
-    private String demoMessage;
-    private String systemMessage;
-
-
-
 
 
     private Date iconOn;
@@ -31,22 +24,6 @@ public class Network extends Parent {
         setId(id);
         this.name = name;
         this.global = isGlobal;
-    }
-
-    public String getDemoMessage() {
-        return demoMessage;
-    }
-
-    public void setDemoMessage(String demoMessage) {
-        this.demoMessage = demoMessage;
-    }
-
-    public String getSystemMessage() {
-        return systemMessage;
-    }
-
-    public void setSystemMessage(String systemMessage) {
-        this.systemMessage = systemMessage;
     }
 
     public Date getCreatedOn() {
@@ -87,22 +64,6 @@ public class Network extends Parent {
 
     public void setChecksum(String checksum) {
         this.checksum = checksum;
-    }
-
-    public String getStartMessage() {
-        return startMessage;
-    }
-
-    public void setStartMessage(String startMessage) {
-        this.startMessage = startMessage;
-    }
-
-    public String getStartVideoCode() {
-        return startVideoCode;
-    }
-
-    public void setStartVideoCode(String startVideoCode) {
-        this.startVideoCode = startVideoCode;
     }
 
     public Boolean hasIcon() {

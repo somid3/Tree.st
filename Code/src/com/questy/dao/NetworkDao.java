@@ -160,16 +160,9 @@ public class NetworkDao extends ParentDao {
         out.setTotalMembers(DatabaseUtils.getInt(rs, "total_members"));
         out.setName(DatabaseUtils.getString(rs, "name"));
         out.setGlobal(DatabaseUtils.getBoolean(rs, "global"));
-
         out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
         out.setBackgroundOn(DatabaseUtils.getTimestamp(rs, "background_on"));
         out.setIconOn(DatabaseUtils.getTimestamp(rs, "icon_on"));
-
-        // TODO to be made network alpha settings
-        out.setStartVideoCode(DatabaseUtils.getString(rs, "start_video_code"));
-        out.setStartMessage(DatabaseUtils.getString(rs, "start_message"));
-        out.setSystemMessage(DatabaseUtils.getString(rs, "system_message"));
-        out.setDemoMessage(DatabaseUtils.getString(rs, "demo_message"));
 
         return out;
     }
