@@ -138,7 +138,8 @@ public class AmazonMailSender implements Runnable {
                 message.saveChanges();
 
                 // Transporting the message, either to the network or to system out, etc
-                transportingMessage();
+                if (Vars.sendEmails)
+                    transportingMessage();
 
                 // Email was sent, break from the while
                 sent = true;

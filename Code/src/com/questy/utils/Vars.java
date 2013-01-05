@@ -3,7 +3,6 @@ package com.questy.utils;
 
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
@@ -18,7 +17,7 @@ public class Vars {
     /**
      * Overall properties used to define all the variable parameters
      */
-    public static final Properties settings = new Properties();
+    public static final Properties properties = new Properties();
 
     /**
      * Last production revision number, current format is the date
@@ -106,7 +105,7 @@ public class Vars {
     /**
      * Should the server send emails or publish them to the console?
      */
-    public static Boolean sendEmails = true;
+    public static Boolean sendEmails = false;
 
     /**
      * Should we print out a message every time an email is sent?
@@ -190,8 +189,6 @@ public class Vars {
     private static void setToDevelopment () throws IOException {
 
 
-        settings.load(new FileInputStream("dev.properties"));
-
         domain = "localhost:8080";
         emailTemplateDomain = "localhost:8080";
 
@@ -207,11 +204,10 @@ public class Vars {
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 8 on Windows
 
+        loadProperties("dev.properties");
     }
 
     private static void setToStaging () throws IOException {
-
-        settings.load(new FileInputStream("stage.properties"));
 
         reloadCss = false;
         sendEmails = true;
@@ -221,14 +217,33 @@ public class Vars {
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 
+
+        properties.load(new FileInputStream("stage.properties"));
+
+
     }
 
     private static void setToProduction() throws IOException {
-        settings.load(new FileInputStream("prod.properties"));
+
+        sendEmails = true;
+
+
+        properties.load(new FileInputStream("prod.properties"));
     }
 
 
+    /**
+     * Loads a properties relative to the Vars class given the file name
+     *
+     * @param fileName
+     * @throws IOException
+     */
+    private static void loadProperties(String fileName) throws IOException {
 
+        // Load the properties file relative to the Vars class
+        properties.load(Vars.class.getResourceAsStream(fileName));
+
+    }
 
 
     public static boolean isInDevelopment () {
@@ -268,6 +283,9 @@ public class Vars {
             Vars.rev = new Date().getTime();
     }
 
+    /**
+     * Documents to the console the current stage of the application
+     */
     private static void yell() {
 
         System.out.println("*** In " + Vars.deploymentStage + " stage!" + " Pointing to " + Vars.domain);

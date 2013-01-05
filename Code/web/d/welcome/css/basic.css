@@ -148,39 +148,12 @@ body {
 
 }
 
-.solutions {
+
+.four_steps {
     display: inline-block;
 }
 
-.solutions .solution {
-    float: left;
-    width: 225px;
-    margin: 10px;
-    padding: 10px;
-    background-color: white;
-}
-
-.solutions .solution .title {
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.solutions .solution .desc {
-    line-height: 1.5em;
-}
-
-.solutions .solution .img {
-    float: right;
-}
-
-
-
-
-.benefits {
-    display: inline-block;
-}
-
-.benefits .step {
+.four_steps .step {
     float: left;
     width: 150px;
     margin: 10px;
@@ -188,19 +161,18 @@ body {
     background-color: white;
 }
 
-.benefits .step .title {
+.four_steps .step .title {
     text-align: center;
     margin-bottom: 5px;
 }
 
-.benefits .step .desc {
+.four_steps .step .desc {
     line-height: 1.5em;
 }
 
-.benefits .step .img img {
-    margin: 0 auto;
-    width: 80px;
-    margin-top: 10px;
+.four_steps .step .img img {
+    margin: 10px 0 0 25px;
+    width: 100px;
 }
 
 
@@ -239,7 +211,7 @@ body {
 
 .actions .action .today {
     position: absolute;
-    top: -60px;
+    top: -40px;
     left: 210px;
     height: 90px;
     width: 90px;

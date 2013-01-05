@@ -14,19 +14,24 @@ import java.util.Date;
 
 public class GeneralEmailSender {
 
-    public static void sendEmails(Integer count, String industry) throws SQLException
-    {
-        List<GeneralEmail> generalEmails = GeneralEmailDao.getUnsentByIndustry(null, industry, new SqlLimit(0, count));
+    public static void main (String[] args) throws SQLException {
 
-        // Validating number of emails available
-        if (generalEmails.size() == 0)
-            return;
+        // Send email to folks in particular industry
+        sendEmails(5, "Association");
+
+    }
+
+    public static void sendEmails(Integer count, String industry) throws SQLException {
+
+        // Retrieving emails
+        List<GeneralEmail> generalEmails = GeneralEmailDao.getUnsentByIndustry(null, industry, new SqlLimit(0, count));
 
         System.out.println("Total pool: " + generalEmails.size() );
 
+        // Looping through each email to send message
         for (GeneralEmail generalEmail : generalEmails) {
 
-            // Sending the meail
+            // Sending the email
             sendEmail(generalEmail);
 
             // Updating date sent of email contact
@@ -62,7 +67,7 @@ public class GeneralEmailSender {
         ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
         ser.setFromName("soc@tree.st");
         ser.setFromEmail("soc@tree.st");
-        ser.addRecipient(generalEmail.getEmail());
+        ser.addRecipient("somid3@gmail.com");
         ser.setSubject("tool for your association");
         ser.setMessageText(message);
 

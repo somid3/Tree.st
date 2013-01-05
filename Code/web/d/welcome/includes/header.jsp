@@ -27,7 +27,7 @@
                 <% header_active = header_path.contains("pricing") ? "active" : ""; %>
                 <a href="/d/welcome/pricing"><div class="shortcut lg_text <%= header_active %> highlight2">Pricing</div></a>
 
-                <a href="http://blog.tree.st"><div class="shortcut lg_text highlight2">Blog</div></a>
+                <%--<a href="http://blog.tree.st"><div class="shortcut lg_text highlight2">Blog</div></a>--%>
 
                 <a href="/d/login"><div class="shortcut lg_text highlight2">Login</div></a>
             </div>
