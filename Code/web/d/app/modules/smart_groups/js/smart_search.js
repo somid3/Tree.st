@@ -82,7 +82,7 @@ function SmartSearch () {
         .hide()
         .load("./modules/smart_groups/actions/add_criteria.jsp", parameters, function() {
 
-            $div.appendTo("#smart_search_criterion").show();
+            $div.appendTo("#smart_search_criterion").fadeIn(250);
             tmp_this.generateAndSubmit(hostingNetworkId, hostingSmartGroupRef);
 
         })

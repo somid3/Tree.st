@@ -2,16 +2,14 @@ package com.questy.dao;
 
 import com.questy.domain.NetworkIntegerSetting;
 import com.questy.enums.NetworkIntegerSettingEnum;
+import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class NetworkIntegerSettingDao extends ParentDao {
 
-    public static NetworkIntegerSetting getByNetworkIdAndSetting(Connection conn, Integer networkId, NetworkIntegerSettingEnum setting) throws SQLException {
+    public static NetworkIntegerSetting getByNetworkIdAndSettingEnum(Connection conn, Integer networkId, NetworkIntegerSettingEnum setting) throws SQLException {
         conn = start(conn);
 
         String sql =
@@ -33,6 +31,57 @@ public class NetworkIntegerSettingDao extends ParentDao {
 
         end(conn, ps, rs);
         return out;
+    }
+
+    public static void updateByNetworkIdAndSettingEnum(
+        Connection conn,
+        Integer networkId,
+        NetworkIntegerSettingEnum settingEnum,
+        Integer settingValue) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `network_integer_settings` " +
+            "set `setting_value` = ? " +
+            "where `network_id` = ? " +
+            "and `setting_id` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, settingValue);
+        ps.setInt(2, networkId);
+        ps.setInt(3, settingEnum.getId());
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static Integer insert (
+        Connection conn,
+        Integer networkId,
+        NetworkIntegerSettingEnum settingEnum,
+        Integer settingValue) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "insert into `network_integer_settings` (" +
+            "`network_id`, " +
+            "`setting_id`, " +
+            "`setting_value` " +
+            ") values (?, ?, ?);";
+
+        PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, networkId);
+        ps.setInt(2, settingEnum.getId());
+        ps.setInt(3, settingValue);
+        ps.execute();
+
+        Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
+
+        end(conn, ps, null);
+        return generatedId;
     }
 
     private static NetworkIntegerSetting loadPrimitives (ResultSet rs) throws SQLException {

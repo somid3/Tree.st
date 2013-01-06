@@ -65,11 +65,11 @@ public class UserIntegerSettingDao extends ParentDao {
         return out;
     }
 
-    public static void updateByUserIdAndSetting(
-        Connection conn,
-        Integer userId,
-        UserIntegerSettingEnum settingEnum,
-        Integer settingValue) throws SQLException {
+    public static void updateByUserIdAndSettingEnum(
+            Connection conn,
+            Integer userId,
+            UserIntegerSettingEnum settingEnum,
+            Integer settingValue) throws SQLException {
 
         conn = start(conn);
 

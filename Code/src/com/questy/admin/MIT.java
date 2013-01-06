@@ -20,7 +20,20 @@ import java.util.*;
 public class MIT {
 
     public static void main(String[] args) throws Exception {
-        create();
+
+
+        // Adding main message
+        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2000, NetworkAlphaSettingEnum.START_MESSAGE);
+        NetworkAlphaSettingDao.insert(null, 2000, NetworkAlphaSettingEnum.START_MESSAGE, "Find and talk about science and engineering with the world's best &mdash; MIT");
+
+
+        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2000, NetworkAlphaSettingEnum.START_BODY);
+        NetworkAlphaSettingDao.insert(null, 2000, NetworkAlphaSettingEnum.START_BODY, "<div id=\"video\" class=\"glow\">\n" +
+                "<iframe src=\"http://player.vimeo.com/video/46590201\" width=\"500\" height=\"281\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>\n" +
+                "</div>");
+
+
+//        create();
     }
 
 

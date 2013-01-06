@@ -1,6 +1,7 @@
 package com.questy.enums;
 
 import com.questy.dao.NetworkIntegerSettingDao;
+import com.questy.dao.UserIntegerSettingDao;
 import com.questy.domain.NetworkIntegerSetting;
 
 import java.sql.SQLException;
@@ -48,7 +49,7 @@ public enum NetworkIntegerSettingEnum {
 
     public Integer getValueByNetwork (Integer networkId) throws SQLException {
 
-        NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSetting(null, networkId, this);
+        NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
         // If the setting is not set for the network, return the code's default
         if (setting == null)
@@ -68,5 +69,25 @@ public enum NetworkIntegerSettingEnum {
        }
 
        return null;
-   }
+    }
+
+    public void setValueByUserId (Integer networkId, Integer value) throws SQLException {
+
+        // Attempt to get value
+        NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
+
+        // Does the value already exist?
+        if (setting != null) {
+
+            // Yes, update the value
+            NetworkIntegerSettingDao.updateByNetworkIdAndSettingEnum(null, networkId, this, value);
+
+        } else {
+
+            // No, insert the value
+            NetworkIntegerSettingDao.insert(null, networkId, this, value);
+
+        }
+
+    }
 }

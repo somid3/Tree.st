@@ -2,6 +2,7 @@ package com.questy.dao;
 
 import com.questy.domain.NetworkAlphaSetting;
 import com.questy.enums.NetworkAlphaSettingEnum;
+import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
@@ -9,7 +10,7 @@ import java.sql.*;
 
 public class NetworkAlphaSettingDao extends ParentDao {
 
-    public static NetworkAlphaSetting getByNetworkIdAndSetting(Connection conn, Integer networkId, NetworkAlphaSettingEnum setting) throws SQLException {
+    public static NetworkAlphaSetting getByNetworkIdAndSettingEnum(Connection conn, Integer networkId, NetworkAlphaSettingEnum setting) throws SQLException {
         conn = start(conn);
 
         String sql =
@@ -80,6 +81,53 @@ public class NetworkAlphaSettingDao extends ParentDao {
         return out;
     }
 
+
+    public static Integer deleteByNetworkIdAndSetting (
+            Connection conn,
+            Integer networkId,
+            NetworkAlphaSettingEnum settingEnum) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `network_alpha_settings` " +
+            "where `network_id` = ? " +
+            "and `setting_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ps.setInt(2, settingEnum.getId());
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
+
+
+    public static void updateByNetworkIdAndSettingEnum(
+        Connection conn,
+        Integer networkId,
+        NetworkAlphaSettingEnum settingEnum,
+        String settingValue) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `network_alpha_settings` " +
+            "set `setting_value` = ? " +
+            "where `network_id` = ? " +
+            "and `setting_id` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, settingValue);
+        ps.setInt(2, networkId);
+        ps.setInt(3, settingEnum.getId());
+        ps.execute();
+
+        end(conn, ps, null);
+    }
 
     public static Integer insert (
         Connection conn,

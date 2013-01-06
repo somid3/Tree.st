@@ -1,10 +1,8 @@
 package com.questy.admin;
 
 import com.questy.dao.*;
-import com.questy.domain.Network;
 import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
-import com.questy.domain.UserToNetwork;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.RoleEnum;
@@ -24,9 +22,8 @@ public class ColorAndFoods {
         // Creating network
         String checksum = StringUtils.random();
         Date date = new Date();
-        Integer networkId = NetworkDao.insert(null, "Colors - " + date.getTime(), false, checksum);
-        String pathName = "colors";
-
+        Integer networkId = NetworkDao.insert(null, "Foods", false, checksum);
+        String pathName = "foods";
 
         // Adding user to network
         UserToNetworkDao.insert(null, userId, networkId, RoleEnum.EDITOR);
@@ -36,14 +33,12 @@ public class ColorAndFoods {
         NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.URL_PATH, pathName);
 
         // Adding main message
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE, "Meet others around the world by their favorite color and cuisine preferences!");
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_BODY, "");
+        NetworkAlphaSettingEnum.START_MESSAGE.setValueByNetworkId(networkId, "Meet others around the world by their favorite food preferences!");
+        NetworkAlphaSettingEnum.START_BODY.setValueByNetworkId(networkId, "");
 
         // Adding manifesto title
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.MANIFESTO_TITLE, "Purpose");
-
-        // Adding manifesto content
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.MANIFESTO_CONTENT, "");
+        NetworkAlphaSettingEnum.MANIFESTO_TITLE.setValueByNetworkId(networkId, "Purpose & Privacy");
+        NetworkAlphaSettingEnum.MANIFESTO_CONTENT.setValueByNetworkId(networkId, "");
 
         /**
          * Creating questions for network
@@ -64,9 +59,9 @@ public class ColorAndFoods {
             QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
                     {
                         "Neither ",
-                        "Left-handed ",
-                        "Right-handed ",
-                        "Ambidextrous ",
+                        "Left handed ",
+                        "Right handed ",
+                        "Both (Ambidextrous)",
                     });
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
@@ -122,9 +117,7 @@ public class ColorAndFoods {
                      "Middle Eastern",
                      "Latin",
                      "Spanish",
-                     "European",
                      "Chinese",
-                     "Brazilian",
                  });
              addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
@@ -137,7 +130,7 @@ public class ColorAndFoods {
 
             {
                  // Adding question
-                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'American' cuisine dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'American' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
 
                  // Adding options
                  addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -157,6 +150,150 @@ public class ColorAndFoods {
                  questions.put("american-foods", addedQuestion);
             }
 
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Thai' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Pad Thai",
+                         "Green Curry",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Thai");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("thai-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Vietnamese' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Pho",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Vietnamese");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("vietnamese-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'French' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Croissant",
+                         "Quiche",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("French");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("french-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Middle Eastern' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Falafel",
+                         "Tabouleh",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Middle Eastern");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("eastern-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Latin' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Ceviche",
+                         "Fried Plantains",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Latin");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("latin-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Spanish' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Paella",
+                         "Horchata",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Spanish");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("spanish-foods", addedQuestion);
+            }
+
+            {
+                 // Adding question
+                 addedQuestionRef = QuestionServices.insert(userId, networkId, "Specifically, what is your favorite 'Chinese' dish?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+
+                 // Adding options
+                 addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                 QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                     {
+                         "Dumplings",
+                     });
+                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+                 // Adding flow rules
+                 option = questions.get("foods").findOptionByText("Chinese");
+                 FlowRuleServices.insert(addedQuestion.getNetworkId(), option.getQuestionRef(), option.getRef(), addedQuestion.getRef());
+
+                 // Adding question to list
+                 questions.put("chinese-foods", addedQuestion);
+            }
 
         {
             // Adding question

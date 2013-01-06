@@ -28,8 +28,8 @@ public class Vars {
     /**
      * Current stage
      */
-    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
@@ -209,6 +209,11 @@ public class Vars {
 
     private static void setToStaging () throws IOException {
 
+        domain = "localhost:8080";
+        emailTemplateDomain = "localhost:8080";
+        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
+        resourcesTempFilePath = "/Users/omid/Desktop/";
+
         reloadCss = false;
         sendEmails = true;
         logSentEmails = true;
@@ -217,8 +222,7 @@ public class Vars {
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 
-
-        properties.load(new FileInputStream("stage.properties"));
+        loadProperties("stage.properties");
 
 
     }
@@ -227,8 +231,7 @@ public class Vars {
 
         sendEmails = true;
 
-
-        properties.load(new FileInputStream("prod.properties"));
+        loadProperties("prod.properties");
     }
 
 

@@ -49,11 +49,11 @@
 
                 <br/>
 
-                <a href="/colors" target="_new">
+                <a href="/foods" target="_new">
                     <div class="action">
-                        <img class="demo" src="./img/muffin.png">
+                        <img class="demo" src="./img/tree.png">
                         <div><span class="lg_header white">Experience a Demo</span></div>
-                        <div><span class="smd_text white">Connect with others around the world via their favorite colors and foods!</span></div>
+                        <div><span class="smd_text white">Connect with others around the world via their favorite foods!</span></div>
                     </div>
                 </a>
             </div>
@@ -71,15 +71,22 @@
 <div class="w800 center">
     <div class="four_steps">
         <div class="step shadow">
+            <a href="./assets/associations.pdf" target="_new">
+                <img class="persona" src="./img/lawyer.png">
+            </a>
             <div class="title lg_header dim">Associations</div>
             <a href="./assets/associations.pdf" target="_new">
                 <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
             </a>
+
             <div class="desc sm_text dim">
                 <p>Save thousands of dollars every year and move your membership paper-based directory online.</p>
             </div>
         </div>
         <div class="step shadow">
+            <a href="./assets/educational_institutions.pdf" target="_new">
+                <img class="persona" src="./img/teacher.png">
+            </a>
             <div class="title md_header dim">Educational Institutions</div>
             <a href="./assets/educational_institutions.pdf" target="_new">
                 <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
@@ -88,7 +95,11 @@
                 <p>Allow your students to find one another and communicate based on their interests, goals, and knowledge.</p>
             </div>
         </div>
+
         <div class="step shadow">
+            <a href="./assets/medical_professionals.pdf" target="_new">
+                <img class="persona" src="./img/nurse.png">
+            </a>
             <div class="title md_header dim">Medical Professionals</div>
             <a href="./assets/medical_professionals.pdf" target="_new">
                 <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
@@ -98,6 +109,9 @@
             </div>
         </div>
         <div class="step shadow">
+            <a href="./assets/businesses.pdf" target="_new">
+                <img class="persona" src="./img/manager.png">
+            </a>
             <div class="title md_header dim">Business Enterprises</div>
             <a href="./assets/businesses.pdf" target="_new">
                 <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>

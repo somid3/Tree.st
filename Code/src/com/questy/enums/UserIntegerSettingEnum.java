@@ -101,7 +101,7 @@ public enum UserIntegerSettingEnum {
         if (setting != null) {
 
             // Yes, update the value
-            UserIntegerSettingDao.updateByUserIdAndSetting(null, userId, this, value);
+            UserIntegerSettingDao.updateByUserIdAndSettingEnum(null, userId, this, value);
 
         } else {
 

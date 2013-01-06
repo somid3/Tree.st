@@ -10,6 +10,7 @@ import com.questy.enums.AppEnum;
 import com.questy.enums.AppResourceTypeEnum;
 import com.questy.enums.EmailNotificationRateEnum;
 import com.questy.services.AppResourceServices;
+import com.questy.services.PasswordResetServices;
 import com.questy.services.cron.CronServices;
 
 import java.io.File;
@@ -23,7 +24,13 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
+        ColorAndFoods.create(3);
+
+
+//        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
+
+
+
 
 
     }

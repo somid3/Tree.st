@@ -1,6 +1,7 @@
 package com.questy.enums;
 
 import com.questy.dao.NetworkAlphaSettingDao;
+import com.questy.dao.NetworkIntegerSettingDao;
 import com.questy.domain.NetworkAlphaSetting;
 
 import java.sql.SQLException;
@@ -22,11 +23,6 @@ public enum NetworkAlphaSettingEnum {
     URL_PATH(3, null),
 
     /**
-     * System message in case there are outages to be expected for the community
-     */
-    SYSTEM_MESSAGE(5, ""),
-
-    /**
      * Message that appears on main page of community, above the manifesto
      */
     START_MESSAGE(4, ""),
@@ -35,6 +31,11 @@ public enum NetworkAlphaSettingEnum {
      * Layout that appears below the manifesto but is the main page of the community
      */
     START_BODY(5, ""),
+
+    /**
+     * System message in case there are outages to be expected for the community
+     */
+    SYSTEM_MESSAGE(6, ""),
 
     /**
      * Word used to describe a singular user
@@ -68,7 +69,7 @@ public enum NetworkAlphaSettingEnum {
 
     public String getValueByNetwork (Integer networkId) throws SQLException {
 
-        NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByNetworkIdAndSetting(null, networkId, this);
+        NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
         // If the setting is not set for the network, return the code's default
         if (setting == null)
@@ -100,16 +101,24 @@ public enum NetworkAlphaSettingEnum {
        return null;
     }
 
-    public static void setValueByNetwork (Integer networkId) {
 
-        // Retrieve setting
+    public void setValueByNetworkId(Integer networkId, String value) throws SQLException {
 
-        // Does the setting exist?
+        // Attempt to get value
+        NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
-            // Yes, update it
+        // Does the value already exist?
+        if (setting != null) {
 
-            // No, insert it
+            // Yes, update the value
+            NetworkAlphaSettingDao.updateByNetworkIdAndSettingEnum(null, networkId, this, value);
 
+        } else {
+
+            // No, insert the value
+            NetworkAlphaSettingDao.insert(null, networkId, this, value);
+
+        }
 
     }
 }
