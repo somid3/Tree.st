@@ -1,11 +1,13 @@
 package com.questy.admin;
 
 import com.questy.dao.FlowRuleDao;
+import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.QuestionDao;
 import com.questy.dao.QuestionOptionDao;
 import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
 import com.questy.enums.AnswerVisibilityEnum;
+import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.services.FlowRuleServices;
 import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
@@ -13,6 +15,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MITEISeminar {
+
+    public static void main(String[] args) throws Exception {
+
+        // Adding start message
+        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2003, NetworkAlphaSettingEnum.START_MESSAGE);
+        NetworkAlphaSettingDao.insert(null, 2003, NetworkAlphaSettingEnum.START_MESSAGE, "Get to know your classmates and build a well balanced team for your next startup!");
+
+        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2003, NetworkAlphaSettingEnum.START_BODY);
+        NetworkAlphaSettingDao.insert(null, 2003, NetworkAlphaSettingEnum.START_BODY, "<div id=\"video\" class=\"glow\">\n" +
+                "<iframe src=\"http://player.vimeo.com/video/46590201\" width=\"500\" height=\"281\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>\n" +
+                "</div>");
+
+//        create();
+    }
 
     public static void create(Integer networkId) throws Exception {
 

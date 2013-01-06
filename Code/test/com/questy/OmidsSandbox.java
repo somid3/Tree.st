@@ -4,6 +4,7 @@ import com.questy.admin.AdminServices;
 import com.questy.admin.Foods;
 import com.questy.admin.marketing.GeneralEmailSender;
 import com.questy.services.cron.CronServices;
+import com.questy.utils.Vars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        Foods.create(3);
+//        Foods.create(3);
 
 
 //        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");

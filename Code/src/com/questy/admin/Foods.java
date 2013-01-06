@@ -104,7 +104,7 @@ public class Foods {
 
         {
              // Adding question
-             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are the top two types cuisine you prefer?", 50, 2, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are your two favorite kinds of foods?", 50, 2, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
 
              // Adding options
              addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -318,7 +318,7 @@ public class Foods {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "For your next trip, which regions of the world would like to visit?", 100, 3, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "Which regions of the world would you like to visit?", 100, 3, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);

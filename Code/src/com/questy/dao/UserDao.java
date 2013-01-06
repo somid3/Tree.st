@@ -334,9 +334,6 @@ public class UserDao extends ParentDao {
         // Hashing the password
         String passwordHash = hashPassword(passwordText, passwordSalt);
 
-        // Creating the user checksum
-        String checksum = StringUtils.random();
-
         String sql =
             "insert into `users` (" +
             "`created_on`, " +
@@ -344,9 +341,8 @@ public class UserDao extends ParentDao {
             "`password_hash`, " +
             "`password_salt`, " +
             "`first_name`, " +
-            "`last_name`, " +
-            "`checksum`" +
-            ") values (NOW(), ?, ?, ?, ?, ?, ?);";
+            "`last_name` " +
+            ") values (NOW(), ?, ?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, email.trim());
@@ -354,7 +350,6 @@ public class UserDao extends ParentDao {
         ps.setString(3, passwordSalt);
         ps.setString(4, firstName.trim());
         ps.setString(5, lastName.trim());
-        ps.setString(6, checksum);
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());

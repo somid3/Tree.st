@@ -22,10 +22,9 @@ public class MIT {
     public static void main(String[] args) throws Exception {
 
 
-        // Adding main message
+        // Adding start message
         NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2000, NetworkAlphaSettingEnum.START_MESSAGE);
         NetworkAlphaSettingDao.insert(null, 2000, NetworkAlphaSettingEnum.START_MESSAGE, "Find and talk about science and engineering with the world's best &mdash; MIT");
-
 
         NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, 2000, NetworkAlphaSettingEnum.START_BODY);
         NetworkAlphaSettingDao.insert(null, 2000, NetworkAlphaSettingEnum.START_BODY, "<div id=\"video\" class=\"glow\">\n" +
