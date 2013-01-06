@@ -1,9 +1,15 @@
 .DS_Store
 
-Business/.dropbox
-
 Code/.idea
 
 Code/out
 
 *.iml
+
+Resources
+
+dev.properties
+
+stage.properties
+
+prod.properties
