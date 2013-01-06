@@ -65,8 +65,8 @@ public class GeneralEmailSender {
         // Creating runnable to send email on new thread
         AmazonMailSender ser = new AmazonMailSender();
         ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
-        ser.setFromName("soc@tree.st");
-        ser.setFromEmail("soc@tree.st");
+        ser.setFromName("socrates@tree.st");
+        ser.setFromEmail("socrates@tree.st");
         ser.addRecipient("somid3@gmail.com");
         ser.setSubject("tool for your association");
         ser.setMessageText(message);
@@ -76,6 +76,13 @@ public class GeneralEmailSender {
         thread.start();
     }
 
+    /**
+     * Inserts a CVS containing emails into the general emails
+     * database
+     *
+     * @param filename
+     * @throws Exception
+     */
     public static void CVSToDatabase(String filename) throws Exception {
 
         String [] nextLine;

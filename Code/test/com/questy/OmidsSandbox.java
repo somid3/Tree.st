@@ -1,19 +1,10 @@
 package com.questy;
 
 import com.questy.admin.AdminServices;
-import com.questy.admin.ColorAndFoods;
-import com.questy.admin.MIT;
+import com.questy.admin.Foods;
 import com.questy.admin.marketing.GeneralEmailSender;
-import com.questy.dao.AppResourceDao;
-import com.questy.domain.AppResource;
-import com.questy.enums.AppEnum;
-import com.questy.enums.AppResourceTypeEnum;
-import com.questy.enums.EmailNotificationRateEnum;
-import com.questy.services.AppResourceServices;
-import com.questy.services.PasswordResetServices;
 import com.questy.services.cron.CronServices;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,7 +15,7 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        ColorAndFoods.create(3);
+        Foods.create(3);
 
 
 //        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");

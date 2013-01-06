@@ -21,7 +21,7 @@
             </div>
 
             <div class="bottom">
-                <input type="submit" class="submit_button" value="Upload button">
+                <input type="submit" value="Upload button">
             </div>
 
         </div>

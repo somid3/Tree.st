@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ColorAndFoods {
+public class Foods {
 
     public static void create(Integer userId) throws Exception {
 
