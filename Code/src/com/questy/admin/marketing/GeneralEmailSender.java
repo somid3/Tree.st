@@ -17,7 +17,7 @@ public class GeneralEmailSender {
     public static void main (String[] args) throws SQLException {
 
         // Send email to folks in particular industry
-        sendEmails(5, "Association");
+        sendEmails(2000, "University");
 
     }
 
@@ -45,13 +45,15 @@ public class GeneralEmailSender {
         Connection conn = null;
 
         // Creating message
-        String message ="Hello,\n" +
+        String message ="Hello from MIT,\n" +
             "\n" +
-            "We are a group of MIT graduate students with a patent-pending technology that can bring immediate value to your association.\n" +
+            "We are a group of graduate students who have created a patent-pending technology that can bring immediate value to your school.\n" +
             "\n" +
-            "This tool allows your members to find exactly who they are looking for based on attributes that are specific to your association's interests.  For example, students here at MIT have used this to find roommates, connect with alumni, and discover inter-departmental research opportunities -- among many other applications.\n" +
+            "This tool allows your students and faculty to find exactly who they are looking for based on attributes that are specific to your institution. For example, students here at MIT have used this to find roommates, connect with alumni, and discover inter-departmental research opportunities -- among many other applications.\n" +
             "\n" +
-            "Here is a 90 second video to learn more: http://www.tree.st. -- A simple demo takes only 15 minutes, could we set up a time that works for you?\n" +
+            "Here is a 90 second video to learn more: http://www.tree.st.\n" +
+            "\n" +
+            "A simple demo takes only 15 minutes, could we set up a time that works for you?\n" +
             "\n" +
             "Thanks,\n" +
             "Socrates Rosenfeld\n" +
@@ -67,8 +69,8 @@ public class GeneralEmailSender {
         ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
         ser.setFromName("socrates@tree.st");
         ser.setFromEmail("socrates@tree.st");
-        ser.addRecipient("somid3@gmail.com");
-        ser.setSubject("tool for your association");
+        ser.addRecipient(generalEmail.getEmail());
+        ser.setSubject("tool for your school");
         ser.setMessageText(message);
 
         // Sending the email

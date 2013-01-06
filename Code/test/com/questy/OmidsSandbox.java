@@ -19,7 +19,8 @@ public class OmidsSandbox {
 //        Foods.create(3);
 
 
-//        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
+        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
+//        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/associations.csv");
 
 
 
