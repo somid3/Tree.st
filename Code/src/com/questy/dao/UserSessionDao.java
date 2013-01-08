@@ -65,6 +65,31 @@ public class UserSessionDao extends ParentDao {
         return out;
     }
 
+    public static Integer deleteByPersistentAndUpdatedBefore (
+            Connection conn,
+            Boolean persistent,
+            java.util.Date updatedBefore) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `user_sessions` " +
+            "where `persistent` = ? " +
+            "and `updated_on` <= ?;";
+
+        // Converting to sql timestamp
+        Timestamp updatedBeforeSql = new Timestamp(updatedBefore.getTime());
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setBoolean(1, persistent);
+        ps.setTimestamp(2, updatedBeforeSql);
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
+
     public static Integer insert (
             Connection conn,
             Integer userId,

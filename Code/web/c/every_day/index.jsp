@@ -22,5 +22,8 @@
         if (dayOfYear % 14 == 0) CronServices.sharedItemDigest(EmailNotificationRateEnum.EVERY_OTHER_WEEK);
     }
 
+    // Garbage collecting the user sessions
+    CronServices.calledDailyUserSessionCleanUp();
+
     System.out.println("'Every day' script called at " + new Date());
 %>

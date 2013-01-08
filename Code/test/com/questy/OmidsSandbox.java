@@ -3,7 +3,10 @@ package com.questy;
 import com.questy.admin.AdminServices;
 import com.questy.admin.Foods;
 import com.questy.admin.marketing.GeneralEmailSender;
+import com.questy.dao.UserSessionDao;
+import com.questy.dao.UserToSmartGroupDao;
 import com.questy.services.cron.CronServices;
+import com.questy.utils.DateUtils;
 import com.questy.utils.Vars;
 
 import java.util.ArrayList;
@@ -16,10 +19,17 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
+        System.out.println(
+            UserToSmartGroupDao.deleteInactiveByNetworkId(null, 2003)
+        );
+
+
 //        Foods.create(3);
 
 
-        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
+
+
+//        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
 //        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/associations.csv");
 
 

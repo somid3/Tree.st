@@ -23,7 +23,7 @@ public class QueryServices extends ParentService {
     private static double QUESTION_SCORE_SCALE = 100000d;
     private static double QUERY_SCORE    = 10000000000d;
 
-    public static UserScores createScores(Integer hostingNetworkId, Integer smartGroupRef, QueryXml queryXml) throws SQLException {
+    public static UserScores createScoresAndMappings(Integer hostingNetworkId, Integer smartGroupRef, QueryXml queryXml) throws SQLException {
 
         if (queryXml == null) return null;
 

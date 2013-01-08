@@ -397,6 +397,27 @@ public class UserToSmartGroupDao extends ParentDao {
         return out;
     }
 
+    public static Integer deleteInactiveByNetworkId (
+            Connection conn,
+            Integer networkId) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `user_to_smart_groups` " +
+            "where `network_id` = ? " +
+            "and (`member` = false and `state` = ?);";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ps.setInt(2, UserToSmartGroupStateEnum.NONE.getId());
+
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
 
 
     public static Integer insert (

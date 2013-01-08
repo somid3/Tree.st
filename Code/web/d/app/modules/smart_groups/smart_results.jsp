@@ -30,7 +30,7 @@
         QueryXml queryXml = QueryXmlReader.parseAndLoad(queryString);
 
         // Run search and store results
-        UserScores userScores = QueryServices.createScores (networkId, smartGroupRef, queryXml);
+        UserScores userScores = QueryServices.createScoresAndMappings(networkId, smartGroupRef, queryXml);
 
     }
 

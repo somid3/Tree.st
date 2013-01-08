@@ -3,15 +3,16 @@ package com.questy.services.cron;
 
 import com.questy.dao.NetworkDao;
 import com.questy.dao.SmartGroupDao;
+import com.questy.dao.UserSessionDao;
 import com.questy.dao.UserToSmartGroupDao;
 import com.questy.domain.Network;
 import com.questy.domain.SmartGroup;
 import com.questy.domain.UserToSmartGroup;
 import com.questy.enums.EmailNotificationRateEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
-import com.questy.helpers.UserScores;
 import com.questy.services.QueryServices;
 import com.questy.services.email.EmailServices;
+import com.questy.utils.DateUtils;
 import com.questy.xml.query.QueryXml;
 import com.questy.xml.query.QueryXmlReader;
 
@@ -29,8 +30,6 @@ public class CronServices {
         // Retrieving all networks
         List<Network> networks = NetworkDao.getAll(null);
 
-        UserScores scores = null;
-
         // Looping over each network
         for (Network network : networks) {
 
@@ -40,16 +39,26 @@ public class CronServices {
             // Looping over smart groups
             for (SmartGroup group : groups) {
 
-                // Running search
+                // Running search to create scores and add new mappings
                 queryXml = QueryXmlReader.parseAndLoad(group.getQuery());
-                QueryServices.createScores(network.getId(), group.getRef(), queryXml);
+                QueryServices.createScoresAndMappings(network.getId(), group.getRef(), queryXml);
 
             }
+
+            // Delete all inactive user to smart group mappings
+            UserToSmartGroupDao.deleteInactiveByNetworkId(null, network.getId());
 
         }
 
     }
 
+    /**
+     * Called at a variable calling rate, notifies users of each network the new smart
+     * groups to which they have been auto-magically added
+     *
+     * @param callingRate
+     * @throws Exception
+     */
     public static void notifyNewNonPrivateSmartGroupMembers (EmailNotificationRateEnum callingRate)  throws Exception {
 
         // Get all private networks
@@ -87,6 +96,12 @@ public class CronServices {
         }
     }
 
+    /**
+     * Called at a variable calling rate, creates a unique digest message for each user
+     * in a network based on the shared items of the user's active smart groups
+     *
+     * @throws SQLException
+     */
     public static void sharedItemDigest (EmailNotificationRateEnum callingRate) throws SQLException {
 
         // Retrieving all networks
@@ -98,5 +113,19 @@ public class CronServices {
             EmailServices.sharedItemDigest(network.getId(), callingRate);
 
         }
+    }
+
+    /**
+     * On a daily basis removes user sessions that are not active
+     *
+     * @throws SQLException
+     */
+    public static void calledDailyUserSessionCleanUp() throws SQLException {
+
+        // Removing non-persistent user sessions that have not been updated in the last 7 days
+        UserSessionDao.deleteByPersistentAndUpdatedBefore(null, false, DateUtils.daysAgo(7));
+
+        // Removing persistent user sessions that have not been updated in the last 60 days
+        UserSessionDao.deleteByPersistentAndUpdatedBefore(null, true, DateUtils.daysAgo(60));
     }
 }

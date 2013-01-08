@@ -63,12 +63,13 @@
 
 <% for (SmartGroup g_smartGroup : smartGroups) { %>
     <%@ include file="../includes/g_smart_group_row.jsp"%>
+    <%@ include file="../includes/h_spacer_row.jsp"%>
 <% } %>
 
 <%
     UrlQuery parameters = new UrlQuery();
     parameters.add("nid", networkId);
-    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS, parameters));
+    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SHARED_ITEM_NOTIFICATIONS, parameters));
 
     List<String> e_removals = new ArrayList<String>();
     e_removals.add(unsubscribeLink + " from 'smart group mapping' notifications at " + StringUtils.concat(network.getName(), 15, "..."));

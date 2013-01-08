@@ -67,7 +67,7 @@ public class QueryServicesTest {
 
         QueryXml query = QueryXmlReader.parseAndLoad(queryXml);
 
-        UserScores userScores = QueryServices.createScores(2, 2, query);
+        UserScores userScores = QueryServices.createScoresAndMappings(2, 2, query);
 
         System.out.println(userScores);
     }
