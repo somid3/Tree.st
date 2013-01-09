@@ -155,7 +155,11 @@
 }
 
 .shared_item .right .top .in {
-    margin: 0 5px;
+    margin-right: 5px;
+}
+
+.shared_item .right .top .ago {
+    margin-left: 5px;
 }
 
 .shared_item .right .top .delete {
@@ -180,15 +184,6 @@
     float: right;
 }
 
-
-.shared_item .right .details {
-    margin-bottom: 3px;
-}
-
-.shared_item .right .details .comment {
-    float: left;
-    margin-right: 10px;
-}
 
 .shared_item .comments {
     margin-top: 5px;
@@ -286,19 +281,9 @@
 }
 
 .shared_comment .right .delete {
-    float: left;
-}
-
-.shared_item .right .delete {
     float: right;
 }
 
-.shared_comment .right .details {
-    display: inline-block;
-    /*margin-top: 0;*/
-}
-
-.shared_comment .right .details .ago {
-    float: left;
-    margin-right: 10px;
+.shared_comment .right .ago {
+    font-style: italic;
 }

@@ -49,13 +49,13 @@
                 <% } %>
 
                 <%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_a_sharedComment.getText() )) %>
+
+                <% if (share_a_settingSharedCommentDisplayCreatedOn != 0) { %>
+                    <span class="ago sm_text dim2">(<%= PrettyDate.toString( share_a_sharedComment.getCreatedOn()) %>)</span>
+                <% } %>
+
             </div>
 
-            <div class="details">
-                <% if (share_a_settingSharedCommentDisplayCreatedOn != 0) { %>
-                    <div class="ago sm_text dim2"><%= PrettyDate.toString( share_a_sharedComment.getCreatedOn()) %></div>
-                <% } %>
-            </div>
 
         </div>
     </div>

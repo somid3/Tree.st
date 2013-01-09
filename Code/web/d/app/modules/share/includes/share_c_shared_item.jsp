@@ -57,6 +57,10 @@
 
                 <% } %>
 
+                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
+                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
+                <% } %>
+
                 <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
 
                     <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getRef() %>)">
@@ -73,15 +77,6 @@
             <div class="box smd_text dim">
                 <%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
             <div class="votes">
-            </div>
-        </div>
-        <div>
-            <div class="details">
-
-                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
-                    <span class="sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
-                <% } %>
-
             </div>
         </div>
 
