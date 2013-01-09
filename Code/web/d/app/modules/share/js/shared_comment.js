@@ -1,22 +1,5 @@
 function SharedComment () {};
 
-SharedComment.displayNewSharedComment = function (hNewSharedCommentId) {
-
-    $("#" + hNewSharedCommentId).hide().fadeIn();
-
-};
-
-SharedComment.activateNewSharedComment = function (event, hNewSharedCommentTextId, hNewSharedCommentId) {
-
-    Event.preventDefault(event);
-
-    // Display add shared comment form
-    SharedComment.displayNewSharedComment(hNewSharedCommentId);
-
-    // Focus on the add new comment textarea
-    $("#" + hNewSharedCommentTextId).focus();
-
-};
 
 /**
  * Adds a shared comment to a shared item. Notice that the parameter list of this function
@@ -24,21 +7,26 @@ SharedComment.activateNewSharedComment = function (event, hNewSharedCommentTextI
  * and smart group ref (sgr). That is because shared items could be viewed from the network
  * view, or the smart group view. When adding a comment we must ensure we add the comment
  * correctly, regardless if the shared item is being viewed from the network or smart group.
- *
- * @param event
- * @param networkId
- * @param smartGroupRef
- * @param sharedItemRef
- * @param hNewSharedCommentTextId
- * @param hCommentsId
  */
-SharedComment.addSharedComment = function (event, networkId, smartGroupRef, sharedItemRef, hNewSharedCommentTextId, hSharedCommentsErrorId, hSharedCommentsLoadingId, hCommentsId) {
+SharedComment.addSharedComment = function (
+    event,
+    networkId,
+    smartGroupRef,
+    sharedItemRef,
+    hNewSharedCommentId,
+    hCommentsId) {
+
+    // Only continue if the enter key has been pressed
+    if (event.which != 13)
+        return false;
 
     Event.preventDefault(event);
 
-    var $textarea = $("#" + hNewSharedCommentTextId);
-    var $error = $("#" + hSharedCommentsErrorId);
-    var $loading = $("#" + hSharedCommentsLoadingId);
+    var $newComment = $("#" + hNewSharedCommentId);
+    var $error = $newComment.find('.error');
+    var $loading = $newComment.find('.loading');
+    var $textarea = $newComment.find('textarea');
+
 
     var parameters = {};
     parameters.nid = networkId;

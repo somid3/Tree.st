@@ -14,6 +14,11 @@ public class HtmlUtils {
         return StringUtils.random(length);
     }
 
+    /**
+     * Takes a string an adds html links to material that appears to be a url
+     * @param input
+     * @return
+     */
     public static String linkify (String input) {
 
         input = StringUtils.emptyIfNull(input);
@@ -30,6 +35,15 @@ public class HtmlUtils {
     public static String createHref(String visible, String url) {
 
         return  StringUtils.surround(visible, "<a href=\"" + url + "\">", "</a>" );
+
+    }
+
+    /**
+     * Adds html paragraph tags to paragraphs separated by new lines
+     */
+    public static String paragraphize (String input) {
+
+        return input.replaceAll("\\n", "<br/>");
 
     }
 

@@ -43,7 +43,7 @@
 
     <% if (pointsForLink < 0) { %>
         <div class="requires vl_text highlight2">
-            Requires <span class="sp_header"><%= pointsForLink %></span> points
+            Requires <span class="sp_header"><%= pointsForLink * -1 %></span> points
         </div>
     <% } %>
 
