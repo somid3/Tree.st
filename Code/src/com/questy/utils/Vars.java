@@ -23,7 +23,7 @@ public class Vars {
      * Last production revision number, current format is the date
      * of the last push to production
      */
-    public static Long rev = 20130130L;
+    public static Long rev = 20130109L;
 
     /**
      * Current stage

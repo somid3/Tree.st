@@ -5,6 +5,7 @@ import com.questy.admin.dao.GeneralEmailDao;
 import com.questy.enums.EmailMimeEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.AmazonMailSender;
+import com.questy.utils.StringUtils;
 
 import java.io.FileReader;
 import java.sql.Connection;
@@ -17,7 +18,7 @@ public class GeneralEmailSender {
     public static void main (String[] args) throws SQLException {
 
         // Send email to folks in particular industry
-        sendEmails(2000, "University");
+        sendEmails(900, "Association");
 
     }
 
@@ -45,19 +46,7 @@ public class GeneralEmailSender {
         Connection conn = null;
 
         // Creating message
-        String message ="Hello from MIT,\n" +
-            "\n" +
-            "We are a group of graduate students who have created a patent-pending technology that can bring immediate value to your school.\n" +
-            "\n" +
-            "This tool allows your students and faculty to find exactly who they are looking for based on attributes that are specific to your institution. For example, students here at MIT have used this to find roommates, connect with alumni, and discover inter-departmental research opportunities -- among many other applications.\n" +
-            "\n" +
-            "Here is a 90 second video to learn more: http://www.tree.st.\n" +
-            "\n" +
-            "A simple demo takes only 15 minutes, could we set up a time that works for you?\n" +
-            "\n" +
-            "Thanks,\n" +
-            "Socrates Rosenfeld\n" +
-            "Tree St., Inc.\n";
+        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("associations_email_2.html"), "UTF-8");
 
         message = message.replaceAll("\\[from_url\\]", generalEmail.getFromUrl());
         message = message.replaceAll("\\[keyword_1\\]", generalEmail.getKeyword1());
@@ -67,10 +56,10 @@ public class GeneralEmailSender {
         // Creating runnable to send email on new thread
         AmazonMailSender ser = new AmazonMailSender();
         ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
-        ser.setFromName("socrates@tree.st");
-        ser.setFromEmail("socrates@tree.st");
+        ser.setFromName("socrates@mit.edu");
+        ser.setFromEmail("socrates@mit.edu");
         ser.addRecipient(generalEmail.getEmail());
-        ser.setSubject("tool for your school");
+        ser.setSubject("tool for your association");
         ser.setMessageText(message);
 
         // Sending the email
@@ -94,8 +83,9 @@ public class GeneralEmailSender {
 
             GeneralEmail ge = new GeneralEmail();
             ge.setEmail(nextLine[0]);
-            ge.setFromUrl(nextLine[1]);
-            ge.setIndustry(nextLine[2]);
+            ge.setFromUrl(nextLine[2]);
+            ge.setKeyword1(nextLine[3]);
+            ge.setIndustry("Association");
 
             // Validation: checking no duplicate emails
             if(GeneralEmailDao.getCountByEmail(null, ge.getEmail()) > 0)
@@ -107,7 +97,7 @@ public class GeneralEmailSender {
                 ge.getEmail(),
                 ge.getFromUrl(),
                 ge.getIndustry(),
-                "",
+                ge.getKeyword1(),
                 "",
                 "");
 

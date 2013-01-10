@@ -19,9 +19,9 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(
-            UserToSmartGroupDao.deleteInactiveByNetworkId(null, 2003)
-        );
+//        System.out.println(
+//            UserToSmartGroupDao.deleteInactiveByNetworkId(null, 2003)
+//        );
 
 
 //        Foods.create(3);
@@ -30,7 +30,7 @@ public class OmidsSandbox {
 
 
 //        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/Universities.csv");
-//        GeneralEmailSender.CVSToDatabase("/Users/omid/Desktop/scrapedaddresses/associations.csv");
+        GeneralEmailSender.CVSToDatabase("/Users/omid/Google Drive/Tree.st (Google Drive)/Sales/2500-assoc.csv");
 
 
 

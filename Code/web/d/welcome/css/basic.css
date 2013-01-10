@@ -221,10 +221,10 @@ body {
 
 .actions .action .today {
     position: absolute;
-    top: -40px;
+    top: -50px;
     left: 210px;
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
 }
 
 .actions .action .demo {

@@ -26,6 +26,7 @@
                 <div class="score"><%= sgroup_b_questionXml.getScore()%></div>
                 <div class="network"><%= sgroup_b_questionXml.getNetworkId()%></div>
                 <div class="ref"><%= sgroup_b_questionXml.getRef()%></div>
+                <div class="edit md_header light_button">+</div>
                 <div class="text smd_text dim"><%= StringUtils.concat(sgroup_b_question.getText(), 50, "&hellip;") %></div>
             </div>
 

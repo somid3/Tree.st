@@ -48,7 +48,6 @@
 
 #user_panel_dashboard .shortcuts .shortcut {
     float: right;
-    border: 1px solid #ccc;
     padding: 5px 10px;
     margin-left: 5px;
 }
@@ -125,7 +124,6 @@
 
 .user_setting .shortcuts .shortcut {
     float: left;
-    border: 1px solid #ccc;
     padding: 5px 10px;
     margin-left: 5px;
 }

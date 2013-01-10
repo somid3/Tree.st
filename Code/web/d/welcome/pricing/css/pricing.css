@@ -1,56 +1,90 @@
 <%@include file="../../all.jsp" %>
 <%@page contentType="text/css" %>
 
-.packages {
-    display:inline-block;
-    margin-top: 50px;
+.package {
+    margin-top: -15px;
+    background: white;
 }
 
-.packages .package {
-    position:relative;
-    width: 250px;
-    background-color: white;
+
+.package .breakdowns {
+    padding: 20px 20px 40px 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.package .breakdowns .breakdown {
+    width: 100%;
+    border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
+    padding: 10px 0;
+    display: inline-block;
+}
+
+.package .breakdowns .breakdown .desc {
     float: left;
+    width: 400px;
 }
 
-.packages .package1 {
+.package .breakdowns .breakdown .desc .big {
 }
 
-.packages .package2 {
-    width: 300px;
-    top:-20px;
-    z-index: 3;
+.package .breakdowns .breakdown .desc .small {
+    margin-top: 5px;
+    line-height: 1.3em;
+    margin-left: 10px;
 }
 
-.packages .package3 {
+.package .breakdowns .breakdown .cost {
+    float: right;
 }
 
-.packages .top {
+.package .breakdowns .breakdown .cost .unit {
+    font-style: italic;
     position: relative;
-    border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
-    padding: 10px 5px;
-    margin: 5px;
+    top: -5px;
 }
 
-.packages .middle {
-    position:relative;
-    margin: 0 10px;
+
+.package .breakdowns .breakdown .cost .cents {
+    position: relative;
+    top: -10px;
+}
+
+.package .breakdowns .breakdown .timeframe {
+    font-style: italic;
+}
+
+.start {
+    background: white;
+    width: 300px;
+    margin: 0 auto;
     padding: 10px;
+    text-align: center;
+    position: relative;
+    top: -10px;
 }
 
-.packages .middle .feature-title {
+
+
+
+.includes {
+    background: white;
+    position:relative;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.includes .feature-title {
     font-family: adam;
     text-align: center;
 }
 
-.packages .middle .features {
+.includes .features {
     margin: 10px 0;
-    height: 250px;
-
 }
 
 
-.packages .middle .features .feature {
+.includes .features .feature {
     border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
     padding: 8px 0 8px 25px;
     background: url("../img/check.png");
@@ -58,7 +92,7 @@
     background-position: 5px;
 }
 
-.packages .middle .features .non-feature {
+.includes .features .non-feature {
     border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
     padding: 5px 0 5px 25px;
     background: url("../img/cross.png");
@@ -67,34 +101,11 @@
     text-decoration: line-through;
 }
 
-.packages .middle .features .highlight {
+.includes .features .highlight {
     color: <%= HtmlDesign.highlight2 %>;
     font-size: 16px;
     font-weight: bold;
 }
 
-.packages .bottom {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.packages .bottom2 {
-    text-align: center;
-    margin: 30px auto;
-    padding: 10px;
-    width: 180px;
-}
 
 
-.packages .package .top .title {
-    text-align: center;
-    font-size: 40px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.packages .package .top .price {
-    text-align: center;
-    font-style: italic;
-    font-size: 18px;
-}

@@ -92,13 +92,14 @@
 }
 
 #footer .content {
-    width: 60%;
+    width: 300px;
     margin: auto;
     padding: 10px;
-    margin-left: 285px;
+    margin-left: 160px;
     margin-top: 10px;
     margin-bottom: 15px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: white;
+    text-align: center;
 }
 
 /* Center */

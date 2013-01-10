@@ -39,7 +39,7 @@
             <% hShortcutsId = HtmlUtils.getRandomId(); %>
             <div id="<%= hShortcutsId %>" class="shortcuts">
                 <% hShortcutId = HtmlUtils.getRandomId(); %>
-                <a href="#" onclick="UND.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_networks/email_notifications.jsp', {nid: <%= network.getId() %>})"><div id="<%= hShortcutId %>" class="shortcut sm_text highlight2">Email Notifications</div></a>
+                <a href="#" onclick="UND.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_networks/email_notifications.jsp', {nid: <%= network.getId() %>})"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Email Notifications</div></a>
             </div>
 
             <div id="<%= hTargetId %>"></div>

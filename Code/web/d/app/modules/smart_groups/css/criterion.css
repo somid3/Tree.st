@@ -46,9 +46,17 @@
 
 #smart_search_criterion .question_details {
     float: left;
+    display: inline-block;
+}
+
+#smart_search_criterion .question_details .edit {
+    float: left;
+    margin-right: 5px;
+    padding: 3px 5px 3px 5px;
 }
 
 #smart_search_criterion .question_details .text {
+    float: left;
     padding: 5px;
 }
 

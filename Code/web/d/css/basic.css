@@ -343,8 +343,8 @@ input.bottom_line {
 }
 
 .light_button {
-    background: #eee;
-    color: #444;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
+    color: <%= HtmlDesign.highlight2 %>;
 }
 
 .active_button {

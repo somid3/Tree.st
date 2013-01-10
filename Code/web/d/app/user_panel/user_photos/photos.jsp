@@ -30,15 +30,15 @@
                     <div class="face_shortcuts">
 
                         <a href="#" onclick='UserPhotos.go(event, UserPhotos.Section.SET_FACE, {rr: <%= scaled.getRef() %>, cs: "<%= scaled.getChecksum() %>"});'>
-                            <div class="face_shortcut light_button sm_text highlight2">Edit face</div>
+                            <div class="face_shortcut light_button sm_text">Edit face</div>
                         </a>
 
                         <a href="#" onclick='UserPhotos.setProfile(event, <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
-                            <div class="face_shortcut light_button sm_text highlight2">Set profile</div>
+                            <div class="face_shortcut light_button sm_text">Set profile</div>
                         </a>
 
                         <a href="#" onclick='UserPhotos.hidePhoto(event, "<%= hPhotoId %>", <%= face.getRef() %>, "<%= face.getChecksum()%>");'>
-                            <div class="face_shortcut light_button sm_text highlight2">Remove</div>
+                            <div class="face_shortcut light_button sm_text">Remove</div>
                         </a>
 
                     </div>

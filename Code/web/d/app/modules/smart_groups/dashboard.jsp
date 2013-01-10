@@ -34,13 +34,13 @@
         <div class="shortcuts">
 
             <% if (!group.getVisibility().equals(SmartGroupVisibilityEnum.PRIVATE)) { %>
-                <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.SHARE);"><div class="shortcut sm_text dim" id="smart_group_shortcut_share">Share</div></a>
+                <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.SHARE);"><div class="shortcut sm_text light_button" id="smart_group_shortcut_share">Share</div></a>
             <% } %>
 
-            <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.MEMBERS);"><div class="shortcut sm_text dim" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
+            <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.MEMBERS);"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
 
             <% if (group.getUserId().equals(userId)) { %>
-                <a href="#" onclick="SGD.hideSmartGroup(event, <%= group.getRef() %>);"><div class="shortcut sm_text dim">Remove</div></a>
+                <a href="#" onclick="SGD.hideSmartGroup(event, <%= group.getRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
             <% } %>
 
         </div>

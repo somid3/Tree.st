@@ -341,7 +341,7 @@ public class EmailServices extends ParentService {
             ser.addRecipient(toUser.getEmail());
 
             // Creating subject
-            ser.setSubject("Someone added a commented after you did!");
+            ser.setSubject("Someone commented after you did!");
 
             // Sending the email
             ser.setMessageText(EmailServices.customizeMessage(message, toUser));
