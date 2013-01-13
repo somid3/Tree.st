@@ -47,7 +47,6 @@
         </div>
     </a>
 
-
     <div class="help">
         <div class="help-rel">
             <a href="/d/how/#share" target="_help"><img src="./img/help.png" alt="Help"></a>

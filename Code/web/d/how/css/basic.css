@@ -21,20 +21,6 @@ body {
     background-color: #fff;
     /*border: 2px solid white;*/
 }
-
-#footer {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-
-#footer .content {
-    width:  50%;
-    margin: auto;
-    padding: 10px;
-    background-color: #fff;
-}
-
 #container {
     width: 800px;
     padding-top: 10px;

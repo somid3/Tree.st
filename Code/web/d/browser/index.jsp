@@ -15,7 +15,7 @@
 <div id="main">
     <div id="header">
         <div id="logo">
-            <img src="/d/assets/logo.png">
+            <a href="http://<%= Vars.domain %>"><img src="/d/assets/logo.png"></a>
         </div>
     </div>
     <div id="container">
@@ -45,13 +45,8 @@
             </div>
         </div>
     </div>
-
-    <div id="footer">
-        <div class="content smd_text dim2">
-            Patent pending &middot; Made in Cambridge &#x2764; MA &middot; You're awesome!
-        </div>
-    </div>
 </div>
 
+<%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

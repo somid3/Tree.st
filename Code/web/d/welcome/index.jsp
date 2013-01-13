@@ -26,7 +26,7 @@
     <div class="w800 center">
         <div class="block">
             <div class="main gg_header white">Find anyone in your organization</div>
-            <div class="sub vl_text white">Discover & group your members by their qualities<br/> &mdash; and create amazing connections</div>
+            <div class="sub vl_text white">Discover & group your members via unique qualities<br/> &mdash; and create amazing connections</div>
         </div>
     </div>
 </div>
@@ -42,8 +42,8 @@
                 <a href="#request">
                     <div class="action glow">
                         <img class="today" src="./img/target.png">
-                        <div><span class="lg_header white">Request a free demo!</span></div>
-                        <div><span class="smd_text white">One of our engineers will walk you through a personalized demo</span></div>
+                        <div><span class="lg_header white">Request a free demo</span></div>
+                        <div><span class="smd_text white">In 5 minutes learn how Tree.st can add value to your organization</span></div>
                     </div>
                 </a>
 
@@ -52,8 +52,8 @@
                 <a href="/foods" target="_new">
                     <div class="action">
                         <img class="demo" src="./img/tree.png">
-                        <div><span class="lg_header white">Click here to test us out:</span></div>
-                        <div><span class="smd_text white">Find others around the world by your food preferences!</span></div>
+                        <div><span class="lg_header white">Experience a Community:</span></div>
+                        <div><span class="smd_text white">Visit our 'Foods' community -- where you can find and socialize with others via food preferences!</span></div>
                     </div>
                 </a>
             </div>
@@ -223,6 +223,6 @@
 <br/>
 
 
-<%@ include file="./includes/footer.jsp"%>
+<%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

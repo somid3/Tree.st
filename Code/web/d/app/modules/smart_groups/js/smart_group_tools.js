@@ -2,6 +2,7 @@ function SmartGroupTools () {
 
     this.networkId = null;
     this.view = null;
+    this.from = 0;
 
     this.changeView = function(event, hVisibilityId, view) {
 
@@ -14,13 +15,22 @@ function SmartGroupTools () {
         // Un highlight all types
         $smartGroupTools.find(".view").each(function () {
             $(this).removeClass("selected");
-        })
+        });
 
         // Highlight selected item
         $viewDiv.addClass("selected", 500);
 
         // Update type variable
         this.view = view;
+
+        // Resetting the from count to begin from zero
+        this.from = 0;
+
+        // Clear the canvas
+        $("#smart_groups_canvas").empty();
+
+        // Bind scrolling and display smart groups
+        this.displaySmartGroups();
     };
 
 
@@ -32,11 +42,50 @@ function SmartGroupTools () {
         var tmp_this = this;
         Pagination.bindScrollPagination( function() { tmp_this.scrollSmartGroups() } );
 
-        Transitions.load('#smart_groups_canvas', "./modules/smart_groups/smart_groups_display.jsp", {nid: this.networkId, sgv: this.view, from: 0});
+        // Display the first page
+        this.scrollSmartGroups();
+
+    };
+
+    this.scrollSmartGroups = function() {
+
+        var parameters = {};
+        parameters.nid = this.networkId;
+        parameters.from = this.from;
+        parameters.view = this.view;
+
+        // Loading the next series of shared items
+        var $div = $("<div/>");
+        var tmp_this = this;
+        $div.load("./modules/smart_groups/smart_groups_display.jsp", parameters, function (response) {
+
+            // Have we reached the end? If so, lock down future requests
+            if ($.trim(response).length == 0) {
+                Pagination.unbindScrollPagination();
+                return false;
+            }
+
+            // Increase 'from' count
+            var responseCount = $div.find(".smart_group_box").length;
+            tmp_this.from = tmp_this.from + responseCount;
+
+            // Adding shared items to share canvas
+            $div.appendTo("#smart_groups_canvas");
+
+        });
 
     };
 
 
+    /**
+     * Marks as a favorite or flag a particular smart group given a user
+     *
+     * @param event
+     * @param toggleState
+     * @param hFavoriteId
+     * @param networkId
+     * @param smartGroupRef
+     */
     this.toggleState = function (event, toggleState, hFavoriteId, networkId, smartGroupRef) {
 
         Event.preventDefault(event);
@@ -48,31 +97,6 @@ function SmartGroupTools () {
 
             // Remove old star
             $favoriteDiv.replaceWith(data);
-        });
-
-    };
-
-    this.scrollSmartGroups = function() {
-
-        // Counting the total number of shared items displayed
-        var from = $(".smart_group_box").length;
-
-        var parameters = {};
-        parameters.nid = this.networkId;
-        parameters.from = from;
-
-        // Loading the next series of shared items
-        var $div = $("<div/>");
-        $div.load("./modules/smart_groups/smart_groups_display.jsp", parameters, function (response) {
-
-            // Adding shared items to share canvas
-            $div.appendTo("#smart_groups_canvas");
-
-            // Have we reached the end? If so, lock down future requests
-            if ($.trim(response).length == 0) {
-                Pagination.unbindScrollPagination();
-            }
-
         });
 
     };

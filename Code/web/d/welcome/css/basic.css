@@ -24,11 +24,13 @@ body {
 
 #logo {
     float: left;
-    position: relative;
-    top: -1000px;
 }
 
-
+#mini {
+    margin-left: 100px;
+    float: left;
+    padding: 10px;
+}
 
 #shortcuts {
     float: right;
@@ -279,19 +281,4 @@ body {
 }
 
 
-
-
-#footer {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-
-#footer .content {
-    width:  400px;
-    margin: auto;
-    padding: 10px;
-    background-color: #fff;
-    text-align: center;
-}
 

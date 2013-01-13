@@ -234,18 +234,7 @@
 
     </div>
 
-    <div id="footer">
-        <div class="content smd_text dim">
-            <a href="mailto:<%= Vars.supportEmail %>"><span class="highlight2">Support</span></a> &mdash;
-            Made at MIT &#x2764; &mdash;
-            Tree St., Inc.
-        </div>
-    </div>
-
 </div>
-
-<br>
-<br>
 
 <script type="text/javascript">
 
@@ -260,5 +249,6 @@
     Transitions.loadFadeIn("#left", "./modules/networks/left.jsp");
 </script>
 
+<%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

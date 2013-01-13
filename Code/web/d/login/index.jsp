@@ -61,8 +61,6 @@
     </div>
 </div>
 
-
-
 <script type="text/javascript">
 
     // Binding the return key for the form

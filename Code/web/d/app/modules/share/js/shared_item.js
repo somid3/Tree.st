@@ -2,6 +2,8 @@ function SharedItem () {
 
     this.networkId = null;
     this.smartGroupRef = null;
+    this.from = 0;
+
     this.viewUserId = null;
     this.hTellMeId = null;
     this.hErrorId = null;
@@ -123,7 +125,7 @@ function SharedItem () {
         var parameters = {};
         parameters.nid = this.networkId;
         parameters.sgr = this.smartGroupRef;
-        parameters.from = 0;
+        parameters.from = this.from;
 
         // Passing user id being viewed in case looking at user's profile
         if (this.viewUserId != null)
@@ -132,37 +134,39 @@ function SharedItem () {
         var tmp_this = this;
         Pagination.bindScrollPagination( function() { tmp_this.scrollSharedItems() } );
 
-        Transitions.load('#share_canvas', "./modules/share/shared_items_display.jsp", parameters);
+        this.scrollSharedItems();
+//        Transitions.load('#share_canvas', "./modules/share/shared_items_display.jsp", parameters);
 
     };
 
     this.scrollSharedItems = function() {
 
-        var tmp_this = this;
-
-        // Counting the total number of shared items displayed
-        var from = $(".shared_item").length;
-
         var parameters = {};
-        parameters.nid = tmp_this.networkId;
-        parameters.sgr = tmp_this.smartGroupRef;
-        parameters.from = from;
+        parameters.nid = this.networkId;
+        parameters.sgr = this.smartGroupRef;
+        parameters.from = this.from;
 
         // Passing user id being viewed in case looking at user's profile
-        if (tmp_this.viewUserId != null)
-            parameters.vuid = tmp_this.viewUserId;
+        if (this.viewUserId != null)
+            parameters.vuid = this.viewUserId;
 
         // Loading the next series of shared items
         var $div = $("<div/>");
+        var tmp_this = this;
         $div.load("./modules/share/shared_items_display.jsp", parameters, function (response) {
-
-            // Adding shared items to share canvas
-            $div.appendTo("#share_canvas");
 
             // Have we reached the end? If so, lock down future requests
             if ($.trim(response).length == 0) {
                 Pagination.unbindScrollPagination();
+                return false;
             }
+
+            // Increase 'from' count
+            var responseCount = $div.find(".shared_item").length;
+            tmp_this.from = tmp_this.from + responseCount;
+
+            // Adding shared items to share canvas
+            $div.appendTo("#share_canvas");
 
         });
 

@@ -16,6 +16,13 @@
                     <img src="/d/assets/logo.png">
                 </div>
             </a>
+
+            <div id="mini">
+                <a href="mailto:<%= Vars.supportEmail %>"><span class="smd_text highlight2">Contact us</span></a>
+                <span class="sm_text dim2">or read our</span>
+                <a href="http://blog.tree.st"><span class="smd_text highlight2">Blog</span></a>
+            </div>
+
             <div id="shortcuts">
 
                 <% header_active = header_path.equals("welcome") ? "active" : ""; %>
@@ -34,12 +41,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // Bringing down the logo
-    $(document).ready(function() {
-        Animations.inTopAndBounce("#logo", 30);
-    })
-</script>
 
 <% } %>

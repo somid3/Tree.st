@@ -1,6 +1,6 @@
 AllMembersDashboard.Section = {
     BY_POINTS: 1,
-    BY_JOINED: 2,
+    BY_JOINED: 2
 };
 
 
@@ -69,43 +69,34 @@ function AllMembersDashboard () {
         Pagination.bindScrollPagination( function() { tmp_this.scrollMembers() } );
 
         // Display the first page
-        this.scrollMembers()
+        this.scrollMembers();
 
     };
 
     this.scrollMembers = function() {
 
-        var tmp_this = this;
-
         var parameters = {};
-        parameters.nid = tmp_this.networkId;
-        parameters.from = tmp_this.from;
-        parameters.sort = tmp_this.sort;
+        parameters.nid = this.networkId;
+        parameters.from = this.from;
+        parameters.sort = this.sort;
 
         // Loading the next series of shared items
         var $div = $("<div/>");
+        var tmp_this = this;
         $div.load("./modules/all/by_network.jsp", parameters, function (response) {
 
-            var responseCount = $div.find(".all_members_result").length;
-
             // Have we reached the end? If so, lock down future requests
-            if (responseCount == 0) {
+            if ($.trim(response).length == 0) {
                 Pagination.unbindScrollPagination();
                 return false;
-
             }
 
-            console.log("a-" + tmp_this.from);
-            console.log("b-" + $div.find(".all_members_result").length);
-
+            // Increase 'from' count
+            var responseCount = $div.find(".all_members_result").length;
             tmp_this.from = tmp_this.from + responseCount;
-
-            console.log(tmp_this.from);
-
 
             // Adding shared items to share canvas
             $div.appendTo("#all_members_canvas");
-
 
         });
 

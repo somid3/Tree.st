@@ -72,36 +72,29 @@
     SGT = new SmartGroupTools();
     SGT.networkId = <%= networkId %>;
     SGT.changeView(null, "<%= hSharedId %>", <%= SmartGroupsViewEnum.SHARED.getId() %>);
-    SGT.displaySmartGroups();
 
     $("#<%= hOfficialId %>").click(function (event) {
         SGT.changeView(event, "<%= hOfficialId %>", <%= SmartGroupsViewEnum.OFFICIAL.getId() %>);
-        SGT.displaySmartGroups();
     });
 
     $("#<%= hSharedId %>").click(function (event) {
         SGT.changeView(event, "<%= hSharedId %>", <%= SmartGroupsViewEnum.SHARED.getId() %>);
-        SGT.displaySmartGroups();
     });
 
     $("#<%= hPrivateId %>").click(function (event) {
         SGT.changeView(event, "<%= hPrivateId %>", <%= SmartGroupsViewEnum.YOURS.getId() %>);
-        SGT.displaySmartGroups();
     });
 
     $("#<%= hMatchId %>").click(function (event) {
-            SGT.changeView(event, "<%= hMatchId %>", <%= SmartGroupsViewEnum.MATCHED.getId() %>);
-            SGT.displaySmartGroups();
-        });
+        SGT.changeView(event, "<%= hMatchId %>", <%= SmartGroupsViewEnum.MATCHED.getId() %>);
+    });
 
     $("#<%= hFavoritesId %>").click(function (event) {
         SGT.changeView(event, "<%= hFavoritesId %>", <%= SmartGroupsViewEnum.FAVORITES.getId() %>);
-        SGT.displaySmartGroups();
     });
 
     $("#<%= hFlaggedId %>").click(function (event) {
         SGT.changeView(event, "<%= hFlaggedId %>", <%= SmartGroupsViewEnum.FLAGS.getId() %>);
-        SGT.displaySmartGroups();
     });
 
 </script>
