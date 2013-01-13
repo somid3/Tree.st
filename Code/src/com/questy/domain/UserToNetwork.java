@@ -9,7 +9,10 @@ public class UserToNetwork extends Parent {
     private Date createdOn;
     private Integer userId;
     private Integer networkId;
+
     private Integer currentPoints;
+    private Integer sharedPoints;
+
     private Integer pointsPerLink;
     private Date removedOn;
     private RoleEnum role;
@@ -71,4 +74,13 @@ public class UserToNetwork extends Parent {
     public void setRemovedOn(Date removedOn) {
         this.removedOn = removedOn;
     }
+
+    public Integer getSharedPoints() {
+        return sharedPoints;
+    }
+
+    public void setSharedPoints(Integer sharedPoints) {
+        this.sharedPoints = sharedPoints;
+    }
+
 }

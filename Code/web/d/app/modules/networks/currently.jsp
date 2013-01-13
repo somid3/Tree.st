@@ -10,6 +10,9 @@
 
     // Retrieving next available question to see what tab to open
     Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId());
+
+    // Retrieving network settings
+    String pluralVocabulary = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetwork(networkId);
 %>
 <script type="text/javascript">
 
@@ -35,11 +38,11 @@
 
 <% if (!network.isGlobal()) { %>
 
-    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.TOP);">
-        <div class="shortcut" id="network_shortcut_top">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.ALL);">
+        <div class="shortcut" id="network_shortcut_all">
             <div class="contents">
-                <div class="icon"><img src="./modules/networks/img/premium.png" alt="Top"></div>
-                <div class="name smd_text">Top <%= NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetwork(networkId) %></div>
+                <div class="icon"><img src="./modules/networks/img/premium.png" alt="All <%= network.getTotalMembers() %> <%= pluralVocabulary %>"></div>
+                <div class="name smd_text">All <%= network.getTotalMembers() %> <%= pluralVocabulary %></div>
             </div>
         </div>
     </a>
@@ -82,7 +85,7 @@
         <div class="shortcut" id="network_shortcut_smart_search">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/smart_search.png" alt="Smart Search"></div>
-                <div class="name smd_text">People Finder</div>
+                <div class="name smd_text"><%= pluralVocabulary %> Finder</div>
             </div>
         </div>
     </a>

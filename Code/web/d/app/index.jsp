@@ -90,8 +90,8 @@
 <script type="text/javascript" src="./modules/tooltips/js/tooltips.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/tooltips/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="./modules/top/js/top.js?<%= Vars.rev %>"></script>
-<link rel=stylesheet type="text/css" href="./modules/top/css/basic.css?<%= Vars.rev %>">
+<script type="text/javascript" src="./modules/all/js/dashboard.js?<%= Vars.rev %>"></script>
+<link rel=stylesheet type="text/css" href="./modules/all/css/basic.css?<%= Vars.rev %>">
 
 
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">

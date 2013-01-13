@@ -1,0 +1,41 @@
+<%@include file="../../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+#all_members_dashboard {
+    background-color: #fff;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    padding: 5px 5px 0 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#all_members_dashboard .shortcuts {
+    display: inline-block;
+    width: 100%;
+}
+
+#all_members_dashboard .shortcuts .shortcut {
+    float: right;
+    padding: 5px 10px;
+    margin: 0 0 5px 5px;
+}
+
+#all_members_dashboard .shortcuts .selected {
+    background-color: #336699;
+    color: #fff;
+}
+
+
+
+
+
+#all_members_canvas {
+    display: inline-block;
+}
+
+.all_members_result {
+    margin: 3px 3px 5px 5px;
+    float: left;
+    width: 290px;
+}

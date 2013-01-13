@@ -4,6 +4,7 @@ import com.questy.admin.domain.GeneralEmail;
 import com.questy.dao.ParentDao;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -114,7 +115,7 @@ public class GeneralEmailDao extends ParentDao{
 
 
         ps.setString(1, email);
-        ps.setString(2, fromUrl);
+        ps.setString(2, StringUtils.substring(fromUrl, 0, 250));
         ps.setString(3, industry);
         ps.setString(4, keyword1);
         ps.setString(5, keyword2);

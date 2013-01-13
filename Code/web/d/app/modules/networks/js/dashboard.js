@@ -5,7 +5,7 @@ NetworkDashboard.Section = {
     SMART_GROUP: 4,
     SHARE: 5,
     ANSWERS: 6,
-    TOP: 7,
+    ALL: 7,
     SEARCH: 8
 };
 
@@ -112,9 +112,9 @@ function NetworkDashboard () {
 
             this.clickItem(event, '#network_shortcut_profile', './modules/profiles/dashboard.jsp', parameters, callback);
 
-        else if (sendTo == NetworkDashboard.Section.TOP)
+        else if (sendTo == NetworkDashboard.Section.ALL)
 
-             this.clickItem(event, '#network_shortcut_top', './modules/top/by_network.jsp', parameters, callback);
+             this.clickItem(event, '#network_shortcut_all', './modules/all/dashboard.jsp', parameters, callback);
 
         else if (sendTo == NetworkDashboard.Section.SEARCH)
 

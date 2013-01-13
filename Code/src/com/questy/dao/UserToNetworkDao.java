@@ -1,6 +1,7 @@
 package com.questy.dao;
 
 import com.questy.domain.UserToNetwork;
+import com.questy.enums.AllMembersViewEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
@@ -15,18 +16,21 @@ public class UserToNetworkDao extends ParentDao {
             Connection conn,
             Integer networkId,
             RoleEnum lowestRole,
+            AllMembersViewEnum orderBy,
             SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
-        String sql =
-            "select * " +
-            "from `users_to_networks` " +
-            "where `network_id` = ? " +
-            "and `role` >= ? " +
-            "and `removed_on` is null " +
-            "order by `current_points` desc, `id` desc " +
-            "limit ?, ?;";
+        String sql = null;
+
+        switch (orderBy) {
+            case BY_POINTS:
+                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? and `removed_on` is null order by `current_points` desc, `id` desc limit ?, ?;";
+                break;
+            case BY_JOINED:
+                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? and `removed_on` is null order by `created_on` desc, `id` desc limit ?, ?;";
+                break;
+        }
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
@@ -183,7 +187,10 @@ public class UserToNetworkDao extends ParentDao {
         out.setRemovedOn(DatabaseUtils.getTimestamp(rs, "removed_on"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
+
         out.setCurrentPoints(DatabaseUtils.getInt(rs, "current_points"));
+        out.setSharedPoints(DatabaseUtils.getInt(rs, "shared_points"));
+
         out.setPointsPerLink(DatabaseUtils.getInt(rs, "points_per_link"));
         out.setRole(RoleEnum.getByValue(DatabaseUtils.getInt(rs, "role")));
         return out;
