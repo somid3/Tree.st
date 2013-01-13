@@ -52,8 +52,8 @@ public class EmailScheduledReminders {
         calendar.setTime(new Date());
         Integer dayNow = calendar.get(Calendar.DAY_OF_YEAR);
 
-        // Sending message every 5 days
-        if (dayNow % 5 != 0)
+        // Sending message every few days...
+        if (dayNow % 3 != 0)
             return;
 
         // Retrieve all faceless users

@@ -456,10 +456,6 @@ public class EmailServices extends ParentService {
             // Retrieving all active smart groups for user
             List<UserToSmartGroup> activeUserToSmartGroups = UserToSmartGroupDao.getActiveByNetworkIdAndUserId(null, networkId, userToNetwork.getUserId(), SqlLimit.ALL);
 
-            System.out.println(
-                "active smart groups " + activeUserToSmartGroups.size()
-            );
-
             // Counting the number of messages in the digest
             for (UserToSmartGroup activeUserToSmartGroup : activeUserToSmartGroups) {
 
