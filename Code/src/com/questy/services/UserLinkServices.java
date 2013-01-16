@@ -43,17 +43,17 @@ public class UserLinkServices extends ParentService  {
         // Validating for timing attacks
         {
             // Validating for minute attack
-            Integer perMinute = NetworkIntegerSettingEnum.USER_LINKS_PER_MINUTE.getValueByNetwork(networkId);
+            Integer perMinute = NetworkIntegerSettingEnum.USER_LINKS_PER_MINUTE.getValueByNetworkId(networkId);
             Integer lastMinute = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.minutesAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastMinute >= perMinute) throw new UIException("Limit: " + perMinute + " views per minute");
 
             // Validating for hour attack
-            Integer perHour = NetworkIntegerSettingEnum.USER_LINKS_PER_HOUR.getValueByNetwork(networkId);
+            Integer perHour = NetworkIntegerSettingEnum.USER_LINKS_PER_HOUR.getValueByNetworkId(networkId);
             Integer lastHour = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.hoursAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastHour >= perHour) throw new UIException("Limit: " + perHour + " views per hour");
 
             // Validating for day attack
-            Integer perDay = NetworkIntegerSettingEnum.USER_LINKS_PER_DAY.getValueByNetwork(networkId);
+            Integer perDay = NetworkIntegerSettingEnum.USER_LINKS_PER_DAY.getValueByNetworkId(networkId);
             Integer lastDay = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.daysAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " views per day");
         }
@@ -158,7 +158,7 @@ public class UserLinkServices extends ParentService  {
         if (userToNetwork.getPointsPerLink() != null)
             return userToNetwork.getPointsPerLink();
         else
-            return NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetwork(networkId);
+            return NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(networkId);
     }
 
 

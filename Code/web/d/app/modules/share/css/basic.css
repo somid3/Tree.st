@@ -155,7 +155,7 @@
 }
 
 .shared_item .right .top .in {
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
 .shared_item .right .top .ago {
@@ -184,10 +184,19 @@
     float: right;
 }
 
+.shared_item .right .content .votes .vote_item img {
+    width: 20px;
+    height: 10px;
+}
+
+.shared_item .right .content .votes .vote_count {
+    text-align: center;
+}
 
 .shared_item .comments {
     margin-top: 5px;
 }
+
 
 
 

@@ -8,7 +8,7 @@
     SmartGroup group = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
 
     // Retrieving whether to display lasted date of result
-    Integer displaySince = NetworkIntegerSettingEnum.SMART_RESULTS_DISPLAY_SINCE.getValueByNetwork(networkId);
+    Integer displaySince = NetworkIntegerSettingEnum.SMART_RESULTS_DISPLAY_SINCE.getValueByNetworkId(networkId);
 
     // Is the smart group private?
     if (group.getVisibility() == SmartGroupVisibilityEnum.PRIVATE) {

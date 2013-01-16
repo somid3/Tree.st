@@ -7,6 +7,6 @@
 
     SharedComment share_a_sharedComment = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(null, networkId, sgr, sir, ref);
     User share_a_me = UserDao.getById(null, userId);
-    Integer share_a_settingSharedCommentDisplayCreatedOn = NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON.getValueByNetwork(networkId);;
+    Integer share_a_settingSharedCommentDisplayCreatedOn = NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON.getValueByNetworkId(networkId);;
 %>
 <%@ include file="includes/share_a_shared_comment.jsp" %>

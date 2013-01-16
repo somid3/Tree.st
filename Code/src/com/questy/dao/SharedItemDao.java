@@ -355,6 +355,59 @@ public class SharedItemDao extends ParentDao {
         end(conn, ps, null);
     }
 
+    public static void incrementUpVotesByNetworkIdAndSmartGroupRefAndRef(
+        Connection conn,
+        Integer networkId,
+        Integer smartGroupRef,
+        Integer ref,
+        Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `shared_items` " +
+            "set `up_votes` = `up_votes` + ? " +
+            "where `network_id` = ? " +
+            "and `smart_group_ref` = ? " +
+            "and `ref` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setInt(3, smartGroupRef);
+        ps.setInt(4, ref);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void incrementDownVotesByNetworkIdAndSmartGroupRefAndRef(
+        Connection conn,
+        Integer networkId,
+        Integer smartGroupRef,
+        Integer ref,
+        Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `shared_items` " +
+            "set `down_votes` = `down_votes` + ? " +
+            "where `network_id` = ? " +
+            "and `smart_group_ref` = ? " +
+            "and `ref` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setInt(3, smartGroupRef);
+        ps.setInt(4, ref);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
 
     public static Integer insert(
         Connection conn,
@@ -418,6 +471,8 @@ public class SharedItemDao extends ParentDao {
     }
 
 
+
+
     private static SharedItem loadPrimitives (ResultSet rs) throws SQLException {
         SharedItem out = new SharedItem();
         out.setId(DatabaseUtils.getInt(rs, "id"));
@@ -429,6 +484,8 @@ public class SharedItemDao extends ParentDao {
         out.setTotalComments(DatabaseUtils.getInt(rs, "total_comments"));
         out.setText(DatabaseUtils.getString(rs, "text"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));
+        out.setUpVotes(DatabaseUtils.getInt(rs, "up_votes"));
+        out.setDownVotes(DatabaseUtils.getInt(rs, "down_votes"));
 
         return out;
     }

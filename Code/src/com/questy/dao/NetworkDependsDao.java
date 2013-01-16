@@ -88,7 +88,7 @@ public class NetworkDependsDao extends ParentDao {
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setDependsOn(DatabaseUtils.getInt(rs, "depends_on"));
         out.setRole(
-            RoleEnum.getByValue(DatabaseUtils.getInt(rs, "role"))
+            RoleEnum.getById(DatabaseUtils.getInt(rs, "role"))
         );
 
         return out;

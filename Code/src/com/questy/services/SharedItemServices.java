@@ -28,17 +28,17 @@ public class SharedItemServices extends ParentService  {
         // Validating for timing attacks
         {
             // Validating for minute attack
-            Integer perMinute = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_FIVE_MINUTES.getValueByNetwork(networkId);
+            Integer perMinute = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_FIVE_MINUTES.getValueByNetworkId(networkId);
             Integer lastMinute = SharedItemDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.minutesAgo(5));
             if (lastMinute >= perMinute) throw new UIException("Limit: " + perMinute + " messages every 5 minutes");
 
             // Validating for hour attack
-            Integer perHour = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_HOUR.getValueByNetwork(networkId);
+            Integer perHour = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_HOUR.getValueByNetworkId(networkId);
             Integer lastHour = SharedItemDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.hoursAgo(1));
             if (lastHour >= perHour) throw new UIException("Limit: " + perHour + " messages per hour");
 
             // Validating for day attack
-            Integer perDay = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_DAY.getValueByNetwork(networkId);
+            Integer perDay = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_DAY.getValueByNetworkId(networkId);
             Integer lastDay = SharedItemDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.daysAgo(1));
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " messages per day");
         }
@@ -47,7 +47,7 @@ public class SharedItemServices extends ParentService  {
         Network network = NetworkDao.getById(conn, networkId);
 
         // Retrieving points per shared item
-        Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetwork(networkId);
+        Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
 
         // Validating
         if (network.isGlobal())
@@ -88,7 +88,7 @@ public class SharedItemServices extends ParentService  {
             throw new UIException("User is not the author of the shared item to be hidden");
 
         // Retrieving points per shared item
-        Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetwork(networkId);
+        Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
         pointsPerSharedItem = pointsPerSharedItem * -1;
 
         // Hide shared item

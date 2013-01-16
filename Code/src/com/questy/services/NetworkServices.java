@@ -74,7 +74,7 @@ public class NetworkServices extends ParentService {
             UserToNetworkDao.insert(conn, userId, networkId, role);
 
             // Retrieving points for joining
-            Integer pointsPerJoin = NetworkIntegerSettingEnum.NETWORK_JOIN_POINTS_PER.getValueByNetwork(networkId);
+            Integer pointsPerJoin = NetworkIntegerSettingEnum.NETWORK_JOIN_POINTS_PER.getValueByNetworkId(networkId);
 
             // Increment default points for user
             UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPerJoin);

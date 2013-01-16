@@ -32,9 +32,13 @@
     Integer share_b_networkId = networkId;
     Integer share_b_fromSmartGroupRef = smartGroupRef;
     User share_b_me = UserDao.getById(null, userId);
-    Integer share_b_settingSharedItemDisplayCreatedOn    = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_CREATED_ON.getValueByNetwork(networkId);
-    Integer share_b_settingSharedCommentDisplayCreatedOn = NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON.getValueByNetwork(networkId);
-    Integer share_b_settingSharedCommentPointsPer        = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetwork(networkId);
+    Integer share_b_settingSharedItemDisplayCreatedOn     = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_CREATED_ON.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedCommentDisplayCreatedOn  = NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedCommentPointsPer         = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedItemDisplayUpVotes       = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_UP_VOTES.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedItemDisplayDownVotes     = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_DOWN_VOTES.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedCommentsDisplayUpVotes   = NetworkIntegerSettingEnum.SHARED_COMMENTS_DISPLAY_UP_VOTES.getValueByNetworkId(networkId);
+    Integer share_b_settingSharedCommentsDisplayDownVotes = NetworkIntegerSettingEnum.SHARED_COMMENTS_DISPLAY_DOWN_VOTES.getValueByNetworkId(networkId);
 %>
 
 <%@ include file="includes/share_b_shared_items.jsp" %>

@@ -1,3 +1,4 @@
+<%@include file="../../../all.jsp" %>
 <%@page contentType="text/css" %>
 
 #left {
@@ -28,14 +29,16 @@
     padding: 4px;
 }
 
-#networks .networks .tab {
+#networks .networks .switch {
     position: relative;
     top: -13px;
     background-color: #fff;
+    border-top: 1px solid #a7cd77;
     border-right: 2px solid #a7cd77;
-    padding-top: 5px;
+    padding: 10px 5px 2px 5px;
     width: 130px;
     text-align: center;
+    margin: 0 auto;
 }
 
 #networks .item {
@@ -102,10 +105,18 @@
 }
 
 #currently .header {
-    margin-bottom: 5px;
-    background-color: #444;
+    position: relative;
+    top: -13px;
+    background-color: #fff;
+    border-right: 2px solid <%= HtmlDesign.dim3 %>;
+    border-top: 1px solid <%= HtmlDesign.dim3 %>;
     padding: 5px;
+    width: 130px;
+    text-align: center;
+    margin: 0 auto;
 }
+
+
 
 #currently .shortcut {
     margin: 2px;

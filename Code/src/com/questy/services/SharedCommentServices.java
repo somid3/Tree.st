@@ -28,24 +28,24 @@ public class SharedCommentServices extends ParentService  {
         // Validating for timing attacks
         {
             // Validating for minute attack
-            Integer perMinute = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_MINUTE.getValueByNetwork(networkId);
+            Integer perMinute = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_MINUTE.getValueByNetworkId(networkId);
             Integer lastMinute = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.minutesAgo(1));
             if (lastMinute >= perMinute) throw new UIException("Limit: " + perMinute + " comments per minute");
 
             // Validating for hour attack
-            Integer perHour = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_HOUR.getValueByNetwork(networkId);
+            Integer perHour = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_HOUR.getValueByNetworkId(networkId);
             Integer lastHour = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.hoursAgo(1));
             if (lastHour >= perHour) throw new UIException("Limit: " + perHour + " comments per hour");
 
             // Validating for day attack
-            Integer perDay = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_DAY.getValueByNetwork(networkId);
+            Integer perDay = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_DAY.getValueByNetworkId(networkId);
             Integer lastDay = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.daysAgo(1));
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " comments per day");
         }
 
 
         // Retrieving points per shared item
-        Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetwork(networkId);
+        Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
 
         // Retrieving max ref
         Integer maxRef = SharedCommentDao.getMaxRefByNetworkIdAndSmartGroupRef(conn, networkId, smartGroupRef);
@@ -96,7 +96,7 @@ public class SharedCommentServices extends ParentService  {
             throw new UIException("User is not the author of the shared comment to be hidden");
 
         // Retrieving points per shared item
-        Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetwork(networkId);
+        Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
         pointsPerSharedComment = pointsPerSharedComment * -1;
 
         // Hide shared comment

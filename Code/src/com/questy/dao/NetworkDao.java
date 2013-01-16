@@ -12,8 +12,7 @@ public class NetworkDao extends ParentDao {
     /**
      * A ref that symbolizes the global setting that owns the network
      */
-    public static int GLOBAL_REF = 0;
-
+    public static int ANY_NETWORK_REF = 0;
 
     public static List<Network> getAll (Connection conn) throws SQLException {
         conn = start(conn);

@@ -16,7 +16,7 @@
     List<SmartGroupResult> others = SmartGroupResultDao.getByNetworkIdAndRef(null, networkId, smartGroupRef, new SqlLimit(0, 6));
 
     // Retrieving points per shared item
-    Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetwork(networkId);
+    Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
 
     Integer moreGroupMembers = null;
 

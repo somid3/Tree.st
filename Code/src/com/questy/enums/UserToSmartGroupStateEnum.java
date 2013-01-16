@@ -25,7 +25,7 @@ public enum UserToSmartGroupStateEnum {
         return name;
     }
 
-    public static UserToSmartGroupStateEnum getByValue (Integer value) {
+    public static UserToSmartGroupStateEnum getById(Integer value) {
 
         if (value == null)
             return null;

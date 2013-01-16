@@ -134,7 +134,7 @@ public class UserToNetworkDao extends ParentDao {
         return generatedId;
     }
 
-    public static void incrementPointsByUserIdAndNetworkId(
+    public static void incrementPointsByUserIdAndNetworkId (
             Connection conn,
             Integer userId,
             Integer networkId,
@@ -145,6 +145,52 @@ public class UserToNetworkDao extends ParentDao {
         String sql =
             "update `users_to_networks` " +
             "set `current_points` = `current_points` + ? " +
+            "where `network_id` = ? " +
+            "and `user_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setDouble(3, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void incrementSharedUpVotesByUserIdAndNetworkId (
+            Connection conn,
+            Integer userId,
+            Integer networkId,
+            Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users_to_networks` " +
+            "set `shared_up_votes` = `shared_up_votes` + ? " +
+            "where `network_id` = ? " +
+            "and `user_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setDouble(3, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void incrementSharedDownVotesByUserIdAndNetworkId (
+            Connection conn,
+            Integer userId,
+            Integer networkId,
+            Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users_to_networks` " +
+            "set `shared_down_votes` = `shared_down_votes` + ? " +
             "where `network_id` = ? " +
             "and `user_id` = ?;";
 
@@ -189,10 +235,11 @@ public class UserToNetworkDao extends ParentDao {
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
 
         out.setCurrentPoints(DatabaseUtils.getInt(rs, "current_points"));
-        out.setSharedPoints(DatabaseUtils.getInt(rs, "shared_points"));
+        out.setSharedUpVotes(DatabaseUtils.getInt(rs, "shared_up_votes"));
+        out.setSharedDownVotes(DatabaseUtils.getInt(rs, "shared_down_votes"));
 
         out.setPointsPerLink(DatabaseUtils.getInt(rs, "points_per_link"));
-        out.setRole(RoleEnum.getByValue(DatabaseUtils.getInt(rs, "role")));
+        out.setRole(RoleEnum.getById(DatabaseUtils.getInt(rs, "role")));
         return out;
     }
 

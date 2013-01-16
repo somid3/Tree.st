@@ -5,6 +5,9 @@ import com.questy.dao.UserIntegerSettingDao;
 import com.questy.domain.NetworkIntegerSetting;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public enum NetworkIntegerSettingEnum {
 
@@ -22,6 +25,11 @@ public enum NetworkIntegerSettingEnum {
     SHARED_COMMENTS_PER_MINUTE          (302, 1),
     SHARED_COMMENTS_PER_HOUR            (303, 5),
     SHARED_COMMENTS_PER_DAY             (304, 10),
+
+    SHARED_ITEM_DISPLAY_UP_VOTES        (305, 1),
+    SHARED_ITEM_DISPLAY_DOWN_VOTES      (306, 1),
+    SHARED_COMMENTS_DISPLAY_UP_VOTES    (307, 1),
+    SHARED_COMMENTS_DISPLAY_DOWN_VOTES  (308, 1),
 
     USER_LINK_POINTS_PER                (400, 10),
     USER_LINKS_PER_MINUTE               (401, 3),
@@ -47,7 +55,7 @@ public enum NetworkIntegerSettingEnum {
         return ifNull;
     }
 
-    public Integer getValueByNetwork (Integer networkId) throws SQLException {
+    public Integer getValueByNetworkId(Integer networkId) throws SQLException {
 
         NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
@@ -71,7 +79,26 @@ public enum NetworkIntegerSettingEnum {
        return null;
     }
 
-    public void setValueByUserId (Integer networkId, Integer value) throws SQLException {
+    /**
+     * Returns a map of all the network integer settings
+     */
+    public static Map<NetworkIntegerSettingEnum, Integer> getMapByNetworkId(Integer networkId) throws SQLException {
+
+        List<NetworkIntegerSetting> settings = NetworkIntegerSettingDao.getByNetworkId(null, networkId);
+
+        Map<NetworkIntegerSettingEnum, Integer> out = new HashMap<NetworkIntegerSettingEnum, Integer>();
+        for (NetworkIntegerSetting setting : settings) {
+
+            // Adding setting value
+            out.put(setting.getSettingEnum(), setting.getValue());
+
+        }
+
+        return out;
+    }
+
+
+    public void setValueByNetworkId (Integer networkId, Integer value) throws SQLException {
 
         // Attempt to get value
         NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);

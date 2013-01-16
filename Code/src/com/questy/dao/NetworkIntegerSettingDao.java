@@ -6,8 +6,31 @@ import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NetworkIntegerSettingDao extends ParentDao {
+
+    public static List<NetworkIntegerSetting> getByNetworkId (Connection conn, Integer networkId) throws SQLException {
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `network_integer_settings` " +
+            "where `network_id` = ? ";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ResultSet rs = ps.executeQuery();
+
+        List<NetworkIntegerSetting> out = new ArrayList<NetworkIntegerSetting>();
+
+        while (rs.next())
+            out.add(loadPrimitives(rs));
+
+        end(conn, ps, rs);
+        return out;
+    }
 
     public static NetworkIntegerSetting getByNetworkIdAndSettingEnum(Connection conn, Integer networkId, NetworkIntegerSettingEnum setting) throws SQLException {
         conn = start(conn);

@@ -18,7 +18,6 @@ public enum TooltipEnum {
 
     START ("sT8rT4", WELCOME);
 
-
     private String value;
     private TooltipEnum next;
 

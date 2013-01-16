@@ -59,6 +59,8 @@ public abstract class PooledConnector {
 
     }
 
+
+
     /**
      * Returns a connection either for transactional support, or not. If a the supplied
      * connection is null, then a new connection is retrieved from the connection pool
@@ -89,6 +91,11 @@ public abstract class PooledConnector {
 
         }
     }
+
+    protected static Connection start() throws SQLException {
+        return start(null);
+    }
+
 
     /**
      * Closes all PreparedStatement and ResultSet objects passed to it. It will also

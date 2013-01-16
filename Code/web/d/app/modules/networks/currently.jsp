@@ -32,8 +32,8 @@
 
 </script>
 
-<div class="header white">
-    <span class="md_header"><%= StringUtils.concat(network.getName(), 18, "&hellip;") %></span>
+<div class="header">
+    <span class="smd_header dim"><%= StringUtils.concat(network.getName(), 18, "&hellip;") %></span>
 </div>
 
 <% if (!network.isGlobal()) { %>

@@ -25,5 +25,8 @@
     // Garbage collecting the user sessions
     CronServices.calledDailyUserSessionCleanUp();
 
+    // Garbage collect inactive votes
+    SharedVoteDao.deleteInactive();
+
     System.out.println("'Every day' script called at " + new Date());
 %>

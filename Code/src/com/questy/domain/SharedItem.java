@@ -2,10 +2,8 @@ package com.questy.domain;
 
 import java.util.Date;
 
-//public class SharedItem extends Parent {
-public class SharedItem  {
+public class SharedItem extends Parent {
 
-    private Integer id;
     private Integer ref;
     private Integer networkId;
     private Integer userId;
@@ -14,14 +12,8 @@ public class SharedItem  {
     private Integer totalComments;
     private String text;
     private Boolean hidden;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private Integer upVotes;
+    private Integer downVotes;
 
     public Integer getRef() {
         return ref;
@@ -86,5 +78,21 @@ public class SharedItem  {
 
     public void setHidden(Boolean hidden) {
         this.hidden = hidden;
+    }
+
+    public Integer getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(Integer upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public Integer getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(Integer downVotes) {
+        this.downVotes = downVotes;
     }
 }

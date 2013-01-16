@@ -11,7 +11,8 @@ public class UserToNetwork extends Parent {
     private Integer networkId;
 
     private Integer currentPoints;
-    private Integer sharedPoints;
+    private Integer sharedUpVotes;
+    private Integer sharedDownVotes;
 
     private Integer pointsPerLink;
     private Date removedOn;
@@ -75,12 +76,19 @@ public class UserToNetwork extends Parent {
         this.removedOn = removedOn;
     }
 
-    public Integer getSharedPoints() {
-        return sharedPoints;
+    public Integer getSharedUpVotes() {
+        return sharedUpVotes;
     }
 
-    public void setSharedPoints(Integer sharedPoints) {
-        this.sharedPoints = sharedPoints;
+    public void setSharedUpVotes(Integer sharedUpVotes) {
+        this.sharedUpVotes = sharedUpVotes;
     }
 
+    public Integer getSharedDownVotes() {
+        return sharedDownVotes;
+    }
+
+    public void setSharedDownVotes(Integer sharedDownVotes) {
+        this.sharedDownVotes = sharedDownVotes;
+    }
 }

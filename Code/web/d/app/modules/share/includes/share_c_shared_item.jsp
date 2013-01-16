@@ -8,10 +8,16 @@
      *    Integer share_c_settingSharedItemDisplayCreatedOn
      *    Integer share_c_settingSharedCommentDisplayCreatedOn
      *    Integer share_c_settingSharedCommentPointsPer
+     *
+     *    Integer share_c_settingSharedItemDisplayUpVotes
+     *    Integer share_c_settingSharedItemDisplayDownVotes
+     *    Integer share_c_settingSharedCommentsDisplayUpVotes
+     *    Integer share_c_settingSharedCommentsDisplayDownVotes
+     *    String  share_c_settingSharedVoteUpVocab
+     *    String  share_c_settingSharedVoteDownVocab
      */
 
     User share_c_author = UserDao.getById(null, share_c_sharedItem.getUserId());
-    String share_c_commentsCount = null;
     SmartGroup share_c_smartGroup = null;
     String share_c_hSharedItemId = HtmlUtils.getRandomId();
     String share_c_hNewSharedCommentId = HtmlUtils.getRandomId();
@@ -61,6 +67,10 @@
                      <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
                 <% } %>
 
+                <span class="ago sm_text highlight2">brilliant (5)</span>
+                <span class="ago sm_text highlight2">obvious (2)</span>
+
+
                 <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
 
                     <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getRef() %>)">
@@ -76,8 +86,13 @@
         <div class="content">
             <div class="box smd_text dim">
                 <%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
-            <div class="votes">
-            </div>
+            <%--<div class="votes">--%>
+
+                <%--<div class="vote_item"><img src="./modules/share/img/up_off.png"></div>--%>
+                <%--<div class="vote_count"><span class="smd_header dim">0</span></div>--%>
+                <%--<div class="vote_item"><img src="./modules/share/img/down_off.png"></div>--%>
+
+            <%--</div>--%>
         </div>
 
         <%-- Comments --%>

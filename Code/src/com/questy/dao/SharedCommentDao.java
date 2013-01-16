@@ -10,6 +10,8 @@ import java.util.List;
 
 public class SharedCommentDao extends ParentDao {
 
+    public static int ANY_SHARED_COMMENT_REF = 0;
+
     /**
      * Do not add the "hidden" on the where clause because this method is used to limit the user from adding
      * superfluous messages
@@ -145,6 +147,66 @@ public class SharedCommentDao extends ParentDao {
         return max;
     }
 
+    public static void incrementUpVotesByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(
+        Connection conn,
+        Integer networkId,
+        Integer smartGroupRef,
+        Integer sharedItemRef,
+        Integer ref,
+        Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `shared_comments` " +
+            "set `up_votes` = `up_votes` + ? " +
+            "where `network_id` = ? " +
+            "and `smart_group_ref` = ? " +
+            "and `shared_item_ref` = ? " +
+            "and `ref` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setInt(3, smartGroupRef);
+        ps.setInt(4, sharedItemRef);
+        ps.setInt(5, ref);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void incrementDownVotesByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(
+        Connection conn,
+        Integer networkId,
+        Integer smartGroupRef,
+        Integer sharedItemRef,
+        Integer ref,
+        Integer incrementBy) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `shared_comments` " +
+            "set `down_votes` = `down_votes` + ? " +
+            "where `network_id` = ? " +
+            "and `smart_group_ref` = ? " +
+            "and `shared_item_ref` = ? " +
+            "and `ref` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, incrementBy);
+        ps.setInt(2, networkId);
+        ps.setInt(3, smartGroupRef);
+        ps.setInt(4, sharedItemRef);
+        ps.setInt(5, ref);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
     public static Integer insert (
             Connection conn,
             Integer networkId,
@@ -211,7 +273,6 @@ public class SharedCommentDao extends ParentDao {
         end(conn, ps, null);
     }
 
-
     private static SharedComment loadPrimitives (ResultSet rs) throws SQLException {
         SharedComment out = new SharedComment();
         out.setId(DatabaseUtils.getInt(rs, "id"));
@@ -223,6 +284,8 @@ public class SharedCommentDao extends ParentDao {
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
         out.setText(DatabaseUtils.getString(rs, "text"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));
+        out.setUpVotes(DatabaseUtils.getInt(rs, "up_votes"));
+        out.setDownVotes(DatabaseUtils.getInt(rs, "down_votes"));
 
         return out;
     }

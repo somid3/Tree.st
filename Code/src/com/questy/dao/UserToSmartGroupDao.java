@@ -455,7 +455,7 @@ public class UserToSmartGroupDao extends ParentDao {
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setSmartGroupRef(DatabaseUtils.getInt(rs, "smart_group_ref"));
-        out.setState(UserToSmartGroupStateEnum.getByValue(DatabaseUtils.getInt(rs, "state")));
+        out.setState(UserToSmartGroupStateEnum.getById(DatabaseUtils.getInt(rs, "state")));
         out.setMember(DatabaseUtils.getBoolean(rs, "member"));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
 

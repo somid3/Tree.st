@@ -33,9 +33,7 @@
             <a href="/d/how/#communities" target="_help"><img src="./img/help.png" alt="Help"></a>
         </div>
     </div>
-    <div class="tab sm_header highlight3">
-
-        Switch Communities</div>
+    <div class="switch sm_header highlight3">Switch Communities</div>
 
     <% for (Network network : privateNetworks) {
 

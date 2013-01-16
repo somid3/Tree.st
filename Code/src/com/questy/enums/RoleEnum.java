@@ -36,7 +36,7 @@ public enum RoleEnum {
             return false;
     }
 
-    public static RoleEnum getByValue (Integer id) {
+    public static RoleEnum getById(Integer id) {
 
         if (id == null)
             return VISITOR;

@@ -12,6 +12,9 @@ public class SharedComment extends Parent {
     private String text;
     private Date createdOn;
     private Boolean hidden;
+    private Integer upVotes;
+    private Integer downVotes;
+
 
     public Integer getNetworkId() {
         return networkId;
@@ -75,5 +78,21 @@ public class SharedComment extends Parent {
 
     public void setHidden(Boolean hidden) {
         this.hidden = hidden;
+    }
+
+    public Integer getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(Integer upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public Integer getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(Integer downVotes) {
+        this.downVotes = downVotes;
     }
 }

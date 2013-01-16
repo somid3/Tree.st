@@ -15,11 +15,15 @@
      *    Integer share_b_settingSharedCommentPointsPer
      */
 
-    User share_c_me = share_b_me;
-    Integer share_c_fromSmartGroupRef = share_b_fromSmartGroupRef;
-    Integer share_c_settingSharedItemDisplayCreatedOn = share_b_settingSharedItemDisplayCreatedOn;
-    Integer share_c_settingSharedCommentDisplayCreatedOn = share_b_settingSharedCommentDisplayCreatedOn;
-    Integer share_c_settingSharedCommentPointsPer = share_b_settingSharedCommentPointsPer;
+    User share_c_me                                        = share_b_me;
+    Integer share_c_fromSmartGroupRef                      = share_b_fromSmartGroupRef;
+    Integer share_c_settingSharedItemDisplayCreatedOn      = share_b_settingSharedItemDisplayCreatedOn;
+    Integer share_c_settingSharedCommentDisplayCreatedOn   = share_b_settingSharedCommentDisplayCreatedOn;
+    Integer share_c_settingSharedCommentPointsPer          = share_b_settingSharedCommentPointsPer;
+    Integer share_c_settingSharedItemDisplayUpVotes        = share_b_settingSharedItemDisplayUpVotes;
+    Integer share_c_settingSharedItemDisplayDownVotes      = share_b_settingSharedItemDisplayDownVotes;
+    Integer share_c_settingSharedCommentsDisplayUpVotes    = share_b_settingSharedCommentsDisplayUpVotes;
+    Integer share_c_settingSharedCommentsDisplayDownVotes  = share_b_settingSharedCommentsDisplayDownVotes
 
     for (SharedItem share_c_sharedItem : share_b_sharedItems) { %>
 
