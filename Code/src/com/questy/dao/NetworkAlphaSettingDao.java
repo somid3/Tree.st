@@ -1,12 +1,15 @@
 package com.questy.dao;
 
 import com.questy.domain.NetworkAlphaSetting;
+import com.questy.domain.NetworkIntegerSetting;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NetworkAlphaSettingDao extends ParentDao {
 
@@ -53,6 +56,27 @@ public class NetworkAlphaSettingDao extends ParentDao {
 
         while (rs.next())
             out = loadPrimitives(rs);
+
+        end(conn, ps, rs);
+        return out;
+    }
+
+    public static List<NetworkAlphaSetting> getByNetworkId (Connection conn, Integer networkId) throws SQLException {
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `network_alpha_settings` " +
+            "where `network_id` = ? ";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ResultSet rs = ps.executeQuery();
+
+        List<NetworkAlphaSetting> out = new ArrayList<NetworkAlphaSetting>();
+
+        while (rs.next())
+            out.add(loadPrimitives(rs));
 
         end(conn, ps, rs);
         return out;

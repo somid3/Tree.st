@@ -3,8 +3,12 @@ package com.questy.enums;
 import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.NetworkIntegerSettingDao;
 import com.questy.domain.NetworkAlphaSetting;
+import com.questy.domain.NetworkIntegerSetting;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public enum NetworkAlphaSettingEnum {
 
@@ -45,8 +49,18 @@ public enum NetworkAlphaSettingEnum {
     /**
      * Word used to describe a plural user
      */
-    VOCAB_USER_PLURAL (1001, "People");
+    VOCAB_USER_PLURAL (1001, "People"),
 
+    /**
+     * Vocabulary used to display up vote something
+     */
+    SHARED_VOTE_UP_VOCAB (2000, "Like"),
+
+    /**
+     * Vocabulary used to display down vote something
+     */
+    SHARED_VOTE_DOWN_VOCAB (2001, "Dislike"),
+    ;
 
 
 
@@ -63,19 +77,21 @@ public enum NetworkAlphaSettingEnum {
         return id;
     }
 
-    public String getIfNull() {
-        return ifNull;
+
+    public String getIfNullValue(NetworkAlphaSetting setting) {
+
+        // If the setting is not set for the network, return the code's default
+        if (setting == null)
+            return this.ifNull;
+        else
+            return  setting.getValue();
     }
 
     public String getValueByNetwork (Integer networkId) throws SQLException {
 
         NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
-        // If the setting is not set for the network, return the code's default
-        if (setting == null)
-            return this.getIfNull();
-
-        return setting.getValue();
+        return getIfNullValue(setting);
     }
 
     public Integer getNetworkIdByValue (String value) throws SQLException {
@@ -120,5 +136,36 @@ public enum NetworkAlphaSettingEnum {
 
         }
 
+    }
+
+    /**
+    * Returns a map of all the network integer settings
+    */
+    public static Map<NetworkAlphaSettingEnum, String> getMapByNetworkId(Integer networkId) throws SQLException {
+
+        // Retrieving all defined network settings and placing on map
+        List<NetworkAlphaSetting> settings = NetworkAlphaSettingDao.getByNetworkId(null, networkId);
+        Map<NetworkAlphaSettingEnum, NetworkAlphaSetting> settingsMap = new HashMap<NetworkAlphaSettingEnum, NetworkAlphaSetting>();
+        for (NetworkAlphaSetting setting : settings)
+        settingsMap.put(setting.getSettingEnum(), setting);
+
+        // For each possible setting, place the set value or the default code value
+        Map<NetworkAlphaSettingEnum, String> out = new HashMap<NetworkAlphaSettingEnum, String>();
+        for (NetworkAlphaSettingEnum value : values()) {
+
+        // Adding setting value
+        out.put(
+
+            // Adding setting enum into map as key
+            value,
+
+            // Adding setting value with default as backup
+            value.getIfNullValue(
+              settingsMap.get(value))
+            );
+
+        }
+
+        return out;
     }
 }

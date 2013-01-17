@@ -4,17 +4,9 @@
      *    SharedItem share_c_sharedItem = null;
      *    User share_c_me = null
      *    Integer share_c_fromSmartGroupRef = null
-     *
-     *    Integer share_c_settingSharedItemDisplayCreatedOn
-     *    Integer share_c_settingSharedCommentDisplayCreatedOn
-     *    Integer share_c_settingSharedCommentPointsPer
-     *
-     *    Integer share_c_settingSharedItemDisplayUpVotes
-     *    Integer share_c_settingSharedItemDisplayDownVotes
-     *    Integer share_c_settingSharedCommentsDisplayUpVotes
-     *    Integer share_c_settingSharedCommentsDisplayDownVotes
-     *    String  share_c_settingSharedVoteUpVocab
-     *    String  share_c_settingSharedVoteDownVocab
+     *    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = null;
+     *    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = null;
+     *    Map<NetworkAlphaSettingEnum, Integer> share_c_networkAlphaSettings = null;
      */
 
     User share_c_author = UserDao.getById(null, share_c_sharedItem.getUserId());
@@ -23,6 +15,9 @@
     String share_c_hNewSharedCommentId = HtmlUtils.getRandomId();
     String share_c_hNewSharedCommentTextId = HtmlUtils.getRandomId();
     String share_c_hSharedCommentsId = HtmlUtils.getRandomId();
+
+    Integer share_c_settingSharedCommentPointsPer = share_c_networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER);
+    Integer share_c_settingSharedItemDisplayCreatedOn = share_c_networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_CREATED_ON);
 
     String share_c_addCommentPlaceHolder = "Leave a comment";
     if (share_c_settingSharedCommentPointsPer != 0)
@@ -33,12 +28,10 @@
 
     <div class="left">
 
-            <%
-                {
-                    Integer ul_b_networkId = share_c_sharedItem.getNetworkId();
-                    Integer ul_b_toUserId = share_c_sharedItem.getUserId();
-                    AnswerVisibilityEnum ul_b_lowestVisibility = AnswerVisibilityEnum.PROTECTED;
-            %>
+            <% {
+                Integer ul_b_networkId = share_c_sharedItem.getNetworkId();
+                Integer ul_b_toUserId = share_c_sharedItem.getUserId();
+                AnswerVisibilityEnum ul_b_lowestVisibility = AnswerVisibilityEnum.PROTECTED; %>
 
                 <%@ include file="../../user_links/includes/ul_b_face.jsp"%>
 
@@ -67,10 +60,6 @@
                      <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
                 <% } %>
 
-                <span class="ago sm_text highlight2">brilliant (5)</span>
-                <span class="ago sm_text highlight2">obvious (2)</span>
-
-
                 <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
 
                     <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getRef() %>)">
@@ -84,31 +73,31 @@
             </div>
         </div>
         <div class="content">
-            <div class="box smd_text dim">
-                <%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
-            <%--<div class="votes">--%>
+            <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
 
-                <%--<div class="vote_item"><img src="./modules/share/img/up_off.png"></div>--%>
-                <%--<div class="vote_count"><span class="smd_header dim">0</span></div>--%>
-                <%--<div class="vote_item"><img src="./modules/share/img/down_off.png"></div>--%>
+            <% {
+                User share_b_me = share_c_me;
+                SharedVotable share_b_sharedVotable = share_c_sharedItem;
+                Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_c_networkAlphaSettings;
+                Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_c_networkIntegerSettings; %>
+            <%@ include file="share_b_shared_vote.jsp" %>
+            <% } %>
 
-            <%--</div>--%>
         </div>
 
         <%-- Comments --%>
         <div class="comments" id="<%= share_c_hSharedCommentsId %>">
 
             <%
-                List<SharedComment> scs = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getRef(), SqlLimit.ALL);
+                // Retrieving all shared comments of shared item
+                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getRef(), SqlLimit.ALL);
 
-                SharedComment share_a_sharedComment = null;
                 User share_a_me = share_c_me;
-                Integer share_a_settingSharedCommentDisplayCreatedOn = share_c_settingSharedCommentDisplayCreatedOn;
-                for (SharedComment sc : scs) {
-                    share_a_sharedComment = sc;
-            %>
+                Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;
+                Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = share_c_networkIntegerSettings;
+                for (SharedComment share_a_sharedComment : sharedComments) { %>
 
-                <%@ include file="share_a_shared_comment.jsp" %>
+                    <%@ include file="share_a_shared_comment.jsp" %>
 
             <% } %>
 

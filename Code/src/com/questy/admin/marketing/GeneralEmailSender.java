@@ -18,7 +18,7 @@ public class GeneralEmailSender {
     public static void main (String[] args) throws SQLException {
 
         // Send email to folks in particular industry
-        sendEmails(3000, "Association");
+        sendEmails(1500, "Association");
 
     }
 
@@ -42,12 +42,8 @@ public class GeneralEmailSender {
 
     public static void sendEmail(GeneralEmail generalEmail) throws SQLException {
 
-        // Currently non-transactional
-        Connection conn = null;
-
         // Creating message
-//        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("associations_email_2.html"), "UTF-8");
-        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("associations_email_3.html"), "UTF-8");
+        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("associations_email_2.html"), "UTF-8");
 
         message = message.replaceAll("\\[from_url\\]", generalEmail.getFromUrl());
         message = message.replaceAll("\\[keyword_1\\]", generalEmail.getKeyword1());
@@ -58,9 +54,7 @@ public class GeneralEmailSender {
         AmazonMailSender ser = new AmazonMailSender();
         ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
 
-//        ser.setFromName("socrates@mit.edu"); ser.setFromEmail("socrates@mit.edu");
-//        ser.setFromName("omid@mit.edu"); ser.setFromEmail("omid@mit.edu");
-        ser.setFromName("l_zhao@mit.edu"); ser.setFromEmail("l_zhao@mit.edu");
+        ser.setFromName("socrates@mit.edu"); ser.setFromEmail("socrates@mit.edu");
 
         ser.addRecipient(generalEmail.getEmail());
         ser.setSubject("tool for your association");

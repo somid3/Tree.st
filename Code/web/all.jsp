@@ -1,6 +1,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.io.File" %>
 
+<%@ page import="com.questy.ifaces.*" %>
 <%@ page import="com.questy.domain.*" %>
 <%@ page import="com.questy.dao.*" %>
 <%@ page import="com.questy.services.*" %>

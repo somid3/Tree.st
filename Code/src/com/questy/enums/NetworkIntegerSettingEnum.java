@@ -1,7 +1,6 @@
 package com.questy.enums;
 
 import com.questy.dao.NetworkIntegerSettingDao;
-import com.questy.dao.UserIntegerSettingDao;
 import com.questy.domain.NetworkIntegerSetting;
 
 import java.sql.SQLException;
@@ -51,19 +50,20 @@ public enum NetworkIntegerSettingEnum {
         return id;
     }
 
-    public Integer getIfNull() {
-        return ifNull;
+    public Integer getIfNullValue(NetworkIntegerSetting setting) {
+
+        // If the setting is not set for the network, return the code's default
+        if (setting == null)
+            return this.ifNull;
+        else
+            return  setting.getValue();
     }
 
     public Integer getValueByNetworkId(Integer networkId) throws SQLException {
 
         NetworkIntegerSetting setting = NetworkIntegerSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 
-        // If the setting is not set for the network, return the code's default
-        if (setting == null)
-            return this.getIfNull();
-
-        return setting.getValue();
+        return getIfNullValue(setting);
     }
 
     public static NetworkIntegerSettingEnum getById (Integer id) {
@@ -84,13 +84,28 @@ public enum NetworkIntegerSettingEnum {
      */
     public static Map<NetworkIntegerSettingEnum, Integer> getMapByNetworkId(Integer networkId) throws SQLException {
 
+        // Retrieving all defined network settings and placing on map
         List<NetworkIntegerSetting> settings = NetworkIntegerSettingDao.getByNetworkId(null, networkId);
+        Map<NetworkIntegerSettingEnum, NetworkIntegerSetting> settingsMap = new HashMap<NetworkIntegerSettingEnum, NetworkIntegerSetting>();
+        for (NetworkIntegerSetting setting : settings)
+            settingsMap.put(setting.getSettingEnum(), setting);
 
+        // For each possible setting, place the set value or the default code value
         Map<NetworkIntegerSettingEnum, Integer> out = new HashMap<NetworkIntegerSettingEnum, Integer>();
-        for (NetworkIntegerSetting setting : settings) {
+        for (NetworkIntegerSettingEnum value : values()) {
 
             // Adding setting value
-            out.put(setting.getSettingEnum(), setting.getValue());
+            out.put(
+
+                // Adding setting enum into map as key
+                value,
+
+                // Adding setting value with default as backup
+                value.getIfNullValue(
+                    settingsMap.get(value)
+                )
+
+            );
 
         }
 

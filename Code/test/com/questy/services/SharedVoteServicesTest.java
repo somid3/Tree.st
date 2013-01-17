@@ -1,21 +1,75 @@
 package com.questy.services;
 
-import com.questy.dao.NetworkDao;
+import com.questy.dao.SharedCommentDao;
+import com.questy.dao.SharedItemDao;
 import com.questy.dao.SharedVoteDao;
-import com.questy.dao.UserDao;
-import com.questy.domain.Network;
+import com.questy.domain.SharedItem;
 import com.questy.domain.SharedVote;
-import com.questy.domain.User;
 import com.questy.enums.SharedVoteEnum;
-import com.questy.enums.UserAlphaSettingEnum;
-import com.questy.enums.UserIntegerSettingEnum;
-import com.questy.utils.StringUtils;
+import com.questy.ifaces.SharedVotable;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
 
 public class SharedVoteServicesTest {
+
+    @Test
+    public void testOne() throws SQLException {
+
+        Integer userId = 3;
+        Integer networkId = 2000;
+        Integer smartGroupRef = 113;
+        Integer sharedItemRef = 4;
+        Integer sharedCommentRef = SharedCommentDao.ANY_SHARED_COMMENT_REF;
+        SharedVoteEnum vote = SharedVoteEnum.UP;
+        SharedVote sharedVote = null;
+        SharedVotable sharedVotable = null;
+
+        // Deleting all inactive votes
+        SharedVoteDao.deleteInactive();
+
+        // Changing vote of shared votable
+        SharedVoteServices.changeVote(
+            userId,
+            networkId,
+            smartGroupRef,
+            sharedItemRef,
+            sharedCommentRef,
+            vote);
+
+        // Retrieving the shared votable
+        sharedVotable = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(
+                null,
+                networkId,
+                smartGroupRef,
+                sharedItemRef);
+
+        // Retrieving the shared vote via the shared votable, and that the vote value is correct
+        sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(userId, sharedVotable);
+        Assert.assertNotNull(sharedVote);
+        Assert.assertEquals(SharedVoteEnum.UP, sharedVote.getVote());
+
+        // Making the vote inactive
+        SharedVoteServices.changeVote(
+                userId,
+                networkId,
+                smartGroupRef,
+                sharedItemRef,
+                sharedCommentRef,
+                vote);
+
+        // Ensuring shared vote got changed to none
+        sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(userId, sharedVotable);
+        Assert.assertEquals(SharedVoteEnum.NONE, sharedVote.getVote());
+
+        // Deleting all inactive votes
+        SharedVoteDao.deleteInactive();
+
+        // Ensuring inactive vote got deleted
+        sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(userId, sharedVotable);
+        Assert.assertNull(sharedVote);
+    }
 
     @Test
     public void testAll() throws SQLException {
@@ -36,27 +90,27 @@ public class SharedVoteServicesTest {
         Assert.assertEquals(null, vote);
 
         // Submit up vote
-        SharedVoteServices.toggleVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
         vote = SharedVoteDao.getByAllFields(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
         Assert.assertEquals(SharedVoteEnum.UP, vote.getVote());
 
         // Cancel up vote
-        SharedVoteServices.toggleVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
         vote = SharedVoteDao.getByAllFields(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
         Assert.assertEquals(SharedVoteEnum.NONE, vote.getVote());
 
         // Submit up vote
-        SharedVoteServices.toggleVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.UP);
         vote = SharedVoteDao.getByAllFields(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
         Assert.assertEquals(SharedVoteEnum.UP, vote.getVote());
 
         // Switch to down vote
-        SharedVoteServices.toggleVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.DOWN);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.DOWN);
         vote = SharedVoteDao.getByAllFields(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
         Assert.assertEquals(SharedVoteEnum.DOWN, vote.getVote());
 
         // Cancel down vote
-        SharedVoteServices.toggleVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.DOWN);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, SharedVoteEnum.DOWN);
         vote = SharedVoteDao.getByAllFields(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
         Assert.assertEquals(SharedVoteEnum.NONE, vote.getVote());
 

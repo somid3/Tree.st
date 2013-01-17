@@ -1,8 +1,10 @@
 package com.questy.domain;
 
+import com.questy.ifaces.SharedVotable;
+
 import java.util.Date;
 
-public class SharedComment extends Parent {
+public class SharedComment extends Parent implements SharedVotable {
 
     private Integer networkId;
     private Integer userId;

@@ -9,37 +9,32 @@
     SqlLimit limit = new SqlLimit(startFrom, duration);
 
     // Does the smart group reference belong to any smart group
-    List<SharedItem> share_b_sharedItems = null;
+    List<SharedItem> share_c_sharedItems = null;
     if (SmartGroupDao.isNetworkRef(smartGroupRef)) {
 
         // Yes... retrieving the shared messages of the user or the network as a whole
 
         if (viewUserId == null)
 
-            share_b_sharedItems = SharedItemDao.getByNetworkId(null, networkId, limit);
+            share_c_sharedItems = SharedItemDao.getByNetworkId(null, networkId, limit);
 
         else
 
-            share_b_sharedItems = SharedItemDao.getByNetworkIdAndUserId(null, networkId, viewUserId, limit);
+            share_c_sharedItems = SharedItemDao.getByNetworkIdAndUserId(null, networkId, viewUserId, limit);
 
     } else {
 
         // No... retrieve the messages of the particular smart group
-        share_b_sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRef(null, networkId, smartGroupRef, limit);
+        share_c_sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRef(null, networkId, smartGroupRef, limit);
 
     }
 
-    Integer share_b_networkId = networkId;
-    Integer share_b_fromSmartGroupRef = smartGroupRef;
-    User share_b_me = UserDao.getById(null, userId);
-    Integer share_b_settingSharedItemDisplayCreatedOn     = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_CREATED_ON.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedCommentDisplayCreatedOn  = NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedCommentPointsPer         = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedItemDisplayUpVotes       = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_UP_VOTES.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedItemDisplayDownVotes     = NetworkIntegerSettingEnum.SHARED_ITEM_DISPLAY_DOWN_VOTES.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedCommentsDisplayUpVotes   = NetworkIntegerSettingEnum.SHARED_COMMENTS_DISPLAY_UP_VOTES.getValueByNetworkId(networkId);
-    Integer share_b_settingSharedCommentsDisplayDownVotes = NetworkIntegerSettingEnum.SHARED_COMMENTS_DISPLAY_DOWN_VOTES.getValueByNetworkId(networkId);
-%>
+    Integer share_c_networkId = networkId;
+    Integer share_c_fromSmartGroupRef = smartGroupRef;
+    User share_c_me = UserDao.getById(null, userId);
+    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
+    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
 
-<%@ include file="includes/share_b_shared_items.jsp" %>
-
+    for (SharedItem share_c_sharedItem : share_c_sharedItems) { %>
+        <%@ include file="./includes/share_c_shared_item.jsp" %>
+    <% } %>

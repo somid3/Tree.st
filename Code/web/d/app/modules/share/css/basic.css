@@ -180,21 +180,8 @@
     line-height: 1.5em;
 }
 
-.shared_item .right .content .votes {
-    float: right;
-}
-
-.shared_item .right .content .votes .vote_item img {
-    width: 20px;
-    height: 10px;
-}
-
-.shared_item .right .content .votes .vote_count {
-    text-align: center;
-}
-
 .shared_item .comments {
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 
@@ -285,6 +272,7 @@
 }
 
 .shared_comment .right .box {
+    width: 350px;
     padding: 0 5px 5px 5px;
     line-height: 1.5em;
 }
@@ -294,5 +282,16 @@
 }
 
 .shared_comment .right .ago {
-    font-style: italic;
+    margin-right: 5px;
+}
+
+
+/* Shared Votes */
+.shared_vote {
+    /*display: inline-block;*/
+}
+
+.shared_vote .do_vote {
+    display: inline-block;
+    margin: 0 2px;
 }

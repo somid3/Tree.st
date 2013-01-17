@@ -7,48 +7,52 @@ import java.sql.SQLException;
 
 public class SharedVoteServices extends ParentService {
 
-    public static void toggleVote(
+    public static void changeVote(
             Integer userId,
             Integer networkId,
             Integer smartGroupRef,
             Integer sharedItemRef,
             Integer sharedCommentRef,
-            SharedVoteEnum toggleVote) throws SQLException {
+            SharedVoteEnum applyVote) throws SQLException {
+
+        // Validating
+        if (applyVote == SharedVoteEnum.NONE)
+            throw new RuntimeException("Can not manually change a shared vote to none");
 
         // Creating or retrieving shared vote
-        SharedVote sv = getOrCreateMapping(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
+        SharedVote sharedVote = getOrCreateMapping(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
 
         // Does a vote already exist with the same provided vote state
-        if (sv.getVote() == toggleVote) {
+        if (sharedVote.getVote() == applyVote) {
 
             // Yes, in that case cancel the previous vote to set the as none...
 
-            if (toggleVote == SharedVoteEnum.UP)
+            if (applyVote == SharedVoteEnum.UP)
                 cancelUpVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
-            else if (toggleVote == SharedVoteEnum.DOWN)
+            else if (applyVote == SharedVoteEnum.DOWN)
                 cancelDownVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
 
         // Is the current state of the user's vote none?
-        } else if (sv.getVote() == SharedVoteEnum.NONE) {
+        } else if (sharedVote.getVote() == SharedVoteEnum.NONE) {
 
             // Yes, in that case simply execute the vote change
 
-            if (toggleVote == SharedVoteEnum.UP)
+            if (applyVote == SharedVoteEnum.UP)
                 doUpVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
-            else if (toggleVote == SharedVoteEnum.DOWN)
+            else if (applyVote == SharedVoteEnum.DOWN)
                 doDownVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
 
-        // Had the user already set a vote for the item?
+        // Had the user already set a different vote
         } else {
 
             // Yes, then execute a cancellation first, and then do the vote change
 
-            if (toggleVote == SharedVoteEnum.UP) {
+            if (applyVote == SharedVoteEnum.UP) {
 
                 cancelDownVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
                 doUpVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
 
-            } else if (toggleVote == SharedVoteEnum.DOWN) {
+            } else if (applyVote == SharedVoteEnum.DOWN) {
 
                 cancelUpVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);
                 doDownVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef);

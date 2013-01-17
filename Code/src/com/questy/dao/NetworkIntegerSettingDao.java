@@ -17,7 +17,7 @@ public class NetworkIntegerSettingDao extends ParentDao {
         String sql =
             "select * " +
             "from `network_integer_settings` " +
-            "where `network_id` = ? ";
+            "where `network_id` = ?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);

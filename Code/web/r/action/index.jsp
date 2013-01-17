@@ -51,7 +51,7 @@
 
          Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
          Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
-         UserToSmartGroupServices.toggleState(UserToSmartGroupStateEnum.FLAGGED, networkId, smartGroupRef, userId);
+         UserToSmartGroupServices.changeState(UserToSmartGroupStateEnum.FLAGGED, networkId, smartGroupRef, userId);
 
 
 

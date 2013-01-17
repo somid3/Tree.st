@@ -28,9 +28,9 @@ public class Vars {
     /**
      * Current stage
      */
-    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -120,7 +120,7 @@ public class Vars {
      * Based on the email queue location, the number of milliseconds an email thread
      * should wait before transmitting its message
      */
-    public static Integer emailAmazonMillisecondDelayPerQueue = 500;
+    public static Integer emailAmazonMillisecondDelayPerQueue = 100;
 
     /**
      * Amazon SES credentials

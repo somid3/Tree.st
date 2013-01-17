@@ -17,7 +17,7 @@ import java.util.List;
 
 public class UserToSmartGroupServices extends ParentService {
 
-    public static void toggleState(UserToSmartGroupStateEnum toggleState, Integer networkId, Integer smartGroupRef, Integer userId) throws SQLException {
+    public static void changeState(UserToSmartGroupStateEnum applyState, Integer networkId, Integer smartGroupRef, Integer userId) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
@@ -26,7 +26,7 @@ public class UserToSmartGroupServices extends ParentService {
         UserToSmartGroup utsg = getOrCreateMapping(networkId, smartGroupRef, userId);
 
         // Is the user to smart group state already the state being toggled?
-        if (utsg.getState() == toggleState) {
+        if (utsg.getState() == applyState) {
 
             // Yes, then the state of the mapping to none
             UserToSmartGroupDao.updateStateByNetworkIdAndSmartGroupRefAndUserId(conn, networkId, smartGroupRef, userId, UserToSmartGroupStateEnum.NONE);
@@ -34,7 +34,7 @@ public class UserToSmartGroupServices extends ParentService {
         } else {
 
             // No, then convert the mapping into that state
-            UserToSmartGroupDao.updateStateByNetworkIdAndSmartGroupRefAndUserId(conn, networkId, smartGroupRef, userId, toggleState);
+            UserToSmartGroupDao.updateStateByNetworkIdAndSmartGroupRefAndUserId(conn, networkId, smartGroupRef, userId, applyState);
 
         }
 

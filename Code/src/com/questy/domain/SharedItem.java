@@ -1,8 +1,10 @@
 package com.questy.domain;
 
+import com.questy.ifaces.SharedVotable;
+
 import java.util.Date;
 
-public class SharedItem extends Parent {
+public class SharedItem extends Parent implements SharedVotable {
 
     private Integer ref;
     private Integer networkId;
@@ -95,4 +97,5 @@ public class SharedItem extends Parent {
     public void setDownVotes(Integer downVotes) {
         this.downVotes = downVotes;
     }
+
 }

@@ -1,14 +1,14 @@
 package com.questy.dao;
 
+import com.questy.domain.SharedComment;
 import com.questy.domain.SharedVote;
-import com.questy.domain.UserToSmartGroup;
 import com.questy.enums.SharedVoteEnum;
+import com.questy.ifaces.SharedVotable;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
 
 public class SharedVoteDao extends ParentDao {
-
 
     public static SharedVote getByAllFields (
         Integer userId,
@@ -43,6 +43,33 @@ public class SharedVoteDao extends ParentDao {
             out = loadPrimitives(rs);
 
         end(conn, ps, rs);
+        return out;
+    }
+
+    public static SharedVote getByUserIdAndSharedVotable(Integer userId, SharedVotable sharedVotable) throws SQLException {
+
+        SharedVote out = null;
+        if (sharedVotable instanceof SharedComment) {
+
+            out = SharedVoteDao.getByAllFields(
+                userId,
+                sharedVotable.getNetworkId(),
+                sharedVotable.getSmartGroupRef(),
+                ((SharedComment) sharedVotable).getSharedItemRef(),
+                sharedVotable.getRef());
+
+        } else {
+
+            out = SharedVoteDao.getByAllFields(
+                userId,
+                sharedVotable.getNetworkId(),
+                sharedVotable.getSmartGroupRef(),
+                sharedVotable.getRef(),
+                SharedCommentDao.ANY_SHARED_COMMENT_REF);
+
+        }
+
+
         return out;
     }
 
@@ -91,6 +118,37 @@ public class SharedVoteDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, SharedVoteEnum.NONE.getId());
 
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
+
+    public static Integer deleteByAllFields(
+        Integer userId,
+        Integer networkId,
+        Integer smartGroupRef,
+        Integer sharedItemRef,
+        Integer sharedCommentRef) throws SQLException {
+
+        Connection conn = start();
+
+        String sql =
+            "delete " +
+            "from `shared_votes` = ? " +
+            "where `user_id` = ? " +
+            "and `network_id` = ? " +
+            "and `smart_group_ref` = ? " +
+            "and `shared_item_ref` = ? " +
+            "and `shared_comment_ref` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userId);
+        ps.setInt(2, networkId);
+        ps.setInt(3, smartGroupRef);
+        ps.setInt(4, sharedItemRef);
+        ps.setInt(5, sharedCommentRef);
         Integer out = ps.executeUpdate();
 
         end(conn, ps, null);

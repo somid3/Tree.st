@@ -106,7 +106,7 @@
                 continue;
 
         %>
-            <div class="search_network sm_button">
+            <div class="search_network smd_text sm_button dark_button">
                 <%= network.getName() %> (<%= totalItems %>)
             </div>
         <%
