@@ -254,7 +254,7 @@
 
 /* Shared comment */
 .shared_comment {
-    margin-bottom: 2px;
+    margin-bottom: 20px;
     display: inline-block;
     width: 500px;
 }
@@ -273,8 +273,6 @@
 
 .shared_comment .right .box {
     width: 350px;
-    padding: 0 5px 5px 5px;
-    line-height: 1.5em;
 }
 
 .shared_comment .right .delete {
@@ -285,13 +283,18 @@
     margin-right: 5px;
 }
 
+.shared_comment .right .bottom {
+    margin-top: 5px;
+}
+
 
 /* Shared Votes */
 .shared_vote {
-    /*display: inline-block;*/
+    margin-left: 5px;
+    display: inline-block;
 }
 
 .shared_vote .do_vote {
     display: inline-block;
-    margin: 0 2px;
+    /*margin: 0 2px;*/
 }

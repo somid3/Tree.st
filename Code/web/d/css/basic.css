@@ -426,9 +426,13 @@ input.bottom_line {
     width: 100%;
 }
 
+.vsm_header {
+    font-weight: bold;
+    font-size: 10px;
+}
+
 .vsm_text {
     font-size: 10px;
-    letter-spacing: 0.1em;
 }
 
 .dim {

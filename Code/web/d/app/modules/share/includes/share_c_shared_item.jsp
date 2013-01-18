@@ -56,10 +56,6 @@
 
                 <% } %>
 
-                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
-                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
-                <% } %>
-
                 <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
 
                     <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getSharedItemRef() %>)">
@@ -75,13 +71,20 @@
         <div class="content">
             <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
 
-            <% {
-                User share_b_me = share_c_me;
-                SharedVotable share_b_sharedVotable = share_c_sharedItem;
-                Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_c_networkAlphaSettings;
-                Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_c_networkIntegerSettings; %>
-            <%@ include file="share_b_shared_vote.jsp" %>
-            <% } %>
+            <div>
+
+                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
+                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
+                <% } %>
+
+                <% {
+                    User share_b_me = share_c_me;
+                    SharedVotable share_b_sharedVotable = share_c_sharedItem;
+                    Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_c_networkAlphaSettings;
+                    Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_c_networkIntegerSettings; %>
+                <%@ include file="share_b_shared_vote.jsp" %>
+                <% } %>
+            </div>
 
         </div>
 

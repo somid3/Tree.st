@@ -3,9 +3,11 @@ package com.questy.services;
 import com.questy.dao.SharedCommentDao;
 import com.questy.dao.SharedItemDao;
 import com.questy.dao.SharedVoteDao;
+import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.SharedComment;
 import com.questy.domain.SharedItem;
 import com.questy.domain.SharedVote;
+import com.questy.domain.UserToNetwork;
 import com.questy.enums.SharedVoteEnum;
 import com.questy.ifaces.SharedVotable;
 import org.junit.Assert;
@@ -16,7 +18,7 @@ import java.sql.SQLException;
 public class SharedVoteServicesTest {
 
     @Test
-    public void testOne() throws SQLException {
+    public void testVoteUpOnSharedItem() throws SQLException {
 
         Integer userId = 3;
         Integer networkId = 2000;
@@ -26,39 +28,31 @@ public class SharedVoteServicesTest {
         SharedVoteEnum vote = SharedVoteEnum.UP;
         SharedVote sharedVote = null;
         SharedVotable sharedVotable = null;
+        UserToNetwork userToNetwork = null;
+
+        // Retrieving all pre-test objects for point comparison tests
+        UserToNetwork oldUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+        SharedItem oldSharedVotable = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef);
 
         // Deleting all inactive votes
         SharedVoteDao.deleteInactive();
 
         // Changing vote of shared votable
-        SharedVoteServices.changeVote(
-            userId,
-            networkId,
-            smartGroupRef,
-            sharedItemRef,
-            sharedCommentRef,
-            vote);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, vote);
 
-        // Retrieving the shared votable
-        sharedVotable = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(
-                null,
-                networkId,
-                smartGroupRef,
-                sharedItemRef);
-
-        // Retrieving the shared vote via the shared votable, and that the vote value is correct
+        // Retrieving the shared votable and vote
+        sharedVotable = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef);
         sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(userId, sharedVotable);
+        userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+
+        // Testing...
         Assert.assertNotNull(sharedVote);
         Assert.assertEquals(SharedVoteEnum.UP, sharedVote.getVote());
+        Assert.assertTrue(oldSharedVotable.getUpVotes() + 1 == sharedVotable.getUpVotes());
+        Assert.assertTrue(oldUserToNetwork.getSharedUpVotes() + 1 == userToNetwork.getSharedUpVotes());
 
         // Making the vote inactive
-        SharedVoteServices.changeVote(
-                userId,
-                networkId,
-                smartGroupRef,
-                sharedItemRef,
-                sharedCommentRef,
-                vote);
+        SharedVoteServices.changeVote(userId, networkId, smartGroupRef, sharedItemRef, sharedCommentRef, vote);
 
         // Ensuring shared vote got changed to none
         sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(userId, sharedVotable);
