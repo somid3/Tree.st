@@ -24,9 +24,9 @@
                 // Setting up variables for include
                 Integer sgroup_e_networkId = group.getNetworkId();
                 Integer sgroup_e_userId = userId;
-                Integer sgroup_e_smartGroupRef = group.getRef();
+                Integer sgroup_e_smartGroupRef = group.getSmartGroupRef();
             %>
-            <%@ include file="includes/sgroup_e_favorite.jsp"%>
+            <%@ include file="includes/sgroup_e_apply_state.jsp"%>
 
         </div>
     </div>
@@ -40,7 +40,7 @@
             <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.MEMBERS);"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
 
             <% if (group.getUserId().equals(userId)) { %>
-                <a href="#" onclick="SGD.hideSmartGroup(event, <%= group.getRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
+                <a href="#" onclick="SGD.hideSmartGroup(event, <%= group.getSmartGroupRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
             <% } %>
 
         </div>

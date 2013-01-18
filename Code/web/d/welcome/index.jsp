@@ -25,8 +25,8 @@
 <div class="main-block">
     <div class="w800 center">
         <div class="block">
-            <div class="main gg_header white">Find anyone in your organization</div>
-            <div class="sub vl_text white">Discover & group your members via unique qualities<br/> &mdash; and create amazing connections</div>
+            <div class="main gg_header white">Find Anyone in Your Community</div>
+            <div class="sub vl_text white">Discover your members via unique qualities<br/> &mdash; and create amazing connections</div>
         </div>
     </div>
 </div>
@@ -35,15 +35,15 @@
 
     <div class="w800 center">
         <div id="playing-video" class="left shadow">
-            <iframe src="http://player.vimeo.com/video/56698814?autoplay=true" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            <iframe src="http://player.vimeo.com/video/56698814" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
         <div class="right">
             <div class="actions">
                 <a href="#request">
-                    <div class="action glow">
+                    <div class="action">
                         <img class="today" src="./img/target.png">
                         <div><span class="lg_header white">Request a free demo</span></div>
-                        <div><span class="smd_text white">In 5 minutes learn how Tree.st can add value to your organization</span></div>
+                        <div><span class="sm_text white">In 5 minutes learn how Tree.st can add value to your community</span></div>
                     </div>
                 </a>
 
@@ -52,8 +52,8 @@
                 <a href="/foods" target="_new">
                     <div class="action">
                         <img class="demo" src="./img/tree.png">
-                        <div><span class="lg_header white">Experience a Community:</span></div>
-                        <div><span class="smd_text white">Visit our 'Foods' community -- where you can find and socialize with others via food preferences!</span></div>
+                        <div><span class="lg_header white">Test Drive a Community:</span></div>
+                        <div><span class="sm_text white">Visit our 'Foods' community -- where you can find and socialize with others via food preferences!</span></div>
                     </div>
                 </a>
             </div>

@@ -1412,7 +1412,7 @@ public class AdminServices {
 
             // Write shared item
             randomString = getRandomText(3, 100);
-            Tuple<Integer, Integer> addedItemResult = SharedItemServices.add(network.getId(), user.getId(), group.getRef(), randomString);
+            Tuple<Integer, Integer> addedItemResult = SharedItemServices.add(network.getId(), user.getId(), group.getSmartGroupRef(), randomString);
 
             // Write commends for shared item
             Integer commentsForItem = randomGenerator.nextInt(maxCommentsPerItem);
@@ -1423,7 +1423,7 @@ public class AdminServices {
 
                 // Write shared comment
                 randomString = getRandomText(3, 150);
-                SharedCommentServices.add(network.getId(), user.getId(), group.getRef(), addedItemResult.getX(), randomString);
+                SharedCommentServices.add(network.getId(), user.getId(), group.getSmartGroupRef(), addedItemResult.getX(), randomString);
 
             }
 
@@ -1527,7 +1527,7 @@ public class AdminServices {
         // Ignore if the "search" smart group was selected
         if (group.getName().equals(SmartGroupDao.SEARCH_NAME)) return null;
 
-        AdminServices.log("Smart Group ref: " + group.getRef() + " (" + group.getName() + ").");
+        AdminServices.log("Smart Group ref: " + group.getSmartGroupRef() + " (" + group.getName() + ").");
 
         return group;
     };

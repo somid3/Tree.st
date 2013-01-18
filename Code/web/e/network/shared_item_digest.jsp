@@ -39,7 +39,7 @@
         smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, activeUserToSmartGroup.getSmartGroupRef());
 
         // Retrieving shared item messages
-        sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRefAndCreatedAfter(null, networkId, smartGroup.getRef(), rate.getBoundaryDate(), SqlLimit.ALL);
+        sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRefAndCreatedAfter(null, networkId, smartGroup.getSmartGroupRef(), rate.getBoundaryDate(), SqlLimit.ALL);
 
         if (sharedItems.isEmpty())
             continue;

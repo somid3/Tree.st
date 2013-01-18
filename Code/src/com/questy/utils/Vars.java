@@ -28,9 +28,9 @@ public class Vars {
     /**
      * Current stage
      */
-//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 

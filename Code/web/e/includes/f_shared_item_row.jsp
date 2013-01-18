@@ -21,7 +21,7 @@
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
         query.add("nid", sharedItem.getNetworkId());
         query.add("sgr", sharedItem.getSmartGroupRef());
-        query.add("sir", sharedItem.getRef());
+        query.add("sir", sharedItem.getSharedItemRef());
         f_hSharedItemLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 
@@ -37,7 +37,7 @@
 
     // Retrieving shared item comments
     List<SharedComment> f_sharedComments = null;
-    f_sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, f_network.getId(), f_smartGroup.getRef(), f_sharedItem.getRef(), SqlLimit.FIRST_TEN);
+    f_sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, f_network.getId(), f_smartGroup.getSmartGroupRef(), f_sharedItem.getSharedItemRef(), SqlLimit.FIRST_TEN);
 %>
 <tr>
     <td>

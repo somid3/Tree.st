@@ -96,7 +96,7 @@ public class SharedVoteServices extends ParentService {
         UserToNetworkDao.incrementSharedUpVotesByUserIdAndNetworkId(null, userId, networkId, 1);
 
         // Is this a vote change for a shared item or a comment?
-        if (sharedCommentRef != SharedCommentDao.ANY_SHARED_COMMENT_REF)
+        if (sharedCommentRef == SharedComment.ANY_SHARED_COMMENT_REF)
 
             // Removing vote from a shared item
             SharedItemDao.incrementUpVotesByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef, 1);
@@ -124,7 +124,7 @@ public class SharedVoteServices extends ParentService {
         UserToNetworkDao.incrementSharedUpVotesByUserIdAndNetworkId(null, userId, networkId, -1);
 
         // Is this a vote change for a shared item or a comment?
-        if (sharedCommentRef != SharedCommentDao.ANY_SHARED_COMMENT_REF)
+        if (sharedCommentRef == SharedComment.ANY_SHARED_COMMENT_REF)
 
             // Change points of a shared item
             SharedItemDao.incrementUpVotesByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef, -1);
@@ -152,7 +152,7 @@ public class SharedVoteServices extends ParentService {
        UserToNetworkDao.incrementSharedDownVotesByUserIdAndNetworkId(null, userId, networkId, 1);
 
        // Is this a vote change for a shared item or a comment?
-       if (sharedCommentRef != SharedCommentDao.ANY_SHARED_COMMENT_REF)
+       if (sharedCommentRef == SharedComment.ANY_SHARED_COMMENT_REF)
 
            // Change points of a shared item
            SharedItemDao.incrementDownVotesByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef, 1);
@@ -180,7 +180,7 @@ public class SharedVoteServices extends ParentService {
        UserToNetworkDao.incrementSharedDownVotesByUserIdAndNetworkId(null, userId, networkId, -1);
 
        // Is this a vote change for a shared item or a comment?
-       if (sharedCommentRef != SharedCommentDao.ANY_SHARED_COMMENT_REF)
+       if (sharedCommentRef == SharedComment.ANY_SHARED_COMMENT_REF)
 
            // Change points of a shared item
            SharedItemDao.incrementDownVotesByNetworkIdAndSmartGroupRefAndRef(null, networkId, smartGroupRef, sharedItemRef, -1);

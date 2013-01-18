@@ -42,7 +42,7 @@
 <div class="question_query">
 
     <div class="tools">
-        <a href="#" onclick="SS.submitEditCriteria(event, <%= smartGroup.getNetworkId() %>, <%= smartGroup.getRef() %>)"><div class="submit submit_button">Submit Changes</div></a>
+        <a href="#" onclick="SS.submitEditCriteria(event, <%= smartGroup.getNetworkId() %>, <%= smartGroup.getSmartGroupRef() %>)"><div class="submit submit_button">Submit Changes</div></a>
         <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_SEARCH);"><div class="cancel light_button">Cancel</div></a>
     </div>
 

@@ -14,7 +14,7 @@
     // Setting up variables for include
     Integer sgroup_e_networkId = sgroup_g_smartGroup.getNetworkId();
     Integer sgroup_e_userId = sgroup_g_userId;
-    Integer sgroup_e_smartGroupRef = sgroup_g_smartGroup.getRef();
+    Integer sgroup_e_smartGroupRef = sgroup_g_smartGroup.getSmartGroupRef();
 
     // Setting visibility class to define color
     String sgroup_g_visibilityText = null;
@@ -28,7 +28,7 @@
      * Retrieving smart group results, here we retrieve times more than necessary results in hopes to
      * capture more results with defined faces
      */
-    List<SmartGroupResult> sgroup_g_results = SmartGroupResultDao.getByNetworkIdAndRef(null, sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getRef(), new SqlLimit(0, sgroup_g_facesLimitPerGroup * sgroup_g_multiplierToFindFaces));
+    List<SmartGroupResult> sgroup_g_results = SmartGroupResultDao.getByNetworkIdAndRef(null, sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef(), new SqlLimit(0, sgroup_g_facesLimitPerGroup * sgroup_g_multiplierToFindFaces));
 
     // Retrieving result users
     List<User> sgroup_g_resultUsers = new ArrayList<User>();
@@ -53,10 +53,10 @@
             <div class="sm_text dim2"><%= sgroup_g_visibilityText %></div>
         </div>
 
-        <%@ include file="sgroup_e_favorite.jsp"%>
+        <%@ include file="sgroup_e_apply_state.jsp"%>
     </div>
 
-    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= networkId %>, sgr: <%= sgroup_g_smartGroup.getRef() %>})">
+    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= networkId %>, sgr: <%= sgroup_g_smartGroup.getSmartGroupRef() %>})">
 
         <div class="details">
             <div class="name smd_header highlight6"><%= StringUtils.concat(sgroup_g_smartGroup.getName(), 50, "&#8230;") %></div>

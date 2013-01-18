@@ -18,6 +18,6 @@
 <script type="text/javascript">
 
     // Display faces for the query once it is loaded
-    SS.submitQuery(<%= smartGroup.getNetworkId() %>, <%= smartGroup.getRef() %>, null);
+    SS.submitQuery(<%= smartGroup.getNetworkId() %>, <%= smartGroup.getSmartGroupRef() %>, null);
 
 </script>

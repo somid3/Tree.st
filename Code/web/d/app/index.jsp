@@ -49,18 +49,13 @@
 <script type="text/javascript" src="./modules/search/js/search.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/search/css/basic.css?<%= Vars.rev %>">
 
-
-
-
-<script type="text/javascript" src="user_panel/js/user_panel.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="user_panel/user_general/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="user_panel/user_networks/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
-
-<script type="text/javascript" src="user_panel/user_photos/js/user_photos.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/js/user_panel.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/user_general/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/user_networks/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/user_photos/js/user_photos.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./user_panel/user_photos/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
-
 <link rel=stylesheet type="text/css" href="./user_panel/css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="user_panel/user_photos/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="./user_panel/user_photos/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
 
 
 
@@ -72,7 +67,7 @@
 <script type="text/javascript" src="./modules/profiles/js/dashboard.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/profiles/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="modules/smart_groups/js/smart_search.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./modules/smart_groups/js/smart_search.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/dashboard.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/smart_group_tools.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/smart_groups.js?<%= Vars.rev %>"></script>
@@ -81,6 +76,7 @@
 
 <script type="text/javascript" src="./modules/share/js/shared_item.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/share/js/shared_comment.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./modules/share/js/shared_vote.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/share/js/textarea_expander.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/share/css/basic.css?<%= Vars.rev %>">
 
@@ -92,7 +88,6 @@
 
 <script type="text/javascript" src="./modules/all/js/dashboard.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/all/css/basic.css?<%= Vars.rev %>">
-
 
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">

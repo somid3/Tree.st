@@ -7,6 +7,7 @@ import com.questy.dao.SharedCommentDao;
 import com.questy.dao.SharedVoteDao;
 import com.questy.dao.UserSessionDao;
 import com.questy.dao.UserToSmartGroupDao;
+import com.questy.domain.SharedComment;
 import com.questy.domain.SharedVote;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
@@ -32,7 +33,7 @@ public class OmidsSandbox {
           Integer networkId = 2000;
           Integer smartGroupRef = 113;
           Integer sharedItemRef = 4;
-          Integer sharedCommentRef = SharedCommentDao.ANY_SHARED_COMMENT_REF;
+          Integer sharedCommentRef = SharedComment.ANY_SHARED_COMMENT_REF;
           SharedVoteEnum vote = SharedVoteEnum.UP;
           SharedVote sharedVote = null;
           SharedVotable sharedVotable = null;

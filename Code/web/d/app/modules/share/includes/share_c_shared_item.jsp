@@ -62,7 +62,7 @@
 
                 <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
 
-                    <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getRef() %>)">
+                    <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getSharedItemRef() %>)">
                         <div class="delete smd_header dim3">
                             <img src="./img/close_dark.png">
                         </div>
@@ -90,7 +90,7 @@
 
             <%
                 // Retrieving all shared comments of shared item
-                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getRef(), SqlLimit.ALL);
+                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
 
                 User share_a_me = share_c_me;
                 Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;
@@ -125,7 +125,7 @@
                                     event,
                                     <%= share_c_sharedItem.getNetworkId() %>,
                                     <%= share_c_sharedItem.getSmartGroupRef() %>,
-                                    <%= share_c_sharedItem.getRef() %>,
+                                    <%= share_c_sharedItem.getSharedItemRef() %>,
                                     '<%= share_c_hNewSharedCommentId %>',
                                     '<%= share_c_hSharedCommentsId %>')"
                         class="tell_me"

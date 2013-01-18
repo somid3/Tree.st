@@ -48,27 +48,12 @@ public class SharedVoteDao extends ParentDao {
 
     public static SharedVote getByUserIdAndSharedVotable(Integer userId, SharedVotable sharedVotable) throws SQLException {
 
-        SharedVote out = null;
-        if (sharedVotable instanceof SharedComment) {
-
-            out = SharedVoteDao.getByAllFields(
-                userId,
-                sharedVotable.getNetworkId(),
-                sharedVotable.getSmartGroupRef(),
-                ((SharedComment) sharedVotable).getSharedItemRef(),
-                sharedVotable.getRef());
-
-        } else {
-
-            out = SharedVoteDao.getByAllFields(
-                userId,
-                sharedVotable.getNetworkId(),
-                sharedVotable.getSmartGroupRef(),
-                sharedVotable.getRef(),
-                SharedCommentDao.ANY_SHARED_COMMENT_REF);
-
-        }
-
+        SharedVote out = SharedVoteDao.getByAllFields(
+            userId,
+            sharedVotable.getNetworkId(),
+            sharedVotable.getSmartGroupRef(),
+            sharedVotable.getSharedItemRef(),
+            sharedVotable.getSharedCommentRef());
 
         return out;
     }

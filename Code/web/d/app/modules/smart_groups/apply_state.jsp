@@ -13,4 +13,4 @@
     Integer sgroup_e_userId = userId;
     Integer sgroup_e_smartGroupRef = smartGroupRef;
 %>
-<%@ include file="includes/sgroup_e_favorite.jsp" %>
+<%@ include file="includes/sgroup_e_apply_state.jsp" %>

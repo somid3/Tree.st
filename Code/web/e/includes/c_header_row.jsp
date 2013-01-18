@@ -21,7 +21,7 @@
     }
 
     if (c_smartGroup != null) {
-        c_query.add("sgr", c_smartGroup.getRef());
+        c_query.add("sgr", c_smartGroup.getSmartGroupRef());
         c_hSmartGroupLink = "http://" + Vars.domain + "/r/go/?" + c_query;
     }
 

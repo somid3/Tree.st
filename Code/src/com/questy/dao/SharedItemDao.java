@@ -476,7 +476,7 @@ public class SharedItemDao extends ParentDao {
     private static SharedItem loadPrimitives (ResultSet rs) throws SQLException {
         SharedItem out = new SharedItem();
         out.setId(DatabaseUtils.getInt(rs, "id"));
-        out.setRef(DatabaseUtils.getInt(rs, "ref"));
+        out.setSharedItemRef(DatabaseUtils.getInt(rs, "ref"));
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setSmartGroupRef(DatabaseUtils.getInt(rs, "smart_group_ref"));

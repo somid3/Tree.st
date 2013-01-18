@@ -10,7 +10,6 @@ import java.util.List;
 
 public class SharedCommentDao extends ParentDao {
 
-    public static int ANY_SHARED_COMMENT_REF = 0;
 
     /**
      * Do not add the "hidden" on the where clause because this method is used to limit the user from adding
@@ -280,7 +279,7 @@ public class SharedCommentDao extends ParentDao {
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setSmartGroupRef(DatabaseUtils.getInt(rs, "smart_group_ref"));
         out.setSharedItemRef(DatabaseUtils.getInt(rs, "shared_item_ref"));
-        out.setRef(DatabaseUtils.getInt(rs, "ref"));
+        out.setSharedCommentRef(DatabaseUtils.getInt(rs, "ref"));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
         out.setText(DatabaseUtils.getString(rs, "text"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));

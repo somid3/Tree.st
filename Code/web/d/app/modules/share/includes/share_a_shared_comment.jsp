@@ -32,7 +32,7 @@
                     <%= share_a_sharedComment.getNetworkId() %>,
                     <%= share_a_sharedComment.getSmartGroupRef() %>,
                     <%= share_a_sharedComment.getSharedItemRef() %>,
-                    <%= share_a_sharedComment.getRef() %>,
+                    <%= share_a_sharedComment.getSharedCommentRef() %>,
                     '<%= e_hSharedCommentId %>')">
 
                     <div class="delete"><img src="./img/close_dark.png"></div>

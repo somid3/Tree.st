@@ -52,7 +52,7 @@
         {
             UrlQuery parameters = new UrlQuery();
             parameters.add("nid", network.getId());
-            parameters.add("sgr", smartGroup.getRef());
+            parameters.add("sgr", smartGroup.getSmartGroupRef());
             String flagSmartGroupLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.FLAG_SMART_GROUP, parameters));
             e_removals.add(flagSmartGroupLink + " from the '" + StringUtils.concat(smartGroup.getName(), 15, "...") + "' smart group");
         }

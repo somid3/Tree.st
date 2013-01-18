@@ -66,11 +66,11 @@
                 <span class="lg_header"><%= question.getText() %></span>
 
                 <% if (question.getPoints() >= 100) { %>
-                    <div class="pts md_button submit_button">+<%= question.getPoints() %> pts.</div>
+                    <div class="pts md_button submit_button smd_text white">+<%= question.getPoints() %> pts.</div>
                 <% } else if (question.getPoints() >= 50) { %>
-                    <div class="pts md_button">+<%= question.getPoints() %> pts.</div>
+                    <div class="pts md_button dark_button smd_text white">+<%= question.getPoints() %> pts.</div>
                 <% } else if (question.getPoints() > 0) { %>
-                    <div class="pts md_button light_button smd_text white">+<%= question.getPoints() %> pts.</div>
+                    <div class="pts md_button light_button smd_text">+<%= question.getPoints() %> pts.</div>
                 <% } %>
 
                 <% if (question.getPoints() > 0) {
@@ -134,8 +134,8 @@
 
             <div class="answer">
                 <div class="buttons">
-                    <a href="#" onclick="QD.submit(event)"><div class="submit lg_button submit_button">Submit</div></a>
-                    <a href="#" onclick="QD.skip(event)"><div class="skip lg_button">Skip</div></a>
+                    <a href="#" onclick="QD.submit(event)"><div class="submit lg_button submit_button md_text white">Submit</div></a>
+                    <a href="#" onclick="QD.skip(event)"><div class="skip lg_button dark_button md_text white">Skip</div></a>
                 </div>
                 <div class="settings">
                     <div class="visibility">

@@ -18,7 +18,7 @@ public class GeneralEmailSender {
     public static void main (String[] args) throws SQLException {
 
         // Send email to folks in particular industry
-        sendEmails(1500, "Association");
+        sendEmails(1531, "Association");
 
     }
 

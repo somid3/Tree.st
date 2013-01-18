@@ -41,7 +41,7 @@ public class CronServices {
 
                 // Running search to create scores and add new mappings
                 queryXml = QueryXmlReader.parseAndLoad(group.getQuery());
-                QueryServices.createScoresAndMappings(network.getId(), group.getRef(), queryXml);
+                QueryServices.createScoresAndMappings(network.getId(), group.getSmartGroupRef(), queryXml);
 
             }
 

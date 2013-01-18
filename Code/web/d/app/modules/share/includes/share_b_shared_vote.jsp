@@ -29,44 +29,56 @@
     Boolean share_b_isDownVoteActive = false;
     if (share_b_sharedVote != null && share_b_sharedVote.getVote() == SharedVoteEnum.DOWN)
         share_b_isDownVoteActive = true;
+
+    // Creating html ids
+    String share_b_hVotesId = HtmlUtils.getRandomId();
 %>
 
 <div>
-    <div class="shared_vote">
+    <div class="shared_vote" id="<%= share_b_hVotesId %>">
 
         <% if (share_b_settingSharedItemDisplayUpVotes != 0) { %>
 
-            <% if (!share_b_isUpVoteActive) { %>
-                <div class="do_vote sm_text vsm_button light_button highlight2">
-            <% } else { %>
-                <div class="do_vote sm_text vsm_button active_button white">
-            <% } %>
+            <a href="#" onclick="SharedVote.applyVote(event, '<%= share_b_hVotesId %>', <%= share_b_sharedVotable.getNetworkId() %>, <%= share_b_sharedVotable.getSmartGroupRef() %>, <%= share_b_sharedVotable.getSharedItemRef() %>, <%= share_b_sharedVotable.getSharedCommentRef() %>, <%= SharedVoteEnum.UP.getId() %>)">
 
-                <%= share_b_settingSharedVoteUpVocab %>
-
-                <% if (share_b_sharedVotable.getUpVotes() > 0) { %>
-                    (<%= share_b_sharedVotable.getUpVotes()%>)
+                <% if (!share_b_isUpVoteActive) { %>
+                    <div class="do_vote sm_text vsm_button light_button highlight2">
+                <% } else { %>
+                    <div class="do_vote sm_text vsm_button active_button white">
                 <% } %>
 
-            </div>
+                    <%= share_b_settingSharedVoteUpVocab %>
+
+                    <% if (share_b_sharedVotable.getUpVotes() > 0) { %>
+                        (<%= share_b_sharedVotable.getUpVotes()%>)
+                    <% } %>
+
+                </div>
+
+            </a>
 
         <% } if (share_b_settingSharedItemDisplayDownVotes != 0) { %>
 
             <span class="sm_text dim2"> or </span>
 
-            <% if (!share_b_isDownVoteActive) { %>
-                <div class="do_vote sm_text vsm_button light_button highlight2">
-            <% } else { %>
-                <div class="do_vote sm_text vsm_button active_button white">
-            <% } %>
+            <a href="#" onclick="SharedVote.applyVote(event, '<%= share_b_hVotesId %>', <%= share_b_sharedVotable.getNetworkId() %>, <%= share_b_sharedVotable.getSmartGroupRef() %>, <%= share_b_sharedVotable.getSharedItemRef() %>, <%= share_b_sharedVotable.getSharedCommentRef() %>, <%= SharedVoteEnum.DOWN.getId() %>)">
 
-                <%= share_b_settingSharedVoteDownVocab %>
-
-                <% if (share_b_sharedVotable.getDownVotes() > 0) { %>
-                    (<%= share_b_sharedVotable.getDownVotes()%>)
+                <% if (!share_b_isDownVoteActive) { %>
+                    <div class="do_vote sm_text vsm_button light_button highlight2">
+                <% } else { %>
+                    <div class="do_vote sm_text vsm_button active_button white">
                 <% } %>
 
-            </div>
+                    <%= share_b_settingSharedVoteDownVocab %>
+
+                    <% if (share_b_sharedVotable.getDownVotes() > 0) { %>
+                        (<%= share_b_sharedVotable.getDownVotes()%>)
+                    <% } %>
+
+                </div>
+
+            </a>
+
         <% } %>
 
     </div>

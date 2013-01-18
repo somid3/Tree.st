@@ -6,11 +6,13 @@ import java.util.Date;
 
 public class SharedComment extends Parent implements SharedVotable {
 
+    public final static int ANY_SHARED_COMMENT_REF = 0;
+
     private Integer networkId;
     private Integer userId;
     private Integer smartGroupRef;
     private Integer sharedItemRef;
-    private Integer ref;
+    private Integer sharedCommentRef;
     private String text;
     private Date createdOn;
     private Boolean hidden;
@@ -50,12 +52,12 @@ public class SharedComment extends Parent implements SharedVotable {
         this.sharedItemRef = sharedItemRef;
     }
 
-    public Integer getRef() {
-        return ref;
+    public Integer getSharedCommentRef() {
+        return sharedCommentRef;
     }
 
-    public void setRef(Integer ref) {
-        this.ref = ref;
+    public void setSharedCommentRef(Integer sharedCommentRef) {
+        this.sharedCommentRef = sharedCommentRef;
     }
 
     public String getText() {

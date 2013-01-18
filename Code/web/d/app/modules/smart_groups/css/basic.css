@@ -21,12 +21,12 @@
     margin: 3px;
 }
 
-.smart_group_favorite {
+.smart_group_state {
     float: right;
     margin: 1px;
 }
 
-.smart_group_favorite img {
+.smart_group_state img {
     width: 24px;
     height: 24px;
 

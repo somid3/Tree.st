@@ -39,7 +39,7 @@
         Event.preventDefault(event);
 
         $("#save_it").fadeOut();
-        Transitions.fadeOutLoadFadeIn("#save_as", "./modules/smart_groups/create_smart_group.jsp",  {nid: <%= sgroup_a_smartGroup.getNetworkId() %>, sgr: <%= sgroup_a_smartGroup.getRef() %>});
+        Transitions.fadeOutLoadFadeIn("#save_as", "./modules/smart_groups/create_smart_group.jsp",  {nid: <%= sgroup_a_smartGroup.getNetworkId() %>, sgr: <%= sgroup_a_smartGroup.getSmartGroupRef() %>});
     });
 </script>
 

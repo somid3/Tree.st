@@ -55,7 +55,7 @@ boolean app_b_withCanvasContainer = true; %>
         SS.questionAdd(
             null,
             <%= smartGroup.getNetworkId() %>,
-            <%= smartGroup.getRef() %>,
+            <%= smartGroup.getSmartGroupRef() %>,
             '<%= hCriteriaSearchQuestionId %>',
             <%= searchNetworkId %>,
             <%= searchQuestionRef %>,
@@ -64,7 +64,7 @@ boolean app_b_withCanvasContainer = true; %>
     <% } else { %>
 
         // Display faces for the query once it is loaded
-        SS.submitQuery(<%= smartGroup.getNetworkId() %>, <%= smartGroup.getRef() %>, null);
+        SS.submitQuery(<%= smartGroup.getNetworkId() %>, <%= smartGroup.getSmartGroupRef() %>, null);
 
     <% } %>
 

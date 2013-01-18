@@ -1,14 +1,15 @@
 package com.questy.domain;
 
+import com.questy.dao.SharedCommentDao;
 import com.questy.ifaces.SharedVotable;
 
 import java.util.Date;
 
 public class SharedItem extends Parent implements SharedVotable {
 
-    private Integer ref;
-    private Integer networkId;
     private Integer userId;
+    private Integer networkId;
+    private Integer sharedItemRef;
     private Integer smartGroupRef;
     private Date createdOn;
     private Integer totalComments;
@@ -17,12 +18,16 @@ public class SharedItem extends Parent implements SharedVotable {
     private Integer upVotes;
     private Integer downVotes;
 
-    public Integer getRef() {
-        return ref;
+    public Integer getSharedItemRef() {
+        return sharedItemRef;
     }
 
-    public void setRef(Integer ref) {
-        this.ref = ref;
+    public void setSharedItemRef(Integer sharedItemRef) {
+        this.sharedItemRef = sharedItemRef;
+    }
+
+    public Integer getSharedCommentRef() {
+        return SharedComment.ANY_SHARED_COMMENT_REF;
     }
 
     public Integer getNetworkId() {
@@ -56,7 +61,6 @@ public class SharedItem extends Parent implements SharedVotable {
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
-
 
     public Integer getTotalComments() {
         return totalComments;

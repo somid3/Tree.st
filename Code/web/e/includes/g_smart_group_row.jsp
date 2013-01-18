@@ -12,7 +12,7 @@
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
         query.add("nid", g_smartGroup.getNetworkId());
-        query.add("sgr", g_smartGroup.getRef());
+        query.add("sgr", g_smartGroup.getSmartGroupRef());
         f_hSmartGroupLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 %>

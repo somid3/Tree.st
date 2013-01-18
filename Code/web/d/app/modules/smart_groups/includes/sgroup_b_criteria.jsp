@@ -17,7 +17,7 @@
             <a href="#" onclick="SS.displayEditCriteria(
                 event,
                 <%= sgroup_b_smartGroup.getNetworkId() %>,
-                <%= sgroup_b_smartGroup.getRef() %>,
+                <%= sgroup_b_smartGroup.getSmartGroupRef() %>,
                 <%= sgroup_b_questionXml.getNetworkId() %>,
                 <%= sgroup_b_questionXml.getRef() %>);">
         <% } %>
@@ -50,7 +50,7 @@
 
     <div class="tools">
         <% if (sgroup_b_editable) { %>
-            <a href="#" onclick="SS.questionRemove(event, <%= sgroup_b_smartGroup.getNetworkId() %>, <%= sgroup_b_smartGroup.getRef() %>, '<%= sgroup_b_hCriteriaQuestionId %>');"><img src="./img/close_dark.png" alt=""></a>
+            <a href="#" onclick="SS.questionRemove(event, <%= sgroup_b_smartGroup.getNetworkId() %>, <%= sgroup_b_smartGroup.getSmartGroupRef() %>, '<%= sgroup_b_hCriteriaQuestionId %>');"><img src="./img/close_dark.png" alt=""></a>
         <% } %>
     </div>
 

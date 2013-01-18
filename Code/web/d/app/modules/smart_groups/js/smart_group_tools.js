@@ -81,22 +81,20 @@ function SmartGroupTools () {
      * Marks as a favorite or flag a particular smart group given a user
      *
      * @param event
-     * @param toggleState
-     * @param hFavoriteId
+     * @param applyState
+     * @param hStateId
      * @param networkId
      * @param smartGroupRef
      */
-    this.toggleState = function (event, toggleState, hFavoriteId, networkId, smartGroupRef) {
+    this.applyState = function (event, hStateId, networkId, smartGroupRef, applyState) {
 
         Event.preventDefault(event);
 
         // Send the post event to toggle the favorite
-        $.post('./modules/smart_groups/toggle_state.jsp', {nid: networkId, sgr: smartGroupRef, ts: toggleState}, function(data) {
+        $.post('./modules/smart_groups/apply_state.jsp', {nid: networkId, sgr: smartGroupRef, ts: applyState}, function(data) {
 
-            var $favoriteDiv  = $("#" + hFavoriteId);
-
-            // Remove old star
-            $favoriteDiv.replaceWith(data);
+            var $stateDiv  = $("#" + hStateId);
+            $stateDiv.replaceWith(data);
         });
 
     };

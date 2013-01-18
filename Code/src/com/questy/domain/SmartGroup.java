@@ -10,7 +10,7 @@ public class SmartGroup extends Parent {
     private Date createdOn;
     private Integer userId;
     private Integer networkId;
-    private Integer ref;
+    private Integer smartGroupRef;
     private String name;
     private String description;
     private String query;
@@ -70,12 +70,12 @@ public class SmartGroup extends Parent {
         this.query = query;
     }
 
-    public Integer getRef() {
-        return ref;
+    public Integer getSmartGroupRef() {
+        return smartGroupRef;
     }
 
-    public void setRef(Integer ref) {
-        this.ref = ref;
+    public void setSmartGroupRef(Integer smartGroupRef) {
+        this.smartGroupRef = smartGroupRef;
     }
 
     public Date getRefreshedOn() {
