@@ -27,6 +27,6 @@
         Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
     %>
 
-    <%@ include file="includes/share_c_shared_item.jsp" %>
+    <%@ include file="includes/share_c_shared_item_box.jsp" %>
 
 </div>

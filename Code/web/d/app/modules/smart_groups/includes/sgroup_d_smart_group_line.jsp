@@ -45,8 +45,8 @@
     sgroup_d_name = StringUtils.concat(sgroup_d_smartGroup.getName(), 30, "&hellip;");
 
     // Highlighting smart group name
-    if (sgroup_d_highlight != null)
-        sgroup_d_name = StringUtils.highlight(sgroup_d_name, sgroup_d_highlight, "<span class=\"found highlight2\">", "</span>");
+    if (!StringUtils.isEmail(sgroup_d_highlight))
+        sgroup_d_name = StringUtils.highlight(sgroup_d_name, sgroup_d_highlight, "<span class='found'>", "</span>");
 
 %>
     <div class="smart_group_line">

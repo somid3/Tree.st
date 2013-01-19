@@ -26,7 +26,7 @@
     <div class="w800 center">
         <div class="block">
             <div class="main gg_header white">Create Your Searchable Community</div>
-            <div class="sub vl_text white">Discover your members via unique qualities<br/> &mdash; collaborate and create amazing bonds</div>
+            <div class="sub vl_text white">Discover your members via unique qualities<br/> &mdash; collaborate, and create amazing bonds</div>
         </div>
     </div>
 </div>

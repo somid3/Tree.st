@@ -10,4 +10,4 @@
     Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
     Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
 %>
-<%@ include file="includes/share_c_shared_item.jsp" %>
+<%@ include file="includes/share_c_shared_item_box.jsp" %>

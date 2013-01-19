@@ -36,5 +36,5 @@
     Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
 
     for (SharedItem share_c_sharedItem : share_c_sharedItems) { %>
-        <%@ include file="./includes/share_c_shared_item.jsp" %>
+        <%@ include file="includes/share_c_shared_item_box.jsp" %>
     <% } %>

@@ -6,7 +6,6 @@
      *    Integer share_c_fromSmartGroupRef = null
      *    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = null;
      *    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = null;
-     *    Map<NetworkAlphaSettingEnum, Integer> share_c_networkAlphaSettings = null;
      */
 
     User share_c_author = UserDao.getById(null, share_c_sharedItem.getUserId());
@@ -24,7 +23,7 @@
         share_c_addCommentPlaceHolder = share_c_addCommentPlaceHolder + " (" + share_c_settingSharedCommentPointsPer + " pts.)";
 %>
 
-<div class="shared_item" id="<%= share_c_hSharedItemId %>">
+<div class="shared_item_box" id="<%= share_c_hSharedItemId %>">
 
     <div class="left">
 

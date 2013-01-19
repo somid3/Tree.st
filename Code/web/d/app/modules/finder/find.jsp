@@ -1,4 +1,5 @@
 <%@ include file="../../all.jsp" %>
+<%@ include file="./load.jsp" %>
 
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
@@ -73,46 +74,51 @@
 
 
 
-      /**
-       * Shared item finder
-       */
-      if (!searchText.isEmpty()) {
+    /**
+    * Shared item finder
+    */
+    if (!searchText.isEmpty()) {
 
-         /* Searching all smart groups */
+        /* Searching all smart groups */
 
-         LimitCounter counter = new LimitCounter(limit);
-         SharedItem sgroup_d_smartGroup = null;
-         Integer sgroup_d_userId = userId;
-         String sgroup_d_highlight = searchText;
+        LimitCounter counter = new LimitCounter(limit);
+        SharedItem share_d_sharedItem = null;
+        Integer sgroup_d_userId = userId;
+        Integer share_d_fromSmartGroupRef = SharedComment.ANY_SHARED_COMMENT_REF;
+        Map<NetworkIntegerSettingEnum, Integer> share_d_networkIntegerSettings = null;
+        Map<NetworkIntegerSettingEnum, String> share_d_networkAlphaSettings = null;
+        String share_d_highlight = null;
 
-         // Retrieving all users with a name
-         List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, networkId, sqlSearchText, sqlLimit); %>
+        // Retrieving all users with a name
+        List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, networkId, sqlSearchText, sqlLimit); %>
 
-         <div class="finder_results canvas_container">
+        <div class="finder_results canvas_container">
 
-             <div class="find_group md_header white">Shared Messages (<%= matches.size() %>)</div> <%
+        <div class="find_group md_header white">Shared Messages (<%= matches.size() %>)</div> <%
 
-             // Looping through all the matches
-             for (SharedItem match : matches) {
+        // Looping through all the matches
+        for (SharedItem match : matches) {
 
-                 // Setting up variables for include
-                 sgroup_d_smartGroup = match; %>
+            // Setting up variables for include
+            share_d_highlight = searchText;
+            share_d_sharedItem = match;
+            share_d_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(match.getNetworkId()); %>
 
-                 <%--<%@ include file="../smart_groups/includes/sgroup_d_smart_group_line.jsp"%>--%>
-             <%
+            <%@ include file="../share/includes/share_d_shared_item_line.jsp"%> <%
 
-                 counter.incrementCount();
-                 if (counter.hasReachedMax())
-                     break;
-             }
+            counter.incrementCount();
+            if (counter.hasReachedMax())
+                break;
 
-             if (counter.hasReachedMax()) { %>
-                 <div class="find_message vl_text dim">Maximum results reached!</div> <%
-             } %>
+        }
 
-         </div>
+        if (counter.hasReachedMax()) { %>
+            <div class="find_message vl_text dim">Maximum results reached!</div> <%
+        } %>
 
-      <% }
+        </div>
+
+    <% }
 
 
 
@@ -182,7 +188,7 @@
                     questionText = StringUtils.concat(question.getText(), 60, "&hellip;");
 
                     if (!searchText.isEmpty())
-                        highlighted = StringUtils.highlight(questionText, searchText, "<span class=\"find_found highlight2\">", "</span>");
+                        highlighted = StringUtils.highlight(questionText, searchText, "<span class='found'>", "</span>");
                     else
                         highlighted = questionText; %>
 
@@ -204,7 +210,7 @@
                         break;
 
                     question = QuestionDao.getByNetworkIdAndRef(null, option.getNetworkId(), option.getQuestionRef());
-                    highlighted = StringUtils.highlight(StringUtils.concat(option.getText(), 20, "&hellip;"), searchText, "<span class=\"find_found highlight2\">", "</span>"); %>
+                    highlighted = StringUtils.highlight(StringUtils.concat(option.getText(), 20, "&hellip;"), searchText, "<span class='found'>", "</span>"); %>
 
                     <a href="#">
                         <div class="find_question smd_text" onclick="SS.goSmartSearch(event, <%= question.getNetworkId() %>, <%= question.getRef() %>, <%= option.getRef() %>)">
@@ -219,7 +225,7 @@
                 }
 
                 if (counter.hasReachedMax()) { %>
-                    <div class="find_message vl_text dim">Maximum results reached!</div> <%
+                    <div class="find_message vl_text dim">Maximum results reached for <%= network.getName() %>!</div> <%
                 }
 
             }

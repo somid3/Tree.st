@@ -108,14 +108,18 @@ public class StringUtils {
         return input;
     }
 
-    public static String highlight(String input, String replace, String before, String after) {
+    /**
+     * Takes the input and replaces the section that needs to be highlighted with
+     * whatever should appear before and after
+     */
+    public static String highlight(String input, String highlight, String before, String after) {
 
         if (before == null) before = "";
         if (after == null) after = "";
         if (input == null || input.isEmpty()) return "";
-        if (replace == null || replace.isEmpty()) return input;
+        if (highlight == null || highlight.isEmpty()) return input;
 
-        String escapedString = Pattern.quote(replace);
+        String escapedString = Pattern.quote(highlight);
 
         return input.replaceAll("(?i)(" + escapedString + ")", before + "$1" + after);
     }

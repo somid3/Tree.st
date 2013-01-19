@@ -108,16 +108,16 @@
 }
 
 .finder_results .find_question {
-    padding: 4px;
+    padding: 8px 0;
     border-bottom: 1px dotted #bbb;
 }
 
-.finder_results .find_found {
-    font-weight: bolder;
+.finder_results .found {
+    padding: 2px;
+    border: 1px solid <%= HtmlDesign.highlight3 %>;
 }
 
 .finder_results .finder_member_result {
-    /*margin: 3px 3px 0 5px;*/
     width: 290px;
     display: inline-block;
 }

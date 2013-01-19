@@ -2,6 +2,7 @@
 
     Css.devRefreshCss("../css/basic.css", <%= Vars.rev %>, <%= Vars.reloadCss %>);
     Css.devRefreshCss("./css/basic.css", <%= Vars.rev %>, <%= Vars.reloadCss %>);
-    Css.devRefreshCss("./modules/collaborate/css/basic.css", <%= Vars.rev %>, <%= Vars.reloadCss %>);
+    Css.devRefreshCss("./modules/finder/css/basic.css", <%= Vars.rev %>, <%= Vars.reloadCss %>);
+    Css.devRefreshCss("./modules/share/css/basic.css", <%= Vars.rev %>, <%= Vars.reloadCss %>);
 
 </script>
