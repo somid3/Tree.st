@@ -263,7 +263,6 @@ function SmartSearch () {
         var $smartSearchWelcome = $("#smart_search_welcome");
         var $smartSearchCriterion = $("#smart_search_criterion");
         var $smartGroupFaces = $("#smart_group_faces");
-        var $smartSearchError = $("#smart_search_error");
 
         var $criterion = $("#smart_search_criterion .criteria");
 

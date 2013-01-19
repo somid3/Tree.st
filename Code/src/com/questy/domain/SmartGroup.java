@@ -7,6 +7,17 @@ import java.util.Date;
 
 public class SmartGroup extends Parent {
 
+    /**
+     * Name of the internal smart group each user has, here they
+     * store the search criteria for the last search they submitted
+     */
+    public final static String SEARCH_NAME = "_search";
+
+    /**
+     * A ref that symbolizes the community which holds the smart group
+     */
+    public final static int ANY_SMART_GROUP_REF = 0;
+
     private Date createdOn;
     private Integer userId;
     private Integer networkId;

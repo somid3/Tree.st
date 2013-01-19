@@ -1,6 +1,7 @@
 package com.questy.dao;
 
 import com.questy.domain.User;
+import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 import com.questy.utils.StringUtils;
 import org.apache.commons.codec.binary.Base64;
@@ -95,7 +96,8 @@ public class UserDao extends ParentDao {
     public static List<User> findByNetworkIdAndName (
             Connection conn,
             Integer networkId,
-            String searchFullName) throws SQLException {
+            String searchFullName,
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -103,11 +105,14 @@ public class UserDao extends ParentDao {
             "select * " +
             "from `users` " +
             "where `id` in (select `user_id` from `users_to_networks` where `network_id` = ?) " +
-            "and upper(concat(`first_name`, ' ', `last_name`, ' ', `email`)) like upper(?);";
+            "and upper(concat(`first_name`, ' ', `last_name`, ' ', `email`)) like upper(?) " +
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setString(2, searchFullName);
+        ps.setInt(3, limit.getStartFrom());
+        ps.setInt(4, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<User> out = new ArrayList<User>();

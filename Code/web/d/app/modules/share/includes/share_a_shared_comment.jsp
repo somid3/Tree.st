@@ -17,8 +17,7 @@
 
             <% {
                Integer ul_b_networkId = share_a_sharedComment.getNetworkId();
-               Integer ul_b_toUserId = share_a_sharedComment.getUserId();
-               AnswerVisibilityEnum ul_b_lowestVisibility = AnswerVisibilityEnum.PROTECTED; %>
+               Integer ul_b_toUserId = share_a_sharedComment.getUserId(); %>
 
                 <%@ include file="../../user_links/includes/ul_b_face.jsp"%>
             <% } %>

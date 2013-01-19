@@ -35,7 +35,6 @@
     for (SmartGroupResult k_result : sgroup_g_results) {
 
         User k_resultUser = UserDao.getById(null, k_result.getUserId());
-        k_resultUser = VisibilityConvertor.convert(k_resultUser, k_result.getLowestVisibility());
         sgroup_g_resultUsers.add(k_resultUser);
 
     }

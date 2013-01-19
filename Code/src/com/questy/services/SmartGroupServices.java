@@ -56,7 +56,7 @@ public class SmartGroupServices extends ParentService  {
         if (out == null) {
 
             // Creating smart search
-            SmartGroupServices.createSmartGroup(networkId, userId, SmartGroupDao.SEARCH_NAME, null);
+            SmartGroupServices.createSmartGroup(networkId, userId, SmartGroup.SEARCH_NAME, null);
 
             // Retrieving smart search
             out = SmartGroupDao.getSearchByNetworkIdAndUserId(conn, networkId, userId);

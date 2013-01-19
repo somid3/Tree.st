@@ -11,16 +11,11 @@
     Integer searchQuestionRef = StringUtils.parseInt(request.getParameter("sqr"));
     Integer searchOptionRef = StringUtils.parseInt(request.getParameter("sor"));
 
-    // Retrieve user plural setting
-    String settingUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetwork(networkId);
-
     SmartGroup smartGroup = SmartGroupServices.getOrCreateSearchSmartGroup(networkId, userId);
+
+    Map<NetworkAlphaSettingEnum, String> sgroup_f_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
 %>
 <div id="smart_search_welcome">
-    <%
-       Network sgroup_f_network = network;
-       String sgroup_f_settingUserPlural = settingUserPlural;
-    %>
     <%@ include file="includes/sgroup_f_empty_search.jsp" %>
 </div>
 

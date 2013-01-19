@@ -2,6 +2,7 @@ package com.questy.dao;
 
 import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
+import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
@@ -16,7 +17,7 @@ public class QuestionOptionDao extends ParentDao {
             Connection conn,
             Integer networkId,
             String searchText,
-            Integer limit) throws SQLException {
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -26,12 +27,13 @@ public class QuestionOptionDao extends ParentDao {
             "where `network_id` = ? " +
             "and upper(`text`) like upper(?) " +
             "order by `total_answers` desc, `id` desc " +
-            "limit ?;";
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setString(2, searchText);
-        ps.setInt(3, limit);
+        ps.setInt(3, limit.getStartFrom());
+        ps.setInt(4, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<QuestionOption> out = new ArrayList<QuestionOption>();

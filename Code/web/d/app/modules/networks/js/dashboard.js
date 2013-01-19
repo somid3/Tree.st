@@ -118,7 +118,7 @@ function NetworkDashboard () {
 
         else if (sendTo == NetworkDashboard.Section.SEARCH)
 
-             this.clickItem(event, null, './modules/search/search.jsp', parameters, callback);
+             this.clickItem(event, null, './modules/finder/find.jsp', parameters, callback);
 
     };
 

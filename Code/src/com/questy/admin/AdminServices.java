@@ -1525,7 +1525,7 @@ public class AdminServices {
         SmartGroup group = groups.get(randomInt);
 
         // Ignore if the "search" smart group was selected
-        if (group.getName().equals(SmartGroupDao.SEARCH_NAME)) return null;
+        if (group.getName().equals(SmartGroup.SEARCH_NAME)) return null;
 
         AdminServices.log("Smart Group ref: " + group.getSmartGroupRef() + " (" + group.getName() + ").");
 

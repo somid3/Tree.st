@@ -1,6 +1,8 @@
 package com.questy.dao;
 
 import com.questy.domain.SharedItem;
+import com.questy.domain.SmartGroup;
+import com.questy.enums.SmartGroupVisibilityEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
 
@@ -327,6 +329,39 @@ public class SharedItemDao extends ParentDao {
         end(conn, ps, rs);
         return max;
     }
+
+    public static List<SharedItem> findByNetworkIdAndText (
+        Connection conn,
+        Integer networkId,
+        String searchText,
+        SqlLimit limit) throws SQLException {
+
+    conn = start(conn);
+
+    String sql = "select * " +
+        "from `shared_items` " +
+        "where `network_id` = ? " +
+        "and upper(`text`) like upper(?) " +
+        "and `hidden` is not true " +
+        "order by `created_on` desc, `id` desc " +
+        "limit ?,?;";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, networkId);
+    ps.setString(2, searchText);
+    ps.setInt(3, limit.getStartFrom());
+    ps.setInt(4, limit.getDuration());
+    ResultSet rs = ps.executeQuery();
+
+    List<SharedItem> out = new ArrayList<SharedItem>();
+
+    while (rs.next())
+        out.add(loadPrimitives(rs));
+
+    end(conn, ps, rs);
+    return out;
+}
+
 
     public static void incrementTotalCommentsByNetworkIdAndSmartGroupRefAndRef(
         Connection conn,

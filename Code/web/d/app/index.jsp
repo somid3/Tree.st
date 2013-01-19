@@ -40,8 +40,8 @@
 <script type="text/javascript" src="./modules/networks/js/points.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/networks/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="./modules/search/js/search.js?<%= Vars.rev %>"></script>
-<link rel=stylesheet type="text/css" href="./modules/search/css/basic.css?<%= Vars.rev %>">
+<script type="text/javascript" src="./modules/finder/js/finder.js?<%= Vars.rev %>"></script>
+<link rel=stylesheet type="text/css" href="./modules/finder/css/basic.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./user_panel/js/user_panel.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./user_panel/user_general/js/user_general_dashboard.js?<%= Vars.rev %>"></script>

@@ -11,19 +11,8 @@ import java.util.List;
 
 public class SmartGroupDao extends ParentDao {
 
-    /**
-     * Name of the internal smart group each user has, here they
-     * store the search criteria for the last search they submitted
-     */
-    public static String SEARCH_NAME = "_search";
-
-    /**
-     * A ref that symbolizes the community which holds the smart group
-     */
-    public static int ANY_SMART_GROUP_REF = 0;
-
     public static SmartGroup getSearchByNetworkIdAndUserId(Connection conn, Integer networkId, Integer userId) throws SQLException {
-        return getByNetworkIdAndUserIdAndName(conn, networkId, userId, SEARCH_NAME);
+        return getByNetworkIdAndUserIdAndName(conn, networkId, userId, SmartGroup.SEARCH_NAME);
     }
 
     public static SmartGroup getByNetworkIdAndUserIdAndName (
@@ -64,7 +53,8 @@ public class SmartGroupDao extends ParentDao {
             Integer networkId,
             String searchName,
             SmartGroupVisibilityEnum lowestVisibility,
-            Integer createdByUserId) throws SQLException {
+            Integer createdByUserId,
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -82,14 +72,17 @@ public class SmartGroupDao extends ParentDao {
                 "and upper(`name`) like upper(?) " +
                 "and `name` != ? " +
                 "and `hidden` is not true " +
-                "order by `visibility` desc, `id` desc;";
+                "order by `visibility` desc, `id` desc " +
+                "limit ?,?;";
 
             ps = conn.prepareStatement(sql);
             ps.setInt(1, networkId);
             ps.setInt(2, createdByUserId);
             ps.setInt(3, lowestVisibility.getId());
             ps.setString(4, searchName);
-            ps.setString(5, SmartGroupDao.SEARCH_NAME);
+            ps.setString(5, SmartGroup.SEARCH_NAME);
+            ps.setInt(6, limit.getStartFrom());
+            ps.setInt(7, limit.getDuration());
             rs = ps.executeQuery();
 
         } else {
@@ -101,13 +94,16 @@ public class SmartGroupDao extends ParentDao {
                 "and upper(`name`) like upper(?) " +
                 "and `name` != ? " +
                 "and `hidden` is not true " +
-                "order by `visibility` desc, `id` desc;";
+                "order by `visibility` desc, `id` desc " +
+                "limit ?,?;";
 
             ps = conn.prepareStatement(sql);
             ps.setInt(1, networkId);
             ps.setInt(2, lowestVisibility.getId());
             ps.setString(3, searchName);
-            ps.setString(4, SmartGroupDao.SEARCH_NAME);
+            ps.setString(4, SmartGroup.SEARCH_NAME);
+            ps.setInt(5, limit.getStartFrom());
+            ps.setInt(6, limit.getDuration());
             rs = ps.executeQuery();
 
         }
@@ -457,7 +453,7 @@ public class SmartGroupDao extends ParentDao {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, networkId);
         ps.setInt(2, userId);
-        ps.setString(3, SmartGroupDao.SEARCH_NAME);
+        ps.setString(3, SmartGroup.SEARCH_NAME);
         ResultSet rs = ps.executeQuery();
 
         Integer out = null;
@@ -528,7 +524,7 @@ public class SmartGroupDao extends ParentDao {
         // Group all the smart groups with a search name
         for (SmartGroup group : groups) {
 
-            if (group.getName().equals(SmartGroupDao.SEARCH_NAME))
+            if (group.getName().equals(SmartGroup.SEARCH_NAME))
                 filterOut.add(group);
 
         }
@@ -566,7 +562,7 @@ public class SmartGroupDao extends ParentDao {
 
     public static boolean isNetworkRef (Integer smartGroupRef) {
 
-        if (smartGroupRef.equals(ANY_SMART_GROUP_REF))
+        if (smartGroupRef.equals(SmartGroup.ANY_SMART_GROUP_REF))
             return true;
         else
             return  false;

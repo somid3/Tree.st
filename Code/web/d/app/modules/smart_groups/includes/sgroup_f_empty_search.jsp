@@ -2,9 +2,11 @@
     /**
      * Inputs variables
      *
-     *   Network sgroup_f_network = null;
-     *   String sgroup_f_settingUserPlural = null;
+     *   Map<NetworkAlphaSettingEnum, String> sgroup_f_networkAlphaSettings = null;
      */
+
+    String sgroup_f_settingUserPlural = sgroup_f_networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
+    String sgroup_f_settingUserSingular = sgroup_f_networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
 %>
 
 <div class="question_note">
@@ -14,8 +16,8 @@
             <div><img src="./modules/smart_groups/img/empty_search.png"></div>
 
             <div class="vl_text dim">
-                Your people finder is currently empty.<br/>
-                Search and add multiple qualities to discover truly unique <%= sgroup_f_settingUserPlural %>.
+                Your <%= sgroup_f_settingUserSingular %> searcher is currently empty.<br/>
+                Find and add multiple qualities to discover truly unique <%= sgroup_f_settingUserPlural %>.
             </div>
         </div>
     </div>

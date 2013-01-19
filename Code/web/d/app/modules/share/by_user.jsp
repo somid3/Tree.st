@@ -14,7 +14,7 @@
 <script type="text/javascript">
     SI = new SharedItem();
     SI.networkId = <%= networkId %>;
-    SI.smartGroupRef = <%= SmartGroupDao.ANY_SMART_GROUP_REF %>;
+    SI.smartGroupRef = <%= SmartGroup.ANY_SMART_GROUP_REF %>;
     SI.viewUserId = <%= viewUserId %>;
 </script>
 

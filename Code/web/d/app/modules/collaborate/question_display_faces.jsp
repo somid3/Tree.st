@@ -14,7 +14,7 @@
     for (QuestionOption qo : question.getOptions()) {
 
         // Retrieving latest active answers
-        aas = ActiveAnswerDao.getByNetworkIdAndQuestionRefAndOptionRef(null, qo.getNetworkId(), question.getRef(), qo.getRef(), AnswerVisibilityEnum.ANONYMOUS, maxFaces);
+        aas = ActiveAnswerDao.getByNetworkIdAndQuestionRefAndOptionRef(null, qo.getNetworkId(), question.getRef(), qo.getRef(), AnswerVisibilityEnum.PROTECTED, maxFaces);
 
         // Add active answer user to faces
         for(ActiveAnswer aa : aas)
@@ -24,16 +24,14 @@
         if (userVisibility.size() >= maxFaces)
             break;
     }
-
 %>
 
 <% if (!userVisibility.isEmpty()) { %>
     <div class="similar sm_text dim">Recently answered by</div>
 
-    <div style="display: inline-block;">
+    <div>
     <%
         Integer ul_b_networkId = networkId;
-        AnswerVisibilityEnum ul_b_lowestVisibility = null;
 
         int i = 1;
         for (Integer ul_b_toUserId : userVisibility.keySet()) { %>
@@ -52,7 +50,6 @@
         String app_d_message = "Use the finder to find all members who answered a random option.";
         HtmlDesign.Positions app_d_position = HtmlDesign.Positions.LEFT; %>
     <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
 
 <% } else { %>
 

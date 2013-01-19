@@ -47,7 +47,6 @@
 
                 <% for (SmartGroupResult other : others ) {
 
-                    AnswerVisibilityEnum ul_b_lowestVisibility = other.getLowestVisibility();
                     Integer ul_b_networkId = networkId;
                     Integer ul_b_toUserId = other.getUserId(); %>
 

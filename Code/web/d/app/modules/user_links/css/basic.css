@@ -6,6 +6,7 @@
     float: left;
     margin: 4px;
     position: relative;
+    display: inline-block;
 }
 
 .user_face .mini_face {

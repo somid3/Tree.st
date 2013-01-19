@@ -30,8 +30,7 @@
 
             <% {
                 Integer ul_b_networkId = share_c_sharedItem.getNetworkId();
-                Integer ul_b_toUserId = share_c_sharedItem.getUserId();
-                AnswerVisibilityEnum ul_b_lowestVisibility = AnswerVisibilityEnum.PROTECTED; %>
+                Integer ul_b_toUserId = share_c_sharedItem.getUserId(); %>
 
                 <%@ include file="../../user_links/includes/ul_b_face.jsp"%>
 

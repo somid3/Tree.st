@@ -12,6 +12,7 @@
     Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId());
 
     // Retrieving network settings
+    String singularVocabulary = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetwork(networkId);
     String pluralVocabulary = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetwork(networkId);
 %>
 <script type="text/javascript">
@@ -84,7 +85,7 @@
         <div class="shortcut" id="network_shortcut_smart_search">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/smart_search.png" alt="Smart Search"></div>
-                <div class="name smd_text"><%= pluralVocabulary %> Finder</div>
+                <div class="name smd_text"><%= singularVocabulary %> Search</div>
             </div>
         </div>
     </a>

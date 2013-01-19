@@ -88,11 +88,6 @@
                     <div class="desc sm_text dim">Allow your members to discover one another online, and connect offline. Create a collaborative culture by connecting members with similar interests and goal.</div>
                     <div class="img"><img src="./img/social-networking.png"></div>
                 </div>
-                <div class="feature-title shadow">
-                    <div class="title md_header dim">Anonymous Help</div>
-                    <div class="desc sm_text dim">Members can answer sensitive questions annonymously, allowing anyone in the community to discover and message them without knowing their identity.</div>
-                    <div class="img"><img src="./img/anonymous.png"></div>
-                </div>
             </div>
             <div class="column">
                 <div class="feature-title shadow">

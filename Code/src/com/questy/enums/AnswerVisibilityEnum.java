@@ -5,14 +5,12 @@ import com.questy.domain.Network;
 public enum AnswerVisibilityEnum {
     PUBLIC    (9, "Public",      "Available to the world",                   "Available to the world"),
     PROTECTED (6, "Protected",   "Community only",                           "Community only"),
-    ANONYMOUS (3, "Anonymously", "Answer Anonymously",                       "Answer Anonymously"),
     PRIVATE   (0, "Private",     "Only for me",                              "Only for me");
 
     private int id;
     private String name;
     private String privateDescription;
     private String globalDescription;
-
 
     private AnswerVisibilityEnum(int id, String name, String privateDescription, String globalDescription) {
         this.id = id;

@@ -144,7 +144,7 @@
 
                         <%
                             app_d_title = "Answer Visibility";
-                            app_d_message = "Each answer can have a different visibility. 'Anonymous' answers allows others to find and message you without learning who you are.";
+                            app_d_message = "Each answer can have a different visibility. 'Public' answers can be viewed in the public internet. 'Protected' answers are only visible by community members. 'Private' answers can only be viewed by you.";
                             app_d_position = HtmlDesign.Positions.LEFT; %>
                         <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 

@@ -41,7 +41,7 @@
         results = results.subList(0, 50);
 
     // Are there any results to display?
-    if (results.size() > 0) { %>
+    if (totalResults > 0) { %>
 
     <div id="smart_search_results">
 
@@ -49,10 +49,6 @@
             Integer ul_a_toUserId = null;
             Integer ul_a_networkId = null;
             for (SmartGroupResult result : results) {
-
-                // Skip displaying the current user
-                if (result.getUserId().equals(userId))
-                    continue;
 
                 ul_a_toUserId = result.getUserId();
                 ul_a_networkId = result.getNetworkId(); %>
