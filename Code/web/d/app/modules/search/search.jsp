@@ -5,13 +5,13 @@
     String searchText = StringUtils.parseString(request.getParameter("s"));
 
     // Validating search text
-    if (searchText == null || searchText.isEmpty())
+    if (StringUtils.isEmpty(searchText))
         searchText = "";
 
     // Adding regular expression terms to search text
     searchText = searchText.trim();
     String sqlSearchText = null;
-    if (searchText != null)
+    if (!searchText.isEmpty())
         sqlSearchText = '%' + searchText + '%';
     else
         sqlSearchText = "%";
@@ -19,8 +19,8 @@
 
 <div id="search_result" class="canvas_container">
 
-    <%
-    {
+    <% if (!searchText.isEmpty()) {
+
        /* Searching all smart groups */
 
        LimitCounter counter = new LimitCounter(30);
@@ -31,27 +31,27 @@
        // Retrieving all users with a name
        Set<SmartGroup> matches = new TreeSet<SmartGroup>();
        matches.addAll(SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.PRIVATE, userId));
-       matches.addAll(SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null));
+       matches.addAll(SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null)); %>
 
-
-       %> <div class="search_group md_header white">Smart Groups (<%= matches.size() %>)</div> <%
+       <div class="search_group md_header white">Smart Groups (<%= matches.size() %>)</div> <%
 
        // Looping through all the matches
        for (SmartGroup match : matches) {
 
            // Setting up variables for include
-           sgroup_d_smartGroup = match;
+           sgroup_d_smartGroup = match; %>
 
-           %> <%@ include file="../smart_groups/includes/sgroup_d_smart_group_line.jsp"%> <%
+           <%@ include file="../smart_groups/includes/sgroup_d_smart_group_line.jsp"%> <%
 
            counter.incrementCount();
            if (counter.hasReachedMax())
                break;
+
        }
 
-       if (counter.hasReachedMax()) {
+       if (counter.hasReachedMax()) { %>
 
-           %> <div class="search_message lg_text dim2">Maximum results reached</div> <%
+           <div class="search_message lg_text dim2">Maximum results reached</div> <%
 
        }
 
@@ -69,7 +69,10 @@
 
 
     {
-        /* Searching all qualities across network tree */
+        /**
+         * Searching all qualities across network tree, all the qualities should be displayed if
+         * no search text is provided
+         **/
 
         // Retrieving all networks from user
         List<Network> networks = NetworkServices.getNetworkWithAllDependantsMappedToUser(networkId, userId, RoleEnum.VISITOR);
@@ -106,10 +109,10 @@
                 continue;
 
         %>
-            <div class="search_network smd_text sm_button dark_button">
+
+            <div class="search_network sm_button dark_button sm_text">
                 <%= network.getName() %> (<%= totalItems %>)
-            </div>
-        <%
+            </div> <%
 
             // Looping over matched questions
             for (Question question : matchedQuestions) {
@@ -124,16 +127,14 @@
                 if (!searchText.isEmpty())
                     highlighted = StringUtils.highlight(questionText, searchText, "<span class=\"search_found highlight2\">", "</span>");
                 else
-                    highlighted = questionText;
+                    highlighted = questionText; %>
 
-        %>
                 <a href="#">
-
                     <div class="search_question smd_text" onclick="SS.goSmartSearch(event, <%= question.getNetworkId() %>, <%= question.getRef() %>)">
                         <%= highlighted %> <span class="dim2">(<%= question.getTotalAnswers() %>)</span>
                     </div>
-                </a>
-        <%
+                </a> <%
+
             }
 
             // Looping over matched question options
@@ -146,15 +147,13 @@
                     break;
 
                 question = QuestionDao.getByNetworkIdAndRef(null, option.getNetworkId(), option.getQuestionRef());
-                highlighted = StringUtils.highlight(StringUtils.concat(option.getText(), 20, "&hellip;"), searchText, "<span class=\"search_found highlight2\">", "</span>");
+                highlighted = StringUtils.highlight(StringUtils.concat(option.getText(), 20, "&hellip;"), searchText, "<span class=\"search_found highlight2\">", "</span>"); %>
 
-        %>
                 <a href="#">
                     <div class="search_question smd_text" onclick="SS.goSmartSearch(event, <%= question.getNetworkId() %>, <%= question.getRef() %>, <%= option.getRef() %>)">
                         <%= highlighted %> <span class="dim2">(<%= option.getTotalAnswers() %>)</span> &rarr; <%= StringUtils.concat(question.getText(), 50, "&hellip;") %>
                     </div>
-                </a>
-        <%
+                </a> <%
 
                 // Ensuring limit has not been reached
                 if (counter.hasReachedMax())
@@ -162,19 +161,19 @@
 
             }
 
-            if (counter.hasReachedMax()) {
-
-                %> <div class="search_message lg_text dim2">Maximum results reached</div> <%
+            if (counter.hasReachedMax()) { %>
+                <div class="search_message lg_text dim2">Maximum results reached</div> <%
             }
 
             %> <div class="search_sep">&nbsp;</div> <%
-
         }
 
     }
 
-    {
-        /* Searching all users */
+
+    if (!searchText.isEmpty()) {
+
+        /* Searching users */
 
         LimitCounter counter = new LimitCounter(20);
 

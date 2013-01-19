@@ -1,9 +1,5 @@
 <%@ include file="./all.jsp" %>
 <%
-    /* Actions */
-    String photo = StringUtils.parseString(request.getParameter("photo"));
-    String go = StringUtils.parseString(request.getParameter("go"));
-
     // If in development mode, make sure all scripts refresh
     Vars.setDevelopmentRev();
 
@@ -37,8 +33,6 @@
 </head>
 <script type="text/javascript" src="../js/jquery-1.8.3.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
-
-<script type="text/javascript" src="../js/jquery-plugins.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
 
 <script type="text/javascript" src="./modules/networks/js/menus.js?<%= Vars.rev %>"></script>

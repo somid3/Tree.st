@@ -1,0 +1,18 @@
+<%@include file="../all.jsp" %>
+<%@page contentType="text/css" %>
+
+body {
+    background-image : url(../../assets/background.jpg);
+}
+
+#logo {
+    margin: 10px auto;
+    width: 160px;
+    position: relative;
+    top: -1000px;
+}
+
+.updated {
+    text-align: center;
+    padding: 20px;
+}

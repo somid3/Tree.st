@@ -20,14 +20,13 @@
     <div id="search_space">
         <div id="search_toolbar">
             <a href="#" onclick="S.viewEverything(event);">
-                <div id="view_all" class="sm_text highlight2">
-                    <span>All</span>
+                <div id="all" class="sm_button light_button sm_text highlight2">
+                    <span>Qualities</span>
                 </div>
             </a>
 
             <div id="search_input">
-                <input class="md_input" style="position: relative; width: 255px; left: 30px;" type="text" id="<%= hSearchInputId %>" name="search" placeholder="Search for qualities or people" title="Search" value=""/>
-                <img src="./modules/networks/img/search.png">
+                <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="<%= hSearchInputId %>" name="search" placeholder="Find qualities, people, messages" title="Search" value=""/>
             </div>
 
         </div>

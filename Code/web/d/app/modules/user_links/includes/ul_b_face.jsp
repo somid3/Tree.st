@@ -44,15 +44,10 @@
          */
         } else { %>
 
-        <a href="#">
-        <div class="mini_face" id="<%= ul_b_hFaceId %>">
-
-            <img src="<%= ul_b_toUser.getFaceUrl() %>"/>
-            <script type="text/javascript">
-                UserLink.bindDetails(null, "<%= ul_b_hFaceId %>", <%= ul_b_networkId %>, <%= ul_b_toUser.getId() %>, "<%= ul_b_hCardHolderId %>");
-            </script>
-
-        </div>
+        <a href="#" onmouseover="UserLink.bindDetails(null, '<%= ul_b_hFaceId %>', <%= ul_b_networkId %>, <%= ul_b_toUser.getId() %>, '<%= ul_b_hCardHolderId %>');">
+            <div class="mini_face" id="<%= ul_b_hFaceId %>">
+                <img src="<%= ul_b_toUser.getFaceUrl() %>"/>
+            </div>
         </a>
 
     <% } %>

@@ -47,7 +47,7 @@ Start.start = function (event, networkdId, networkChecksum) {
             Animations.outTop("#start", function () {
 
                 // Send user to app
-                URL.redirect("/d/app");
+                URL.redirect("/d/app?go_nid=" + parameters.nid);
 
             });
 

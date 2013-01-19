@@ -1,5 +1,7 @@
 function UserLink () {};
 
+
+
 UserLink.bindDetails = function (event, hFaceId, networkId, toUserId, hCardHolderId) {
 
     var $faceDiv = $("#" + hFaceId);

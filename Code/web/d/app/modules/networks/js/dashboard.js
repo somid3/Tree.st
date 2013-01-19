@@ -126,7 +126,7 @@ function NetworkDashboard () {
 
 NetworkDashboard.unhighlightAll = function () {
 
-    $("#view_all").removeClass("selected");
+    $("#all").removeClass("selected");
     $("#smart_search_button").removeClass("selected");
 
 };

@@ -49,12 +49,10 @@
 }
 
 
-#search_toolbar #view_all {
+#search_toolbar #all {
     position: absolute;
     left: 4px;
     top: 4px;
-    border: 1px solid #336699;
-    padding: 3px 5px;
 }
 
 #search_toolbar .selected {

@@ -545,10 +545,6 @@ div.sm_shadow {
 
 
 /* Containers -- THESE SHOULD HAVE NO MARGINS!! */
-div.canvas_div {
-    width: 600px;
-}
-
 div.canvas_container {
     padding: 5px;
     width: 587px;
@@ -556,22 +552,6 @@ div.canvas_container {
     border-right: 2px solid #bbb;
     border-bottom: 2px solid #bbb;
     background-color: #fff;
-}
-
-div.two_col_container {
-    padding: 5px;
-    width: 380px;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
-    background-color: #fff;
-}
-
-div.three_col_container {
-    background-color: #fff;
-    width: 185px;
-    padding: 5px;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
 }
 
 div.error {
@@ -590,11 +570,17 @@ div.w600 {
     width: 600px;
 }
 
-
 div.w400 {
     width: 400px;
 }
 
+div.w300 {
+    width: 300px;
+}
+
+div.w200 {
+    width: 200px;
+}
 
 div.center {
     margin-left: auto;

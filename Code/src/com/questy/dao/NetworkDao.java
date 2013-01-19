@@ -9,11 +9,6 @@ import java.util.List;
 
 public class NetworkDao extends ParentDao {
 
-    /**
-     * A ref that symbolizes the global setting that owns the network
-     */
-    public static int ANY_NETWORK_REF = 0;
-
     public static List<Network> getAll (Connection conn) throws SQLException {
         conn = start(conn);
 
@@ -75,10 +70,10 @@ public class NetworkDao extends ParentDao {
         conn = start(conn);
 
         String sql =
-        "select * " +
-        "from `networks` " +
-        "where `id` = ? " +
-        "limit 1;";
+            "select * " +
+            "from `networks` " +
+            "where `id` = ? " +
+            "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);

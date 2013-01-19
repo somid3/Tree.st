@@ -97,7 +97,4 @@
 
     // Sending user to application
     wu.redirect("/d/app?updated");
-
-
-
 %>

@@ -11,6 +11,11 @@
         Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
         throw exception;
 
+    } else {
+
+        WebUtils wu = new WebUtils(request, response);
+        wu.redirect("/d/app?error");
+
     }
 
 %>

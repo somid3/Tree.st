@@ -57,7 +57,7 @@ function Search () {
         Event.preventDefault(event);
 
         // Doing the click
-        ND.clickItem(event, "#view_all", './modules/search/search.jsp', null, null);
+        ND.clickItem(event, "#all", './modules/search/search.jsp', null, null);
 
     };
 

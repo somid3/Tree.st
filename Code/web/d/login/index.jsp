@@ -78,17 +78,11 @@
     });
 
     // Starting the focus on the email field
-    $(function() {
-
-      $("#email").focus();
-
-    });
+    $(function() {$("#email").focus();});
 
     // Bringing down the logo
     $(document).ready(function() {
-
         Animations.inTopAndBounce("#logo", 30);
-
     })
 
 
