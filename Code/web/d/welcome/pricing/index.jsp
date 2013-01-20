@@ -40,7 +40,7 @@
                         <div class="big sp_text dim">Per Member</div>
                         <div class="small smd_text dim2">Only a dime per month for each of your members</div>
                     </div>
-                    <div class="cost">
+                    <div class="gather">
                         <span class="unit lg_text dim2">$</span>
                         <span class="dollars sp_text dim">0</span>
                         <span class="cents md_text dim">10</span>
@@ -53,7 +53,7 @@
                         <div class="big sp_text dim">Monthly Hosting</div>
                         <div class="small smd_text dim2">To keep your servers up and running smoothly</div>
                     </div>
-                    <div class="cost">
+                    <div class="gather">
                         <span class="unit lg_text dim2">$</span>
                         <span class="dollars sp_text dim">9</span>
                         <span class="cents md_text dim">99</span>
@@ -66,7 +66,7 @@
                         <div class="big sp_text dim">One-time Setup</div>
                         <div class="small smd_text dim2">To build your private custom-made community with your own qualities and decision trees.</div>
                     </div>
-                    <div class="cost">
+                    <div class="gather">
                         <span class="unit lg_text dim2">$</span>
                         <span class="dollars sp_text dim">49</span>
                         <span class="cents md_text dim">99</span>

@@ -6,15 +6,13 @@ NetworkDashboard.Section = {
     SHARE: 5,
     ANSWERS: 6,
     ALL: 7,
-    SEARCH: 8
+    FINDER: 8
 };
 
 function NetworkDashboard () {
 
     this.networkId = null;
 
-    this.search = null;
-        
     /**
      * Removes selected class from all items on the network dashboard
      * and adds the selected class to the selector provided
@@ -44,13 +42,9 @@ function NetworkDashboard () {
             NetworkDashboard.hideLoading();
         };
 
-        // Is the search input field loaded?
-        if (this.search) {
-
-            // If no search input has been provided, then reset the search field
-            if (!parameters || (parameters && !parameters.s))
-                this.search.setupSearchInput();
-        }
+        // If no search input has been provided, then reset the search field
+        if (!parameters || (parameters && !parameters.s))
+            Finder.setupFinder();
 
         // Add highlight to the selected box
         if (selector) {
@@ -116,7 +110,7 @@ function NetworkDashboard () {
 
              this.clickItem(event, '#network_shortcut_all', './modules/all/dashboard.jsp', parameters, callback);
 
-        else if (sendTo == NetworkDashboard.Section.SEARCH)
+        else if (sendTo == NetworkDashboard.Section.FINDER)
 
              this.clickItem(event, null, './modules/finder/find.jsp', parameters, callback);
 

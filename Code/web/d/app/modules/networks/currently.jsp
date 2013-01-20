@@ -71,7 +71,7 @@
         <div class="shortcut" id="network_shortcut_smart_groups">
             <div class="contents">
                 <div class="icon"><img src="./modules/networks/img/smart_groups.png" alt="Smart Groups"></div>
-                <div class="name smd_text highlight6">Smart Groups</div>
+                <div class="name smd_text">Smart Groups</div>
             </div>
         </div>
     </a>

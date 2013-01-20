@@ -34,18 +34,18 @@
     margin-left: 10px;
 }
 
-.package .breakdowns .breakdown .cost {
+.package .breakdowns .breakdown .gather {
     float: right;
 }
 
-.package .breakdowns .breakdown .cost .unit {
+.package .breakdowns .breakdown .gather .unit {
     font-style: italic;
     position: relative;
     top: -5px;
 }
 
 
-.package .breakdowns .breakdown .cost .cents {
+.package .breakdowns .breakdown .gather .cents {
     position: relative;
     top: -10px;
 }

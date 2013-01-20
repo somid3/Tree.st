@@ -147,6 +147,7 @@ div.rounded {
     float: left;
 }
 
+
 /* Form: Vertical Horizontal */
 .form-verhor {
     width: 100%;
@@ -223,7 +224,7 @@ div.rounded {
 
 
 /* Inputs */
-input.lg_input {
+input.lg_input, textarea.lg_input {
     padding: 5px;
     color: #444;
     font-size: 16px;
@@ -232,7 +233,7 @@ input.lg_input {
     background: #fff;
 }
 
-input.md_input {
+input.md_input, textarea.md_input {
     padding: 2px;
     color: #444;
     font-size: 14px;
@@ -241,54 +242,13 @@ input.md_input {
     background: #fff;
 }
 
-input.sm_input {
+input.sm_input, textarea.sm_input {
     padding: 2px;
     color: #444;
     font-size: 12px;
     margin: 0;
     border: 0;
     background: #fff;
-}
-
-input.w400 {
-    width: 400px;
-}
-
-input.w350 {
-    width: 350px;
-}
-
-
-input.w300 {
-    width: 300px;
-}
-
-input.w275 {
-    width: 275px;
-}
-
-input.w250 {
-    width: 250px;
-}
-
-input.w200 {
-    width: 200px;
-}
-
-input.w150 {
-    width: 150px;
-}
-
-input.w100 {
-    width: 100px;
-}
-
-input.w75 {
-    width: 75px;
-}
-
-input.w50 {
-    width: 50px;
 }
 
 input.bottom_line {
@@ -562,30 +522,23 @@ div.error {
     display: none;
 }
 
-div.w800 {
-    width: 800px;
-}
-
-div.w600 {
-    width: 600px;
-}
-
-div.w400 {
-    width: 400px;
-}
-
-div.w300 {
-    width: 300px;
-}
-
-div.w200 {
-    width: 200px;
-}
-
 div.center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.w800 {width: 800px;}
+.w600 {width: 600px;}
+.w400 {width: 400px;}
+.w350 {width: 350px;}
+.w300 {width: 300px;}
+.w275 {width: 275px;}
+.w250 {width: 250px;}
+.w200 {width: 200px;}
+.w150 {width: 150px;}
+.w100 {width: 100px;}
+.w75 {width: 75px;}
+.w50 {width: 50px;}
 
 
 

@@ -72,7 +72,7 @@
 }
 
 #networks .selected {
-    background-color: #669933;
+    background-color: <%= HtmlDesign.highlight3 %>;
     color: #fff;
     font-weight: bold;
 }
@@ -154,8 +154,8 @@
 
 
 #currently .selected {
-    background-color: #D8DFEA;
-    font-weight: bold;
+    background-color: <%= HtmlDesign.dim2 %>;
+    color: white;
 }
 
 

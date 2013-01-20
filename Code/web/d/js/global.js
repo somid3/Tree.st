@@ -646,6 +646,42 @@ Pagination.unbindScrollPagination = function () {
 
 
 
+
+
+
+function Binding () {};
+Binding.bindInputKeyPress = function (timerName, fieldSelector, callback) {
+
+    var $field = $(fieldSelector);
+
+    $field.bind("keyup", function(event) {
+
+        clearTimeout($.data(this, timerName));
+
+        var wait = setTimeout(
+
+            callback
+
+            // Delay when the search runs after the last keypress
+            , 500);
+
+        // Set the timer as a global variable
+        $(this).data(timerName, wait);
+
+        // Trigger the search if the user presses "enter"
+        if (event.keyCode == 13) {
+
+            callback();
+
+            // Clear the timer...
+            clearTimeout($.data(this, timerName));
+        }
+    });
+};
+
+
+
+
 function Event () {};
 Event.preventDefault = function (event) {
 

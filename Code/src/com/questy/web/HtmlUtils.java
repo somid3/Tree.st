@@ -47,4 +47,10 @@ public class HtmlUtils {
 
     }
 
+    public static Boolean isPathFriendly(String path) {
+
+        return path.matches("^[a-zA-Z0-9-_]+$");
+
+    }
+
 }

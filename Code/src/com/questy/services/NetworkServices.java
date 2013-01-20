@@ -1,16 +1,17 @@
 package com.questy.services;
 
-import com.questy.dao.NetworkDao;
-import com.questy.dao.NetworkDependsDao;
-import com.questy.dao.NetworkEmailEndingsDao;
-import com.questy.dao.UserToNetworkDao;
+import com.questy.dao.*;
 import com.questy.domain.Network;
 import com.questy.domain.NetworkDependsOn;
 import com.questy.domain.NetworkEmailEnding;
 import com.questy.domain.UserToNetwork;
+import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.helpers.Tuple;
+import com.questy.helpers.UIException;
+import com.questy.utils.StringUtils;
+import com.questy.web.HtmlUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -275,5 +276,72 @@ public class NetworkServices extends ParentService {
 
     }
 
+    /**
+     * Checks whether a path is available for a new network
+     * @param path
+     */
+    public static void testNewPath(String path) throws SQLException {
 
+        Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
+
+        if (networkId != null)
+            throw new UIException("Path '" + path + "' not available");
+
+        if (HtmlUtils.isPathFriendly(path))
+            throw new UIException("Path has the wrong format");
+    }
+
+    public static void createNSimpleetwork(
+            String path,
+            String name,
+            String desc,
+            List<String> qualities) throws SQLException {
+
+        /**
+         * Validating
+         */
+
+        // Validating path
+        if (StringUtils.isEmpty(path) || path.length() <= 3)
+            throw new UIException("Path is too short");
+
+        if (path.length() >= 30)
+            throw new UIException("Path is too long");
+
+        if (HtmlUtils.isPathFriendly(path))
+            throw new UIException("Path has the wrong format");
+
+
+        Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
+        if (networkId == null)
+            throw new UIException("Path is not available");
+
+        // Validating name
+        if (StringUtils.isEmpty(name) || name.length() <= 3)
+            throw new UIException("Name is too short");
+
+        if (name.length() >= 30)
+            throw new UIException("Name is too long");
+
+        // Validating description
+        if (StringUtils.isEmpty(desc) || desc.length() <= 10)
+            throw new UIException("Description is too short");
+
+        if (desc.length() >= 60)
+            throw new UIException("Description is too long");
+
+        // Validating each quality
+
+
+        /**
+         * Building the network
+         */
+
+        // Creating network
+
+        // Adding network alpha settings
+
+        // Adding questions to network
+
+    }
 }

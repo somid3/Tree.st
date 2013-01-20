@@ -1,0 +1,86 @@
+<%@include file="../../all.jsp" %>
+<%@page contentType="text/css" %>
+
+#create {
+    margin-top: -15px;
+}
+
+#create .step {
+    margin-bottom: 30px;
+    background: white;
+}
+
+#create .step .header {
+    /*width: 650px;*/
+    /*margin: 0 auto;*/
+    /*margin-top: 10px;*/
+    padding: 20px;
+    line-height: 1.3em;
+    background-color: <%= HtmlDesign.highlight %>;
+}
+
+#create .step .breakdowns {
+    padding: 20px 20px 40px 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#create .step .breakdowns .breakdown {
+    width: 100%;
+    border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
+    padding: 10px 0;
+    display: inline-block;
+}
+
+#create .step .breakdowns .breakdown .desc {
+    float: left;
+    width: 250px;
+}
+
+#create .step .breakdowns .breakdown .desc .big {
+}
+
+#create .step .breakdowns .breakdown .desc .small {
+    margin-top: 5px;
+    line-height: 1.3em;
+    margin-left: 10px;
+}
+
+#create .step .breakdowns .breakdown .gather {
+    float: right;
+}
+
+#create .step .breakdowns .breakdown .gather .input {
+    border: 1px solid <%= HtmlDesign.dim %>;
+    display: inline-block;
+}
+
+#create .step .breakdowns .breakdown .gather .feedback {
+    margin: 5px auto;
+    width: 200px;
+}
+
+#create .step .breakdowns .breakdown .gather .feedback .good {
+    background-color: <%= HtmlDesign.highlight %>;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    display: none;
+}
+
+
+#create .step .breakdowns .breakdown .gather .input .quality {
+    height: 80px;
+    width: 350px;
+}
+
+#create .start {
+    background: white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    top: -10px;
+}
+

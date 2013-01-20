@@ -34,7 +34,6 @@
 
     </div>
     <div class="right">
-
         <div>
             <div class="top">
                 <a href="#" onclick="ND.viewProfile(event, <%= share_d_author.getId() %>);">
@@ -51,11 +50,12 @@
                     </a>
 
                 <% } %>
+
             </div>
         </div>
-
         <div class="content">
-            <div class="box smd_text dim"><%= HtmlUtils.paragraphize(share_d_text)%></div>
+            <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_d_text ) )%></div>
+
             <div>
 
                 <% if (share_d_settingSharedItemDisplayCreatedOn != 0) { %>
@@ -67,6 +67,7 @@
                 <% } %>
 
             </div>
+
         </div>
 
     </div>

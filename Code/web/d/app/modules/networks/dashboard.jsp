@@ -19,14 +19,14 @@
     <% if (!network.isGlobal()) { %>
     <div id="search_space">
         <div id="search_toolbar">
-            <a href="#" onclick="S.viewEverything(event);">
+            <a href="#" onclick="Finder.viewEverything(event);">
                 <div id="all" class="sm_button light_button sm_text highlight2">
                     <span>Qualities</span>
                 </div>
             </a>
 
             <div id="search_input">
-                <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="<%= hSearchInputId %>" name="search" placeholder="Find qualities, people, messages" title="Search" value=""/>
+                <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
             </div>
 
         </div>
@@ -67,14 +67,12 @@
     <% if (!network.isGlobal()) { %>
 
         // Beginning basic search
-        S = new Search();
-        S.networkId = <%= networkId %>;
-        S.hSearchInputId = '<%= hSearchInputId %>';
-        ND.search = S;
+        ND.search = Finder;
 
         // Binding find field
-        S.bindSearchInput();
-        S.setupSearchInput();
+        Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitSearch );
+
+        Finder.setupFinder();
 
     <% } %>
 

@@ -29,26 +29,31 @@ public class OmidsSandbox {
     public static void main(String[] args) throws Exception {
 
 
-        Integer userId = 3;
-          Integer networkId = 2000;
-          Integer smartGroupRef = 113;
-          Integer sharedItemRef = 4;
-          Integer sharedCommentRef = SharedComment.ANY_SHARED_COMMENT_REF;
-          SharedVoteEnum vote = SharedVoteEnum.UP;
-          SharedVote sharedVote = null;
-          SharedVotable sharedVotable = null;
+        System.out.println(
+                NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue("asdf")
+        );
 
-          // Deleting all inactive votes
-          SharedVoteDao.deleteInactive();
 
-          // Changing vote of shared votable
-          SharedVoteServices.changeVote(
-                  userId,
-                  networkId,
-                  smartGroupRef,
-                  sharedItemRef,
-                  sharedCommentRef,
-                  vote);
+//        Integer userId = 3;
+//          Integer networkId = 2000;
+//          Integer smartGroupRef = 113;
+//          Integer sharedItemRef = 4;
+//          Integer sharedCommentRef = SharedComment.ANY_SHARED_COMMENT_REF;
+//          SharedVoteEnum vote = SharedVoteEnum.UP;
+//          SharedVote sharedVote = null;
+//          SharedVotable sharedVotable = null;
+//
+//          // Deleting all inactive votes
+//          SharedVoteDao.deleteInactive();
+//
+//          // Changing vote of shared votable
+//          SharedVoteServices.changeVote(
+//                  userId,
+//                  networkId,
+//                  smartGroupRef,
+//                  sharedItemRef,
+//                  sharedCommentRef,
+//                  vote);
 
 
 //        System.out.println(
