@@ -44,7 +44,7 @@
     <div id="header">
         <a href="/"><img src="/d/assets/logo.png"></a>
         <span id="network_path" class="sp_header dim">
-            &nbsp;/&nbsp;<%= StringUtils.concat(network.getName(), 20, "&hellip;")%>
+            &nbsp;/&nbsp;<%= StringUtils.concat(network.getName(), 15, "&hellip;")%>
         </span>
     </div>
     <div id="container">
@@ -115,6 +115,10 @@
                     </div>
 
                     <div class="element">
+                        <div class="note sm_text dim">
+                            If you already have a Tree.st, use the same credentials to <b>join</b> two or more communities
+                        </div>
+
                         <div class="note sm_text dim">
                             In the future, to <b>login</b> enter your email and password, no need type your name again
                         </div>

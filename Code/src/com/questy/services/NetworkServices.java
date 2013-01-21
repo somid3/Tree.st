@@ -13,9 +13,7 @@ import com.questy.web.HtmlUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class NetworkServices extends ParentService {
 
@@ -284,13 +282,13 @@ public class NetworkServices extends ParentService {
         Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
 
         if (networkId != null)
-            throw new UIException("Path '" + path + "' not available");
+            throw new UIException("Aww, '" + path + "' not is not available");
 
         if (!HtmlUtils.isPathFriendly(path))
-            throw new UIException("Path has the wrong format");
+            throw new UIException("Can only contain numbers, letters, dashes, and underscores");
     }
 
-    public static void createSimpleNetwork(String path, String name, String desc, List<String> qualities) throws SQLException {
+    public static Integer createSimpleNetwork(String path, String name, String desc, List<String> qualities) throws SQLException {
 
         /**
          * Validating
@@ -298,23 +296,23 @@ public class NetworkServices extends ParentService {
 
         // Validating path
         if (StringUtils.isEmpty(path) || path.length() <= 3)
-            throw new UIException("Path is too short");
+            throw new UIException("Web address is too short");
 
         if (path.length() >= 30)
-            throw new UIException("Path is too long");
+            throw new UIException("Web address is too long");
 
         if (!HtmlUtils.isPathFriendly(path))
-            throw new UIException("Path has the wrong format");
+            throw new UIException("Web address has the wrong format - it only contain numbers, letters, dashes, and underscores");
 
         Integer foundNetworkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
-        if (foundNetworkId == null)
-            throw new UIException("Path is not available");
+        if (foundNetworkId != null)
+            throw new UIException("Aww, '" + path + "' not is not available");
 
         // Validating name
         if (StringUtils.isEmpty(name) || name.length() <= 3)
             throw new UIException("Name is too short");
 
-        if (name.length() >= 30)
+        if (name.length() >= 60)
             throw new UIException("Name is too long");
 
         // Validating description
@@ -324,7 +322,12 @@ public class NetworkServices extends ParentService {
         if (desc.length() >= 100)
             throw new UIException("Description is too long");
 
-        // Validating each quality
+        // Validating and digesting each quality
+        Integer qualityCount = 1;
+        List<Tuple<String, List<String>>> digestedQualities = new ArrayList<Tuple<String, List<String>>>();
+        for (String quality : qualities)
+            validateAndDigestQuality(quality, qualityCount);
+
 
         /**
          * Building the network
@@ -338,6 +341,7 @@ public class NetworkServices extends ParentService {
         NetworkAlphaSettingEnum.START_MESSAGE.setValueByNetworkId(newNetworkId, desc);
 
         // Adding questions to network
+        Integer previousQuestionRef = Question.ROOT_QUESTION_REF;
         Integer newQuestionRef = null;
         String questionText = null;
         String optionText = null;
@@ -349,8 +353,9 @@ public class NetworkServices extends ParentService {
             quality = quality.replaceAll("\r", "");
 
             // Separating question and options
-            elements = Arrays.asList(quality.split("\n"));
-            questionText = elements.remove(0).trim();
+            elements = new ArrayList<String>(Arrays.asList(quality.split("\n")));
+            questionText = elements.get(0).trim();
+            elements.remove(0);
 
             // Validating
             if (StringUtils.isEmpty(questionText))
@@ -358,6 +363,9 @@ public class NetworkServices extends ParentService {
 
             // Creating question
             newQuestionRef = QuestionServices.insert(User.ANY_USER_ID, newNetworkId, questionText, 100, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+
+            // Creating flow rule
+            FlowRuleServices.insert(newNetworkId, previousQuestionRef, QuestionOption.ANY_OPTION_REF,  newQuestionRef);
 
             // Adding all options
             for (String element : elements) {
@@ -376,5 +384,27 @@ public class NetworkServices extends ParentService {
 
         }
 
+        return newNetworkId;
+    }
+
+    private static Tuple<String, List<String>> validateAndDigestQuality(String quality, Integer qualityCount) {
+
+
+        // Cleaning up text
+        quality = quality.replaceAll("\r", "");
+
+        // Separating question and options
+        ArrayList<String> elements = new ArrayList<String>(Arrays.asList(quality.split("\n")));
+        String questionText = elements.get(0).trim();
+        List<String> questionOptions = new ArrayList<String>();
+        elements.remove(0);
+
+        // Validating question
+        if (questionText.length() <= 5)
+            throw new UIException("Quality " + qualityCount + " is too short!");
+
+        // Validating options
+
+        return new Tuple<String, List<String>>(questionText, questionOptions);
     }
 }

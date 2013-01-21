@@ -16,13 +16,13 @@
     Network rootNetwork = NetworkDao.getById(null, rootNetworkId);
 
     // From root network, get all dependant networks or which I am a member
-    List<Network> networksFromRoot = NetworkServices.getNetworkWithAllDependantsMappedToUser(rootNetworkId, userId, RoleEnum.MEMBER);
+    List<Network> myNetworksFromRoot = NetworkServices.getNetworkWithAllDependantsMappedToUser(rootNetworkId, userId, RoleEnum.MEMBER);
 
     // Deciding how to selected the approved networks
     if (viewMyself) {
 
         // If I am viewing myself, then present all my networks from this root
-        approvedNetworks = networksFromRoot;
+        approvedNetworks = myNetworksFromRoot;
 
     } else {
 
@@ -32,7 +32,7 @@
         approvedNetworks = new ArrayList<Network>();
 
         // Filter for networks we are both members of
-        for (Network myNetworkFromRoot : networksFromRoot) {
+        for (Network myNetworkFromRoot : myNetworksFromRoot) {
             if (viewedUserNetworks.contains(myNetworkFromRoot))
                 approvedNetworks.add(myNetworkFromRoot);
         }

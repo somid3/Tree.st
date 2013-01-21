@@ -9,7 +9,6 @@ import com.questy.enums.RoleEnum;
 import com.questy.services.FlowRuleServices;
 import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
-import com.questy.utils.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -65,7 +64,7 @@ public class Foods {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("hand", addedQuestion);
@@ -95,7 +94,7 @@ public class Foods {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("color", addedQuestion);
@@ -121,7 +120,7 @@ public class Foods {
              addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
              // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
              // Adding question to list
              questions.put("foods", addedQuestion);
@@ -309,7 +308,7 @@ public class Foods {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("contact", addedQuestion);
@@ -335,7 +334,7 @@ public class Foods {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("region", addedQuestion);

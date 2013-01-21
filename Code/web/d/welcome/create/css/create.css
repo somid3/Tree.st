@@ -11,12 +11,9 @@
 }
 
 #create .step .header {
-    /*width: 650px;*/
-    /*margin: 0 auto;*/
-    /*margin-top: 10px;*/
-    padding: 20px;
+    padding: 10px 20px;
     line-height: 1.3em;
-    background-color: <%= HtmlDesign.highlight %>;
+    background-color: <%= HtmlDesign.dim2 %>;
 }
 
 #create .step .breakdowns {
@@ -57,6 +54,7 @@
 
 #create .step .breakdowns .breakdown .gather .feedback {
     margin: 5px auto;
+    width: 200px;
 }
 
 #create .step .breakdowns .breakdown .gather .feedback .good {
@@ -73,18 +71,30 @@
     width: 350px;
 }
 
-#create .share  {
+#create #share  {
     width: 500px;
     margin: 0 auto;
-    margin-top: -40px;
+    margin-top: -35px;
     margin-bottom: 20px;
     background-color: white;
     padding: 10px;
     text-align: center;
     line-height: 1.5em;
+    display: none;
 }
 
-#create #newcommunity  {
+#create #new_community  {
+    margin: 10px auto;
+}
+
+#create #create_error {
+    margin: 10px auto;
+    width: 500px;
+    padding: 20px;
+}
+
+#create #create_loading  {
+    width: 220px;
     margin: 10px auto;
 }
 

@@ -5,16 +5,11 @@ import com.questy.domain.*;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.RoleEnum;
-import com.questy.helpers.SqlLimit;
 import com.questy.services.FlowRuleServices;
 import com.questy.services.NetworkServices;
 import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
-import com.questy.utils.DatabaseUtils;
-import com.questy.utils.StringUtils;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.*;
 
 public class MIT {
@@ -73,7 +68,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
 
             // Adding question to list
@@ -135,7 +130,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("b", addedQuestion);
@@ -170,7 +165,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("c", addedQuestion);
@@ -190,7 +185,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("research", addedQuestion);
@@ -553,7 +548,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("f", addedQuestion);
@@ -576,7 +571,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("i", addedQuestion);
@@ -597,7 +592,7 @@ public class MIT {
                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
                 // Adding flow rules
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("j", addedQuestion);
@@ -672,7 +667,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
 
             // Adding question to list
@@ -969,7 +964,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("mit-loc", addedQuestion);
@@ -993,7 +988,7 @@ public class MIT {
             addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
             // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
             // Adding question to list
             questions.put("programmer", addedQuestion);
@@ -1190,7 +1185,7 @@ public class MIT {
                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
                 // Adding flow rules
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("g", addedQuestion);
@@ -1212,7 +1207,7 @@ public class MIT {
                 addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
                 // Adding flow rules
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), QuestionDao.ROOT_QUESTION_REF, QuestionOptionDao.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("startups", addedQuestion);

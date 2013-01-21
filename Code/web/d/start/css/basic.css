@@ -122,6 +122,7 @@ p.note, {
 
 #form .note {
     line-height: 18px;
+    margin-bottom: 5px;
 }
 
 #form #button {

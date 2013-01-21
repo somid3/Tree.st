@@ -11,8 +11,6 @@ import java.util.List;
 
 public class QuestionDao extends ParentDao {
 
-    public static final Integer ROOT_QUESTION_REF = 0;
-
     public static Integer getMaxRefByNetworkId(
             Connection conn,
             Integer networkId) throws SQLException {

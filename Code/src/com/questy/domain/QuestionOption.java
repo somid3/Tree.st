@@ -3,6 +3,9 @@ package com.questy.domain;
 import java.util.Date;
 
 public class QuestionOption extends Parent {
+
+    public static final Integer ANY_OPTION_REF = 0;
+
     private Date createdOn;
     private Integer questionRef;
     private Integer networkId;

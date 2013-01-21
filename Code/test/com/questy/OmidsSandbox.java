@@ -3,16 +3,14 @@ package com.questy;
 import com.questy.admin.AdminServices;
 import com.questy.admin.Foods;
 import com.questy.admin.marketing.GeneralEmailSender;
-import com.questy.dao.SharedCommentDao;
-import com.questy.dao.SharedVoteDao;
-import com.questy.dao.UserSessionDao;
-import com.questy.dao.UserToSmartGroupDao;
+import com.questy.dao.*;
 import com.questy.domain.SharedComment;
 import com.questy.domain.SharedVote;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.SharedVoteEnum;
 import com.questy.ifaces.SharedVotable;
+import com.questy.services.NetworkServices;
 import com.questy.services.SharedVoteServices;
 import com.questy.services.cron.CronServices;
 import com.questy.utils.DateUtils;
@@ -28,9 +26,34 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
+        List<String> qualities = new ArrayList<String>();
+        String path = "arcem";
+
+
+        NetworkAlphaSettingDao.deleteByValue(null, NetworkAlphaSettingEnum.URL_PATH, path);
+
+        qualities.add(
+            "Select all the causes you have supported recently:\n" +
+            "Donated blood\n" +
+            "Financial support to the Red Cross\n" +
+            "Have helped in disaster areas\n" +
+            "Volunteered at any Red Cross facility\n");
+
+        qualities.add(
+            "What activities do you enjoy doing?\n" +
+            "Donated blood\n" +
+            "Financially provided support to the Red Cross\n" +
+            "Have helped in a disaster area");
+
+        Integer newNetworkId = NetworkServices.createSimpleNetwork(
+            path,
+            "American Red Cross of Eastern Massachusetts",
+            "Red Cross volunteers, find one another and collaborate on improving your goals and careers!",
+            qualities);
+
 
         System.out.println(
-                NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue("asdf")
+            newNetworkId
         );
 
 

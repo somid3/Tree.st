@@ -1,9 +1,7 @@
 package com.questy.services;
 
 import com.questy.dao.*;
-import com.questy.domain.Answer;
-import com.questy.domain.AnswerOption;
-import com.questy.domain.FlowRule;
+import com.questy.domain.*;
 import com.questy.helpers.SqlLimit;
 
 import java.sql.Connection;
@@ -168,7 +166,7 @@ public class FlowRuleServices extends ParentService {
             }
 
             // Ensuring we stop moving backward once we hit the root question
-            if (fromQuestionRef.equals(QuestionDao.ROOT_QUESTION_REF))
+            if (fromQuestionRef.equals(Question.ROOT_QUESTION_REF))
                 break;
 
             // Retrieving previous answer
@@ -251,7 +249,7 @@ public class FlowRuleServices extends ParentService {
         for (FlowRule fr : flowRules) {
 
             // Does the question flow rule contain an option value?
-            if (!fr.getFromOptionRef().equals(QuestionOptionDao.ANY_OPTION_REF)) {
+            if (!fr.getFromOptionRef().equals(QuestionOption.ANY_OPTION_REF)) {
 
                 // Retrieving answer options
                 answerOptions = AnswerOptionDao.getByUserIdAndNetworkIdAndAnswerRef(conn, answer.getUserId(), answer.getNetworkId(), answer.getRef());
@@ -280,7 +278,7 @@ public class FlowRuleServices extends ParentService {
     private static Integer getNextRoot (Connection conn, Integer userId, Integer networkId) throws SQLException {
 
         // Get all the flow rules with a null in the "from" question ref
-        List<FlowRule> rootFrs = FlowRuleDao.getByFromQuestionRefAndNetworkId(conn, QuestionDao.ROOT_QUESTION_REF, networkId);
+        List<FlowRule> rootFrs = FlowRuleDao.getByFromQuestionRefAndNetworkId(conn, Question.ROOT_QUESTION_REF, networkId);
 
         // Filter out the flow rules that have already been answered
         Answer answered = null;

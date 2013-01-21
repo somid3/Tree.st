@@ -5,13 +5,18 @@ Create.testPath = function (event) {
     Event.preventDefault(event);
 
     var $path = $("#path");
+    var $share = $("#share");
+    var $finalPath = $("#final_path");
     var $error = $path.find(".error");
     var $good = $path.find(".good");
     var pathValue = $path.find("input").val();
+    var $createError = $("#create_error");
 
-    // Clearing error and good
+    // Clearing errors, loading, ect...
     $error.hide();
+    $createError.hide();
     $good.hide();
+    $share.hide();
 
     // Creating parameters for path test
     var parameters = {};
@@ -36,12 +41,15 @@ Create.testPath = function (event) {
         if($response.find("error").length > 0) {
 
             // Present the error
-            $error.text("Aww, '" + pathValue + "' is not available").fadeIn();
+            var errorResponse = $response.find("error").text();
+            $error.text(errorResponse).fadeIn();
 
             return false;
 
         } else {
 
+            $finalPath.text(pathValue);
+            $share.fadeIn();
             $good.text("Yay! '" + pathValue + "' is available").fadeIn();
 
         }
@@ -52,6 +60,9 @@ Create.testPath = function (event) {
 Create.create = function (event) {
 
     Event.preventDefault(event);
+
+    var $error = $("#create_error");
+    var $loading = $("#create_loading");
 
     var $path = $("#path");
     var $name = $("#name");
@@ -71,6 +82,10 @@ Create.create = function (event) {
     var q4Value = $q4.find("textarea").val();
     var q5Value = $q5.find("textarea").val();
 
+    // Clearing error and loading
+    $error.hide();
+    $loading.hide();
+
     // Creating parameters
     var parameters = {};
     parameters.path = pathValue;
@@ -84,11 +99,6 @@ Create.create = function (event) {
 
     $.post("./actions/create.jsp", parameters, function(response) {
 
-        var $error = $("#error");
-
-        // Hiding error
-        $error.fadeOut();
-
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));
         var $response = $(responseDoc);
@@ -100,18 +110,18 @@ Create.create = function (event) {
             var errorResponse = $response.find("error").text();
             $error.text(errorResponse).fadeIn();
 
-            // Shake the login
-            Animations.shake("#login");
+            // Shake the action button
+            Animations.shake("#submit");
 
             return false;
 
         } else {
 
-            // Move the login form out
-            Animations.outTop("#login", function () {
+            // Move the action button
+            Animations.outTop("#submit", function () {
 
-                /* Cookies should be setup by now, send user to application */
-                URL.redirect("/d/app");
+                /* Sending user to new community */
+                URL.redirect("/" + $path);
 
             });
 

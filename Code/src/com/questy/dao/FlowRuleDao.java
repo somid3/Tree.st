@@ -1,6 +1,8 @@
 package com.questy.dao;
 
 import com.questy.domain.FlowRule;
+import com.questy.domain.Question;
+import com.questy.domain.QuestionOption;
 import com.questy.utils.DatabaseUtils;
 
 import java.sql.*;
@@ -106,7 +108,7 @@ public class FlowRuleDao extends ParentDao {
          * Validating: if this is a root question, it can not also depend on a particular option
          * from a previous answer because its impossible for there to be a previous answer
          */
-        if (fromQuestionRef.equals(QuestionDao.ROOT_QUESTION_REF) && !fromOptionRef.equals(QuestionOptionDao.ANY_OPTION_REF))
+        if (fromQuestionRef.equals(Question.ROOT_QUESTION_REF) && !fromOptionRef.equals(QuestionOption.ANY_OPTION_REF))
             throw new RuntimeException ("If from question is root, then option ref must be any");
 
         String sql =

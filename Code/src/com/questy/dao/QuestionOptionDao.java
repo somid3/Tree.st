@@ -11,8 +11,6 @@ import java.util.List;
 
 public class QuestionOptionDao extends ParentDao {
 
-    public static final Integer ANY_OPTION_REF = 0;
-
     public static List<QuestionOption> findByNetworkIdAndText(
             Connection conn,
             Integer networkId,

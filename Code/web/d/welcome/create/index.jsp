@@ -62,8 +62,7 @@
                     <div class="small sm_text dim2">What is the name of your community? For example "Garage Bands of San Francisco"</div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><input class="lg_input w300" maxlength="30"></div>
-                    <div class="error"></div>
+                    <div class="input square"><input class="lg_input w300" maxlength="60"></div>
                 </div>
             </div>
 
@@ -73,7 +72,6 @@
                     <div class="small sm_text dim2">In one line, describe the purpose of your community. For instance "Musicians of San Francisco, find other artists near you to play music together."</div>
                 </div>
                 <div class="gather"><div class="input square"><input class="lg_input w300" maxlength="100"></div></div>
-                <div class="error"></div>
             </div>
         </div>
     </div>
@@ -101,7 +99,6 @@
                 <div class="gather">
                     <div class="input square"><textarea class="quality lg_input"></textarea></div>
                 </div>
-                <div class="error"></div>
             </div>
 
             <div class="breakdown" id="q2">
@@ -118,7 +115,6 @@
                 <div class="gather">
                     <div class="input square"><textarea class="quality lg_input"></textarea></div>
                 </div>
-                <div class="error"></div>
             </div>
 
             <div class="breakdown" id="q3">
@@ -135,7 +131,6 @@
                 <div class="gather">
                     <div class="input square"><textarea class="quality lg_input"></textarea></div>
                </div>
-                <div class="error"></div>
             </div>
 
             <div class="breakdown" id="q4">
@@ -152,7 +147,6 @@
                 <div class="gather">
                     <div class="input square"><textarea class="quality lg_input"></textarea></div>
                 </div>
-                <div class="error"></div>
             </div>
 
             <div class="breakdown" id="q5">
@@ -169,7 +163,6 @@
                 <div class="gather">
                     <div class="input square"><textarea class="quality lg_input"></textarea></div>
                 </div>
-                <div class="error"></div>
             </div>
         </div>
 
@@ -179,12 +172,12 @@
         </div>
     </div>
 
-    <div class="share glow4 lg_text dim">
-        Don't forget to share
+    <div id="share" class="glow4 lg_text dim">
+        Remember, share, share, and share
 
-        <div id="newcommunity">
+        <div id="new_community">
             <span class="vl_header">http://<%= Vars.domain %>/</span>
-            <span class="vl_header highlight" id="finalpanth"></span>
+            <span class="vl_header highlight" id="final_path"></span>
         </div>
 
         on your
@@ -196,9 +189,11 @@
         &mdash; and email your friends so they join your new community!
     </div>
 
+    <div id="create_error" class="error"></div>
+    <div id="create_loading"><img src="../img/loading.gif"></div>
 
-    <a href="#" onclick="Create.create()">
-        <div class="start sp_header white">Create!</div>
+    <a href="#" onclick="Create.create(event)">
+        <div id="submit" class="start sp_header white">Create!</div>
     </a>
 
 </div>

@@ -61,7 +61,7 @@ public class MITEISeminarAnswerSummary {
 
             for (ActiveAnswer aa : aas) {
 
-                if (aa.getOptionRef().equals(QuestionOptionDao.ANY_OPTION_REF))
+                if (aa.getOptionRef().equals(QuestionOption.ANY_OPTION_REF))
                     optionText = "*Skipped*";
                 else {
                     option = QuestionOptionDao.getByNetworkIdAndQuestionRefAndOptionRef(null, aa.getNetworkId(), aa.getQuestionRef(), aa.getOptionRef());

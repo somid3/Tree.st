@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Question extends Parent {
+
+    public static final Integer ROOT_QUESTION_REF = 0;
+
     private Integer ref;
     private Date createdOn;
     private Integer createdBy;

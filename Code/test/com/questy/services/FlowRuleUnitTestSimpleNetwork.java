@@ -5,7 +5,6 @@ import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.RoleEnum;
-import com.questy.utils.DatabaseUtils;
 import org.junit.Test;
 
 import java.sql.Connection;
@@ -102,8 +101,8 @@ public class FlowRuleUnitTestSimpleNetwork {
             // Adding flow rules
             FlowRuleServices.insert(
                  networkId,
-                 QuestionDao.ROOT_QUESTION_REF,
-                 QuestionOptionDao.ANY_OPTION_REF,
+                 Question.ROOT_QUESTION_REF,
+                 QuestionOption.ANY_OPTION_REF,
                  addedQuestion.getRef());
 
         }
@@ -123,7 +122,7 @@ public class FlowRuleUnitTestSimpleNetwork {
             FlowRuleServices.insert(
                 networkId,
                 Questions.ROOT_1.getQuestion().getRef(),
-                QuestionOptionDao.ANY_OPTION_REF,
+                QuestionOption.ANY_OPTION_REF,
                 Questions.QUESTION_1.getQuestion().getRef());
         }
 
@@ -202,7 +201,7 @@ public class FlowRuleUnitTestSimpleNetwork {
             FlowRuleServices.insert(
                 networkId,
                 Questions.ROOT_1.getQuestion().getRef(),
-                QuestionOptionDao.ANY_OPTION_REF,
+                QuestionOption.ANY_OPTION_REF,
                 Questions.QUESTION_2.getQuestion().getRef());
         }
 
@@ -220,8 +219,8 @@ public class FlowRuleUnitTestSimpleNetwork {
             // Adding flow rules
             FlowRuleServices.insert(
                 networkId,
-                QuestionDao.ROOT_QUESTION_REF,
-                QuestionOptionDao.ANY_OPTION_REF,
+                Question.ROOT_QUESTION_REF,
+                QuestionOption.ANY_OPTION_REF,
                 addedQuestion.getRef());
         }
 
