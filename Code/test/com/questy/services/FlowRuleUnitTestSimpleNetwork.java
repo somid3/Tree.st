@@ -81,7 +81,7 @@ public class FlowRuleUnitTestSimpleNetwork {
         Connection conn = null;
 
         // Creating network
-        Integer networkId = NetworkDao.insert(conn, "Test Unit Network" + new Date().getTime(), false, "testunitchecksum");
+        Integer networkId = NetworkDao.insert(conn, "Test Unit Network" + new Date().getTime(), false);
 
         // Creating questions
         Integer addedQuestionRef = null;

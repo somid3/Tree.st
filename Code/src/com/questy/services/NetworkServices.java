@@ -1,10 +1,8 @@
 package com.questy.services;
 
 import com.questy.dao.*;
-import com.questy.domain.Network;
-import com.questy.domain.NetworkDependsOn;
-import com.questy.domain.NetworkEmailEnding;
-import com.questy.domain.UserToNetwork;
+import com.questy.domain.*;
+import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
@@ -16,6 +14,7 @@ import com.questy.web.HtmlUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NetworkServices extends ParentService {
@@ -287,15 +286,11 @@ public class NetworkServices extends ParentService {
         if (networkId != null)
             throw new UIException("Path '" + path + "' not available");
 
-        if (HtmlUtils.isPathFriendly(path))
+        if (!HtmlUtils.isPathFriendly(path))
             throw new UIException("Path has the wrong format");
     }
 
-    public static void createNSimpleetwork(
-            String path,
-            String name,
-            String desc,
-            List<String> qualities) throws SQLException {
+    public static void createSimpleNetwork(String path, String name, String desc, List<String> qualities) throws SQLException {
 
         /**
          * Validating
@@ -308,12 +303,11 @@ public class NetworkServices extends ParentService {
         if (path.length() >= 30)
             throw new UIException("Path is too long");
 
-        if (HtmlUtils.isPathFriendly(path))
+        if (!HtmlUtils.isPathFriendly(path))
             throw new UIException("Path has the wrong format");
 
-
-        Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
-        if (networkId == null)
+        Integer foundNetworkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
+        if (foundNetworkId == null)
             throw new UIException("Path is not available");
 
         // Validating name
@@ -327,21 +321,60 @@ public class NetworkServices extends ParentService {
         if (StringUtils.isEmpty(desc) || desc.length() <= 10)
             throw new UIException("Description is too short");
 
-        if (desc.length() >= 60)
+        if (desc.length() >= 100)
             throw new UIException("Description is too long");
 
         // Validating each quality
-
 
         /**
          * Building the network
          */
 
         // Creating network
+        Integer newNetworkId = NetworkDao.insert(null, name, false);
 
         // Adding network alpha settings
+        NetworkAlphaSettingEnum.URL_PATH.setValueByNetworkId(newNetworkId, path);
+        NetworkAlphaSettingEnum.START_MESSAGE.setValueByNetworkId(newNetworkId, desc);
 
         // Adding questions to network
+        Integer newQuestionRef = null;
+        String questionText = null;
+        String optionText = null;
+
+        List<String> elements = null;
+        for (String quality : qualities) {
+
+            // Cleaning up text
+            quality = quality.replaceAll("\r", "");
+
+            // Separating question and options
+            elements = Arrays.asList(quality.split("\n"));
+            questionText = elements.remove(0).trim();
+
+            // Validating
+            if (StringUtils.isEmpty(questionText))
+                continue;
+
+            // Creating question
+            newQuestionRef = QuestionServices.insert(User.ANY_USER_ID, newNetworkId, questionText, 100, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+
+            // Adding all options
+            for (String element : elements) {
+
+                // Cleaning up option text
+                optionText = element.trim();
+
+                // Validating
+                if (StringUtils.isEmpty(optionText))
+                    continue;
+
+                // Creating option
+                QuestionOptionServices.addOption(User.ANY_USER_ID, newNetworkId, newQuestionRef, optionText);
+
+            }
+
+        }
 
     }
 }

@@ -2,6 +2,7 @@ package com.questy.dao;
 
 import com.questy.domain.Network;
 import com.questy.utils.DatabaseUtils;
+import com.questy.utils.StringUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -122,8 +123,9 @@ public class NetworkDao extends ParentDao {
     public static Integer insert(
             Connection conn,
             String name,
-            Boolean global,
-            String checksum) throws SQLException {
+            Boolean global) throws SQLException {
+
+        String checksum = StringUtils.random();
 
         conn = start(conn);
 

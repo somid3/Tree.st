@@ -48,8 +48,7 @@ public class MIT {
         Map<String, Question> questions = new HashMap<String, Question>();
 
         // Create network
-        String checksum = StringUtils.random();
-        Integer networkId = NetworkDao.insert(null, "MIT", false, checksum);
+        Integer networkId = NetworkDao.insert(null, "MIT", false);
 
         // Add question with options and flow rule
         {

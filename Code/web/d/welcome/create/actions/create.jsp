@@ -20,7 +20,7 @@
         qualities.add(quality4);
         qualities.add(quality5);
 
-        NetworkServices.createNSimpleetwork(path, name, desc, qualities);
+        NetworkServices.createSimpleNetwork(path, name, desc, qualities);
 
     } catch (UIException e) {
 

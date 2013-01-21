@@ -13,7 +13,7 @@ import java.util.List;
 
 public class QuestionOptionServices extends ParentService  {
 
-    public static Integer addOption (Integer networkId, Integer questionRef, Integer userId, String optionText) throws SQLException {
+    public static Integer addOption (Integer userId, Integer networkId, Integer questionRef, String optionText) throws SQLException {
 
         // Validating
         if (optionText == null || optionText.isEmpty())
@@ -39,7 +39,7 @@ public class QuestionOptionServices extends ParentService  {
     public static void addOptions (Integer networkId, Integer questionRef, Integer userId, String[] optionTexts) throws SQLException {
 
         for (String optionText : optionTexts)
-            addOption(networkId, questionRef, userId, optionText);
+            addOption(userId, networkId, questionRef, optionText);
 
     }
 

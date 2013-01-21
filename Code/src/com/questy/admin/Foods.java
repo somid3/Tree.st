@@ -20,9 +20,8 @@ public class Foods {
     public static void create(Integer userId) throws Exception {
 
         // Creating network
-        String checksum = StringUtils.random();
         Date date = new Date();
-        Integer networkId = NetworkDao.insert(null, "Foods", false, checksum);
+        Integer networkId = NetworkDao.insert(null, "Foods", false);
         String pathName = "foods";
 
         // Adding user to network

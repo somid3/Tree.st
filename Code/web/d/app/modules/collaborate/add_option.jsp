@@ -5,7 +5,7 @@
     String text = StringUtils.parseString(request.getParameter("text"));
 
     // Adding option
-    Integer optionRef = QuestionOptionServices.addOption(networkId, questionRef, userId, text);
+    Integer optionRef = QuestionOptionServices.addOption(userId, networkId, questionRef, text);
     QuestionOption collab_a_qo = QuestionOptionDao.getByNetworkIdAndQuestionRefAndOptionRef(null, networkId, questionRef, optionRef);
 %>
 <%@ include file="includes/collab_a_question_display_option.jsp" %>

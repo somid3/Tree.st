@@ -53,17 +53,36 @@ Create.create = function (event) {
 
     Event.preventDefault(event);
 
-    var email = $("#email").val();
-    var password = $("#pass").val();
-    var keep = $("#keep").is(':checked');
+    var $path = $("#path");
+    var $name = $("#name");
+    var $desc = $("#desc");
+    var $q1 = $("#q1");
+    var $q2 = $("#q2");
+    var $q3 = $("#q3");
+    var $q4 = $("#q4");
+    var $q5 = $("#q5");
 
-    // Encrypt password
+    var pathValue = $path.find("input").val();
+    var nameValue = $name.find("input").val();
+    var descValue = $desc.find("input").val();
+    var q1Value = $q1.find("textarea").val();
+    var q2Value = $q2.find("textarea").val();
+    var q3Value = $q3.find("textarea").val();
+    var q4Value = $q4.find("textarea").val();
+    var q5Value = $q5.find("textarea").val();
+
+    // Creating parameters
     var parameters = {};
-    parameters.e = email;
-    parameters.p = password;
-    parameters.k = keep;
+    parameters.path = pathValue;
+    parameters.name = nameValue;
+    parameters.desc = descValue;
+    parameters.q1 = q1Value;
+    parameters.q2 = q2Value;
+    parameters.q3 = q3Value;
+    parameters.q4 = q4Value;
+    parameters.q5 = q5Value;
 
-    $.post("./actions/login.jsp", parameters, function(response) {
+    $.post("./actions/create.jsp", parameters, function(response) {
 
         var $error = $("#error");
 
@@ -86,20 +105,7 @@ Create.create = function (event) {
 
             return false;
 
-        } else if($response.find("confirm").length > 0) {
-
-            // Move the login form out
-            Animations.outTop("#login", function () {
-
-                // Display message that user needs to confirm account
-                var $outer = $("#outer-container");
-                $outer.css('display', 'none').load("./renders/confirm.jsp", function () {
-                    $outer.fadeIn();
-                });
-
-            });
-
-        } else if($response.find("app").length > 0) {
+        } else {
 
             // Move the login form out
             Animations.outTop("#login", function () {

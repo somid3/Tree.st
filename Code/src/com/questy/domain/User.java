@@ -5,6 +5,9 @@ import com.questy.utils.StringUtils;
 import java.util.Date;
 
 public class User extends Parent {
+
+    public final static int ANY_USER_ID = 0;
+
     private Date createdOn;
     private String email;
     private String passwordHash;
