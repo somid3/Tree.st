@@ -5,10 +5,10 @@ function Finder () {};
  */
 Finder.setupFinder = function () {
 
-    var $searchField = $("#finder");
+    var $finderField = $("#finder");
 
     // Clear the field input
-    $searchField.val("");
+    $finderField.val("");
 
 };
 

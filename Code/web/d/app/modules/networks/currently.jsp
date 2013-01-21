@@ -12,8 +12,15 @@
     Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId());
 
     // Retrieving network settings
-    String singularVocabulary = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetwork(networkId);
-    String pluralVocabulary = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetwork(networkId);
+    Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
+    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+
+    Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
+    Integer hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_ICON);
+    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
+
+    String singularVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
+    String pluralVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
 %>
 <script type="text/javascript">
 
@@ -32,10 +39,6 @@
     <% } %>
 
 </script>
-
-<div class="header">
-    <span class="smd_header dim"><%= StringUtils.concat(network.getName(), 18, "&hellip;") %></span>
-</div>
 
 <% if (!network.isGlobal()) { %>
 
@@ -121,7 +124,23 @@
 
 <script type="text/javascript">
 
+    // Moving the currently menu
     Animations.toPosition("#currently", 0, 0, 600);
+
+    // Changing header color
+    $("#header").css("background-color", "<%= NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR.getValueByNetworkId(networkId) %>")
+
+    // Changing the logo
+    <% if (hasLogo != 0) { %>
+        NetworkDashboard.showCustomLogo("<%= network.getLogoResourceUrl() %>");
+    <% } else { %>
+        NetworkDashboard.showDefaultLogo('<%= StringUtils.concat(network.getName(), 14, "...") %>');
+    <% } %>
+
+
+
+
+
 
     /**
      * Is there a particular region we need to move the user

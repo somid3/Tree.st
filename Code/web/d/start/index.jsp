@@ -12,19 +12,24 @@
 
     // Retrieving network
     Network network = NetworkDao.getByIdAndChecksum(null, networkId, networkChecksum);
-    String manifestoTitle = NetworkAlphaSettingEnum.MANIFESTO_TITLE.getValueByNetwork(network.getId());
 
     // Validating variables
     if (network == null)
         wu.redirect("./notfound.jsp");
 
-    // Retrieving alpha settings for the main page
-    String systemMessage = NetworkAlphaSettingEnum.SYSTEM_MESSAGE.getValueByNetwork(networkId);
-    String startMessage = NetworkAlphaSettingEnum.START_MESSAGE.getValueByNetwork(networkId);
-    String startBody = NetworkAlphaSettingEnum.START_BODY.getValueByNetwork(networkId);
+    // Retrieving network settings
+    Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
+    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
 
+    String systemMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.SYSTEM_MESSAGE);
+    String startMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_MESSAGE);
+    String startBody = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_BODY);
+    String manifestoTitle = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_TITLE);
+
+    Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
+    Integer hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_ICON);
+    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
 %>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -41,12 +46,28 @@
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
 <div id="main">
+
     <div id="header">
-        <a href="/"><img src="/d/assets/logo.png"></a>
-        <span id="network_path" class="sp_header dim">
-            &nbsp;/&nbsp;<%= StringUtils.concat(network.getName(), 15, "&hellip;")%>
-        </span>
+
+        <% if (hasLogo == 0) { %>
+
+            <div id="default_logo">
+                <a href="/"><img src="/d/assets/logo.png"></a>
+                <span id="path" class="sp_header dim">
+                    &nbsp;/&nbsp;<%= StringUtils.concat(network.getName(), 15, "&hellip;")%>
+                </span>
+            </div>
+
+        <%} else {%>
+
+            <div id="custom_logo">
+                <a href="/"><img src="<%= network.getLogoResourceUrl() %>"></a>
+            </div>
+
+        <% } %>
+
     </div>
+
     <div id="container">
         <div id="content">
 
@@ -71,7 +92,7 @@
 
                 <a href="#" onclick="Start.toggleManifesto(event, <%= networkId %>, '<%= networkChecksum %>')">
                     <div id="manifesto" class="sm_text dim canvas_container">
-                        <pre><%= NetworkAlphaSettingEnum.MANIFESTO_CONTENT.getValueByNetwork(networkId) %></pre>
+                        <pre><%= NetworkAlphaSettingEnum.MANIFESTO_CONTENT.getValueByNetworkId(networkId) %></pre>
                     </div>
                 </a>
             <% } %>
@@ -89,7 +110,13 @@
                     <div class="element">
                         <div>
                             <span class="sp_text">Join</span>
-                            <span class="sp_text dim3">/</span>
+
+                            <% if (hasIcon == 0) { %>
+                                <span class="sp_text dim3">/</span>
+                            <%} else {%>
+                                <img src="<%= network.getIconResourceUrl() %>">
+                            <% } %>
+
                             <span class="sp_text">Login</span>
                         </div>
                     </div>
@@ -154,7 +181,7 @@
     });
 
     // Displaying network background
-    <% if (network.hasBackground()) { %>
+    <% if (hasBackground != 0) { %>
         $("body").css('background-image','url(<%= network.getBackgroundResourceUrl() %>)');
     <% } %>
 

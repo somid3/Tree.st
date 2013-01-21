@@ -70,7 +70,7 @@
                 <% } else if (question.getPoints() >= 50) { %>
                     <div class="pts md_button dark_button smd_text white">+<%= question.getPoints() %> pts.</div>
                 <% } else if (question.getPoints() > 0) { %>
-                    <div class="pts md_button light_button smd_text">+<%= question.getPoints() %> pts.</div>
+                    <div class="pts md_button light_button smd_text dim">+<%= question.getPoints() %> pts.</div>
                 <% } %>
 
                 <% if (question.getPoints() > 0) {

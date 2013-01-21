@@ -35,8 +35,14 @@ public enum NetworkIntegerSettingEnum {
     USER_LINKS_PER_HOUR                 (402, 60),
     USER_LINKS_PER_DAY                  (403, 120),
 
-    SMART_RESULTS_DISPLAY_SINCE         (500, 1);
+    SMART_RESULTS_DISPLAY_SINCE         (500, 1),
 
+
+    UI_HAS_BACKGROUND                   (10000, 0),
+    UI_HAS_ICON                         (10001, 0),
+    UI_HAS_LOGO                         (10002, 0)
+
+    ;
 
     private int id;
     private Integer ifNull;

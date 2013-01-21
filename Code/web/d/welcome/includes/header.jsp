@@ -31,8 +31,8 @@
                 <% header_active = header_path.equals("welcome") ? "active" : ""; %>
                 <a href="/d/welcome"><div class="shortcut lg_text <%= header_active %> highlight2">Welcome</div></a>
 
-                <% header_active = header_path.contains("create") ? "active" : ""; %>
-                <a href="/d/welcome/create"><div class="shortcut lg_text <%= header_active %> highlight2">Create</div></a>
+                <%--<% header_active = header_path.contains("create") ? "active" : ""; %>--%>
+                <%--<a href="/d/welcome/create"><div class="shortcut lg_text <%= header_active %> highlight2">Create</div></a>--%>
 
                 <% header_active = header_path.contains("pricing") ? "active" : ""; %>
                 <a href="/d/welcome/pricing"><div class="shortcut lg_text <%= header_active %> highlight2">Pricing</div></a>

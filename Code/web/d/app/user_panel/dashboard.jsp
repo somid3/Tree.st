@@ -28,5 +28,10 @@
 <div id="user_panel_canvas"></div>
 
 <script type="text/javascript">
+
+    // Changing header color to default color
+    $("#header").css("background-color", "<%= HtmlDesign.headerColor %>");
+
+    // Displaying the user photos by default
     UserPanel.go(null, UserPanel.Section.PHOTOS);
 </script>

@@ -29,7 +29,6 @@ public class SmartGroup extends Parent {
     private Date queryUpdatedOn;
     private Date refreshedOn;
     private SmartGroupVisibilityEnum visibility;
-    private Date iconOn;
     private Integer resultsCount;
     private Boolean hidden;
 
@@ -121,18 +120,6 @@ public class SmartGroup extends Parent {
         this.visibility = visibility;
     }
 
-    public Boolean hasIcon() {
-        return iconOn != null;
-    }
-
-    public Date getIconOn() {
-        return iconOn;
-    }
-
-    public void setIconOn(Date iconOn) {
-        this.iconOn = iconOn;
-    }
-
     public Integer getResultsCount() {
         return resultsCount;
     }
@@ -149,20 +136,4 @@ public class SmartGroup extends Parent {
         this.hidden = hidden;
     }
 
-    public String getResourceUrlIcon() {
-        return getResourceUrl("icon.png");
-    }
-
-    private String getResourceUrl(String filename) {
-
-        String url = null;
-
-        if (getIconOn() != null)
-            url = ResourceInfo.getSmartGroupUrl(getNetworkId(), getId());
-        else {
-            url = ResourceInfo.getSmartGroupUrl(null, null);
-        }
-
-        return url + filename;
-    }
 }

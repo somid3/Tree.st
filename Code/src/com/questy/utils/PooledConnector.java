@@ -31,6 +31,7 @@ public abstract class PooledConnector {
 ////////                cpds.setUser("omid");
 ////////                cpds.setPassword("y0l0s3");
 
+
                 // Warn developer localhost is not the database of choice
                 if (!cpds.getJdbcUrl().contains("localhost")) {
 

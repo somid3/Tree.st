@@ -4,6 +4,7 @@ import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.NetworkIntegerSettingDao;
 import com.questy.domain.NetworkAlphaSetting;
 import com.questy.domain.NetworkIntegerSetting;
+import com.questy.web.HtmlDesign;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -14,12 +15,6 @@ public enum NetworkAlphaSettingEnum {
 
     MANIFESTO_TITLE    (0, ""),
     MANIFESTO_CONTENT    (1, ""),
-
-    /**
-     * Description that appears under the network dashboard that displays an overall
-     * community award of points
-     */
-    AWARD_DESCRIPTION (2, ""),
 
     /**
      * Path name used to identify a network from the root domain name
@@ -60,6 +55,13 @@ public enum NetworkAlphaSettingEnum {
      * Vocabulary used to display down vote something
      */
     SHARED_VOTE_DOWN_VOCAB (2001, "Dislike"),
+
+
+    /**
+     * Top header color
+     */
+    UI_HEADER_BACKGROUND_COLOR (10001, HtmlDesign.headerColor),
+
     ;
 
 
@@ -87,7 +89,7 @@ public enum NetworkAlphaSettingEnum {
             return  setting.getValue();
     }
 
-    public String getValueByNetwork (Integer networkId) throws SQLException {
+    public String getValueByNetworkId(Integer networkId) throws SQLException {
 
         NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByNetworkIdAndSettingEnum(null, networkId, this);
 

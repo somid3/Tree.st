@@ -142,3 +142,17 @@ NetworkDashboard.toggleAward = function () {
     var $award = $("#award");
     $award.fadeToggle();
 };
+
+NetworkDashboard.showCustomLogo = function (logoSource) {
+
+    $("#default_logo").hide();
+    $("#custom_logo img").attr("src", logoSource);
+    $("#custom_logo").fadeIn();
+};
+
+NetworkDashboard.showDefaultLogo = function (networkName) {
+
+    $("#custom_logo").hide();
+    $("#default_logo").text(networkName).fadeIn();
+};
+

@@ -96,6 +96,7 @@
 #create #create_loading  {
     width: 220px;
     margin: 10px auto;
+    display: none;
 }
 
 #create .start {

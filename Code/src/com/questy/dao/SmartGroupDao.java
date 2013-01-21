@@ -549,7 +549,6 @@ public class SmartGroupDao extends ParentDao {
         out.setQueryUpdates(DatabaseUtils.getInt(rs, "query_updates"));
         out.setQueryUpdatedOn(DatabaseUtils.getTimestamp(rs, "query_updated_on"));
         out.setRefreshedOn(DatabaseUtils.getTimestamp(rs, "refreshed_on"));
-        out.setIconOn(DatabaseUtils.getTimestamp(rs, "icon_on"));
         out.setHidden(DatabaseUtils.getBoolean(rs, "hidden"));
         out.setVisibility(
             SmartGroupVisibilityEnum.getById(DatabaseUtils.getInt(rs, "visibility"))

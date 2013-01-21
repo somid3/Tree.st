@@ -124,10 +124,7 @@ LeftMenu.goToNetwork = function (event, networkId, callback) {
 LeftMenu.offsetItems = function () {
 
     var $currently = $("#currently");
-    var $dashboard = $("#header #dashboard");
-
     $currently.val("").css("top", "100px").empty();
-    $dashboard.val("").css("left", "-100px").empty();
 
 };
 

@@ -157,8 +157,6 @@ public class NetworkDao extends ParentDao {
         out.setName(DatabaseUtils.getString(rs, "name"));
         out.setGlobal(DatabaseUtils.getBoolean(rs, "global"));
         out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
-        out.setBackgroundOn(DatabaseUtils.getTimestamp(rs, "background_on"));
-        out.setIconOn(DatabaseUtils.getTimestamp(rs, "icon_on"));
 
         return out;
     }

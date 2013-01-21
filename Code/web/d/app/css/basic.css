@@ -16,30 +16,29 @@
     border: 1px solid #bbb;
 }
 
+
 #header #logo {
-    float: left;
+    position: absolute;
+    left: -5px;
+    top: -5px;
+}
+
+#header #logo #default_logo {
     padding: 5px 10px 5px 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    background-color: #8c8c80;
+    background-color: <%= HtmlDesign.headerColor %>;
     border-right: 2px solid #fff;
 }
 
-#header #alpha {
-    padding: 2px 4px 2px 4px;
-    background-color: #8c8c80;
-    border-right: 2px solid #fff;
-    position: absolute;
-    top: -5px;
-    left: 32px;
+#header #logo #custom_logo {
+    display: none;
 }
 
 #header #dashboard {
     float: left;
-    position: relative;
+    position: absolute;
+    left: 110px;
+    top: 0;
 }
-
 
 #header .user {
     display: inline-block;
@@ -48,6 +47,9 @@
     background-color: #8c8c80;
     border-left: 2px solid #fff;
     width: 160px;
+    position: relative;
+    left: 5px;
+    top: -5px;
 }
 
 #header .user .face {

@@ -6,17 +6,16 @@ import java.util.Date;
 
 public class Network extends Parent {
 
+    private static final Integer ANY_NETWORK = 0;
+    private static final String ICON_FILENAME = "icon.png";
+    private static final String BACKGROUND_FILENAME = "background.jpg";
+    private static final String LOGO_FILENAME = "logo.png";
+
     private Date createdOn;
     private String name;
     private boolean global;
     private Integer totalMembers;
     private String checksum;
-
-
-
-    private Date iconOn;
-    private Date backgroundOn;
-
 
     public Network() {}
 
@@ -66,46 +65,21 @@ public class Network extends Parent {
         this.checksum = checksum;
     }
 
-    public Boolean hasIcon() {
-        return iconOn != null;
-    }
-
-    public Boolean hasBackground() {
-        return backgroundOn != null;
-    }
-
-    public Date getIconOn() {
-        return iconOn;
-    }
-
-    public void setIconOn(Date iconOn) {
-        this.iconOn = iconOn;
-    }
-
-    public Date getBackgroundOn() {
-        return backgroundOn;
-    }
-
-    public void setBackgroundOn(Date backgroundOn) {
-        this.backgroundOn = backgroundOn;
-    }
-
     public String getIconResourceUrl() {
-        return getResourceUrl("icon.png", getIconOn());
+        return getResourceUrl(ICON_FILENAME);
     }
 
     public String getBackgroundResourceUrl() {
-        return getResourceUrl("background.jpg", getBackgroundOn());
+        return getResourceUrl(BACKGROUND_FILENAME);
     }
 
-    public String getResourceUrl(String filename, Date definer) {
+    public String getLogoResourceUrl() {
+        return getResourceUrl(LOGO_FILENAME);
+    }
 
-        String url = null;
+    public String getResourceUrl(String filename) {
 
-        if (definer != null)
-            url = ResourceInfo.getNetworkUrl(getId());
-        else
-            url = ResourceInfo.getNetworkUrl(null);
+        String url = ResourceInfo.getNetworkUrl(getId());
 
         return url + filename;
     }

@@ -279,13 +279,14 @@ public class NetworkServices extends ParentService {
      */
     public static void testNewPath(String path) throws SQLException {
 
+        if (!HtmlUtils.isPathFriendly(path))
+            throw new UIException("Can only contain numbers, letters, dashes, and underscores");
+
+        path = path.toLowerCase();
         Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
 
         if (networkId != null)
             throw new UIException("Aww, '" + path + "' not is not available");
-
-        if (!HtmlUtils.isPathFriendly(path))
-            throw new UIException("Can only contain numbers, letters, dashes, and underscores");
     }
 
     public static Integer createSimpleNetwork(String path, String name, String desc, List<String> qualities) throws SQLException {
@@ -301,6 +302,7 @@ public class NetworkServices extends ParentService {
         if (path.length() >= 30)
             throw new UIException("Web address is too long");
 
+        path = path.toLowerCase();
         if (!HtmlUtils.isPathFriendly(path))
             throw new UIException("Web address has the wrong format - it only contain numbers, letters, dashes, and underscores");
 
@@ -395,15 +397,25 @@ public class NetworkServices extends ParentService {
 
         // Separating question and options
         ArrayList<String> elements = new ArrayList<String>(Arrays.asList(quality.split("\n")));
+
+        // Extracting question
         String questionText = elements.get(0).trim();
-        List<String> questionOptions = new ArrayList<String>();
-        elements.remove(0);
 
         // Validating question
-        if (questionText.length() <= 5)
+        if (questionText.length() <= 3)
             throw new UIException("Quality " + qualityCount + " is too short!");
 
+        if (questionText.length() >= 100)
+            throw new UIException("Quality " + qualityCount + " is too long!");
+
+        // Extracting question options
+        elements.remove(0);
+        List<String> questionOptions = elements;
+
         // Validating options
+        for (String questionOption : questionOptions) {
+
+        }
 
         return new Tuple<String, List<String>>(questionText, questionOptions);
     }

@@ -188,9 +188,12 @@
     <% } %>
 
     <div id="header">
+
         <a href="/d/app">
-            <div id="logo"><%= Vars.name %></div>
-            <div id="alpha" class="sm_text white">alpha</div>
+            <div id="logo">
+                <div id="default_logo" class="vl_header white"><%= Vars.name %></div>
+                <div id="custom_logo"><img/></div>
+            </div>
         </a>
 
         <div id="dashboard"></div>

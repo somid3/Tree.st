@@ -47,7 +47,7 @@
             <div class="item" id="<%= hItemId %>">
                 <div class="contents">
                     <div class="icon"><img src="<%= network.getIconResourceUrl() %>" alt=""></div>
-                    <div class="name smd_text"><%= StringUtils.concat(network.getName(), 14, "&#8230;") %></div>
+                    <div class="name smd_text"><%= StringUtils.concat(network.getName(), 12, "&#8230;") %></div>
                 </div>
                 <% if (nextQuestionRef != null) { %>
                     <div class="bullet" id="<%= hBulletId %>"><img src="./img/dot-green-16.png"></div>
@@ -82,7 +82,7 @@
             <div class="item" id="<%= hItemId %>">
                 <div class="contents">
                     <div class="icon"><img src="<%= network.getIconResourceUrl() %>" alt=""></div>
-                    <div class="name smd_text"><%= StringUtils.concat(network.getName(), 14, "&#8230;") %></div>
+                    <div class="name smd_text"><%= StringUtils.concat(network.getName(), 12, "&#8230;") %></div>
                 </div>
                 <% if (nextQuestionRef != null) { %>
                     <div class="bullet" id="<%= hBulletId %>"><img src="./img/dot-green-16.png"></div>
