@@ -2,8 +2,6 @@
 <%
     WebUtils wu = new WebUtils(request, response);
 %>
-
-
 <!DOCTYPE HTML>
 <html>
 <head>
