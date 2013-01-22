@@ -41,9 +41,9 @@
             <div class="actions">
 
                 <a href="./create">
-                    <div class="action lg_shadow">
+                    <div class="action lg_shadow" style="background-color: <%= HtmlDesign.highlight2 %>">
                         <img class="free" src="./img/free.png">
-                        <div><span class="md_header white">Start Now</span></div>
+                        <div><span class="md_header white">Start Today:</span></div>
                         <div><span class="smd_text white">Create your own searchable community in under a minute</span></div>
                     </div>
                 </a>
@@ -55,21 +55,19 @@
 
                 <a href="#request">
                     <div class="action lg_shadow">
-                        <img class="today" src="./img/target.png">
                         <div><span class="md_header white">Request a Personalize Demo</span></div>
                         <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
                     </div>
                 </a>
 
                 <div class="or shadow">
-                    <span class="sm_header white">Or</span>
+                    <span class="vsm_header white">Or</span>
                 </div>
 
                 <a href="/foods" target="_new">
                     <div class="action lg_shadow">
-                        <img class="demo" src="./img/tree.png">
                         <div><span class="md_header white">Test-Drive a Community</span></div>
-                        <div><span class="smd_text white">Discover others by their food preferences</span></div>
+                        <div><span class="smd_text white">Discover others foodies!</span></div>
                     </div>
                 </a>
             </div>

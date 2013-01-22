@@ -211,12 +211,13 @@ body {
 .or {
     font-family: adam;
     font-style: italic;
-    margin: 3px auto;
-    padding: 2px;
+    margin: -5px auto;
     text-align: center;
     background-color: <%= HtmlDesign.dim2 %>;
-    width: 50px;
+    width: 30px;
     border: 1px solid white;
+    z-index: 10;
+    position: relative;
 }
 
 .actions {
@@ -240,9 +241,9 @@ body {
 
 .actions .action .free {
     position: absolute;
-    top: -50px;
-    left: 120px;
-    height: 80px;
+    top: -40px;
+    left: 130px;
+    height: 60px;
 }
 
 

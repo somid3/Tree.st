@@ -289,7 +289,7 @@ public class NetworkServices extends ParentService {
             throw new UIException("Aww, '" + path + "' not is not available");
     }
 
-    public static Integer createSimpleNetwork(String path, String name, String desc, List<String> qualities) throws SQLException {
+    public static Integer createSimpleNetwork(String path, String name, String desc, List<String> rawQualities) throws SQLException {
 
         /**
          * Validating
@@ -327,8 +327,8 @@ public class NetworkServices extends ParentService {
         // Validating and digesting each quality
         Integer qualityCount = 1;
         List<Tuple<String, List<String>>> digestedQualities = new ArrayList<Tuple<String, List<String>>>();
-        for (String quality : qualities)
-            validateAndDigestQuality(quality, qualityCount);
+        for (String rawQuality : rawQualities)
+            validateAndDigestQuality(digestedQualities, rawQuality, qualityCount);
 
 
         /**
@@ -349,7 +349,7 @@ public class NetworkServices extends ParentService {
         String optionText = null;
 
         List<String> elements = null;
-        for (String quality : qualities) {
+        for (String quality : rawQualities) {
 
             // Cleaning up text
             quality = quality.replaceAll("\r", "");
@@ -389,17 +389,23 @@ public class NetworkServices extends ParentService {
         return newNetworkId;
     }
 
-    private static Tuple<String, List<String>> validateAndDigestQuality(String quality, Integer qualityCount) {
-
+    /**
+     * Takes in a raw quality string (that is, a string that contains the question and options one block), digests and
+     * validates the questions and option. For each question that gets validated, it gets added to the digested
+     * list which is the result calling this method
+     *
+     */
+    private static void validateAndDigestQuality(List<Tuple<String, List<String>>> digestedQualities, String rawQuality, Integer qualityCount) {
 
         // Cleaning up text
-        quality = quality.replaceAll("\r", "");
+        rawQuality = rawQuality.replaceAll("\r", "").trim();
 
         // Separating question and options
-        ArrayList<String> elements = new ArrayList<String>(Arrays.asList(quality.split("\n")));
+        ArrayList<String> elements = new ArrayList<String>(Arrays.asList(rawQuality.split("\n")));
 
         // Extracting question
         String questionText = elements.get(0).trim();
+        elements.remove(0);
 
         // Validating question
         if (questionText.length() <= 3)
@@ -409,14 +415,29 @@ public class NetworkServices extends ParentService {
             throw new UIException("Quality " + qualityCount + " is too long!");
 
         // Extracting question options
-        elements.remove(0);
-        List<String> questionOptions = elements;
+        List<String> rawOptions = elements;
+        List<String> digestedOptions = new ArrayList<String>();
 
         // Validating options
-        for (String questionOption : questionOptions) {
+        for (String rawOption : rawOptions) {
 
+            rawOption = rawOption.trim();
+
+            // Ensuring option is not empty
+            if (rawOption.isEmpty())
+                continue;
+
+            if (rawOption.length() > 100)
+                throw new UIException("Option '" + rawOption + "' is too long!");
+
+            // Adding option as a approved digested option
+            digestedOptions.add(rawOption);
         }
 
-        return new Tuple<String, List<String>>(questionText, questionOptions);
+        if (digestedOptions.isEmpty())
+            throw new UIException("Quality " + qualityCount + " has no options, you must at least add an option");
+
+        // Adding approved question with options
+        digestedQualities.add( new Tuple(questionText, digestedOptions));
     }
 }
