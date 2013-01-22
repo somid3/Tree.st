@@ -208,13 +208,21 @@ body {
     background-color: white;
 }
 
-
+.or {
+    font-family: adam;
+    font-style: italic;
+    margin: 3px auto;
+    padding: 2px;
+    text-align: center;
+    background-color: <%= HtmlDesign.dim2 %>;
+    width: 50px;
+    border: 1px solid white;
+}
 
 .actions {
 }
 
 .actions .action {
-    margin-bottom: 10px;
     padding: 10px;
     background-color: <%= HtmlDesign.highlight %>;
     border: 4px solid white;
@@ -224,11 +232,19 @@ body {
 
 .actions .action .today {
     position: absolute;
-    top: -50px;
-    left: 210px;
-    height: 80px;
-    width: 80px;
+    top: -40px;
+    left: 200px;
+    height: 50px;
+    width: 50px;
 }
+
+.actions .action .free {
+    position: absolute;
+    top: -50px;
+    left: 120px;
+    height: 80px;
+}
+
 
 .actions .action .demo {
     position: absolute;

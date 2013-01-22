@@ -28,7 +28,7 @@
     <div class="w800 center">
         <div class="block">
             <div class="main gg_header white">Let's Begin...</div>
-            <div class="sub vl_text white">We'll get your searchable community created in less than a minute.</div>
+            <div class="sub vl_text white">We'll get your searchable community created in less than a minute</div>
         </div>
     </div>
 </div>
@@ -36,9 +36,9 @@
 <div id="create" class="w800 center">
 
     <div class="step glow4">
-        <div class="breakdowns">
+        <div class="qualities">
 
-            <div class="breakdown" id="path">
+            <div class="quality" id="path">
                 <div class="desc">
                     <div class="big vl_text dim">Choose your address</div>
                     <div class="small sm_text dim2">This is the web address your members can go to create their accounts and log in.</div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="breakdown" id="name">
+            <div class="quality" id="name">
                 <div class="desc">
                     <div class="big vl_text dim">Name</div>
                     <div class="small sm_text dim2">What is the name of your community? For example "Garage Bands of San Francisco"</div>
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="breakdown" id="desc">
+            <div class="quality" id="desc">
                 <div class="desc">
                     <div class="big vl_text dim">Purpose & Description</div>
                     <div class="small sm_text dim2">In one line, describe the purpose of your community. For instance "Musicians of San Francisco, find other artists near you to play music together."</div>
@@ -84,8 +84,8 @@
             examples below are for a "San Francisco Musicians" searchable community.
         </div>
 
-        <div class="breakdowns">
-            <div class="breakdown" id="q1">
+        <div class="qualities">
+            <div class="quality" id="q1">
                 <div class="desc">
                     <div class="big vl_text dim">First Quality</div>
                     <div class="small sm_text dim2">
@@ -97,11 +97,11 @@
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="quality lg_input"></textarea></div>
+                    <div class="input square"><textarea class="lg_input"></textarea></div>
                 </div>
             </div>
 
-            <div class="breakdown" id="q2">
+            <div class="quality" id="q2">
                 <div class="desc">
                     <div class="big vl_text dim">Second Quality</div>
                     <div class="small sm_text dim2">
@@ -113,11 +113,11 @@
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="quality lg_input"></textarea></div>
+                    <div class="input square"><textarea class="lg_input"></textarea></div>
                 </div>
             </div>
 
-            <div class="breakdown" id="q3">
+            <div class="quality" id="q3">
                 <div class="desc">
                     <div class="big vl_text dim">Third Quality</div>
                     <div class="small sm_text dim2">
@@ -129,11 +129,11 @@
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="quality lg_input"></textarea></div>
+                    <div class="input square"><textarea class="lg_input"></textarea></div>
                </div>
             </div>
 
-            <div class="breakdown" id="q4">
+            <div class="quality" id="q4" style="display: none;">
                 <div class="desc">
                     <div class="big vl_text dim">Fourth Quality</div>
                     <div class="small sm_text dim2">
@@ -145,11 +145,11 @@
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="quality lg_input"></textarea></div>
+                    <div class="input square"><textarea class="lg_input"></textarea></div>
                 </div>
             </div>
 
-            <div class="breakdown" id="q5">
+            <div class="quality" id="q5" style="display: none;">
                 <div class="desc">
                     <div class="big vl_text dim">Last Free Quality</div>
                     <div class="small sm_text dim2">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="quality lg_input"></textarea></div>
+                    <div class="input square"><textarea class="lg_input"></textarea></div>
                 </div>
             </div>
         </div>

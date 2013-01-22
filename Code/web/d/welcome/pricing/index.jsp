@@ -43,7 +43,7 @@
                     <div class="gather">
                         <span class="unit lg_text dim2">$</span>
                         <span class="dollars sp_text dim">0</span>
-                        <span class="cents md_text dim">10</span>
+                        <span class="cents md_text dim">05</span>
                         <div class="timeframe dim2">monthly</div>
                     </div>
                 </div>

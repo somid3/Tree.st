@@ -27,7 +27,6 @@
     String manifestoTitle = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_TITLE);
 
     Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
-    Integer hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_ICON);
     Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
 %>
 <!DOCTYPE HTML>
@@ -110,13 +109,7 @@
                     <div class="element">
                         <div>
                             <span class="sp_text">Join</span>
-
-                            <% if (hasIcon == 0) { %>
-                                <span class="sp_text dim3">/</span>
-                            <%} else {%>
-                                <img src="<%= network.getIconResourceUrl() %>">
-                            <% } %>
-
+                            <span class="sp_text dim3">/</span>
                             <span class="sp_text">Login</span>
                         </div>
                     </div>

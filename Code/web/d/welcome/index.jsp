@@ -18,6 +18,7 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 
 <body>
+<a name="top"/>
 
 <% String header_path = "welcome"; %>
 <%@ include file="./includes/header.jsp"%>
@@ -25,7 +26,7 @@
 <div class="main-block">
     <div class="w800 center">
         <div class="block">
-            <div class="main gg_header white">Create Your Searchable Community</div>
+            <div class="main gg_header white">We Create Searchable Communities</div>
             <div class="sub vl_text white">Discover your members via unique qualities<br/> &mdash; collaborate, and create amazing bonds</div>
         </div>
     </div>
@@ -39,21 +40,37 @@
         </div>
         <div class="right">
             <div class="actions">
-                <a href="#request">
-                    <div class="action">
-                        <img class="today" src="./img/target.png">
-                        <div><span class="lg_header white">Request a free demo</span></div>
-                        <div><span class="sm_text white">In 5 minutes learn how Tree.st can add value to your community</span></div>
+
+                <a href="./create">
+                    <div class="action lg_shadow">
+                        <img class="free" src="./img/free.png">
+                        <div><span class="md_header white">Start Now</span></div>
+                        <div><span class="smd_text white">Create your own searchable community in under a minute</span></div>
                     </div>
                 </a>
 
-                <br/>
+
+                <div class="or shadow">
+                    <span class="sm_header white">Or</span>
+                </div>
+
+                <a href="#request">
+                    <div class="action lg_shadow">
+                        <img class="today" src="./img/target.png">
+                        <div><span class="md_header white">Request a Personalize Demo</span></div>
+                        <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
+                    </div>
+                </a>
+
+                <div class="or shadow">
+                    <span class="sm_header white">Or</span>
+                </div>
 
                 <a href="/foods" target="_new">
-                    <div class="action">
+                    <div class="action lg_shadow">
                         <img class="demo" src="./img/tree.png">
-                        <div><span class="lg_header white">Test Drive a Community:</span></div>
-                        <div><span class="sm_text white">Visit our 'Foods' community -- where you can find and socialize with others via food preferences!</span></div>
+                        <div><span class="md_header white">Test-Drive a Community</span></div>
+                        <div><span class="smd_text white">Discover others by their food preferences</span></div>
                     </div>
                 </a>
             </div>
@@ -172,7 +189,7 @@
 </div>
 
 <div class="w800 center contact shadow">
-    <img style="float: right" src="/d/assets/logo.png">
+    <a href="#top"><img style="float: right" src="/d/assets/logo.png"></a>
     <div id="wufoo-z7x3p9">
     <a href="http://treest.wufoo.com/forms/z7x3p9">Loading form...</a>.
     </div>

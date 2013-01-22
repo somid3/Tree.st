@@ -13,51 +13,51 @@
 #create .step .header {
     padding: 10px 20px;
     line-height: 1.3em;
-    background-color: <%= HtmlDesign.dim2 %>;
+    background-color: <%= HtmlDesign.highlight3 %>;
 }
 
-#create .step .breakdowns {
+#create .step .qualities {
     padding: 20px 20px 40px 20px;
     width: 80%;
     margin: 0 auto;
 }
 
-#create .step .breakdowns .breakdown {
+#create .step .qualities .quality {
     width: 100%;
     border-bottom: 1px dashed <%= HtmlDesign.dim3 %>;
     padding: 10px 0;
     display: inline-block;
 }
 
-#create .step .breakdowns .breakdown .desc {
+#create .step .qualities .quality .desc {
     float: left;
     width: 250px;
 }
 
-#create .step .breakdowns .breakdown .desc .big {
+#create .step .qualities .quality .desc .big {
 }
 
-#create .step .breakdowns .breakdown .desc .small {
+#create .step .qualities .quality .desc .small {
     margin-top: 5px;
     line-height: 1.3em;
     margin-left: 10px;
 }
 
-#create .step .breakdowns .breakdown .gather {
+#create .step .qualities .quality .gather {
     float: right;
 }
 
-#create .step .breakdowns .breakdown .gather .input {
-    border: 1px solid <%= HtmlDesign.dim %>;
+#create .step .qualities .quality .gather .input {
+    border: 1px solid <%= HtmlDesign.dim2 %>;
     display: inline-block;
 }
 
-#create .step .breakdowns .breakdown .gather .feedback {
+#create .step .qualities .quality .gather .feedback {
     margin: 5px auto;
     width: 200px;
 }
 
-#create .step .breakdowns .breakdown .gather .feedback .good {
+#create .step .qualities .quality .gather .feedback .good {
     background-color: <%= HtmlDesign.highlight %>;
     text-align: center;
     color: #fff;
@@ -65,8 +65,7 @@
     display: none;
 }
 
-
-#create .step .breakdowns .breakdown .gather .input .quality {
+#create .step .qualities .quality .gather textarea {
     height: 80px;
     width: 350px;
 }
@@ -100,7 +99,7 @@
 }
 
 #create .start {
-    background: <%= HtmlDesign.highlight2 %>;;
+    background: <%= HtmlDesign.highlight %>;;
     width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -108,4 +107,5 @@
     border: 4px solid white;
 
 }
+
 
