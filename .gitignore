@@ -13,3 +13,10 @@ dev.properties
 stage.properties
 
 prod.properties
+
+Code/src/com/questy/utils/dev.properties
+
+Code/src/com/questy/utils/stage.properties
+
+Code/src/com/questy/utils/prod.properties
+
