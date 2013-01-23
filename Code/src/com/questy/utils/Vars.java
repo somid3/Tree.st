@@ -30,7 +30,7 @@ public class Vars {
      */
     private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+    //public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -157,6 +157,16 @@ public class Vars {
     public static boolean reloadCss = false;
 
 
+    /***************************
+     * SQL variables
+     **************************/
+
+    public static String sqlUsername = "";
+    public static String sqlPassword = "";
+    public static String sqlHost = "";
+    public static String sqlDatabaseName = "";
+    public static String sqlParameters = "";
+
 
 
 
@@ -164,7 +174,6 @@ public class Vars {
     static {
 
         try {
-
             // Setting up the global variables
             if (Vars.isInDevelopment())
                 setToDevelopment();
@@ -186,51 +195,68 @@ public class Vars {
 
 
     private static void setToDevelopment () throws IOException {
+        loadProperties("dev.properties");
+        domain = loadPropertyAsString("domain");
+        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
 
+        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
+        resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
 
-        domain = "localhost:8080";
-        emailTemplateDomain = "localhost:8080";
+        sendEmails =  loadPropertyAsBoolean("sendEmails");
+        logSentEmails = loadPropertyAsBoolean("logSentEmails");
 
-        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
-        resourcesTempFilePath = "/Users/omid/Desktop/";
+        reloadCss = loadPropertyAsBoolean("reloadCss");
+        mockUserAgent = loadPropertyAsString("mockUserAgent");
 
-        sendEmails = false;
-        logSentEmails = true;
-
-        reloadCss = true;
-        mockUserAgent = null;
+        sqlUsername = loadPropertyAsString("sqlUsername");
+        sqlPassword = loadPropertyAsString("sqlPassword");
+        sqlHost = loadPropertyAsString("sqlHost");
+        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
+        sqlParameters = loadPropertyAsString("sqlParameters");
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 8 on Windows
 
-        loadProperties("dev.properties");
+        //loadProperties("dev.properties");
     }
 
     private static void setToStaging () throws IOException {
 
-        domain = "localhost:8080";
-        emailTemplateDomain = "localhost:8080";
-        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
-        resourcesTempFilePath = "/Users/omid/Desktop/";
+        loadProperties("stage.properties");
+        domain = loadPropertyAsString("domain");
+        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
 
-        reloadCss = false;
-        sendEmails = true;
-        logSentEmails = true;
-        resourcesFilePath = "/Users/omid/Tree.st/Resources/";
-        sendAllEmailsTo = "omid@mit.edu";
+        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
+        resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
+
+        reloadCss = loadPropertyAsBoolean("reloadCss");
+        sendEmails =  loadPropertyAsBoolean("sendEmails");
+        logSentEmails = loadPropertyAsBoolean("logSentEmails");
+        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
+        sendAllEmailsTo = loadPropertyAsString("sendAllEmailsTo");
+
+        sqlUsername = loadPropertyAsString("sqlUsername");
+        sqlPassword = loadPropertyAsString("sqlPassword");
+        sqlHost = loadPropertyAsString("sqlHost");
+        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
+        sqlParameters = loadPropertyAsString("sqlParameters");
 
 //        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
 
-        loadProperties("stage.properties");
 
 
     }
 
     private static void setToProduction() throws IOException {
-
-        sendEmails = true;
-
         loadProperties("prod.properties");
+        sendEmails =  loadPropertyAsBoolean("sendEmails");
+
+        sqlUsername = loadPropertyAsString("sqlUsername");
+        sqlPassword = loadPropertyAsString("sqlPassword");
+        sqlHost = loadPropertyAsString("sqlHost");
+        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
+        sqlParameters = loadPropertyAsString("sqlParameters");
+
     }
 
 
@@ -245,6 +271,14 @@ public class Vars {
         // Load the properties file relative to the Vars class
         properties.load(Vars.class.getResourceAsStream(fileName));
 
+    }
+
+    private static String loadPropertyAsString(String property){
+        return (String) properties.getProperty(property);
+    }
+
+    private static boolean loadPropertyAsBoolean(String property){
+        return Boolean.parseBoolean((String) properties.getProperty(property));
     }
 
 

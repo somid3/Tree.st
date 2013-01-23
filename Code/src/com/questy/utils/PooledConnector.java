@@ -2,6 +2,7 @@ package com.questy.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +25,8 @@ public abstract class PooledConnector {
                 cpds.setDriverClass("com.mysql.jdbc.Driver");
 
                 cpds.setJdbcUrl("jdbc:mysql://localhost:3306/questy?zeroDateTimeBehavior=convertToNull");
-                cpds.setUser("root");
-                cpds.setPassword("K1ng.k0ng");
+                cpds.setUser(Vars.sqlUsername);
+                cpds.setPassword(Vars.sqlPassword); //changed
 
 ////////                cpds.setJdbcUrl("jdbc:mysql://72.167.164.208:3306/questy?zeroDateTimeBehavior=convertToNull");
 ////////                cpds.setUser("omid");
@@ -58,9 +59,9 @@ public abstract class PooledConnector {
             }
         }
 
+
+
     }
-
-
 
     /**
      * Returns a connection either for transactional support, or not. If a the supplied
