@@ -193,7 +193,6 @@ public class Vars {
 
 
 
-
     private static void setToDevelopment () throws IOException {
         loadProperties("dev.properties");
         domain = loadPropertyAsString("domain");
