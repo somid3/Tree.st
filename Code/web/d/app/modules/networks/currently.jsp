@@ -134,7 +134,7 @@
     <% if (hasLogo != 0) { %>
         NetworkDashboard.showCustomLogo("<%= network.getLogoResourceUrl() %>");
     <% } else { %>
-        NetworkDashboard.showDefaultLogo('<%= StringUtils.concat(network.getName(), 14, "...") %>');
+        NetworkDashboard.showDefaultLogo("<%= StringUtils.concat(network.getName().replaceAll("\"", "'"), 14, "...") %>");
     <% } %>
 
 

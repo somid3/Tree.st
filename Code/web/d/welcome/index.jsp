@@ -77,12 +77,13 @@
 
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">Specific To Your Organization</div>
-        <div class="sub smd_text dim">Tree.st can adapt to any industry, here are a few examples:</div>
+        <div class="main sp_header">What are Searchable Communities For?</div>
+        <div class="sub smd_text dim">From online dating, to market places, to business communities...</div>
     </div>
 </div>
 
 <div class="w800 center">
+
     <div class="four_steps">
         <div class="step shadow">
             <a href="./assets/associations.pdf" target="_new">

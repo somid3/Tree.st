@@ -35,14 +35,10 @@ public class NetworkServicesTest {
             "Took a class (i.e.: lifeguarding, EMT, etc.)");
 
         qualities.add(
-            "I have been with the American Red Cross for the following number of years:\n" +
-            "Less than 1 year\n" +
-            "1 to 2 years\n" +
-            "2 to 3 years\n" +
-            "3 to 4 years\n" +
-            "4 to 5 years\n" +
-            "5 to 10 years\n" +
-            "More than 10 years\n");
+            "" +
+            "" +
+            "" +
+            "");
 
         qualities.add(
             "I have the following hobbies and interests?\n" +

@@ -75,7 +75,7 @@ Create.create = function (event) {
 
     var pathValue = $path.find("input").val();
     var nameValue = $name.find("input").val();
-    var descValue = $desc.find("input").val();
+    var descValue = $desc.find("textarea").val();
     var q1Value = $q1.find("textarea").val();
     var q2Value = $q2.find("textarea").val();
     var q3Value = $q3.find("textarea").val();
@@ -117,15 +117,21 @@ Create.create = function (event) {
 
         } else {
 
-            // Move the action button
-            Animations.outTop("#submit", function () {
+            var redirectTo = "/" + pathValue;
 
-                /* Sending user to new community */
-                URL.redirect("/" + $path);
-
-            });
+            /* Sending user to new community */
+            URL.redirect(redirectTo);
 
             return false;
         }
+
     });
 };
+
+Create.addQuality = function (event, addSelector, qualitySelector) {
+
+    Event.preventDefault(event);
+
+    $(qualitySelector).fadeIn();
+    $(addSelector).hide();
+}

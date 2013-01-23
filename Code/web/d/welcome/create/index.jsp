@@ -36,12 +36,11 @@
 <div id="create" class="w800 center">
 
     <div class="step glow4">
-        <div class="qualities">
-
-            <div class="quality" id="path">
+        <div class="generalities">
+            <div class="general" id="path">
                 <div class="desc">
                     <div class="big vl_text dim">Choose your address</div>
-                    <div class="small sm_text dim2">This is the web address your members can go to create their accounts and log in.</div>
+                    <div class="small sm_text dim">This is the web address your members can go to create their accounts and log in.</div>
                 </div>
                 <div class="gather">
 
@@ -56,29 +55,29 @@
                 </div>
             </div>
 
-            <div class="quality" id="name">
+            <div class="general" id="name">
                 <div class="desc">
                     <div class="big vl_text dim">Name</div>
-                    <div class="small sm_text dim2">What is the name of your community? For example "Garage Bands of San Francisco"</div>
+                    <div class="small sm_text dim">What is the name of your community? For example "Garage Bands of San Francisco"</div>
                 </div>
                 <div class="gather">
                     <div class="input square"><input class="lg_input w300" maxlength="60"></div>
                 </div>
             </div>
 
-            <div class="quality" id="desc">
+            <div class="general" id="desc">
                 <div class="desc">
                     <div class="big vl_text dim">Purpose & Description</div>
-                    <div class="small sm_text dim2">In one line, describe the purpose of your community. For instance "Musicians of San Francisco, find other artists near you to play music together."</div>
+                    <div class="small sm_text dim">In one or two lines, describe the purpose of your community. For instance "Musicians of San Francisco, find other artists near you to play music together."</div>
                 </div>
-                <div class="gather"><div class="input square"><input class="lg_input w300" maxlength="100"></div></div>
+                <div class="gather"><div class="input square"><textarea class="md_input w300" maxlength="250"></textarea></div></div>
             </div>
         </div>
     </div>
 
     <div class="step glow4">
 
-        <div class="header md_text white">
+        <div class="header md_text">
             <span class="md_header">Important</span>: Qualities will help your members to find one another. Write
             each quality as a question on the first line of the text boxes below, and each option in a new line. The
             examples below are for a "San Francisco Musicians" searchable community.
@@ -86,107 +85,128 @@
 
         <div class="qualities">
             <div class="quality" id="q1">
-                <div class="desc">
-                    <div class="big vl_text dim">First Quality</div>
-                    <div class="small sm_text dim2">
-                        What instruments do you play?<br/>
-                        Drums<br/>
-                        Guitar<br/>
-                        Harp<br/>
-                        ...<br/>
+                <div class="big vl_text dim">First Quality</div>
+                <div class="example">
+                    <div class="title">Example</div>
+                    <div class="small smd_text dim">
+                        <div class="line">What instruments do you play?</div>
+                        <div class="line">Drums</div>
+                        <div class="line">Guitar</div>
+                        <div class="line">Harp</div>
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="lg_input"></textarea></div>
+                    <div class="title">Your Quality</div>
+                    <div class="input square"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
             <div class="quality" id="q2">
-                <div class="desc">
-                    <div class="big vl_text dim">Second Quality</div>
-                    <div class="small sm_text dim2">
-                        What nights of the week are you free?<br/>
-                        Mondays<br/>
-                        Tuesdays<br/>
-                        Wednesdays<br/>
-                        ...<br/>
+                <div class="big vl_text dim">Second Quality</div>
+                <div class="example">
+                    <div class="title">Example</div>
+                    <div class="small smd_text dim">
+                        <div class="line">What nights of the week are you free?</div>
+                        <div class="line">Mondays</div>
+                        <div class="line">Tuesdays</div>
+                        <div class="line">Wednesdays</div>
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="lg_input"></textarea></div>
+                    <div class="title">Your Quality</div>
+                    <div class="input square"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
-            <div class="quality" id="q3">
-                <div class="desc">
-                    <div class="big vl_text dim">Third Quality</div>
-                    <div class="small sm_text dim2">
-                        Where in San Francisco do you reside?<br/>
-                        Soma<br/>
-                        Mission<br/>
-                        Nearby, Berkeley<br/>
-                        ...<br/>
+            <div id="add3">
+                <a href="#" onclick="Create.addQuality(event, '#add3', '#q3')">
+                    <span class="lg_text highlight2">(+) Add third quality</span>
+                </a>
+            </div>
+            <div class="quality" id="q3" style="display: none;">
+                <div class="big vl_text dim">Third Quality</div>
+                <div class="example">
+                    <div class="title">Example</div>
+                    <div class="small smd_text dim">
+                        <div class="line">Where in San Francisco do you live?</div>
+                        <div class="line">Mission</div>
+                        <div class="line">Daly City</div>
+                        <div class="line">Nearby, Berkeley</div>
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="lg_input"></textarea></div>
-               </div>
+                    <div class="title">Your Quality</div>
+                    <div class="input square"><textarea class="md_input"></textarea></div>
+                </div>
             </div>
 
+            <div id="add4">
+                <a href="#" onclick="Create.addQuality(event, '#add4', '#q4')">
+                    <span class="lg_text highlight2">(+) Add fourth quality</span>
+                </a>
+            </div>
             <div class="quality" id="q4" style="display: none;">
-                <div class="desc">
-                    <div class="big vl_text dim">Fourth Quality</div>
-                    <div class="small sm_text dim2">
-                        What type of music do you play?<br/>
-                        Classical<br/>
-                        Alternative Rock<br/>
-                        Dubstep<br/>
-                        ...<br/>
+                <div class="big vl_text dim">Fourth Quality</div>
+                <div class="example">
+                    <div class="title">Example</div>
+                    <div class="small smd_text dim">
+                        <div class="line">What type of music do you play?</div>
+                        <div class="line">Classical</div>
+                        <div class="line">Alternative Rock</div>
+                        <div class="line">Dubstep</div>
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="lg_input"></textarea></div>
+                    <div class="title">Your Quality</div>
+                    <div class="input square"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
+            <div id="add5">
+                <a href="#" onclick="Create.addQuality(event, '#add5', '#q5')">
+                    <span class="lg_text highlight2">(+) Add fifth quality</span>
+                </a>
+            </div>
             <div class="quality" id="q5" style="display: none;">
-                <div class="desc">
-                    <div class="big vl_text dim">Last Free Quality</div>
-                    <div class="small sm_text dim2">
-                        What are you looking for?<br/>
-                        Members to join my band<br/>
-                        To find new musician friends<br/>
-                        Join other bands<br/>
-                        ...<br/>
+                <div class="big vl_text dim">Fifth Quality</div>
+                <div class="example">
+                    <div class="title">Example</div>
+                    <div class="small smd_text dim">
+                        <div class="line">Who/What are you looking for?</div>
+                        <div class="line">New members to join my band</div>
+                        <div class="line">Friendly musicians</div>
+                        <div class="line">To join another band</div>
                     </div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><textarea class="lg_input"></textarea></div>
+                    <div class="title">Your Quality</div>
+                    <div class="input square"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
+
         </div>
 
-        <div class="header md_text white">
+        <div class="header md_text">
             <span class="md_header">Important</span>: Once you create your searchable community, you must quickly join
             it and become the first member in order to declare yourself as the owner.
         </div>
     </div>
 
-    <div id="share" class="glow4 lg_text dim">
+    <div id="share" class="glow lg_text dim">
         Remember, share, share, and share
 
         <div id="new_community">
-            <span class="vl_header">http://<%= Vars.domain %>/</span>
-            <span class="vl_header highlight" id="final_path"></span>
+            <span class="vl_header dim">http://<%= Vars.domain %>/</span><span class="vl_header dim" id="final_path"></span>
         </div>
 
         on your
+
         <a target="_new" class="highlight2" href="http://www.facebook.com">facebook</a>,
         <a target="_new" class="highlight2" href="http://www.twitter.com">twitter</a>,
         <a target="_new" class="highlight2" href="http://www.pinterest.com">pinterest</a>,
         <a target="_new" class="highlight2" href="http://www.tumblr.com">tumblr</a>,
         <a target="_new" class="highlight2" href="http://plus.google.com">google+</a><br/>
-        &mdash; and email your friends so they join your new community!
+        &mdash; and email your friends and family so they join your new community!
     </div>
 
     <div id="create_error" class="error"></div>

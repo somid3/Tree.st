@@ -191,7 +191,7 @@
 
         <a href="/d/app">
             <div id="logo">
-                <div id="default_logo" class="vl_header white"><%= Vars.name %></div>
+                <div id="default_logo" class="lg_header white"><%= Vars.name %></div>
                 <div id="custom_logo"><img/></div>
             </div>
         </a>

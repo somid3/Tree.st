@@ -68,6 +68,10 @@ public class NetworkServices extends ParentService {
         // Is user already part of network?
         if (utn == null) {
 
+            // If the network has no members, add member as owner
+            if (network.getTotalMembers() == 0)
+                role = RoleEnum.ADMIN;
+
             // No, map user to network
             UserToNetworkDao.insert(conn, userId, networkId, role);
 
@@ -275,7 +279,6 @@ public class NetworkServices extends ParentService {
 
     /**
      * Checks whether a path is available for a new network
-     * @param path
      */
     public static void testNewPath(String path) throws SQLException {
 
@@ -297,14 +300,14 @@ public class NetworkServices extends ParentService {
 
         // Validating path
         if (StringUtils.isEmpty(path) || path.length() <= 3)
-            throw new UIException("Web address is too short");
+            throw new UIException("Your web address is too short");
 
         if (path.length() >= 30)
-            throw new UIException("Web address is too long");
+            throw new UIException("Your web address is too long");
 
         path = path.toLowerCase();
         if (!HtmlUtils.isPathFriendly(path))
-            throw new UIException("Web address has the wrong format - it only contain numbers, letters, dashes, and underscores");
+            throw new UIException("Your web address has the wrong format - it can only contain numbers, letters, dashes, and underscores");
 
         Integer foundNetworkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
         if (foundNetworkId != null)
@@ -321,14 +324,23 @@ public class NetworkServices extends ParentService {
         if (StringUtils.isEmpty(desc) || desc.length() <= 10)
             throw new UIException("Description is too short");
 
-        if (desc.length() >= 100)
+        if (desc.length() >= 250)
             throw new UIException("Description is too long");
 
-        // Validating and digesting each quality
         Integer qualityCount = 1;
         List<Tuple<String, List<String>>> digestedQualities = new ArrayList<Tuple<String, List<String>>>();
-        for (String rawQuality : rawQualities)
+        for (String rawQuality : rawQualities) {
+
+            // Validating and digesting each quality
             validateAndDigestQuality(digestedQualities, rawQuality, qualityCount);
+
+            // Incrementing the quality count for the error
+            qualityCount++;
+        }
+
+        // Testing that there is at least one validated quality
+        if (digestedQualities.isEmpty())
+            throw new UIException("You need to at least add one quality!");
 
 
         /**
@@ -407,11 +419,15 @@ public class NetworkServices extends ParentService {
         String questionText = elements.get(0).trim();
         elements.remove(0);
 
+        // Ignoring this question if the question is of zero length
+        if (questionText.isEmpty())
+            return;
+
         // Validating question
         if (questionText.length() <= 3)
             throw new UIException("Quality " + qualityCount + " is too short!");
 
-        if (questionText.length() >= 100)
+        if (questionText.length() >= 250)
             throw new UIException("Quality " + qualityCount + " is too long!");
 
         // Extracting question options
@@ -427,17 +443,18 @@ public class NetworkServices extends ParentService {
             if (rawOption.isEmpty())
                 continue;
 
-            if (rawOption.length() > 100)
+            if (rawOption.length() > 150)
                 throw new UIException("Option '" + rawOption + "' is too long!");
 
             // Adding option as a approved digested option
             digestedOptions.add(rawOption);
         }
 
-        if (digestedOptions.isEmpty())
-            throw new UIException("Quality " + qualityCount + " has no options, you must at least add an option");
+        if (digestedOptions.size() < 2)
+            throw new UIException("Quality " + qualityCount + " has few options, each quality must have at least two options");
 
         // Adding approved question with options
         digestedQualities.add( new Tuple(questionText, digestedOptions));
+
     }
 }

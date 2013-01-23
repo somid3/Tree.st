@@ -2,7 +2,7 @@ package com.questy.enums;
 
 public enum RoleEnum {
 
-    ADMIN (9, "Admin"),
+    ADMIN (9, "Admin / Owner"),
 
     EDITOR (6, "Editor"),
 
