@@ -9,8 +9,8 @@
     <%@ include file="../../includes/google_analytics.jsp"%>
 </head>
 
-<script type="text/javascript" src="../../js/jquery-1.7.1.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../../js/jquery-ui-1.8.18.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../../js/global.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/welcome.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./js/create.js?<%= Vars.rev %>"></script>

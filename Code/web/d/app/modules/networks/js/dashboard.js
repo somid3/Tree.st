@@ -3,8 +3,8 @@ NetworkDashboard.Section = {
     SMART_SEARCH: 2,
     SMART_GROUPS: 3,
     SMART_GROUP: 4,
-    SHARE: 5,
-    ANSWERS: 6,
+    SHARED_ITEMS: 5,
+    PROFILE: 6,
     ALL: 7,
     FINDER: 8
 };
@@ -31,7 +31,7 @@ function NetworkDashboard () {
         LeftMenu.fullOpacity();
 
         // Scroll to the top of the page
-        Animations.scrollToTop();
+//        Animations.scrollToTop();
 
         // Display the canvas loading display
         NetworkDashboard.displayLoading();
@@ -74,7 +74,7 @@ function NetworkDashboard () {
         data.vuid = viewUserId;
         data = $.extend(data, parameters);
 
-        this.go(event, NetworkDashboard.Section.ANSWERS, data, callback);
+        this.go(event, NetworkDashboard.Section.PROFILE, data, callback);
 
     };
 
@@ -98,11 +98,11 @@ function NetworkDashboard () {
 
             this.clickItem(event, '#network_shortcut_smart_groups', './modules/smart_groups/dashboard.jsp', parameters, callback);
 
-        else if (sendTo == NetworkDashboard.Section.SHARE)
+        else if (sendTo == NetworkDashboard.Section.SHARED_ITEMS)
 
             this.clickItem(event, '#network_shortcut_share', './modules/share/by_network.jsp', parameters, callback);
 
-        else if (sendTo == NetworkDashboard.Section.ANSWERS)
+        else if (sendTo == NetworkDashboard.Section.PROFILE)
 
             this.clickItem(event, '#network_shortcut_profile', './modules/profiles/dashboard.jsp', parameters, callback);
 

@@ -12,7 +12,7 @@
         backToBackCount = 1;
 
     Boolean isFatigued = false;
-    if (backToBackCount > 8 && !network.isGlobal())
+    if (backToBackCount > 8)
         isFatigued = true;
 
     String hFilterOptionsInputId = HtmlUtils.getRandomId();
@@ -169,7 +169,7 @@
                                         else
                                             selected = ""; %>
 
-                                        <option value="<%= ave.getId() %>"<%= selected %>><%= ave.getDescription(network) %></option>
+                                        <option value="<%= ave.getId() %>"<%= selected %>><%= ave.getDescription() %></option>
                                     <% } %>
                                 <% } %>
                         </select>
@@ -178,12 +178,10 @@
             </div>
         </div>
 
-        <% if (!network.isGlobal()) { %>
-            <div class="output shadow"></div>
-            <script type="text/javascript">
-                $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= networkId %>, qr: <%= answeringQuestionRef %>});
-            </script>
-        <% } %>
+        <div class="output shadow"></div>
+        <script type="text/javascript">
+            $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= networkId %>, qr: <%= answeringQuestionRef %>});
+        </script>
 
         <script type="text/javascript">
 

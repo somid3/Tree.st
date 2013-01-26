@@ -29,28 +29,6 @@ public class NetworkDao extends ParentDao {
         return out;
     }
 
-    public static List<Network> getAllByGlobal (Connection conn, Boolean global) throws SQLException {
-        conn = start(conn);
-
-        String sql =
-            "select * " +
-            "from `networks` " +
-            "where `global` = ?;";
-
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setBoolean(1, global);
-        ResultSet rs = ps.executeQuery();
-
-        List<Network> out = new ArrayList<Network>();
-
-        while (rs.next())
-            out.add(loadPrimitives(rs));
-
-        end(conn, ps, rs);
-        return out;
-    }
-
-
     public static void updateTotalMembers(Connection conn, Integer networkId, Integer totalMembers) throws SQLException {
         conn = start(conn);
 
@@ -122,8 +100,7 @@ public class NetworkDao extends ParentDao {
 
     public static Integer insert(
             Connection conn,
-            String name,
-            Boolean global) throws SQLException {
+            String name) throws SQLException {
 
         String checksum = StringUtils.random();
 
@@ -135,12 +112,11 @@ public class NetworkDao extends ParentDao {
             "`name`, " +
             "`global`, " +
             "`checksum` " +
-            ") values (NOW(), ?, ?, ?);";
+            ") values (NOW(), ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, name);
-        ps.setBoolean(2, global);
-        ps.setString(3, checksum);
+        ps.setString(2, checksum);
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -155,7 +131,6 @@ public class NetworkDao extends ParentDao {
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
         out.setTotalMembers(DatabaseUtils.getInt(rs, "total_members"));
         out.setName(DatabaseUtils.getString(rs, "name"));
-        out.setGlobal(DatabaseUtils.getBoolean(rs, "global"));
         out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
 
         return out;

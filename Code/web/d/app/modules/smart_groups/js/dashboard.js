@@ -1,5 +1,5 @@
 SmartGroupDashboard.Section = {
-    SHARE: 1,
+    SHARE_ITEMS: 1,
     MEMBERS: 2,
     SHARED_ITEM: 3
 };
@@ -38,23 +38,7 @@ function SmartGroupDashboard () {
         Transitions.load('#smart_group_canvas', url, parameters, callback);
     };
 
-    this.go = function (event, sendTo, parameters, callback) {
 
-        /* Loading the desired module */
-
-        if (sendTo == null || sendTo == SmartGroupDashboard.Section.SHARE)
-
-            this.clickItem(event, '#smart_group_shortcut_share', './modules/share/by_smart_group.jsp', parameters);
-
-        else if (sendTo == SmartGroupDashboard.Section.MEMBERS)
-
-            this.clickItem(event, '#smart_group_shortcut_members', './modules/smart_groups/members.jsp', parameters);
-
-        else if (sendTo == SmartGroupDashboard.Section.SHARED_ITEM)
-
-            this.clickItem(event, '#smart_group_shortcut_share', './modules/share/by_ref.jsp', parameters);
-
-    };
 
 
     this.hideSmartGroup = function (event, smartGroupRef) {
@@ -74,4 +58,22 @@ function SmartGroupDashboard () {
         });
     };
 
-}
+};
+
+SmartGroupDashboard.go = function (event, sendTo, parameters, callback) {
+
+    /* Loading the desired module */
+
+    if (sendTo == null || sendTo == SmartGroupDashboard.Section.SHARE_ITEMS)
+
+        this.clickItem(event, '#smart_group_shortcut_share', './modules/share/by_smart_group.jsp', parameters, callback);
+
+    else if (sendTo == SmartGroupDashboard.Section.MEMBERS)
+
+        this.clickItem(event, '#smart_group_shortcut_members', './modules/smart_groups/members.jsp', parameters, callback);
+
+    else if (sendTo == SmartGroupDashboard.Section.SHARED_ITEM)
+
+        this.clickItem(event, '#smart_group_shortcut_share', './modules/share/by_ref.jsp', parameters, callback);
+
+};

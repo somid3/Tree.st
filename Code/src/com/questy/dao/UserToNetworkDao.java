@@ -51,7 +51,8 @@ public class UserToNetworkDao extends ParentDao {
     public static List<UserToNetwork> getByUserIdAndLowestRole(
             Connection conn,
             Integer userId,
-            RoleEnum lowestRole) throws SQLException {
+            RoleEnum lowestRole,
+            SqlLimit limit) throws SQLException {
 
         conn = start(conn);
 
@@ -61,11 +62,14 @@ public class UserToNetworkDao extends ParentDao {
             "where `user_id` = ? " +
             "and `role` >= ? " +
             "and `removed_on` is null " +
-            "order by `network_id` desc;";
+            "order by `network_id` desc " +
+            "limit ?,?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
         ps.setInt(2, lowestRole.getId());
+        ps.setInt(3, limit.getStartFrom());
+        ps.setInt(4, limit.getDuration());
         ResultSet rs = ps.executeQuery();
 
         List<UserToNetwork> out = new ArrayList<UserToNetwork>();

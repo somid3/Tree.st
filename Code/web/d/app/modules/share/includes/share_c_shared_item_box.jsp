@@ -119,7 +119,7 @@
             </div>
 
             <div class="right">
-                <div class="box" onload="console.log('cca');">
+                <div class="box">
                     <textarea
                         onclick="$(this).TextAreaExpander(40, 500);"
                         onkeydown="SharedComment.addSharedComment(

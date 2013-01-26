@@ -24,10 +24,6 @@ public class SmartGroupServices extends ParentService  {
         // Retrieving network
         Network network = NetworkDao.getById(conn, networkId);
 
-        // Validating
-        if (network.isGlobal())
-            throw new UIException("Smart groups not enabled for global networks");
-
         // Retrieving max ref
         Integer maxRef = SmartGroupDao.getMaxRefByNetworkId(conn, networkId);
 

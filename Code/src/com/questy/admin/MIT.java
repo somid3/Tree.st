@@ -43,7 +43,7 @@ public class MIT {
         Map<String, Question> questions = new HashMap<String, Question>();
 
         // Create network
-        Integer networkId = NetworkDao.insert(null, "MIT", false);
+        Integer networkId = NetworkDao.insert(null, "MIT");
 
         // Add question with options and flow rule
         {

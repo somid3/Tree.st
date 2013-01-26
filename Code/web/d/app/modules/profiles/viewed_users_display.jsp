@@ -12,15 +12,25 @@
 
     // Retrieving user links
     List<UserLink> viewedUserLinks = UserLinkDao.getByNetworkIdAndFromUserIdAndNotDirection(null, networkId, viewUserId, UserLinkDirectionEnum.TARGET_TO_ME, limit);
+    Integer count = viewedUserLinks.size();
 
-    Integer ul_a_toUserId = null;
-    Integer ul_a_networkId = null;
-    for (UserLink viewedUserLink : viewedUserLinks) {
+    if (count > 0) {
 
-        ul_a_toUserId = viewedUserLink.getToUserId();
-        ul_a_networkId = viewedUserLink.getNetworkId(); %>
+        Integer ul_a_toUserId = null;
+        Integer ul_a_networkId = null;
+        for (UserLink viewedUserLink : viewedUserLinks) {
 
-        <div class="user_link">
-            <%@ include file="../user_links/includes/ul_a_card.jsp" %>
-        </div>
-<% } %>
+            ul_a_toUserId = viewedUserLink.getToUserId();
+            ul_a_networkId = viewedUserLink.getNetworkId(); %>
+
+            <div class="user_link">
+                <%@ include file="../user_links/includes/ul_a_card.jsp" %>
+            </div>
+
+        <% } %>
+
+    <% } else { %>
+
+        <script>Pagination.unbindScrollPagination();</script>
+
+    <% } %>

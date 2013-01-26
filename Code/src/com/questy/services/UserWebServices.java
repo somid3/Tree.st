@@ -8,14 +8,17 @@ import com.questy.domain.User;
 import com.questy.domain.UserSession;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.UserIntegerSettingEnum;
+import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailConfirmationServices;
 import com.questy.utils.StringUtils;
+import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserWebServices extends ParentService {
 
@@ -132,7 +135,7 @@ public class UserWebServices extends ParentService {
                 throw new UIException("Provide the correct password for this email address");
 
             // Add user to network and its dependants
-            NetworkServices.addUserToNonGlobalNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
+            NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
             // Has the user been confirmed by email?
             Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
@@ -151,7 +154,7 @@ public class UserWebServices extends ParentService {
                 UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
                 // Add send to application action in response
-                buf.append("<app/>");
+                buf.append("<app go='" + HashRouting.questions(network.getId()) + "' />");
 
             }
 
@@ -172,11 +175,8 @@ public class UserWebServices extends ParentService {
             // Retrieve new user
             user = UserDao.getById(null, userId);
 
-            // Add all global networks for user
-            NetworkServices.addGlobals(user.getId(), RoleEnum.MEMBER);
-
             // Adding user to network, and all its dependencies
-            NetworkServices.addUserToNonGlobalNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
+            NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
             // Sending first email confirmation
             EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
@@ -239,8 +239,20 @@ public class UserWebServices extends ParentService {
             // Install login cookies at client
             UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
 
+            // Retrieving user's first network and the very next question to be answered, if any
+            List<Network> networks = NetworkServices.getByUserId(user.getId(), RoleEnum.VISITOR, SqlLimit.FIRST);
+            Network firstNetwork = networks.get(0);
+            Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(user.getId(), firstNetwork.getId());
+
+            // Determining where to send the user post login
+            String goHash = null;
+            if (nextQuestionRef != null)
+                goHash = HashRouting.questions(firstNetwork.getId());
+            else
+                goHash = HashRouting.smartGroups(firstNetwork.getId());
+
             // Add send to application action in response
-            buf.append("<app/>");
+            buf.append("<app go='" + goHash + "' />");
 
         }
 

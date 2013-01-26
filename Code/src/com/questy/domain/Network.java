@@ -41,10 +41,6 @@ public class Network extends Parent {
         this.name = name;
     }
 
-    public boolean isGlobal() {
-        return global;
-    }
-
     public void setGlobal(boolean global) {
         this.global = global;
     }

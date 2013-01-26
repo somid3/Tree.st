@@ -5,6 +5,7 @@ import com.questy.domain.*;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
+import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.*;
@@ -1275,7 +1276,7 @@ public class AdminServices {
 
                 randomPointsPerLink = randomGenerator.nextInt(10);
 
-                NetworkServices.addUserToNonGlobalNetworkWithDependencies(networkId, userId, RoleEnum.MEMBER);
+                NetworkServices.addUserToNetworkWithDependencies(networkId, userId, RoleEnum.MEMBER);
                 UserToNetworkDao.updatePointsPerLink(null, networkId, userId, randomPointsPerLink);
 
                 AdminServices.log("Added user " + userId + " to network: " + networkId);
@@ -1403,7 +1404,7 @@ public class AdminServices {
             User user = getRandomUser(noOfUsers);
 
             // Select random non global network
-            Network network = getRandomNonGlobalNetworkByUserId(null, user.getId());
+            Network network = getRandomNetworkByUserId(null, user.getId());
             if (network == null) continue;
 
             // Select random smart group of network
@@ -1446,7 +1447,7 @@ public class AdminServices {
             System.out.println(userFrom.getId());
 
             // Getting random network
-            Network network = getRandomNonGlobalNetworkByUserId(null, userFrom.getId());
+            Network network = getRandomNetworkByUserId(null, userFrom.getId());
             if (network == null) continue;
 
             SmartGroup group = getRandomSmartGroupByNetworkId(null, network.getId());
@@ -1487,25 +1488,7 @@ public class AdminServices {
     private static Network getRandomNetworkByUserId(Connection conn, Integer userId) throws SQLException {
 
         // Retrieving all networks user is registered with
-        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER);
-
-        if (networks.isEmpty()) return null;
-
-        int randomInt = randomGenerator.nextInt(networks.size());
-        Network network = networks.get(randomInt);
-        AdminServices.log("Network id: " + network.getId() + ".");
-
-        return network;
-    };
-
-    private static Network getRandomNonGlobalNetworkByUserId(Connection conn, Integer userId) throws SQLException {
-
-        // Retrieving all networks user is registered with
-        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER);
-        List<Network> globals = NetworkDao.getAllByGlobal(conn, true);
-
-        // Removing all global networks
-        networks.removeAll(globals);
+        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER, SqlLimit.ALL);
 
         if (networks.isEmpty()) return null;
 

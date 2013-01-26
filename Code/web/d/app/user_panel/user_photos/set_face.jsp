@@ -12,9 +12,10 @@
         List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
 
         // If there are no temp images send user to app without any "go_" parameters
-        if (faces.isEmpty())
+        if (faces.isEmpty()) {
             wu.redirect("/d/app");
 
+        // Getting the latest temporary scaled face
         scaled = faces.get(0);
 
     } else {

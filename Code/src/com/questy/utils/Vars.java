@@ -28,8 +28,8 @@ public class Vars {
     /**
      * Current stage
      */
-    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
     //public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
@@ -70,9 +70,9 @@ public class Vars {
 
     public static String resourcesUrl = "/resources/";
 
-    public static String resourcesFilePath = "/webapps/tree.st/resources/";
+    public static String resourcesFilePath = null;
 
-    public static String resourcesTempFilePath = "/webapps/tree.st/tmp/";
+    public static String resourcesTempFilePath = null;
 
     public static Integer uploadMaxFileSize = 20 * 1024 * 1024;
 
@@ -195,6 +195,7 @@ public class Vars {
 
     private static void setToDevelopment () throws IOException {
         loadProperties("dev.properties");
+
         domain = loadPropertyAsString("domain");
         emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
 
@@ -220,8 +221,8 @@ public class Vars {
     }
 
     private static void setToStaging () throws IOException {
-
         loadProperties("stage.properties");
+
         domain = loadPropertyAsString("domain");
         emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
 
@@ -248,7 +249,12 @@ public class Vars {
 
     private static void setToProduction() throws IOException {
         loadProperties("prod.properties");
+
         sendEmails =  loadPropertyAsBoolean("sendEmails");
+
+        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
+        resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
+
 
         sqlUsername = loadPropertyAsString("sqlUsername");
         sqlPassword = loadPropertyAsString("sqlPassword");

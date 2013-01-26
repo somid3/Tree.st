@@ -64,6 +64,7 @@ Go.checkAndRemove = function (parameterName, defaultValue) {
 
 
 function LeftMenu () {}
+LeftMenu.CURRENT_NETWORK = null;
 
 LeftMenu.fullOpacity = function () {
 
@@ -104,21 +105,37 @@ LeftMenu.goToNetwork = function (event, networkId, callback) {
 
     Event.preventDefault(event);
 
-    networkId = Go.checkAndRemove("go_nid", networkId);
+    ND.networkId = networkId;
+    SS.networkId = networkId;
 
     var selector = "#" + "network" + networkId;
 
     // Scroll to the top of the page
     Animations.scrollToTop();
 
-    // Highlight the network
-    LeftMenu.highlightItem(selector);
+    var parameters = {nid : networkId};
 
-    // Moving objects to they ground to zero
-    LeftMenu.offsetItems();
+    // Checking if we are already inthe same network
+    if (LeftMenu.CURRENT_NETWORK == networkId) {
 
-    // Change the current network
-    Transitions.load("#currently", "./modules/networks/currently.jsp", {nid : networkId}, callback);
+        // Yes, same network, do not load currently again, just do the callback
+        if (callback) callback();
+
+    } else {
+
+        // Remembering the current network
+        LeftMenu.CURRENT_NETWORK = networkId;
+
+        // Change the current network
+        Transitions.load("#currently", "./modules/networks/currently.jsp", parameters, callback);
+
+        // Highlight the network
+        LeftMenu.highlightItem(selector);
+
+        // Moving objects to they ground to zero
+        LeftMenu.offsetItems();
+
+    }
 };
 
 LeftMenu.offsetItems = function () {

@@ -143,9 +143,14 @@
     float: right;
     margin-right: 5px;
     padding-top: 3px;
-    position: relative;
-    z-index: 1;
 }
+
+
+
+
+
+
+
 
 #currently .shortcut .contents .icon img {
     width: 16px;

@@ -49,10 +49,6 @@ public class SharedItemServices extends ParentService  {
         // Retrieving points per shared item
         Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
 
-        // Validating
-        if (network.isGlobal())
-            throw new UIException("Shared items not enabled for global networks");
-
         // Retrieving max ref
         Integer maxRef = SharedItemDao.getMaxRefByNetworkIdAndSmartGroupRef(conn, networkId, smartGroupRef);
 

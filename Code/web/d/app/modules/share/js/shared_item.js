@@ -135,7 +135,6 @@ function SharedItem () {
         Pagination.bindScrollPagination( function() { tmp_this.scrollSharedItems() } );
 
         this.scrollSharedItems();
-//        Transitions.load('#share_canvas', "./modules/share/shared_items_display.jsp", parameters);
 
     };
 
@@ -162,7 +161,7 @@ function SharedItem () {
             }
 
             // Increase 'from' count
-            var responseCount = $div.find(".shared_item").length;
+            var responseCount = $div.find(".shared_item_box").length;
             tmp_this.from = tmp_this.from + responseCount;
 
             // Adding shared items to share canvas

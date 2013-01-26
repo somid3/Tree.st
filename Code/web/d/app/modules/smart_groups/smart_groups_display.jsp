@@ -50,6 +50,7 @@
     String app_a_message = "No such Smart Groups could be found!";
     boolean app_a_withCanvasContainer = true; %>
     <%@ include file="../../includes/app_a_mini_message.jsp" %>
+    <script>Pagination.unbindScrollPagination();</script>
 
 <% } %>
 

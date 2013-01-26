@@ -82,8 +82,6 @@ function ProfileDashboard () {
         parameters.vuid = this.viewUserId;
         parameters.from = 0;
 
-        console.log(parameters);
-
         var tmp_this = this;
         Pagination.bindScrollPagination( function() { tmp_this.scrollViewedUsers() } );
 

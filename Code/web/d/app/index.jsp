@@ -6,9 +6,6 @@
     // Retrieving logged user
     User user = UserDao.getById(null, userId);
 
-    // Go parameters
-    UrlQuery goQuery = wu.parameterNamesStartWith("go_");
-
     // Retrieving user's tooltip situation
     TooltipEnum tooltip = TooltipServices.getNextTooltipByUserId(userId);
 
@@ -31,7 +28,10 @@
     <title><%= Vars.name %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
 </head>
-<script type="text/javascript" src="../js/jquery-1.8.3.js?<%= Vars.rev %>"></script>
+
+<script type="text/javascript" src="js/routie-0.3.0.min.js?<%= Vars.rev %>"></script>
+
+<script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
 
@@ -47,13 +47,9 @@
 <script type="text/javascript" src="./user_panel/user_general/js/user_general_dashboard.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./user_panel/user_networks/js/user_networks_dashboard.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./user_panel/user_photos/js/user_photos.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./user_panel/user_photos/js/jquery-jcrop-0.9.10.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./user_panel/user_photos/js/jquery-jcrop-0.9.11.min.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./user_panel/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./user_panel/user_photos/css/jquery-jcrop-0.9.10.min.css?<%= Vars.rev %>">
-
-
-
-
 
 <script type="text/javascript" src="./modules/user_links/js/user_links.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/user_links/css/basic.css?<%= Vars.rev %>">
@@ -198,7 +194,7 @@
 
         <div id="dashboard"></div>
 
-        <a href="#" onclick="UserPanel.view(event)">
+        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
             <div class="user">
                 <div class="face">
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
@@ -212,6 +208,11 @@
     </div>
 
     <div id="left">
+        <div id="currently">
+        </div>
+
+        <div id="networks">
+        </div>
     </div>
 
     <div id="center">
@@ -230,15 +231,116 @@
 
 <script type="text/javascript">
 
-    // Storing "Go" parameters for automatic redirection
-    GO = {
-        <% for (Tuple param : goQuery.getParams() ) { %>
-            <%= param.getX()%> : <%= param.getY() %> ,
-        <% } %>
+    /***************
+    /* Routing rules
+    ***************/
+
+    ND = new NetworkDashboard();
+    SS = new SmartSearch();
+
+    HashRouting.routes = function () {
+
+        routie('', function() {
+            // TODO: fix this
+            // TODO: fix this
+            // TODO: fix this
+            LeftMenu.goToNetwork(null);
+        });
+
+        routie('/comm/:nid', function(nid) {
+            LeftMenu.goToNetwork(null, nid);
+        });
+
+        routie('/comm/:nid/all', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.ALL);
+            });
+        });
+
+        routie('/comm/:nid/sitems', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.SHARED_ITEMS);
+            });
+        });
+
+        routie('/comm/:nid/sgroups', function(nid) {
+
+            console.log("test");
+
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUPS);
+            });
+        });
+
+        routie('/comm/:nid/search', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_SEARCH);
+            });
+        });
+
+
+        routie('/comm/:nid/collaborate', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.QUESTIONS);
+            });
+        });
+
+        routie('/comm/:nid/profile', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: <%= userId %>});
+            });
+        });
+
+
+
+
+
+
+
+        // TODO: test this..
+        routie('/comm/:nid/sgroup/:sgr/sitem/:sir', function(nid, sgr, sir) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
+            });
+        });
+
+
+
+
+
+        routie('/settings', function() {
+            UserPanel.view(null);
+        });
+
+        routie('/settings/photos', function() {
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.PHOTOS);
+            });
+        });
+
+        routie('/settings/photos/upload', function() {
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.PHOTOS, null, function() {
+                    UserPhotos.go(null, UserPhotos.Section.UPLOAD);
+                });
+            });
+        });
+
+        routie('/settings/photos/set', function() {
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.PHOTOS, null, function() {
+                    UserPhotos.go(null, UserPhotos.Section.SET_FACE);
+                });
+            });
+        });
+
     };
 
-    // Load the left side menu
-    Transitions.loadFadeIn("#left", "./modules/networks/left.jsp");
+
+    // Loads all networks and initializes the user in the correct network
+    Transitions.load("#networks", "./modules/networks/networks.jsp", function() {
+        HashRouting.routes();
+    });
 </script>
 
 <%@ include file="../includes/footer.jsp"%>

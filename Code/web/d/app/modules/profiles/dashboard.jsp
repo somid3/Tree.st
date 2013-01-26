@@ -16,9 +16,6 @@
     // Retrieving user
     User viewed = UserDao.getById(null, viewUserId);
 
-    // Retrieving network
-    Network network = NetworkDao.getById(null, networkId);
-
     // Retrieving user to network
     UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, viewUserId, networkId);
 %>
@@ -52,45 +49,39 @@
         </div>
 
 
-        <% if (!requireUserLink) { %>
-        <div class="shortcuts">
+        <% if (!requireUserLink) {
 
-            <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">
-                <div class="shortcut" id="profile_shortcut_answers">
-                    <div class="text sm_text highlight2">Profile</div>
-                </div>
-            </a>
+            Integer countViewedUsers = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, networkId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
+            Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, networkId, viewed.getId()); %>
+            <div class="shortcuts">
 
-            <% if (!network.isGlobal()) {
-
-                Integer countViewedUsers = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, networkId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
-                Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, networkId, viewed.getId());
-
-
-            %>
-
-                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
-                    <div class="shortcut" id="profile_shortcut_user_links">
-                        <div class="text sm_text highlight2">Viewed</div>
-                        <div class="count vsm_text white"><%= countViewedUsers %></div>
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">
+                    <div class="shortcut" id="profile_shortcut_answers">
+                        <div class="text sm_text highlight2">Profile</div>
                     </div>
                 </a>
 
-                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SMART_GROUPS);">
-                    <div class="shortcut" id="profile_shortcut_smart_groups">
-                        <div class="text sm_text highlight6">Smart Groups</div>
-                    </div>
-                </a>
+                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
+                        <div class="shortcut" id="profile_shortcut_user_links">
+                            <div class="text sm_text highlight2">Viewed</div>
+                            <div class="count vsm_text white"><%= countViewedUsers %></div>
+                        </div>
+                    </a>
 
-                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
-                    <div class="shortcut" id="profile_shortcut_shared">
-                        <div class="text sm_text highlight2">Shared</div>
-                        <div class="count vsm_text white"><%= countSharedItems %></div>
-                    </div>
-                </a>
+                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SMART_GROUPS);">
+                        <div class="shortcut" id="profile_shortcut_smart_groups">
+                            <div class="text sm_text highlight6">Smart Groups</div>
+                        </div>
+                    </a>
 
-            <% } %>
-        </div>
+                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
+                        <div class="shortcut" id="profile_shortcut_shared">
+                            <div class="text sm_text highlight2">Shared</div>
+                            <div class="count vsm_text white"><%= countSharedItems %></div>
+                        </div>
+                    </a>
+
+            </div>
         <% } %>
     </div>
 </div>

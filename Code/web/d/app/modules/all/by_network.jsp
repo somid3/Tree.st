@@ -6,9 +6,11 @@
 
     // Retrieving members
     List<UserToNetwork> results = results = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, networkId, RoleEnum.MEMBER, sortBy, new SqlLimit(from, 50));
+    Integer count = results.size();
 %>
 
-<%
+<% if (count > 0) {
+
     Integer ul_a_toUserId = null;
     Integer ul_a_networkId = null;
     for (UserToNetwork result : results) {
@@ -22,5 +24,12 @@
                 <%@ include file="../user_links/includes/ul_a_card.jsp"%>
             </div>
         </div>
+    <% } %>
+
+<% } else { %>
+
+    <script>Pagination.unbindScrollPagination();</script>
 
 <% } %>
+
+

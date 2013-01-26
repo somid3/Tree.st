@@ -20,7 +20,7 @@ public class Foods {
 
         // Creating network
         Date date = new Date();
-        Integer networkId = NetworkDao.insert(null, "Foods", false);
+        Integer networkId = NetworkDao.insert(null, "Foods");
         String pathName = "foods";
 
         // Adding user to network

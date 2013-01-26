@@ -10,7 +10,6 @@
     String hFavoritesId = HtmlUtils.getRandomId();
     String hMatchId = HtmlUtils.getRandomId();
     String hFlaggedId = HtmlUtils.getRandomId();
-    String hShuffleId = HtmlUtils.getRandomId();
 
     // Mini tool tip variables
     String app_d_title = null;

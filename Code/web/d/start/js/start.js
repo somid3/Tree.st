@@ -47,7 +47,9 @@ Start.start = function (event, networkdId, networkChecksum) {
             Animations.outTop("#start", function () {
 
                 // Send user to app
-                URL.redirect("/d/app?go_nid=" + parameters.nid);
+                var goHash = $response.find("app").attr("go");
+                var sendTo = "/d/app/" + goHash;
+                URL.redirect(sendTo);
 
             });
 

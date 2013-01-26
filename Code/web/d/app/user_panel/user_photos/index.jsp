@@ -12,6 +12,3 @@
 
 </div>
 
-<script type="text/javascript">
-    UserPhotos.go(null, UserPhotos.Section.UPLOAD);
-</script>

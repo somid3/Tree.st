@@ -10,7 +10,6 @@
 %>
 <div id="network_dashboard">
 
-    <% if (!network.isGlobal()) { %>
     <div id="search_space">
 
         <div id="search_toolbar">
@@ -27,31 +26,22 @@
         </div>
 
     </div>
-    <% } %>
 
-    <% if (!network.isGlobal()) { %>
-
-        <div id="points">
-            <span id="available_points" class="vl_header white"><%= utn.getCurrentPoints() %></span>
-            <div class="sm_text white">Points</div>
-        </div>
-
-    <% } %>
+    <div id="points">
+        <span id="available_points" class="vl_header white"><%= utn.getCurrentPoints() %></span>
+        <div class="sm_text white">Points</div>
+    </div>
 
 </div>
 
 <script type="text/javascript">
 
-    <% if (!network.isGlobal()) { %>
+    // Beginning basic search
+    ND.search = Finder;
 
-        // Beginning basic search
-        ND.search = Finder;
+    // Binding find field
+    Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitSearch );
 
-        // Binding find field
-        Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitSearch );
-
-        Finder.setupFinder();
-
-    <% } %>
+    Finder.setupFinder();
 
 </script>

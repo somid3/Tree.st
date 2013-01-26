@@ -62,7 +62,7 @@ public class CronServices {
     public static void notifyNewNonPrivateSmartGroupMembers (EmailNotificationRateEnum callingRate)  throws Exception {
 
         // Get all private networks
-        List<Network> networks = NetworkDao.getAllByGlobal(null, false);
+        List<Network> networks = NetworkDao.getAll(null);
 
         // Loop through private networks
         for (Network network : networks) {

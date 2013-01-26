@@ -68,8 +68,10 @@ Login.login = function (event) {
             // Move the login form out
             Animations.outTop("#login", function () {
 
-                /* Cookies should be setup by now, send user to application */
-                URL.redirect("/d/app");
+                // Send user to app
+                var goHash = $response.find("app").attr("go");
+                var sendTo = "/d/app/" + goHash;
+                URL.redirect(sendTo);
 
             });
 

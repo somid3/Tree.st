@@ -33,10 +33,6 @@ public class UserLinkServices extends ParentService  {
         Network network = NetworkDao.getById(conn, networkId);
 
         // Validating
-        if (network.isGlobal())
-            throw new UIException("User links not enabled for global networks");
-
-        // Validating
         if (fromUserId.equals(toUserId))
             throw new UIException("Go to 'My profile'");
 

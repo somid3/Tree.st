@@ -59,12 +59,6 @@ function SmartGroupTools () {
         var tmp_this = this;
         $div.load("./modules/smart_groups/smart_groups_display.jsp", parameters, function (response) {
 
-            // Have we reached the end? If so, lock down future requests
-            if ($.trim(response).length == 0) {
-                Pagination.unbindScrollPagination();
-                return false;
-            }
-
             // Increase 'from' count
             var responseCount = $div.find(".smart_group_box").length;
             tmp_this.from = tmp_this.from + responseCount;

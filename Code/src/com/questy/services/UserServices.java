@@ -66,7 +66,7 @@ public class UserServices extends ParentService  {
         // Currently non-transactional
         Connection conn = null;
 
-        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER);
+        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER, SqlLimit.ALL);
 
         List<Answer> answers = null;
         Question question = null;

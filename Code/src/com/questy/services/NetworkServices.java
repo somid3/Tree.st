@@ -6,6 +6,7 @@ import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
+import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.utils.StringUtils;
@@ -17,15 +18,7 @@ import java.util.*;
 
 public class NetworkServices extends ParentService {
 
-    public static void addGlobals(Integer userId, RoleEnum role) throws SQLException {
-
-        List<Network> globals = NetworkDao.getAllByGlobal(null, true);
-        for (Network global : globals)
-            NetworkServices.addUserToSingleNetwork(global.getId(), userId, role);
-
-    }
-
-    public static void addUserToNonGlobalNetworkWithDependencies(Integer networkId, Integer userId, RoleEnum role) throws SQLException {
+    public static void addUserToNetworkWithDependencies(Integer networkId, Integer userId, RoleEnum role) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
@@ -146,13 +139,13 @@ public class NetworkServices extends ParentService {
         return out;
     }
 
-    public static List<Network> getByUserId(Integer userId, RoleEnum lowestRole) throws SQLException {
+    public static List<Network> getByUserId(Integer userId, RoleEnum lowestRole, SqlLimit sqlLimit) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
 
         // Retrieving user to network mappings
-        List<UserToNetwork> utns = UserToNetworkDao.getByUserIdAndLowestRole(null, userId, lowestRole);
+        List<UserToNetwork> utns = UserToNetworkDao.getByUserIdAndLowestRole(null, userId, lowestRole, sqlLimit);
 
         // Retrieving all networks
         List<Network> networks = new ArrayList<Network>();
@@ -186,12 +179,7 @@ public class NetworkServices extends ParentService {
         out.add(network);
 
         // Adding dependant networks
-        if (!network.isGlobal())
-            addAllDependants(networkId, out);
-
-        // Adding all global networks if requested network was a private one
-        if (!network.isGlobal())
-            out.addAll( NetworkDao.getAllByGlobal(conn, true) );
+        addAllDependants(networkId, out);
 
         return out;
     }
@@ -215,7 +203,7 @@ public class NetworkServices extends ParentService {
         List<Network> dependants = getNetworkWithAllDependants(networkId);
 
         // Retrieving networks mapped to user
-        List<Network> userNetworks = getByUserId(userId, lowestRole);
+        List<Network> userNetworks = getByUserId(userId, lowestRole, SqlLimit.ALL);
 
         // Finding networks in dependant tree that user is mapped to
         List<Network> out = new ArrayList<Network>();
@@ -348,7 +336,7 @@ public class NetworkServices extends ParentService {
          */
 
         // Creating network
-        Integer newNetworkId = NetworkDao.insert(null, name, false);
+        Integer newNetworkId = NetworkDao.insert(null, name);
 
         // Adding network alpha settings
         NetworkAlphaSettingEnum.URL_PATH.setValueByNetworkId(newNetworkId, path);

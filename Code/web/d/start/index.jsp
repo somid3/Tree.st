@@ -35,8 +35,8 @@
     <title><%= Vars.name %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
 </head>
-<script type="text/javascript" src="../js/jquery-1.7.1.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.8.18.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./js/start.js?<%= Vars.rev %>"></script>
 
@@ -146,7 +146,7 @@
 
 
                     <div class="element">
-                        <a href="#" onclick="Start.start(event, <%= networkId%>, '<%= networkChecksum %>');"><div id="button" class="lg_button submit_button">Start</div></a>
+                        <a href="#" onclick="Start.start(event, <%= networkId %>, '<%= networkChecksum %>');"><div id="button" class="lg_button submit_button">Start</div></a>
                     </div>
 
                     <a href="/d/forgot"><div id="forgot-begin" class="sm_header highlight2">Forgot your password?</div></a>

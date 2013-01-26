@@ -20,6 +20,9 @@ Transitions.postFadeIn = function (selector, postUrl, parameters, callback) {
  */
 Transitions.load = function (selector, loadUrl, parameters, onCompleteCallback) {
 
+    if (onCompleteCallback)
+        onCompleteCallback();
+
     $(selector).load(loadUrl, parameters, onCompleteCallback);
 
 };
@@ -168,7 +171,7 @@ URL.redirect = function (url) {
         } , 300
      )
 
-}
+};
 
 
 /**
@@ -637,9 +640,15 @@ Pagination.bindScrollPagination = function (callbackOnScroll) {
 
 };
 
+/**
+ * Removes the scrolling pagination
+ */
 Pagination.unbindScrollPagination = function () {
+
     $(window).unbind("scroll");
+
     clearTimeout($.data(this, 'scrollPagination'));
+
 };
 
 
@@ -692,5 +701,36 @@ Event.preventDefault = function (event) {
         } catch (e) {}
 
     }
+
+};
+
+function HashRouting () {};
+
+/**
+* Gets the current hash value from the window without the query parameters
+*/
+HashRouting.getHashValue = function() {
+
+    // Retrieving anything after the hash from the window
+    var arr = window.location.hash.split("#");
+    var hashValue = arr[1];
+
+    // Default if no hash value exiss
+    if (typeof hashValue == "undefined") {
+        return false;
+    }
+
+    // Remove the query parameters
+    var hashLen = hashValue.indexOf("?");
+    if(hashLen > 0)
+        hashValue = hashValue.substring(0,hashLen);
+
+    return hashValue;
+};
+
+HashRouting.setHash = function (event, hash) {
+
+    Event.preventDefault(event);
+    window.location.hash = hash;
 
 };

@@ -20,12 +20,9 @@
         SI.displaySharedItems();
     </script>
 
-<% } else {
+<% } else { %>
 
-    String app_a_message = "Be the first to share a message!";
-    boolean app_a_withCanvasContainer = true;  %>
-
-    <%@ include file="../../includes/app_a_mini_message.jsp" %>
+    <%@ include file="./includes/share_e_first.jsp" %>
 
 <% } %>
 </div>
