@@ -238,12 +238,11 @@
     ND = new NetworkDashboard();
     SS = new SmartSearch();
 
+
+
     HashRouting.routes = function () {
 
         routie('', function() {
-            // TODO: fix this
-            // TODO: fix this
-            // TODO: fix this
             LeftMenu.goToNetwork(null);
         });
 
@@ -264,11 +263,14 @@
         });
 
         routie('/comm/:nid/sgroups', function(nid) {
-
-            console.log("test");
-
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.SMART_GROUPS);
+            });
+        });
+
+        routie('/comm/:nid/sgroup/:sgr', function(nid, sgr) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr});
             });
         });
 
@@ -291,16 +293,32 @@
             });
         });
 
-
-
-
-
-
-
-        // TODO: test this..
-        routie('/comm/:nid/sgroup/:sgr/sitem/:sir', function(nid, sgr, sir) {
+        routie('/comm/:nid/user/:uid', function(nid, uid) {
             LeftMenu.goToNetwork(null, nid, function() {
-                SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
+                ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: uid});
+            });
+        });
+
+
+
+
+        // TODO: replace viewUser on ND
+        // TODO: place finder route
+        // TODO: place all qualities route
+
+
+        // TODO: FIX this..
+        // TODO: FIX this..
+        // TODO: FIX this..
+        // TODO: FIX this..
+        routie('/comm/:nid/sgroup/:sgr/sitem/:sir', function(nid, sgr, sir) {
+
+            console.log(nid + " " + sgr + " " + sir);
+
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
+                });
             });
         });
 

@@ -38,9 +38,6 @@
     // Limit the number of users to the face limit per group
     sgroup_d_resultUsers = ArrayUtils.subList(sgroup_d_resultUsers, 0, sgroup_d_facesLimitPerGroup);
 
-    // Retrieving the smart group result that defines my match to the smart group
-    sgroup_d_myResult = SmartGroupResultDao.getByNetworkIdAndRefAndUserId(null, sgroup_d_smartGroup.getNetworkId(), sgroup_d_smartGroup.getSmartGroupRef(), userId);
-
     // Modifying smart group name
     sgroup_d_name = StringUtils.concat(sgroup_d_smartGroup.getName(), 30, "&hellip;");
 
@@ -51,17 +48,16 @@
 %>
     <div class="smart_group_line">
 
-        <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= networkId %>, sgr: <%= sgroup_d_smartGroup.getSmartGroupRef() %>})">
+        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(sgroup_d_smartGroup.getNetworkId(), sgroup_d_smartGroup.getSmartGroupRef()) %>');">
+
             <div class="name smd_header highlight6"><%= sgroup_d_name %></div>
                 <div class="minifaces">
 
-                    <% for (User k_resultUser : sgroup_d_resultUsers) { %>
+                    <% for (User sgroup_d_resultUser : sgroup_d_resultUsers) { %>
 
-                        <div class="miniface"><img alt="" src="<%= k_resultUser.getFaceUrl() %>"/></div>
+                        <div class="miniface"><img alt="" src="<%= sgroup_d_resultUser.getFaceUrl() %>"/></div>
 
-                    <% } %>
-
-                    <%
+                    <% }
 
                     // Counting how many more results exist in smart group other than displayed minifaces
                     sgroup_d_more = sgroup_d_smartGroup.getResultsCount() - sgroup_d_facesLimitPerGroup;

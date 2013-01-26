@@ -40,7 +40,7 @@
     ND.search = Finder;
 
     // Binding find field
-    Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitSearch );
+    Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitFind );
 
     Finder.setupFinder();
 

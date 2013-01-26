@@ -256,7 +256,6 @@ public class UserWebServices extends ParentService {
 
         }
 
-
         return buf.toString();
     }
 

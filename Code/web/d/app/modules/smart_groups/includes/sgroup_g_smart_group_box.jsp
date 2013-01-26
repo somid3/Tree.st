@@ -55,7 +55,7 @@
         <%@ include file="sgroup_e_apply_state.jsp"%>
     </div>
 
-    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= networkId %>, sgr: <%= sgroup_g_smartGroup.getSmartGroupRef() %>})">
+    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef()) %>');">
 
         <div class="details">
             <div class="name smd_header highlight6"><%= StringUtils.concat(sgroup_g_smartGroup.getName(), 50, "&#8230;") %></div>
@@ -75,6 +75,7 @@
                 <div class="more sm_text dim"><%= sgroup_g_more %> more</div>
             <% } %>
         </div>
+
     </a>
 </div>
 

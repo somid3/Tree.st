@@ -52,7 +52,7 @@
 #search_toolbar #all {
     position: absolute;
     left: 4px;
-    top: 4px;
+    top: 3px;
 }
 
 #search_toolbar .selected {

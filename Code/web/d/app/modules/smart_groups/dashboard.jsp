@@ -7,16 +7,11 @@
     // Retrieving smart group
     SmartGroup group = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
 %>
-<script type="text/javascript">
-    SGD = new SmartGroupDashboard();
-    SGD.networkId = <%= networkId %>;
-    SGD.smartGroupRef = <%= smartGroupRef %>;
-</script>
 <div id="smart_group_dashboard">
     <div class="details">
         <div class="message">
-            <div class="title md_header highlight6"><%= group.getName() %></div>
-            <div class="comment sm_text dim"><%= StringUtils.concat(group.getDescription(), 60, "&hellip;") %></div>
+            <div class="title lg_header highlight6"><%= group.getName() %></div>
+            <div class="comment sm_text dim2"><%= StringUtils.concat(group.getDescription(), 60, "&hellip;") %></div>
         </div>
         <div class="settings">
 
@@ -34,13 +29,13 @@
         <div class="shortcuts">
 
             <% if (!group.getVisibility().equals(SmartGroupVisibilityEnum.PRIVATE)) { %>
-                <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.SHARE_ITEMS);"><div class="shortcut sm_text light_button" id="smart_group_shortcut_share">Share</div></a>
+                <a href="#" onclick="SmartGroupDashboard.go(event, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});"><div class="shortcut sm_text light_button" id="smart_group_shortcut_share">Share</div></a>
             <% } %>
 
-            <a href="#" onclick="SGD.go(event, SmartGroupDashboard.Section.MEMBERS);"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
+            <a href="#" onclick="SmartGroupDashboard.go(event, SmartGroupDashboard.Section.MEMBERS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
 
             <% if (group.getUserId().equals(userId)) { %>
-                <a href="#" onclick="SGD.hideSmartGroup(event, <%= group.getSmartGroupRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
+                <a href="#" onclick="SmartGroupDashboard.hideSmartGroup(event, <%= group.getNetworkId() %>, <%= group.getSmartGroupRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
             <% } %>
 
         </div>
@@ -53,11 +48,11 @@
 
     <% if (!group.getVisibility().equals(SmartGroupVisibilityEnum.PRIVATE)) { %>
 
-        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARE_ITEMS);
+        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});
 
     <% } else { %>
 
-        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.MEMBERS);
+        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.MEMBERS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});
 
     <% } %>
 

@@ -71,4 +71,9 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/profile";
     };
 
+    public static String user(Integer networkId, Integer userId) {
+        return HASH + "/comm/" + networkId + "/user/" + userId;
+    };
+
 }
+

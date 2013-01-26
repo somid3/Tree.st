@@ -36,7 +36,8 @@
     <div class="right">
         <div>
             <div class="top">
-                <a href="#" onclick="ND.viewProfile(event, <%= share_d_author.getId() %>);">
+
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.user(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getUserId()) %>');">
                     <span class="name sm_header highlight2"><%= share_d_author.getName() %></span>
                 </a>
 
@@ -45,7 +46,7 @@
                     share_d_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef()); %>
                     <span class="in sm_text dim2">via</span>
 
-                    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= share_d_sharedItem.getNetworkId() %>, sgr: <%= share_d_sharedItem.getSmartGroupRef() %>})">
+                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef()) %>');">
                         <span class="via sm_header highlight6"><%= StringUtils.concat(share_d_smartGroup.getName(), 30, "&hellip;") %></span>
                     </a>
 
@@ -54,19 +55,23 @@
             </div>
         </div>
         <div class="content">
-            <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_d_text ) )%></div>
 
-            <div>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.sharedItem(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef(), share_d_sharedItem.getSharedItemRef()) %>');">
 
-                <% if (share_d_settingSharedItemDisplayCreatedOn != 0) { %>
-                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_d_sharedItem.getCreatedOn()) %></span>
-                <% } %>
+                <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_d_text ) )%></div>
+                <div>
 
-                <% if (share_d_sharedItem.getTotalComments() > 0) { %>
-                     <span class="ago sm_text dim2"><%= share_d_sharedItem.getTotalComments() %> comments</span>
-                <% } %>
+                    <% if (share_d_settingSharedItemDisplayCreatedOn != 0) { %>
+                         <span class="ago sm_text dim2"><%= PrettyDate.toString(share_d_sharedItem.getCreatedOn()) %></span>
+                    <% } %>
 
-            </div>
+                    <% if (share_d_sharedItem.getTotalComments() > 0) { %>
+                         <span class="ago sm_text dim2"><%= share_d_sharedItem.getTotalComments() %> comments</span>
+                    <% } %>
+
+                </div>
+
+            </a>
 
         </div>
 

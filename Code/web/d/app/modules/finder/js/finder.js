@@ -21,9 +21,7 @@ Finder.viewEverything = function (event) {
 
 };
 
-Finder.submitSearch = function (event) {
-
-    console.log("cacafece");
+Finder.submitFind = function (event) {
 
     Event.preventDefault(event);
 
