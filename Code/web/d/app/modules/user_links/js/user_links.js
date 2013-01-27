@@ -115,7 +115,7 @@ UserLink.loadCardToTarget = function (networkId, toUserId, hTargetId) {
 
 };
 
-UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hConnectButtonId, callback) {
+UserLink.connect = function (event, networkId, toUserId, hCardId, hConnectButtonId, callback) {
 
     Event.preventDefault(event);
                             
@@ -126,7 +126,9 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hCon
 
     // Display loading
     var $loadingDiv = $("#" + hCardId).find(".loading");
+    var $errorDiv = $("#" + hCardId).find(".error");
     $loadingDiv.show();
+    $errorDiv.hide();
 
     $.post('./modules/user_links/actions/create_link.jsp', parameters, function(response) {
 
@@ -139,8 +141,7 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hCon
         if($responseError.length > 0) {
 
             // Display error
-            var $error = $("#" + hErrorId);
-            $error.fadeIn(1000).html($responseError.text()).fadeOut(1000);
+            $errorDiv.fadeIn(1000).html($responseError.text());
 
             // Hiding loading
             $loadingDiv.fadeOut();
@@ -148,7 +149,7 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hErrorId, hCon
         } else {
 
             // Retrieve used points
-            var usedPoints = $response.find("used_points").text();
+            var usedPoints = $response.find("points").text();
 
             // Update points
             Points.increment(usedPoints);

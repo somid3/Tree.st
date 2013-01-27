@@ -224,10 +224,11 @@
 }
 
 .access .error {
-    margin: 5px;
+    margin: 5px auto;
     padding: 10px;
     background-color: <%= HtmlDesign.errorBackgroundColor %>;
     color: white;
+    width: 300px;
 }
 
 .access .message {

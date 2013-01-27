@@ -14,7 +14,7 @@
         buf.append("<to_user>").append(toUserId).append("</to_user>");
         buf.append("<direction_text>").append(directionAndPoints.getX().getName()).append("</direction_text>");
         buf.append("<direction_value>").append(directionAndPoints.getX().getId()).append("</direction_value>");
-        buf.append("<used_points>").append(directionAndPoints.getY().toString()).append("</used_points>");
+        buf.append("<points>").append(directionAndPoints.getY().toString()).append("</points>");
         buf.append("</confirm>");
 
     } catch (UIException ue) {

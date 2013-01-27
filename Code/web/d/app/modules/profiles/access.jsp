@@ -10,13 +10,12 @@
     Integer pointsForLink = UserLinkServices.getPointsPerLink(networkId, viewUserId);
 
     String hCardId = HtmlUtils.getRandomId();
-    String hErrorId = HtmlUtils.getRandomId();
     String hConnectButtonId = HtmlUtils.getRandomId();
 %>
 
 <div class="access canvas_container" id="<%= hCardId %>">
 
-    <div class="error" id="<%= hErrorId %>"></div>
+    <div class="error"></div>
 
     <div class="message md_text dim">
         Do you wish to view <%= viewed.getFirstName() %>'s profile ...
@@ -28,10 +27,9 @@
             <%= networkId %>,
             <%= viewUserId %>,
             '<%= hCardId%>',
-            '<%= hErrorId %>',
             '<%= hConnectButtonId %>',
             function (){
-                HashRouting.setHash(event, '<%= HashRouting.member(networkId, viewUserId, userId)%>');
+                ND.go(null, NetworkDashboard.Section.MEMBER, {vuid: <%= viewUserId %>});
             });">
 
         <div class="connect vl_button active_button" id="<%= hConnectButtonId %>">Yes</div>
