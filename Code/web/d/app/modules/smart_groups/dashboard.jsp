@@ -10,7 +10,7 @@
 <div id="smart_group_dashboard">
     <div class="details">
         <div class="message">
-            <div class="title lg_header highlight6"><%= group.getName() %></div>
+            <div class="title smd_header highlight6"><%= group.getName() %></div>
             <div class="comment sm_text dim2"><%= StringUtils.concat(group.getDescription(), 60, "&hellip;") %></div>
         </div>
         <div class="settings">
@@ -28,11 +28,9 @@
     <div class="menu">
         <div class="shortcuts">
 
-            <% if (!group.getVisibility().equals(SmartGroupVisibilityEnum.PRIVATE)) { %>
-                <a href="#" onclick="SmartGroupDashboard.go(event, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});"><div class="shortcut sm_text light_button" id="smart_group_shortcut_share">Share</div></a>
-            <% } %>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(group.getNetworkId(), group.getSmartGroupRef()) %>');"><div class="shortcut sm_text light_button" id="smart_group_shortcut_share">Share</div></a>
 
-            <a href="#" onclick="SmartGroupDashboard.go(event, SmartGroupDashboard.Section.MEMBERS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupMembers(group.getNetworkId(), group.getSmartGroupRef()) %>');;"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
 
             <% if (group.getUserId().equals(userId)) { %>
                 <a href="#" onclick="SmartGroupDashboard.hideSmartGroup(event, <%= group.getNetworkId() %>, <%= group.getSmartGroupRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
@@ -43,18 +41,3 @@
 </div>
 
 <div id="smart_group_canvas"></div>
-
-<script type="text/javascript">
-
-    <% if (!group.getVisibility().equals(SmartGroupVisibilityEnum.PRIVATE)) { %>
-
-        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});
-
-    <% } else { %>
-
-        SmartGroupDashboard.go(null, SmartGroupDashboard.Section.MEMBERS, {nid: <%= group.getNetworkId() %>, sgr: <%= group.getSmartGroupRef() %>});
-
-    <% } %>
-
-
-</script>

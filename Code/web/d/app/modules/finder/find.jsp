@@ -4,6 +4,7 @@
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String searchText = StringUtils.parseString(request.getParameter("s"));
+    User me = UserDao.getById(null, userId);
 
     // Validating search text
     if (StringUtils.isEmpty(searchText))
@@ -39,9 +40,7 @@
        String sgroup_d_highlight = searchText;
 
        // Retrieving all users with a name
-       Set<SmartGroup> matches = new TreeSet<SmartGroup>();
-       matches.addAll(SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.PRIVATE, userId, sqlLimit));
-       matches.addAll(SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit)); %>
+       List<SmartGroup> matches = SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit); %>
 
        <div class="finder_results canvas_container">
 
@@ -83,11 +82,11 @@
 
         LimitCounter counter = new LimitCounter(limit);
         SharedItem share_d_sharedItem = null;
-        Integer sgroup_d_userId = userId;
         Integer share_d_fromSmartGroupRef = SharedComment.ANY_SHARED_COMMENT_REF;
         Map<NetworkIntegerSettingEnum, Integer> share_d_networkIntegerSettings = null;
         Map<NetworkIntegerSettingEnum, String> share_d_networkAlphaSettings = null;
         String share_d_highlight = null;
+        User share_d_user = me;
 
         // Retrieving all users with a name
         List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, networkId, sqlSearchText, sqlLimit); %>
@@ -249,9 +248,6 @@
 
         // Retrieving all users with a name
         List<User> matches = UserDao.findByNetworkIdAndName(null, networkId, sqlSearchText, sqlLimit);
-
-        // Shuffling users to get a random result set everything
-        Collections.shuffle(matches);
 
         // Sorting result users by whether or not they have a defined face
         Collections.sort(matches, new UserComparatorFaceOn());

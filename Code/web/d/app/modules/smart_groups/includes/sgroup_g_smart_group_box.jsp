@@ -19,7 +19,6 @@
     // Setting visibility class to define color
     String sgroup_g_visibilityText = null;
     switch(sgroup_g_smartGroup.getVisibility()) {
-        case PRIVATE: sgroup_g_visibilityText = "Private"; break;
         case SHARED: sgroup_g_visibilityText = "Shared"; break;
         case OFFICIAL: sgroup_g_visibilityText = "Official"; break;
     }
@@ -55,7 +54,7 @@
         <%@ include file="sgroup_e_apply_state.jsp"%>
     </div>
 
-    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef()) %>');">
+    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef()) %>');">
 
         <div class="details">
             <div class="name smd_header highlight6"><%= StringUtils.concat(sgroup_g_smartGroup.getName(), 50, "&#8230;") %></div>

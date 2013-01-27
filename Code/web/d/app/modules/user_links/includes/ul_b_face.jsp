@@ -4,7 +4,6 @@
      *
      * Integer ul_b_networkId = null;
      * Integer ul_b_toUserId = null;
-     * AnswerVisibilityEnum ul_b_lowestVisibility = null;
      */
 
     /**

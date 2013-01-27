@@ -12,6 +12,10 @@ public class HashRouting {
      * Settings related
      */
 
+    public static String settings() {
+        return HASH + "/settings";
+    };
+
     public static String settingsPhotoUpload() {
         return HASH + "/settings/photos/upload";
     };
@@ -47,8 +51,8 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef;
     };
 
-    public static String smartGroupSharedItems(Integer networkId, Integer smartGroupRef) {
-        return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef + "/sitems";
+    public static String smartGroupShare(Integer networkId, Integer smartGroupRef) {
+        return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef + "/share";
     };
 
     public static String smartGroupMembers(Integer networkId, Integer smartGroupRef) {
@@ -56,11 +60,11 @@ public class HashRouting {
     };
 
     public static String sharedItems(Integer networkId) {
-        return HASH + "/comm/" + networkId + "/sitems";
+        return HASH + "/comm/" + networkId + "/share";
     };
 
     public static String sharedItem(Integer networkId, Integer smartGroupRef, Integer sharedItem) {
-        return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef + "/sitem/" + sharedItem;
+        return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef + "/share/" + sharedItem;
     };
 
     public static String smartSearch(Integer networkId) {
@@ -71,8 +75,12 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/profile";
     };
 
-    public static String user(Integer networkId, Integer userId) {
-        return HASH + "/comm/" + networkId + "/user/" + userId;
+    public static String member(Integer networkId, Integer toUserId, Integer myUserId) {
+        if (toUserId != myUserId)
+            return HASH + "/comm/" + networkId + "/member/" + toUserId;
+        else
+            return profile(networkId);
+
     };
 
 }

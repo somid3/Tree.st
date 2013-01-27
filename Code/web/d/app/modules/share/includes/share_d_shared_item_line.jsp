@@ -37,7 +37,7 @@
         <div>
             <div class="top">
 
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.user(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getUserId()) %>');">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getUserId(), share_d_user.getId()) %>');">
                     <span class="name sm_header highlight2"><%= share_d_author.getName() %></span>
                 </a>
 
@@ -46,7 +46,7 @@
                     share_d_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef()); %>
                     <span class="in sm_text dim2">via</span>
 
-                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef()) %>');">
+                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef()) %>');">
                         <span class="via sm_header highlight6"><%= StringUtils.concat(share_d_smartGroup.getName(), 30, "&hellip;") %></span>
                     </a>
 

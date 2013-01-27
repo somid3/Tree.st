@@ -8,11 +8,11 @@
      *    Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = null;
      *    Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = null;
      */
-    User e_author = UserDao.getById(null, share_a_sharedComment.getUserId());
-    String e_hSharedCommentId = HtmlUtils.getRandomId();
+    User share_a_author = UserDao.getById(null, share_a_sharedComment.getUserId());
+    String share_a_hSharedCommentId = HtmlUtils.getRandomId();
 %>
 <div>
-    <div class="shared_comment" id="<%= e_hSharedCommentId %>">
+    <div class="shared_comment" id="<%= share_a_hSharedCommentId %>">
         <div class="left">
 
             <% {
@@ -32,15 +32,15 @@
                     <%= share_a_sharedComment.getSmartGroupRef() %>,
                     <%= share_a_sharedComment.getSharedItemRef() %>,
                     <%= share_a_sharedComment.getSharedCommentRef() %>,
-                    '<%= e_hSharedCommentId %>')">
+                    '<%= share_a_hSharedCommentId %>')">
 
                     <div class="delete"><img src="./img/close_dark.png"></div>
                 </a>
             <% } %>
 
             <div class="box">
-                <a href="#" onclick="ND.viewProfile(event, <%= e_author.getId() %>);">
-                    <span class="sm_header highlight2"><%= e_author.getName() %></span>:
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_a_sharedComment.getNetworkId(), share_a_sharedComment.getUserId(), share_a_me.getId())%>');">
+                    <span class="sm_header highlight2"><%= share_a_author.getName() %></span>:
                 </a>
 
                 <span class="sm_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_a_sharedComment.getText() )) %></span>

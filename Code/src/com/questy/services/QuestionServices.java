@@ -1,14 +1,13 @@
 package com.questy.services;
 
 import com.questy.dao.*;
-import com.questy.domain.Answer;
 import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
 import com.questy.enums.AnswerVisibilityEnum;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
 
 
 public class QuestionServices extends ParentService  {
@@ -24,6 +23,12 @@ public class QuestionServices extends ParentService  {
 
         // Retrieving options
         List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(conn, networkId, question.getRef());
+
+        // If question can have new options added, then display options alphabetically
+        if (question.getAllowAddOptions())
+            options = QuestionOptionServices.sortByText(options);
+        else
+            options = QuestionOptionServices.sortById(options);
 
         // Setting dependencies
         question.setOptions(options);

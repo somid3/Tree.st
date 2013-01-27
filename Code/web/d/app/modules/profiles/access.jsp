@@ -30,7 +30,9 @@
             '<%= hCardId%>',
             '<%= hErrorId %>',
             '<%= hConnectButtonId %>',
-            function (){ND.viewProfile(event, <%= viewUserId%>);})">
+            function (){
+                HashRouting.setHash(event, '<%= HashRouting.member(networkId, viewUserId, userId)%>');
+            });">
 
         <div class="connect vl_button active_button" id="<%= hConnectButtonId %>">Yes</div>
     </a>

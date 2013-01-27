@@ -30,7 +30,7 @@
            <%
                // Changing the link on the photo depending if a user link exists
                if (displayDetails) { %>
-               <a href="#" onclick="ND.viewProfile(event, <%= ul_a_toUser.getId() %>)">
+               <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId)%>');">
            <% } else { %>
                <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hErrorId %>', '<%= ul_a_hConnectButtonId %>')">
            <% } %>
@@ -50,7 +50,7 @@
                <div class="card_top">
 
                    <div class="card_details">
-                       <a href="#" onclick="ND.viewProfile(event, <%= ul_a_toUser.getId() %>)">
+                       <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId)%>');">
                            <div class="name smd_header highlight2"><%= StringUtils.concat(ul_a_toUser.getName(), 18, "&hellip;") %></div>
                        </a>
                        <a href="mailto:<%= ul_a_toUser.getEmail() %>" target="_new">
@@ -60,7 +60,7 @@
 
                    <div class="card_shortcuts">
 
-                       <a href="#" onclick="ND.viewProfile(event, <%= ul_a_toUser.getId() %>, {go: ProfileDashboard.Section.QUESTIONS})">
+                       <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId)%>');">
                            <div class="card_shortcut">
                                <div class="text sm_text highlight2">Profile</div>
                            </div>

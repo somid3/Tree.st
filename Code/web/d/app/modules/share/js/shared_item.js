@@ -6,7 +6,6 @@ function SharedItem () {
 
     this.viewUserId = null;
     this.hTellMeId = null;
-    this.hErrorId = null;
 
     this.addSharedItem = function (event) {
 
@@ -14,8 +13,8 @@ function SharedItem () {
 
         var $tellMe = $("#" + this.hTellMeId);
         var $shareSomething = $("#share_something");
-        var $loading = $shareSomething.find(".loading");
-        var $error = $("#" + this.hErrorId);
+        var $loading = $shareSomething.find(".share_loading");
+        var $error = $shareSomething.find(".share_error");
 
         var parameters = {};
         parameters.nid = this.networkId;

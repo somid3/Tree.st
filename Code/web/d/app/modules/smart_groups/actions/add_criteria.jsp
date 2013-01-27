@@ -56,20 +56,25 @@
 
         }
 
-    // No, the user has not answered this question, select a random option
+    // No, the user has not answered this question, select the option with the most votes...
     } else {
 
-        // If the user has not answered the question, then select a random option
+        // Retrieve all possible options of question
         List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(null, searchQuestion.getNetworkId(), searchQuestion.getRef());
-        Random randomGenerator = new Random();
-        Integer randomIndex = randomGenerator.nextInt(options.size());
-        QuestionOption option = options.get(randomIndex);
+
+        // Select option with most votes
+        QuestionOption selectedOption = options.get(0);
+        for (QuestionOption option : options) {
+
+            if (selectedOption.getTotalAnswers() < option.getTotalAnswers())
+                selectedOption = option;
+        }
 
         CriteriaXml cx = new CriteriaXml();
         cx.setType(CriteriaXml.Type.IS_SET);
 
         OptionXml ox = new OptionXml();
-        ox.setRef(option.getRef());
+        ox.setRef(selectedOption.getRef());
         ox.setScore(50);
         ox.setCriteria(cx);
 

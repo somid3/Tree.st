@@ -39,7 +39,7 @@
     <div class="right">
         <div>
             <div class="top">
-                <a href="#" onclick="ND.viewProfile(event, <%= share_c_author.getId() %>);">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), share_c_me.getId())%>');">
                     <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
                 </a>
 
@@ -48,7 +48,7 @@
                     share_c_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef()); %>
                     <span class="in sm_text dim2">via</span>
 
-                    <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: <%= share_c_sharedItem.getNetworkId() %>, sgr: <%= share_c_sharedItem.getSmartGroupRef() %>})">
+                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef())%>');">
                         <span class="via sm_header highlight6"><%= StringUtils.concat(share_c_smartGroup.getName(), 30, "&hellip;") %></span>
                     </a>
 
@@ -121,7 +121,6 @@
             <div class="right">
                 <div class="box">
                     <textarea
-                        onclick="$(this).TextAreaExpander(40, 500);"
                         onkeydown="SharedComment.addSharedComment(
                                     event,
                                     <%= share_c_sharedItem.getNetworkId() %>,

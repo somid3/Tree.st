@@ -9,15 +9,7 @@
     String hFormId = HtmlUtils.getRandomId();
     String hVisibilityGroup = HtmlUtils.getRandomId();
     String hVisibilityShare = HtmlUtils.getRandomId();
-    String hVisibilityPrivate = HtmlUtils.getRandomId();
 %>
-
-<script type="text/javascript">
-    SG = new SmartGroups();
-    SG.networkId = <%= networkId %>;
-    SG.smartGroupRef = <%= smartGroupRef %>;
-    SG.networkDashboard = ND;
-</script>
 
 <div id="create_smart_group">
     <form id="<%= hFormId %>">
@@ -48,17 +40,16 @@
                 <div class="name smd_header white">Visibility</div>
                                                    
                 <% if (!utn.getRole().isLowerThan(RoleEnum.EDITOR)) { %>
-                    <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityGroup %>" value="6"> <label for="<%= hVisibilityGroup %>">Official network Smart Group</label></div>
+                    <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityGroup %>" value="<%= SmartGroupVisibilityEnum.OFFICIAL.getId() %>"> <label for="<%= hVisibilityGroup %>">Official network Smart Group</label></div>
                 <% } %>
 
-                <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityShare %>" value="3"> <label for="<%= hVisibilityShare %>">Shared Smart Group</label></div>
-                <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityPrivate %>" value="0" checked> <label for="<%= hVisibilityPrivate %>">Visible only to me</label></div>
+                <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityShare %>" value="<%= SmartGroupVisibilityEnum.SHARED.getId() %>" checked> <label for="<%= hVisibilityShare %>">Shared Smart Group</label></div>
                 <div class="example"></div>
             </div>
             <div class="actionable">
                 <div class="error smd_text"></div>
                 <div class="loading"><img src="./img/sm_loading.gif"></div>
-                <a href="#" onclick="SG.createSmartGroup(null, '<%= hFormId %>')"><div class="action md_button pink_button">Save Smart Group</div></a>
+                <a href="#" onclick="SS.createSmartGroup(event, <%= networkId %>, <%= smartGroupRef %>, '<%= hFormId %>')"><div class="action md_button pink_button">Save Smart Group</div></a>
             </div>
         </div>
     </form>    

@@ -6,7 +6,8 @@ NetworkDashboard.Section = {
     SHARED_ITEMS: 5,
     PROFILE: 6,
     ALL: 7,
-    FINDER: 8
+    FINDER: 8,
+    MEMBER: 9
 };
 
 function NetworkDashboard () {
@@ -29,9 +30,6 @@ function NetworkDashboard () {
 
         // Add full opacity to the left menu
         LeftMenu.fullOpacity();
-
-        // Scroll to the top of the page
-//        Animations.scrollToTop();
 
         // Display the canvas loading display
         NetworkDashboard.displayLoading();
@@ -62,22 +60,6 @@ function NetworkDashboard () {
         Transitions.load('#canvas', url, data, newCallback);
     };
 
-    /**
-     * Displays the network profile of the user id provided
-     * @param userId
-     */
-    this.viewProfile = function (event, viewUserId, parameters, callback) {
-
-        Event.preventDefault(event);
-
-        var data = {};
-        data.vuid = viewUserId;
-        data = $.extend(data, parameters);
-
-        this.go(event, NetworkDashboard.Section.PROFILE, data, callback);
-
-    };
-
     this.go = function (event, sendTo, parameters, callback) {
 
         Event.preventDefault(event);
@@ -101,6 +83,10 @@ function NetworkDashboard () {
         else if (sendTo == NetworkDashboard.Section.SHARED_ITEMS)
 
             this.clickItem(event, '#network_shortcut_share', './modules/share/by_network.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.MEMBER)
+
+            this.clickItem(event, '#network_shortcut_all', './modules/profiles/dashboard.jsp', parameters, callback);
 
         else if (sendTo == NetworkDashboard.Section.PROFILE)
 

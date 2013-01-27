@@ -60,14 +60,12 @@
 <script type="text/javascript" src="./modules/smart_groups/js/smart_search.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/dashboard.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/smart_group_tools.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/smart_groups/js/smart_groups.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/smart_groups/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./modules/smart_groups/css/criterion.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./modules/share/js/shared_item.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/share/js/shared_comment.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/share/js/shared_vote.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./modules/share/js/textarea_expander.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/share/css/basic.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./modules/collaborate/js/question_display.js?<%= Vars.rev %>"></script>
@@ -194,7 +192,7 @@
 
         <div id="dashboard"></div>
 
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
+        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settings() %>');">
             <div class="user">
                 <div class="face">
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
@@ -234,11 +232,8 @@
     /***************
     /* Routing rules
     ***************/
-
     ND = new NetworkDashboard();
     SS = new SmartSearch();
-
-
 
     HashRouting.routes = function () {
 
@@ -256,7 +251,7 @@
             });
         });
 
-        routie('/comm/:nid/sitems', function(nid) {
+        routie('/comm/:nid/share', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.SHARED_ITEMS);
             });
@@ -270,7 +265,36 @@
 
         routie('/comm/:nid/sgroup/:sgr', function(nid, sgr) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr});
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: nid, sgr: sgr});
+                });
+            });
+        });
+
+        routie('/comm/:nid/sgroup/:sgr/share', function(nid, sgr) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: nid, sgr: sgr});
+                });
+            });
+        });
+
+        routie('/comm/:nid/sgroup/:sgr/members', function(nid, sgr) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.MEMBERS, {nid: nid, sgr: sgr});
+                });
+            });
+        });
+
+        routie('/comm/:nid/sgroup/:sgr/share/:sir', function(nid, sgr, sir) {
+
+            console.log(nid + " " + sgr + " " + sir);
+
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
+                });
             });
         });
 
@@ -293,41 +317,29 @@
             });
         });
 
-        routie('/comm/:nid/user/:uid', function(nid, uid) {
+        routie('/comm/:nid/member/:uid', function(nid, uid) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: uid});
+                ND.go(null, NetworkDashboard.Section.MEMBER, {vuid: uid});
             });
         });
 
 
 
 
-        // TODO: replace viewUser on ND
         // TODO: place finder route
         // TODO: place all qualities route
 
-
-        // TODO: FIX this..
-        // TODO: FIX this..
-        // TODO: FIX this..
-        // TODO: FIX this..
-        routie('/comm/:nid/sgroup/:sgr/sitem/:sir', function(nid, sgr, sir) {
-
-            console.log(nid + " " + sgr + " " + sir);
-
-            LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
-                    SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
-                });
-            });
-        });
 
 
 
 
 
         routie('/settings', function() {
-            UserPanel.view(null);
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.PHOTOS, null, function() {
+                    UserPhotos.go(null, UserPhotos.Section.UPLOAD);
+                });
+            });
         });
 
         routie('/settings/photos', function() {

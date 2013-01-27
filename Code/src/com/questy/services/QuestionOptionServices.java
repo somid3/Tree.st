@@ -2,13 +2,16 @@ package com.questy.services;
 
 import com.questy.dao.QuestionDao;
 import com.questy.dao.QuestionOptionDao;
+import com.questy.dao.UserDao;
 import com.questy.domain.Question;
 import com.questy.domain.QuestionOption;
+import com.questy.domain.User;
+import com.questy.domain.UserToNetwork;
+import com.questy.utils.ValueComparator;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class QuestionOptionServices extends ParentService  {
@@ -69,4 +72,43 @@ public class QuestionOptionServices extends ParentService  {
 
         return out;
     }
+
+    /**
+     * Sorts question options by its text
+     */
+    public static List<QuestionOption> sortByText (List<QuestionOption> options) {
+
+        Map<QuestionOption, String> unsortedMap = new HashMap<QuestionOption, String>();
+        ValueComparator vc = new ValueComparator(unsortedMap);
+        Map<QuestionOption, String> sortedMap = new TreeMap<QuestionOption, String>(vc);
+
+        for (QuestionOption option : options)
+            unsortedMap.put(option, option.getText());
+
+        sortedMap.putAll(unsortedMap);
+        List<QuestionOption> sortedList = new ArrayList<QuestionOption>();
+        sortedList.addAll(sortedMap.keySet());
+
+        return sortedList;
+    }
+
+    /**
+     * Sorts question options by the total number of answers
+     */
+    public static List<QuestionOption> sortById(List<QuestionOption> options) {
+
+        Map<QuestionOption, Integer> unsortedMap = new HashMap<QuestionOption, Integer>();
+        ValueComparator vc = new ValueComparator(unsortedMap);
+        Map<QuestionOption, Integer> sortedMap = new TreeMap<QuestionOption, Integer>(vc);
+
+        for (QuestionOption option : options)
+            unsortedMap.put(option, option.getId());
+
+        sortedMap.putAll(unsortedMap);
+        List<QuestionOption> sortedList = new ArrayList<QuestionOption>();
+        sortedList.addAll(sortedMap.keySet());
+
+        return sortedList;
+    }
+
 }

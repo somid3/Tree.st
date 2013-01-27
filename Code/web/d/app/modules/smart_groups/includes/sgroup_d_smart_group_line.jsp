@@ -48,7 +48,7 @@
 %>
     <div class="smart_group_line">
 
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(sgroup_d_smartGroup.getNetworkId(), sgroup_d_smartGroup.getSmartGroupRef()) %>');">
+        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(sgroup_d_smartGroup.getNetworkId(), sgroup_d_smartGroup.getSmartGroupRef()) %>');">
 
             <div class="name smd_header highlight6"><%= sgroup_d_name %></div>
                 <div class="minifaces">

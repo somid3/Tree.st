@@ -36,9 +36,6 @@
 
 <script type="text/javascript">
 
-    // Beginning basic search
-    ND.search = Finder;
-
     // Binding find field
     Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitFind );
 
