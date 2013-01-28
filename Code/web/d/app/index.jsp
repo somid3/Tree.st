@@ -257,6 +257,18 @@
             });
         });
 
+        routie('/comm/:nid/finder', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.FINDER);
+            });
+        });
+
+        routie('/comm/:nid/finder/:text', function(nid, text) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.FINDER, {s: decodeURIComponent(text)});
+            });
+        });
+
         routie('/comm/:nid/sgroups', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.SMART_GROUPS);
@@ -265,7 +277,7 @@
 
         routie('/comm/:nid/sgroup/:sgr', function(nid, sgr) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
                     SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: nid, sgr: sgr});
                 });
             });
@@ -273,7 +285,7 @@
 
         routie('/comm/:nid/sgroup/:sgr/share', function(nid, sgr) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
                     SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEMS, {nid: nid, sgr: sgr});
                 });
             });
@@ -281,18 +293,15 @@
 
         routie('/comm/:nid/sgroup/:sgr/members', function(nid, sgr) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
                     SmartGroupDashboard.go(null, SmartGroupDashboard.Section.MEMBERS, {nid: nid, sgr: sgr});
                 });
             });
         });
 
         routie('/comm/:nid/sgroup/:sgr/share/:sir', function(nid, sgr, sir) {
-
-            console.log(nid + " " + sgr + " " + sir);
-
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(event, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUP, {nid: nid, sgr: sgr}, function() {
                     SmartGroupDashboard.go(null, SmartGroupDashboard.Section.SHARED_ITEM, {nid: nid, sgr: sgr, sir: sir});
                 });
             });
@@ -304,10 +313,40 @@
             });
         });
 
+        routie('/comm/:nid/search/:snid/:sqr', function(nid, searchNetworkId, searchQuestionRef) {
+            LeftMenu.goToNetwork(null, nid, function() {
+
+                // Switching to search on the center canvas
+                var parameters = {};
+                parameters.snid = searchNetworkId;
+                parameters.sqr = searchQuestionRef;
+
+                ND.go(null, NetworkDashboard.Section.SMART_SEARCH, parameters);
+            });
+        });
+
+        routie('/comm/:nid/search/:snid/:sqr/:sor', function(nid, searchNetworkId, searchQuestionRef, searchOptionRef) {
+            LeftMenu.goToNetwork(null, nid, function() {
+
+                // Switching to search on the center canvas
+                var parameters = {};
+                parameters.snid = searchNetworkId;
+                parameters.sqr = searchQuestionRef;
+                parameters.sor = searchOptionRef;
+
+                ND.go(null, NetworkDashboard.Section.SMART_SEARCH, parameters);
+            });
+        });
 
         routie('/comm/:nid/collaborate', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.QUESTIONS);
+            });
+        });
+
+        routie('/comm/:nid/collaborate/:agqr', function(nid, againQuestionRef) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.QUESTIONS, {agqr: againQuestionRef});
             });
         });
 
@@ -322,17 +361,6 @@
                 ND.go(null, NetworkDashboard.Section.MEMBER, {vuid: uid});
             });
         });
-
-
-
-
-        // TODO: place finder route
-        // TODO: place all qualities route
-
-
-
-
-
 
         routie('/settings', function() {
             UserPanel.view(null, function() {

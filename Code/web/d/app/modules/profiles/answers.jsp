@@ -157,7 +157,7 @@
 
                             } %>
 
-                                <a href="#" onclick="SS.goSmartSearch(event, <%= questionOption.getNetworkId() %>, <%= questionOption.getQuestionRef() %>, <%= questionOption.getRef() %>)">
+                                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(rootNetworkId, questionOption.getNetworkId(), questionOption.getQuestionRef(), questionOption.getRef()) %>');">
                                     <div class="option smd_text" style="<%= hOptionStyle%>"><%= questionOption.getText() %></div>
                                 </a>
 
@@ -170,7 +170,7 @@
 
                     <div class="details">
                         <% if (viewMyself && rootNetworkId.equals(approvedNetwork.getId())) { %>
-                            <a href="#" onclick="ND.clickItem(event, '#network_shortcut_questions', './modules/collaborate/question_display.jsp', {agqr: <%= question.getRef() %>});">
+                            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questionAgain(question.getNetworkId(), question.getRef()) %>');">
                                 <div class="again sm_text highlight2">Update</div>
                             </a>
                         <% } %>

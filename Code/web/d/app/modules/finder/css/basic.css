@@ -49,7 +49,7 @@
 }
 
 
-#search_toolbar #all {
+#search_toolbar #finder_all {
     position: absolute;
     left: 4px;
     top: 3px;
@@ -115,6 +115,7 @@
 .finder_results .found {
     padding: 2px;
     border: 1px solid <%= HtmlDesign.highlight3 %>;
+    background-color: #c9fbcc;
 }
 
 .finder_results .finder_member_result {

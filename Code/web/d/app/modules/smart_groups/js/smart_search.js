@@ -55,28 +55,6 @@ function SmartSearch () {
 
     };
 
-
-    /**
-     * When outside of the search page, this transitions to the search page and adds the desired
-     * question
-     */
-    this.goSmartSearch = function (event, searchNetworkId, searchQuestionRef, searchOptionRef) {
-
-        Event.preventDefault(event);
-
-        // Scroll to the logo
-        Animations.scrollToTop();
-
-        // Switching to search on the center canvas
-        var parameters = {};
-        parameters.snid = searchNetworkId;
-        parameters.sqr = searchQuestionRef;
-        parameters.sor = searchOptionRef;
-
-        // Go the smart search page and add clicked question
-        ND.go(event, NetworkDashboard.Section.SMART_SEARCH, parameters);
-    };
-
     this.displayError = function (message) {
 
         var $smartSearchError = $("#smart_search_error");

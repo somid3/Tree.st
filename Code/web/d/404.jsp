@@ -2,7 +2,12 @@
 <%
     // Retrieving the path to find the desired network
     String path = (String) request.getAttribute("javax.servlet.forward.request_uri");
+
+    if (!Vars.isInProduction())
+        System.out.println("*** 404 NOT FOUND *** " + path);
+
     path = path.substring(1).toLowerCase();
+
 
     WebUtils wu = new WebUtils(request, response);
 

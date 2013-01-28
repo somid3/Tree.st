@@ -2,9 +2,6 @@
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
 
-    // Retrieving network
-    Network network = NetworkDao.getById(null, networkId);
-
     // Retrieving user to network
     UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
 %>
@@ -13,14 +10,15 @@
     <div id="search_space">
 
         <div id="search_toolbar">
-            <a href="#" onclick="Finder.viewEverything(event);">
-                <div id="all" class="sm_button light_button sm_text highlight2">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.finder(networkId)%>')">
+                <div id="finder_all" class="sm_button light_button sm_text highlight2">
                     <span>Qualities</span>
                 </div>
             </a>
 
             <div id="search_input">
                 <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
+                <input type="hidden" id="finder_hash" value="<%= HashRouting.finder(networkId, "") %>"/>
             </div>
 
         </div>

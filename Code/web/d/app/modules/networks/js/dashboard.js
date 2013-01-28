@@ -62,6 +62,12 @@ function NetworkDashboard () {
 
     this.go = function (event, sendTo, parameters, callback) {
 
+        // TODO fix that everything gets called twice
+        // TODO fix that everything gets called twice
+        // TODO fix that everything gets called twice
+        // TODO fix that everything gets called twice
+
+
         Event.preventDefault(event);
 
         if (sendTo == null  || sendTo == NetworkDashboard.Section.QUESTIONS)
@@ -98,16 +104,14 @@ function NetworkDashboard () {
 
         else if (sendTo == NetworkDashboard.Section.FINDER)
 
-             this.clickItem(event, null, './modules/finder/find.jsp', parameters, callback);
-
+            this.clickItem(event, "#finder_all", './modules/finder/finder.jsp', parameters, callback);
     };
 
 }
 
 NetworkDashboard.unhighlightAll = function () {
 
-    $("#all").removeClass("selected");
-    $("#smart_search_button").removeClass("selected");
+    $("#finder_all").removeClass("selected");
 
 };
 

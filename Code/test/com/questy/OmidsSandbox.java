@@ -9,7 +9,9 @@ import com.questy.services.NetworkServices;
 import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
 import com.questy.services.cron.CronServices;
+import com.questy.utils.StringUtils;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,12 +22,17 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(null, 2000, 1);
-        options = QuestionOptionServices.sortByText(options);
+        PrintStream sysout = new PrintStream(System.out, true, "UTF-8");
 
-        for (QuestionOption option : options)
-            System.out.println(option.getText());
+        sysout.println(new String("??".getBytes(), "UTF-8"));
 
+
+//        List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(null, 2000, 1);
+//        options = QuestionOptionServices.sortByText(options);
+//
+//        for (QuestionOption option : options)
+//            System.out.println(option.getText());
+//
 
 
 //        System.out.println(NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR.getValueByNetworkId(2000));

@@ -20,12 +20,6 @@
     String singularVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
     String pluralVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
 %>
-<script type="text/javascript">
-
-    // Loading the network dashboard
-    Transitions.load("#dashboard", "./modules/networks/dashboard.jsp", {nid : <%= networkId %>});
-
-</script>
 
 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.all(network.getId())%>')">
     <div class="shortcut" id="network_shortcut_all">

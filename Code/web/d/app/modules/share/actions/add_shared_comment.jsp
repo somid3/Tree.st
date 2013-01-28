@@ -5,6 +5,9 @@
     Integer sir = StringUtils.parseInt(request.getParameter("sir"));
     String text = StringUtils.parseString(request.getParameter("t"));
 
+
+    System.out.println(text);
+
     StringBuilder buf = new StringBuilder();
     try {
 

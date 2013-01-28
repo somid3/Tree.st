@@ -3,6 +3,7 @@ package com.questy.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
 
@@ -17,7 +18,7 @@ public class StringUtilsTest {
     }
 
     @Test
-    public void parseString() {
+    public void parseString() throws UnsupportedEncodingException {
 
         System.out.print(StringUtils.parseString("´¨"));
 

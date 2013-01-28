@@ -192,7 +192,8 @@
                         highlighted = questionText; %>
 
                     <a href="#">
-                        <div class="find_question smd_text" onclick="SS.goSmartSearch(event, <%= question.getNetworkId() %>, <%= question.getRef() %>)">
+                        <div class="find_question smd_text"
+                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, question.getNetworkId(), question.getRef()) %>');">
                             <%= highlighted %> <span class="dim2">(<%= question.getTotalAnswers() %>)</span>
                         </div>
                     </a> <%
@@ -212,7 +213,8 @@
                     highlighted = StringUtils.highlight(StringUtils.concat(option.getText(), 20, "&hellip;"), searchText, "<span class='found'>", "</span>"); %>
 
                     <a href="#">
-                        <div class="find_question smd_text" onclick="SS.goSmartSearch(event, <%= question.getNetworkId() %>, <%= question.getRef() %>, <%= option.getRef() %>)">
+                        <div class="find_question smd_text"
+                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, option.getNetworkId(), option.getQuestionRef(), option.getRef()) %>');">
                             <%= highlighted %> <span class="dim2">(<%= option.getTotalAnswers() %>)</span> &rarr; <%= StringUtils.concat(question.getText(), 50, "&hellip;") %>
                         </div>
                     </a> <%

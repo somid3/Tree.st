@@ -12,25 +12,18 @@ Finder.setupFinder = function () {
 
 };
 
-Finder.viewEverything = function (event) {
-
-    Event.preventDefault(event);
-
-    // Doing the click
-    ND.clickItem(event, "#all", './modules/finder/find.jsp', null, null);
-
-};
-
 Finder.submitFind = function (event) {
 
     Event.preventDefault(event);
 
     var $finderField = $("#finder");
+    var $hashField = $("#finder_hash");
 
     // Retrieve search term
     var findText = $finderField.val();
+    var hashText = $hashField.val();
 
     // Present results on search canvas
-    ND.go(event, NetworkDashboard.Section.FINDER, {s: findText}, null);
+    HashRouting.setHash(event, hashText + encodeURIComponent(findText));
 
 };

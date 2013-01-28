@@ -43,7 +43,7 @@
 
     <div class="tools">
         <a href="#" onclick="SS.submitEditCriteria(event, <%= smartGroup.getNetworkId() %>, <%= smartGroup.getSmartGroupRef() %>)"><div class="submit submit_button">Submit Changes</div></a>
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearch(smartGroup.getNetworkId()) %>');"><div class="cancel light_button">Cancel</div></a>
+        <a href="#" onclick="ND.go(event, NetworkDashboard.Section.SMART_SEARCH);"><div class="cancel light_button">Cancel</div></a>
     </div>
 
     <div class="question">

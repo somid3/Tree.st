@@ -39,8 +39,20 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/all";
     };
 
+    public static String finder(Integer networkId, String findText) {
+        return HASH + "/comm/" + networkId + "/finder/" + findText;
+    };
+
+    public static String finder(Integer networkId) {
+        return HASH + "/comm/" + networkId + "/finder";
+    };
+
     public static String questions(Integer networkId) {
         return HASH + "/comm/" + networkId + "/collaborate";
+    };
+
+    public static String questionAgain(Integer networkId, Integer questionRef) {
+        return HASH + "/comm/" + networkId + "/collaborate/" + questionRef;
     };
 
     public static String smartGroups(Integer networkId) {
@@ -65,6 +77,14 @@ public class HashRouting {
 
     public static String sharedItem(Integer networkId, Integer smartGroupRef, Integer sharedItem) {
         return HASH + "/comm/" + networkId + "/sgroup/" + smartGroupRef + "/share/" + sharedItem;
+    };
+
+    public static String smartSearchAdd(Integer networkId, Integer searchNetworkId, Integer searchQuestionRef) {
+        return HASH + "/comm/" + networkId + "/search/" + searchNetworkId + "/" + searchQuestionRef;
+    };
+
+    public static String smartSearchAdd(Integer networkId, Integer searchNetworkId, Integer searchQuestionRef, Integer searchOptionRef) {
+        return HASH + "/comm/" + networkId + "/search/" + searchNetworkId + "/" + searchQuestionRef + "/" + searchOptionRef;
     };
 
     public static String smartSearch(Integer networkId) {

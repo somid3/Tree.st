@@ -129,12 +129,14 @@ LeftMenu.goToNetwork = function (event, networkId, callback) {
         // Change the current network
         Transitions.load("#currently", "./modules/networks/currently.jsp", parameters, callback);
 
+        // Loading the network dashboard
+        Transitions.load("#dashboard", "./modules/networks/dashboard.jsp", {nid : networkId});
+
         // Highlight the network
         LeftMenu.highlightItem(selector);
 
         // Moving objects to they ground to zero
         LeftMenu.offsetItems();
-
     }
 };
 

@@ -41,7 +41,7 @@
         <% i++; if (i > maxFaces) break; } %>
     </div>
 
-    <a href="#" onclick="SS.goSmartSearch(event, <%= networkId %>, <%= question.getRef() %>, null)">
+    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, question.getNetworkId(), question.getRef()) %>');">
         <span class="similar sm_text highlight2">I'm feeling lucky</span>
     </a>
 

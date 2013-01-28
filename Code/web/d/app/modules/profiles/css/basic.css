@@ -76,7 +76,6 @@
     padding: 3px;
 }
 
-
 #profile_dashboard .right .shortcuts .shortcut .count {
     background-color: <%= HtmlDesign.dim2 %>;
     padding: 3px 5px;

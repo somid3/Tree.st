@@ -5,6 +5,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -105,7 +106,9 @@ public class StringUtils {
     }
 
     public static String parseString (String input) {
+
         return input;
+
     }
 
     /**
