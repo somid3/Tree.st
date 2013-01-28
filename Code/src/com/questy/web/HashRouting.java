@@ -24,7 +24,13 @@ public class HashRouting {
         return HASH + "/settings/photos/set";
     };
 
+    public static String settingsNetworks() {
+        return HASH + "/settings/comms";
+    };
 
+    public static String settingsGeneral() {
+        return HASH + "/settings/general";
+    };
 
 
     /**

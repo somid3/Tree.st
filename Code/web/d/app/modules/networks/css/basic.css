@@ -63,6 +63,12 @@
     padding: 3px 0 1px 5px;
 }
 
+#networks .item .contents .icon img {
+    width: 16px;
+    height: 16px;
+}
+
+
 #networks .item .bullet {
     float: right;
     margin-right: 5px;

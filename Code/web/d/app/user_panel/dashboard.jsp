@@ -17,9 +17,9 @@
     <div class="menu">
         <div class="shortcuts">
 
-            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.NETWORKS);"><div class="shortcut sm_text light_button" id="user_panel_shortcut_networks">Communities</div></a>
-            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.PHOTOS);"><div class="shortcut sm_text light_button" id="user_panel_shortcut_photos">Photos</div></a>
-            <a href="#" onclick="UserPanel.go(event, UserPanel.Section.GENERAL);"><div class="shortcut sm_text light_button" id="user_panel_shortcut_general">General</div></a>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsNetworks() %>');"><div class="shortcut sm_text light_button" id="user_panel_shortcut_networks">Communities</div></a>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');"><div class="shortcut sm_text light_button" id="user_panel_shortcut_photos">Photos</div></a>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsGeneral() %>');"><div class="shortcut sm_text light_button" id="user_panel_shortcut_general">General</div></a>
 
         </div>
     </div>

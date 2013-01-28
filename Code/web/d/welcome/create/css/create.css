@@ -143,7 +143,6 @@
 #create #share  {
     width: 600px;
     margin: 0 auto;
-    /*margin-top: -35px;*/
     margin-bottom: 20px;
     background-color: white;
     padding: 10px;
@@ -176,7 +175,6 @@
     padding: 20px;
     text-align: center;
     border: 4px solid white;
-
 }
 
 #add3, #add4, #add5 {

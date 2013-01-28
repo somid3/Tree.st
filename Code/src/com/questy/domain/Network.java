@@ -74,9 +74,7 @@ public class Network extends Parent {
     }
 
     public String getResourceUrl(String filename) {
-
         String url = ResourceInfo.getNetworkUrl(getId());
-
         return url + filename;
     }
 

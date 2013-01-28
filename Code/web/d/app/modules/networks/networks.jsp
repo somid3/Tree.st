@@ -10,8 +10,8 @@
     Collections.sort(networks);
     Collections.reverse(networks);
 
-    // First network to display
-    Integer firstNetwork = null;
+    Integer hasIcon = null;
+    String iconSrc = null;
 %>
 
 <div class="networks">
@@ -24,12 +24,24 @@
     <div class="switch sm_header highlight3">Switch Communities</div>
 
     <% for (Network network : networks) {
-        nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId()); %>
+        nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId());
+        hasIcon = NetworkIntegerSettingEnum.UI_HAS_ICON.getValueByNetworkId(network.getId());
+
+        if (hasIcon != 0)
+            iconSrc = network.getIconResourceUrl();
+        else
+            iconSrc = "./modules/networks/img/tree.png";
+    %>
 
         <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(network.getId())%>')">
             <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">
                 <div class="contents">
-                    <div class="icon"><img src="<%= network.getIconResourceUrl() %>" alt=""></div>
+
+
+
+                    <div class="icon"><img src="<%= iconSrc %>" alt=""></div>
+
+
                     <div class="name smd_text"><%= StringUtils.concat(network.getName(), 10, "&#8230;") %></div>
                 </div>
                 <% if (nextQuestionRef != null) { %>

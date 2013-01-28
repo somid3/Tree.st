@@ -387,11 +387,11 @@ Animations.flyToTarget = function (event, moveMeSelector, targetSelector, clone,
  * @param selector
  */
 Animations.shake = function (selector) {
-    $(selector).effect("shake", { times: 2, distance: 5 }, 250);
+    $(selector).effect("shake", { times: 2, distance: 5 }, 1000);
 };
 
 Animations.bounce = function (selector) {
-    $(selector).effect("bounce", { times: 2, distance: 5 }, 250);
+    $(selector).effect("bounce", { times: 2, distance: 5 }, 1000);
 };
 
 Animations.wave = function (selector) {

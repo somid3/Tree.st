@@ -374,6 +374,12 @@
             });
         });
 
+        routie('/settings/general', function() {
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.GENERAL);
+            });
+        });
+
         routie('/settings/photos', function() {
             UserPanel.view(null, function() {
                 UserPanel.go(null, UserPanel.Section.PHOTOS);
@@ -396,6 +402,11 @@
             });
         });
 
+        routie('/settings/comms', function() {
+            UserPanel.view(null, function() {
+                UserPanel.go(null, UserPanel.Section.NETWORKS);
+            });
+        });
     };
 
 
