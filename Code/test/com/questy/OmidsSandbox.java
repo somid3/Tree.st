@@ -24,7 +24,54 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        PasswordResetDao.deleteByCreatedBefore(null, DateUtils.daysAgo(2));
+        List<Integer> users = new ArrayList<Integer>();
+        users.add(2814);
+        users.add(2815);
+        users.add(2816);
+        users.add(2818);
+        users.add(2819);
+        users.add(2820);
+        users.add(2821);
+        users.add(2822);
+        users.add(2823);
+        users.add(2824);
+        users.add(2825);
+        users.add(2826);
+        users.add(2827);
+        users.add(2828);
+        users.add(2830);
+        users.add(2831);
+        users.add(2832);
+        users.add(2833);
+        users.add(2834);
+        users.add(2835);
+        users.add(2836);
+        users.add(2837);
+        users.add(2841);
+        users.add(2842);
+        users.add(2843);
+        users.add(2845);
+        users.add(2846);
+        users.add(2847);
+        users.add(2848);
+        users.add(2849);
+        users.add(2850);
+        users.add(2851);
+        users.add(2852);
+        users.add(2854);
+        users.add(2855);
+        users.add(2856);
+
+        for (Integer user : users) {
+
+            System.out.println("Removing user " + user);
+            NetworkServices.deleteUserFromNetwork(user, 1);
+            NetworkServices.deleteUserFromNetwork(user, 2);
+
+        }
+
+
+//        PasswordResetDao.deleteByCreatedBefore(null, DateUtils.daysAgo(2));
 
 
 //        PrintStream sysout = new PrintStream(System.out, true, "UTF-8");

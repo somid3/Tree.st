@@ -84,8 +84,8 @@ public class UserServices extends ParentService  {
 
                 // Deleting answers
                 AnswerDao.deleteByNetworkIdAndUserIdAndRef(conn, answer.getNetworkId(), userId, answer.getRef());
-                optionsCount = AnswerOptionDao.deleteByNetworkIdAndUserIdAndId(conn, answer.getNetworkId(), userId, answer.getRef());
-                ActiveAnswerDao.deleteByNetworkIdAndUserId(conn, answer.getNetworkId(), userId, answer.getQuestionRef());
+                optionsCount = AnswerOptionDao.deleteByNetworkIdAndUserIdAndRef(conn, answer.getNetworkId(), userId, answer.getRef());
+                ActiveAnswerDao.deleteByNetworkIdAndUserIdAndQuestionRef(conn, answer.getNetworkId(), userId, answer.getQuestionRef());
 
                 // Subtract count from question
                 question = QuestionDao.getByNetworkIdAndRef(conn, answer.getNetworkId(), answer.getQuestionRef());

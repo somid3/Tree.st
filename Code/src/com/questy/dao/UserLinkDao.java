@@ -206,6 +206,25 @@ public class UserLinkDao extends ParentDao {
         end(conn, ps, null);
     }
 
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+       conn = start(conn);
+
+       String sql =
+           "delete " +
+           "from `user_links` " +
+           "where `network_id` = ? " +
+           "and (`to_user_id` = ? or `from_user_id` = ?);";
+
+       PreparedStatement ps = conn.prepareStatement(sql);
+       ps.setInt(1, networkId);
+       ps.setInt(2, userId);
+       ps.setInt(3, userId);
+       Integer out = ps.executeUpdate();
+
+       end(conn, ps, null);
+       return out;
+   }
+
     public static Integer insert (
             Connection conn,
             Integer networkId,

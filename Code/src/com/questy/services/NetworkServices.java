@@ -84,6 +84,35 @@ public class NetworkServices extends ParentService {
         return wasUserAdded;
     }
 
+
+    public static void deleteUserFromNetwork(Integer userId, Integer networkId) throws SQLException {
+
+        // Delete user's active answers
+        ActiveAnswerDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+
+        // Delete user's historic answers
+        AnswerDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+
+        // Delete users's historic answer options
+        AnswerOptionDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+
+        // Delete user's user links, both from and to
+        UserLinkDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+
+        // Update shared items user id
+
+        // Update shared comments user id
+
+        // Update shared votes user id
+
+        // Delete user to network mapping
+        UserToNetworkDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+
+    }
+
+
+
+
     public static Tuple<Boolean, String> isEmailEndingGood(Integer networkId, String email) throws SQLException {
 
         // Retrieving email ending requirements

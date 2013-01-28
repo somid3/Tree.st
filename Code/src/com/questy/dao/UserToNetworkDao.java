@@ -110,6 +110,25 @@ public class UserToNetworkDao extends ParentDao {
         return u;
     }
 
+
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+       conn = start(conn);
+
+       String sql =
+           "delete " +
+           "from `users_to_networks` " +
+           "where `network_id` = ? " +
+           "and `user_id` = ?;";
+
+       PreparedStatement ps = conn.prepareStatement(sql);
+       ps.setInt(1, networkId);
+       ps.setInt(2, userId);
+       Integer out = ps.executeUpdate();
+
+       end(conn, ps, null);
+       return out;
+   }
+
     public static Integer insert (
             Connection conn,
             Integer userId,

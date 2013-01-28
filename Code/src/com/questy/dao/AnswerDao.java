@@ -124,31 +124,23 @@ public class AnswerDao extends ParentDao {
         return out;
     }
 
-    public static Answer getLastByUserIdAndNetworkIdAndRef(Connection conn, Integer userId, Integer networkId, Integer ref) throws SQLException {
-        conn = start(conn);
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+       conn = start(conn);
 
-         String sql =
-            "select * " +
-            "from `answers` " +
-            "where `user_id` = ? " +
-            "and `network_id` = ? " +
-            "and `ref` = ? " +
-            "order by `created_on` desc, `ref` desc " +
-            "limit 1;";
+       String sql =
+           "delete " +
+           "from `answers` " +
+           "where `network_id` = ? " +
+           "and `user_id` = ?;";
 
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, userId);
-        ps.setInt(2, networkId);
-        ps.setInt(3, ref);
-        ResultSet rs = ps.executeQuery();
+       PreparedStatement ps = conn.prepareStatement(sql);
+       ps.setInt(1, networkId);
+       ps.setInt(2, userId);
+       Integer out = ps.executeUpdate();
 
-        Answer out = null;
-        while (rs.next())
-            out = loadPrimitives(rs);
-
-        end(conn, ps, rs);
-        return out;
-    }
+       end(conn, ps, null);
+       return out;
+   }
 
     public static Integer deleteByNetworkIdAndUserIdAndRef(Connection conn, Integer networkId, Integer userId, Integer ref) throws SQLException {
         conn = start(conn);
