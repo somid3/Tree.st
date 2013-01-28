@@ -76,11 +76,11 @@ public class EmailConfirmationServices {
         EmailServices.confirmationEmail(userId);
     }
 
-    public static void confirmEmail(WebUtils webUtils, Integer userId, String providedChecksum) throws SQLException, IOException, SkipPageException {
+    public static void confirmEmail(WebUtils webUtils, Integer userId, String confirmationChecksum) throws SQLException, IOException, SkipPageException {
 
         // Validating
         if (userId == null) throw new UIException("User id not provided");
-        if (providedChecksum == null) throw new UIException("Email confirmation checksum not provided");
+        if (confirmationChecksum == null) throw new UIException("Email confirmation checksum not provided");
 
         // Currently non-transactional
         Connection conn = null;
@@ -89,7 +89,7 @@ public class EmailConfirmationServices {
         String validChecksum = UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.getValueByUserId(userId);
 
         // Check checksum
-        if (!validChecksum.equals(providedChecksum))
+        if (!validChecksum.equals(confirmationChecksum))
             throw new UIException("Confirmation checksum failed");
 
         // Retrieve email that needs to be updated to user's email attribute
@@ -120,12 +120,11 @@ public class EmailConfirmationServices {
         // Install login cookies at client
         UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
-        // Retrieving user's first network and the very next question to be answered, if any
-        List<Network> networks = NetworkServices.getByUserId(user.getId(), RoleEnum.VISITOR, SqlLimit.FIRST);
-        Network firstNetwork = networks.get(0);
+        // Retrieving user's initial hash
+        String goHash = UserWebServices.getInitialHash(user.getId());
 
         // Sending user to application
-        webUtils.redirect("/d/app/" + HashRouting.questions(firstNetwork.getId()));
+        webUtils.redirect("/d/app/" + goHash);
     }
 
 }

@@ -243,7 +243,7 @@ public class UserWebServices extends ParentService {
             // Install login cookies at client
             UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
 
-            // Retrieving user's first network hash
+            // Retrieving user's initial hash
             String goHash = getInitialHash(user.getId());
 
             // Send user to application
@@ -317,7 +317,7 @@ public class UserWebServices extends ParentService {
         // Install login cookies at client
         UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
-        // Retrieving user's first network hash
+        // Retrieving user's initial hash
         String goHash = getInitialHash(user.getId());
 
         // Send user to application
@@ -330,7 +330,7 @@ public class UserWebServices extends ParentService {
      * Provides the initial location that the user should be sent
      * once it enters the application
      */
-    private static String getInitialHash (Integer userId) throws SQLException {
+    public static String getInitialHash (Integer userId) throws SQLException {
 
         // Retrieving list of user networks
         List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.VISITOR, SqlLimit.FIRST);

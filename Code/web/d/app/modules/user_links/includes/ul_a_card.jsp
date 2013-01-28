@@ -20,7 +20,6 @@
 
     String ul_a_hCardId = HtmlUtils.getRandomId();
     String ul_a_hConnectButtonId = HtmlUtils.getRandomId();
-    String ul_a_hErrorId = HtmlUtils.getRandomId();
 %>
 
 <div id="<%= ul_a_hCardId %>">
@@ -32,7 +31,7 @@
                if (displayDetails) { %>
                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId, userId)%>');">
            <% } else { %>
-               <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hErrorId %>', '<%= ul_a_hConnectButtonId %>')">
+               <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
            <% } %>
 
                <div class="card_face">
@@ -89,20 +88,20 @@
                    <div class="card_top">
 
                        <div class="card_details">
-                           <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hErrorId %>', '<%= ul_a_hConnectButtonId %>')">
+                           <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
                                <div class="name smd_header highlight2"><%= StringUtils.concat(ul_a_toUser.getName(), 18, "&hellip;") %></div>
                            </a>
                        </div>
 
                    </div>
 
-                   <div id="<%= ul_a_hErrorId %>" class="error sm_text"></div>
+                   <div class="error sm_text"></div>
 
                    <div class="card_create">
 
                        <div class="loading"><img src="./img/sm_loading.gif"></div>
 
-                       <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hErrorId %>', '<%= ul_a_hConnectButtonId %>')">
+                       <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>',  '<%= ul_a_hConnectButtonId %>')">
                            <div id="<%= ul_a_hConnectButtonId %>" class="connect lg_button active_button">View</div>
                        </a>
 

@@ -99,7 +99,7 @@
                 tt_l_left = 300;
                 tt_l_top = 30;
                 tt_l_title = "Intro. 1 of 4";
-                tt_l_message = "Welcome to Tree.st! This brief 4 step introduction will show you around.<br/><br/>Have fun!<br/>The Tree";
+                tt_l_message = "Welcome! This brief 4 step introduction will show you around.<br/><br/>Have fun!";
                 tt_l_gotit = "Let's continue...";
                 tt_l_direction = "tip_none";
                 tt_l_style = null;
@@ -139,7 +139,7 @@
                 tt_l_left = 120;
                 tt_l_top = 65;
                 tt_l_title = "Intro. 4 of 4";
-                tt_l_message = "The 'All' button and search bar allow you to quickly find people by qualities or name.<br/><br/>Search for 'Brazil' and click on the first quality, then search for 'Soccer'... Let's see who you find.";
+                tt_l_message = "The 'Qualities' button and search bar allow you to quickly find people by their unique traits. You can also search for shared messages or people by their name or email.<br/><br/>Click on 'Qualities' and then on the first option... Let's see who you find.";
                 tt_l_gotit = "Cool!";
                 tt_l_direction = "tip_top";
                 tt_l_style = null;
@@ -153,8 +153,7 @@
                 tt_l_top = 50;
                 tt_l_title = "That's it, thanks!";
                 tt_l_message =
-                    "Thats the end of this tutorial, if other people are confused please help them.<br/><br/>" +
-                    "Cheers,<br/>Tree";
+                    "Thats the end of this tutorial, if other people are confused please help them.";
                 tt_l_gotit = "Finish tutorial!";
                 tt_l_direction = "tip_none";
                 tt_l_style = null;
@@ -164,8 +163,8 @@
             <%
                 tt_l_tooltip = TooltipEnum.UPLOAD_PHOTO;
                 tt_l_width = 350;
-                tt_l_left = 280;
-                tt_l_top = 5;
+                tt_l_left = 270;
+                tt_l_top = 0;
                 tt_l_title = null;
                 tt_l_message = "Oh ya! Upload your photo now!";
                 tt_l_gotit = "OK!";

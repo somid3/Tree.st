@@ -4,13 +4,13 @@
 
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
 
-    String checksum = StringUtils.parseString(request.getParameter("xcs"));
+    String confirmationChecksum = StringUtils.parseString(request.getParameter("xcs"));
 
     // Attempting to confirm email
     try {
 
         // Attempting to confirm user email
-        EmailConfirmationServices.confirmEmail(wu, userId, checksum);
+        EmailConfirmationServices.confirmEmail(wu, userId, confirmationChecksum);
 
 
     } catch (UIException e) {
