@@ -1,7 +1,7 @@
 <%@ include file="../all.jsp" %>
 <%
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
-    String checksum = StringUtils.parseString(request.getParameter("cs"));
+    String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 %>
 <div id="forgot">
     <div id="form">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="element">
-            <a href="#" onclick="Forgot.set(event, <%= userId%>, '<%= checksum %>');"><div id="button" class="lg_button submit_button">Set new password</div></a>
+            <a href="#" onclick="Forgot.set(event, <%= userId%>, '<%= passwordChecksum %>');"><div id="button" class="lg_button submit_button">Set new password</div></a>
         </div>
     </div>
 </div>
@@ -36,10 +36,10 @@
 <script type="text/javascript">
 
     // Binding the return key for the form
-    $('#form').keypress(function(e) {
-        if(e.which == $.ui.keyCode.ENTER){
-            e.preventDefault();
-            Forgot.set(e, <%= userId%>, '<%= checksum %>');
+    $('#form').keypress(function(event) {
+        if(event.which == $.ui.keyCode.ENTER){
+            Event.preventDefault(event);
+            Forgot.set(event, <%= userId%>, '<%= passwordChecksum %>');
             return false;
         }
     });

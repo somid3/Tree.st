@@ -23,7 +23,7 @@
         UserWebServices.installCookies(wu, userId, userSession.getChecksum(), persistent);
 
         // Sending user to application
-        wu.redirect("/d/app?go_photo_upload=1");
+        wu.redirect("/d/app/" + HashRouting.settingsPhotoUpload());
 
     }
 %>

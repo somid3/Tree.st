@@ -7,7 +7,6 @@ public class PasswordReset extends Parent {
     private Integer userId;
     private Date createdOn;
     private String checksum;
-    private Date completedOn;
 
     public Integer getUserId() {
         return userId;
@@ -31,13 +30,5 @@ public class PasswordReset extends Parent {
 
     public void setChecksum(String checksum) {
         this.checksum = checksum;
-    }
-
-    public Date getCompletedOn() {
-        return completedOn;
-    }
-
-    public void setCompletedOn(Date completedOn) {
-        this.completedOn = completedOn;
     }
 }

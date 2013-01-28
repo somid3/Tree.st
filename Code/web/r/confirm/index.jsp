@@ -10,21 +10,8 @@
     try {
 
         // Attempting to confirm user email
-        EmailConfirmationServices.confirmEmail(userId, checksum);
+        EmailConfirmationServices.confirmEmail(wu, userId, checksum);
 
-        // Email confirmation was successful, retrieve user
-        User user = UserDao.getById(null, userId);
-
-        Boolean persistent = false;
-
-        // Login user persistently
-        UserSession userSession = UserWebServices.authenticateAndCreateSession(wu, user.getEmail(), user.getPasswordHash(), persistent);
-
-        // Install login cookies at client
-        UserWebServices.installCookies(wu, user.getId(), userSession.getChecksum(), persistent);
-
-        // Sending user to application
-        wu.redirect("/d/app?confirmed");
 
     } catch (UIException e) {
 

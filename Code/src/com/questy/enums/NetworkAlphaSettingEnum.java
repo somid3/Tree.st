@@ -39,12 +39,12 @@ public enum NetworkAlphaSettingEnum {
     /**
      * Word used to describe a singular user
      */
-    VOCAB_USER_SINGULAR (1000, "User"),
+    VOCAB_USER_SINGULAR (1000, "Member"),
 
     /**
      * Word used to describe a plural user
      */
-    VOCAB_USER_PLURAL (1001, "People"),
+    VOCAB_USER_PLURAL (1001, "Members"),
 
     /**
      * Vocabulary used to display up vote something

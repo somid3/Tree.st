@@ -42,6 +42,6 @@
             query.add("go_vuid", request.getParameter("vuid"));
 
 
-        wu.redirect("/d/app?" + query);
+        wu.redirect("/d/app/?" + query);
     }
 %>

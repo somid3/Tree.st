@@ -2,6 +2,7 @@ package com.questy;
 
 import com.questy.admin.AdminServices;
 import com.questy.dao.NetworkAlphaSettingDao;
+import com.questy.dao.PasswordResetDao;
 import com.questy.dao.QuestionOptionDao;
 import com.questy.domain.QuestionOption;
 import com.questy.enums.NetworkAlphaSettingEnum;
@@ -9,6 +10,7 @@ import com.questy.services.NetworkServices;
 import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
 import com.questy.services.cron.CronServices;
+import com.questy.utils.DateUtils;
 import com.questy.utils.StringUtils;
 
 import java.io.PrintStream;
@@ -22,9 +24,12 @@ public class OmidsSandbox {
 
     public static void main(String[] args) throws Exception {
 
-        PrintStream sysout = new PrintStream(System.out, true, "UTF-8");
+        PasswordResetDao.deleteByCreatedBefore(null, DateUtils.daysAgo(2));
 
-        sysout.println(new String("??".getBytes(), "UTF-8"));
+
+//        PrintStream sysout = new PrintStream(System.out, true, "UTF-8");
+//
+//        sysout.println(new String("??".getBytes(), "UTF-8"));
 
 
 //        List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(null, 2000, 1);

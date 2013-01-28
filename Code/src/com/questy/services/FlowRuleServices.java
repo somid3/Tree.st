@@ -85,7 +85,6 @@ public class FlowRuleServices extends ParentService {
             latestAnswers.get(0).getQuestionRef().equals(nextRef))
             nextRef = null;
 
-
         debug("Ending for network " + networkId + ", next ref: " + nextRef);
         debug("");
 

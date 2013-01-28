@@ -1,9 +1,11 @@
 package com.questy.services;
 
 import com.questy.dao.NetworkDao;
+import com.questy.dao.PasswordResetDao;
 import com.questy.dao.UserDao;
 import com.questy.dao.UserSessionDao;
 import com.questy.domain.Network;
+import com.questy.domain.PasswordReset;
 import com.questy.domain.User;
 import com.questy.domain.UserSession;
 import com.questy.enums.RoleEnum;
@@ -12,12 +14,14 @@ import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailConfirmationServices;
+import com.questy.services.email.EmailServices;
 import com.questy.utils.StringUtils;
 import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 public class UserWebServices extends ParentService {
@@ -239,24 +243,105 @@ public class UserWebServices extends ParentService {
             // Install login cookies at client
             UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
 
-            // Retrieving user's first network and the very next question to be answered, if any
-            List<Network> networks = NetworkServices.getByUserId(user.getId(), RoleEnum.VISITOR, SqlLimit.FIRST);
-            Network firstNetwork = networks.get(0);
-            Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(user.getId(), firstNetwork.getId());
+            // Retrieving user's first network hash
+            String goHash = getInitialHash(user.getId());
 
-            // Determining where to send the user post login
-            String goHash = null;
-            if (nextQuestionRef != null)
-                goHash = HashRouting.questions(firstNetwork.getId());
-            else
-                goHash = HashRouting.smartGroups(firstNetwork.getId());
-
-            // Add send to application action in response
+            // Send user to application
             buf.append("<app go='" + goHash + "' />");
 
         }
 
         return buf.toString();
+    }
+
+    public static String forgotSetPassword (
+        WebUtils webUtils,
+        Integer userId,
+        String passwordChecksum,
+        String passwordText,
+        String passwordTextAgain) throws SQLException {
+
+        StringBuilder buf = new StringBuilder();
+
+        // Validating
+        if (userId == null)
+            throw new UIException ("Incorrect password reset link");
+
+        // Retrieving password reset
+        PasswordReset reset = PasswordResetDao.getByUserIdAndChecksum(null, userId, passwordChecksum);
+
+        // Validating reset
+        if (reset == null)
+            throw new UIException ("Incorrect password reset, please start over");
+
+        if ((new Date().getTime() - reset.getCreatedOn().getTime() > 3600000))
+            throw new UIException ("Password reset link has exceed one hour, please start over");
+
+        User user = UserDao.getById(null, userId);
+        if (user == null)
+            throw new UIException ("Incorrect password reset link");
+
+        // Validating password
+        if (StringUtils.emptyIfNull(passwordText).length() < 6)
+            throw new UIException("Password must be greater than five characters");
+
+        if (StringUtils.emptyIfNull(passwordTextAgain).length() < 6)
+            throw new UIException("Password must be greater than five characters");
+
+        if (!passwordText.equals(passwordTextAgain))
+            throw new UIException("Both passwords do not match");
+
+        /* Yay! We are all good to update the password */
+
+        // Updating the password
+        UserDao.updatePasswordByUserId(null, userId, passwordText);
+
+        // Retrieving updated user
+        user = UserDao.getById(null, userId);
+
+        // Notify user by email that password was updated
+        EmailServices.passwordResetDone(userId);
+
+        // Delete reset password
+        PasswordResetDao.deleteByUserIdAndChecksum(null, userId, passwordChecksum);
+
+        // Creating hashed password for login
+        String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+
+        // Ensure user gets logged in persistently
+        Boolean persistent = true;
+
+        // Logging user in, creating a new user session
+        UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
+
+        // Install login cookies at client
+        UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
+
+        // Retrieving user's first network hash
+        String goHash = getInitialHash(user.getId());
+
+        // Send user to application
+        buf.append("<app go='" + goHash + "' />");
+
+        return buf.toString();
+    }
+
+    /**
+     * Provides the initial location that the user should be sent
+     * once it enters the application
+     */
+    private static String getInitialHash (Integer userId) throws SQLException {
+
+        // Retrieving list of user networks
+        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.VISITOR, SqlLimit.FIRST);
+        Network firstNetwork = networks.get(0);
+        Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, firstNetwork.getId());
+
+        // Determining where to send initially...
+        if (nextQuestionRef != null)
+            return HashRouting.questions(firstNetwork.getId());
+        else
+            return HashRouting.smartGroups(firstNetwork.getId());
     }
 
 }

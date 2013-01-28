@@ -57,14 +57,13 @@ public class PasswordResetDao extends ParentDao {
         return out;
     }
 
-    public static void updateCompletedOnByUserIdAndChecksum (Connection conn, Integer userId, String checksum) throws SQLException {
+    public static void deleteByUserIdAndChecksum (Connection conn, Integer userId, String checksum) throws SQLException {
         conn = start(conn);
 
         String sql =
-         "update `password_reset` " +
-         "set `completed_on` = NOW() " +
-         "where `user_id` = ? " +
-         "and `checksum` = ?";
+             "delete from `password_resets` " +
+             "where `user_id` = ? " +
+             "and `checksum` = ?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
@@ -72,6 +71,28 @@ public class PasswordResetDao extends ParentDao {
         ps.execute();
 
         end(conn, ps, null);
+    }
+
+    public static Integer deleteByCreatedBefore (
+            Connection conn,
+            java.util.Date createdBefore) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `password_resets` " +
+            "where `created_on` <= ?;";
+
+        // Converting to sql timestamp
+        Timestamp createdBeforeSql = new Timestamp(createdBefore.getTime());
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setTimestamp(1, createdBeforeSql);
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
     }
 
     public static Integer insert (
@@ -106,7 +127,6 @@ public class PasswordResetDao extends ParentDao {
 
         out.setId(DatabaseUtils.getInt(rs, "id"));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
-        out.setCompletedOn(DatabaseUtils.getTimestamp(rs, "completed_on"));
         out.setChecksum(DatabaseUtils.getString(rs, "checksum"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
 

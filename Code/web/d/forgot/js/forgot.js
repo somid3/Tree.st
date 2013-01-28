@@ -48,7 +48,6 @@ Forgot.send = function (event) {
 
         } else {
 
-
             // Display message that user needs to confirm account
             var $action = $("#action");
             $action.css('display', 'none').load("./renders/check.jsp", function () {
@@ -63,7 +62,7 @@ Forgot.send = function (event) {
 
 };
 
-Forgot.set = function (event, userId, checksum) {
+Forgot.set = function (event, userId, passwordChecksum) {
 
     Event.preventDefault(event);
 
@@ -72,7 +71,7 @@ Forgot.set = function (event, userId, checksum) {
 
     var parameters = {};
     parameters.uid = userId;
-    parameters.cs = checksum;
+    parameters.xcs = passwordChecksum;
     parameters.p = password;
     parameters.pa = passwordAgain;
 
@@ -100,8 +99,10 @@ Forgot.set = function (event, userId, checksum) {
 
         } else if($response.find("app").length > 0) {
 
-            // Send user to the application
-            URL.redirect("/d/app");
+            // Send user to app
+            var goHash = $response.find("app").attr("go");
+            var sendTo = "/d/app/" + goHash;
+            URL.redirect(sendTo);
 
             return false;
 

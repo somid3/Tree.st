@@ -1,13 +1,26 @@
 package com.questy.services.email;
 
 import com.questy.dao.UserDao;
+import com.questy.domain.Network;
+import com.questy.domain.User;
+import com.questy.domain.UserSession;
+import com.questy.enums.RoleEnum;
 import com.questy.enums.UserAlphaSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
+import com.questy.helpers.SqlLimit;
 import com.questy.helpers.UIException;
+import com.questy.services.FlowRuleServices;
+import com.questy.services.NetworkServices;
+import com.questy.services.UserWebServices;
 import com.questy.utils.StringUtils;
+import com.questy.web.HashRouting;
+import com.questy.web.WebUtils;
 
+import javax.servlet.jsp.SkipPageException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * This class deals with confirming the mail email address a user defines. This is
@@ -63,7 +76,7 @@ public class EmailConfirmationServices {
         EmailServices.confirmationEmail(userId);
     }
 
-    public static void confirmEmail(Integer userId, String providedChecksum) throws SQLException {
+    public static void confirmEmail(WebUtils webUtils, Integer userId, String providedChecksum) throws SQLException, IOException, SkipPageException {
 
         // Validating
         if (userId == null) throw new UIException("User id not provided");
@@ -95,6 +108,24 @@ public class EmailConfirmationServices {
 
         // Confirm account
         UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.setValueByUserId(userId, 1);
+
+        // Email confirmation was successful, retrieve user
+        User user = UserDao.getById(null, userId);
+
+        Boolean persistent = false;
+
+        // Login user persistently
+        UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), user.getPasswordHash(), persistent);
+
+        // Install login cookies at client
+        UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
+
+        // Retrieving user's first network and the very next question to be answered, if any
+        List<Network> networks = NetworkServices.getByUserId(user.getId(), RoleEnum.VISITOR, SqlLimit.FIRST);
+        Network firstNetwork = networks.get(0);
+
+        // Sending user to application
+        webUtils.redirect("/d/app/" + HashRouting.questions(firstNetwork.getId()));
     }
 
 }

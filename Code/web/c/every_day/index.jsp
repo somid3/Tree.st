@@ -28,5 +28,9 @@
     // Garbage collect inactive votes
     SharedVoteDao.deleteInactive();
 
+    // Delete old password resets
+    PasswordResetDao.deleteByCreatedBefore(null, DateUtils.daysAgo(2));
+
+
     System.out.println("'Every day' script called at " + new Date());
 %>

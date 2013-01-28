@@ -1,12 +1,12 @@
 <%@ include file="../../all.jsp"%>
 <%
-    String checksum = StringUtils.parseString(request.getParameter("xcs"));
+    String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 
     String hActionLink = null;
     {
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
-        query.add("xcs", checksum);
+        query.add("xcs", passwordChecksum);
         hActionLink = "http://" + Vars.domain + "/d/forgot/?" + query;
         hActionLink = HtmlUtils.createHref(hActionLink);
     }

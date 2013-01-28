@@ -3,18 +3,24 @@
     WebUtils wu = new WebUtils(request, response);
 
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
-    String checksum = StringUtils.parseString(request.getParameter("xcs"));
+    String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 
     Boolean begin = true;
     User user = null;
-    if (userId != null && checksum != null) {
+    if (userId != null && passwordChecksum != null) {
 
-        // Display the set your password form
-        begin = false;
+        // Attempt to retrieve password reset object
+        PasswordReset reset = PasswordResetDao.getByUserIdAndChecksum(null, userId, passwordChecksum);
 
-        // Retrieving user
-        user = UserDao.getById(null, userId);
+        // Validating reset
+        if (reset != null) {
 
+            // Displays the set new password form...
+            begin = false;
+
+            // Retrieving user
+            user = UserDao.getById(null, userId);
+        }
     }
 %>
 <!DOCTYPE HTML>
@@ -32,7 +38,7 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
-<div id="main">
+<div id="main" class="w800">
     <div id="header">
         <div id="logo">
             <span class="sp_header highlight"><%= Vars.name %></span>
@@ -49,9 +55,8 @@
                 <% if (begin) { %>
                     Animations.wordByWord("There are lots of hackers out there, make sure your password is hard to guess &mdash; but easy enough for you to remember.", "#welcome");
                 <% } else { %>
-                    Animations.wordByWord("Hello <%= user.getFirstName() %>, please enter your new password twice on the right. Once you do so you will be logged in. Thanks for using the password reset tool!", "#welcome");
+                    Animations.wordByWord("Hello <%= user.getFirstName() %>, please enter your new password twice on the right. Once you do so you will be logged in.", "#welcome");
                 <% } %>
-
             </script>
 
         </div>
@@ -65,12 +70,16 @@
 <script type="text/javascript">
 
    <% if (begin) { %>
+
        $("#action").load("./renders/begin.jsp");
+
    <% } else { %>
+
        var parameters = {};
        parameters.uid = <%= userId %>;
-       parameters.cs = '<%= checksum %>';
+       parameters.xcs = '<%= passwordChecksum %>';
        $("#action").load("./renders/set.jsp", parameters);
+
    <% }%>
 
 </script>
