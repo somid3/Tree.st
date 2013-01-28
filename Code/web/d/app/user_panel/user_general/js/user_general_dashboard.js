@@ -27,9 +27,9 @@ function UserGeneralDashboard () {
     };
 
 
-    this.cancelSetting = function (
-        event,
-        hSettingsId) {
+    this.cancelSetting = function (event, hSettingsId) {
+
+        Event.preventDefault(event);
 
         $('#' + hSettingsId).fadeOut();
 

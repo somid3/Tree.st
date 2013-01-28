@@ -3,7 +3,7 @@
 <%
 
     // Retrieve networks user is a member of
-    List<UserToNetwork> userToNetworks = UserToNetworkDao.getByUserIdAndLowestRole(null, userId, RoleEnum.VISITOR);
+    List<UserToNetwork> userToNetworks = UserToNetworkDao.getByUserIdAndLowestRole(null, userId, RoleEnum.VISITOR, SqlLimit.ALL);
 
     Network network = null;
     String hTargetId = null;

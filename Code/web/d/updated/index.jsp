@@ -28,11 +28,13 @@
 </div>
 
 <a href="/">
-    <div class="canvas_container w300 center">
+    <div class="w300 center">
         <div class="updated">
             <div class="center"><img src="./img/done.png"></div>
             <br/>
-            <div class="vl_header dim">Your account has been updated</div>
+            <div class="vl_header dim">
+                Your account has been updated. <span class="highlight2">Click to continue.</span>
+            </div>
         </div>
    </div>
 </a>

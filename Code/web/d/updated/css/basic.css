@@ -15,4 +15,8 @@ body {
 .updated {
     text-align: center;
     padding: 20px;
+    width: 300px;
+    background-color: white;
+    border-right: 2px solid <%= HtmlDesign.dim3 %>;
+    border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
 }

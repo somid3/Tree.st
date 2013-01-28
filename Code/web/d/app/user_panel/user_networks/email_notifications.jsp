@@ -97,7 +97,7 @@
         <div class="actionable">
             <div class="loading"><img src="./img/sm_loading.gif"></div>
             <a href="#" onclick="UND.submitEmailNotifications(event, <%= networkId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
-            <a href="#" onclick="UND.cancelSetting(event, '<%= hSettingsId %>')"><div class="action md_button">Cancel</div></a>
+            <a href="#" onclick="UND.cancelSetting(event, '<%= hSettingsId %>')"><div class="action light_button md_button">Cancel</div></a>
         </div>
 
     </form>

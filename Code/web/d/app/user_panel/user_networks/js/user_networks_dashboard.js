@@ -26,12 +26,11 @@ function UserNetworksDashboard () {
         Transitions.load('#' + hTargetId, url, parameters);
     };
 
-    this.cancelSetting = function (
-        event,
-        hSettingsId) {
+    this.cancelSetting = function (event, hSettingsId) {
+
+        Event.preventDefault(event);
 
         $('#' + hSettingsId).fadeOut();
-
     };
 
     this.submitSetting = function (

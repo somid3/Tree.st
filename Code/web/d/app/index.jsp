@@ -6,6 +6,9 @@
     // Retrieving logged user
     User user = UserDao.getById(null, userId);
 
+    // Getting initiation hash in case user has no hash
+    String initiationHash = UserWebServices.getInitialHash(user.getId());
+
     // Retrieving user's tooltip situation
     TooltipEnum tooltip = TooltipServices.getNextTooltipByUserId(userId);
 
@@ -237,11 +240,13 @@
     HashRouting.routes = function () {
 
         routie('', function() {
-            LeftMenu.goToNetwork(null);
+            HashRouting.setHash(null, '<%= initiationHash %>');
         });
 
         routie('/comm/:nid', function(nid) {
-            LeftMenu.goToNetwork(null, nid);
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.SMART_GROUPS);
+            });
         });
 
         routie('/comm/:nid/all', function(nid) {

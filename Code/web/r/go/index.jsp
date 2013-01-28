@@ -27,21 +27,37 @@
         UserWebServices.installCookies(wu, userId, userSession.getChecksum(), persistent);
 
         /* Filtering for parameters that go-feature accepts */
-        UrlQuery query = new UrlQuery();
+        String goHash = null;
 
-        if (request.getParameter("nid") != null)
-            query.add("go_nid", request.getParameter("nid"));
+        if (!StringUtils.isEmpty(request.getParameter("nid")) &&
+            !StringUtils.isEmpty(request.getParameter("sgr")) &&
+            !StringUtils.isEmpty(request.getParameter("sir")) )
 
-        if (request.getParameter("sgr") != null)
-            query.add("go_sgr", request.getParameter("sgr"));
+            goHash = HashRouting.sharedItem(
+                StringUtils.parseInt(request.getParameter("nid")),
+                StringUtils.parseInt(request.getParameter("sgr")),
+                StringUtils.parseInt(request.getParameter("sir")));
 
-        if (request.getParameter("sir") != null)
-            query.add("go_sir", request.getParameter("sir"));
+        else if (!StringUtils.isEmpty(request.getParameter("nid")) &&
+                 !StringUtils.isEmpty(request.getParameter("sgr")))
 
-        if (request.getParameter("vuid") != null)
-            query.add("go_vuid", request.getParameter("vuid"));
+            goHash = HashRouting.smartGroup(
+                StringUtils.parseInt(request.getParameter("nid")),
+                StringUtils.parseInt(request.getParameter("sgr")));
 
+        else if (!StringUtils.isEmpty(request.getParameter("nid")) &&
+                 !StringUtils.isEmpty(request.getParameter("vuid")))
 
-        wu.redirect("/d/app/?" + query);
+            goHash = HashRouting.member(
+                StringUtils.parseInt(request.getParameter("nid")),
+                StringUtils.parseInt(request.getParameter("vuid")),
+                userId);
+
+        else if (!StringUtils.isEmpty(request.getParameter("nid")))
+
+            goHash = HashRouting.smartGroups(
+                StringUtils.parseInt(request.getParameter("nid")));
+
+        wu.redirect("/d/app/" + goHash);
     }
 %>
