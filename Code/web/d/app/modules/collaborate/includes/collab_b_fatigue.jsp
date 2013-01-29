@@ -13,7 +13,7 @@
 
             <div class="vl_text dim">Take a break, view the <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(networkId)%>');"><span class="highlight6">Smart Groups</span></a></div>
 
-            <div class="vl_text dim">Or... To continue click on <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(networkId)%>');"><span class="highlight2">Collaborate</span></a></div>
+            <div class="vl_text dim">Or... To continue click on <a href="#" onclick="ND.go(event, NetworkDashboard.Section.QUESTIONS);"><span class="highlight2">Collaborate</span></a></div>
 
             <div class="vl_text dim2">Remember, if you wish to update your<br/> profile click on <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profile(networkId)%>');"><span class="highlight2">My profile</span></a></div>
 

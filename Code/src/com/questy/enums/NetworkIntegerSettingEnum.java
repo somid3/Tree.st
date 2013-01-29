@@ -37,7 +37,6 @@ public enum NetworkIntegerSettingEnum {
 
     SMART_RESULTS_DISPLAY_SINCE         (500, 1),
 
-
     UI_HAS_BACKGROUND                   (10000, 0),
     UI_HAS_ICON                         (10001, 0),
     UI_HAS_LOGO                         (10002, 0)

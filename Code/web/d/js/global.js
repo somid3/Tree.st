@@ -20,9 +20,6 @@ Transitions.postFadeIn = function (selector, postUrl, parameters, callback) {
  */
 Transitions.load = function (selector, loadUrl, parameters, onCompleteCallback) {
 
-    if (onCompleteCallback)
-        onCompleteCallback();
-
     $(selector).load(loadUrl, parameters, onCompleteCallback);
 
 };

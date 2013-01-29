@@ -70,14 +70,14 @@ LeftMenu.fullOpacity = function () {
 
     // Add full opacity to the left menu
     $("#left").css({opacity: 1});
-
+    $("#header").css({opacity: 1});
 };
 
 LeftMenu.halfOpacity = function () {
 
     // Add full opacity to the left menu
     $("#left").css({opacity: 0.5});
-
+    $("#header").css({opacity: 0.5});
 };
 
 /**
@@ -113,15 +113,17 @@ LeftMenu.goToNetwork = function (event, networkId, callback) {
     // Scroll to the top of the page
     Animations.scrollToTop();
 
-    var parameters = {nid : networkId};
-
     // Checking if we are already inthe same network
     if (LeftMenu.CURRENT_NETWORK == networkId) {
 
         // Yes, same network, do not load currently again, just do the callback
         if (callback) callback();
 
+        return false;
+
     } else {
+
+        var parameters = {nid : networkId};
 
         // Remembering the current network
         LeftMenu.CURRENT_NETWORK = networkId;

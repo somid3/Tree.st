@@ -136,7 +136,7 @@
 
                     <div class="element">
                         <div class="note sm_text dim">
-                            If you already have a Tree.st, use the same credentials to <b>join</b> two or more communities
+                            If you already have a Tree.st, use it here to join two or more communities
                         </div>
 
                         <div class="note sm_text dim">

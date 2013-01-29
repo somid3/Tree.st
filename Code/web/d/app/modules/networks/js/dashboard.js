@@ -62,12 +62,6 @@ function NetworkDashboard () {
 
     this.go = function (event, sendTo, parameters, callback) {
 
-        // TODO fix that everything gets called twice
-        // TODO fix that everything gets called twice
-        // TODO fix that everything gets called twice
-        // TODO fix that everything gets called twice
-
-
         Event.preventDefault(event);
 
         if (sendTo == null  || sendTo == NetworkDashboard.Section.QUESTIONS)

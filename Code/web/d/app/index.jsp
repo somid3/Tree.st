@@ -195,7 +195,7 @@
         <div id="dashboard"></div>
 
         <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settings() %>');">
-            <div class="user">
+            <div id="user">
                 <div class="face">
                     <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
                 </div>

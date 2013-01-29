@@ -30,20 +30,17 @@
         if (hasIcon != 0)
             iconSrc = network.getIconResourceUrl();
         else
-            iconSrc = "./modules/networks/img/tree.png";
-    %>
+            iconSrc = "./modules/networks/img/tree.png"; %>
 
         <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(network.getId())%>')">
+
             <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">
+
                 <div class="contents">
-
-
-
                     <div class="icon"><img src="<%= iconSrc %>" alt=""></div>
-
-
                     <div class="name smd_text"><%= StringUtils.concat(network.getName(), 10, "&#8230;") %></div>
                 </div>
+
                 <% if (nextQuestionRef != null) { %>
                     <div class="bullet" id="<%= NetworkHtml.getBulletId(network.getId()) %>"><img src="./img/dot-green-16.png"></div>
                     <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletId(network.getId()) %>", 10000, 30000)</script>

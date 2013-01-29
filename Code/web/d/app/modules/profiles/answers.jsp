@@ -184,14 +184,28 @@
 
                 String app_a_message = null;
 
-                if (viewMyself)
-                    app_a_message = "You haven't collaborated yet!";
-                else
+                if (viewMyself) { %>
+
+                        <div class="canvas_mini_message">
+                            <div class="container">
+                                <div class="content">
+                                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(approvedNetwork.getId()) %>');">
+                                    <div class="message smd_text highlight2">
+                                        Complete your profile!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <% } else {
+
                     app_a_message = viewed.getFirstName() + " has not collaborated yet!";
 
-                boolean app_a_withCanvasContainer = false; %>
+                    boolean app_a_withCanvasContainer = false; %>
 
-                <%@ include file="../../includes/app_a_mini_message.jsp" %>
+                    <%@ include file="../../includes/app_a_mini_message.jsp" %>
+
+                <% } %>
 
             <% } %>
         </div>

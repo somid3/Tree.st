@@ -196,7 +196,9 @@
       w.detachEvent('onhashchange', hashChanged);
     }
   };
+
   addListener();
 
   w.routie = routie;
+
 })(window);

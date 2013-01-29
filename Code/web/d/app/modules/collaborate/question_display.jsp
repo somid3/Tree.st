@@ -45,6 +45,7 @@
 
         // Retrieving question to be answered
         Question question = QuestionServices.getByNetworkIdAndRef(networkId, answeringQuestionRef);
+
 %>
 
 <script type="text/javascript">
@@ -181,13 +182,9 @@
         <div class="output shadow"></div>
         <script type="text/javascript">
             $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= networkId %>, qr: <%= answeringQuestionRef %>});
-        </script>
-
-        <script type="text/javascript">
 
             QD.updateOrSubmit(null);
             Animations.toPosition(".output", 20, 10, 600);
-
         </script>
     </div>
 </div>

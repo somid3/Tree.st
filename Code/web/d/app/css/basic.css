@@ -40,7 +40,7 @@
     top: 0;
 }
 
-#header .user {
+#header #user {
     display: inline-block;
     float: right;
     padding: 5px 10px;
@@ -52,27 +52,26 @@
     top: -5px;
 }
 
-#header .user .face {
+#header #user .face {
     float: left;
 }
 
-#header .user .details {
+#header #user .details {
     float: left;
 }
 
-#header .user .detail {
+#header #user .detail {
     margin-bottom: 2px;
 }
 
-#header .user #thumbnail img {
+#header #user #thumbnail img {
     float: right;
     width: 40px;
     height: 40px;
     margin-right: 5px;
 }
 
-#header .user #name {
-    /*float: right;*/
+#header #user #name {
     padding: 8px;
 }
 

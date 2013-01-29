@@ -26,10 +26,3 @@
 </div>
 
 <div id="user_panel_canvas"></div>
-
-<script type="text/javascript">
-
-    // Changing header color to default color
-    $("#header").css("background-color", "<%= HtmlDesign.headerColor %>");
-
-</script>
