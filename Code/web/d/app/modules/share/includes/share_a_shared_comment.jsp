@@ -43,7 +43,7 @@
                     <span class="sm_header highlight2"><%= share_a_author.getName() %></span>:
                 </a>
 
-                <span class="sm_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_a_sharedComment.getText() )) %></span>
+                <span class="sm_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_a_sharedComment.getText() )) %></span>
             </div>
 
             <div class="bottom">

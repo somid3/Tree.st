@@ -8,7 +8,7 @@
     boolean requireUserLink = false;
     boolean viewMyself = false;
     try {
-        viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, userId, viewUserId);
+        viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, meId, viewUserId);
     } catch (RuntimeException e) {
         requireUserLink = true;
     }

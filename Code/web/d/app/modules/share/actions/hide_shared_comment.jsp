@@ -1,15 +1,14 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    Integer sgr = StringUtils.parseInt(request.getParameter("sgr"));
-    Integer sir = StringUtils.parseInt(request.getParameter("sir"));
+    Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
+    Integer sharedItemRef = StringUtils.parseInt(request.getParameter("sir"));
     Integer ref= StringUtils.parseInt(request.getParameter("ref"));
 
     StringBuilder buf = new StringBuilder();
     try {
 
         // Hiding shared item
-        Tuple<Integer, Integer> refAndPoints = SharedCommentServices.hide(networkId, userId, sgr, sir, ref);
+        Tuple<Integer, Integer> refAndPoints = SharedCommentServices.hide(homeId, meId, smartGroupRef, sharedItemRef, ref);
 
         // Presenting results to user interface
         buf = new StringBuilder();

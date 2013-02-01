@@ -58,7 +58,7 @@
 
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.sharedItem(share_d_sharedItem.getNetworkId(), share_d_sharedItem.getSmartGroupRef(), share_d_sharedItem.getSharedItemRef()) %>');">
 
-                <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_d_text ) )%></div>
+                <div class="box smd_text dim"><%= HtmlUtils.paragraphize( HtmlUtils.linkify( share_d_text ) )%></div>
                 <div>
 
                     <% if (share_d_settingSharedItemDisplayCreatedOn != 0) { %>

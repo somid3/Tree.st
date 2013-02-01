@@ -4,13 +4,11 @@
     String newPassword2 = StringUtils.parseString(request.getParameter("new_pass2"));
     String password = StringUtils.parseString(request.getParameter("pass"));
 
-    WebUtils webUtils = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {
 
-        UserServices.passwordChange(userId, password, newPassword1, newPassword2);
+        UserServices.passwordChange(meId, password, newPassword1, newPassword2);
 
     } catch (UIException e) {
 

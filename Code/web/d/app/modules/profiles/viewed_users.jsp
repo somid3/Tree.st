@@ -1,17 +1,16 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, userId, viewUserId);
+    UserLinkServices.viewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
 
     // Retrieving user being viewed
     User viewed = UserDao.getById(null, viewUserId);
 
     // Retrieving total number of shared items
-    Integer count = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, networkId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
+    Integer count = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, homeId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
 %>
 
 <div id="viewed_canvas">

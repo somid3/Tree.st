@@ -1,7 +1,6 @@
 <%@ include file="../../../all.jsp" %>
 
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
 
     Integer searchNetworkId = StringUtils.parseInt(request.getParameter("snid"));
@@ -18,7 +17,7 @@
     sgroup_b_questionXml.setNetworkId(searchQuestion.getNetworkId());
 
     // Creating a criteria that matches user's last response to question
-    Answer searchAnswer = AnswerDao.getLastByUserIdAndNetworkIdAndAnsweredQuestionRef(null, userId, searchQuestion.getNetworkId(), searchQuestion.getRef());
+    Answer searchAnswer = AnswerDao.getLastByUserIdAndNetworkIdAndAnsweredQuestionRef(null, meId, searchQuestion.getNetworkId(), searchQuestion.getRef());
 
     // Has an option reference been provided?
     if (searchOptionRef != null) {
@@ -38,7 +37,7 @@
     } else if (searchAnswer != null) {
 
         // By default add "is set" criteria to the same options the answer contains
-        List<AnswerOption> options = AnswerOptionDao.getByUserIdAndNetworkIdAndAnswerRef(null, userId, searchQuestion.getNetworkId(), searchAnswer.getRef());
+        List<AnswerOption> options = AnswerOptionDao.getByUserIdAndNetworkIdAndAnswerRef(null, meId, searchQuestion.getNetworkId(), searchAnswer.getRef());
 
         // Loop through all the options the user selected when question was answered
         for(AnswerOption ao : options) {
@@ -81,7 +80,7 @@
         sgroup_b_questionXml.addOption(ox);
     }
 
-    SmartGroup sgroup_b_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
+    SmartGroup sgroup_b_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, homeId, smartGroupRef);
     Boolean sgroup_b_editable = true;
 %>
 

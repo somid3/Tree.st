@@ -4,13 +4,11 @@
     String newEmail2 = StringUtils.parseString(request.getParameter("email2"));
     String password = StringUtils.parseString(request.getParameter("pass"));
 
-    WebUtils webUtils = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {
 
-        UserServices.emailChange(userId, password, newEmail1, newEmail2);
+        UserServices.emailChange(meId, password, newEmail1, newEmail2);
 
     } catch (UIException e) {
 

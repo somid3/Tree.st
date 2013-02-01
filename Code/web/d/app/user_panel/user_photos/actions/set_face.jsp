@@ -8,5 +8,5 @@
     Integer width = StringUtils.parseInt(request.getParameter("w"));
     Integer height = StringUtils.parseInt(request.getParameter("h"));
 
-    AppResourceServices.setFace(userId, resourceRef, resourceChecksum, x1, y1, width, height);
+    AppResourceServices.setFace(meId, resourceRef, resourceChecksum, x1, y1, width, height);
 %>

@@ -1,14 +1,12 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer toUserId = StringUtils.parseInt(request.getParameter("tuid"));
 
     StringBuilder buf = new StringBuilder();
 
-
     try {
 
-        Tuple<UserLinkDirectionEnum, Integer> directionAndPoints = UserLinkServices.linkUsers(networkId, userId, toUserId);
+        Tuple<UserLinkDirectionEnum, Integer> directionAndPoints = UserLinkServices.linkUsers(homeId, meId, toUserId);
 
         buf.append("<confirm>");
         buf.append("<to_user>").append(toUserId).append("</to_user>");

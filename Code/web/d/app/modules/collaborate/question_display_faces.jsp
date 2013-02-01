@@ -1,10 +1,9 @@
 <%@ include file="../../all.jsp" %>
 <%
     Integer questionRef = StringUtils.parseInt(request.getParameter("qr"));
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
 
     // Retrieving question
-    Question question = QuestionServices.getByNetworkIdAndRef(networkId, questionRef);
+    Question question = QuestionServices.getByNetworkIdAndRef(homeId, questionRef);
 
     // Looping over all answer options, we don't want tree to be ordered, so we use a hash map
     Map<Integer, AnswerVisibilityEnum> userVisibility = new HashMap<Integer, AnswerVisibilityEnum>();
@@ -31,7 +30,7 @@
 
     <div>
     <%
-        Integer ul_b_networkId = networkId;
+        Integer ul_b_networkId = homeId;
 
         int i = 1;
         for (Integer ul_b_toUserId : userVisibility.keySet()) { %>
@@ -41,7 +40,7 @@
         <% i++; if (i > maxFaces) break; } %>
     </div>
 
-    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, question.getNetworkId(), question.getRef()) %>');">
+    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(homeId, question.getNetworkId(), question.getRef()) %>');">
         <span class="similar sm_text highlight2">I'm feeling lucky</span>
     </a>
 

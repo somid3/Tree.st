@@ -1,9 +1,7 @@
 <%@ include file="./all.jsp" %>
 <%
-    WebUtils wu = new WebUtils(request, response);
-
     // Retrieving log in details
-    String defaultEmail = wu.getCookieValue("ue");
+    String defaultEmail = webUtils.getCookieValue("ue");
     if (defaultEmail == null) defaultEmail = "";
 %>
 

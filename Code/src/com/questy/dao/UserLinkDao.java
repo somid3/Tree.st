@@ -206,7 +206,7 @@ public class UserLinkDao extends ParentDao {
         end(conn, ps, null);
     }
 
-    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer networkId, Integer userId) throws SQLException  {
        conn = start(conn);
 
        String sql =

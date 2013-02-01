@@ -1,6 +1,5 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));
@@ -16,24 +15,24 @@
 
         if (viewUserId == null)
 
-            sharedItems = SharedItemDao.getByNetworkId(null, networkId, limit);
+            sharedItems = SharedItemDao.getByNetworkId(null, homeId, limit);
 
         else
 
-            sharedItems = SharedItemDao.getByNetworkIdAndUserId(null, networkId, viewUserId, limit);
+            sharedItems = SharedItemDao.getByNetworkIdAndUserId(null, homeId, viewUserId, limit);
 
     } else {
 
         // No... retrieve the messages of the particular smart group
-        sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRef(null, networkId, smartGroupRef, limit);
+        sharedItems = SharedItemDao.getByNetworkIdAndSmartGroupRef(null, homeId, smartGroupRef, limit);
 
     }
 
-    Integer share_c_networkId = networkId;
+    Integer share_c_networkId = homeId;
     Integer share_c_fromSmartGroupRef = smartGroupRef;
-    User share_c_me = UserDao.getById(null, userId);
-    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
-    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+    User share_c_me = me;
+    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
+    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
     Integer count = sharedItems.size();
 
     if (count > 0) {

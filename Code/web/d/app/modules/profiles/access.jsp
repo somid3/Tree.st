@@ -1,13 +1,12 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Retrieving user being viewed
     User viewed = UserDao.getById(null, viewUserId);
 
     // Retrieving viewed user's mapping to network
-    Integer pointsForLink = UserLinkServices.getPointsPerLink(networkId, viewUserId);
+    Integer pointsForLink = UserLinkServices.getPointsPerLink(homeId, viewUserId);
 
     String hCardId = HtmlUtils.getRandomId();
     String hConnectButtonId = HtmlUtils.getRandomId();
@@ -24,7 +23,7 @@
     <a href="#" onclick="
         UserLink.connect(
             event,
-            <%= networkId %>,
+            <%= homeId %>,
             <%= viewUserId %>,
             '<%= hCardId%>',
             '<%= hConnectButtonId %>',

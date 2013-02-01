@@ -37,6 +37,13 @@ public enum NetworkIntegerSettingEnum {
 
     SMART_RESULTS_DISPLAY_SINCE         (500, 1),
 
+    /**
+     * If set to a value other than zero, then collect mode will be enabled, in this mode
+     * the only functionality of the community is to gather user details. User's can not
+     * search for one another or create smart groups
+     */
+    MODE_COLLECT_ONLY                   (9000, 0),
+
     UI_HAS_BACKGROUND                   (10000, 0),
     UI_HAS_ICON                         (10001, 0),
     UI_HAS_LOGO                         (10002, 0)

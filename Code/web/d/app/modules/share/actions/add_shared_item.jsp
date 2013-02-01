@@ -1,14 +1,13 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    Integer sgr = StringUtils.parseInt(request.getParameter("sgr"));
+    Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     String text = StringUtils.parseString(request.getParameter("t"));
 
     StringBuilder buf = new StringBuilder();
     try {
 
         // Adding shared item
-        Tuple<Integer, Integer> refAndPoints = SharedItemServices.add (networkId, userId, sgr, text);
+        Tuple<Integer, Integer> refAndPoints = SharedItemServices.add (homeId, meId, smartGroupRef, text);
 
         // Was creating the shared item successful?
 

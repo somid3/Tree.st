@@ -1,7 +1,4 @@
 <%@ include file="../all.jsp" %>
-<%
-    WebUtils wu = new WebUtils(request, response);
-%>
 <!DOCTYPE HTML>
 <html>
 <head>

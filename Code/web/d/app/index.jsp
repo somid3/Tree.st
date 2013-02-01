@@ -3,14 +3,11 @@
     // If in development mode, make sure all scripts refresh
     Vars.setDevelopmentRev();
 
-    // Retrieving logged user
-    User user = UserDao.getById(null, userId);
-
-    // Getting initiation hash in case user has no hash
-    String initiationHash = UserWebServices.getInitialHash(user.getId());
+     // Getting initiation hash in case user has no hash
+    String initiationHash = UserWebServices.getInitialHash(meId);
 
     // Retrieving user's tooltip situation
-    TooltipEnum tooltip = TooltipServices.getNextTooltipByUserId(userId);
+    TooltipEnum tooltip = TooltipServices.getNextTooltipByUserId(meId);
 
     // Tooltip include variables
     TooltipEnum tt_l_tooltip = null;
@@ -197,10 +194,10 @@
         <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settings() %>');">
             <div id="user">
                 <div class="face">
-                    <div id="thumbnail"><img src="<%= user.getFaceUrl() %>" alt=""></div>
+                    <div id="thumbnail"><img src="<%= me.getFaceUrl() %>" alt=""></div>
                 </div>
                 <div class="details">
-                    <div class="detail smd_header white"><%= StringUtils.concat(user.getName(), 10, "&hellip;")  %></div>
+                    <div class="detail smd_header white"><%= StringUtils.concat(me.getName(), 10, "&hellip;")  %></div>
                     <div class="detail sm_text white" style="float: right">Settings</div>
                 </div>
             </div>
@@ -356,7 +353,7 @@
 
         routie('/comm/:nid/profile', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: <%= userId %>});
+                ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: <%= meId %>});
             });
         });
 

@@ -3,13 +3,12 @@
 <%
 
     // Retrieve networks user is a member of
-    List<UserToNetwork> userToNetworks = UserToNetworkDao.getByUserIdAndLowestRole(null, userId, RoleEnum.VISITOR, SqlLimit.ALL);
+    List<UserToNetwork> meToNetworks = UserToNetworkDao.getByUserIdAndLowestRole(null, meId, RoleEnum.VISITOR, SqlLimit.ALL);
 
     Network network = null;
     String hTargetId = null;
     String hShortcutsId = null;
     String hShortcutId = null;
-
 %>
 
 <script type="text/javascript">
@@ -17,7 +16,7 @@
 </script>
 <div class="canvas_container">
 
-    <% for (UserToNetwork userToNetwork : userToNetworks) {
+    <% for (UserToNetwork userToNetwork : meToNetworks) {
 
         network = NetworkDao.getById(null, userToNetwork.getNetworkId());
         hTargetId = "settings" + network.getId(); %>

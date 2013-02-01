@@ -1,15 +1,13 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
     // Retrieving total number of shared items
-    Integer count = SharedItemDao.countByNetworkId(null, networkId);
+    Integer count = SharedItemDao.countByNetworkId(null, homeId);
 %>
 
 <script type="text/javascript">
     SI = new SharedItem();
-    SI.networkId = <%= networkId %>;
+    SI.networkId = <%= homeId %>;
     SI.smartGroupRef = <%= SmartGroup.ANY_SMART_GROUP_REF %>;
 </script>
 

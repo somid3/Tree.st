@@ -27,11 +27,11 @@
 
 %>
 
-    <span onclick="$('#<%= app_d_hMiniTooltipId %>').fadeToggle(100)" class="mini_tooltip_trigger sm_text highlight2">(?)</span>
+    <span onclick="Event.preventDefault(event); $('#<%= app_d_hMiniTooltipId %>').fadeToggle(100);" class="mini_tooltip_trigger sm_text highlight2">(?)</span>
 
     <span id="<%= app_d_hMiniTooltipId %>" class="mini_tooltip">
 
-       <a href="#" onclick="$('#<%= app_d_hMiniTooltipId %>').fadeToggle(100)">
+       <a href="#" onclick="Event.preventDefault(event); $('#<%= app_d_hMiniTooltipId %>').fadeToggle(100);">
 
            <div class="mini_tooltip_bubble sm_text rounded white shadow" style="top: <%= app_d_top %>px; left: <%= app_d_left %>px;">
 

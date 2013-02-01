@@ -444,6 +444,24 @@ public class SharedItemDao extends ParentDao {
         end(conn, ps, null);
     }
 
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer networkId, Integer userId) throws SQLException  {
+        conn = start(conn);
+
+        String sql =
+            "delete " +
+            "from `shared_items` " +
+            "where `network_id` = ? " +
+            "and `user_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ps.setInt(2, userId);
+        Integer out = ps.executeUpdate();
+
+        end(conn, ps, null);
+        return out;
+    }
+
     public static Integer insert(
         Connection conn,
         Integer networkId,

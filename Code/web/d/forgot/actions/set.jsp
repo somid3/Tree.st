@@ -6,8 +6,6 @@
     String passwordText = StringUtils.parseString(request.getParameter("p"));
     String passwordTextAgain = StringUtils.parseString(request.getParameter("pa"));
 
-    WebUtils webUtils = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {

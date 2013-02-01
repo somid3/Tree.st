@@ -1,7 +1,4 @@
 <%@ include file="./all.jsp" %>
-<%
-    WebUtils wu = new WebUtils(request, response);
-%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,6 +14,7 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 
 <body>
+<%@ include file="../includes/browser_check.jsp"%>
 <a name="top"/>
 
 <% String header_path = "welcome"; %>

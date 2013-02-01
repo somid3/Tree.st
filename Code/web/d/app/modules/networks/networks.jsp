@@ -1,6 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%
-    List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.VISITOR, SqlLimit.ALL);
+    List<Network> networks = NetworkServices.getByUserId(meId, RoleEnum.VISITOR, SqlLimit.ALL);
     Collections.sort(networks);
     Collections.reverse(networks);
 
@@ -11,6 +11,8 @@
     Collections.reverse(networks);
 
     Integer hasIcon = null;
+    Integer collectMode = null;
+    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = null;
     String iconSrc = null;
 %>
 
@@ -24,17 +26,23 @@
     <div class="switch sm_header highlight3">Switch Communities</div>
 
     <% for (Network network : networks) {
-        nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, network.getId());
-        hasIcon = NetworkIntegerSettingEnum.UI_HAS_ICON.getValueByNetworkId(network.getId());
+        nextQuestionRef = FlowRuleServices.getNextQuestionRef(meId, network.getId());
+        networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
+        hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_ICON);
+        collectMode = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
 
         if (hasIcon != 0)
             iconSrc = network.getIconResourceUrl();
         else
-            iconSrc = "./modules/networks/img/tree.png"; %>
+            iconSrc = "./modules/networks/img/tree.png";
 
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(network.getId())%>')">
+        if (collectMode == 0 ) { %>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(network.getId())%>')">
+        <% } else { %>
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(network.getId())%>')">
+        <% } %>
 
-            <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">
+                <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">
 
                 <div class="contents">
                     <div class="icon"><img src="<%= iconSrc %>" alt=""></div>

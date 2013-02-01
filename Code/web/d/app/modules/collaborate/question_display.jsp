@@ -1,9 +1,8 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
     // Retrieving network
-    Network network = NetworkDao.getById(null, networkId);
+    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
+    Integer collectMode = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
 
     // Optional parameters
     Integer againQuestionRef = StringUtils.parseInt(request.getParameter("agqr"));
@@ -12,7 +11,7 @@
         backToBackCount = 1;
 
     Boolean isFatigued = false;
-    if (backToBackCount > 8)
+    if (backToBackCount > 5 && collectMode == 0)
         isFatigued = true;
 
     String hFilterOptionsInputId = HtmlUtils.getRandomId();
@@ -36,7 +35,7 @@
     } else {
 
         // No, find the next question for this network
-        answeringQuestionRef = FlowRuleServices.getNextQuestionRef(userId, networkId);
+        answeringQuestionRef = FlowRuleServices.getNextQuestionRef(meId, homeId);
 
     }
 
@@ -44,14 +43,14 @@
     if (answeringQuestionRef != null && !isFatigued) {
 
         // Retrieving question to be answered
-        Question question = QuestionServices.getByNetworkIdAndRef(networkId, answeringQuestionRef);
+        Question question = QuestionServices.getByNetworkIdAndRef(homeId, answeringQuestionRef);
 
 %>
 
 <script type="text/javascript">
     QD = new QuestionDisplay();
     QD.backToBackCount = <%= backToBackCount %>;
-    QD.networkId = <%= networkId %>;
+    QD.networkId = <%= homeId %>;
     QD.answeringQuestionRef = <%= answeringQuestionRef %>;
     QD.maxSelectedOptions = <%= question.getMaxSelectedOptions() %>;
 
@@ -179,10 +178,14 @@
             </div>
         </div>
 
-        <div class="output shadow"></div>
-        <script type="text/javascript">
-            $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= networkId %>, qr: <%= answeringQuestionRef %>});
+        <% if (collectMode == 0) { %>
+            <div class="output shadow"></div>
+            <script type="text/javascript">
+                $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});
+            </script>
+        <% }%>
 
+        <script type="text/javascript">
             QD.updateOrSubmit(null);
             Animations.toPosition(".output", 20, 10, 600);
         </script>
@@ -194,12 +197,17 @@
     // There are no more questions left...
     if (answeringQuestionRef == null) {
 
-        Network collab_c_network = network; %>
+        Integer collab_c_userId = meId;
+        Network collab_c_network = home;
+        Map<NetworkIntegerSettingEnum, Integer> collab_c_networkIntegerSettings = networkIntegerSettings; %>
         <%@ include file="./includes/collab_c_done.jsp" %>
 
     <%
+
     // User has answered too many questions...
-    } else if (isFatigued) { %>
+    } else if (isFatigued) {
+
+        Network collab_b_network = home; %>
 
         <%@ include file="./includes/collab_b_fatigue.jsp" %>
 

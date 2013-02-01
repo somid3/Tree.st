@@ -26,17 +26,17 @@
             break;
 
         case MATCHED:
-            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getMembersByNetworkIdAndUserId(null, sgroup_h_networkId,  sgroup_h_userId, sgroup_h_limit);
+            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getMembersByNetworkIdAndUserId(null, sgroup_h_networkId, sgroup_h_userId, sgroup_h_limit);
             sgroup_h_smartGroups = UserToSmartGroupServices.getSmartGroups(sgroup_h_userToSmartGroups);
             break;
 
         case FAVORITES:
-            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserIdAndState(null, sgroup_h_networkId,  sgroup_h_userId, UserToSmartGroupStateEnum.FAVORITE, sgroup_h_limit);
+            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserIdAndState(null, sgroup_h_networkId, sgroup_h_userId, UserToSmartGroupStateEnum.FAVORITE, sgroup_h_limit);
             sgroup_h_smartGroups = UserToSmartGroupServices.getSmartGroups(sgroup_h_userToSmartGroups);
             break;
 
         case FLAGS:
-            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserIdAndState(null, sgroup_h_networkId,  sgroup_h_userId, UserToSmartGroupStateEnum.FLAGGED, sgroup_h_limit);
+            sgroup_h_userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserIdAndState(null, sgroup_h_networkId, sgroup_h_userId, UserToSmartGroupStateEnum.FLAGGED, sgroup_h_limit);
             sgroup_h_smartGroups = UserToSmartGroupServices.getSmartGroups(sgroup_h_userToSmartGroups);
             break;
     }

@@ -168,3 +168,24 @@ UserLink.connect = function (event, networkId, toUserId, hCardId, hConnectButton
 };
 
 
+UserLink.toggleRemove = function (event, networkId, toUserId, hRemoveId, callback) {
+
+    Event.preventDefault(event);
+
+    var $targetDiv  = $("#" + hRemoveId);
+
+    var parameters = {};
+    parameters.nid = networkId;
+    parameters.tuid = toUserId;
+
+    $.post('./modules/user_links/apply_remove.jsp', parameters, function(response) {
+
+        // Update target
+        $targetDiv.replaceWith(response);
+
+        if (callback) callback();
+
+    });
+
+};
+

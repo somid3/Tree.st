@@ -1,10 +1,7 @@
 <%@ include file="../all.jsp" %>
 <%
-
-    WebUtils wu = new WebUtils(request, response);
-
     // Authenticate user session
-    boolean wasAuthGood = UserWebServices.authenticateViaCookies(wu);
+    boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
 
     // Was the authentication good?
     if (!wasAuthGood) {
@@ -12,10 +9,31 @@
         /* No -- that means user did not authenticate successfully */
 
         // Check sum authentication failed, send to log out page
-        wu.redirect("/d/logout");
+        webUtils.redirect("/d/logout");
     }
 
     // Setting environment variables for the app
-    Integer userId = wu.getCookieValueAsInteger("uid");
-    String userChecksum = wu.getCookieValue("scs");
+    Integer meId = webUtils.getCookieValueAsInteger("uid");
+    String myChecksum = webUtils.getCookieValue("scs");
+
+    // Retrieving logged user
+    User me = UserDao.getByIdAndSaltChecksum(null, meId, myChecksum);
+    if (me == null)
+        webUtils.redirect("/d/logout");
+
+    // Is there a current network?
+    Integer homeId = StringUtils.parseInt(request.getParameter("nid"));
+    Network home = null;
+    if (homeId != null)
+        home = NetworkDao.getById(null, homeId);
+
+    // Me to home mapping?
+    UserToNetwork meToHome = null;
+    if (home != null)
+        meToHome = UserToNetworkDao.getByUserIdAndNetworkId(null, me.getId(), home.getId());
+
+    // Ensuring the mapping has to exist
+    if (home != null && meToHome == null)
+        webUtils.redirect("/d/logout");
+
 %>

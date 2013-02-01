@@ -445,10 +445,6 @@ public class EmailServices extends ParentService {
             if (userRate != callingRate)
                 continue;
 
-            System.out.println(
-                userToNetwork.getUserId() + " " + userToNetwork.getNetworkId()
-            );
-
             // Used to count the total number of shared items to be included in this digest
             Integer digestTotalSmartGroupCount = 0;
             Integer digestTotalSharedItemCount = 0;

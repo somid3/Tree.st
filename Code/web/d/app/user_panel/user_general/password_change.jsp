@@ -1,9 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
-    // Retrieving user
-    User user = UserDao.getById(null, userId);
-
     String app_d_title = null;
     String app_d_message = null;
     HtmlDesign.Positions app_d_position = null;

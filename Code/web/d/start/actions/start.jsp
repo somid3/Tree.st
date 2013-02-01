@@ -8,13 +8,11 @@
     String first = StringUtils.parseString(request.getParameter("f"));
     String last = StringUtils.parseString(request.getParameter("l"));
 
-    WebUtils wu = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {
 
-        buf.append(UserWebServices.addUser(wu, networkId, networkChecksum, email, passwordText, first, last));
+        buf.append(UserWebServices.addUser(webUtils, networkId, networkChecksum, email, passwordText, first, last));
 
     } catch (UIException e) {
 

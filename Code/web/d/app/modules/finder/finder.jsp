@@ -1,10 +1,7 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
-
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String searchText = StringUtils.parseString(request.getParameter("s"));
-    User me = UserDao.getById(null, userId);
 
     // Validating search text
     if (StringUtils.isEmpty(searchText))
@@ -36,11 +33,11 @@
 
        LimitCounter counter = new LimitCounter(limit);
        SmartGroup sgroup_d_smartGroup = null;
-       Integer sgroup_d_userId = userId;
+       Integer sgroup_d_userId = meId;
        String sgroup_d_highlight = searchText;
 
        // Retrieving all users with a name
-       List<SmartGroup> matches = SmartGroupDao.findByNetworkIdAndName(null, networkId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit); %>
+       List<SmartGroup> matches = SmartGroupDao.findByNetworkIdAndName(null, homeId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit); %>
 
        <div class="finder_results canvas_container">
 
@@ -89,7 +86,7 @@
         User share_d_user = me;
 
         // Retrieving all users with a name
-        List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, networkId, sqlSearchText, sqlLimit); %>
+        List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, homeId, sqlSearchText, sqlLimit); %>
 
         <div class="finder_results canvas_container">
 
@@ -135,7 +132,7 @@
          **/
 
         // Retrieving all networks from user
-        List<Network> networks = NetworkServices.getNetworkWithAllDependantsMappedToUser(networkId, userId, RoleEnum.VISITOR);
+        List<Network> networks = NetworkServices.getNetworkWithAllDependantsMappedToUser(meId, homeId, RoleEnum.VISITOR);
 
         Integer totalItems = null;
         String highlighted = null;
@@ -143,9 +140,9 @@
 
         // Placing this network as the first network
         Collections.sort(networks);
-        Collections.reverse(networks);
+        Collections.reverse(networks); %>
 
-        %> <div class="finder_results canvas_container">
+        <div class="finder_results canvas_container">
 
             <div class="find_group md_header white">Qualities</div> <%
 
@@ -193,7 +190,7 @@
 
                     <a href="#">
                         <div class="find_question smd_text"
-                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, question.getNetworkId(), question.getRef()) %>');">
+                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(homeId, question.getNetworkId(), question.getRef()) %>');">
                             <%= highlighted %> <span class="dim2">(<%= question.getTotalAnswers() %>)</span>
                         </div>
                     </a> <%
@@ -214,7 +211,7 @@
 
                     <a href="#">
                         <div class="find_question smd_text"
-                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(networkId, option.getNetworkId(), option.getQuestionRef(), option.getRef()) %>');">
+                            onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(homeId, option.getNetworkId(), option.getQuestionRef(), option.getRef()) %>');">
                             <%= highlighted %> <span class="dim2">(<%= option.getTotalAnswers() %>)</span> &rarr; <%= StringUtils.concat(question.getText(), 50, "&hellip;") %>
                         </div>
                     </a> <%
@@ -249,7 +246,7 @@
         LimitCounter counter = new LimitCounter(limit);
 
         // Retrieving all users with a name
-        List<User> matches = UserDao.findByNetworkIdAndName(null, networkId, sqlSearchText, sqlLimit);
+        List<User> matches = UserDao.findByNetworkIdAndName(null, homeId, sqlSearchText, sqlLimit);
 
         // Sorting result users by whether or not they have a defined face
         Collections.sort(matches, new UserComparatorFaceOn());
@@ -259,8 +256,10 @@
             <div class="find_group md_header white">People (<%= matches.size() %>)</div> <%
 
             // Variables for user window
-            Integer ul_a_networkId = networkId;
+            Integer ul_a_networkId = homeId;
             Integer ul_a_toUserId = null;
+            UserToNetwork ul_a_meToHome = meToHome;
+
 
             // Looping through all the matches
             for (User match : matches) {

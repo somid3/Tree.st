@@ -1,9 +1,9 @@
 <% { %>
-       <% BrowserAcceptanceEnum.Status status = BrowserAcceptanceEnum.Browser.getStatus(wu.getUserAgent());
+       <% BrowserAcceptanceEnum.Status status = BrowserAcceptanceEnum.Browser.getStatus(webUtils.getUserAgent());
 
        if (status == BrowserAcceptanceEnum.Status.DENIED)
 
-           wu.redirect("/d/browser");
+           webUtils.redirect("/d/browser");
 
        else if (status == BrowserAcceptanceEnum.Status.BUGGY ||
                 status == BrowserAcceptanceEnum.Status.UNKNOWN) { %>

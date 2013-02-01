@@ -1,11 +1,9 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
-<%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-%>
+
 <script type="text/javascript">
     AMD = new AllMembersDashboard();
-    AMD.networkId = <%= networkId %>;
+    AMD.networkId = <%= homeId %>;
 </script>
 <div id="all_members_dashboard">
 

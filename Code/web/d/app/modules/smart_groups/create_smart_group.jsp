@@ -1,10 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
-
-    // Retrieving user to network relationship
-    UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
 
     String hFormId = HtmlUtils.getRandomId();
     String hVisibilityGroup = HtmlUtils.getRandomId();
@@ -39,7 +35,7 @@
             <div class="element">
                 <div class="name smd_header white">Visibility</div>
                                                    
-                <% if (!utn.getRole().isLowerThan(RoleEnum.EDITOR)) { %>
+                <% if (!meToHome.getRole().isLowerThan(RoleEnum.EDITOR)) { %>
                     <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityGroup %>" value="<%= SmartGroupVisibilityEnum.OFFICIAL.getId() %>"> <label for="<%= hVisibilityGroup %>">Official network Smart Group</label></div>
                 <% } %>
 
@@ -49,7 +45,7 @@
             <div class="actionable">
                 <div class="error smd_text"></div>
                 <div class="loading"><img src="./img/sm_loading.gif"></div>
-                <a href="#" onclick="SS.createSmartGroup(event, <%= networkId %>, <%= smartGroupRef %>, '<%= hFormId %>')"><div class="action md_button pink_button">Save Smart Group</div></a>
+                <a href="#" onclick="SS.createSmartGroup(event, <%= homeId %>, <%= smartGroupRef %>, '<%= hFormId %>')"><div class="action md_button pink_button">Save Smart Group</div></a>
             </div>
         </div>
     </form>    

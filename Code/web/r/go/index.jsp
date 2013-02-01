@@ -1,7 +1,5 @@
 <%@ include file="../all.jsp"%>
 <%
-    WebUtils wu = new WebUtils(request, response);
-
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String saltChecksum = StringUtils.parseString(request.getParameter("scs"));
 
@@ -10,21 +8,21 @@
 
     if (user == null) {
 
-        wu.redirect("/");
+        webUtils.redirect("/");
 
     } else {
 
         Boolean persistent = false;
 
         // Login user persistently
-        UserSession userSession = UserWebServices.authenticateAndCreateSession(wu, user.getEmail(), user.getPasswordHash(), persistent);
+        UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), user.getPasswordHash(), persistent);
 
         // Was a session created?
         if (userSession == null)
-            wu.redirect("/");
+            webUtils.redirect("/");
 
         // Install login cookies at client
-        UserWebServices.installCookies(wu, userId, userSession.getChecksum(), persistent);
+        UserWebServices.installCookies(webUtils, userId, userSession.getChecksum(), persistent);
 
         /* Filtering for parameters that go-feature accepts */
         String goHash = null;
@@ -58,6 +56,6 @@
             goHash = HashRouting.smartGroups(
                 StringUtils.parseInt(request.getParameter("nid")));
 
-        wu.redirect("/d/app/" + goHash);
+        webUtils.redirect("/d/app/" + goHash);
     }
 %>

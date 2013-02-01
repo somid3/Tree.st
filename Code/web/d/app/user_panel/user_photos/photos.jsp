@@ -3,7 +3,7 @@
 <%
 
     // Retrieving user face photos that are not temporary
-    List<AppResource> scaleds = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, false);
+    List<AppResource> scaleds = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, meId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, false);
     AppResource face = null;
 
 
@@ -17,7 +17,7 @@
 
         <% for (AppResource scaled : scaleds) {
 
-            face = AppResourceDao.getByUserIdAndAppAndTypeAndRef(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE, scaled.getRef());
+            face = AppResourceDao.getByUserIdAndAppAndTypeAndRef(null, meId, AppEnum.FACES, AppResourceTypeEnum.FACE, scaled.getRef());
 
             hPhotoId = HtmlUtils.getRandomId(); %>
 

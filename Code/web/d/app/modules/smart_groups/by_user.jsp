@@ -1,13 +1,12 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Retrieving user being viewed
     User viewed = UserDao.getById(null, viewUserId);
 
     // Retrieving viewed user to smart group mappings
-    List<UserToSmartGroup> userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserId(null, networkId, viewUserId);
+    List<UserToSmartGroup> userToSmartGroups = UserToSmartGroupDao.getByNetworkIdAndUserId(null, homeId, viewUserId);
 
     // Gathering all smart groups viewed user is a member of has marked as favorite
     SmartGroup group = null;
@@ -34,7 +33,7 @@
 <div class="canvas_container">
 <%
 String sgroup_d_highlight = null;
-Integer sgroup_d_userId = userId;
+Integer sgroup_d_userId = meId;
 for (SmartGroup sgroup_d_smartGroup : smartGroups) { %>
 
     <%@ include file="includes/sgroup_d_smart_group_line.jsp"%>

@@ -1,6 +1,6 @@
 <%@ include file="../../../all.jsp"%>
 <%
-    Integer ref = AppResourceServices.saveTemporaryFace(userId, request);
+    Integer ref = AppResourceServices.saveTemporaryFace(meId, request);
 
-    wu.redirect("/d/app/" + HashRouting.settingsPhotoSetFace());
+    webUtils.redirect("/d/app/" + HashRouting.settingsPhotoSetFace());
 %>

@@ -13,8 +13,7 @@
 
     } else {
 
-        WebUtils wu = new WebUtils(request, response);
-        wu.redirect("/d/app?error");
+        webUtils.redirect("/d/app?error");
 
     }
 

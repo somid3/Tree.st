@@ -8,20 +8,17 @@
 
     path = path.substring(1).toLowerCase();
 
-
-    WebUtils wu = new WebUtils(request, response);
-
     // Ensuring browser is not denied
-    BrowserAcceptanceEnum.Status status = BrowserAcceptanceEnum.Browser.getStatus(wu.getUserAgent());
+    BrowserAcceptanceEnum.Status status = BrowserAcceptanceEnum.Browser.getStatus(webUtils.getUserAgent());
     if (status == BrowserAcceptanceEnum.Status.DENIED)
-        wu.redirect("/d/browser");
+        webUtils.redirect("/d/browser");
 
     // Retrieving network url path
     Integer networkId = NetworkAlphaSettingEnum.URL_PATH.getNetworkIdByValue(path);
 
     if (networkId == null) {
 
-        wu.redirect("/d/welcome?404");
+        webUtils.redirect("/d/welcome?404");
 
     } else {
 
@@ -29,7 +26,7 @@
 
         String uri = "/d/start?nid=" + network.getId() + "&ncs=" + network.getChecksum();
 
-        wu.redirect(uri);
+        webUtils.redirect(uri);
 
     }
 %>

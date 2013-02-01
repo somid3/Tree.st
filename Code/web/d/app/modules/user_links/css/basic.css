@@ -91,7 +91,6 @@
     background-color: #fff;
     border-right: 2px #bbb solid;
     border-bottom: 2px #bbb solid;
-    display: inline-block;
     padding: 5px;
     position: relative;
     float: left;
@@ -124,6 +123,12 @@
     margin-left: 10px;
     width: 170px;
 }
+
+.user_card .admin {
+    margin-top: 10px;
+    float: right;
+}
+
 
 .user_card .error {
     margin: 5px;

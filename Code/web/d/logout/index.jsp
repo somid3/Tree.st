@@ -1,19 +1,17 @@
 <%@ include file="./all.jsp" %>
 <%
-    WebUtils wu = new WebUtils(request, response);
-    
     // Removing cookie with user id
-    wu.deleteCookieByName("uid");
+    webUtils.deleteCookieByName("uid");
 
     // Removing cookie with user checksum
-    wu.deleteCookieByName("scs");
+    webUtils.deleteCookieByName("scs");
 
     // Removing cookie with user's email
-    wu.deleteCookieByName("ue");
+    webUtils.deleteCookieByName("ue");
 
     // Removing cookie with user session checksum
-    wu.deleteCookieByName("uscs");
+    webUtils.deleteCookieByName("uscs");
 
     // Sending user to login page
-    wu.redirect("/d/login");
+    webUtils.redirect("/d/login");
 %>

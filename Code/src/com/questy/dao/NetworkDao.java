@@ -110,7 +110,6 @@ public class NetworkDao extends ParentDao {
             "insert into `networks` (" +
             "`created_on`, " +
             "`name`, " +
-            "`global`, " +
             "`checksum` " +
             ") values (NOW(), ?, ?);";
 

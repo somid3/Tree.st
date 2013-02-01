@@ -1,24 +1,21 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
 
-    User me = UserDao.getById(null, userId);
-
     // Retrieving smart group
-    SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
+    SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, homeId, smartGroupRef);
 
     // Retrieving total number of shared items
-    Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, networkId, smartGroupRef, DateUtils.BEGINNING_OF_TIME);
+    Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, homeId, smartGroupRef, DateUtils.BEGINNING_OF_TIME);
 
     // Retrieving points per shared item
-    Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
+    Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(homeId);
 %>
 
 <script type="text/javascript">
     SI = new SharedItem();
-    SI.networkId = <%= networkId %>;
+    SI.networkId = <%= homeId %>;
     SI.smartGroupRef = <%= smartGroupRef %>;
     SI.hTellMeId = "tell_me";
 </script>

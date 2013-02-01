@@ -1,16 +1,17 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+    Integer collectOnly = NetworkIntegerSettingEnum.MODE_COLLECT_ONLY.getValueByNetworkId(homeId);
 
     // Retrieving user to network
-    UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
-%>
+    UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, meId, homeId);
+
+if (collectOnly == 0) { %>
 <div id="network_dashboard">
 
     <div id="search_space">
 
         <div id="search_toolbar">
-            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.finder(networkId)%>')">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.finder(homeId)%>')">
                 <div id="finder_all" class="sm_button light_button sm_text highlight2">
                     <span>Qualities</span>
                 </div>
@@ -18,7 +19,7 @@
 
             <div id="search_input">
                 <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
-                <input type="hidden" id="finder_hash" value="<%= HashRouting.finder(networkId, "") %>"/>
+                <input type="hidden" id="finder_hash" value="<%= HashRouting.finder(homeId, "") %>"/>
             </div>
 
         </div>
@@ -36,7 +37,6 @@
 
     // Binding find field
     Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitFind );
-
     Finder.setupFinder();
-
 </script>
+<% } %>

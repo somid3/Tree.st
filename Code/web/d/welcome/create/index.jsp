@@ -1,7 +1,4 @@
 <%@ include file="../all.jsp" %>
-<%
-    WebUtils wu = new WebUtils(request, response);
-%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,6 +17,7 @@
 <link rel=stylesheet type="text/css" href="./css/create.css">
 
 <body>
+<%@ include file="../../includes/browser_check.jsp"%>
 
 <% String header_path = "create"; %>
 <%@ include file="../includes/header.jsp"%>

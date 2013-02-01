@@ -1,8 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
     String hOfficialId = HtmlUtils.getRandomId();
     String hSharedId = HtmlUtils.getRandomId();
     String hPrivateId = HtmlUtils.getRandomId();
@@ -69,7 +67,7 @@
 
     // Beginning the smart groups tools
     SGT = new SmartGroupTools();
-    SGT.networkId = <%= networkId %>;
+    SGT.networkId = <%= homeId %>;
     SGT.changeView(null, "<%= hSharedId %>", <%= SmartGroupsViewEnum.SHARED.getId() %>);
 
     $("#<%= hOfficialId %>").click(function (event) {

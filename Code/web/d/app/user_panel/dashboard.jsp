@@ -1,8 +1,5 @@
 <%@ include file="../all.jsp" %>
 <%@ include file="load.jsp" %>
-<%
-    User me = UserDao.getById(null, userId);
-%>
 <div id="user_panel_dashboard">
     <div class="details">
         <div id="message">

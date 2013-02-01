@@ -4,5 +4,5 @@
     String resourceChecksum = StringUtils.parseString(request.getParameter("rcs"));
 
     // Attempting to hide face
-    AppResourceServices.hideByUserIdAndAppAndTypeAndRefAndChecksum(userId, AppEnum.FACES, AppResourceTypeEnum.FACE, resourceRef, resourceChecksum);
+    AppResourceServices.hideByUserIdAndAppAndTypeAndRefAndChecksum(meId, AppEnum.FACES, AppResourceTypeEnum.FACE, resourceRef, resourceChecksum);
 %>

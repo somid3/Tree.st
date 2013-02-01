@@ -4,7 +4,7 @@
 
     StringBuilder buf = new StringBuilder();
 
-    TooltipServices.updateOnTooltipByUserId(userId, onTooltip);
+    TooltipServices.updateOnTooltipByUserId(meId, onTooltip);
 
     TooltipEnum nextTooltip = onTooltip.getNext();
 %>

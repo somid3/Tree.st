@@ -1,9 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
-    // Retrieving user
-    User user = UserDao.getById(null, userId);
-
     String app_d_title = null;
     String app_d_message = null;
     HtmlDesign.Positions app_d_position = null;
@@ -28,7 +25,7 @@
                 %>
                 <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
-                <input name="email1" class="md_input w250 bottom_line" value="<%= user.getEmail() %>">
+                <input name="email1" class="md_input w250 bottom_line" value="<%= me.getEmail() %>">
             </div>
         </div>
 
@@ -43,7 +40,7 @@
                 %>
                 <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
 
-                <input name="email2" class="md_input w250 bottom_line" value="<%= user.getEmail() %>">
+                <input name="email2" class="md_input w250 bottom_line" value="<%= me.getEmail() %>">
             </div>
         </div>
 

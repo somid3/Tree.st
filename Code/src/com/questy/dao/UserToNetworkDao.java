@@ -25,10 +25,10 @@ public class UserToNetworkDao extends ParentDao {
 
         switch (orderBy) {
             case BY_POINTS:
-                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? and `removed_on` is null order by `current_points` desc, `id` desc limit ?, ?;";
+                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? order by `current_points` desc, `id` desc limit ?, ?;";
                 break;
             case BY_JOINED:
-                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? and `removed_on` is null order by `created_on` desc, `id` desc limit ?, ?;";
+                sql = "select * from `users_to_networks` where `network_id` = ? and `role` >= ? order by `created_on` desc, `id` desc limit ?, ?;";
                 break;
         }
 
@@ -61,7 +61,6 @@ public class UserToNetworkDao extends ParentDao {
             "from `users_to_networks` " +
             "where `user_id` = ? " +
             "and `role` >= ? " +
-            "and `removed_on` is null " +
             "order by `network_id` desc " +
             "limit ?,?;";
 
@@ -93,8 +92,7 @@ public class UserToNetworkDao extends ParentDao {
             "select * " +
             "from `users_to_networks` " +
             "where `user_id` = ? " +
-            "and `network_id` = ? " +
-            "and `removed_on` is null;";
+            "and `network_id` = ?;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, userId);
@@ -111,7 +109,7 @@ public class UserToNetworkDao extends ParentDao {
     }
 
 
-    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer networkId, Integer userId) throws SQLException  {
        conn = start(conn);
 
        String sql =
@@ -244,6 +242,49 @@ public class UserToNetworkDao extends ParentDao {
         ps.setInt(1, pointsPerLink);
         ps.setInt(2, networkId);
         ps.setInt(3, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+
+    public static void removeByUserIdAndNetworkId (
+            Connection conn,
+            Integer userId,
+            Integer networkId) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users_to_networks` " +
+            "set `removed_on` = NOW() " +
+            "where `user_id` = ? " +
+            "and `network_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userId);
+        ps.setInt(2, networkId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
+    public static void unremoveByUserIdAndNetworkId (
+            Connection conn,
+            Integer userId,
+            Integer networkId) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users_to_networks` " +
+            "set `removed_on` = null " +
+            "where `user_id` = ? " +
+            "and `network_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userId);
+        ps.setInt(2, networkId);
         ps.execute();
 
         end(conn, ps, null);

@@ -1,18 +1,14 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    Integer sgr = StringUtils.parseInt(request.getParameter("sgr"));
-    Integer sir = StringUtils.parseInt(request.getParameter("sir"));
+    Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
+    Integer sharedItemRef = StringUtils.parseInt(request.getParameter("sir"));
     String text = StringUtils.parseString(request.getParameter("t"));
-
-
-    System.out.println(text);
 
     StringBuilder buf = new StringBuilder();
     try {
 
         // Adding shared item
-        Tuple<Integer, Integer> refAndPoints = SharedCommentServices.add (networkId, userId, sgr, sir, text);
+        Tuple<Integer, Integer> refAndPoints = SharedCommentServices.add (homeId, meId, smartGroupRef, sharedItemRef, text);
 
         // Yes, presenting results to user interface
         buf = new StringBuilder();

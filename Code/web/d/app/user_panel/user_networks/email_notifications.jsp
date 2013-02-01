@@ -1,8 +1,6 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
     String app_d_title = null;
     String app_d_message = null;
     HtmlDesign.Positions app_d_position = null;
@@ -28,7 +26,7 @@
                     app_d_message = "When someone in this community views your profile for the first time, you can receive a notification.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
 
-                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_USER_LINK_EMAIL_NOTIFICATIONS.getValueByUserIdAndNetworkId(userId, networkId);
+                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_USER_LINK_EMAIL_NOTIFICATIONS.getValueByUserIdAndNetworkId(meId, homeId);
                     app_e_options.clear();
                     app_e_options.put("Receive", 0);
                     app_e_options.put("Do not receive", 1);
@@ -50,7 +48,7 @@
                     app_d_message = "Based on your profile you can automatically be added to very specific smart groups. When this occurs you will be notified.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
 
-                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_SMART_GROUP_MAPPINGS_EMAIL_NOTIFICATIONS.getValueByUserIdAndNetworkId(userId, networkId);
+                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_SMART_GROUP_MAPPINGS_EMAIL_NOTIFICATIONS.getValueByUserIdAndNetworkId(meId, homeId);
                     app_e_options.clear();
                     app_e_options.put("Receive", 0);
                     app_e_options.put("Do not receive", 1);
@@ -72,7 +70,7 @@
                     app_d_message = "Smart groups are the places of great conversations. Here set the rate at which you receive new message notifications or digests.";
                     app_d_position = HtmlDesign.Positions.BOTTOM;
 
-                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.getValueByUserIdAndNetworkId(userId, networkId);
+                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.getValueByUserIdAndNetworkId(meId, homeId);
                     app_e_options.clear();
                     app_e_options.put(EmailNotificationRateEnum.INSTANTLY.getName(),             EmailNotificationRateEnum.INSTANTLY.getId());
                     app_e_options.put(EmailNotificationRateEnum.EVERY_HOUR.getName(),            EmailNotificationRateEnum.EVERY_HOUR.getId());
@@ -96,7 +94,7 @@
 
         <div class="actionable">
             <div class="loading"><img src="./img/sm_loading.gif"></div>
-            <a href="#" onclick="UND.submitEmailNotifications(event, <%= networkId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
+            <a href="#" onclick="UND.submitEmailNotifications(event, <%= homeId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
             <a href="#" onclick="UND.cancelSetting(event, '<%= hSettingsId %>')"><div class="action light_button md_button">Cancel</div></a>
         </div>
 

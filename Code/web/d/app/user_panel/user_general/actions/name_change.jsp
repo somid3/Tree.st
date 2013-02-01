@@ -4,13 +4,11 @@
     String lastName = StringUtils.parseString(request.getParameter("lname"));
     String password = StringUtils.parseString(request.getParameter("pass"));
 
-    WebUtils webUtils = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {
 
-        UserServices.nameChange(userId, password, firstName, lastName);
+        UserServices.nameChange(meId, password, firstName, lastName);
 
     } catch (UIException e) {
 

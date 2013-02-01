@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="box smd_text dim"><%= HtmlUtils.linkify( HtmlUtils.paragraphize( share_c_sharedItem.getText() ) )%></div>
+            <div class="box smd_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_c_sharedItem.getText() ) )%></div>
 
             <div>
 
@@ -91,7 +91,7 @@
 
             <%
                 // Retrieving all shared comments of shared item
-                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, networkId, share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
+                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
 
                 User share_a_me = share_c_me;
                 Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;

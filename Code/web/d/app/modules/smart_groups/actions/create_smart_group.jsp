@@ -1,6 +1,5 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     String name = StringUtils.parseString(request.getParameter("name"));
     String description = StringUtils.parseString(request.getParameter("desc"));
@@ -12,7 +11,7 @@
 
         // Convert search to smart group
         SmartGroupServices.convertSearchToSmartGroup(
-            networkId,
+            homeId,
             smartGroupRef,
             name,
             description,

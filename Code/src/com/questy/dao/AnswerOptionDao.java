@@ -40,7 +40,7 @@ public class AnswerOptionDao extends ParentDao {
         return out;
     }
 
-    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer userId, Integer networkId) throws SQLException  {
+    public static Integer deleteByUserIdAndNetworkId(Connection conn, Integer networkId, Integer userId) throws SQLException  {
        conn = start(conn);
 
        String sql =

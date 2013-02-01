@@ -4,8 +4,6 @@
     String passwordText = StringUtils.parseString(request.getParameter("p"));
     Boolean keep = StringUtils.parseBoolean(request.getParameter("k"));
 
-    WebUtils webUtils = new WebUtils(request, response);
-
     StringBuilder buf = new StringBuilder();
 
     try {

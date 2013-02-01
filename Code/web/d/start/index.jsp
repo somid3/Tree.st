@@ -1,13 +1,11 @@
 <%@ include file="./all.jsp" %>
 <%
-    WebUtils wu = new WebUtils(request, response);
-
     // Retrieving network details
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
 
     // Retrieving log in details
-    String defaultEmail = wu.getCookieValue("ue");
+    String defaultEmail = webUtils.getCookieValue("ue");
     if (defaultEmail == null) defaultEmail = "";
 
     // Retrieving network
@@ -15,7 +13,7 @@
 
     // Validating variables
     if (network == null)
-        wu.redirect("./notfound.jsp");
+        webUtils.redirect("./notfound.jsp");
 
     // Retrieving network settings
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);

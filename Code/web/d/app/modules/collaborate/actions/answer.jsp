@@ -1,11 +1,10 @@
 <%@ include file="../../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer answeredQuestionRef = StringUtils.parseInt(request.getParameter("aqr"));
     List<Integer> optionRefs = StringUtils.parseInts(request.getParameterValues("ors[]"));
     AnswerVisibilityEnum visibility = AnswerVisibilityEnum.getById(StringUtils.parseInt(request.getParameter("vis")));
 
-    Tuple<Boolean, Integer> againAndPoints = AnswerServices.answer(userId, networkId, answeredQuestionRef, optionRefs, visibility);
+    Tuple<Boolean, Integer> againAndPoints = AnswerServices.answer(meId, homeId, answeredQuestionRef, optionRefs, visibility);
 
     StringBuilder buf = new StringBuilder();
     buf.append("<result again=\"");

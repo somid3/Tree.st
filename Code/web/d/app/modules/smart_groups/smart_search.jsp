@@ -1,19 +1,14 @@
 <%@ include file="../../all.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
-    // Retrieving network
-    Network network = NetworkDao.getById(null, networkId);
-
     // Retrieving parameters to automatically add a question
     Integer searchNetworkId = StringUtils.parseInt(request.getParameter("snid"));
     Integer searchQuestionRef = StringUtils.parseInt(request.getParameter("sqr"));
     Integer searchOptionRef = StringUtils.parseInt(request.getParameter("sor"));
 
-    SmartGroup smartGroup = SmartGroupServices.getOrCreateSearchSmartGroup(networkId, userId);
+    SmartGroup smartGroup = SmartGroupServices.getOrCreateSearchSmartGroup(homeId, meId);
 
-    Map<NetworkAlphaSettingEnum, String> sgroup_f_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
+    Map<NetworkAlphaSettingEnum, String> sgroup_f_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
 %>
 <div id="smart_search_welcome">
     <%@ include file="includes/sgroup_f_empty_search.jsp" %>

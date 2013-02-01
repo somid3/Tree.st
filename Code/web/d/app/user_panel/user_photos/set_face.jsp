@@ -9,11 +9,11 @@
     if (faceRef == null) {
 
         // If no face reference is provided, get the latest non-hidden temporary face
-        List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
+        List<AppResource> faces = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, meId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, true);
 
         // If there are no temp images send user to app without any "go_" parameters
-        if (faces.isEmpty()) {
-            wu.redirect("/d/app");
+        if (faces.isEmpty())
+            webUtils.redirect("/d/app");
 
         // Getting the latest temporary scaled face
         scaled = faces.get(0);
@@ -21,7 +21,7 @@
     } else {
 
         // Retrieve the scaled image of the resource whose face needs to be set
-        scaled = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, faceRef, checksum);
+        scaled = AppResourceDao.getByUserIdAndAppAndTypeAndRefAndChecksum(null, meId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, faceRef, checksum);
     }
 
     String hScaledImageId = HtmlUtils.getRandomId();

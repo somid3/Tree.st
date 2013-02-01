@@ -87,27 +87,38 @@ public class NetworkServices extends ParentService {
 
     public static void deleteUserFromNetwork(Integer userId, Integer networkId) throws SQLException {
 
-        // Delete user's active answers
-        ActiveAnswerDao.deleteByUserIdAndNetworkId(null, userId, networkId);
-
-        // Delete user's historic answers
-        AnswerDao.deleteByUserIdAndNetworkId(null, userId, networkId);
-
-        // Delete users's historic answer options
-        AnswerOptionDao.deleteByUserIdAndNetworkId(null, userId, networkId);
-
-        // Delete user's user links, both from and to
-        UserLinkDao.deleteByUserIdAndNetworkId(null, userId, networkId);
-
-        // Update shared items user id
-
-        // Update shared comments user id
-
-        // Update shared votes user id
+        /************************
+         * Network related tables
+         ***********************/
 
         // Delete user to network mapping
-        UserToNetworkDao.deleteByUserIdAndNetworkId(null, userId, networkId);
+        UserToNetworkDao.deleteByUserIdAndNetworkId(null, networkId, userId);
 
+        // Delete user's active answers
+        ActiveAnswerDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+        // Delete user's historic answers
+        AnswerDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+        // Delete users's historic answer options
+        AnswerOptionDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+        // Delete user's user links, both from and to
+        UserLinkDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+        // Delete shared items
+        SharedItemDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+        // Delete shared comments user id
+        SharedCommentDao.deleteByUserIdAndNetworkId(null, networkId, userId);
+
+
+        /************************
+         * Global tables
+         ***********************/
+
+        // Delete shared votes user id
+        SharedVoteDao.deleteByUserIdAndNetworkId(null, networkId, userId);
     }
 
 
@@ -223,7 +234,7 @@ public class NetworkServices extends ParentService {
      * @return
      * @throws SQLException
      */
-    public static List<Network> getNetworkWithAllDependantsMappedToUser (Integer networkId, Integer userId, RoleEnum lowestRole) throws SQLException {
+    public static List<Network> getNetworkWithAllDependantsMappedToUser (Integer userId, Integer networkId, RoleEnum lowestRole) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
@@ -280,7 +291,7 @@ public class NetworkServices extends ParentService {
         Connection conn = null;
 
         // Retrieving the one-level-up dependencies of the current network
-        List<NetworkDependsOn> dependencies = NetworkDependsDao.getByNetworkId(conn, networkId);
+        List<NetworkDependsOn> dependencies = NetworkDependsOnDao.getByNetworkId(conn, networkId);
 
         for (NetworkDependsOn dependency : dependencies) {
 
@@ -473,5 +484,26 @@ public class NetworkServices extends ParentService {
         // Adding approved question with options
         digestedQualities.add( new Tuple(questionText, digestedOptions));
 
+    }
+
+    public static UserToNetwork toggleRemove(Integer networkId, Integer userId) throws SQLException {
+
+        // Retrieve current user to network
+        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+
+        // Validating
+        if (utn == null)
+            throw new UIException("User (" + userId + ") is not a member of network  (" + networkId + ")");
+
+        // Determine action based on removed on
+        if(utn.getRemovedOn() == null)
+            UserToNetworkDao.removeByUserIdAndNetworkId(null, userId, networkId);
+        else
+            UserToNetworkDao.unremoveByUserIdAndNetworkId(null, userId, networkId);
+
+        // Retrieving new user to network
+        utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+
+        return utn;
     }
 }

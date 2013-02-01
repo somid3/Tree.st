@@ -1,22 +1,22 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer rootNetworkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    boolean viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(rootNetworkId, userId, viewUserId);
+    boolean viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
 
     // Retrieving user being viewed
-    User viewed = UserDao.getById(null, viewUserId);
+    User viewed = null;
+    if (viewMyself)
+        viewed = me;
+    else
+        viewed = UserDao.getById(null, viewUserId);
 
     // List of approved networks to display
     List<Network> approvedNetworks = new ArrayList<Network>();
 
-    // Retrieving root network
-    Network rootNetwork = NetworkDao.getById(null, rootNetworkId);
-
     // From root network, get all dependant networks or which I am a member
-    List<Network> myNetworksFromRoot = NetworkServices.getNetworkWithAllDependantsMappedToUser(rootNetworkId, userId, RoleEnum.MEMBER);
+    List<Network> myNetworksFromRoot = NetworkServices.getNetworkWithAllDependantsMappedToUser(meId, homeId, RoleEnum.MEMBER);
 
     // Deciding how to selected the approved networks
     if (viewMyself) {
@@ -73,8 +73,8 @@
                 <span><%= approvedNetwork.getName() %></span>
             </div>
 
-            <% if (!rootNetwork.equals(approvedNetwork)) { %>
-                <span class="sm_text dim2"> is part of the &#8220;<%= rootNetwork.getName() %>&#8221; lineage.</span>
+            <% if (!home.equals(approvedNetwork)) { %>
+                <span class="sm_text dim2"> is part of the &#8220;<%= home.getName() %>&#8221; lineage.</span>
             <% } %>
 
             <%
@@ -101,7 +101,7 @@
                 if (!viewMyself) {
 
                     // Attempting to retrieve answer from user for the same question
-                    userAnswer = AnswerServices.getLastByUserIdAndNetworkIdAndAnsweredQuestionRef(userId, approvedNetwork.getId(), question.getRef());
+                    userAnswer = AnswerServices.getLastByUserIdAndNetworkIdAndAnsweredQuestionRef(meId, approvedNetwork.getId(), question.getRef());
                 }
 
                 // Retrieving question with options loaded
@@ -157,7 +157,7 @@
 
                             } %>
 
-                                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(rootNetworkId, questionOption.getNetworkId(), questionOption.getQuestionRef(), questionOption.getRef()) %>');">
+                                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(homeId, questionOption.getNetworkId(), questionOption.getQuestionRef(), questionOption.getRef()) %>');">
                                     <div class="option smd_text" style="<%= hOptionStyle%>"><%= questionOption.getText() %></div>
                                 </a>
 
@@ -169,7 +169,7 @@
                     </div>
 
                     <div class="details">
-                        <% if (viewMyself && rootNetworkId.equals(approvedNetwork.getId())) { %>
+                        <% if (viewMyself && home.equals(approvedNetwork)) { %>
                             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questionAgain(question.getNetworkId(), question.getRef()) %>');">
                                 <div class="again sm_text highlight2">Update</div>
                             </a>
@@ -200,9 +200,7 @@
                 <% } else {
 
                     app_a_message = viewed.getFirstName() + " has not collaborated yet!";
-
                     boolean app_a_withCanvasContainer = false; %>
-
                     <%@ include file="../../includes/app_a_mini_message.jsp" %>
 
                 <% } %>

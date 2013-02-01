@@ -5,7 +5,7 @@
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));
 
     // Determine if viewing myself, or if a user link is required
-    UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, userId, viewUserId);
+    UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, meId, viewUserId);
 
     Integer duration = 20;
     SqlLimit limit = new SqlLimit(startFrom, duration);
@@ -18,6 +18,7 @@
 
         Integer ul_a_toUserId = null;
         Integer ul_a_networkId = null;
+        UserToNetwork ul_a_meToHome = meToHome;
         for (UserLink viewedUserLink : viewedUserLinks) {
 
             ul_a_toUserId = viewedUserLink.getToUserId();

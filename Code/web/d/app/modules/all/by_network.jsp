@@ -1,11 +1,10 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     AllMembersViewEnum sortBy = AllMembersViewEnum.getById(StringUtils.parseInt(request.getParameter("sort")));
     Integer from = StringUtils.parseInt(request.getParameter("from"));
 
     // Retrieving members
-    List<UserToNetwork> results = results = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, networkId, RoleEnum.MEMBER, sortBy, new SqlLimit(from, 50));
+    List<UserToNetwork> results = results = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, homeId, RoleEnum.MEMBER, sortBy, new SqlLimit(from, 50));
     Integer count = results.size();
 %>
 

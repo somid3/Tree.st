@@ -1,6 +1,5 @@
 <%@ include file="../../all.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     SmartGroupsViewEnum view = SmartGroupsViewEnum.getById(StringUtils.parseInt(request.getParameter("view")));
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));
 
@@ -8,32 +7,32 @@
     switch (view) {
 
         case OFFICIAL:
-            count = SmartGroupDao.countByNetworkIdAndVisibility(null, networkId, SmartGroupVisibilityEnum.OFFICIAL);
+            count = SmartGroupDao.countByNetworkIdAndVisibility(null, homeId, SmartGroupVisibilityEnum.OFFICIAL);
             break;
 
         case SHARED:
-            count = SmartGroupDao.countByNetworkIdAndVisibility(null, networkId, SmartGroupVisibilityEnum.SHARED);
+            count = SmartGroupDao.countByNetworkIdAndVisibility(null, homeId, SmartGroupVisibilityEnum.SHARED);
             break;
 
         case YOURS:
-            count = SmartGroupDao.countNonSearchByNetworkIdAndUserId(null, networkId, userId);
+            count = SmartGroupDao.countNonSearchByNetworkIdAndUserId(null, homeId, meId);
             break;
 
         case MATCHED:
-            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndMember(null, networkId, userId, true);
+            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndMember(null, homeId, meId, true);
             break;
 
         case FAVORITES:
-            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndState(null, networkId, userId, UserToSmartGroupStateEnum.FAVORITE);
+            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndState(null, homeId, meId, UserToSmartGroupStateEnum.FAVORITE);
             break;
 
         case FLAGS:
-            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndState(null, networkId, userId, UserToSmartGroupStateEnum.FLAGGED);
+            count = UserToSmartGroupDao.countByNetworkIdAndUserIdAndState(null, homeId, meId, UserToSmartGroupStateEnum.FLAGGED);
             break;
     }
 
-    Integer sgroup_h_userId = userId;
-    Integer sgroup_h_networkId = networkId;
+    Integer sgroup_h_userId = meId;
+    Integer sgroup_h_networkId = homeId;
     SmartGroupsViewEnum sgroup_h_view = view;
 %>
 

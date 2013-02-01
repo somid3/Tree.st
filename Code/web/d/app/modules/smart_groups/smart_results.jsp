@@ -1,14 +1,13 @@
 <%@ include file="../../all.jsp" %>
 <%
     String queryString = StringUtils.parseString(request.getParameter("query"));
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
 
     // Retrieving smart group
-    SmartGroup group = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
+    SmartGroup group = SmartGroupDao.getByNetworkIdAndRef(null, homeId, smartGroupRef);
 
     // Retrieving whether to display lasted date of result
-    Integer displaySince = NetworkIntegerSettingEnum.SMART_RESULTS_DISPLAY_SINCE.getValueByNetworkId(networkId);
+    Integer displaySince = NetworkIntegerSettingEnum.SMART_RESULTS_DISPLAY_SINCE.getValueByNetworkId(homeId);
 
     // Is the smart group private?
     if (group.getVisibility() == SmartGroupVisibilityEnum.PRIVATE) {
@@ -22,7 +21,7 @@
         } else {
 
             // New query provided, update the new query
-            SmartGroupDao.updateQueryByNetworkIdAndRef(null, networkId, smartGroupRef, queryString);
+            SmartGroupDao.updateQueryByNetworkIdAndRef(null, homeId, smartGroupRef, queryString);
         }
 
 
@@ -30,12 +29,12 @@
         QueryXml queryXml = QueryXmlReader.parseAndLoad(queryString);
 
         // Run search and store results
-        UserScores userScores = QueryServices.createScoresAndMappings(networkId, smartGroupRef, queryXml);
+        UserScores userScores = QueryServices.createScoresAndMappings(homeId, smartGroupRef, queryXml);
 
     }
 
     // Retrieving top results
-    List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, networkId, smartGroupRef, new SqlLimit(0, 100));
+    List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, homeId, smartGroupRef, new SqlLimit(0, 100));
     Integer totalResults = results.size();
     if (totalResults > 50)
         results = results.subList(0, 50);
@@ -43,11 +42,11 @@
     // Are there any results to display?
     if (totalResults > 0) { %>
 
-    <div id="smart_search_results">
+    <div id="smart_search_results"> <%
 
-        <%
             Integer ul_a_toUserId = null;
             Integer ul_a_networkId = null;
+            UserToNetwork ul_a_meToHome = meToHome;
             for (SmartGroupResult result : results) {
 
                 ul_a_toUserId = result.getUserId();

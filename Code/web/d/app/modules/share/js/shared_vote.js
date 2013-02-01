@@ -9,12 +9,12 @@ SharedVote.applyVote = function (event, hVotesId, networkId, smartGroupRef, shar
     Event.preventDefault(event);
 
     // Send the post event to toggle the favorite
-    $.post('./modules/share/apply_vote.jsp', {nid: networkId, sgr: smartGroupRef, sir: sharedItemRef, scr: sharedCommentRef, av: applyVote}, function(data) {
+    $.post('./modules/share/apply_vote.jsp', {nid: networkId, sgr: smartGroupRef, sir: sharedItemRef, scr: sharedCommentRef, av: applyVote}, function(response) {
 
         var $votesDiv  = $("#" + hVotesId);
 
-        // Remove old star
-        $votesDiv.replaceWith(data);
+        // Remove update
+        $votesDiv.replaceWith(response);
 
     });
 

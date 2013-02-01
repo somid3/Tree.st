@@ -1,7 +1,5 @@
 <%@ include file="./all.jsp" %>
 <%
-    WebUtils wu = new WebUtils(request, response);
-
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 
