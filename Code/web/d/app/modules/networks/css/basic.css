@@ -1,4 +1,4 @@
-<%@include file="../../../all.jsp" %>
+<%@include file="../../../setup.jsp" %>
 <%@page contentType="text/css" %>
 
 #left {
@@ -68,8 +68,7 @@
     height: 16px;
 }
 
-
-#networks .item .bullet {
+#networks .item .tags {
     float: right;
     margin-right: 5px;
     padding-top: 3px;
@@ -77,12 +76,24 @@
     z-index: 1;
 }
 
+#networks .item .tags .bullet {
+    position: relative;
+    top: 3px;
+}
+
+#networks .item .tags .blocked {
+    position: absolute;
+    margin-right: 5px;
+    top: 5px;
+    left: -25px;
+    z-index: 2;
+}
+
 #networks .selected {
     background-color: <%= HtmlDesign.highlight3 %>;
     color: #fff;
     font-weight: bold;
 }
-
 
 
 

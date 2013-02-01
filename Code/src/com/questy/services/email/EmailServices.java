@@ -437,7 +437,7 @@ public class EmailServices extends ParentService {
         User toUser = null;
         EmailNotificationRateEnum userRate = null;
         String customizeMessage = null;
-        List<UserToNetwork> userToNetworks = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, networkId, RoleEnum.VISITOR, AllMembersViewEnum.BY_POINTS, SqlLimit.ALL);
+        List<UserToNetwork> userToNetworks = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedBy(null, networkId, RoleEnum.VISITOR, AllMembersViewEnum.BY_POINTS, SqlLimit.ALL);
         for (UserToNetwork userToNetwork : userToNetworks) {
 
             // Does the message receiver wish to receive a digest at the same rate as the calling rate?

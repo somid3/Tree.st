@@ -1,8 +1,8 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%
     // Retrieving network
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
-    Integer collectMode = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
 
     // Optional parameters
     Integer againQuestionRef = StringUtils.parseInt(request.getParameter("agqr"));
@@ -11,7 +11,7 @@
         backToBackCount = 1;
 
     Boolean isFatigued = false;
-    if (backToBackCount > 5 && collectMode == 0)
+    if (backToBackCount > 5 && homeCollectMode)
         isFatigued = true;
 
     String hFilterOptionsInputId = HtmlUtils.getRandomId();
@@ -178,7 +178,7 @@
             </div>
         </div>
 
-        <% if (collectMode == 0) { %>
+        <% if (!homeCollectMode) { %>
             <div class="output shadow"></div>
             <script type="text/javascript">
                 $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});

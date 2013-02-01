@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
     Integer faceRef = StringUtils.parseInt(request.getParameter("rr"));

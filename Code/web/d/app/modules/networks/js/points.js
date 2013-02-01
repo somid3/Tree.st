@@ -22,7 +22,7 @@ Points.increment = function (incrementBy) {
         .css("position", "absolute")
         .css("top", $availablePosition.top)
         .css("left", $availablePosition.left)
-        .text('+' + incrementBy)
+        .text(incrementBy)
         .prependTo("#points")
         .animate({top: $availablePosition.top - 30, opacity: 0}, 800, function() {$(this).remove();});
 

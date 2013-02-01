@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
     // Retrieving parameters to automatically add a question

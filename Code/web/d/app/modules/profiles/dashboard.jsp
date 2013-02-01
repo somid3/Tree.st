@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));

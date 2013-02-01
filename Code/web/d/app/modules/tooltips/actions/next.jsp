@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     TooltipEnum onTooltip = TooltipEnum.getByValue(StringUtils.parseString(request.getParameter("tv")));
 

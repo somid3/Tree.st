@@ -1,13 +1,7 @@
 package com.questy.services;
 
-import com.questy.dao.NetworkDao;
-import com.questy.dao.PasswordResetDao;
-import com.questy.dao.UserDao;
-import com.questy.dao.UserSessionDao;
-import com.questy.domain.Network;
-import com.questy.domain.PasswordReset;
-import com.questy.domain.User;
-import com.questy.domain.UserSession;
+import com.questy.dao.*;
+import com.questy.domain.*;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.helpers.SqlLimit;
@@ -243,11 +237,8 @@ public class UserWebServices extends ParentService {
             // Install login cookies at client
             UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
 
-            // Retrieving user's initial hash
-            String goHash = getInitialHash(user.getId());
-
             // Send user to application
-            buf.append("<app go='" + goHash + "' />");
+            buf.append("<app/>");
 
         }
 
@@ -317,11 +308,8 @@ public class UserWebServices extends ParentService {
         // Install login cookies at client
         UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
-        // Retrieving user's initial hash
-        String goHash = getInitialHash(user.getId());
-
         // Send user to application
-        buf.append("<app go='" + goHash + "' />");
+        buf.append("<app/>");
 
         return buf.toString();
     }
@@ -335,6 +323,13 @@ public class UserWebServices extends ParentService {
         // Retrieving list of user networks
         List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.VISITOR, SqlLimit.FIRST);
         Network firstNetwork = networks.get(0);
+
+        // Retrieving user to network in case user is blocked
+        UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, firstNetwork.getId());
+        if (userToNetwork.getBlockedOn() != null)
+            return HashRouting.blocked(firstNetwork.getId());
+
+        // Retrieving first available question, if any..
         Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, firstNetwork.getId());
 
         // Determining where to send initially...

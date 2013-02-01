@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     Integer toUserId = StringUtils.parseInt(request.getParameter("tuid"));
 

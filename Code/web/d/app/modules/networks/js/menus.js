@@ -137,15 +137,26 @@ LeftMenu.goToNetwork = function (event, networkId, callback) {
         // Highlight the network
         LeftMenu.highlightItem(selector);
 
+        // Emptying the currently menu
+        LeftMenu.emptyCurrently();
+
         // Moving objects to they ground to zero
-        LeftMenu.offsetItems();
+        LeftMenu.offsetCurrently();
     }
 };
 
-LeftMenu.offsetItems = function () {
+
+LeftMenu.offsetCurrently = function () {
 
     var $currently = $("#currently");
-    $currently.val("").css("top", "100px").empty();
+    $currently.css("top", "100px").empty();
+
+};
+
+LeftMenu.emptyCurrently = function () {
+
+    var $currently = $("#currently");
+    $currently.empty();
 
 };
 

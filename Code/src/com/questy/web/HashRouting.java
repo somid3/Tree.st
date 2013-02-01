@@ -61,6 +61,10 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/collaborate/" + questionRef;
     };
 
+    public static String blocked(Integer networkId) {
+        return HASH + "/comm/" + networkId + "/blocked";
+    };
+
     public static String smartGroups(Integer networkId) {
         return HASH + "/comm/" + networkId + "/sgroups";
     };

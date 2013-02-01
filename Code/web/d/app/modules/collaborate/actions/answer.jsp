@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     Integer answeredQuestionRef = StringUtils.parseInt(request.getParameter("aqr"));
     List<Integer> optionRefs = StringUtils.parseInts(request.getParameterValues("ors[]"));

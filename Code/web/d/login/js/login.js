@@ -69,8 +69,7 @@ Login.login = function (event) {
             Animations.outTop("#login", function () {
 
                 // Send user to app
-                var goHash = $response.find("app").attr("go");
-                var sendTo = "/d/app/" + goHash;
+                var sendTo = "/d/app";
                 URL.redirect(sendTo);
 
             });

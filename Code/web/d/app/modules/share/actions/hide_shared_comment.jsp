@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
     Integer sharedItemRef = StringUtils.parseInt(request.getParameter("sir"));

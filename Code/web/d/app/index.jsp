@@ -1,4 +1,6 @@
-<%@ include file="./all.jsp" %>
+<%@ include file="setup.jsp" %>
+<% appDisableBlocked = false; %>
+<%@ include file="auth.jsp" %>
 <%
     // If in development mode, make sure all scripts refresh
     Vars.setDevelopmentRev();
@@ -267,6 +269,12 @@
         routie('/comm/:nid/finder/:text', function(nid, text) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.FINDER, {s: decodeURIComponent(text)});
+            });
+        });
+
+        routie('/comm/:nid/blocked', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.BLOCKED);
             });
         });
 

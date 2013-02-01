@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%
     SmartGroupsViewEnum view = SmartGroupsViewEnum.getById(StringUtils.parseInt(request.getParameter("view")));
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));

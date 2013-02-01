@@ -1,4 +1,3 @@
-<%@ include file="../all.jsp" %>
 <%
     // Authenticate user session
     boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
@@ -35,5 +34,16 @@
     // Ensuring the mapping has to exist
     if (home != null && meToHome == null)
         webUtils.redirect("/d/logout");
+
+    // Ensuring user has not been blocked from a network
+    if (meToHome != null &&
+        meToHome.getBlockedOn() != null &&
+        appDisableBlocked)
+            webUtils.redirect("/d/logout");
+
+    // Determines whether a community should be in collect mode onl or not
+    Boolean homeCollectMode = false;
+    if (meToHome != null && NetworkIntegerSettingEnum.MODE_COLLECT_ONLY.getValueByNetworkId(meToHome.getNetworkId()) != 0)
+        homeCollectMode = true;
 
 %>

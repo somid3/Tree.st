@@ -28,7 +28,7 @@ public class MITEISeminarAnswerSummary {
 
 
         // Retrieve all E&I Track students
-        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedByPoints(null, usersNetworkId, RoleEnum.VISITOR, AllMembersViewEnum.BY_POINTS, SqlLimit.ALL);
+        List<UserToNetwork> utns = UserToNetworkDao.getByNetworkIdAndLowestRoleOrderedBy(null, usersNetworkId, RoleEnum.VISITOR, AllMembersViewEnum.BY_POINTS, SqlLimit.ALL);
 
         Map<User, String> unsortedMap = new HashMap<User, String>();
         ValueComparator vc = new ValueComparator(unsortedMap);

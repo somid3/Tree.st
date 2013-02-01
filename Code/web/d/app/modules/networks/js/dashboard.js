@@ -7,7 +7,8 @@ NetworkDashboard.Section = {
     PROFILE: 6,
     ALL: 7,
     FINDER: 8,
-    MEMBER: 9
+    MEMBER: 9,
+    BLOCKED: 10
 };
 
 function NetworkDashboard () {
@@ -99,6 +100,10 @@ function NetworkDashboard () {
         else if (sendTo == NetworkDashboard.Section.FINDER)
 
             this.clickItem(event, "#finder_all", './modules/finder/finder.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.BLOCKED)
+
+            this.clickItem(event, null, './modules/collaborate/blocked.jsp', parameters, callback);
     };
 
 }

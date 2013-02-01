@@ -15,7 +15,7 @@ public class UserToNetwork extends Parent {
     private Integer sharedDownVotes;
 
     private Integer pointsPerLink;
-    private Date removedOn;
+    private Date blockedOn;
     private RoleEnum role;
 
     public UserToNetwork() {}
@@ -68,12 +68,12 @@ public class UserToNetwork extends Parent {
         this.role = role;
     }
 
-    public Date getRemovedOn() {
-        return removedOn;
+    public Date getBlockedOn() {
+        return blockedOn;
     }
 
-    public void setRemovedOn(Date removedOn) {
-        this.removedOn = removedOn;
+    public void setBlockedOn(Date blockedOn) {
+        this.blockedOn = blockedOn;
     }
 
     public Integer getSharedUpVotes() {

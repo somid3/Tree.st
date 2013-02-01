@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%
     Integer smartGroupNetworkId = StringUtils.parseInt(request.getParameter("sgnid"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));

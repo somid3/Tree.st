@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 
 <div id="currently">
 </div>
@@ -9,7 +10,7 @@
 <script type="text/javascript">
 
     Transitions.load("#networks", "./modules/networks/networks.jsp", function() {
-        LeftMenu.offsetItems();
+        LeftMenu.offsetCurrently();
     });
 
 </script>

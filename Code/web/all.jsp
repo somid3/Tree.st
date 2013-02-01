@@ -13,8 +13,4 @@
 <%@ page import="com.questy.enums.*" %>
 
 
-
-
-
-
 <% WebUtils webUtils = new WebUtils(request, response); %>

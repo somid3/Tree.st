@@ -496,7 +496,7 @@ public class NetworkServices extends ParentService {
             throw new UIException("User (" + userId + ") is not a member of network  (" + networkId + ")");
 
         // Determine action based on removed on
-        if(utn.getRemovedOn() == null)
+        if(utn.getBlockedOn() == null)
             UserToNetworkDao.removeByUserIdAndNetworkId(null, userId, networkId);
         else
             UserToNetworkDao.unremoveByUserIdAndNetworkId(null, userId, networkId);

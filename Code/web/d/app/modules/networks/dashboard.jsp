@@ -1,11 +1,18 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<% appDisableBlocked = false; %>
+<%@ include file="../../auth.jsp" %>
 <%
-    Integer collectOnly = NetworkIntegerSettingEnum.MODE_COLLECT_ONLY.getValueByNetworkId(homeId);
+    // Ensuring user is not blocked
+    if (meToHome.getBlockedOn() != null)
+        return;
+
+    // Ensuring we are not in collect only mode
+    if (homeCollectMode)
+        return;
 
     // Retrieving user to network
     UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, meId, homeId);
-
-if (collectOnly == 0) { %>
+%>
 <div id="network_dashboard">
 
     <div id="search_space">
@@ -39,4 +46,3 @@ if (collectOnly == 0) { %>
     Binding.bindInputKeyPress("findTimer", "#finder", Finder.submitFind );
     Finder.setupFinder();
 </script>
-<% } %>

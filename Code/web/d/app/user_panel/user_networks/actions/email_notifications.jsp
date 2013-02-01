@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     EmailNotificationRateEnum digestRate = EmailNotificationRateEnum.getById(
                 StringUtils.parseInt(request.getParameter("digest_rate")));

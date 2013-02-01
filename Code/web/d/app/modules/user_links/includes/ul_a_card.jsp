@@ -124,12 +124,20 @@
 
        </div>
 
-       <div class="admin">
+       <%
+           /*
+            * Displaying the admin card if the user is an editor or above, and if the
+            * card being displayed is no the same card that belows to the user.
+            */
+           if (!ul_a_meToHome.getRole().isLowerThan(RoleEnum.EDITOR) &&
+                ul_a_meToHome.getUserId() != ul_a_toUserId) { %>
 
-             <% UserToNetwork ul_c_userToNetwork = ul_a_toUserToNetwork; %>
-             <%@ include file="../includes/ul_c_remove.jsp" %>
+            <div class="admin_card">
+                 <% UserToNetwork ul_c_userToNetwork = ul_a_toUserToNetwork; %>
+                 <%@ include file="../includes/ul_c_remove.jsp" %>
+            </div>
 
-       </div>
+        <% } %>
 
     </div>
 </div>

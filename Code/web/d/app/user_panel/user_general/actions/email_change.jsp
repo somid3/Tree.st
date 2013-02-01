@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     String newEmail1 = StringUtils.parseString(request.getParameter("email1"));
     String newEmail2 = StringUtils.parseString(request.getParameter("email2"));

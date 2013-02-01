@@ -120,11 +120,8 @@ public class EmailConfirmationServices {
         // Install login cookies at client
         UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
-        // Retrieving user's initial hash
-        String goHash = UserWebServices.getInitialHash(user.getId());
-
         // Sending user to application
-        webUtils.redirect("/d/app/" + goHash);
+        webUtils.redirect("/d/updated");
     }
 
 }

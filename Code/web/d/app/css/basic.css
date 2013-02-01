@@ -1,4 +1,4 @@
-<%@include file="../../all.jsp" %>
+<%@include file="../setup.jsp" %>
 <%@page contentType="text/css" %>
 
 #main {

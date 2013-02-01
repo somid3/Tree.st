@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
     // Retrieving total number of shared items
@@ -18,7 +19,9 @@
         SI.displaySharedItems();
     </script>
 
-<% } else { %>
+<% } else {
+
+    Integer share_e_networkId = homeId; %>
 
     <%@ include file="./includes/share_e_first.jsp" %>
 

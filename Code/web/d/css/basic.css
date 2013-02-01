@@ -307,10 +307,16 @@ input.bottom_line {
 }
 
 .pink_button {
-    background: #ff5485;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
+    background: <%= HtmlDesign.highlight6 %>;
     color: #fff;
 }
 
+.error_button {
+    border: 1px solid white;
+    background: <%= HtmlDesign.errorBackgroundColor %>;
+    color: #fff;
+}
 
 
 /* Text */

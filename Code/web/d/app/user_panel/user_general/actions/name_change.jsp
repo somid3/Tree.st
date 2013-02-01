@@ -1,4 +1,5 @@
-<%@ include file="../../../all.jsp" %>
+<%@ include file="../../../setup.jsp" %>
+<%@ include file="../../../auth.jsp" %>
 <%
     String firstName = StringUtils.parseString(request.getParameter("fname"));
     String lastName = StringUtils.parseString(request.getParameter("lname"));

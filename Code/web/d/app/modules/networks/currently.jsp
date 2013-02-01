@@ -1,6 +1,7 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<% appDisableBlocked = false; %>
+<%@ include file="../../auth.jsp" %>
 <%
-
     // Retrieving next question user has left to answer
     Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(meId, homeId);
 
@@ -9,13 +10,35 @@
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
 
     Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
-    Integer collectMode = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
-
     String singularVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
     String pluralVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
 %>
 
-<% if (collectMode == 0) { %>
+<script type="text/javascript">
+
+    // Moving the currently menu
+    Animations.toPosition("#currently", 0, 0, 600);
+
+    // Changing header color
+    $("#header").css("background-color", "<%= networkAlphaSettings.get(NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR) %>")
+
+    // Changing the logo and logo url
+     <% if (hasLogo != 0) { %>
+        NetworkDashboard.showCustomLogo("<%= home.getLogoResourceUrl() %>");
+    <% } else { %>
+        NetworkDashboard.showDefaultLogo("<%= StringUtils.concat(home.getName().replaceAll("\"", "'"), 14, "...") %>");
+    <% } %>
+
+</script>
+
+<%
+    // Ensuring user is not blocked
+    if (meToHome.getBlockedOn() != null)
+        return;
+%>
+
+
+<% if (!homeCollectMode) { %>
     <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.all(homeId)%>')">
         <div class="shortcut" id="network_shortcut_all">
             <div class="contents">
@@ -26,7 +49,7 @@
     </a>
 <% } %>
 
-<% if (collectMode == 0) { %>
+<% if (!homeCollectMode) { %>
     <div class="help">
         <div class="help-rel">
             <a href="/d/how/#share" target="_help"><img src="./img/help.png" alt="Help"></a>
@@ -43,7 +66,7 @@
 <% } %>
 
 
-<% if (collectMode == 0) { %>
+<% if (!homeCollectMode) { %>
     <div class="help">
         <div class="help-rel">
             <a href="/d/how/#groups" target="_help"><img src="./img/help.png" alt="Help"></a>
@@ -59,7 +82,7 @@
     </a>
 <% } %>
 
-<% if (collectMode == 0) { %>
+<% if (!homeCollectMode) { %>
     <div class="help">
         <div class="help-rel">
             <a href="/d/how/#finder" target="_help"><img src="./img/help.png" alt="Help"></a>
@@ -102,21 +125,3 @@
         </div>
     </div>
 </a>
-
-<script type="text/javascript">
-
-    // Moving the currently menu
-    Animations.toPosition("#currently", 0, 0, 600);
-
-    // Changing header color
-    $("#header").css("background-color", "<%= networkAlphaSettings.get(NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR) %>")
-
-    // Changing the logo and logo url
-     <% if (hasLogo != 0) { %>
-        NetworkDashboard.showCustomLogo("<%= home.getLogoResourceUrl() %>");
-    <% } else { %>
-        NetworkDashboard.showDefaultLogo("<%= StringUtils.concat(home.getName().replaceAll("\"", "'"), 14, "...") %>");
-    <% } %>
-
-
-</script>

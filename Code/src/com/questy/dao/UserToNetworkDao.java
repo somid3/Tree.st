@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserToNetworkDao extends ParentDao {
 
-    public static List<UserToNetwork> getByNetworkIdAndLowestRoleOrderedByPoints(
+    public static List<UserToNetwork> getByNetworkIdAndLowestRoleOrderedBy(
             Connection conn,
             Integer networkId,
             RoleEnum lowestRole,
@@ -257,7 +257,7 @@ public class UserToNetworkDao extends ParentDao {
 
         String sql =
             "update `users_to_networks` " +
-            "set `removed_on` = NOW() " +
+            "set `blocked_on` = NOW() " +
             "where `user_id` = ? " +
             "and `network_id` = ?;";
 
@@ -278,7 +278,7 @@ public class UserToNetworkDao extends ParentDao {
 
         String sql =
             "update `users_to_networks` " +
-            "set `removed_on` = null " +
+            "set `blocked_on` = null " +
             "where `user_id` = ? " +
             "and `network_id` = ?;";
 
@@ -294,7 +294,7 @@ public class UserToNetworkDao extends ParentDao {
         UserToNetwork out = new UserToNetwork();
         out.setId(DatabaseUtils.getInt(rs, "id"));
         out.setCreatedOn(DatabaseUtils.getTimestamp(rs, "created_on"));
-        out.setRemovedOn(DatabaseUtils.getTimestamp(rs, "removed_on"));
+        out.setBlockedOn(DatabaseUtils.getTimestamp(rs, "blocked_on"));
         out.setUserId(DatabaseUtils.getInt(rs, "user_id"));
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
 

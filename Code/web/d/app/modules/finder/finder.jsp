@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%@ include file="./load.jsp" %>
 <%
     String searchText = StringUtils.parseString(request.getParameter("s"));

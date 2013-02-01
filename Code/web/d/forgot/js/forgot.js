@@ -100,9 +100,7 @@ Forgot.set = function (event, userId, passwordChecksum) {
         } else if($response.find("app").length > 0) {
 
             // Send user to app
-            var goHash = $response.find("app").attr("go");
-            var sendTo = "/d/app/" + goHash;
-            URL.redirect(sendTo);
+            URL.redirect("/d/updated");
 
             return false;
 

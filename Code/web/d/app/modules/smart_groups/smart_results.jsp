@@ -1,4 +1,5 @@
-<%@ include file="../../all.jsp" %>
+<%@ include file="../../setup.jsp" %>
+<%@ include file="../../auth.jsp" %>
 <%
     String queryString = StringUtils.parseString(request.getParameter("query"));
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));

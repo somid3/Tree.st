@@ -7,8 +7,6 @@
      *   Map<NetworkIntegerSettingEnum, Integer> collab_c_networkIntegerSettings = null;
      */
 
-    Integer collab_c_collectMode = collab_c_networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
-
     // Retrieving first dependent network, if any, that has a available next question
     List<NetworkDependsOn> collab_c_dependentNetworks = NetworkDependsOnDao.getByNetworkId(null, collab_c_network.getId());
     Network collab_c_firstDependentAndAvailableNetwork = null;
