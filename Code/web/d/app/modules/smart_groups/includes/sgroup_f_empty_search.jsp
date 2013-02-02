@@ -17,7 +17,7 @@
 
             <div class="vl_text dim">
                 Your <%= sgroup_f_settingUserSingular %> searcher is currently empty.<br/>
-                Find and add multiple qualities to discover truly unique <%= sgroup_f_settingUserPlural %>.
+                Use the top search bar to find and add multiple qualities to discover truly unique <%= sgroup_f_settingUserPlural %>.
             </div>
         </div>
     </div>

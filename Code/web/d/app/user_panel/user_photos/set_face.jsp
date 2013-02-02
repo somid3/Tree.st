@@ -14,7 +14,7 @@
 
         // If there are no temp images send user to app without any "go_" parameters
         if (faces.isEmpty())
-            webUtils.redirect("/d/app");
+            throw new UIException("User has no temporary faces");
 
         // Getting the latest temporary scaled face
         scaled = faces.get(0);

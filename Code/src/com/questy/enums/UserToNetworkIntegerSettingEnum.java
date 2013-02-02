@@ -41,8 +41,22 @@ public enum UserToNetworkIntegerSettingEnum {
      * To completely unsubscribe from all shared item
      * notifications the user can use the {@link EmailNotificationRateEnum#NEVER} rate.
      */
-    NEW_SHARED_ITEM_DIGEST_EMAIL_RATE (200, EmailNotificationRateEnum.EVERY_FOUR_HOURS.getId())
+    NEW_SHARED_ITEM_DIGEST_EMAIL_RATE (200, EmailNotificationRateEnum.EVERY_FOUR_HOURS.getId()),
 
+
+
+
+    /**
+     * Tip that appears on top of the shared feed area informing the user that
+     * shared items can be created only from within a smart group
+     */
+    TIP_SHARED_ITEMS_HOW                 (5000, 1),
+
+    /**
+     * Top on top of all the shared groups that informs a user that the search
+     * tool needs to be used to create a smart group
+     */
+    TIP_SMART_GROUPS_CREATE              (5001, 1),
     ;
 
 

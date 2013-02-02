@@ -61,3 +61,22 @@ function Tooltips () {
     };
 
 };
+
+Tooltips.closeMinitip = function (
+    event,
+    hMinitipId,
+    networkId,
+    userToNetworkIntegerSettingId) {
+
+    Event.preventDefault(event);
+
+    var parameters = {};
+    parameters.nid = networkId;
+    parameters.utnisid = userToNetworkIntegerSettingId;
+
+    $.post("./modules/tooltips/actions/close_mini.jsp", parameters, function(response) {
+
+        // Hiding the actual tooltip
+        $("#" + hMinitipId).fadeOut();
+    });
+};

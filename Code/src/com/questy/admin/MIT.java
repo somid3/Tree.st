@@ -1214,7 +1214,7 @@ public class MIT {
             }
 
             // Register path
-            NetworkServices.addUserToSingleNetwork(networkId, userId, RoleEnum.ADMIN);
+            NetworkServices.addUserToSingleNetwork(networkId, userId, RoleEnum.OWNER);
 
     }
 

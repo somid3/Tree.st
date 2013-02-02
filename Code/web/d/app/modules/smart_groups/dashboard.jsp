@@ -32,7 +32,7 @@
 
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupMembers(group.getNetworkId(), group.getSmartGroupRef()) %>');;"><div class="shortcut sm_text light_button" id="smart_group_shortcut_members">Members (<%= group.getResultsCount() %>)</div></a>
 
-            <% if (group.getUserId().equals(meId)) { %>
+            <% if (meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
                 <a href="#" onclick="SmartGroupDashboard.hideSmartGroup(event, <%= group.getNetworkId() %>, <%= group.getSmartGroupRef() %>);"><div class="shortcut sm_text light_button">Remove</div></a>
             <% } %>
 

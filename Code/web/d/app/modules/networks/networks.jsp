@@ -16,7 +16,6 @@
     Boolean collectMode = false;
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = null;
     UserToNetwork meToNetwork = null;
-    String iconSrc = null;
 %>
 
 <div class="networks">
@@ -36,13 +35,6 @@
         collectModeSetting = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
         meToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, meId,  network.getId());
 
-
-
-        if (hasIcon != 0)
-            iconSrc = network.getIconResourceUrl();
-        else
-            iconSrc = "./modules/networks/img/tree.png";
-
         if (meToNetwork.getBlockedOn() != null) { %>
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.blocked(network.getId())%>')">
         <% } else if (collectModeSetting == 0 ) { %>
@@ -54,7 +46,7 @@
                 <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">
 
                 <div class="contents">
-                    <div class="icon"><img src="<%= iconSrc %>" alt=""></div>
+                    <div class="icon"><img src="<%= network.getIconResourceUrl(hasIcon == 0) %>" alt=""></div>
                     <div class="name smd_text"><%= StringUtils.concat(network.getName(), 10, "&#8230;") %></div>
                 </div>
 
@@ -62,7 +54,7 @@
 
                     <% if (nextQuestionRef != null) { %>
                         <div class="bullet" id="<%= NetworkHtml.getBulletId(network.getId()) %>"><img src="./img/dot-green-16.png"></div>
-                        <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletId(network.getId()) %>", 10000, 10000)</script>
+                        <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletId(network.getId()) %>", 10000, 30000)</script>
                     <% } %>
 
                     <% if (meToNetwork.getBlockedOn() != null) { %>

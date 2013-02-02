@@ -47,6 +47,11 @@ public class FileUtils {
 
                 FileItem fi = (FileItem)i.next();
 
+                // Validating the size of the file item
+                if (fi.getSize() == 0)
+                    throw new RuntimeException("Can not save empty file");
+
+                // Is the form field element not a 'text' based field?
                 if ( !fi.isFormField () ) {
 
                     // Get the uploaded file parameters

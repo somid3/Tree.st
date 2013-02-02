@@ -63,7 +63,7 @@ public class NetworkServices extends ParentService {
 
             // If the network has no members, add member as owner
             if (network.getTotalMembers() == 0)
-                role = RoleEnum.ADMIN;
+                role = RoleEnum.OWNER;
 
             // No, map user to network
             UserToNetworkDao.insert(conn, userId, networkId, role);

@@ -14,8 +14,8 @@ public enum NetworkIntegerSettingEnum {
 
     SHARED_ITEM_POINTS_PER              (200, 10),
     SHARED_ITEM_DISPLAY_CREATED_ON      (201, 1),
-    SHARED_ITEMS_PER_FIVE_MINUTES       (202, 1),
-    SHARED_ITEMS_PER_HOUR               (203, 5),
+    SHARED_ITEMS_PER_FIVE_MINUTES       (202, 2),
+    SHARED_ITEMS_PER_HOUR               (203, 6),
 
     SHARED_ITEMS_PER_DAY                (204, 10),
 
@@ -36,6 +36,12 @@ public enum NetworkIntegerSettingEnum {
     USER_LINKS_PER_DAY                  (403, 120),
 
     SMART_RESULTS_DISPLAY_SINCE         (500, 1),
+
+    /**
+     * Regular members of a community can not create "shared" smart groups
+     * that contain more than X number of members within them
+     */
+    SMART_GROUP_RESULTS_LIMIT           (600, 300),
 
     /**
      * If set to a value other than zero, then collect mode will be enabled, in this mode

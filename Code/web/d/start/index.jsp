@@ -172,9 +172,7 @@
     });
 
     // Displaying network background
-    <% if (hasBackground != 0) { %>
-        $("body").css('background-image','url(<%= network.getBackgroundResourceUrl() %>)');
-    <% } %>
+    $("body").css('background-image','url(<%= network.getBackgroundResourceUrl(hasBackground == 0) %>)');
 
     // Bringing down the join or login form
     $(document).ready(function() {

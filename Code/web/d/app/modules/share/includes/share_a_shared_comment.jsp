@@ -29,7 +29,7 @@
             if (share_a_sharedComment.getUserId().equals(me.getId()) ||
                 meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
 
-                <a href="#" onclick="SharedComment.hideSharedComment(
+                <a href="#" onclick="SharedComment.hideSharedComment (
                     event,
                     <%= share_a_sharedComment.getNetworkId() %>,
                     <%= share_a_sharedComment.getSmartGroupRef() %>,

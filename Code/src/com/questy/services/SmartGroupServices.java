@@ -6,6 +6,8 @@ import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.SmartGroup;
 import com.questy.domain.UserToNetwork;
+import com.questy.enums.NetworkAlphaSettingEnum;
+import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
 import com.questy.helpers.UIException;
@@ -92,7 +94,7 @@ public class SmartGroupServices extends ParentService  {
             throw new UIException("No name provided");
 
         if (description == null || description.isEmpty())
-            throw new UIException("No description provided");
+            throw new UIException("No purpose provided");
 
         // Retrieve smart group
         SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
@@ -100,8 +102,20 @@ public class SmartGroupServices extends ParentService  {
         // Retrieving user to network of smart group creator
         UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, smartGroup.getUserId(), smartGroup.getNetworkId());
 
-        if (utn.getRole().isLowerThan(RoleEnum.EDITOR) && visibility == SmartGroupVisibilityEnum.OFFICIAL)
-            throw new UIException("Can not create an official smart group");
+        // Applying member validation rules
+        if (utn.getRole().isLowerThan(RoleEnum.EDITOR)) {
+
+            // Retrieving creation limit
+            Integer memberLimit = NetworkIntegerSettingEnum.SMART_GROUP_RESULTS_LIMIT.getValueByNetworkId(networkId);
+            String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(networkId);
+
+            // Validating smart group size
+            if (smartGroup.getResultsCount() >= memberLimit)
+                throw new UIException("Smart group must contain less than " + memberLimit + " " + vocabUserPlural + ", currently it has " + smartGroup.getResultsCount() + "  " + vocabUserPlural);
+
+            if (utn.getRole().isLowerThan(RoleEnum.EDITOR) && visibility == SmartGroupVisibilityEnum.OFFICIAL)
+                throw new UIException("Can not create an official smart group");
+        }
 
         // Updating the smart group's name and details...
         SmartGroupDao.updateDetailsByNetworkIdAndRef(null, networkId, smartGroupRef, name, description, visibility);

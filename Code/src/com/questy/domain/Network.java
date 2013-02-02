@@ -13,17 +13,10 @@ public class Network extends Parent {
 
     private Date createdOn;
     private String name;
-    private boolean global;
     private Integer totalMembers;
     private String checksum;
 
     public Network() {}
-
-    public Network(Integer id, String name, boolean isGlobal) {
-        setId(id);
-        this.name = name;
-        this.global = isGlobal;
-    }
 
     public Date getCreatedOn() {
         return createdOn;
@@ -39,10 +32,6 @@ public class Network extends Parent {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setGlobal(boolean global) {
-        this.global = global;
     }
 
     public Integer getTotalMembers() {
@@ -61,12 +50,20 @@ public class Network extends Parent {
         this.checksum = checksum;
     }
 
-    public String getIconResourceUrl() {
-        return getResourceUrl(ICON_FILENAME);
+    public String getIconResourceUrl(boolean isDefault) {
+
+        if (isDefault)
+            return getDefaultResourceUrl(ICON_FILENAME);
+        else
+            return getResourceUrl(ICON_FILENAME);
     }
 
-    public String getBackgroundResourceUrl() {
-        return getResourceUrl(BACKGROUND_FILENAME);
+    public String getBackgroundResourceUrl(boolean isDefault) {
+
+        if (isDefault)
+            return getDefaultResourceUrl(BACKGROUND_FILENAME);
+        else
+            return getResourceUrl(BACKGROUND_FILENAME);
     }
 
     public String getLogoResourceUrl() {
@@ -78,5 +75,9 @@ public class Network extends Parent {
         return url + filename;
     }
 
+    public String getDefaultResourceUrl(String filename) {
+        String url = ResourceInfo.getNetworkUrl(ANY_NETWORK);
+        return url + filename;
+    }
 
 }

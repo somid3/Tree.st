@@ -7,6 +7,7 @@ import com.questy.domain.User;
 import com.questy.enums.AppEnum;
 import com.questy.enums.AppResourceTypeEnum;
 import com.questy.helpers.Tuple;
+import com.questy.helpers.UIException;
 import com.questy.utils.FileUtils;
 import com.questy.utils.ImageUtils;
 import com.questy.utils.StringUtils;
@@ -37,9 +38,14 @@ public class AppResourceServices extends ParentService  {
          * photo, such photo is no longer temporary
          */
         AppResourceDao.updateHiddenByUserIdAndAppAndTemp(conn, userId, AppEnum.FACES, true, true);
-        
-        // Save temporary face file and create thumbnails
-        return saveTemporaryFaceTypes(userId, request);
+
+        try {
+
+            // Save temporary face file and create thumbnails
+            return saveTemporaryFaceTypes(userId, request);
+        } catch (Exception e) {
+            throw new UIException(e.getMessage());
+        }
     }
 
     public static void setFace (
@@ -140,35 +146,35 @@ public class AppResourceServices extends ParentService  {
         // Retrieving next application resources reference
         Integer nextRef = AppResourceDao.getNextRefByUserIdAndApp(conn, userId, AppEnum.FACES);
 
-        // Saving temporary in whatever format
-        String tmpFilePath = null;
-        {
-            AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, nextRef, true);
-            String filePath = resource.getFilePath();
-            FileUtils.save(filePath, request);
-            tmpFilePath = filePath;
-        }
+            // Saving temporary in whatever format
+            String tmpFilePath = null;
+            {
+                AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_UPLOADED, nextRef, true);
+                String filePath = resource.getFilePath();
+                FileUtils.save(filePath, request);
+                tmpFilePath = filePath;
+            }
 
-        // Saving as original in jpg format
-        String originalFilePath = null;
-        {
-            AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL, nextRef, true);
-            String filePath = resource.getFilePath();
-            BufferedImage image = ImageIO.read(new File(tmpFilePath));
-            File file = new File(filePath);
-            ImageIO.write(image, "jpg", file);
-            originalFilePath = filePath;
-        }
+            // Saving as original in jpg format
+            String originalFilePath = null;
+            {
+                AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL, nextRef, true);
+                String filePath = resource.getFilePath();
+                BufferedImage image = ImageIO.read(new File(tmpFilePath));
+                File file = new File(filePath);
+                ImageIO.write(image, "jpg", file);
+                originalFilePath = filePath;
+            }
 
-        // Saving scaled in jpg format
-        {
-            AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, nextRef, true);
-            String filePath = resource.getFilePath();
-            BufferedImage image = ImageIO.read(new File(tmpFilePath));
-            File file = new File(filePath);
-            image = Scalr.resize(image, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.AUTOMATIC, 500, 500, Scalr.OP_ANTIALIAS);
-            ImageIO.write(image, "jpg", file);
-        }
+            // Saving scaled in jpg format
+            {
+                AppResource resource = insertAndRetrieve(userId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, nextRef, true);
+                String filePath = resource.getFilePath();
+                BufferedImage image = ImageIO.read(new File(tmpFilePath));
+                File file = new File(filePath);
+                image = Scalr.resize(image, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.AUTOMATIC, 500, 500, Scalr.OP_ANTIALIAS);
+                ImageIO.write(image, "jpg", file);
+            }
 
         return nextRef;
 

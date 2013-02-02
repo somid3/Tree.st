@@ -37,7 +37,6 @@
 
     </div>
     <div class="right">
-        <div>
             <div class="top">
                 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), me.getId())%>');">
                     <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
@@ -68,7 +67,6 @@
                 <% } %>
 
             </div>
-        </div>
         <div class="content">
             <div class="box smd_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_c_sharedItem.getText() ) )%></div>
 
@@ -107,7 +105,7 @@
         <%-- Adding new comment form, begins hidden --%>
         <div class="add_comment" id="<%= share_c_hNewSharedCommentId %>">
 
-            <div class="add_comment_top">
+            <div class="top">
                 <div class="error sm_text white"></div>
                 <div class="loading"><img src="/d/app/img/sm_loading.gif"></div>
             </div>

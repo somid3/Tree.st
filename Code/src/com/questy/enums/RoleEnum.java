@@ -2,12 +2,31 @@ package com.questy.enums;
 
 public enum RoleEnum {
 
-    ADMIN (9, "Admin / Owner"),
+    /**
+     * Can create more administrators
+     */
+    OWNER (9, "Owner"),
 
+    /**
+     * Can create more editors
+     */
+    ADMIN (7, "Admin"),
+
+    /**
+     * Can hide any shared item
+     * Can hide any shared comment
+     * Can block any member
+     */
     EDITOR (6, "Editor"),
 
+    /**
+     * Can use all functionality
+     */
     MEMBER (3, "Member"),
 
+    /**
+     * Can no... TBD
+     */
     VISITOR (0, "Visitor");
 
     private Integer id;

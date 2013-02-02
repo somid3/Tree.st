@@ -1,3 +1,4 @@
+<%@include file="../../../setup.jsp" %>
 <%@page contentType="text/css" %>
 
 #tooltips {
@@ -180,4 +181,34 @@
 	position: relative;
 	background: #fcfbb1;
 	border: 4px solid #a48e61;
+}
+
+
+/* Minitips */
+.minitip {
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px;
+    width: 574px;
+    border: 4px solid <%= HtmlDesign.highlight5 %>;
+    display: inline-block;
+}
+
+.minitip > .tip {
+    float: left;
+    font-family: adam;
+}
+
+.minitip > .content {
+    float: left;
+    width: 480px;
+    padding: 0 10px;
+    line-height: 1.5em;
+}
+
+.minitip > .close {
+    float: right;
+}
+.minitip > .close img {
+    padding: 10px;
 }

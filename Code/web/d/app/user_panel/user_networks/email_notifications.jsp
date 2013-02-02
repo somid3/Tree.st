@@ -1,4 +1,5 @@
 <%@ include file="../../setup.jsp" %>
+<% appDisableBlocked = false; %>
 <%@ include file="../../auth.jsp" %>
 <%@ include file="../load.jsp" %>
 <%
@@ -95,8 +96,8 @@
 
         <div class="actionable">
             <div class="loading"><img src="./img/sm_loading.gif"></div>
-            <a href="#" onclick="UND.submitEmailNotifications(event, <%= homeId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
-            <a href="#" onclick="UND.cancelSetting(event, '<%= hSettingsId %>')"><div class="action light_button md_button">Cancel</div></a>
+            <a href="#" onclick="UserNetworksDashboard.submitEmailNotifications(event, <%= homeId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
+            <a href="#" onclick="UserNetworksDashboard.cancelSetting(event, '<%= hSettingsId %>')"><div class="action light_button md_button">Cancel</div></a>
         </div>
 
     </form>

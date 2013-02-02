@@ -10,12 +10,40 @@
     String hMatchId = HtmlUtils.getRandomId();
     String hFlaggedId = HtmlUtils.getRandomId();
 
+    String hMinitipId = HtmlUtils.getRandomId();
+
     // Mini tool tip variables
     String app_d_title = null;
     String app_d_message = null;
     HtmlDesign.Positions app_d_position = null;
 
 %>
+
+<% if (TooltipServices.displayMinitip(UserToNetworkIntegerSettingEnum.TIP_SMART_GROUPS_CREATE, meId, homeId)) {
+
+    String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(homeId);
+    String vocabUserSingle = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetworkId(homeId); %>
+
+    <div class="minitip" id="<%= hMinitipId %>">
+        <div class="lg_header tip">Tip:</div>
+        <div class="content lg_text dim">
+            To create a
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(homeId) %>');">
+                <span class="highlight6">Smart Group</span>
+            </a>
+            use the
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearch(homeId) %>');">
+                <span class="highlight2"><%= vocabUserSingle %> Search</span>
+            </a>
+            &mdash; its easy, just select some qualities and save your search as a smart group.
+        </div>
+        <div class="close">
+            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= homeId %>, <%= UserToNetworkIntegerSettingEnum.TIP_SMART_GROUPS_CREATE.getId()%>)">
+                <img src="./img/close_dark.png">
+            </a>
+        </div>
+    </div>
+<% } %>
 
 <div id="smart_group_tools" class="canvas_container">
     <div class="keys">
