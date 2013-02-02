@@ -2,7 +2,7 @@
     /* Inputs variables
      *
      *    SharedItem share_c_sharedItem = null;
-     *    User share_c_me = null
+     *    UserToNetwork share_c_meToHome = null
      *    Integer share_c_fromSmartGroupRef = null
      *    Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = null;
      *    Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = null;
@@ -39,7 +39,7 @@
     <div class="right">
         <div>
             <div class="top">
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), share_c_me.getId())%>');">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), me.getId())%>');">
                     <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
                 </a>
 
@@ -54,7 +54,10 @@
 
                 <% } %>
 
-                <% if (share_c_sharedItem.getUserId().equals(share_c_me.getId())) { %>
+                <%
+                    // Determining if user has authority to delete message
+                    if (share_c_sharedItem.getUserId().equals(me.getId()) ||
+                        meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
 
                     <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getSharedItemRef() %>)">
                         <div class="delete smd_header dim3">
@@ -76,11 +79,10 @@
                 <% } %>
 
                 <% {
-                    User share_b_me = share_c_me;
                     SharedVotable share_b_sharedVotable = share_c_sharedItem;
                     Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_c_networkAlphaSettings;
                     Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_c_networkIntegerSettings; %>
-                <%@ include file="share_b_shared_vote.jsp" %>
+                    <%@ include file="share_b_shared_vote.jsp" %>
                 <% } %>
             </div>
 
@@ -93,13 +95,11 @@
                 // Retrieving all shared comments of shared item
                 List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
 
-                User share_a_me = share_c_me;
                 Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;
                 Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = share_c_networkIntegerSettings;
                 for (SharedComment share_a_sharedComment : sharedComments) { %>
 
                     <%@ include file="share_a_shared_comment.jsp" %>
-
             <% } %>
 
         </div>
@@ -114,7 +114,7 @@
 
             <div class="left">
                 <div class="face">
-                    <img src="<%= share_c_me.getFaceUrl() %>" alt="">
+                    <img src="<%= me.getFaceUrl() %>" alt="">
                 </div>
             </div>
 

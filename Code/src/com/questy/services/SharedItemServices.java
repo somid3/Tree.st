@@ -5,7 +5,9 @@ import com.questy.dao.SharedItemDao;
 import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.SharedItem;
+import com.questy.domain.UserToNetwork;
 import com.questy.enums.NetworkIntegerSettingEnum;
+import com.questy.enums.RoleEnum;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
@@ -77,23 +79,39 @@ public class SharedItemServices extends ParentService  {
         Connection conn = null;
 
         // Retrieving shared item to be deleted
-        SharedItem si = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(conn, networkId, smartGroupRef, sharedItemRef);
+        SharedItem sharedItem = SharedItemDao.getByNetworkIdAndSmartGroupRefAndRef(conn, networkId, smartGroupRef, sharedItemRef);
+
+        // Retrieving user to network relationship
+        UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+
+        Boolean deletedByAuthor = false;
+        Boolean deletedByModerator = false;
+
+        if (sharedItem.getUserId().equals(userId))
+            deletedByAuthor = true;
+
+        if (userToNetwork.getRole().isHigherThan(RoleEnum.MEMBER))
+            deletedByModerator = true;
 
         // Validating authority to delete
-        if (!si.getUserId().equals(userId))
-            throw new UIException("User is not the author of the shared item to be hidden");
+        if (!(deletedByAuthor || deletedByModerator))
+            throw new UIException("User can not hide shared item");
 
-        // Retrieving points per shared item
-        Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
-        pointsPerSharedItem = pointsPerSharedItem * -1;
 
         // Hide shared item
         SharedItemDao.updateHiddenByNetworkIdAndSmartGroupRefAndRef(conn, networkId, smartGroupRef, sharedItemRef, true);
 
         // Decrease points
-        UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPerSharedItem);
+        Integer pointsPer = 0;
+        if (deletedByAuthor) {
 
-        Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(sharedItemRef, pointsPerSharedItem);
+            // Retrieving points per shared item
+            pointsPer = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(networkId);
+            pointsPer = pointsPer * -1;
+            UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPer);
+        }
+
+        Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(sharedItemRef, pointsPer);
 
         return out;
     }

@@ -16,7 +16,7 @@
 
             <div><img src="./modules/collaborate/img/blocked.png"></div>
 
-            <div class="vl_text dim">Your &quot;<%= home.getName() %> &quot; profile has been blocked. Please contact any of emails below to unblock your account.</div>
+            <div class="vl_text dim">Your &quot;<%= home.getName() %> &quot; profile is blocked. Please contact any of emails below to unblock your account.</div>
 
             <%
                 User editor = null;

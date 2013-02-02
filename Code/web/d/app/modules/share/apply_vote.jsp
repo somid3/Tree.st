@@ -20,7 +20,6 @@
     else
         share_b_sharedVotable = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(null, homeId, smartGroupRef, sharedItemRef, sharedCommentRef);
 
-    User share_b_me = me;
     Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
     Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
 %>

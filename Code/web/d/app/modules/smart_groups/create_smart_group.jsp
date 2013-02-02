@@ -36,7 +36,7 @@
             <div class="element">
                 <div class="name smd_header white">Visibility</div>
                                                    
-                <% if (!meToHome.getRole().isLowerThan(RoleEnum.EDITOR)) { %>
+                <% if (meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
                     <div class="field smd_text white"><input name="share" type="radio" id="<%= hVisibilityGroup %>" value="<%= SmartGroupVisibilityEnum.OFFICIAL.getId() %>"> <label for="<%= hVisibilityGroup %>">Official network Smart Group</label></div>
                 <% } %>
 

@@ -29,9 +29,7 @@
 
     }
 
-    Integer share_c_networkId = homeId;
     Integer share_c_fromSmartGroupRef = smartGroupRef;
-    User share_c_me = me;
     Map<NetworkAlphaSettingEnum, String> share_c_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
     Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
     Integer count = sharedItems.size();

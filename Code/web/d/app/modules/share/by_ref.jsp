@@ -18,7 +18,6 @@
 <div id="share_canvas">
 
     <%
-        User share_c_me = me;
         SharedItem share_c_sharedItem = sharedItem;
         Integer share_c_fromSmartGroupRef = sharedItemRef;
         Map<NetworkIntegerSettingEnum, Integer> share_c_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);

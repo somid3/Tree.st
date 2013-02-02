@@ -2,7 +2,9 @@ package com.questy.services;
 
 import com.questy.dao.*;
 import com.questy.domain.SharedComment;
+import com.questy.domain.UserToNetwork;
 import com.questy.enums.NetworkIntegerSettingEnum;
+import com.questy.enums.RoleEnum;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
@@ -42,7 +44,6 @@ public class SharedCommentServices extends ParentService  {
             Integer lastDay = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.daysAgo(1));
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " comments per day");
         }
-
 
         // Retrieving points per shared item
         Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
@@ -89,15 +90,23 @@ public class SharedCommentServices extends ParentService  {
         Connection conn = null;
 
         // Retrieving shared comment to be hidden
-        SharedComment sc = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(conn, networkId, smartGroupRef, sharedItemRef, ref);
+        SharedComment sharedComment = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(conn, networkId, smartGroupRef, sharedItemRef, ref);
+
+        // Retrieving user to network relationship
+        UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+
+        Boolean deletedByAuthor = false;
+        Boolean deletedByModerator = false;
+
+        if (sharedComment.getUserId().equals(userId))
+            deletedByAuthor = true;
+
+        if (userToNetwork.getRole().isHigherThan(RoleEnum.MEMBER))
+            deletedByModerator = true;
 
         // Validating authority to delete
-        if (!sc.getUserId().equals(userId))
-            throw new UIException("User is not the author of the shared comment to be hidden");
-
-        // Retrieving points per shared item
-        Integer pointsPerSharedComment = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
-        pointsPerSharedComment = pointsPerSharedComment * -1;
+        if (!(deletedByAuthor || deletedByModerator))
+            throw new UIException("User can not hide shared comment");
 
         // Hide shared comment
         SharedCommentDao.updateHiddenByNetworkIdAndSmartGroupRefAndSharedItemIdAndRef(conn, networkId, smartGroupRef, sharedItemRef, ref, true);
@@ -106,9 +115,16 @@ public class SharedCommentServices extends ParentService  {
         SharedItemDao.incrementTotalCommentsByNetworkIdAndSmartGroupRefAndRef(conn, networkId, smartGroupRef, sharedItemRef, -1);
                
         // Decrease total point value of shared item
-        UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPerSharedComment);
+        Integer pointsPer = 0;
+        if (deletedByAuthor) {
 
-        Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(ref, pointsPerSharedComment);
+            // Retrieving points per shared item
+            pointsPer = NetworkIntegerSettingEnum.SHARED_COMMENT_POINTS_PER.getValueByNetworkId(networkId);
+            pointsPer = pointsPer * -1;
+            UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, userId, networkId, pointsPer);
+        }
+
+        Tuple<Integer, Integer> out = new Tuple<Integer, Integer>(ref, pointsPer);
 
         return out;
     }

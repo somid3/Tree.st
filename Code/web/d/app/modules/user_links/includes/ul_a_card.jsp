@@ -129,7 +129,7 @@
             * Displaying the admin card if the user is an editor or above, and if the
             * card being displayed is no the same card that belows to the user.
             */
-           if (!ul_a_meToHome.getRole().isLowerThan(RoleEnum.EDITOR) &&
+           if (ul_a_meToHome.getRole().isHigherThan(RoleEnum.MEMBER) &&
                 ul_a_meToHome.getUserId() != ul_a_toUserId) { %>
 
             <div class="admin_card">

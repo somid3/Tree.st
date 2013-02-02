@@ -3,7 +3,6 @@
     /* Inputs variables
      *
      *    SharedComment share_a_sharedComment = null;
-     *    User share_a_me = null;
      *
      *    Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = null;
      *    Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = null;
@@ -25,7 +24,11 @@
         </div>
         <div class="right">
 
-            <% if (share_a_sharedComment.getUserId().equals(share_a_me.getId())) { %>
+            <%
+            // Determining if user has authority to delete message
+            if (share_a_sharedComment.getUserId().equals(me.getId()) ||
+                meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
+
                 <a href="#" onclick="SharedComment.hideSharedComment(
                     event,
                     <%= share_a_sharedComment.getNetworkId() %>,
@@ -39,7 +42,7 @@
             <% } %>
 
             <div class="box">
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_a_sharedComment.getNetworkId(), share_a_sharedComment.getUserId(), share_a_me.getId())%>');">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_a_sharedComment.getNetworkId(), share_a_sharedComment.getUserId(), me.getId())%>');">
                     <span class="sm_header highlight2"><%= share_a_author.getName() %></span>:
                 </a>
 
@@ -52,7 +55,6 @@
                 <% } %>
 
                 <% {
-                    User share_b_me = share_a_me;
                     SharedVotable share_b_sharedVotable = share_a_sharedComment;
                     Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_a_networkAlphaSettings;
                     Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_a_networkIntegerSettings; %>

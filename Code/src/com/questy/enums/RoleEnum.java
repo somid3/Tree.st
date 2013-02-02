@@ -29,11 +29,13 @@ public enum RoleEnum {
     public boolean isLowerThan(RoleEnum input) {
 
         if (input == null) throw new RuntimeException("Can not compare with null input");
+        return (this.getId() < input.getId());
+    }
 
-        if (this.getId() < input.getId())
-            return true;
-        else
-            return false;
+    public boolean isHigherThan(RoleEnum input) {
+
+        if (input == null) throw new RuntimeException("Can not compare with null input");
+        return (this.getId() > input.getId());
     }
 
     public static RoleEnum getById(Integer id) {

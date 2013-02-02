@@ -2,8 +2,6 @@
 {
     /* Inputs variables
      *
-     *    User share_b_me = null;
-     *
      *    // Item whose voting characteristics can change
      *    SharedVotable share_b_sharedVotable = null;
      *
@@ -18,7 +16,7 @@
     String share_b_settingSharedVoteDownVocab = share_b_networkAlphaSettings.get(NetworkAlphaSettingEnum.SHARED_VOTE_DOWN_VOCAB);
 
     // Retrieving user's shared vote, if any...
-    SharedVote share_b_sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(share_b_me.getId(), share_b_sharedVotable);
+    SharedVote share_b_sharedVote = SharedVoteDao.getByUserIdAndSharedVotable(me.getId(), share_b_sharedVotable);
 
     // Determining if the user has vote up
     Boolean share_b_isUpVoteActive = false;

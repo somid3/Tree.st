@@ -6,7 +6,6 @@
     Integer sharedCommentRef = StringUtils.parseInt(request.getParameter("ref"));
 
     SharedComment share_a_sharedComment = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRefAndRef(null, homeId, smartGroupRef, sharedItemRef, sharedCommentRef);
-    User share_a_me = me;
     Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
     Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
 %>
