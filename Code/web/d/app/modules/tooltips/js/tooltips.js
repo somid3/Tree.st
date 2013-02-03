@@ -65,14 +65,12 @@ function Tooltips () {
 Tooltips.closeMinitip = function (
     event,
     hMinitipId,
-    networkId,
-    userToNetworkIntegerSettingId) {
+    settingId) {
 
     Event.preventDefault(event);
 
     var parameters = {};
-    parameters.nid = networkId;
-    parameters.utnisid = userToNetworkIntegerSettingId;
+    parameters.sid = settingId;
 
     $.post("./modules/tooltips/actions/close_mini.jsp", parameters, function(response) {
 

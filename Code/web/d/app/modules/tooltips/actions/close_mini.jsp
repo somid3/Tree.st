@@ -1,8 +1,8 @@
 <%@ include file="../../../setup.jsp" %>
 <%@ include file="../../../auth.jsp" %>
 <%
-    UserToNetworkIntegerSettingEnum settingEnum = UserToNetworkIntegerSettingEnum.getById(StringUtils.parseInt(request.getParameter("utnisid")));
+    UserIntegerSettingEnum settingEnum = UserIntegerSettingEnum.getById(StringUtils.parseInt(request.getParameter("sid")));
 
     // Updating setting to turn the minitip off
-    settingEnum.setValueByUserIdAndNetworkId(meId, homeId, 0);
+    settingEnum.setValueByUserId(meId, 0);
 %>

@@ -4,6 +4,7 @@ import com.questy.dao.*;
 import com.questy.domain.*;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.TooltipEnum;
+import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.enums.UserToNetworkIntegerSettingEnum;
 import com.questy.helpers.Tuple;
 
@@ -51,10 +52,10 @@ public class TooltipServices extends ParentService {
 
     }
 
-    public static Boolean displayMinitip (UserToNetworkIntegerSettingEnum minitipSettingEnum, Integer userId, Integer networkId) throws SQLException {
+    public static Boolean displayMinitip (UserIntegerSettingEnum minitipSettingEnum, Integer userId) throws SQLException {
 
-        // Retrieve the minitip setting value
-        Integer value = minitipSettingEnum.getValueByUserIdAndNetworkId(userId, networkId);
+        // Retrieve the mini-tip setting value
+        Integer value = minitipSettingEnum.getValueByUserId(userId);
 
         return value != 0;
     }

@@ -6,4 +6,4 @@
     UserToNetwork ul_c_userToNetwork = NetworkServices.toggleRemove(homeId, toUserId);
 
 %>
-<%@ include file="./includes/ul_c_remove.jsp" %>
+<%@ include file="includes/ul_c_block.jsp" %>

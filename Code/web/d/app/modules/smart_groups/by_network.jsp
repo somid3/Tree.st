@@ -19,7 +19,7 @@
 
 %>
 
-<% if (TooltipServices.displayMinitip(UserToNetworkIntegerSettingEnum.TIP_SMART_GROUPS_CREATE, meId, homeId)) {
+<% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SMART_GROUPS_CREATE, meId)) {
 
     String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(homeId);
     String vocabUserSingle = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetworkId(homeId); %>
@@ -38,7 +38,7 @@
             &mdash; its easy, just select some qualities and save your search as a smart group.
         </div>
         <div class="close">
-            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= homeId %>, <%= UserToNetworkIntegerSettingEnum.TIP_SMART_GROUPS_CREATE.getId()%>)">
+            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_SMART_GROUPS_CREATE.getId()%>)">
                 <img src="./img/close_dark.png">
             </a>
         </div>

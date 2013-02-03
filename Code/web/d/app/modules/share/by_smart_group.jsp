@@ -10,8 +10,10 @@
     // Retrieving total number of shared items
     Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, homeId, smartGroupRef, DateUtils.BEGINNING_OF_TIME);
 
-    // Retrieving points per shared item
+    // Retrieving network settings
     Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(homeId);
+
+    String hMinitipId = HtmlUtils.getRandomId();
 %>
 
 <script type="text/javascript">

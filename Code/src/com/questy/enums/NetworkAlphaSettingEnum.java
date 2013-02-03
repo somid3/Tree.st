@@ -56,7 +56,6 @@ public enum NetworkAlphaSettingEnum {
      */
     SHARED_VOTE_DOWN_VOCAB (2001, "Dislike"),
 
-
     /**
      * Top header color
      */

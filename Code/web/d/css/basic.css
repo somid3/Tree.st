@@ -307,7 +307,7 @@ input.bottom_line {
 }
 
 .pink_button {
-    border: 1px solid <%= HtmlDesign.dim3 %>;
+    border: 1px solid <%= HtmlDesign.highlight6 %>;
     background: <%= HtmlDesign.highlight6 %>;
     color: #fff;
 }

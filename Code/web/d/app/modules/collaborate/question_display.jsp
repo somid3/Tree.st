@@ -17,6 +17,7 @@
     String hFilterOptionsInputId = HtmlUtils.getRandomId();
     String hAddOptionInputId = HtmlUtils.getRandomId();
     String hAddOptionButtonId = HtmlUtils.getRandomId();
+    String hMinitipId = HtmlUtils.getRandomId();
 
     // Mini tool tip variables
     String app_d_title = null;
@@ -57,6 +58,25 @@
     QD.hAddOptionInputId = '<%= hAddOptionInputId %>';
     QD.hAddOptionButtonId = '<%= hAddOptionButtonId %>';
 </script>
+
+<% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_QUESTIONS_HOW, meId)) { %>
+    <div class="minitip" id="<%= hMinitipId %>">
+        <div class="lg_header tip">Tip:</div>
+        <div class="content lg_text dim">
+            Below you will see some questions, as you answer them you will complete your profile
+            &mdash; to update your answers visit
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profile(homeId) %>');">
+                <span class="highlight2">&quot;My Profile&quot;</span>
+            </a>
+
+        </div>
+        <div class="close">
+            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_QUESTIONS_HOW.getId()%>)">
+                <img src="./img/close_dark.png">
+            </a>
+        </div>
+    </div>
+<% } %>
 
 <div class="question_container">
     <div class="question_display">

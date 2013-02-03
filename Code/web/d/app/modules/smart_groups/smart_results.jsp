@@ -35,10 +35,8 @@
     }
 
     // Retrieving top results
-    List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, homeId, smartGroupRef, new SqlLimit(0, 100));
+    List<SmartGroupResult> results = SmartGroupResultDao.getByNetworkIdAndRef(null, homeId, smartGroupRef, new SqlLimit(0, 50));
     Integer totalResults = results.size();
-    if (totalResults > 50)
-        results = results.subList(0, 50);
 
     // Are there any results to display?
     if (totalResults > 0) { %>
@@ -82,13 +80,14 @@
     </div>
     <% } %>
 
-    <% if (totalResults > 50) {
-       String app_a_message = "Too many results found!";
+    <% if (totalResults >= 50) {
+
+       String app_a_message = group.getResultsCount() + " results found. Too many to display!";
        boolean app_a_withCanvasContainer = true; %>
        <%@ include file="../../includes/app_a_mini_message.jsp" %>
-    <% } %>
 
-    <% if (totalResults == 0) {
+    <% } else  if (totalResults == 0) {
+
         String app_a_message = "Sorry, no results were found";
         boolean app_a_withCanvasContainer = true; %>
         <%@ include file="../../includes/app_a_mini_message.jsp" %>

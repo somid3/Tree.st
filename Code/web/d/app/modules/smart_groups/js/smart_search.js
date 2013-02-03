@@ -242,9 +242,6 @@ function SmartSearch () {
      */
     this.submitQuery = function (hostingNetworkId, hostingSmartGroupRef, query) {
 
-        // Show or hide certain tools, messages
-        this.showOrHideItems();
-
         // Execute query
         this.executeQuery(hostingNetworkId, hostingSmartGroupRef, query)
     };
@@ -274,6 +271,9 @@ function SmartSearch () {
 
             $canvasLoading.hide();
             $smartGroupFaces.empty().append(data).show();
+
+            // Show or hide certain tools, messages
+            tmp_this.showOrHideItems();
 
         }).error(function () {
 

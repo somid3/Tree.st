@@ -10,7 +10,7 @@
         <% if (ul_c_userToNetwork.getBlockedOn() == null) { %>
             <div class="vsm_button light_button vsm_text">Approved</div>
         <% } else { %>
-            <div class="vsm_button pink_button vsm_text">Removed</div>
+            <div class="vsm_button pink_button vsm_text">Blocked</div>
         <% } %>
     </a>
 

@@ -111,7 +111,7 @@ public class SmartGroupServices extends ParentService  {
 
             // Validating smart group size
             if (smartGroup.getResultsCount() >= memberLimit)
-                throw new UIException("Smart group must contain less than " + memberLimit + " " + vocabUserPlural + ", currently it has " + smartGroup.getResultsCount() + "  " + vocabUserPlural);
+                throw new UIException("Group must contain less than " + memberLimit + " " + vocabUserPlural);
 
             if (utn.getRole().isLowerThan(RoleEnum.EDITOR) && visibility == SmartGroupVisibilityEnum.OFFICIAL)
                 throw new UIException("Can not create an official smart group");

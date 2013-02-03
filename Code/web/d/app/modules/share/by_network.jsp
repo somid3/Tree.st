@@ -14,7 +14,7 @@
     SI.smartGroupRef = <%= SmartGroup.ANY_SMART_GROUP_REF %>;
 </script>
 
-<% if (TooltipServices.displayMinitip(UserToNetworkIntegerSettingEnum.TIP_SHARED_ITEMS_HOW, meId, homeId)) {
+<% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SHARED_ITEMS_HOW, meId)) {
     String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(homeId); %>
     <div class="minitip" id="<%= hMinitipId %>">
         <div class="lg_header tip">Tip:</div>
@@ -26,7 +26,7 @@
             &mdash; remember, please be cordial to other <%= vocabUserPlural.toLowerCase() %> by not spamming
         </div>
         <div class="close">
-            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= homeId %>, <%= UserToNetworkIntegerSettingEnum.TIP_SHARED_ITEMS_HOW.getId()%>)">
+            <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_SHARED_ITEMS_HOW.getId()%>)">
                 <img src="./img/close_dark.png">
             </a>
         </div>

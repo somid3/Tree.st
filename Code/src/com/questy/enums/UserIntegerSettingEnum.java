@@ -55,6 +55,24 @@ public enum UserIntegerSettingEnum {
 
 
 
+    /**
+     * Tip that appears on top of the shared feed area informing the user that
+     * shared items can be created only from within a smart group
+     */
+    TIP_SHARED_ITEMS_HOW                 (1000, 1),
+
+    /**
+     * Tip on top of all the shared groups that informs a user that the search
+     * tool needs to be used to create a smart group
+     */
+    TIP_SMART_GROUPS_CREATE              (1001, 1),
+
+    /**
+     * Tip on top of all the questions that informs the user how to go about
+     * creating his or her profile
+     */
+    TIP_QUESTIONS_HOW                    (1002, 1),
+
     ;
 
 

@@ -134,7 +134,7 @@
 
             <div class="admin_card">
                  <% UserToNetwork ul_c_userToNetwork = ul_a_toUserToNetwork; %>
-                 <%@ include file="../includes/ul_c_remove.jsp" %>
+                 <%@ include file="ul_c_block.jsp" %>
             </div>
 
         <% } %>
