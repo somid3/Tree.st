@@ -66,9 +66,8 @@
             Below you will see some questions, as you answer them you will complete your profile
             &mdash; to update your answers visit
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profile(homeId) %>');">
-                <span class="highlight2">&quot;My Profile&quot;</span>
+                <span class="highlight2">My Profile</span>
             </a>
-
         </div>
         <div class="close">
             <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_QUESTIONS_HOW.getId()%>)">

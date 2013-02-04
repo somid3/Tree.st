@@ -23,7 +23,11 @@
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(homeId) %>');">
                 <span class="highlight6">Smart Group</span>
             </a>
-            &mdash; remember, please be cordial to other <%= vocabUserPlural.toLowerCase() %> by not spamming
+            &mdash; all shared messages will appear here in the
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.sharedItems(homeId) %>');">
+                <span class="highlight2">Shared Feed</span>
+            </a>
+
         </div>
         <div class="close">
             <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_SHARED_ITEMS_HOW.getId()%>)">

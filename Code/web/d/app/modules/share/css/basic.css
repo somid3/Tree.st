@@ -117,7 +117,7 @@
 .shared_item_box > .right {
     float: left;
     margin-left: 10px;
-    /*border: 1px solid;*/
+    width: 510px;
 }
 
 .shared_item_box > .right > .top {
@@ -150,6 +150,7 @@
 
 .shared_item_box > .right > .content .ago {
     margin-right: 5px;
+    float: left;
 }
 
 .shared_item_box > .comments {
@@ -220,30 +221,31 @@
     border-bottom: 1px #bbb solid;
 }
 
-.shared_item_line  > .left {
+.shared_item_line > .left {
     float: left;
 }
 
-.shared_item_line  > .right {
+.shared_item_line > .right {
     float: left;
     margin-left: 10px;
+    width: 510px;
 }
 
-.shared_item_line  > .right  > .top {
+.shared_item_line > .right > .top {
     display: inline-block;
     margin: 2px 0 0 0;
     width: 485px;
 }
 
-.shared_item_line  > .right  > .top  .in {
+.shared_item_line > .right > .top .in {
     margin-right: 2px;
 }
 
-.shared_item_line  > .right  .content {
+.shared_item_line > .right .content {
     display: inline-block;
 }
 
-.shared_item_line  > .right .content .box {
+.shared_item_line > .right .content .box {
     float: left;
     width: 450px;
     position: relative;
@@ -252,8 +254,9 @@
     line-height: 1.5em;
 }
 
-.shared_item_line  > .right .ago {
-    margin-right: 5px;
+.shared_item_line > .right .ago {
+    margin-right: 10px;
+    float: left;
 }
 
 

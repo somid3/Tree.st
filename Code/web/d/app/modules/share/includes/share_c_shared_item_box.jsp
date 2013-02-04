@@ -37,36 +37,36 @@
 
     </div>
     <div class="right">
-            <div class="top">
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), me.getId())%>');">
-                    <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
+        <div class="top">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), me.getId())%>');">
+                <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
+            </a>
+
+            <% if (share_c_sharedItem.getSmartGroupRef() != share_c_fromSmartGroupRef) {
+
+                share_c_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef()); %>
+                <span class="in sm_text dim2">via</span>
+
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef())%>');">
+                    <span class="via sm_header highlight6"><%= StringUtils.concat(share_c_smartGroup.getName(), 30, "&hellip;") %></span>
                 </a>
 
-                <% if (share_c_sharedItem.getSmartGroupRef() != share_c_fromSmartGroupRef) {
+            <% } %>
 
-                    share_c_smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef()); %>
-                    <span class="in sm_text dim2">via</span>
+            <%
+                // Determining if user has authority to delete message
+                if (share_c_sharedItem.getUserId().equals(me.getId()) ||
+                    meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
 
-                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroup(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef())%>');">
-                        <span class="via sm_header highlight6"><%= StringUtils.concat(share_c_smartGroup.getName(), 30, "&hellip;") %></span>
-                    </a>
+                <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getSharedItemRef() %>)">
+                    <div class="delete smd_header dim3">
+                        <img src="./img/close_dark.png">
+                    </div>
+                </a>
 
-                <% } %>
+            <% } %>
 
-                <%
-                    // Determining if user has authority to delete message
-                    if (share_c_sharedItem.getUserId().equals(me.getId()) ||
-                        meToHome.getRole().isHigherThan(RoleEnum.MEMBER)) { %>
-
-                    <a href="#" onclick="SI.hideSharedItem(event, '<%= share_c_hSharedItemId %>', <%= share_c_sharedItem.getSmartGroupRef() %>, <%= share_c_sharedItem.getSharedItemRef() %>)">
-                        <div class="delete smd_header dim3">
-                            <img src="./img/close_dark.png">
-                        </div>
-                    </a>
-
-                <% } %>
-
-            </div>
+        </div>
         <div class="content">
             <div class="box smd_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_c_sharedItem.getText() ) )%></div>
 
