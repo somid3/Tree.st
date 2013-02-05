@@ -84,8 +84,7 @@
 #networks .item .tags .blocked {
     position: absolute;
     margin-right: 5px;
-    top: 5px;
-    left: -25px;
+    left: -40px;
     z-index: 2;
 }
 

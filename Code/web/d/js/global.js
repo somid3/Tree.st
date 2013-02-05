@@ -1,37 +1,42 @@
+function Analytics() {}
+
+Analytics.track = function (url) {
+    _gaq.push(['_trackPageview', url]);
+}
 
 
 function Transitions() {}
-
-Transitions.postFadeIn = function (selector, postUrl, parameters, callback) {
-
-    $(selector).css({opacity: 0})
-
-    $.post(postUrl, parameters, function(data) {
-
-        $(selector).html(data);
-
-        $(selector).animate({opacity: 1}, 400, callback);
-    });
-
-};
 
 /*
  * Quickly replaces the contents of the page
  */
 Transitions.load = function (selector, loadUrl, parameters, onCompleteCallback) {
 
-    $(selector).load(loadUrl, parameters, onCompleteCallback);
+    $(selector).load(loadUrl, parameters, function () {
+
+        if (onCompleteCallback)
+            onCompleteCallback();
+
+        Analytics.track(loadUrl);
+
+    });
 
 };
 
 /*
  * Fades out, loads and fades in the contents for a selector
  */
-Transitions.fadeOutLoadFadeIn = function (selector, loadUrl, parameters, callback) {
+Transitions.fadeOutLoadFadeIn = function (selector, loadUrl, parameters, onCompleteCallback) {
 
     $(selector).animate({opacity: 0}, 400, function() {
         $(this).load(loadUrl, parameters, function() {
-            $(this).animate({opacity: 1}, 400, callback);
+            $(this).animate({opacity: 1}, 400);
+
+            if (onCompleteCallback)
+                onCompleteCallback();
+
+            Analytics.track(loadUrl);
+
         });
     });
 
@@ -40,10 +45,14 @@ Transitions.fadeOutLoadFadeIn = function (selector, loadUrl, parameters, callbac
 /*
  * Loads and fades in the contents for a selector
  */
-Transitions.loadFadeIn = function (selector, loadUrl, parameters, callback) {
+Transitions.loadFadeIn = function (selector, loadUrl, parameters, onCompleteCallback) {
 
     $(selector).css({opacity: 0}).load(loadUrl, parameters, function() {
-        $(this).animate({opacity: 1}, 400, callback);
+
+        $(this).animate({opacity: 1}, 400, onCompleteCallback);
+
+        Analytics.track(loadUrl);
+
     });
             
 };

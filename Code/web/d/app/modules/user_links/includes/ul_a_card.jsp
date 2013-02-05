@@ -130,7 +130,7 @@
             * card being displayed is no the same card that belows to the user.
             */
            if (ul_a_meToHome.getRole().isHigherThan(RoleEnum.MEMBER) &&
-                ul_a_meToHome.getUserId() != ul_a_toUserId) { %>
+                !ul_a_meToHome.getUserId().equals(ul_a_toUserId)) { %>
 
             <div class="admin_card">
                  <% UserToNetwork ul_c_userToNetwork = ul_a_toUserToNetwork; %>
