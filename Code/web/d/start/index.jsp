@@ -16,7 +16,13 @@
     if (wasAuthGood) {
 
         Integer userId = webUtils.getCookieValueAsInteger("uid");
-        webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
+
+        // Is the user part of this network?
+        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+        if (utn != null)
+
+            // Yes, send user to application with network initial hash
+            webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
     }
 
     // Retrieving log in details
