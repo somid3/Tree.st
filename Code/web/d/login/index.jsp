@@ -1,5 +1,10 @@
 <%@ include file="./all.jsp" %>
 <%
+    // Authenticate user session by cookies and send to app
+    boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
+    if (wasAuthGood)
+        webUtils.redirect("/d/app");
+
     // Retrieving log in details
     String defaultEmail = webUtils.getCookieValue("ue");
     if (defaultEmail == null) defaultEmail = "";

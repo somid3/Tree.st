@@ -27,6 +27,7 @@
         /* Filtering for parameters that go-feature accepts */
         String goHash = null;
 
+        // Sending user to a shared item
         if (!StringUtils.isEmpty(request.getParameter("nid")) &&
             !StringUtils.isEmpty(request.getParameter("sgr")) &&
             !StringUtils.isEmpty(request.getParameter("sir")) )
@@ -36,6 +37,7 @@
                 StringUtils.parseInt(request.getParameter("sgr")),
                 StringUtils.parseInt(request.getParameter("sir")));
 
+        // Sending user to a smart group
         else if (!StringUtils.isEmpty(request.getParameter("nid")) &&
                  !StringUtils.isEmpty(request.getParameter("sgr")))
 
@@ -43,6 +45,7 @@
                 StringUtils.parseInt(request.getParameter("nid")),
                 StringUtils.parseInt(request.getParameter("sgr")));
 
+        // Sending user to view another user
         else if (!StringUtils.isEmpty(request.getParameter("nid")) &&
                  !StringUtils.isEmpty(request.getParameter("vuid")))
 
@@ -51,9 +54,10 @@
                 StringUtils.parseInt(request.getParameter("vuid")),
                 userId);
 
+        // Sending user to network only
         else if (!StringUtils.isEmpty(request.getParameter("nid")))
 
-            goHash = HashRouting.smartGroups(
+            goHash = HashRouting.network(
                 StringUtils.parseInt(request.getParameter("nid")));
 
         webUtils.redirect("/d/app/" + goHash);

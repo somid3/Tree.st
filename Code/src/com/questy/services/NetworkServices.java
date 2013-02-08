@@ -10,6 +10,7 @@ import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.utils.StringUtils;
+import com.questy.web.HashRouting;
 import com.questy.web.HtmlUtils;
 
 import java.sql.Connection;
@@ -505,5 +506,35 @@ public class NetworkServices extends ParentService {
         utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
 
         return utn;
+    }
+
+    /**
+     * Provides the initial location that the user should be sent
+     * once it enters a particular network
+     */
+    public static String getInitialHash (Integer userId, Integer networkId) throws SQLException {
+
+        // Retrieving list of user networks
+        Network firstNetwork = NetworkDao.getById(null, networkId);
+
+        // Retrieving user to network in case user is blocked
+        UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, firstNetwork.getId());
+
+        // Validating user to network
+        if (userToNetwork == null)
+            throw new RuntimeException("User is not a member of network");
+
+        // Testing if user is blocked
+        if (userToNetwork.getBlockedOn() != null)
+            return HashRouting.blocked(firstNetwork.getId());
+
+        // Retrieving first available question, if any..
+        Integer nextQuestionRef = FlowRuleServices.getNextQuestionRef(userId, firstNetwork.getId());
+
+        // Determining where to send initially...
+        if (nextQuestionRef != null)
+            return HashRouting.questions(firstNetwork.getId());
+        else
+            return HashRouting.sharedItems(firstNetwork.getId());
     }
 }

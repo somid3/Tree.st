@@ -38,7 +38,7 @@
         if (meToNetwork.getBlockedOn() != null) { %>
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.blocked(network.getId())%>')">
         <% } else if (collectModeSetting == 0 ) { %>
-            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(network.getId())%>')">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.network(network.getId())%>')">
         <% } else { %>
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(network.getId())%>')">
         <% } %>

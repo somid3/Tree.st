@@ -244,7 +244,7 @@
 
         routie('/comm/:nid', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
-                ND.go(null, NetworkDashboard.Section.SMART_GROUPS);
+                ND.go(null, NetworkDashboard.Section.SHARED_ITEMS);
             });
         });
 

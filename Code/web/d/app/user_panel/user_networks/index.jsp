@@ -25,7 +25,7 @@
             <div class="top">
 
                 <img src="<%= network.getIconResourceUrl(hasIcon == 0) %>"/>
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(meToNetwork.getNetworkId())%>')"><span class="md_header highlight2"><%= network.getName() %></span></a>
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.network(meToNetwork.getNetworkId())%>')"><span class="md_header highlight2"><%= network.getName() %></span></a>
                 <span class="sm_text dim2">&mdash; joined <%= PrettyDate.toString(meToNetwork.getCreatedOn()) %></span>
 
                 <% if (meToNetwork.getCurrentPoints() > 0) { %>

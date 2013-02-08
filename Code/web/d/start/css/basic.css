@@ -58,7 +58,6 @@
 }
 
 #manifesto_title {
-    margin: 0 auto;
     background-color: #fff;
     padding: 5px;
     text-align: center;
@@ -71,13 +70,14 @@
     margin-top: 5px;
 }
 
-#messages #system {
+#system {
     float: left;
     padding: 15px 20px 15px 20px;
     line-height: 20px;
-    background-color: rgba(225,206,0,0.5);
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
     margin-bottom: 10px;
-    color: black;
+    width: 480px;
+    text-align: center;
 }
 
 #video {
@@ -108,10 +108,9 @@ p.note, {
     display: block; 
     float: right;
     padding: 10px;
-    width: 228px;
+    width: 224px;
     background-color: #fff;
-    border-bottom: 2px solid #bbb;
-    border-right: 2px solid #bbb;
+    border: 4px solid <%= HtmlDesign.highlight %>;
     top: -1000px;
     position: relative;
 }

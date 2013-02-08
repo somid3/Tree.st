@@ -152,7 +152,7 @@ public class UserWebServices extends ParentService {
                 UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
 
                 // Add send to application action in response
-                buf.append("<app go='" + HashRouting.questions(network.getId()) + "' />");
+                buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
 
             }
 
@@ -336,7 +336,7 @@ public class UserWebServices extends ParentService {
         if (nextQuestionRef != null)
             return HashRouting.questions(firstNetwork.getId());
         else
-            return HashRouting.smartGroups(firstNetwork.getId());
+            return HashRouting.sharedItems(firstNetwork.getId());
     }
 
 }

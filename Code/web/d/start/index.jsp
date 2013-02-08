@@ -4,16 +4,24 @@
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
 
-    // Retrieving log in details
-    String defaultEmail = webUtils.getCookieValue("ue");
-    if (defaultEmail == null) defaultEmail = "";
-
     // Retrieving network
     Network network = NetworkDao.getByIdAndChecksum(null, networkId, networkChecksum);
 
     // Validating variables
     if (network == null)
         webUtils.redirect("./notfound.jsp");
+
+    // Authenticate user session by cookies and send to the specific network
+    boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
+    if (wasAuthGood) {
+
+        Integer userId = webUtils.getCookieValueAsInteger("uid");
+        webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
+    }
+
+    // Retrieving log in details
+    String defaultEmail = webUtils.getCookieValue("ue");
+    if (defaultEmail == null) defaultEmail = "";
 
     // Retrieving network settings
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
@@ -23,6 +31,7 @@
     String startMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_MESSAGE);
     String startBody = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_BODY);
     String manifestoTitle = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_TITLE);
+    String manifestoContent = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_CONTENT);
 
     Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
     Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
@@ -71,7 +80,7 @@
             <div id="messages">
 
                 <% if (!systemMessage.isEmpty()) { %>
-                    <div id="system" class="canvas_container smd_text dim"><%= systemMessage %></div>
+                    <div id="system" class="md_header white"><%= systemMessage %></div>
                 <% } %>
 
                 <% if (!startMessage.isEmpty()) { %>
@@ -82,14 +91,14 @@
 
             <% if (!manifestoTitle.isEmpty()) { %>
                 <a href="#" onclick="Start.toggleManifesto(event, <%= networkId %>, '<%= networkChecksum %>')">
-                    <div id="manifesto_title" class="canvas_container lg_header highlight2">
+                    <div id="manifesto_title" class="canvas_container sp_header highlight2">
                         <%= manifestoTitle %>
                     </div>
                 </a>
 
                 <a href="#" onclick="Start.toggleManifesto(event, <%= networkId %>, '<%= networkChecksum %>')">
-                    <div id="manifesto" class="sm_text dim canvas_container">
-                        <pre><%= NetworkAlphaSettingEnum.MANIFESTO_CONTENT.getValueByNetworkId(networkId) %></pre>
+                    <div id="manifesto" class="md_text dim canvas_container">
+                        <%= manifestoContent %>
                     </div>
                 </a>
             <% } %>
@@ -99,7 +108,6 @@
             <% } %>
 
         </div>
-
 
         <div id="action">
             <div id="start">
@@ -134,11 +142,7 @@
 
                     <div class="element">
                         <div class="note sm_text dim">
-                            If you already have a Tree.st, use it here to join two or more communities
-                        </div>
-
-                        <div class="note sm_text dim">
-                            In the future, to <b>login</b> enter your email and password, no need type your name again
+                            If you already have a Tree.st account, use it here to join this community. In the future, to login just enter your email and password
                         </div>
                     </div>
 

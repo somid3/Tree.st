@@ -133,7 +133,7 @@
                 if (question.getAllowAddOptions()) { %>
                     <div class="add_option lg_shadow">
                         <div class="abc"><input class="md_input w250" type="text" id="<%= hAddOptionInputId %>" maxlength="40" placeholder="Add an option..." value=""></div>
-                        <a href="#" onclick="QD.optionAdd(event)"><div id="<%= hAddOptionButtonId %>" class="add md_button">Add</div></a>
+                        <a href="#" onclick="QD.optionAdd(event)"><div id="<%= hAddOptionButtonId %>" class="add dark_button md_button">Add</div></a>
                     </div>
                     <script type="text/javascript">
 

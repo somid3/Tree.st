@@ -1277,7 +1277,6 @@ public class AdminServices {
                 randomPointsPerLink = randomGenerator.nextInt(10);
 
                 NetworkServices.addUserToNetworkWithDependencies(networkId, userId, RoleEnum.MEMBER);
-                UserToNetworkDao.updatePointsPerLink(null, networkId, userId, randomPointsPerLink);
 
                 AdminServices.log("Added user " + userId + " to network: " + networkId);
             }
