@@ -20,9 +20,7 @@
 
             <div id="mini">
                 <a href="mailto:<%= Vars.supportEmail %>"><span class="smd_text highlight2">Email us</span></a>
-                <span class="sm_text dim2">read our</span>
-                <a href="http://blog.tree.st"><span class="smd_text highlight2">Blog</span></a><br/>
-                <span class="sm_text dim2">or call us at</span>
+                <span class="sm_text dim2">or call us at</span><br/>
                 <span class="smd_text dim">1(510) 499-5497</span>
             </div>
 

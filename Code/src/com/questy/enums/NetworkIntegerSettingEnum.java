@@ -16,14 +16,13 @@ public enum NetworkIntegerSettingEnum {
     SHARED_ITEM_DISPLAY_CREATED_ON      (201, 1),
     SHARED_ITEMS_PER_FIVE_MINUTES       (202, 2),
     SHARED_ITEMS_PER_HOUR               (203, 6),
-
     SHARED_ITEMS_PER_DAY                (204, 10),
 
     SHARED_COMMENT_POINTS_PER           (300, 5),
     SHARED_COMMENT_DISPLAY_CREATED_ON   (301, 1),
     SHARED_COMMENTS_PER_MINUTE          (302, 1),
-    SHARED_COMMENTS_PER_HOUR            (303, 5),
-    SHARED_COMMENTS_PER_DAY             (304, 10),
+    SHARED_COMMENTS_PER_HOUR            (303, 10),
+    SHARED_COMMENTS_PER_DAY             (304, 20),
 
     SHARED_ITEM_DISPLAY_UP_VOTES        (305, 1),
     SHARED_ITEM_DISPLAY_DOWN_VOTES      (306, 1),
