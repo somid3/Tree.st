@@ -15,13 +15,13 @@ public class MITEmailSender {
 
     public static void main (String[] args) throws SQLException {
 
-        sendEmails(1);
+        sendEmails(800);
 
     }
 
     public static void sendEmails(Integer count) throws SQLException {
 
-        List<MITEmail> mitEmails = MITEmailDao.getUnsentBySchool(null, "%Engineering%");
+        List<MITEmail> mitEmails = MITEmailDao.getUnsentBySchool(null);
 
         Integer randomIndex = null;
         Random randomGenerator = new Random();
@@ -67,15 +67,17 @@ public class MITEmailSender {
         // Creating message
         String message = "Hi [first_name],\n" +
             "\n" +
-            "I've created a new tool for MIT to help you find anyone across departments to talk science.\n" +
+            "A team of MIT students have create a new tool to help you find and meet others across MIT.\n" +
             "\n" +
-            "http://www.tree.st/mit\n" +
+            "http://www.hackpack.org\n" +
             "\n" +
-            "There are currently about 1000+ MIT students on it. We also got a grant, so we are giving away $20 Amazon gift-cards. Its a bit experimental, I would appreciate it if you could join and send me some feedback.\n" +
+            "There are currently about 800+ MIT students, and growing. Would be great if you could join the community today.\n" +
+            "\n" +
+            "Also, thanks to MIT's ODGE grant we are also giving away up to $50 (for food) to anyone who organizes a meet up at MIT. http://bit.ly/XxQG1I -- let me know if you have any questions!\n" +
             "\n" +
             "Thank you,\n" +
-            "Omid S.\n" +
-            "MIT '13";
+            "\n" +
+            "Hackpack Team";
 
         message = message.replaceAll("\\[first_name\\]", firstName);
 
@@ -85,7 +87,7 @@ public class MITEmailSender {
         ser.setFromName("omid@mit.edu");
         ser.setFromEmail("omid@mit.edu");
         ser.addRecipient(email);
-        ser.setSubject("find others at MIT");
+        ser.setSubject("meets others at MIT + get $50 to ...");
         ser.setMessageText(message);
 
         // Sending the email

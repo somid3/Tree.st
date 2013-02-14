@@ -10,17 +10,16 @@ import java.util.List;
 
 public class MITEmailDao extends ParentDao {
 
-    public static List<MITEmail> getUnsentBySchool(Connection conn, String school) throws SQLException {
+    public static List<MITEmail> getUnsentBySchool(Connection conn) throws SQLException {
         conn = start(conn);
 
         String sql =
             "select * " +
             "from `mit_emails` " +
-            "where `school` like ? " +
+            "where `year` is not null " +
             "and `sent_on` is null;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, school);
         ResultSet rs = ps.executeQuery();
 
         List<MITEmail> out = new ArrayList<MITEmail>();
