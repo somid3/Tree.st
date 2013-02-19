@@ -2,6 +2,7 @@ package com.questy.services;
 
 import com.questy.dao.*;
 import com.questy.domain.*;
+import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.UserIntegerSettingEnum;
 import com.questy.helpers.SqlLimit;
@@ -117,12 +118,15 @@ public class UserWebServices extends ParentService {
         // Check if the email already exists as an account
         User user = UserDao.getByEmail(null, emailToConfirm);
 
+        // Determining if this network should allow new users to just enter into the app without confirmation
+        Boolean allowNonConfirmed = NetworkIntegerSettingEnum.MODE_NO_CONFIRM.getBooleanByNetworkId(network.getId());
+
+        Boolean persistent = true;
+
         // Does the user already exist?
         if (user != null) {
 
             // Yes, the user already exists...
-
-            Boolean persistent = true;
 
             // Create password hash
             String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
@@ -137,6 +141,10 @@ public class UserWebServices extends ParentService {
 
             // Has the user been confirmed by email?
             Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
+
+            // Determine if user needs to be confirmed by email
+            if (allowNonConfirmed)
+                isEmailConfirmed = true;
 
             if (!isEmailConfirmed) {
 
@@ -179,8 +187,26 @@ public class UserWebServices extends ParentService {
             // Sending first email confirmation
             EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
 
-            // Add email confirmation action to response
-            buf.append("<confirm/>");
+            // Determine if user needs to be confirmed by email
+            if (allowNonConfirmed) {
+
+                // Create password hash
+                String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+
+                UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
+
+                // Install login cookies at client
+                UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
+
+                // Add send to application action in response
+                buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
+
+            }  else {
+
+                // Add email confirmation action to response
+                buf.append("<confirm/>");
+
+            }
 
         }
 

@@ -60,11 +60,11 @@
 }
 
 .question_display .input .options_wrap .filter_options {
-    border: 1px dashed #bbb;
+    border: 2px solid <%= HtmlDesign.dim %>;
     padding-left: 15px;
     margin: 0 2px 5px 2px;
     display: inline-block;
-    width: 355px;
+    width: 354px;
 }
 
 .question_display .input .options_wrap .options {

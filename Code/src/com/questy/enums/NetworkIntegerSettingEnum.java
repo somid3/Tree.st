@@ -49,6 +49,12 @@ public enum NetworkIntegerSettingEnum {
      */
     MODE_COLLECT_ONLY                   (9000, 0),
 
+    /**
+     * Allows new users who join this community to not need to confirm their emails
+     * the first time they join this network
+     */
+    MODE_NO_CONFIRM                     (9001, 0),
+
     UI_HAS_BACKGROUND                   (10000, 0),
     UI_HAS_ICON                         (10001, 0),
     UI_HAS_LOGO                         (10002, 0)
@@ -129,6 +135,13 @@ public enum NetworkIntegerSettingEnum {
         return out;
     }
 
+
+    public Boolean getBooleanByNetworkId (Integer networkId) throws SQLException {
+
+        Integer value = getValueByNetworkId(networkId);
+
+        return !(value == null || value == 0);
+    }
 
     public void setValueByNetworkId (Integer networkId, Integer value) throws SQLException {
 
