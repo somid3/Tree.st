@@ -41,7 +41,7 @@ public enum UserToNetworkIntegerSettingEnum {
      * To completely unsubscribe from all shared item
      * notifications the user can use the {@link EmailNotificationRateEnum#NEVER} rate.
      */
-    NEW_SHARED_ITEM_DIGEST_EMAIL_RATE (200, EmailNotificationRateEnum.EVERY_FOUR_HOURS.getId())
+    NEW_SHARED_ITEM_DIGEST_EMAIL_RATE (200, EmailNotificationRateEnum.INSTANTLY.getId())
 
 
 
