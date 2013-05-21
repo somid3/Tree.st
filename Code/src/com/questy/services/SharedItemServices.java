@@ -12,6 +12,7 @@ import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.DateUtils;
+import com.questy.utils.Vars;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,7 +29,7 @@ public class SharedItemServices extends ParentService  {
             throw new UIException("Shared item text can not be empty");
 
         // Validating for timing attacks
-        {
+        if (Vars.enableTimelocks) {
             // Validating for minute attack
             Integer perMinute = NetworkIntegerSettingEnum.SHARED_ITEMS_PER_FIVE_MINUTES.getValueByNetworkId(networkId);
             Integer lastMinute = SharedItemDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.minutesAgo(5));

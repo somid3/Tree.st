@@ -12,6 +12,7 @@ import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.DateUtils;
+import com.questy.utils.Vars;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -37,7 +38,7 @@ public class UserLinkServices extends ParentService  {
             throw new UIException("Go to 'My profile'");
 
         // Validating for timing attacks
-        {
+        if (Vars.enableTimelocks) {
             // Validating for minute attack
             Integer perMinute = NetworkIntegerSettingEnum.USER_LINKS_PER_MINUTE.getValueByNetworkId(networkId);
             Integer lastMinute = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.minutesAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);

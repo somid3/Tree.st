@@ -24,105 +24,6 @@
 
 
 
-
-    /**
-     * Smart Group finder
-     */
-    if (!searchText.isEmpty()) {
-
-       /* Searching all smart groups */
-
-       LimitCounter counter = new LimitCounter(limit);
-       SmartGroup sgroup_d_smartGroup = null;
-       Integer sgroup_d_userId = meId;
-       String sgroup_d_highlight = searchText;
-
-       // Retrieving all users with a name
-       List<SmartGroup> matches = SmartGroupDao.findByNetworkIdAndName(null, homeId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit); %>
-
-       <div class="finder_results canvas_container">
-
-           <div class="find_group md_header white">Smart Groups (<%= matches.size() %>)</div> <%
-
-           // Looping through all the matches
-           for (SmartGroup match : matches) {
-
-               // Setting up variables for include
-               sgroup_d_smartGroup = match; %>
-
-               <%@ include file="../smart_groups/includes/sgroup_d_smart_group_line.jsp"%> <%
-
-               counter.incrementCount();
-               if (counter.hasReachedMax())
-                   break;
-           }
-
-           if (counter.hasReachedMax()) { %>
-               <div class="find_message vl_text dim">Maximum results reached!</div> <%
-           } %>
-
-       </div>
-
-    <% }
-
-
-
-
-
-
-
-    /**
-    * Shared item finder
-    */
-    if (!searchText.isEmpty()) {
-
-        /* Searching all smart groups */
-
-        LimitCounter counter = new LimitCounter(limit);
-        SharedItem share_d_sharedItem = null;
-        Integer share_d_fromSmartGroupRef = SharedComment.ANY_SHARED_COMMENT_REF;
-        Map<NetworkIntegerSettingEnum, Integer> share_d_networkIntegerSettings = null;
-        Map<NetworkIntegerSettingEnum, String> share_d_networkAlphaSettings = null;
-        String share_d_highlight = null;
-        User share_d_user = me;
-
-        // Retrieving all users with a name
-        List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, homeId, sqlSearchText, sqlLimit); %>
-
-        <div class="finder_results canvas_container">
-
-        <div class="find_group md_header white">Shared Messages (<%= matches.size() %>)</div> <%
-
-        // Looping through all the matches
-        for (SharedItem match : matches) {
-
-            // Setting up variables for include
-            share_d_highlight = searchText;
-            share_d_sharedItem = match;
-            share_d_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(match.getNetworkId()); %>
-
-            <%@ include file="../share/includes/share_d_shared_item_line.jsp"%> <%
-
-            counter.incrementCount();
-            if (counter.hasReachedMax())
-                break;
-
-        }
-
-        if (counter.hasReachedMax()) { %>
-            <div class="find_message vl_text dim">Maximum results reached!</div> <%
-        } %>
-
-        </div>
-
-    <% }
-
-
-
-
-
-
-
     /**
      * Quality finder
      */
@@ -231,6 +132,100 @@
 
         %> </div> <%
     }
+
+
+
+    /**
+     * Smart Group finder
+     */
+    if (!searchText.isEmpty()) {
+
+       /* Searching all smart groups */
+
+       LimitCounter counter = new LimitCounter(limit);
+       SmartGroup sgroup_d_smartGroup = null;
+       Integer sgroup_d_userId = meId;
+       String sgroup_d_highlight = searchText;
+
+       // Retrieving all users with a name
+       List<SmartGroup> matches = SmartGroupDao.findByNetworkIdAndName(null, homeId, sqlSearchText, SmartGroupVisibilityEnum.SHARED, null, sqlLimit); %>
+
+       <div class="finder_results canvas_container">
+
+           <div class="find_group md_header white">Smart Groups (<%= matches.size() %>)</div> <%
+
+           // Looping through all the matches
+           for (SmartGroup match : matches) {
+
+               // Setting up variables for include
+               sgroup_d_smartGroup = match; %>
+
+               <%@ include file="../smart_groups/includes/sgroup_d_smart_group_line.jsp"%> <%
+
+               counter.incrementCount();
+               if (counter.hasReachedMax())
+                   break;
+           }
+
+           if (counter.hasReachedMax()) { %>
+               <div class="find_message vl_text dim">Maximum results reached!</div> <%
+           } %>
+
+       </div>
+
+    <% }
+
+
+
+
+
+
+
+    /**
+    * Shared item finder
+    */
+    if (!searchText.isEmpty()) {
+
+        /* Searching all smart groups */
+
+        LimitCounter counter = new LimitCounter(limit);
+        SharedItem share_d_sharedItem = null;
+        Integer share_d_fromSmartGroupRef = SharedComment.ANY_SHARED_COMMENT_REF;
+        Map<NetworkIntegerSettingEnum, Integer> share_d_networkIntegerSettings = null;
+        Map<NetworkIntegerSettingEnum, String> share_d_networkAlphaSettings = null;
+        String share_d_highlight = null;
+        User share_d_user = me;
+
+        // Retrieving all users with a name
+        List<SharedItem> matches = SharedItemDao.findByNetworkIdAndText(null, homeId, sqlSearchText, sqlLimit); %>
+
+        <div class="finder_results canvas_container">
+
+        <div class="find_group md_header white">Shared Messages (<%= matches.size() %>)</div> <%
+
+        // Looping through all the matches
+        for (SharedItem match : matches) {
+
+            // Setting up variables for include
+            share_d_highlight = searchText;
+            share_d_sharedItem = match;
+            share_d_networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(match.getNetworkId()); %>
+
+            <%@ include file="../share/includes/share_d_shared_item_line.jsp"%> <%
+
+            counter.incrementCount();
+            if (counter.hasReachedMax())
+                break;
+
+        }
+
+        if (counter.hasReachedMax()) { %>
+            <div class="find_message vl_text dim">Maximum results reached!</div> <%
+        } %>
+
+        </div>
+
+    <% }
 
 
 

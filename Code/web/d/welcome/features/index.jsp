@@ -12,6 +12,7 @@
 
 <link rel=stylesheet type="text/css" href="../../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./../css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 <body>
 
 <% String header_path = "features"; %>
@@ -23,13 +24,6 @@
             <div class="main gg_header white">Patent-pending Awesomeness!</div>
             <div class="sub vl_text white">All our features will make your community thrive!</div>
         </div>
-    </div>
-</div>
-
-<div class="w800 center">
-    <div class="statement">
-        <div class="main sp_header">Features</div>
-        <div class="sub md_text dim">An arsenal of unique features</div>
     </div>
 </div>
 

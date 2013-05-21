@@ -1,22 +1,8 @@
 package com.questy;
 
-import com.questy.admin.AdminServices;
-import com.questy.dao.*;
-import com.questy.domain.QuestionOption;
 import com.questy.enums.AnswerVisibilityEnum;
-import com.questy.enums.NetworkAlphaSettingEnum;
-import com.questy.services.NetworkServices;
-import com.questy.services.QuestionOptionServices;
 import com.questy.services.QuestionServices;
-import com.questy.services.cron.CronServices;
-import com.questy.utils.DateUtils;
-import com.questy.utils.StringUtils;
 
-import java.io.PrintStream;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class OmidsSandbox {
@@ -295,34 +281,6 @@ public class OmidsSandbox {
 
 
 
-
-    public static void populate() throws Exception {
-
-        // Total number of users and actions
-        Integer totalUsers = 100;
-        Integer thisPerUsers = 10;
-
-        // List of networks to sign up users to
-        List<Integer> networkIds = new ArrayList<Integer>();
-        networkIds.add(1);
-
-
-        // Create users
-        AdminServices.populateUsers(totalUsers, networkIds);
-
-        // Answer randomly
-        AdminServices.randomAnswers(totalUsers, thisPerUsers);
-
-        // Refresh all smart groups
-        CronServices.calledHourlyPopulateSmartGroups();
-
-        // Write shared items and comments
-        AdminServices.randomSharedItemsAndComments(totalUsers, thisPerUsers, 3);
-
-        // Adding connections
-        AdminServices.randomConnections(totalUsers, thisPerUsers);
-
-    }
 
 
 }

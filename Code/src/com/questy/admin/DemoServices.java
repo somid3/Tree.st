@@ -5,22 +5,19 @@ import com.questy.domain.*;
 import com.questy.enums.AnswerVisibilityEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.SmartGroupVisibilityEnum;
-import com.questy.helpers.SqlLimit;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.*;
+import com.questy.services.cron.CronServices;
 import com.questy.utils.Vars;
-import com.questy.web.HtmlUtils;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 
-public class AdminServices {
+public class DemoServices {
 
     private static boolean log = true;
 
@@ -1240,265 +1237,237 @@ public class AdminServices {
         "Zackary       ",
         "Zane          "};
 
+    // List of users to add
+    private static List<Integer> demoUsersIds = new ArrayList<Integer>();
 
-    public static void populateUsers(Integer noOfUsers, List<Integer> networkIds) throws SQLException {
+    // List of demo users
+    static {
 
-        /**
-         * DO NOT SEND EMAILS AS YOU ARE CREATING RANDOM USERS
-         * DO NOT SEND EMAILS AS YOU ARE CREATING RANDOM USERS
-         * DO NOT SEND EMAILS AS YOU ARE CREATING RANDOM USERS
-         */
-        Boolean originalSendEmails = Vars.sendEmails;
+        demoUsersIds.add(3144);
+        demoUsersIds.add(3145);
+        demoUsersIds.add(3146);
+        demoUsersIds.add(3147);
+        demoUsersIds.add(3148);
+        demoUsersIds.add(3149);
+        demoUsersIds.add(3150);
+        demoUsersIds.add(3151);
+        demoUsersIds.add(3152);
+        demoUsersIds.add(3153);
+        demoUsersIds.add(3154);
+        demoUsersIds.add(3155);
+        demoUsersIds.add(3156);
+        demoUsersIds.add(3157);
+        demoUsersIds.add(3158);
+        demoUsersIds.add(3159);
+        demoUsersIds.add(3160);
+        demoUsersIds.add(3161);
+        demoUsersIds.add(3162);
+        demoUsersIds.add(3163);
+    }
+
+    public static void main (String[] args) throws Exception  {
+
+//        createRandomUsers(20);
+        demoize(2032);
+
+    }
+
+    public static void demoize (Integer networkId) throws Exception {
+
+        // Change application to receive demo data
         Vars.sendEmails = false;
+        Vars.enableTimelocks = false;
+
+        // Demo parameters
+        Integer answersPerUser = 50;
+        Integer totalItems = 100;
+        Integer userLinksPerUser = 20;
+
+        // Inject demo data
+        addDemoUsersToNetwork(networkId);
+        randomAnswers(networkId, answersPerUser);
+        CronServices.calledHourlyPopulateSmartGroups();
+        randomSharedItemsAndComments(networkId, totalItems, 5);
+        randomConnections(networkId, userLinksPerUser);
+
+        // Reminder to restart server
+        log("** Remember to re-start server!");
+        log("** Remember to re-start server!");
+        log("** Remember to re-start server!");
+    }
+
+    public static void createRandomUsers(Integer noOfUsers) throws SQLException {
 
         Integer userId = null;
         Integer randomFirst = null;
         Integer randomLast = null;
-        Integer randomPointsPerLink = null;
         String firstName = null;
         String lastName = null;
         String email = null;
+        Integer faceId = null;
 
-        String checksum = null;
         for (int i = 0; i < noOfUsers; i++) {
 
-            checksum = HtmlUtils.getRandomId();
+            // Inserting user
             randomFirst = randomGenerator.nextInt(names.length);
             randomLast = randomGenerator.nextInt(names.length);
             firstName = names[randomFirst].trim();
             lastName = names[randomLast].trim();
-            email = firstName.substring(0, 1) + lastName + "@mit.edu";
-
+            email = firstName.substring(0, 1) + lastName + "@tree.st";
             userId = UserDao.insert(null, email, "password" + i, firstName, lastName);
 
-            AdminServices.log("Created user id: " + userId);
-            for (Integer networkId : networkIds) {
+            // Updating face
+            faceId = (userId % 20) + 20;
+            UserDao.updateFaceByUserId(null, userId, 1, "/resources/faces/" + faceId + ".jpg");
 
-                randomPointsPerLink = randomGenerator.nextInt(10);
-
-                NetworkServices.addUserToNetworkWithDependencies(networkId, userId, RoleEnum.MEMBER);
-
-                AdminServices.log("Added user " + userId + " to network: " + networkId);
-            }
-
-            AdminServices.log("");
-        }
-
-
-        /**
-         * RE-SET SENDING EMAILS
-         * RE-SET SENDING EMAILS
-         * RE-SET SENDING EMAILS
-         */
-        Vars.sendEmails = originalSendEmails;
-
-
-    }
-
-
-    public static void randomSpecificAnswer(Integer noOfUsers, Integer networkId, Integer questionRef, Map<String, Integer> optionTextAndTimes) throws SQLException {
-
-
-        // Retrieve question
-        Question question = QuestionServices.getByNetworkIdAndRef(networkId, questionRef);
-        QuestionOption desiredOption = null;
-        List<Integer> answeringOptions = null;
-        Integer noOfOptions = null;
-        User user = null;
-
-        // Looping over all option texts provided
-        for (String optionText : optionTextAndTimes.keySet() ) {
-
-            // Find option
-            desiredOption = question.findOptionByText(optionText.trim());
-
-            // Looping the number of times required to answer
-            for (int i = 0; i < optionTextAndTimes.get(optionText); i++) {
-
-                // Retrieve random user
-                user = getRandomUser(noOfUsers);
-
-                // Retrieving a random subset of options
-                answeringOptions = getRandomOptionsRefs(networkId, questionRef);
-
-                // Removing first random option and replacing with prefered option
-                answeringOptions.remove(0);
-                answeringOptions.remove(desiredOption.getRef());
-                answeringOptions.add(desiredOption.getRef());
-
-                // Answer option with random user
-                AnswerServices.answer(user.getId(), networkId, questionRef, answeringOptions, AnswerVisibilityEnum.PROTECTED);
-
-
-            }
+            // Documenting action
+            DemoServices.log("Created user id: " + userId + " with face id: " + faceId);
+            DemoServices.log("");
         }
 
     }
 
-    public static void randomAnswers(Integer noOfUsers, Integer answersPerUser) throws SQLException {
+    /**
+     * Populates a network with about 20 members
+     *
+     * @throws Exception
+     */
+    public static void addDemoUsersToNetwork(Integer networkId) throws Exception {
+
+        // Adding demo users to network
+        for (Integer demoUserId : demoUsersIds)
+            NetworkServices.addUserToNetworkWithDependencies(networkId, demoUserId, RoleEnum.MEMBER);
+
+    }
+
+
+
+
+
+
+
+
+    public static void randomAnswers(Integer networkId, Integer answersPerUser) throws SQLException {
 
         // How many answers should expect
-        Integer totalAnswers = noOfUsers * answersPerUser;
-        AnswerVisibilityEnum visibility = null;
-        Integer maxVisibility = null;
-        List<Answer> lastAnswer = null;
+        AnswerVisibilityEnum visibility = AnswerVisibilityEnum.PROTECTED;
         Integer answeringQuestionRef = null;
-        Question answeringQuestion = null;
-        for (int i = 0; i < totalAnswers; i++) {
+        Network network = NetworkDao.getById(null, networkId);
+
+        for (Integer demoUserId : demoUsersIds) {
 
             // Select random user
-            User user = getRandomUser(noOfUsers);
+            User user = UserDao.getById(null, demoUserId);
 
-            // Select random network
-            Network network = getRandomNetworkByUserId(null, user.getId());
-            if (network == null) continue;
+            for (int i = 0; i < answersPerUser; i++) {
 
-            // Get user's next question
-            answeringQuestionRef = FlowRuleServices.getNextQuestionRef(user.getId(), network.getId());
+                // Get user's next question
+                answeringQuestionRef = FlowRuleServices.getNextQuestionRef(user.getId(), network.getId());
 
-            AdminServices.log("Answering Question id: " + answeringQuestionRef);
+                DemoServices.log("Answering Question id: " + answeringQuestionRef);
 
-            if (answeringQuestionRef == null) {
-                AdminServices.log("CONTINUE: No next question" + ".");
-                AdminServices.log("");
-                continue;
+                if (answeringQuestionRef == null) {
+                    DemoServices.log("CONTINUE: No next demo user.");
+                    DemoServices.log("");
+                    continue;
+                }
+
+                // Get a random subset of options from the question
+                List<Integer> randomOptionRefs = getRandomOptionsRefs(network.getId(), answeringQuestionRef);
+                if (randomOptionRefs == null)
+                    continue;
+
+                // Submit answer
+                Tuple<Boolean, Integer> result = AnswerServices.answer(user.getId(), network.getId(), answeringQuestionRef, randomOptionRefs, visibility);
+
+                DemoServices.log("Again?: " + result.getX());
+                DemoServices.log("Points added: " + result.getY());
+                DemoServices.log("Answer " + i);
+                DemoServices.log("");
             }
 
-            // Get a random subset of options from the question
-            List<Integer> randomOptionRefs = getRandomOptionsRefs(network.getId(), answeringQuestionRef);
-            if (randomOptionRefs == null)
-                continue;
-
-            // Ensures that 0 is not chosen since lowest visibility for most will become 0
-            visibility = null;
-            {
-                // Ensures lowest visibility is 3
-                visibility = AnswerVisibilityEnum.PROTECTED;
-
-                AdminServices.log("Max Visibility: " + maxVisibility);
-                AdminServices.log("Visibility: " + visibility);
-            }
-
-            // Submit answer
-            Tuple<Boolean, Integer> result = AnswerServices.answer(user.getId(), network.getId(), answeringQuestionRef, randomOptionRefs, visibility);
-
-            AdminServices.log("Again?: " + result.getX());
-            AdminServices.log("Points added: " + result.getY());
-            AdminServices.log("Answer " + i);
-            AdminServices.log("");
         }
-
 
     }
 
-    public static void randomSharedItemsAndComments(Integer noOfUsers, Integer itemsPerUser, Integer maxCommentsPerItem) throws SQLException {
+    public static void randomSharedItemsAndComments(Integer networkId, Integer totalItems, Integer maxCommentsPerItem) throws SQLException {
 
         String randomString = null;
-        SharedItem addedItem = null;
+        Tuple<Integer, Integer> addedItemResult = null;
 
-        Integer totalAnswers = noOfUsers * itemsPerUser;
-        for (int i = 0; i < totalAnswers; i++) {
+        for (int i = 0; i < totalItems; i++) {
 
             // Select random user
-            User user = getRandomUser(noOfUsers);
-
-            // Select random non global network
-            Network network = getRandomNetworkByUserId(null, user.getId());
-            if (network == null) continue;
+            User user = getRandomDemoUser();
 
             // Select random smart group of network
-            SmartGroup group = getRandomSmartGroupByNetworkId(null, network.getId());
+            SmartGroup group = getRandomSmartGroupByNetworkId(networkId);
             if (group == null) continue;
 
             // Write shared item
             randomString = getRandomText(3, 100);
-            Tuple<Integer, Integer> addedItemResult = SharedItemServices.add(network.getId(), user.getId(), group.getSmartGroupRef(), randomString);
+            try { addedItemResult = SharedItemServices.add(networkId, user.getId(), group.getSmartGroupRef(), randomString); }
+            catch (UIException uie) { continue; }
 
             // Write commends for shared item
-            Integer commentsForItem = randomGenerator.nextInt(maxCommentsPerItem);
-            for (int u = 0; u < commentsForItem; u++) {
+            Integer totalComments = randomGenerator.nextInt(maxCommentsPerItem);
+            for (int u = 0; u < totalComments; u++) {
 
                 // Select random user
-                user = getRandomUser(noOfUsers);
+                user = getRandomDemoUser();
 
                 // Write shared comment
                 randomString = getRandomText(3, 150);
-                SharedCommentServices.add(network.getId(), user.getId(), group.getSmartGroupRef(), addedItemResult.getX(), randomString);
+
+                try { SharedCommentServices.add(networkId, user.getId(), group.getSmartGroupRef(), addedItemResult.getX(), randomString); }
+                catch (UIException uie) { continue; }
 
             }
 
-            AdminServices.log("");
+            DemoServices.log("");
 
         }
 
-
     }
 
-    public static void randomConnections(Integer noOfUsers, Integer connectionsPerUser) throws Exception {
+    public static void randomConnections(Integer networkId, Integer userLinksPerUser) throws Exception {
 
-        Integer totalConnections = noOfUsers * connectionsPerUser;
+        User fromUser = null;
 
-        for (int i = 0; i < totalConnections; i++) {
+        for (Integer demoUserId : demoUsersIds) {
 
-            // Getting random user
-            User userFrom = getRandomUser(noOfUsers);
+            // Setting from user
+            fromUser = UserDao.getById(null, demoUserId);
 
-            System.out.println(userFrom.getId());
+            // Creating a random number of connections for demo user
+            for (int i = 0; i < randomGenerator.nextInt(userLinksPerUser); i++) {
 
-            // Getting random network
-            Network network = getRandomNetworkByUserId(null, userFrom.getId());
-            if (network == null) continue;
+                // Getting random user
+                User toUser = getRandomDemoUser();
 
-            SmartGroup group = getRandomSmartGroupByNetworkId(null, network.getId());
-            if (group == null) continue;
-
-            // Getting random user in such network
-            User userTo = UserDao.getById(null, 2);
-//            User userTo = getRandomUserByNetworkId(null, network.getId());
-
-            // Connection both users
-            try {
-
-                System.out.println( UserLinkServices.linkUsers(network.getId(), userFrom.getId(), userTo.getId()) );
-
-//                UserLinkServices.linkUsers(network.getId(), userFrom.getId(), userTo.getId());
-
-            } catch (UIException uie) {
-
-                uie.printStackTrace();
+                // Connection both users
+                try { UserLinkServices.linkUsers(networkId, fromUser.getId(), toUser.getId()); }
+                catch (UIException uie) { continue; }
 
             }
 
         }
+
     }
 
 
 
-    private static User getRandomUser(Integer noOfUsers) throws SQLException {
+    private static User getRandomDemoUser() throws SQLException {
 
-        int randomInt = randomGenerator.nextInt(noOfUsers);
-        randomInt = randomInt + 3;
-        User user = UserDao.getById(null, randomInt);
-        AdminServices.log("User id: " + user.getId() + ".");
+        int randomInt = randomGenerator.nextInt(demoUsersIds.size());
+        Integer randomDemoUserId = demoUsersIds.get(randomInt);
+        User user = UserDao.getById(null, randomDemoUserId);
 
         return user;
     };
 
-    private static Network getRandomNetworkByUserId(Connection conn, Integer userId) throws SQLException {
 
-        // Retrieving all networks user is registered with
-        List<Network> networks = NetworkServices.getByUserId(userId, RoleEnum.MEMBER, SqlLimit.ALL);
-
-        if (networks.isEmpty()) return null;
-
-        int randomInt = randomGenerator.nextInt(networks.size());
-        Network network = networks.get(randomInt);
-        AdminServices.log("Network id: " + network.getId() + ".");
-
-        return network;
-    };
-
-    private static SmartGroup getRandomSmartGroupByNetworkId(Connection conn, Integer networkId) throws SQLException {
+    private static SmartGroup getRandomSmartGroupByNetworkId(Integer networkId) throws SQLException {
 
         List<SmartGroup> groups = SmartGroupDao.getNonHiddenByNetworkIdAndLowestVisibility(null, networkId, SmartGroupVisibilityEnum.SHARED);
 
@@ -1509,7 +1478,7 @@ public class AdminServices {
         // Ignore if the "search" smart group was selected
         if (group.getName().equals(SmartGroup.SEARCH_NAME)) return null;
 
-        AdminServices.log("Smart Group ref: " + group.getSmartGroupRef() + " (" + group.getName() + ").");
+        DemoServices.log("Smart Group ref: " + group.getSmartGroupRef() + " (" + group.getName() + ").");
 
         return group;
     };
@@ -1544,8 +1513,6 @@ public class AdminServices {
 
     }
 
-
-
     public static String getRandomText(Integer minLength, Integer maxLength) {
 
         Integer length = randomGenerator.nextInt(maxLength - minLength);
@@ -1559,13 +1526,9 @@ public class AdminServices {
         return randomText.substring(start, start + length).trim();
     }
 
-
-
     private static void log(String string) {
 
-        if (log)
-            System.out.println(string);
-
+        if (log) System.out.println(string);
     }
 
 }

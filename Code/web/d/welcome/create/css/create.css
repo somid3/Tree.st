@@ -13,7 +13,7 @@
 #create .step .header {
     padding: 10px 20px;
     line-height: 1.3em;
-    border: 4px solid <%= HtmlDesign.highlight6 %>;
+    background-color: <%= HtmlDesign.dim2 %>;
 }
 
 
@@ -49,7 +49,7 @@
 }
 
 #create .step .generalities .general .gather .input {
-    border: 3px solid <%= HtmlDesign.highlight2 %>;
+    border: 3px solid <%= HtmlDesign.dim2 %>;
     display: inline-block;
 }
 
@@ -126,7 +126,7 @@
 
 
 #create .step .qualities .quality .gather .input {
-    border: 3px solid <%= HtmlDesign.highlight2 %>;
+    border: 3px solid <%= HtmlDesign.dim2 %>;
     display: inline-block;
 }
 

@@ -37,15 +37,19 @@ public class Vars {
 
 
     /***************************
-     * Company variables
+     * Overall variables
      **************************/
 
-    public static final String name = "Tree.st";
+    public static final String name = "treelift";
 
-    public static String domain = "www.tree.st";
+    public static String domain = "www.treelift.com";
 
 
+    /***************************
+     * Application variables
+     **************************/
 
+    public static Boolean enableTimelocks = true;
 
 
 
@@ -136,9 +140,9 @@ public class Vars {
      */
     public static int emailAmazonQueueCount;
 
-    public static String supportEmail = "hello@tree.st";
+    public static String supportEmail = "hello@treelift.com";
 
-    public static String supportEmailName = "Tree.st";
+    public static String supportEmailName = "treelift.com";
 
 
 

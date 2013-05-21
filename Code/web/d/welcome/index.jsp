@@ -20,147 +20,41 @@
 <% String header_path = "welcome"; %>
 <%@ include file="./includes/header.jsp"%>
 
-<div class="main-block">
-    <div class="w800 center">
+<div class="main-block square">
+    <div class="w600 center">
         <div class="block">
-            <div class="main gg_header white">We Create Searchable Communities</div>
-            <div class="sub vl_text white">Discover your members via unique qualities<br/> &mdash; collaborate, and create amazing bonds</div>
+            <div class="main sp_header white">
+                Allow your members to easily find each other via qualities that are unique to your organization</div>
         </div>
     </div>
 </div>
 
-<div class="attention square glow4">
+<div class="attention glow4 w800 center">
+    <div id="playing-video" class="left shadow">
+        <iframe src="http://player.vimeo.com/video/56698814?autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
+    <div class="right">
+        <div class="actions">
 
-    <div class="w800 center">
-        <div id="playing-video" class="left shadow">
-            <iframe src="http://player.vimeo.com/video/56698814" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
-        <div class="right">
-            <div class="actions">
-
-                <a href="./create">
-                    <div class="action lg_shadow" style="background-color: <%= HtmlDesign.highlight2 %>">
-                        <img class="free" src="./img/free.png">
-                        <div><span class="md_header white">Start Today:</span></div>
-                        <div><span class="smd_text white">Create your own searchable community in under a minute</span></div>
-                    </div>
-                </a>
-
-                <div class="or shadow">
-                    <span class="sm_header white">Or</span>
+            <a href="#request">
+                <div class="action">
+                    <img class="free" src="./img/free.png">
+                    <div><span class="md_header white underline">Request a Demo</span></div>
+                    <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
                 </div>
-
-                <a href="#request">
-                    <div class="action lg_shadow">
-                        <div><span class="md_header white">Request a Demo</span></div>
-                        <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="w800 center">
-    <div class="statement">
-        <div class="main sp_header">What are Searchable Communities For?</div>
-        <div class="sub smd_text dim">From online dating, to market places, to business communities...</div>
-    </div>
-</div>
-
-<div class="w800 center">
-
-    <div class="four_steps">
-        <div class="step shadow">
-            <a href="./assets/associations.pdf" target="_new">
-                <img class="persona" src="./img/lawyer.png">
-            </a>
-            <div class="title lg_header dim">Associations</div>
-            <a href="./assets/associations.pdf" target="_new">
-                <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
             </a>
 
-            <div class="desc sm_text dim">
-                <p>Save thousands of dollars every year and move your membership paper-based directory online.</p>
+            <div class="or shadow">
+                <span class="sm_header white">Or</span>
             </div>
-        </div>
-        <div class="step shadow">
-            <a href="./assets/educational_institutions.pdf" target="_new">
-                <img class="persona" src="./img/teacher.png">
-            </a>
-            <div class="title md_header dim">Educational Institutions</div>
-            <a href="./assets/educational_institutions.pdf" target="_new">
-                <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
-            </a>
-            <div class="desc sm_text dim">
-                <p>Allow your students to find one another and communicate based on their interests, goals, and knowledge.</p>
-            </div>
-        </div>
 
-        <div class="step shadow">
-            <a href="./assets/medical_professionals.pdf" target="_new">
-                <img class="persona" src="./img/nurse.png">
+            <a href="./create">
+                <div class="action">
+                    <div><span class="md_header white underline">Start Today:</span></div>
+                    <div><span class="smd_text white">Create your own community in under a minute</span></div>
+                </div>
             </a>
-            <div class="title md_header dim">Medical Professionals</div>
-            <a href="./assets/medical_professionals.pdf" target="_new">
-                <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
-            </a>
-            <div class="desc sm_text dim">
-                <p>Create patient, practitioner, and research communities that improve healthcare outcomes.</p>
-            </div>
-        </div>
-        <div class="step shadow">
-            <a href="./assets/businesses.pdf" target="_new">
-                <img class="persona" src="./img/manager.png">
-            </a>
-            <div class="title md_header dim">Business Enterprises</div>
-            <a href="./assets/businesses.pdf" target="_new">
-                <div class="title sm_text highlight2"><img src="./img/pdf.png"> Uses & Benefits</div>
-            </a>
-            <div class="desc sm_text dim">
-                <p>Break business silos and allow different functional groups to innovate together.</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="w800 center">
-    <div class="statement">
-        <div class="main sp_header">Our Four-Step Approach</div>
-        <div class="sub smd_text dim">These simple steps will allow you to build a dynamic community.</div>
-    </div>
-</div>
-
-<div class="w800 center">
-    <div class="four_steps">
-        <div class="step shadow">
-            <div class="title md_header dim">Gather The Details</div>
-            <div class="desc sm_text dim">Ask the members of your community any question, and create a unique profile based on a tree of questions.</div>
-            <div class="img">
-                <img src="./img/profile.png">
-            </div>
-        </div>
-        <div class="step shadow">
-            <div class="title md_header dim">Enable Searching</div>
-            <div class="desc sm_text dim">Your members want to discover one another, our combinatorial search engine will enable your members to find exactly who they are looking for.</div>
-            <div class="img">
-                <img src="./img/finder.png">
-            </div>
-        </div>
-        <div class="step shadow">
-            <div class="title md_header dim">Build "Smart" Groups</div>
-            <div class="desc sm_text dim">Stop individually adding members to groups. Automatically group all your members based on their qualities.</div>
-            <div class="img">
-                <img src="./img/groups.png">
-            </div>
-        </div>
-        <div class="step shadow">
-            <div class="title md_header dim">Collaborate</div>
-            <div class="desc sm_text dim">Empower meaningful conversations within your Smart Groups via challenges and rewards, and watch as your members communicate like never before.</div>
-            <div class="img">
-                <img src="./img/communicate.png">
-            </div>
         </div>
     </div>
 </div>
@@ -168,7 +62,7 @@
 <a name="request"></a>
 <div class="w800 center">
     <div class="statement">
-        <div class="main sp_header">So, Let's Get Started...</div>
+        <div class="main sp_header">Let's Get Started!</div>
         <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
     </div>
 </div>
@@ -193,37 +87,6 @@
     var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
     })(document, 'script');</script>
 </div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
 
 <%@ include file="../includes/footer.jsp"%>
 </body>

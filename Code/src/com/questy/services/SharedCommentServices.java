@@ -9,6 +9,7 @@ import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.DateUtils;
+import com.questy.utils.Vars;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,7 +29,7 @@ public class SharedCommentServices extends ParentService  {
             throw new UIException("Shared comment text can not be empty");
 
         // Validating for timing attacks
-        {
+        if (Vars.enableTimelocks) {
             // Validating for minute attack
             Integer perMinute = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_MINUTE.getValueByNetworkId(networkId);
             Integer lastMinute = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.minutesAgo(1));

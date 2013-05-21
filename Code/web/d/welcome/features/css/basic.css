@@ -1,0 +1,45 @@
+<%@include file="../all.jsp" %>
+<%@page contentType="text/css" %>
+
+
+.features {
+
+}
+
+.features .columns {
+    display: inline-block;
+}
+
+.features .columns .column {
+    float: left;
+    width: 266px;
+}
+
+.features .feature-title {
+    margin: 10px;
+    padding: 15px 15px 5px 15px;
+    background-color: white;
+}
+
+.features .out {
+    position: relative;
+    top: -2000px
+}
+
+
+.features .feature-title .title {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.features .feature-title .desc {
+    line-height: 1.5em;
+}
+
+.features .feature-title .img {
+    margin: 5px auto;
+    width: 128px;
+}
+
+
+

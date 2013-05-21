@@ -75,7 +75,7 @@
 
     <div class="step glow4">
 
-        <div class="header md_text">
+        <div class="header md_text white">
             <span class="md_header">Important</span>: Qualities will help your members to find one another. Write
             each quality as a question on the first line of the text boxes below, and each option in a new line. The
             examples below are for a "San Francisco Musicians" searchable community.
@@ -184,7 +184,7 @@
 
         </div>
 
-        <div class="header md_text">
+        <div class="header md_text white">
             <span class="md_header">Important</span>: Once you create your searchable community, you must quickly join
             it and become the first member in order to declare yourself as the owner.
         </div>

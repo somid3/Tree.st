@@ -30,6 +30,14 @@ a {
     color: #222;
 }
 
+a :hover {
+    text-decoration: underline;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
 input, textarea {
     outline: none;
     resize: none;
@@ -528,6 +536,8 @@ div.center {
     margin-right: auto;
 }
 
+.w1000 {width: 1000px;}
+.w900 {width: 900px;}
 .w800 {width: 800px;}
 .w600 {width: 600px;}
 .w400 {width: 400px;}
@@ -548,7 +558,7 @@ div.center {
 
 #footer {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-bottom: 15px;
     display: inline-block;
 }
