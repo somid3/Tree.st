@@ -1,6 +1,7 @@
 <%@page contentType="text/css" %>
 
 body {
+    background-image : url(../../assets/background.jpg);
 }
 
 #main {
@@ -29,8 +30,9 @@ body {
 
 #content {
     float: left;
-    width: 520px;
+    width: 510px;
     margin-right: 20px;
+    border: solid 2px white;
 }
 
 

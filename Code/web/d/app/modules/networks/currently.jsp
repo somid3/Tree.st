@@ -99,18 +99,6 @@
 <br/>
 <% } %>
 
-<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">
-    <div class="shortcut" id="network_shortcut_questions">
-        <div class="contents">
-            <div class="icon"><img src="./modules/networks/img/collaborate.png" alt="Collaborate"></div>
-            <div class="name smd_text">Collaborate</div>
-        </div>
-        <% if (nextQuestionRef != null) { %>
-            <div class="bullet" id="<%= NetworkHtml.getBulletId(homeId) %>"><img src="./img/dot-green-16.png"></div>
-        <% } %>
-    </div>
-</a>
-
 <div class="help">
     <div class="help-rel">
         <a href="/d/how/#profile" target="_help"><img src="./img/help.png" alt="Help"></a>
@@ -123,5 +111,17 @@
             <div class="icon"><img src="./modules/networks/img/profile.png" alt="My Profile"></div>
             <div class="name smd_text">My profile</div>
         </div>
+    </div>
+</a>
+
+<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">
+    <div class="shortcut" id="network_shortcut_questions">
+        <div class="contents">
+            <div class="icon"><img src="./modules/networks/img/collaborate.png" alt="Collaborate"></div>
+            <div class="name smd_text">Collaborate</div>
+        </div>
+        <% if (nextQuestionRef != null) { %>
+            <div class="bullet" id="<%= NetworkHtml.getBulletId(homeId) %>"><img src="./img/dot-green-16.png"></div>
+        <% } %>
     </div>
 </a>

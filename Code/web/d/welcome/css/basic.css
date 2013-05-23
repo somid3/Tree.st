@@ -58,13 +58,13 @@ body {
 .block .main {
     text-shadow: 2px 2px <%= HtmlDesign.dim %>;
     text-align: center;
-    margin-bottom: 5px;
     line-height: 1.4em;
 }
 
 .block .sub {
     text-shadow: 2px 2px <%= HtmlDesign.dim %>;
     text-align: center;
+    font-style: italic;
     width: 700px;
     margin: 0 auto;
     line-height: 1.5em;
@@ -86,11 +86,16 @@ body {
 }
 
 .attention {
+    background-image: url('/d/welcome/img/attention-background.png');
     background-color: white;
     height: 300px;
     padding: 10px;
     margin-bottom: 40px;
     margin-top: -15px;
+    border-top: solid 2px <%= HtmlDesign.dim3 %>;
+    border-left: solid 2px <%= HtmlDesign.dim3 %>;
+    border-bottom: solid 4px <%= HtmlDesign.dim3 %>;
+    border-right: solid 4px <%= HtmlDesign.dim3 %>;
 }
 
 
@@ -176,37 +181,24 @@ body {
 }
 
 .actions {
+    margin-top: 35px;
 }
 
 .actions .action {
+    background-image: url('/d/welcome/img/action-background.png');
     padding: 10px;
     background-color: <%= HtmlDesign.dim %>;
     width: 220px;
     position: relative;
-}
-
-.actions .action .today {
-    position: absolute;
-    top: -40px;
-    left: 200px;
-    height: 50px;
-    width: 50px;
+    border: solid 2px <%= HtmlDesign.dim4 %>;
 }
 
 .actions .action .free {
     position: absolute;
-    top: -40px;
-    left: 130px;
+    top: -30px;
+    left: 140px;
     height: 60px;
 }
-
-
-.actions .action .demo {
-    position: absolute;
-    top: -20px;
-    left: 200px;
-}
-
 
 .actions .action div {
     margin-bottom: 5px;

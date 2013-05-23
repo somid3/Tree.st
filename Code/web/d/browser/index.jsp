@@ -16,15 +16,16 @@
         </div>
     </div>
     <div id="container">
-        <div id="content">
+
+        <div id="content" class="lg_shadow">
             <div id="browser" class="vl_text white">
-                <p class="note">You're awesome &mdash; but your browser is not. We take great pride in ensuring the safety and privacy of all our users, and your browser puts you at risk on <%= Vars.name %>.</p>
+                <p class="note">We take great pride in ensuring the safety and privacy of all our users, and your browser puts you at risk on <%= Vars.name %>.</p>
                 <p class="note">We apologize for the inconvenience and look forward to supporting your preferred browser soon.</p>
-                <p class="note">In the meantime, on the right you can see the browsers we support.</p>
+                <p class="note">In the meantime, on the right you can see the browsers whose latest version we fully support.</p>
             </div>
         </div>
 
-        <div id="action">
+        <div id="action" class="lg_shadow">
             <div id="supported" class="md_text">
                 <p class="note"><%= Vars.name %> currently supports the <b>latest</b> mobile and desktop versions of</p>
 

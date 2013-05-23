@@ -4,7 +4,7 @@
     String defaultEmail = webUtils.getCookieValue("ue");
     if (defaultEmail == null) defaultEmail = "";
 %>
-<div id="forgot">
+<div id="forgot" class="center">
     <div id="form">
         <div class="element">
             <div class="sp_text">Password</div>
@@ -36,15 +36,12 @@
     // Binding the return key for the form
     $('#form').keypress(function(e) {
         if(e.which == $.ui.keyCode.ENTER){
-            e.preventDefault();
             Forgot.send(e);
             return false;
         }
     });
 
     // Starting the focus on the email field
-    $(function() {
-      $("#email").focus();
-    });
+    $(document).ready( $(function() { $("#email").focus(); }));
 
 </script>

@@ -3,7 +3,7 @@
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 %>
-<div id="forgot">
+<div id="forgot" class="center">
     <div id="form">
         <div class="element">
             <div><span class="sp_text">Reset</span></div>

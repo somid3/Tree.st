@@ -16,16 +16,14 @@
 <div id="main">
     <div id="header">
         <div id="logo">
-            <span class="sp_header highlight"><%= Vars.name %></span>
-            <span class="sp_text dim">/</span>
-            <span class="sp_header dim">How</span>
-        </div>
+            <span class="sp_header highlight"><img src="/d/assets/logo.png"></span>
+         </div>
     </div>
 
     <div id="container">
 
         <a name="finder"></a>
-        <div class="video glow">
+        <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">People Finder:</span>
                 <span class="smd_text dim2">Discover how to create really complex searches on Tree</span>
@@ -34,7 +32,7 @@
         </div>
 
         <a name="groups"></a>
-        <div class="video glow">
+        <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Smart Groups:</span>
                 <span class="smd_text dim2">Find out how to create dynamic 24/7 updating groups</span>
@@ -43,7 +41,7 @@
         </div>
 
         <a name="share"></a>
-        <div class="video glow">
+        <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Share:</span>
                 <span class="smd_text dim2">Broadcast messages to all the members of a smart group</span>
@@ -52,7 +50,7 @@
         </div>
 
         <a name="communities"></a>
-        <div class="video glow">
+        <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Communities:</span>
                 <span class="smd_text dim2">Learn more about how communities work on Tree</span>
@@ -61,7 +59,7 @@
         </div>
 
         <a name="profile"></a>
-        <div class="video glow">
+        <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Profile:</span>
                 <span class="smd_text dim2">Learn how to update your profile</span>

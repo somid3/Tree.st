@@ -5,14 +5,13 @@
 
     String email = StringUtils.parseString(request.getParameter("e"));
     String passwordText = StringUtils.parseString(request.getParameter("p"));
-    String first = StringUtils.parseString(request.getParameter("f"));
-    String last = StringUtils.parseString(request.getParameter("l"));
+    String name = StringUtils.parseString(request.getParameter("n"));
 
     StringBuilder buf = new StringBuilder();
 
     try {
 
-        buf.append(UserWebServices.addUser(webUtils, networkId, networkChecksum, email, passwordText, first, last));
+        buf.append(UserWebServices.addUser(webUtils, networkId, networkChecksum, email, passwordText, name));
 
     } catch (UIException e) {
 
@@ -25,6 +24,6 @@
 
 %>
 <?xml version="1.0"?>
-<start>
+<signup>
     <%= buf.toString() %>
-</start>
+</signup>

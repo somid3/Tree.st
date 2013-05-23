@@ -117,48 +117,7 @@
 
         <div id="action">
             <div id="start">
-                <div id="form">
-                    <div class="element">
-                        <div>
-                            <span class="sp_text">Join</span>
-                            <span class="sp_text dim3">/</span>
-                            <span class="sp_text">Login</span>
-                        </div>
-                    </div>
-
-                    <div class="element error smd_text" id="error"></div>
-
-                    <div class="element">
-                        <div class="text smd_header dim"><label for="email">Email</label></div>
-                        <div><input id="email" placeholder="" type="text" name="email" value="<%= defaultEmail %>" class="lg_input w200"></div>
-                    </div>
-
-                    <div class="element">
-                        <div class="text smd_header dim"><label for="pass">Password</label></div>
-                        <div><input id="pass" type="password" name="pass" class="lg_input w200"></div>
-                    </div>
-
-                    <div class="element">
-                        <div class="text smd_header dim"><label for="name">Name</label></div>
-                        <div>
-                            <input id="first" placeholder="First" type="text" name="first" class="lg_input w75">
-                            <input id="last" placeholder="Last" type="text" name="last" class="lg_input w100">
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <div class="note sm_text dim">
-                            If you already have a Tree.st account, use it here to join this community. In the future, to login just enter your email and password
-                        </div>
-                    </div>
-
-
-                    <div class="element">
-                        <a href="#" onclick="Start.start(event, <%= networkId %>, '<%= networkChecksum %>');"><div id="button" class="lg_button submit_button">Start</div></a>
-                    </div>
-
-                    <a href="/d/forgot"><div id="forgot-begin" class="sm_header highlight2">Forgot your password?</div></a>
-                </div>
+                <div id="goin"></div>
             </div>
         </div>
     </div>
@@ -166,29 +125,11 @@
 
 <script type="text/javascript">
 
-
-    // Binding the return key for the form
-    $('#form').keypress(function(e) {
-        if(e.which == $.ui.keyCode.ENTER){
-            e.preventDefault();
-            Start.start(e, <%= networkId %>, '<%= networkChecksum %>');
-            return false;
-        }
-    });
-
-    // Starting the focus on the email field
-    $(function() {
-      $("#email").focus();
-    });
-
     // Displaying network background
     $("body").css('background-image','url(<%= network.getBackgroundResourceUrl(hasBackground == 0) %>)');
 
-    // Bringing down the join or login form
-    $(document).ready(function() {
-
+    Transitions.loadFadeIn("#goin", "../goin/renders/goin.jsp", function() {
         Animations.inTopAndBounce("#start", 30);
-
     })
 
 </script>

@@ -1,29 +1,32 @@
-function Start() {}
+function Signup() {}
 
-Start.start = function (event, networkdId, networkChecksum) {
+Signup.signup = function (event, networkdId, networkChecksum) {
 
     Event.preventDefault(event);
 
-    var email = $("#email").val();
-    var password = $("#pass").val();
-    var first = $("#first").val();
-    var last = $("#last").val();
+    // Retrieving values
+    var email = $("#signup-email").val();
+    var password = $("#signup-password").val();
+    var name = $("#signup-name").val();
 
-    // Encrypt password
+    // Retrieving objects
+    var $confirm = $("#confirm");
+    var $error = $("#signup-error");
+    var $loading = $("#signup-loading");
+
     var parameters = {};
     parameters.nid = networkdId;
     parameters.ncs = networkChecksum;
     parameters.e = email;
     parameters.p = password;
-    parameters.f = first;
-    parameters.l = last;
+    parameters.n = name;
 
-    $.post("./actions/start.jsp", parameters, function(response) {
+    $.post("./actions/signup.jsp", parameters, function(response) {
 
-        var $error = $("#error");
 
         // Hiding error
         $error.fadeOut();
+        $loading.fadeIn();
 
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));
@@ -35,9 +38,10 @@ Start.start = function (event, networkdId, networkChecksum) {
             // Present the error
             var errorResponse = $response.find("error").text();
             $error.text(errorResponse).fadeIn();
+            $loading.fadeOut();
 
             // Shake the form
-            Animations.shake("#start");
+            Animations.shake("#signup");
 
             return false;
 
@@ -58,13 +62,9 @@ Start.start = function (event, networkdId, networkChecksum) {
         } else if($response.find("confirm").length > 0) {
 
             // Move the start form out
-            Animations.outTop("#start", function () {
+            Animations.outTop("#console", function () {
 
-                // Display message that user needs to confirm account
-                var $action = $("#action");
-                $action.css('display', 'none').load("./renders/confirm.jsp", function () {
-                    $action.fadeIn();
-                });
+                $confirm.fadeIn();
 
             });
 
@@ -77,13 +77,5 @@ Start.start = function (event, networkdId, networkChecksum) {
         }
 
     });
-
-};
-
-Start.toggleManifesto = function (event) {
-
-    Event.preventDefault(event);
-    var $manifesto = $("#manifesto");
-    $manifesto.fadeToggle();
 
 };

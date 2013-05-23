@@ -26,7 +26,7 @@
     <div class="w800 center">
         <div class="block">
             <div class="main gg_header white">Let's Begin...</div>
-            <div class="sub vl_text white">We'll get your searchable community created in less than a minute</div>
+            <div class="sub vl_text white">We'll get your community created in less than a minute</div>
         </div>
     </div>
 </div>

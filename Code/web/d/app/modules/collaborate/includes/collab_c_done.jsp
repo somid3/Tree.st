@@ -34,7 +34,14 @@
 
             <div><img src="./modules/collaborate/img/done.png"></div>
 
-            <div class="vl_text dim">Congratulations! Your profile for the<br/> <%= collab_c_network.getName() %> community is complete!</div>
+            <div class="vl_text dim">
+                Congratulations!
+
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profile(collab_c_network.getId())%>');">
+                    <span class="vl_text highlight2">Your profile</span>
+                </a>
+
+                for the<br/> <%= collab_c_network.getName() %> community is complete!</div>
 
             <% if (firstDependentAndAvailableNetwork != null) { %>
                 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(firstDependentAndAvailableNetwork.getId())%>');">

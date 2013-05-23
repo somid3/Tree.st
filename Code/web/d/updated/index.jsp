@@ -36,7 +36,7 @@
 
     // Bringing down the logo
     $(document).ready(function() {
-        Animations.inTopAndBounce("#logo", 30);
+        Animations.inTopAndBounce("#logo", 1000);
     })
 
 </script>

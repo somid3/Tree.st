@@ -36,6 +36,7 @@
         // Retrieving all networks from user
         List<Network> networks = NetworkServices.getNetworkWithAllDependantsMappedToUser(meId, homeId, RoleEnum.VISITOR);
 
+        Integer networkCounter = 0;
         Integer totalItems = null;
         String highlighted = null;
         String questionText = null;
@@ -46,7 +47,7 @@
 
         <div class="finder_results canvas_container">
 
-            <div class="find_group md_header white">Qualities</div> <%
+            <div class="find_group md_header white">Filters</div> <%
 
             // Looping over all networks
             for (Network network : networks) {
@@ -67,9 +68,7 @@
 
                 // If there are no matches go to the next network
                 if (totalItems == 0)
-                    continue;
-
-            %>
+                    continue; %>
 
                 <div class="find_network sm_button dark_button sm_text">
                     <%= network.getName() %> (<%= totalItems %>)

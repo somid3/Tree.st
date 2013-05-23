@@ -13,5 +13,5 @@
     webUtils.deleteCookieByName("uscs");
 
     // Sending user to login page
-    webUtils.redirect("/d/login");
+    webUtils.redirect("/");
 %>

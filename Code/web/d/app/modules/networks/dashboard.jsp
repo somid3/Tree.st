@@ -20,12 +20,12 @@
         <div id="search_toolbar">
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.finder(homeId)%>')">
                 <div id="finder_all" class="sm_button light_button sm_text highlight2">
-                    <span>Qualities</span>
+                    <span>Filters</span>
                 </div>
             </a>
 
             <div id="search_input">
-                <input class="md_input" style="position: relative; width: 230px; left: 75px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
+                <input class="md_input" style="position: relative; width: 230px; left: 60px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
                 <input type="hidden" id="finder_hash" value="<%= HashRouting.finder(homeId, "") %>"/>
             </div>
 

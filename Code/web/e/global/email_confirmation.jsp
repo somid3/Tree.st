@@ -13,8 +13,6 @@
         hConfirmLink = "http://" + Vars.domain + "/r/confirm/?" + query;
         hConfirmLink = HtmlUtils.createHref(hConfirmLink);
     }
-
-    String hLoginLink = HtmlUtils.createHref("http://" + Vars.domain + "/d/login");
 %>
 <%@ include file="../includes/a_container_start.jsp"%>
 
@@ -44,10 +42,6 @@
                     Please click on the link below to confirm your email:<br/>
                     <br/>
                     <%= hConfirmLink %><br/>
-                    <br/>
-                    In the future you can login by visiting:<br/>
-                    <br/>
-                    <%= hLoginLink %><br/>
                     <br/>
                     Best,<br/>
                     <%= Vars.supportEmailName %>

@@ -10,7 +10,6 @@
 #header {
     float: left;
     margin-top: 10px;
-
 }
 
 #header #default_logo {
@@ -86,23 +85,6 @@
     padding: 10px;
 }
 
-#confirm {
-    display: block;
-    float: right;
-    padding: 10px;
-    width: 222px;
-    background-color: <%= HtmlDesign.highlight %>;
-    border: 4px solid white;
-}
-
-p.note, {
-    line-height: 1.3em;
-}
-
-#action {
-    position: relative;
-    display: inline-block;
-}
 
 #start {
     display: block; 
@@ -113,38 +95,4 @@ p.note, {
     border: 4px solid <%= HtmlDesign.highlight %>;
     top: -1000px;
     position: relative;
-}
-
-#form {
-}
-
-#form #error {
-    padding: 5px;
-}
-
-#form .note {
-    line-height: 18px;
-    margin-bottom: 5px;
-}
-
-#form #button {
-    /*width: 80px;*/
-}
-
-#form .text {
-    padding-bottom: 4px;
-}
-
-#form .element {
-    margin-bottom: 15px;
-}
-
-#forgot-begin {
-    display: block;
-    text-align: center;
-}
-
-#email, #first, #last, #pass {
-    border: 1px solid #ccc;
-    margin-left: 5px;
 }

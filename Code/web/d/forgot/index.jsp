@@ -1,8 +1,15 @@
 <%@ include file="./all.jsp" %>
 <%
+
+    /**
+     * Retrieving parameters
+     */
     Integer userId = StringUtils.parseInt(request.getParameter("uid"));
     String passwordChecksum = StringUtils.parseString(request.getParameter("xcs"));
 
+    /**
+     * Did the user click on the email link?
+     */
     Boolean begin = true;
     User user = null;
     if (userId != null && passwordChecksum != null) {
@@ -36,34 +43,13 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
-<div id="main" class="w800">
-    <div id="header">
-        <div id="logo">
-            <span class="sp_header highlight"><%= Vars.name %></span>
-        </div>
-    </div>
-    <div id="container">
-        <div id="content">
 
-            <div id="messages">
-                <div id="welcome" class="sp_header"></div>
-            </div>
-
-            <script type="text/javascript">
-                <% if (begin) { %>
-                    Animations.wordByWord("There are lots of hackers out there, make sure your password is hard to guess &mdash; but easy enough for you to remember.", "#welcome");
-                <% } else { %>
-                    Animations.wordByWord("Hello <%= user.getFirstName() %>, please enter your new password twice on the right. Once you do so you will be logged in.", "#welcome");
-                <% } %>
-            </script>
-
-        </div>
-
-        <div id="action"></div>
-
-    </div>
-
+<div id="logo">
+    <a href="/"><img src="/d/assets/logo.png"></a>
 </div>
+
+<div id="action"></div>
+
 
 <script type="text/javascript">
 
@@ -80,9 +66,12 @@
 
    <% }%>
 
+   // Bringing down the logo
+   $(document).ready(function() {
+       Animations.inTopAndBounce("#logo", 1000);
+    })
+
 </script>
 
-
-<%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

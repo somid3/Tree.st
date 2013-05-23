@@ -19,8 +19,8 @@
 
 #header #logo {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 5px;
+    top: 5px;
 }
 
 #header #logo #default_logo {

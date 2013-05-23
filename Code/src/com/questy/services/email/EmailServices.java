@@ -89,6 +89,11 @@ public class EmailServices extends ParentService {
         // Creating message
         UrlQuery query = new UrlQuery();
         query.add("xcs", checksum);
+
+
+        String url = GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query;
+        System.out.println(url);
+
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query);
 
         // Creating runnable to send email on new thread
@@ -177,7 +182,7 @@ public class EmailServices extends ParentService {
         if(unsubscribed)
             return;
 
-        // Retrieving user       Ê
+        // Retrieving user       ï¿½
         User fromUser = UserDao.getById(conn, fromUserId);
         User toUser = UserDao.getById(conn, toUserId);
 
@@ -223,7 +228,7 @@ public class EmailServices extends ParentService {
             return;
 
 
-        // Retrieving user       Ê
+        // Retrieving user       ï¿½
         User user = UserDao.getById(conn, userId);
 
         // Retrieving network
@@ -274,7 +279,7 @@ public class EmailServices extends ParentService {
         if (ignoreUsers.contains(sharedItem.getUserId()))
             return;
 
-        // Retrieving shared item author       Ê
+        // Retrieving shared item author       ï¿½
         User toUser = UserDao.getById(null, sharedItem.getUserId());
 
         // Creating runnable to send email on new thread
@@ -330,7 +335,7 @@ public class EmailServices extends ParentService {
             if (sentUsers.contains(sharedComment.getUserId()))
                 continue;
 
-             // Retrieving user to receive email       Ê
+             // Retrieving user to receive email       ï¿½
             toUser = UserDao.getById(null, sharedComment.getUserId());
 
             // Creating runnable to send email on new thread
@@ -399,7 +404,7 @@ public class EmailServices extends ParentService {
             if (rate != EmailNotificationRateEnum.INSTANTLY)
                 continue;
 
-            // Retrieving user to receive email       Ê
+            // Retrieving user to receive email       ï¿½
             toUser = UserDao.getById(null, userToSmartGroup.getUserId());
 
             // Creating runnable to send email on new thread
@@ -477,7 +482,7 @@ public class EmailServices extends ParentService {
             query.add("rate", userRate.getId());
             String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/shared_item_digest.jsp?" + query);
 
-            // Retrieving user to receive email       Ê
+            // Retrieving user to receive email       ï¿½
             toUser = UserDao.getById(null, userToNetwork.getUserId());
 
             // Creating runnable to send email on new thread

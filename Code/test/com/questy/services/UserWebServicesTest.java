@@ -21,7 +21,7 @@ public class UserWebServicesTest {
 
        String newEmail = StringUtils.random() + "@" + StringUtils.random() + ".com";
 
-       UserWebServices.addUser(null, network.getId(), network.getChecksum(), newEmail, "password", "Test", "Tester");
+       UserWebServices.addUser(null, network.getId(), network.getChecksum(), newEmail, "password", "Test Tester");
 
        User user = UserDao.getByEmail(null, newEmail);
 

@@ -21,10 +21,11 @@
 <%@ include file="./includes/header.jsp"%>
 
 <div class="main-block square">
-    <div class="w600 center">
+    <div class="w700 center">
         <div class="block">
-            <div class="main sp_header white">
-                Allow your members to easily find each other via qualities that are unique to your organization</div>
+            <div class="main sp_header white">Allow your members to find each other via qualities that are unique to your organization</div>
+            <div class="sub vl_text white">The fastest, easiest way to connect your members</div>
+
         </div>
     </div>
 </div>
@@ -36,8 +37,8 @@
     <div class="right">
         <div class="actions">
 
-            <a href="#request">
-                <div class="action">
+            <a href="#request" class="no_deco">
+                <div class="action shadow">
                     <img class="free" src="./img/free.png">
                     <div><span class="md_header white underline">Request a Demo</span></div>
                     <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
@@ -48,8 +49,8 @@
                 <span class="sm_header white">Or</span>
             </div>
 
-            <a href="./create">
-                <div class="action">
+            <a href="./create" class="no_deco">
+                <div class="action shadow">
                     <div><span class="md_header white underline">Start Today:</span></div>
                     <div><span class="smd_text white">Create your own community in under a minute</span></div>
                 </div>

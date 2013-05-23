@@ -11,6 +11,7 @@ import com.questy.helpers.UIException;
 import com.questy.services.email.EmailConfirmationServices;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.StringUtils;
+import com.questy.utils.Vars;
 import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
 
@@ -86,8 +87,7 @@ public class UserWebServices extends ParentService {
             String networkChecksum,
             String emailToConfirm,
             String passwordText,
-            String first,
-            String last) throws SQLException {
+            String fullname) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
@@ -119,7 +119,7 @@ public class UserWebServices extends ParentService {
         User user = UserDao.getByEmail(null, emailToConfirm);
 
         // Determining if this network should allow new users to just enter into the app without confirmation
-        Boolean allowNonConfirmed = NetworkIntegerSettingEnum.MODE_NO_CONFIRM.getBooleanByNetworkId(network.getId());
+        Boolean networkAllowNonConfirmed = NetworkIntegerSettingEnum.MODE_NO_CONFIRM.getBooleanByNetworkId(network.getId());
 
         Boolean persistent = true;
 
@@ -134,7 +134,7 @@ public class UserWebServices extends ParentService {
             // Yes, but was the provided password correct?
             UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
             if (userSession == null)
-                throw new UIException("Provide the correct password for this email address");
+                throw new UIException("Email already used for another " + Vars.name + " user -- provide the correct password");
 
             // Add user to network and its dependants
             NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
@@ -142,10 +142,11 @@ public class UserWebServices extends ParentService {
             // Has the user been confirmed by email?
             Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
 
-            // Determine if user needs to be confirmed by email
-            if (allowNonConfirmed)
+            // Determine if the network requires users to confirm their emails
+            if (networkAllowNonConfirmed)
                 isEmailConfirmed = true;
 
+            // Doe the user pass the email confirmation test?
             if (!isEmailConfirmed) {
 
                 // Send confirmation email
@@ -168,12 +169,17 @@ public class UserWebServices extends ParentService {
         } else {
 
             // Validate first name
-            if (first.isEmpty())
-                throw new UIException("Please provide your first name");
+            if (fullname.isEmpty())
+                throw new UIException("Please provide your name");
 
             // Validate last name
-            if (last.isEmpty())
+            String[] splitName = fullname.split(" ");
+            if (splitName.length <= 1)
                 throw new UIException("Please provide your last name");
+
+            // Identifying first and last name
+            String first = splitName[0];
+            String last = splitName[1];
 
             // Create user account
             Integer userId = UserDao.insert(null, emailToConfirm, passwordText, first, last);
@@ -188,7 +194,7 @@ public class UserWebServices extends ParentService {
             EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
 
             // Determine if user needs to be confirmed by email
-            if (allowNonConfirmed) {
+            if (networkAllowNonConfirmed) {
 
                 // Create password hash
                 String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
@@ -213,8 +219,9 @@ public class UserWebServices extends ParentService {
         return buf.toString();
     }
 
-    public static String login (
+    public static String signin (
             WebUtils webUtils,
+            Integer networkId,
             String email,
             String passwordText,
             Boolean keep) throws SQLException {
@@ -243,6 +250,11 @@ public class UserWebServices extends ParentService {
         UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, email, providedPasswordHash, keep);
         if (userSession == null)
             throw new UIException("Incorrect email address or password");
+
+        // Verify user is member of this network
+        UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, user.getId(), networkId);
+        if (userToNetwork == null)
+            throw new UIException("Please sign up first");
 
         /* Yay! Credentials are correct */
 

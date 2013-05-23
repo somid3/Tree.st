@@ -70,20 +70,34 @@
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./js/goin.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./js/signin.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./js/signup.js?<%= Vars.rev %>"></script>
 
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
-<body style="background-color: blue;">
+<body style="background-color: #003399;">
 
 <%@ include file="../includes/browser_check.jsp"%>
 
 
-<div class="center w900" style="">
+<div class="center w900">
 
     <div class="w600 square glow4" style="
         background-color: white;
-        float: left;">
+        float: left;
+        position: relative">
+
+        <div class="w300" style="
+            float: left;
+            position: absolute;
+            left: -170px;
+            top: 50px;
+            ">
+
+          <img src="img/face1.png" width="200px">
+
+        </div>
+
 
         <div style="padding: 20px 10px 10px 10px;">
 
@@ -166,16 +180,10 @@
                 <div class="content">
                     <div class="quote dim">
                         &ldquo;I wish I had learned of ghappy
-                        5- years ago, so many new friends&hellip;&rdquo;
+                        five years ago, so many new friends&hellip;&rdquo;
                     </div>
                     <div class="location md_text dim2">Brian (Boston, MA)</div>
                 </div>
-            </div>
-
-            <div style="
-                text-align: center;
-                margin-top: 30px;">
-                <img src="./img/sep.png">
             </div>
 
             <style>
@@ -186,11 +194,17 @@
                 }
             </style>
 
-            <div class="sec-title gg_text">Benefits</div>
-                          
+            <div style="
+                text-align: center;
+                margin-top: 30px;">
+                <img src="./img/sep.png">
+            </div>
+
+            <div class="sec-title vl_text">Benefits</div>
+
             <style>
                 .benefit {
-                    margin: 30px 0 0 30px;
+                    margin: 30px 0 0 45px;
                     display: inline-block;
                 }
 
@@ -207,6 +221,7 @@
 
                 .benefit > .content > .title {
                     margin-bottom: 5px;
+                    font-family: Helvetica;
                 }
 
                 .benefit > .content > .text {
@@ -218,7 +233,7 @@
             <div class="benefit">
                 <div class="icon"><img src="./img/ben1.png"></div>
                 <div class="content">
-                    <div class="title vl_text dim">Strong Community to Network</div>
+                    <div class="title vl_text highlight">Strong Community to Network</div>
                     <div class="text lg_text dim">
                         Discover and meet other members based
                         on details that are unique to you and
@@ -230,7 +245,7 @@
             <div class="benefit">
                 <div class="icon"><img src="./img/ben2.png"></div>
                 <div class="content">
-                    <div class="title vl_text dim">Digital Magazine</div>
+                    <div class="title vl_text highlight">Digital Magazine</div>
                     <div class="text lg_text dim">
                         Get unique recipes, tips, exercise routines,
                         and knowledge to live a healthier and
@@ -242,126 +257,64 @@
             <div class="benefit">
                 <div class="icon"><img src="./img/ben3.png"></div>
                 <div class="content">
-                    <div class="title vl_text dim">Earn Cash, $2 or $100</div>
+                    <div class="title vl_text highlight">Earn Cash: $2 or $100</div>
                     <div class="text lg_text dim">
                         For each friend you subscribe you will earn
-                        $2, it's that simple. For each of your articles
+                        $2, it's that simple. For each of your articles or
                         videos we publish in our magazine, you will
                         get $100 for sharing your knowledge
                     </div>
                 </div>
             </div>
 
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>     </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
+            <div style="
+                text-align: center;
+                margin-top: 30px;">
+                <img src="./img/sep.png">
+            </div>
 
+            <div class="sec-title vl_text">Mission</div>
 
+            <style>
+                .mission {
+                    line-height: 1.3em;
+                    font-family: Helvetica;
+                }
+            </style>
+
+            <div class="mission w400 center lg_text dim" style="">
+                <p>Our mission is simple &mdash; to improve the
+                quality of life of the amazing people who
+                enjoy eating gluten-free foods</p>
+            </div>
 
         </div>
 
     </div>
 
     <div class="w300 square" style="
-        float: right;">
+        float: left;
+        position: relative">
 
         <div style="
-            padding: 20px 10px 10px 10px;
-            border: solid 1px white;
-            width:250px;
-            top:10px;
+            margin-left: 20px;
+            padding: 0;
+            width:300px;
+            top:30px;
             position: fixed;
-            height: 400px;
+            height: 500px;
             overflow: hidden;">
 
-            right
+            <div id="goin"></div>
 
         </div>
 
     </div>
 
-
-
-    <%--<a href="/d/forgot"><div id="forgot-begin" class="sm_header highlight2">Forgot your password?</div></a>--%>
-
 </div>
 
 <script type="text/javascript">
-
-
-    // Binding the return key for the form
-    $('#form').keypress(function(e) {
-        if(e.which == $.ui.keyCode.ENTER){
-            e.preventDefault();
-            Start.start(e, <%= networkId %>, '<%= networkChecksum %>');
-            return false;
-        }
-    });
-
-    // Starting the focus on the email field
-    $(function() {
-      $("#email").focus();
-    });
-
-    // Bringing down the join or login form
-    $(document).ready(function() {
-
-        Animations.inTopAndBounce("#start", 30);
-
-    })
-
+    Transitions.loadFadeIn("#goin", "./renders/goin.jsp");
 </script>
 
 </body>

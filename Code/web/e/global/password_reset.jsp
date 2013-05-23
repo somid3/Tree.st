@@ -10,8 +10,6 @@
         hActionLink = "http://" + Vars.domain + "/d/forgot/?" + query;
         hActionLink = HtmlUtils.createHref(hActionLink);
     }
-
-    String hLoginLink = HtmlUtils.createHref("http://" + Vars.domain);
 %>
 <%@ include file="../includes/a_container_start.jsp"%>
 
@@ -42,11 +40,7 @@
                     <br/>
                     <%= hActionLink %><br/>
                     <br/>
-                    For security reasons, the link above is only valid for one hour only. In the future you can login by visiting:<br/>
-                    <br/>
-                    <%= hLoginLink %><br/>
-                    <br/>
-                    If you need further assistance please email us at <%= Vars.supportEmail %><br/>
+                    For security reasons, the link above is only valid for one hour only. If you need further assistance please email us at <%= Vars.supportEmail %><br/>
                     <br/>
                     Thank you,<br/>
                     <%= Vars.supportEmailName %>

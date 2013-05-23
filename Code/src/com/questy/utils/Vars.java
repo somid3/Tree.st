@@ -28,8 +28,8 @@ public class Vars {
      * Current stage
      */
 //    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -102,7 +102,7 @@ public class Vars {
     /**
      * Domain name used to create the URL where email templates will be generated
      */
-    public static String emailTemplateDomain = "localhost";
+    public static String emailTemplateDomain = "localhost:8080";
 
     /**
      * Should the server send emails or publish them to the console?
@@ -142,7 +142,7 @@ public class Vars {
 
     public static String supportEmail = "hello@treelift.com";
 
-    public static String supportEmailName = "treelift.com";
+    public static String supportEmailName = "treelift";
 
 
 

@@ -1,38 +1,31 @@
-function Login () {}
+function Signin () {}
 
-Login.begin = function (event) {
-
-    Event.preventDefault(event);
-
-    // Hide the login begin div
-    $("#login-begin").hide();
-
-    // Displaying the login div
-    $("#login").show();
-
-};
-
-
-Login.login = function (event) {
+Signin.signin = function (event, networkId) {
 
     Event.preventDefault(event);
 
-    var email = $("#email").val();
-    var password = $("#pass").val();
-    var keep = $("#keep").is(':checked');
+    // Retrieving values
+    var email = $("#signin-email").val();
+    var password = $("#signin-password").val();
+    var keep = $("#signin-keep").is(':checked');
+
+    // Retrieving objects
+    var $confirm = $("#confirm");
+    var $error = $("#signin-error");
+    var $loading = $("#signin-loading");
 
     // Encrypt password
     var parameters = {};
+    parameters.nid = networkId;
     parameters.e = email;
     parameters.p = password;
     parameters.k = keep;
 
-    $.post("./actions/login.jsp", parameters, function(response) {
-
-        var $error = $("#error");
+    $.post("./actions/signin.jsp", parameters, function(response) {
 
         // Hiding error
         $error.fadeOut();
+        $loading.fadeIn();
 
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));
@@ -44,29 +37,26 @@ Login.login = function (event) {
             // Present the error
             var errorResponse = $response.find("error").text();
             $error.text(errorResponse).fadeIn();
+            $loading.fadeOut();
 
             // Shake the login
-            Animations.shake("#login");
+            Animations.shake("#signin");
 
             return false;
 
         } else if($response.find("confirm").length > 0) {
 
             // Move the login form out
-            Animations.outTop("#login", function () {
+            Animations.outTop("#console", function () {
 
-                // Display message that user needs to confirm account
-                var $outer = $("#outer-container");
-                $outer.css('display', 'none').load("./renders/confirm.jsp", function () {
-                    $outer.fadeIn();
-                });
+                $confirm.fadeIn();
 
             });
 
         } else if($response.find("app").length > 0) {
 
             // Move the login form out
-            Animations.outTop("#login", function () {
+            Animations.outTop("#console", function () {
 
                 // Send user to app
                 var sendTo = "/d/app";
