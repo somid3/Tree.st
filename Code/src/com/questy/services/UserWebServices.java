@@ -275,8 +275,8 @@ public class UserWebServices extends ParentService {
             // Install login cookies at client
             UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), keep);
 
-            // Send user to application
-            buf.append("<app/>");
+            // Add send to application action in response
+            buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), networkId) + "' />");
 
         }
 

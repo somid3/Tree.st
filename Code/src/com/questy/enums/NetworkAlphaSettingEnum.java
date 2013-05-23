@@ -34,6 +34,7 @@ public enum NetworkAlphaSettingEnum {
     /**
      * System message in case there are outages to be expected for the community
      */
+    @Deprecated
     SYSTEM_MESSAGE(6, ""),
 
     /**

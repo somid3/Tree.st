@@ -44,7 +44,7 @@ public class EmailServices extends ParentService {
         ser.setFromName(Vars.supportEmailName);
         ser.setFromEmail(Vars.supportEmail);
         ser.addRecipient(emailToConfirm);
-        ser.setSubject("Confirm your email at Tree.st");
+        ser.setSubject("Confirm your email");
         ser.setMessageText(EmailServices.customizeMessage(message, user));
 
         // Sending the email

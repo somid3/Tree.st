@@ -51,15 +51,6 @@
 
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
-
-// MAYBE REMOVE!?!
-//    String systemMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.SYSTEM_MESSAGE);
-//    String startMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_MESSAGE);
-//    String startBody = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_BODY);
-//    String manifestoTitle = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_TITLE);
-//    String manifestoContent = networkAlphaSettings.get(NetworkAlphaSettingEnum.MANIFESTO_CONTENT);
-//    Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
-//    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
 %>
 <!DOCTYPE HTML>
 <html>
@@ -70,12 +61,12 @@
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./js/signin.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./js/signup.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="js/goin.js?<%= Vars.rev %>"></script>
 
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
-<body style="background-color: #003399;">
+
+<body style="background-color: green;">
 
 <%@ include file="../includes/browser_check.jsp"%>
 
@@ -314,7 +305,10 @@
 </div>
 
 <script type="text/javascript">
-    Transitions.loadFadeIn("#goin", "./renders/goin.jsp");
+    var params = {};
+    params.nid = <%= networkId%>;
+    params.ncs = '<%= networkChecksum%>';
+    Transitions.load("#goin", "./renders/goin.jsp", params);
 </script>
 
 </body>
