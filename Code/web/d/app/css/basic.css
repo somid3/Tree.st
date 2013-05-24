@@ -62,6 +62,7 @@
 
 #header #user .detail {
     margin-bottom: 2px;
+    position: relative;
 }
 
 #header #user #thumbnail img {

@@ -96,10 +96,14 @@
 
                 <%
                 // If no face, warning user to upload
-                if (me.getFaceOn() == null) { %>
+                if (!me.hasFace()) {
+                    String hUploadPhotoId = HtmlUtils.getRandomId(); %>
                     <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
-                        <div class="detail vsm_button error_button sm_text white">Upload photo</div>
+                        <div id="<%= hUploadPhotoId %>" class="detail vsm_button error_button sm_text white">Upload photo</div>
                     </a>
+                    <script type="text/javascript">
+                        Animations.dance("#<%= hUploadPhotoId %>", 1000, 3000);
+                    </script>
                 <% } %>
             </div>
         </div>
