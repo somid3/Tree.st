@@ -132,7 +132,7 @@
         margin-top: 10px;
         background-color: white;
         text-align: center;
-        opacity:0.5;
+        opacity:0.6;
     }
 
 </style>

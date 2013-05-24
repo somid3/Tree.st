@@ -92,10 +92,10 @@ body {
     padding: 10px;
     margin-bottom: 40px;
     margin-top: -15px;
-    border-top: solid 2px <%= HtmlDesign.dim3 %>;
-    border-left: solid 2px <%= HtmlDesign.dim3 %>;
-    border-bottom: solid 4px <%= HtmlDesign.dim3 %>;
-    border-right: solid 4px <%= HtmlDesign.dim3 %>;
+    border-top: solid 1px <%= HtmlDesign.dim3 %>;
+    border-left: solid 1px <%= HtmlDesign.dim3 %>;
+    border-bottom: solid 2px <%= HtmlDesign.dim2 %>;
+    border-right: solid 2px <%= HtmlDesign.dim2 %>;
 }
 
 
@@ -185,12 +185,12 @@ body {
 }
 
 .actions .action {
-    background-image: url('/d/welcome/img/action-background.png');
+    /*background-image: url('/d/welcome/img/action-background.png');*/
     padding: 10px;
-    background-color: <%= HtmlDesign.dim %>;
+    background-color: <%= HtmlDesign.highlight2 %>;
     width: 220px;
     position: relative;
-    border: solid 2px <%= HtmlDesign.dim4 %>;
+    border: solid 1px <%= HtmlDesign.dim4 %>;
 }
 
 .actions .action .free {

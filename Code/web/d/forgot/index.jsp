@@ -66,11 +66,6 @@
 
    <% }%>
 
-   // Bringing down the logo
-   $(document).ready(function() {
-       Animations.inTopAndBounce("#logo", 1000);
-    })
-
 </script>
 
 </body>

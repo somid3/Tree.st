@@ -49,7 +49,7 @@
 }
 
 #create .step .generalities .general .gather .input {
-    border: 3px solid <%= HtmlDesign.dim2 %>;
+    border: 1px solid <%= HtmlDesign.dim2 %>;
     display: inline-block;
 }
 
@@ -126,7 +126,7 @@
 
 
 #create .step .qualities .quality .gather .input {
-    border: 3px solid <%= HtmlDesign.dim2 %>;
+    border: 1px solid <%= HtmlDesign.dim2 %>;
     display: inline-block;
 }
 

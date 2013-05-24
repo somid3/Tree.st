@@ -89,11 +89,6 @@ public class EmailServices extends ParentService {
         // Creating message
         UrlQuery query = new UrlQuery();
         query.add("xcs", checksum);
-
-
-        String url = GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query;
-        System.out.println(url);
-
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query);
 
         // Creating runnable to send email on new thread

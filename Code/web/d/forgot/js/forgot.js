@@ -48,10 +48,11 @@ Forgot.send = function (event) {
 
         } else {
 
-            // Display message that user needs to confirm account
-            var $action = $("#action");
-            $action.css('display', 'none').load("./renders/check.jsp", function () {
-                $action.fadeIn();
+            // Move out the forgot form
+            $("#forgot").fadeOut( function () {
+
+                // Display message that user needs to confirm account
+                $("#check").fadeIn();
             });
 
             return false;

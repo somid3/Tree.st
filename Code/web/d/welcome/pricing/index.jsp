@@ -30,7 +30,7 @@
  </div>
 
  <div class="w800 center">
-        <div class="package glow4">
+        <div class="package shadow">
             <div class="breakdowns">
                 <div class="breakdown">
                     <div class="desc">
@@ -64,13 +64,13 @@
             <div class="start glow sp_header highlight">Start today!</div>
         </a>
 
-        <div class="w600 center includes">
+        <div class="includes shadow">
             <div class="feature-title lg_text">Enterprise software at an affordable price. Included features:</div>
             <div class="features">
                 <div class="feature smd_text">Patent-pending "People Finder" and "Smart Group" technology</div>
                 <div class="feature smd_text">Message sharing at Smart Group level</div>
                 <div class="feature smd_text">Gamification features</div>
-                <div class="feature smd_text">Social Networking features</div>
+                <div class="feature smd_text">Social networking features</div>
                 <div class="feature smd_text">Up to <span class="highlight">30</span> custom qualities</div>
                 <div class="feature smd_text">Custom domain support</div>
                 <div class="feature smd_text">Unlimited email support</div>

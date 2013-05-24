@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<div class="attention glow4 w800 center">
+<div class="attention shadow w800 center">
     <div id="playing-video" class="left shadow">
         <iframe src="http://player.vimeo.com/video/56698814?autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
@@ -38,7 +38,7 @@
         <div class="actions">
 
             <a href="#request" class="no_deco">
-                <div class="action shadow">
+                <div id="request-demo" class="action shadow">
                     <img class="free" src="./img/free.png">
                     <div><span class="md_header white underline">Request a Demo</span></div>
                     <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
@@ -50,7 +50,7 @@
             </div>
 
             <a href="./create" class="no_deco">
-                <div class="action shadow">
+                <div id="start-today" class="action shadow">
                     <div><span class="md_header white underline">Start Today:</span></div>
                     <div><span class="smd_text white">Create your own community in under a minute</span></div>
                 </div>
@@ -88,6 +88,18 @@
     var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
     })(document, 'script');</script>
 </div>
+
+<script type="text/javascript">
+
+    $("#request-demo").mouseenter( function() {
+        Animations.bounce("#request-demo");
+    })
+
+    $("#start-today").mouseenter( function() {
+        Animations.bounce("#start-today");
+    })
+
+</script>
 
 <%@ include file="../includes/footer.jsp"%>
 </body>

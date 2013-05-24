@@ -454,35 +454,6 @@ Animations.toPosition = function (selector, toLeft, toTop, delay, callback) {
     });
 };
 
-Animations.wordByWord = function (text, receivingSelector) {
-
-    var str = text;
-
-    var divs = '<div>' + str.split(/\s+/).join(' </div><div>') + '</div>';
-
-    var $divs = $(divs);
-
-    $divs.hide().appendTo(receivingSelector);
-
-    var i = 0;
-
-    var interval = setInterval(function() {
-
-        var $div = $($divs.get(i));
-
-        // Base case to end interval
-        if (!$div.length) {
-            clearInterval(interval);
-        }
-
-        $div.show();
-
-        i++;
-
-    }, 300);
-
-};
-
 Animations.dance = function (selector, danceNoiseLength, danceAfter) {
 
     setInterval(function() {

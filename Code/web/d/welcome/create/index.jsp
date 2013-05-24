@@ -33,7 +33,7 @@
 
 <div id="create" class="w800 center">
 
-    <div class="step glow4">
+    <div class="step shadow">
         <div class="generalities">
             <div class="general" id="path">
                 <div class="desc">
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div class="step glow4">
+    <div class="step shadow">
 
         <div class="header md_text white">
             <span class="md_header">Important</span>: Qualities will help your members to find one another. Write
