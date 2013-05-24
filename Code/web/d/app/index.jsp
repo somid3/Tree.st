@@ -7,22 +7,6 @@
 
      // Getting initiation hash in case user has no hash
     String initiationHash = UserWebServices.getInitialHash(meId);
-
-    // Retrieving user's tooltip situation
-    TooltipEnum tooltip = TooltipServices.getNextTooltipByUserId(meId);
-
-    // Tooltip include variables
-    TooltipEnum tt_l_tooltip = null;
-    Integer tt_l_width = null;
-    Integer tt_l_left = null;
-    Integer tt_l_top = null;
-    String tt_l_title = null;
-    String tt_l_message = null;
-    String tt_l_gotit = null;
-    String tt_l_direction = null;
-    String tt_l_style = null;
-    String tt_l_callback = null;
-
 %>
 <!DOCTYPE HTML>
 <html>
@@ -85,104 +69,9 @@
 <body>
 <%@ include file="../includes/browser_check.jsp"%>
 
-<div id="main">
+<div id="header" class="square">
 
-    <% if (tooltip != TooltipEnum.END) {%>
-
-        <div id="tooltips">
-
-            <script type="text/javascript">
-                TT = new Tooltips();
-            </script>
-
-            <%
-                tt_l_tooltip = TooltipEnum.WELCOME;
-                tt_l_width = 400;
-                tt_l_left = 300;
-                tt_l_top = 30;
-                tt_l_title = "Intro. 1 of 4";
-                tt_l_message = "Welcome! This brief 4 step introduction will show you around.<br/><br/>Have fun!";
-                tt_l_gotit = "Let's continue...";
-                tt_l_direction = "tip_none";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-            <%
-                tt_l_tooltip = TooltipEnum.COMMUNITIES;
-                tt_l_width = 400;
-                tt_l_left = 200;
-                tt_l_top = 200;
-                tt_l_title = "Intro. 2 of 4";
-                tt_l_message = "These are your communities -- each community will ask you different questions and allow you to find people using different qualities.<br/><br/>Green dots mean you have unanswered questions left.<br/><br/>Try changing your active community, see what happens...";
-                tt_l_gotit = "Next!";
-                tt_l_direction = "tip_left";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-            <%
-                tt_l_tooltip = TooltipEnum.MODULES;
-                tt_l_width = 400;
-                tt_l_left = 200;
-                tt_l_top = 50;
-                tt_l_title = "Intro. 3 of 4";
-                tt_l_message = "Each community is private and safe. For each community you have a separate profile.<br/><br/>Each community also has really cool search and grouping tools. Like, check out the 'smart groups!'";
-                tt_l_gotit = "Nice!";
-                tt_l_direction = "tip_left";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-
-            <%
-                tt_l_tooltip = TooltipEnum.EVERYTHING;
-                tt_l_width = 400;
-                tt_l_left = 120;
-                tt_l_top = 65;
-                tt_l_title = "Intro. 4 of 4";
-                tt_l_message = "The 'Qualities' button and search bar allow you to quickly find people by their unique traits. You can also search for shared messages or people by their name or email.<br/><br/>Click on 'Qualities' and then on the first option... Let's see who you find.";
-                tt_l_gotit = "Cool!";
-                tt_l_direction = "tip_top";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-            <%
-                tt_l_tooltip = TooltipEnum.CONCLUSION;
-                tt_l_width = 400;
-                tt_l_left = 310;
-                tt_l_top = 50;
-                tt_l_title = "That's it, thanks!";
-                tt_l_message =
-                    "Thats the end of this tutorial, if other people are confused please help them.";
-                tt_l_gotit = "Finish tutorial!";
-                tt_l_direction = "tip_none";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-            <%
-                tt_l_tooltip = TooltipEnum.UPLOAD_PHOTO;
-                tt_l_width = 350;
-                tt_l_left = 270;
-                tt_l_top = 0;
-                tt_l_title = null;
-                tt_l_message = "Oh ya! Upload your photo now!";
-                tt_l_gotit = "OK!";
-                tt_l_direction = "tip_right";
-                tt_l_style = null;
-            %>
-            <%@ include file="./modules/tooltips/includes/tt_l_tooltip.jsp" %>
-
-            <script type="text/javascript">
-                TT.show("<%= tooltip.getTooltipHtmlId() %>");
-            </script>
-        </div>
-
-    <% } %>
-
-    <div id="header">
+    <div class="w800 center">
 
         <a href="/d/app">
             <div id="logo">
@@ -199,12 +88,15 @@
                     <div id="thumbnail"><img src="<%= me.getFaceUrl() %>" alt=""></div>
                 </div>
                 <div class="details">
-                    <div class="detail smd_header white"><%= StringUtils.concat(me.getName(), 10, "&hellip;")  %></div>
                     <div class="detail sm_text white" style="float: right">Settings</div>
                 </div>
             </div>
         </a>
+
     </div>
+</div>
+
+<div id="main" class="w800">
 
     <div id="left">
         <div id="currently">
@@ -230,9 +122,9 @@
 
 <script type="text/javascript">
 
-    /***************
-    /* Routing rules
-    ***************/
+    /**
+     * Routing rules
+    **/
     ND = new NetworkDashboard();
     SS = new SmartSearch();
 

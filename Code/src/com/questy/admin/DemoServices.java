@@ -1238,7 +1238,7 @@ public class DemoServices {
         "Zane          "};
 
     // List of users to add
-    private static List<Integer> demoUsersIds = new ArrayList<Integer>();
+    public static List<Integer> demoUsersIds = new ArrayList<Integer>();
 
     // List of demo users
     static {

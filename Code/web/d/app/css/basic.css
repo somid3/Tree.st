@@ -3,53 +3,53 @@
 
 #main {
     margin: auto;
-    width: 800px;
 }
 
 
 #header {
     height: 60px;
-    margin-top: 10px;
     margin-bottom: 15px;
-    position: relative;
     background-color: #8c8c80;
-    border: 1px solid #bbb;
+    border-bottom: solid 1px <%= HtmlDesign.dim3 %>;;
 }
 
 
 #header #logo {
-    position: absolute;
-    left: 5px;
-    top: 5px;
+    display: inline-block;
+    margin: 5px 0 0 0;
+
 }
 
 #header #logo #default_logo {
-    padding: 5px 10px 5px 10px;
+    padding: 10px 10px 0 10px;
     background-color: <%= HtmlDesign.headerColor %>;
     border-right: 2px solid #fff;
+    float: left;
+    width: 158px;
+    height: 40px;
 }
 
 #header #logo #custom_logo {
     display: none;
 }
 
+#header #logo #custom_logo img {
+    height: 50px;
+    width: 180px;
+}
+
+
 #header #dashboard {
-    float: left;
-    position: absolute;
-    left: 110px;
-    top: 0;
+    display: inline-block;
 }
 
 #header #user {
-    display: inline-block;
-    float: right;
-    padding: 5px 10px;
+    margin-top: 5px;
+    padding: 5px;
     background-color: #8c8c80;
     border-left: 2px solid #fff;
-    width: 160px;
-    position: relative;
-    left: 5px;
-    top: -5px;
+    width: 140px;
+    float: right;
 }
 
 #header #user .face {
@@ -157,46 +157,6 @@
     display: block;
     margin: 10px auto;
 }
-
-
-.mini_tooltip  {
-    display: none;
-    position: relative;
-    z-index: 1000;
-}
-
-.mini_tooltip_trigger {
-    cursor: help;
-}
-
-.mini_tooltip_bubble {
-    position: absolute;
-    border: 4px solid <%= HtmlDesign.dim2 %>;
-    background-color: <%= HtmlDesign.dim %>;
-    padding: 10px;
-    width: 200px;
-
-}
-
-.mini_tooltip_bubble .close {
-    float: right;
-}
-
-.mini_tooltip_bubble .title {
-    border-bottom: 1px solid white;
-    text-align: center;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    width: 200px;;
-
-}
-
-.mini_tooltip_bubble .message {
-    line-height: 1.3em;
-}
-
-
-
 
 
 

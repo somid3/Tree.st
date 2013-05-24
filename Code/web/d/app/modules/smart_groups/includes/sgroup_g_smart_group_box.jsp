@@ -54,7 +54,7 @@
         <%@ include file="sgroup_e_apply_state.jsp"%>
     </div>
 
-    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef()) %>');">
+    <a href="#" class="no_deco" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroupShare(sgroup_g_smartGroup.getNetworkId(), sgroup_g_smartGroup.getSmartGroupRef()) %>');">
 
         <div class="details">
             <div class="name smd_header highlight6"><%= StringUtils.concat(sgroup_g_smartGroup.getName(), 50, "&#8230;") %></div>

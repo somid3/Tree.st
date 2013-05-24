@@ -3,36 +3,14 @@
 
 /* Network Dashboard */
 #network_dashboard {
-    width: 500px;
-    position: relative;
-    display: inline-block;
-}
-
-#network_dashboard #points {
-    float: right;
-    padding: 5px;
-    margin-top: 5px;
+    width: 400px;
+    top: -8px;
+    left: 60px;
     position: relative;
 }
 
-#network_dashboard #award {
-    background-color: <%= HtmlDesign.highlight3 %>;
-    border-bottom: 2px solid <%= HtmlDesign.highlight %>;
-    border-right: 2px solid <%= HtmlDesign.highlight %>;
-    padding: 10px;
-    position: absolute;
-    width: 200px;
-    top: 50px;
-    left: -220px;
-    display: none;
-    z-index: 100;
-}
-
-#search_space {
+#network_dashboard > #search_space {
     float: left;
-    position: relative;
-    left: 100px;
-    top: 15px;
 }
 
 #search_space .icon {
@@ -44,8 +22,7 @@
 }
 
 #search_toolbar {
-    display: inline-block;
-    position: relative;
+    float: left;
 }
 
 
@@ -67,13 +44,12 @@
     padding: 5px;
 }
 
-#search_input img {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: 8px;
-    left: 295px;
+
+#network_dashboard > #points {
+    float: left;
+    margin: 0 0 0 10px;
 }
+
 
 
 

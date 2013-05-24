@@ -8,7 +8,6 @@
 
     String hFavoritesId = HtmlUtils.getRandomId();
     String hMatchId = HtmlUtils.getRandomId();
-    String hFlaggedId = HtmlUtils.getRandomId();
 
     String hMinitipId = HtmlUtils.getRandomId();
 
@@ -20,8 +19,6 @@
 %>
 
 <% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SMART_GROUPS_CREATE, meId)) {
-
-    String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(homeId);
     String vocabUserSingle = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetworkId(homeId); %>
 
     <div class="minitip" id="<%= hMinitipId %>">
@@ -46,49 +43,19 @@
 <% } %>
 
 <div id="smart_group_tools" class="canvas_container">
-    <div class="keys">
-        <span class="title sm_text dim2">Key: </span>
-        <span class="key"><img src="./modules/smart_groups/img/tree.png" alt="Auto-matched!"></span>
-        <span class="sm_text dim">Auto-matched</span>
 
-        <%
-            app_d_title = "Auto-Matched Smart Groups";
-            app_d_message = "Based on your profile, you are automatically added to certain smart groups. These 'auto-matched' smart groups will display a small tree on their upper right hand corner.<br/><br/>When messages are shared in these smart groups, you will be notified. To remove yourself from an auto-matched smart group click on the blue flag.";
-            app_d_position = HtmlDesign.Positions.BOTTOM;
-        %>
-        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
-        <span class="key"><img src="./modules/smart_groups/img/star_on.png" alt="Manually added"></span>
-        <span class="sm_text dim">Manually added</span>
-
-        <%
-            app_d_title = "Manually Added Smart Groups";
-            app_d_message = "If you would like to manually make yourself a member of smart group, you must favorite it by clicking on the star.<br/><br/>When you manually add yourself to a smart group you will receive a notification when a message is shared.";
-            app_d_position = HtmlDesign.Positions.BOTTOM;
-        %>
-        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
-        <span class="key"><img src="./modules/smart_groups/img/flag_on.png" alt="Manually ignored"></span>
-        <span class="sm_text dim">Manually ignored</span>
-
-        <%
-            app_d_title = "Flagged Smart Groups";
-            app_d_message = "To ensure you are never a member of a particular smart group, even if you are qualified to be auto-matched, click on the blue flag.<br/><br/>Your will never receive a notification when a message is shared in a flagged smart group.";
-            app_d_position = HtmlDesign.Positions.BOTTOM;
-        %>
-        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
+    <div style="float: left;">
+        <span class="title sm_text dim2">Visibility:</span>
+        <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view sm_text light_button">Official</div></a>
+        <a href="#" onclick=""><div id="<%= hSharedId %>" class="view sm_text light_button">Shared</div></a>
+        <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view sm_text light_button">Yours</div></a>
     </div>
 
-    <span class="title sm_text dim2">Visibility:</span>
-    <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view sm_text light_button">Official</div></a>
-    <a href="#" onclick=""><div id="<%= hSharedId %>" class="view sm_text light_button">Shared</div></a>
-    <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view sm_text light_button">Yours</div></a>
-    <div class="sep">&nbsp;</div>
-    <span class="title sm_text dim2">Display:</span>
-    <a href="#" onclick=""><div id="<%= hFavoritesId %>" class="view sm_text light_button">Favorites</div></a>
-    <a href="#" onclick=""><div id="<%= hMatchId %>" class="view sm_text light_button">Auto-Matched</div></a>
-    <a href="#" onclick=""><div id="<%= hFlaggedId %>" class="view sm_text light_button">Flagged</div></a>
+    <div style="float: right;">
+        <span class="title sm_text dim2">Display:</span>
+        <a href="#" onclick=""><div id="<%= hFavoritesId %>" class="view sm_text light_button">Joined</div></a>
+        <a href="#" onclick=""><div id="<%= hMatchId %>" class="view sm_text light_button">Auto-Matched</div></a>
+    </div>
 
 </div>
 
@@ -117,10 +84,6 @@
 
     $("#<%= hFavoritesId %>").click(function (event) {
         SGT.changeView(event, "<%= hFavoritesId %>", <%= SmartGroupsViewEnum.FAVORITES.getId() %>);
-    });
-
-    $("#<%= hFlaggedId %>").click(function (event) {
-        SGT.changeView(event, "<%= hFlaggedId %>", <%= SmartGroupsViewEnum.FLAGS.getId() %>);
     });
 
 </script>

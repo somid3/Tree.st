@@ -10,8 +10,8 @@
 <div id="smart_group_dashboard">
     <div class="details">
         <div class="message">
-            <div class="title smd_header highlight6"><%= group.getName() %></div>
-            <div class="comment sm_text dim2"><%= StringUtils.concat(group.getDescription(), 60, "&hellip;") %></div>
+            <div class="title lg_header highlight6"><%= group.getName() %></div>
+            <div class="comment smd_text dim2"><%= StringUtils.concat(group.getDescription(), 60, "&hellip;") %></div>
         </div>
         <div class="settings">
 

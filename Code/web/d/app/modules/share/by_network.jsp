@@ -14,8 +14,7 @@
     SI.smartGroupRef = <%= SmartGroup.ANY_SMART_GROUP_REF %>;
 </script>
 
-<% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SHARED_ITEMS_HOW, meId)) {
-    String vocabUserPlural = NetworkAlphaSettingEnum.VOCAB_USER_PLURAL.getValueByNetworkId(homeId); %>
+<% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SHARED_ITEMS_HOW, meId)) { %>
     <div class="minitip" id="<%= hMinitipId %>">
         <div class="lg_header tip">Tip:</div>
         <div class="content lg_text dim">

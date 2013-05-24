@@ -25,7 +25,7 @@
             </a>
 
             <div id="search_input">
-                <input class="md_input" style="position: relative; width: 230px; left: 60px;" type="text" id="finder" placeholder="Find qualities, people, messages" title="Finder" value=""/>
+                <input class="md_input" style="position: relative; width: 230px; left: 60px;" type="text" id="finder" placeholder="Find people, messages, filters" title="Finder" value=""/>
                 <input type="hidden" id="finder_hash" value="<%= HashRouting.finder(homeId, "") %>"/>
             </div>
 
@@ -34,8 +34,8 @@
     </div>
 
     <div id="points">
-        <span id="available_points" class="vl_header white"><%= utn.getCurrentPoints() %></span>
-        <div class="sm_text white">Points</div>
+        <span id="available_points" class="lg_header white"><%= utn.getCurrentPoints() %></span>
+        <div class="vsm_text white">Points</div>
     </div>
 
 </div>
