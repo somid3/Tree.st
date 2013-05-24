@@ -126,6 +126,7 @@
     }
 
     #signup-button {
+        width: 212px;
     }
 
     #provided-by {
@@ -177,7 +178,7 @@
             <div id="signup-password-div"><input class="md_input" type="password" placeholder="Password" id="signup-password"></div>
             <div id="signup-name-div"><input class="md_input" type="text" placeholder="Full name" id="signup-name"></div>
             <a href="#" onclick="Signup.signup(event, <%= networkId %>, '<%= networkChecksum %>');">
-                <div id="signup-button" class="sm_button submit_button md_header w150">Sign up</div>
+                <div id="signup-button" class="sm_button submit_button md_header">Sign up</div>
             </a>
         </div>
     </div>

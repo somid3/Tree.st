@@ -41,6 +41,7 @@ public class NetworkLandingDao extends ParentDao {
         out.setId(DatabaseUtils.getInt(rs, "id"));
         out.setNetworkId(DatabaseUtils.getInt(rs, "network_id"));
         out.setRef(DatabaseUtils.getInt(rs, "ref"));
+        out.setHtml(DatabaseUtils.getString(rs, "html"));
 
         return out;
     }
