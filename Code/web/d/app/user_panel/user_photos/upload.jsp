@@ -22,7 +22,7 @@
             </div>
 
             <div class="bottom">
-                <input type="submit" value="Upload button">
+                <input type="submit" value="Upload photo">
             </div>
 
         </div>

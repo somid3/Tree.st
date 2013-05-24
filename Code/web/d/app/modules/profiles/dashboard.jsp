@@ -28,7 +28,21 @@
 <div id="profile_dashboard">
 
     <div class="left">
-        <div class="thumbnail"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
+
+        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
+
+            <div class="thumbnail"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
+
+            <% if (viewMyself && viewed.getFaceOn() == null) { %>
+                <div id="123" class="upload md_text lg_button error_button">Upload photo</div>
+                <script type="text/javascript">
+                    Animations.shake("#123", function() {
+                        Animations.bounce("#123");
+                    });
+                </script>
+            <% } %>
+
+        </a>
     </div>
 
     <div class="right">

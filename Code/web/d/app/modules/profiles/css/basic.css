@@ -31,6 +31,12 @@
     height: 160px;
 }
 
+#profile_dashboard .left .upload {
+    position: absolute;
+    top: 70px;
+    left: 25px;
+}
+
 #profile_dashboard .right {
     float: right;
     margin-left: 5px;

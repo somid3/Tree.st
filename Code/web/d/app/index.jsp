@@ -82,16 +82,27 @@
 
         <div id="dashboard"></div>
 
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settings() %>');">
-            <div id="user">
+        <div id="user">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
                 <div class="face">
                     <div id="thumbnail"><img src="<%= me.getFaceUrl() %>" alt=""></div>
                 </div>
-                <div class="details">
-                    <div class="detail sm_text white" style="float: right">Settings</div>
-                </div>
+            </a>
+
+            <div class="details">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsGeneral() %>');">
+                    <div class="detail sm_text white">Settings</div>
+                </a>
+
+                <%
+                // If no face, warning user to upload
+                if (me.getFaceOn() == null) { %>
+                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
+                        <div class="detail vsm_button error_button sm_text white">Upload photo</div>
+                    </a>
+                <% } %>
             </div>
-        </a>
+        </div>
 
     </div>
 </div>

@@ -392,16 +392,16 @@ Animations.flyToTarget = function (event, moveMeSelector, targetSelector, clone,
  * General shaking function when an error occurs
  * @param selector
  */
-Animations.shake = function (selector) {
-    $(selector).effect("shake", { times: 2, distance: 5 }, 1000);
+Animations.shake = function (selector, callback) {
+    $(selector).effect("shake", { times: 2, distance: 5 }, 1000, callback);
 };
 
-Animations.bounce = function (selector) {
-    $(selector).effect("bounce", { times: 2, distance: 5 }, 1000);
+Animations.bounce = function (selector, callback) {
+    $(selector).effect("bounce", { times: 2, distance: 5 }, 1000, callback);
 };
 
-Animations.wave = function (selector) {
-    $(selector).effect("bounce", { times: 1, distance: 15 }, 2000);
+Animations.wave = function (selector, callback) {
+    $(selector).effect("bounce", { times: 1, distance: 15 }, 2000, callback);
 };
 
 Animations.outTop = function (selector, callback) {
