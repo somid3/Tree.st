@@ -254,6 +254,7 @@ public class Vars {
         loadProperties("prod.properties");
 
         sendEmails =  loadPropertyAsBoolean("sendEmails");
+        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
 
         resourcesFilePath = loadPropertyAsString("resourcesFilePath");
         resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");

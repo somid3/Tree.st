@@ -184,6 +184,8 @@ public class EmailServices extends ParentService {
         // Retrieving network
         Network network = NetworkDao.getById(conn, networkId);
 
+        System.out.println(NETWORK_CREATOR_URL);
+
          // Creating message
         UrlQuery query = new UrlQuery();
         query.add("fuid", fromUserId);
