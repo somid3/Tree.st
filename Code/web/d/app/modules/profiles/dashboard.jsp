@@ -35,7 +35,7 @@
 
             <% if (viewMyself && !viewed.hasFace()) {
                 String hUploadPhotoId = HtmlUtils.getRandomId(); %>
-                <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button">Upload photo</div>
+                <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow6">Upload photo</div>
                 <script type="text/javascript">
                     Animations.dance("#<%= hUploadPhotoId %>", 1000, 3000);
                 </script>

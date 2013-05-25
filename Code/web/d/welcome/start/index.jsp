@@ -10,16 +10,16 @@
 <script type="text/javascript" src="../../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../../js/global.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/welcome.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="./js/create.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="./js/start.js?<%= Vars.rev %>"></script>
 
 <link rel=stylesheet type="text/css" href="../../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./../css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./css/create.css">
+<link rel=stylesheet type="text/css" href="./css/start.css">
 
 <body>
 <%@ include file="../../includes/browser_check.jsp"%>
 
-<% String header_path = "create"; %>
+<% String header_path = "start"; %>
 <%@ include file="../includes/header.jsp"%>
 
 <div class="main-block">

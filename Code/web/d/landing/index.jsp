@@ -64,7 +64,7 @@
      * Updating landing lexicon
      */
 
-    landing.setHtml( landing.getHtml().replace("{path:Landing}", "http://localhost:8080/resources/networks/2000/landing"));
+    landing.setHtml( landing.getHtml().replace("{path:Landing}", "http://" + Vars.domain + "/resources/networks/" + networkId + "/landing"));
 
 
     /**

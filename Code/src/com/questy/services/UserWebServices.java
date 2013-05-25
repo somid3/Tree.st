@@ -81,7 +81,7 @@ public class UserWebServices extends ParentService {
         return UserServices.checkAuthenticity(userId, sessionChecksum, webUtils.getUserAgent());
     }
 
-    public static String addUser (
+    public static String signup(
             WebUtils webUtils,
             Integer networkId,
             String networkChecksum,

@@ -41,7 +41,7 @@
         appDisableBlocked)
             webUtils.redirect("/d/logout");
 
-    // Determines whether a community should be in collect mode onl or not
+    // Determines whether a community should be in collect mode only or not
     Boolean homeCollectMode = false;
     if (meToHome != null && NetworkIntegerSettingEnum.MODE_COLLECT_ONLY.getValueByNetworkId(meToHome.getNetworkId()) != 0)
         homeCollectMode = true;

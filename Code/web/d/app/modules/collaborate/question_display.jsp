@@ -10,10 +10,12 @@
     if (backToBackCount == null)
         backToBackCount = 1;
 
+    // Testing if the user has been answering questions too fast
     Boolean isFatigued = false;
-    if (backToBackCount > 5 && homeCollectMode)
+    if (backToBackCount > 5 && !homeCollectMode)
         isFatigued = true;
 
+    // Creating random html ids
     String hFilterOptionsInputId = HtmlUtils.getRandomId();
     String hAddOptionInputId = HtmlUtils.getRandomId();
     String hAddOptionButtonId = HtmlUtils.getRandomId();

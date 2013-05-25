@@ -49,7 +49,7 @@
                 <span class="sm_header white">Or</span>
             </div>
 
-            <a href="./create" class="no_deco">
+            <a href="./start" class="no_deco">
                 <div id="start-today" class="action shadow">
                     <div><span class="md_header white underline">Start Today:</span></div>
                     <div><span class="smd_text white">Create your own community in under a minute</span></div>

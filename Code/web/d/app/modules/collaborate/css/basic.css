@@ -175,7 +175,6 @@
 }
 
 .question_note .container {
-    border: 2px dashed <%= HtmlDesign.dim %>;
     padding: 20px;
 }
 
@@ -185,10 +184,6 @@
     text-align: center;
     line-height: 1.3em;
 }
-
-.question_note .container img {
-}
-
 
 
 

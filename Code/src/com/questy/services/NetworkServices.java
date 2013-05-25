@@ -27,7 +27,7 @@ public class NetworkServices extends ParentService {
         // Adding user as member to root network
         addUserToSingleNetwork(networkId, userId, role);
 
-        // Do not add dependencies
+        // Do not add dependencies if the user is a visitor
         if (role == RoleEnum.VISITOR)
             return;
 

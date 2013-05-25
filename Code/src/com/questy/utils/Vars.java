@@ -28,8 +28,8 @@ public class Vars {
      * Current stage
      */
 //    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -40,7 +40,7 @@ public class Vars {
      * Overall variables
      **************************/
 
-    public static final String name = "treelift";
+    public static final String name = "Treelift";
 
     public static String domain = "www.treelift.com";
 
@@ -142,7 +142,7 @@ public class Vars {
 
     public static String supportEmail = "hello@treelift.com";
 
-    public static String supportEmailName = "treelift";
+    public static String supportEmailName = "Treelift";
 
 
 

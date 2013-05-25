@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <a href="/d/welcome/#request">
+        <a href="/d/welcome/start">
             <div class="start glow sp_header highlight">Start today!</div>
         </a>
 
@@ -68,14 +68,13 @@
             <div class="feature-title lg_text">Enterprise software at an affordable price. Included features:</div>
             <div class="features">
                 <div class="feature smd_text">Patent-pending "People Finder" and "Smart Group" technology</div>
-                <div class="feature smd_text">Message sharing at Smart Group level</div>
-                <div class="feature smd_text">Gamification features</div>
-                <div class="feature smd_text">Social networking features</div>
-                <div class="feature smd_text">Up to <span class="highlight">30</span> custom qualities</div>
-                <div class="feature smd_text">Custom domain support</div>
-                <div class="feature smd_text">Unlimited email support</div>
-                <div class="feature smd_text">Member email address domain locking</div>
-                <div class="feature smd_text">... plus 100s of unique and patent-pending features</div>
+                <div class="feature smd_text">Message sharing at Smart Group level <span class="dim2"> &mdash; so you members can communicate</span></div>
+                <div class="feature smd_text">Gamification features <span class="dim2"> &mdash; to ensure uptake and high compliance</span></div>
+                <div class="feature smd_text">Up to <span class="highlight">30</span> custom filters <span class="dim2"> &mdash; that way your members can easily find one another</span></div>
+                <div class="feature smd_text">Custom domain and brand support <span class="dim2"> &mdash; place your own brand on your community</span></div>
+                <div class="feature smd_text">Unlimited email support <span class="dim2"> &mdash; yep, we will help you every step of the way</span></div>
+                <div class="feature smd_text">Member email address domain locking <span class="dim2"> &mdash; ensure that all your members are part of your organization</span></div>
+                <div class="feature smd_text">... plus 100s of features</div>
             </div>
         </div>
 

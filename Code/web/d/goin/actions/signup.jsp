@@ -11,7 +11,7 @@
 
     try {
 
-        buf.append(UserWebServices.addUser(webUtils, networkId, networkChecksum, email, passwordText, name));
+        buf.append(UserWebServices.signup(webUtils, networkId, networkChecksum, email, passwordText, name));
 
     } catch (UIException e) {
 
