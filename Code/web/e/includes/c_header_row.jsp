@@ -40,7 +40,7 @@
                         font-size: 20px;
                         color: <%= HtmlDesign.highlight %>">
 
-                    <%= EmailDesign.aBegin(c_hTreeLink) %>
+                    <%= EmailDesign.aBegin(c_hTreeLink, EmailDesign.aStyleNoDeco) %>
                         <span style="color: <%= HtmlDesign.highlight %>">
                             <%= Vars.name %>
                         </span>
@@ -48,7 +48,7 @@
 
                     <% if (c_network != null) { %>
 
-                        <%= EmailDesign.aBegin(c_hNetworkLink) %>
+                        <%= EmailDesign.aBegin(c_hNetworkLink, EmailDesign.aStyleNoDeco) %>
                         <span style="color: <%= HtmlDesign.dim %>">
                             / <%= StringUtils.concat(c_network.getName(), 20, "&hellip;") %>
                         </span>
@@ -60,7 +60,7 @@
 
                         <span style="color: <%= HtmlDesign.dim %>">/</span>
 
-                        <%= EmailDesign.aBegin(c_hSmartGroupLink) %>
+                        <%= EmailDesign.aBegin(c_hSmartGroupLink, EmailDesign.aStyleNoDeco) %>
                         <span style="color: <%= HtmlDesign.highlight6 %>">
                             <%= c_smartGroup.getName() %>
                         </span>
@@ -108,6 +108,5 @@
         </table>
     </td>
 </tr>
-<%@ include file="d_line_row.jsp"%>
 <%@ include file="d_line_row.jsp"%>
 <% } %>

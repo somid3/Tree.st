@@ -5,7 +5,7 @@
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
     Integer go = StringUtils.parseInt(request.getParameter("go"));
 
-    // Should the dashboard require a user link?
+    // Have these two users seen each other, or is the user viewing itself?
     boolean requireUserLink = false;
     boolean viewMyself = false;
     try {
@@ -19,6 +19,9 @@
 
     // Retrieving user to network
     UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, viewUserId, networkId);
+
+    // Determining whether we should display user email addresses
+    Integer displayEmails = NetworkIntegerSettingEnum.NETWORK_DISPLAY_TEXT_EMAILS.getValueByNetworkId(networkId);
 %>
 <script type="text/javascript">
     PD = new ProfileDashboard();
@@ -55,9 +58,23 @@
             <div class="title lg_header"><%= viewed.getName() %></div>
 
             <% if (!requireUserLink) { %>
-                <a href="mailto:<%= viewed.getEmail() %>" target="_new">
-                    <div class="comment md_text highlight2"><%= viewed.getEmail() %></div>
-                </a>
+
+                <% if (displayEmails == 1) { %>
+
+                    <a href="mailto:<%= viewed.getEmail() %>" target="_new">
+                        <div class="comment md_text highlight2"><%= viewed.getEmail() %></div>
+                    </a>
+
+                <% } else { %>
+
+                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
+                        <div id="profile_message" class="clickable lg_button light_button lg_text selected">
+                            Message <%= viewed.getFirstName() %>
+                        </div>
+                    </a>
+
+                <% } %>
+
             <% } %>
 
         </div>
@@ -70,26 +87,26 @@
             <div class="shortcuts">
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">
-                    <div class="shortcut" id="profile_shortcut_answers">
+                    <div class="clickable shortcut" id="profile_shortcut_answers">
                         <div class="text sm_text highlight2">Profile</div>
                     </div>
                 </a>
 
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
-                        <div class="shortcut" id="profile_shortcut_user_links">
+                        <div class="clickable shortcut" id="profile_shortcut_user_links">
                             <div class="text sm_text highlight2">Viewed</div>
                             <div class="count vsm_text white"><%= countViewedUsers %></div>
                         </div>
                     </a>
 
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SMART_GROUPS);">
-                        <div class="shortcut" id="profile_shortcut_smart_groups">
+                        <div class="clickable shortcut" id="profile_shortcut_smart_groups">
                             <div class="text sm_text highlight6">Smart Groups</div>
                         </div>
                     </a>
 
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
-                        <div class="shortcut" id="profile_shortcut_shared">
+                        <div class="clickable shortcut" id="profile_shortcut_shared">
                             <div class="text sm_text highlight2">Shared</div>
                             <div class="count vsm_text white"><%= countSharedItems %></div>
                         </div>

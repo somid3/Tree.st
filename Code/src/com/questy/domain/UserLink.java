@@ -6,11 +6,7 @@ import java.util.Date;
 
 public class UserLink extends Parent {
 
-    /**
-     * Network for which the user link is valid
-     */
     private Integer networkId;
-
     private Integer fromUserId;
     private Integer toUserId;
     private Date createdOn;

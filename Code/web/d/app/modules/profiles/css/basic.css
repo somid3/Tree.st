@@ -90,9 +90,13 @@
     left: 3px;
 }
 
-#profile_dashboard .right .shortcuts .selected {
+#profile_dashboard .selected {
     background-color: #336699;
     color: white;
+}
+
+#profile_message {
+    float: left;
 }
 
 
@@ -139,12 +143,10 @@
     margin-bottom: 5px;
 }
 
-.profile_answers .network {
-    margin: 5px;
-    background-color: #669933;
+.profile_answers .network_profile {
+    margin-bottom: 10px;
     padding: 5px;
-    display: inline-block;
-    color: #fff;
+    /*border-bottom: solid 1px <%= HtmlDesign.dim2 %>;*/
 }
 
 .profile_answers .answer {

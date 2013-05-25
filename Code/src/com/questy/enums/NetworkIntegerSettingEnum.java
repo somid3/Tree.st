@@ -10,7 +10,11 @@ import java.util.Map;
 
 public enum NetworkIntegerSettingEnum {
 
+    // Number of points a user gains by viewing others
     NETWORK_JOIN_POINTS_PER             (0, 5),
+
+    // If value is 1, network will display all user emails as text
+    NETWORK_DISPLAY_TEXT_EMAILS         (1, 0),
 
     SHARED_ITEM_POINTS_PER              (200, 10),
     SHARED_ITEM_DISPLAY_CREATED_ON      (201, 1),

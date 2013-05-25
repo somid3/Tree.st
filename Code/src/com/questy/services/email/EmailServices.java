@@ -184,9 +184,7 @@ public class EmailServices extends ParentService {
         // Retrieving network
         Network network = NetworkDao.getById(conn, networkId);
 
-        System.out.println(NETWORK_CREATOR_URL);
-
-         // Creating message
+        // Creating message
         UrlQuery query = new UrlQuery();
         query.add("fuid", fromUserId);
         query.add("nid", networkId);
@@ -199,6 +197,43 @@ public class EmailServices extends ParentService {
         ser.setFromEmail(Vars.supportEmail);
         ser.addRecipient(toUser.getEmail());
         ser.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just viewed you!");
+        ser.setMessageText(EmailServices.customizeMessage(message, toUser));
+
+        // Sending the email
+        Thread thread = new Thread(ser);
+        thread.start();
+    }
+
+    public static void userMessage (
+        Integer fromUserId,
+        Integer toUserId,
+        Integer networkId,
+        String quote) throws SQLException {
+
+        // Currently non-transactional
+        Connection conn = null;
+
+        // Retrieving user
+        User fromUser = UserDao.getById(conn, fromUserId);
+        User toUser = UserDao.getById(conn, toUserId);
+
+        // Retrieving network
+        Network network = NetworkDao.getById(conn, networkId);
+
+        // Creating message
+        UrlQuery query = new UrlQuery();
+        query.add("fuid", fromUserId);
+        query.add("nid", networkId);
+        query.add("qu", quote);
+        String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_message.jsp?" + query);
+
+        // Creating runnable to send email on new thread
+        AmazonMailSender ser = new AmazonMailSender();
+        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+        ser.setFromEmail(Vars.supportEmail);
+        ser.addRecipient(toUser.getEmail());
+        ser.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just messaged you!");
         ser.setMessageText(EmailServices.customizeMessage(message, toUser));
 
         // Sending the email

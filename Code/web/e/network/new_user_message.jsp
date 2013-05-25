@@ -2,6 +2,7 @@
 <%
     Integer fromUserId = StringUtils.parseInt(request.getParameter("fuid"));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+    String quote = StringUtils.parseString(request.getParameter("qu"));
 
     // Retrieving from user
     User fromUser = UserDao.getById(null, fromUserId);
@@ -47,8 +48,26 @@
 
                     Dear <%= EmailServices.TO_USER_FIRST_NAME %>,<br/>
                     <br/>
-                    <%= fromUser.getFirstName() %> from "<%= network.getName() %>" just viewed you!<br/>
+                    <%= fromUser.getFirstName() %> from "<%= network.getName() %>" just sent you a message!<br/>
                     <br/>
+
+                    <span
+                        style="
+                        font-family: <%= HtmlDesign.fontFamilyQuote%>;
+                        font-size: 18px;
+                        line-height: 1.3em;
+                        font-style: italic">
+
+                    "<%= quote %>"</br>
+
+                    </span>
+
+                    <br/>
+                    To reply, go to
+                    <%= EmailDesign.aBegin(hAuthorProfileLink)%><%= fromUser.getFirstName() %>'s profile<%= EmailDesign.aEnd %>
+                    and click on 'Message'</br>
+
+                    </br>
                     Best,<br/>
                     <%= Vars.supportEmailName %>
                     </span>
@@ -59,13 +78,6 @@
     </td>
 </tr>
 
-<%
-    UrlQuery parameters = new UrlQuery();
-    parameters.add("nid", networkId);
-    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_USER_LINK_NOTIFICATIONS, parameters));
-
-    List<String> e_removals = new ArrayList<String>();
-    e_removals.add(unsubscribeLink + " from 'viewed you...' notifications at " + StringUtils.concat(network.getName(), 15, "..."));
-%>
+<% List<String> e_removals = new ArrayList<String>(); %>
 <%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

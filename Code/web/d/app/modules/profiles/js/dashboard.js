@@ -7,7 +7,8 @@ ProfileDashboard.Section = {
     QUESTIONS: 2,
     SMART_GROUPS: 3,
     VIEWED_USERS: 4,
-    USER_LINK_NEEDED: 5
+    USER_LINK_NEEDED: 5,
+    MESSAGE: 6
 };
 
 function ProfileDashboard () {
@@ -24,7 +25,7 @@ function ProfileDashboard () {
         Event.preventDefault(event);
         
         // Remove all highlights from network dash board
-        $("#profile_dashboard .shortcut").each(
+        $("#profile_dashboard .clickable").each(
             function() {
                 $(this).removeClass("selected");
                 $(this).find("div").removeClass("selected");
@@ -73,7 +74,10 @@ function ProfileDashboard () {
 
         else if (go == ProfileDashboard.Section.USER_LINK_NEEDED)
             this.clickItem(event, '#profile_shortcut_user_links', './modules/profiles/access.jsp', parameters);
-    }
+
+        else if (go == ProfileDashboard.Section.MESSAGE)
+            this.clickItem(event, '#profile_message', './modules/profiles/message.jsp', parameters);
+    };
 
     this.displayViewedUsers = function () {
 

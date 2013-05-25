@@ -6,7 +6,6 @@
         <div id="message">
             <div class="thumbnail"><img src="<%= me.getFaceUrl() %>" alt=""></div>
             <div class="title lg_header"><%= me.getName() %></div>
-            <div class="comment smd_text dim"><%= me.getEmail() %></div>
         </div>
         <div class="settings">
            <a href="/d/logout"><div class="setting sm_text highlight2">Log out</div></a>

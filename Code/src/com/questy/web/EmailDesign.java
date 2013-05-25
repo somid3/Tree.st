@@ -3,7 +3,7 @@ package com.questy.web;
 
 public class EmailDesign {
 
-    public static final String aStyle = "text-decoration: none;";
+    public static final String aStyleNoDeco = "text-decoration: none;";
     public static final String aEnd = "</a>";
 
     public static final String spanButtonStyle =
@@ -22,7 +22,7 @@ public class EmailDesign {
 
 
 
-    public static String aBegin (String url) {
+    public static String aBegin (String url, String aStyle) {
 
         StringBuilder out = new StringBuilder();
         out.append("<a style=\"")
@@ -35,6 +35,9 @@ public class EmailDesign {
 
     }
 
+    public static String aBegin (String url) {
+        return aBegin(url, "");
+    }
 
     public static String spanButtonBegin () {
 

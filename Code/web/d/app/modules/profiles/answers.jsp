@@ -70,13 +70,13 @@
 
         <div class="profile_answers canvas_container">
 
-            <div class="network smd_header highlight3">
-                <span><%= approvedNetwork.getName() %></span>
-            </div>
-
             <% if (!home.equals(approvedNetwork)) { %>
-                <span class="sm_text dim2"> is part of the &#8220;<%= home.getName() %>&#8221; lineage.</span>
+                <div class="network_profile">
+                    <span class="lg_header smd_header highlight3"><%= approvedNetwork.getName() %></span>
+                    <span class="smd_text dim2"> is part of the &#8220;<%= home.getName() %>&#8221; lineage.</span>
+                </div>
             <% } %>
+
 
             <%
             int totalAnswerOptions = 0;
@@ -191,9 +191,10 @@
                             <div class="container">
                                 <div class="content">
                                     <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(approvedNetwork.getId()) %>');">
-                                    <div class="message smd_text highlight2">
-                                        Complete your profile!
-                                    </div>
+                                        <div class="message smd_text highlight2">
+                                            Complete your profile!
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

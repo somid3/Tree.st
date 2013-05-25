@@ -19,6 +19,7 @@ public class HtmlDesign {
     public static final String dim4 = "#ddd";
 
     public static final String fontFamily = "sans-serif";
+    public static final String fontFamilyQuote = "georgina";
 
     public static enum Positions { TOP, BOTTOM, LEFT, RIGHT};
 }
