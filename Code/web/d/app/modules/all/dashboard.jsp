@@ -11,7 +11,7 @@
 
             <span class="smd_text dim2">Sort all members by:</span>
 
-            <a href="#" onclick="AMD.go(event, AllMembersDashboard.Section.BY_POINTS);"><div class="shortcut sm_text light_button" id="all_members_shortcut_points">Collaboration Points</div></a>
+            <a href="#" onclick="AMD.go(event, AllMembersDashboard.Section.BY_POINTS);"><div class="shortcut sm_text light_button" id="all_members_shortcut_points">Points</div></a>
             <a href="#" onclick="AMD.go(event, AllMembersDashboard.Section.BY_JOINED);"><div class="shortcut sm_text light_button" id="all_members_shortcut_joined">Recently Joined</div></a>
 
         </div>

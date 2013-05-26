@@ -1,7 +1,6 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
 <%
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
     Integer go = StringUtils.parseInt(request.getParameter("go"));
 
@@ -9,7 +8,7 @@
     boolean requireUserLink = false;
     boolean viewMyself = false;
     try {
-        viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, meId, viewUserId);
+        viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
     } catch (RuntimeException e) {
         requireUserLink = true;
     }
@@ -18,14 +17,14 @@
     User viewed = UserDao.getById(null, viewUserId);
 
     // Retrieving user to network
-    UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, viewUserId, networkId);
+    UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, viewUserId, homeId);
 
     // Determining whether we should display user email addresses
-    Integer displayEmails = NetworkIntegerSettingEnum.NETWORK_DISPLAY_TEXT_EMAILS.getValueByNetworkId(networkId);
+    Integer displayEmails = NetworkIntegerSettingEnum.NETWORK_DISPLAY_TEXT_EMAILS.getValueByNetworkId(homeId);
 %>
 <script type="text/javascript">
     PD = new ProfileDashboard();
-    PD.networkId = <%= networkId %>;
+    PD.networkId = <%= homeId %>;
     PD.viewUserId = <%= viewUserId %>;
 </script>
 <div id="profile_dashboard">
@@ -69,7 +68,7 @@
                 <% } else { %>
 
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
-                        <div id="profile_message" class="clickable lg_button light_button lg_text selected">
+                        <div id="profile_message" class="clickable md_button light_button md_text selected">
                             Message <%= viewed.getFirstName() %>
                         </div>
                     </a>
@@ -83,8 +82,8 @@
 
         <% if (!requireUserLink) {
 
-            Integer countViewedUsers = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, networkId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
-            Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, networkId, viewed.getId()); %>
+            Integer countViewedUsers = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, homeId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
+            Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, homeId, viewed.getId()); %>
             <div class="shortcuts">
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">

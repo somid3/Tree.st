@@ -39,7 +39,7 @@
 
                    <div class="card_face">
                        <img src="<%= ul_a_toUser.getFaceUrl() %>"/>
-                       <div class="points sm_text white"><%= ul_a_toUserToNetwork.getCurrentPoints() %> pts.</div>
+                       <div class="points sm_text dim shadow"><%= ul_a_toUserToNetwork.getCurrentPoints() %> pts.</div>
                  </div>
                </a>
 
@@ -54,9 +54,6 @@
                        <div class="card_details">
                            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId, ul_a_meToHome.getUserId())%>');">
                                <div class="name smd_header highlight2"><%= StringUtils.concat(ul_a_toUser.getName(), 18, "&hellip;") %></div>
-                           </a>
-                           <a href="mailto:<%= ul_a_toUser.getEmail() %>" target="_new">
-                               <div class="sm_text highlight2"><%= StringUtils.concat(ul_a_toUser.getEmail(), 18, "&hellip;") %></div>
                            </a>
                        </div>
 

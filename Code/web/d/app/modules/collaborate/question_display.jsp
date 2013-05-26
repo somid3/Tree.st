@@ -109,7 +109,7 @@
 
             <div class="options_wrap">
 
-                <div class="filter_options lg_shadow">
+                <div class="filter_options sm_shadow">
                     <div class="abc"><input class="md_input w250" type="text" id="<%= hFilterOptionsInputId %>" maxlength="40" placeholder="Filter options..." value=""></div>
                 </div>
 

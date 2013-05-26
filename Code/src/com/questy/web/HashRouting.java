@@ -110,7 +110,6 @@ public class HashRouting {
             return HASH + "/comm/" + networkId + "/member/" + toUserId;
         else
             return profile(networkId);
-
     };
 
 }

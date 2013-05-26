@@ -60,7 +60,7 @@
 }
 
 .question_display .input .options_wrap .filter_options {
-    border: 2px solid <%= HtmlDesign.dim %>;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
     padding-left: 15px;
     margin: 0 2px 5px 2px;
     display: inline-block;
