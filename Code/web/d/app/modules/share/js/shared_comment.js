@@ -27,18 +27,11 @@ SharedComment.addSharedComment = function (
     var $loading = $newComment.find('.loading');
     var $textarea = $newComment.find('textarea');
 
-
     var parameters = {};
     parameters.nid = networkId;
     parameters.sgr = smartGroupRef;
     parameters.sir = sharedItemRef;
     parameters.t = $textarea.val();
-
-    // Validating input
-    if ($textarea.val().length == 0) {
-        $error.fadeIn(1000).html("No message entered").fadeOut(1000);
-        return false;
-    }
 
     // Display loading
     $loading.show();

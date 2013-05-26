@@ -5,28 +5,25 @@
 }
 
 #share_something {
-    background-color: #fff;
+    background-color: <%= HtmlDesign.dim %>;
     width: 588px;
     margin-bottom: 7px;
-    padding: 15px 0 0 10px;
-    border-right: 2px #bbb solid;
-    border-bottom: 2px #bbb solid;
+    padding: 10px 0 0 10px;
     position: relative;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
 }
 
 #share_something #tell_me {
-    width: 500px;
+    width: 550px;
     border: none;
     font-size: 14px;
     height: 60px;
-    position: relative;
-    left: 10px;
 }
 
 #share_something .arrow_box {
     position: relative;
     background: #ffffff;
-    border: 4px solid <%= HtmlDesign.highlight %>;
+    /*border: 1px solid <%= HtmlDesign.highlight %>;*/
     padding: 5px;
     width: 560px;
 
@@ -51,7 +48,7 @@
 }
 
 #share_something .arrow_box:before {
-    border-top-color: green;
+    border-top-color: white;
     border-width: 17px;
     left: 10%;
     margin-left: -17px;
@@ -73,15 +70,15 @@
 }
 
 #share_something .share_tools .share_error {
-    margin-right: 10px;
+    margin-left: 20px;
     padding: 5px;
     background-color: <%= HtmlDesign.errorBackgroundColor %>;
     display: none;
-    float: right;
+    float: left;
 }
 
 #share_something .share_tools .share_loading {
-    margin-left: 10px;
+    margin: 10px 0 0 10px;
     float: right;
     position: relative;
     top: -2px;
@@ -92,6 +89,7 @@
 #share_something .share_tools .share_it {
     float: right;
     width: 100px;
+    border: solid 1px white;
 }
 
 
@@ -105,9 +103,8 @@
     width: 593px;
     display: inline-block;
     padding: 5px 0 5px 5px;
-    border-right: 2px #bbb solid;
-    border-bottom: 2px #bbb solid;
     margin-bottom: 5px;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
 }
 
 .shared_item_box > .left {

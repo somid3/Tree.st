@@ -14,6 +14,5 @@ body {
     padding: 20px;
     width: 800px;
     background-color: white;
-    border-right: 2px solid <%= HtmlDesign.dim3 %>;
-    border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
 }

@@ -8,7 +8,7 @@
 
 #forgot {
     padding: 20px;
-    width: 220px;
+    width: 300px;
     background-color: #fff;
     border-bottom: 2px solid #bbb;
     border-right: 2px solid #bbb;
@@ -41,10 +41,11 @@
 #email, #pass, #pass_again {
     border: 1px solid #ccc;
     margin-left: 5px;
+    width: 250px;
 }
 
 #check {
-    width: 220px;
+    width: 300px;
     padding: 20px;
     background-color: <%= HtmlDesign.highlight %>;
     border: 2px solid white;

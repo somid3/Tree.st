@@ -23,23 +23,18 @@
 <a href="/">
     <div class="w300 center">
         <div class="updated">
+
             <div class="center"><img src="./img/done.png"></div>
+
             <br/>
-            <div class="vl_header dim">
+
+            <div class="message vl_header dim">
                 Your account has been updated. <span class="highlight2">Click to continue.</span>
             </div>
+
         </div>
    </div>
 </a>
-
-<script>
-
-    // Bringing down the logo
-    $(document).ready(function() {
-        Animations.inTopAndBounce("#logo", 1000);
-    })
-
-</script>
 
 </body>
 </html>

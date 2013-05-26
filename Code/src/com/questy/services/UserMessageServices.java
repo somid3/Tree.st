@@ -65,17 +65,10 @@ public class UserMessageServices extends ParentService  {
 
         // Check that the from user has the required number of points
         UserToNetwork fromUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(conn, fromUserId, networkId);
-
-        /*
-         * Here we multiply the points for message by negative one because we wish to make sure
-         * we only check for points when the "to user" will actually reduce points from the
-         * "from user"
-         */
         if (fromUserToNetwork.getCurrentPoints() < (pointsPerMessage * -1)) {
 
             // User does not have enough points, return null
             throw new UIException("Not enough points");
-
         }
 
         // Update points from me

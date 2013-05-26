@@ -47,6 +47,7 @@
                                 <%= Vars.name %>
                             </span>
                         <%= EmailDesign.aEnd %>
+
                     <% } %>
 
                     <% if (c_network != null) { %>
@@ -61,7 +62,7 @@
 
                         <% } else { %>
 
-                            <img src="<%= c_network.getLogoResourceUrl() %>"
+                            <img src="<%= Vars.domain + c_network.getLogoResourceUrl() %>"
 
                         <% } %>
 

@@ -22,7 +22,7 @@
         </div>
 
         <div class="element">
-            <div class="note sm_text dim">
+            <div class="note smd_text dim">
                 After you reset your password you will automatically get logged in. Enjoy!
             </div>
         </div>

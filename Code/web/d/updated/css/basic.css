@@ -3,9 +3,7 @@
 
 #logo {
     margin: 10px auto;
-    width: 160px;
-    position: relative;
-    top: -1000px;
+    width: 130px;
 }
 
 .updated {
@@ -15,4 +13,8 @@
     background-color: white;
     border-right: 2px solid <%= HtmlDesign.dim3 %>;
     border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
+}
+
+.updated .message {
+    line-height: 1.5em;
 }

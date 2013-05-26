@@ -38,9 +38,7 @@
     width: 193px;
     background-color: #fff;
     overflow: hidden;
-    border: 1px solid #ddd;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
+    border: 1px solid <%= HtmlDesign.dim3 %>;;
     position: relative;
     float: left;
     margin: 2px;
@@ -239,8 +237,6 @@
     display: inline-block;
     width: 400px;
     background-color: #fff;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
     padding: 10px;
     position: relative;
 }
@@ -346,7 +342,7 @@
 }
 
 .question_query .options .option .is_set {
-    border: 2px <%= HtmlDesign.highlight %> solid;
+    border: solid 2px <%= HtmlDesign.highlight %>;
     background-color: #a8ff8f;
 }
 
@@ -388,11 +384,10 @@
 /* Smart Group Dashboard */
 #smart_group_dashboard {
     background-color: #fff;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
     padding: 5px 5px 0 5px;
     position: relative;
     margin-bottom: 10px;
+    border: solid 1px <%= HtmlDesign.dim4 %>;
 }
 
 #smart_group_dashboard .name {

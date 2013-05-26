@@ -4,12 +4,11 @@
 /* Profile Dashboard */
 #profile_dashboard {
     background-color: #fff;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
     padding: 5px;
     position: relative;
     display: inline-block;
-    width: 587px;
+    width: 588px;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 #profile_dashboard .left {
@@ -198,6 +197,12 @@
     background: #888;
     color: white;
     margin: 0 5px 5px 0;
+}
+
+.profile_answers hr.answer_sep {
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 .profile_answers .details {

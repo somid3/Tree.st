@@ -92,10 +92,7 @@ body {
     padding: 10px;
     margin-bottom: 40px;
     margin-top: -15px;
-    border-top: solid 1px <%= HtmlDesign.dim3 %>;
-    border-left: solid 1px <%= HtmlDesign.dim3 %>;
-    border-bottom: solid 2px <%= HtmlDesign.dim2 %>;
-    border-right: solid 2px <%= HtmlDesign.dim2 %>;
+    border: solid 1px <%= HtmlDesign.dim3 %>;
 }
 
 

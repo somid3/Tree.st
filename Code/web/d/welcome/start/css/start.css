@@ -111,9 +111,7 @@
     margin-top: 5px;
     line-height: 1.3em;
     margin-left: 10px;
-    border-top: 1px dashed <%= HtmlDesign.dim2 %>;
-    border-left: 1px dashed <%= HtmlDesign.dim2 %>;
-    border-right: 1px dashed <%= HtmlDesign.dim2 %>;
+    border: 1px dashed <%= HtmlDesign.dim2 %>;
 }
 
 #create .step .qualities .quality .example .small .line {

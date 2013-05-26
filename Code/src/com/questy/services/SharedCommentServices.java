@@ -15,33 +15,48 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class SharedCommentServices extends ParentService  {
 
-    public static Tuple<Integer, Integer> add (Integer networkId, Integer userId, Integer smartGroupRef, Integer sharedItemRef, String text) throws SQLException {
+    public static Tuple<Integer, Integer> add (
+            Integer networkId,
+            Integer userId,
+            Integer smartGroupRef,
+            Integer sharedItemRef,
+            String text) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
 
-        // Validating
-        if (text == null || text.isEmpty())
-            throw new UIException("Shared comment text can not be empty");
+        // Getting network settings
+        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+
+        // Validating minimum length
+        if (text.length() < networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENT_MIN_LENGTH))
+            throw new UIException("Comment is too short");
+
+        // Validating max length
+        if (text.length() > networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENT_MAX_LENGTH))
+            throw new UIException("Comment is too long");
+
 
         // Validating for timing attacks
         if (Vars.enableTimelocks) {
+
             // Validating for minute attack
-            Integer perMinute = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_MINUTE.getValueByNetworkId(networkId);
+            Integer perMinute = networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_MINUTE);
             Integer lastMinute = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.minutesAgo(1));
             if (lastMinute >= perMinute) throw new UIException("Limit: " + perMinute + " comments per minute");
 
             // Validating for hour attack
-            Integer perHour = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_HOUR.getValueByNetworkId(networkId);
+            Integer perHour = networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_HOUR);
             Integer lastHour = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.hoursAgo(1));
             if (lastHour >= perHour) throw new UIException("Limit: " + perHour + " comments per hour");
 
             // Validating for day attack
-            Integer perDay = NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_DAY.getValueByNetworkId(networkId);
+            Integer perDay = networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENTS_PER_DAY);
             Integer lastDay = SharedCommentDao.countByNetworkIdAndUserIdAndCreatedAfter(conn, networkId, userId, DateUtils.daysAgo(1));
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " comments per day");
         }
@@ -107,7 +122,7 @@ public class SharedCommentServices extends ParentService  {
 
         // Validating authority to delete
         if (!(deletedByAuthor || deletedByModerator))
-            throw new UIException("User can not hide shared comment");
+            throw new UIException("Can not hide comment");
 
         // Hide shared comment
         SharedCommentDao.updateHiddenByNetworkIdAndSmartGroupRefAndSharedItemIdAndRef(conn, networkId, smartGroupRef, sharedItemRef, ref, true);

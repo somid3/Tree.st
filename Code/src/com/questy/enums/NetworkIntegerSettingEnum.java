@@ -21,6 +21,8 @@ public enum NetworkIntegerSettingEnum {
     SHARED_ITEMS_PER_FIVE_MINUTES       (202, 2),
     SHARED_ITEMS_PER_HOUR               (203, 6),
     SHARED_ITEMS_PER_DAY                (204, 10),
+    SHARED_ITEM_MIN_LENGTH              (205, 3),
+    SHARED_ITEM_MAX_LENGTH              (206, 600),
 
     SHARED_COMMENT_POINTS_PER           (300, 5),
     SHARED_COMMENT_DISPLAY_CREATED_ON   (301, 1),
@@ -32,6 +34,8 @@ public enum NetworkIntegerSettingEnum {
     SHARED_ITEM_DISPLAY_DOWN_VOTES      (306, 1),
     SHARED_COMMENTS_DISPLAY_UP_VOTES    (307, 1),
     SHARED_COMMENTS_DISPLAY_DOWN_VOTES  (308, 1),
+    SHARED_COMMENT_MIN_LENGTH           (309, 2),
+    SHARED_COMMENT_MAX_LENGTH           (310, 500),
 
     USER_LINK_POINTS_PER                (400, 10),
     USER_LINKS_PER_MINUTE               (401, 3),

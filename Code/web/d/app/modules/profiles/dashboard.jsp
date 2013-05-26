@@ -68,7 +68,7 @@
                 <% } else { %>
 
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
-                        <div id="profile_message" class="clickable md_button light_button md_text selected">
+                        <div id="profile_message" class="clickable md_button dark_button md_text selected">
                             Message <%= viewed.getFirstName() %>
                         </div>
                     </a>

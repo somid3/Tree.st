@@ -3,11 +3,10 @@
 
 #all_members_dashboard {
     background-color: #fff;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
     padding: 5px 5px 0 5px;
     position: relative;
     margin-bottom: 10px;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 #all_members_dashboard .shortcuts {

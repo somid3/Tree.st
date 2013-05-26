@@ -113,7 +113,6 @@
 
 .canvas_mini_message .container .content {
     margin: 0 auto;
-    /*border: 2px dashed <%= HtmlDesign.dim %>;*/
     padding: 20px;
 
 

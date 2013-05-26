@@ -5,7 +5,7 @@
     if (defaultEmail == null) defaultEmail = "";
 %>
 
-<div id="forgot" class="shadow center">
+<div id="forgot" class="center">
     <div id="form">
         <div class="element">
             <div class="sp_text">Password</div>
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div id="check" class="center shadow">
+<div id="check" class="center">
     <div><span class="sp_text white">Email Sent</span></div>
 
     <p class="lg_text white">Visit your email inbox, we sent you a reset link that is valid for one hour only</p>

@@ -24,7 +24,7 @@
 
 <div id="share_something">
 
-    <div class="arrow_box sm_glow">
+    <div class="arrow_box">
         <textarea id="tell_me" placeholder="Share your thoughts" class="md_input"></textarea>
     </div>
 
@@ -41,7 +41,8 @@
             </div>
         </a>
         <div class="share_error smd_text white"></div>
-        <div class="share_loading"><img src="./img/sm_loading.gif"></div>
+        <div class="share_loading"><img src="./img/sm_loading_white.gif"></div>
+
     </div>
 
 </div>

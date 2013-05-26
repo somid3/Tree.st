@@ -97,7 +97,7 @@ public class EmailServices extends ParentService {
         ser.setFromName(Vars.supportEmailName);
         ser.setFromEmail(Vars.supportEmail);
         ser.addRecipient(user.getEmail());
-        ser.setSubject("Password reset for Tree.st");
+        ser.setSubject("Password reset for " + Vars.name);
         ser.setMessageText(EmailServices.customizeMessage(message, user));
 
         // Sending the email

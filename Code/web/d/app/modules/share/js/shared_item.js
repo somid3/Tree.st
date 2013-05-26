@@ -21,12 +21,6 @@ function SharedItem () {
         parameters.sgr = this.smartGroupRef;
         parameters.t = $tellMe.val();
                             
-        // Validating input
-        if ($tellMe.val().length == 0) {
-            $error.fadeIn(1000).html("No message entered").fadeOut(1000);
-            return false;
-        }
-
         // Display loading
         $loading.show();
 

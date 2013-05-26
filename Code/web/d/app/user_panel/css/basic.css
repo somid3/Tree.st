@@ -16,11 +16,10 @@
 /* User Panel Dashboard */
 #user_panel_dashboard {
     background-color: #fff;
-    border-right: 2px solid #bbb;
-    border-bottom: 2px solid #bbb;
     padding: 5px 5px 0 5px;
     position: relative;
     margin-bottom: 5px;
+    border: solid 1px <%= HtmlDesign.dim3 %>;
 }
 
 #user_panel_dashboard .name {
@@ -67,9 +66,8 @@
 
 #user_panel_dashboard .details #message .thumbnail {
     float: left;
-    border: 1px solid #bbb;
-    border-bottom: 2px solid #bbb;
-    border-right: 2px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-right: 1px solid #bbb;
     background-color: #fff;
     width: 60px;
     height: 60px;
