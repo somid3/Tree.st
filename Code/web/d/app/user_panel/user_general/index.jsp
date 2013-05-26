@@ -1,7 +1,5 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="../load.jsp" %>
-
 <%
     String hTargetId = HtmlUtils.getRandomId();
     String hShortcutsId = null;

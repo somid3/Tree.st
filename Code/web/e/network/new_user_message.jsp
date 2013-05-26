@@ -20,6 +20,9 @@
         query.add("nid", network.getId());
         hAuthorProfileLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
+
+    // Replacing new lines with html new lines
+    quote = quote.replace("\n", "<br/>");
 %>
 <%@ include file="../includes/a_container_start.jsp"%>
 
@@ -46,30 +49,29 @@
                         font-size: 14px;
                         line-height: 1.3em;">
 
-                    Dear <%= EmailServices.TO_USER_FIRST_NAME %>,<br/>
-                    <br/>
-                    <%= fromUser.getFirstName() %> from "<%= network.getName() %>" just sent you a message!<br/>
-                    <br/>
+                        Dear <%= EmailServices.TO_USER_FIRST_NAME %>,<br/>
+                        <br/>
+                        <%= fromUser.getFirstName() %> from "<%= network.getName() %>" just sent you a message!<br/>
+                        <br/>
 
-                    <span
-                        style="
-                        font-family: <%= HtmlDesign.fontFamilyQuote%>;
-                        font-size: 18px;
-                        line-height: 1.3em;
-                        font-style: italic">
+                        <span
+                            style="
+                            font-family: <%= HtmlDesign.fontFamilyQuote%>;
+                            font-size: 18px;
+                            line-height: 1.3em;
+                            font-style: italic">
 
-                    "<%= quote %>"</br>
+                        "<%= quote %>"
+                        </span><br/>
+                        <br/>
+                        To reply, go to
+                        <%= EmailDesign.aBegin(hAuthorProfileLink)%><%= fromUser.getFirstName() %>'s profile<%= EmailDesign.aEnd %>
+                        and click on 'Message'<br/>
 
-                    </span>
+                        <br/>
+                        Best,<br/>
+                        <%= Vars.supportEmailName %>
 
-                    <br/>
-                    To reply, go to
-                    <%= EmailDesign.aBegin(hAuthorProfileLink)%><%= fromUser.getFirstName() %>'s profile<%= EmailDesign.aEnd %>
-                    and click on 'Message'</br>
-
-                    </br>
-                    Best,<br/>
-                    <%= Vars.supportEmailName %>
                     </span>
                 </td>
             </tr>

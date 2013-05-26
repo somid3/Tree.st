@@ -20,15 +20,20 @@
     float: left;
     width: 160px;
     height: 160px;
-    border: 1px solid #ddd;
-    border-bottom: 2px solid #bbb;
-    border-right: 2px solid #bbb;
     background-color: #fff;
+    position: relative;
+    top: -12px;
 }
 
 #profile_dashboard .left .thumbnail img {
     width: 160px;
     height: 160px;
+}
+
+#profile_dashboard .left .points {
+    position: absolute;
+    top: 140px;
+    width: 160px;
 }
 
 #profile_dashboard .left .upload {
@@ -49,12 +54,6 @@
 
 #profile_dashboard .right .top .title {
     margin-bottom: 5px;
-}
-
-#profile_dashboard .right .top .points {
-    padding: 3px;
-    background-color: #8C8C80;
-    float: right;
 }
 
 

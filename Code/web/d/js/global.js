@@ -484,65 +484,6 @@ Animations.scrollToTop = function () {
 
 
 
-function Css () {};
-
-Css.devRefreshCss = function (href, rev, development) {
-
-    if (!development) return false;
-
-    var alreadyLoaded = false;
-
-    // Loop through all 'link' elements in the head
-    $("head link").each( function () {
-
-        /**
-         *  If we are in development mode, iterate
-         *  through all the 'link' elements and remove
-         *  the link element whose url contains the one
-         *  we are attempting to add, and then add it
-         *  again -- in essence, refresh the 'link'
-         *  element
-         */
-      
-         // Do the hrefs match
-         if ( $(this).attr("href").toLowerCase().indexOf(href) == 0 ) {
-
-            // Document that css has already been loaded
-            alreadyLoaded = true;
-
-            // Yes, delete the current 'link' element
-            $(this).remove();
-            alreadyLoaded = false;
-
-        }
-    });
-
-    if (!alreadyLoaded) {
-        Css.addCss(href + "?" + rev, development);
-    }
-
-};
-
-Css.addCss = function (href, development) {
-
-    /**
-     * If in development mode add timestamp to href so no browser
-     * can cache the results
-     */
-     if (development) {
-        var timestamp = (new Date()).getTime();
-        href = href + "?" + timestamp;
-     }
-
-    var script = $('<link>', {
-       rel: 'stylesheet',
-       type: 'text/css',
-       href: href
-    }).appendTo(document.head);
-
-};
-
-
 /**
  * Makes sure all javascript classes use the same logic to ensure
  * whether or not an option has been selected

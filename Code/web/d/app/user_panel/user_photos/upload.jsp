@@ -1,6 +1,5 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="../load.jsp" %>
 
 <form action="./user_panel/user_photos/actions/upload.jsp" method="post" enctype="multipart/form-data">
 

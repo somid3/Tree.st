@@ -1,6 +1,5 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="./load.jsp" %>
 <%
     // Retrieving total number of shared items
     Integer count = SharedItemDao.countByNetworkId(null, homeId);

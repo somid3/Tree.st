@@ -147,19 +147,6 @@ public class Vars {
 
 
 
-
-
-    /***************************
-     * CSS related variables
-     **************************/
-
-    /**
-     * Whether or not the CSS files of each module should be reloaded when certain
-     * pages of that module are called
-     */
-    public static boolean reloadCss = false;
-
-
     /***************************
      * SQL variables
      **************************/
@@ -208,7 +195,6 @@ public class Vars {
         sendEmails =  loadPropertyAsBoolean("sendEmails");
         logSentEmails = loadPropertyAsBoolean("logSentEmails");
 
-        reloadCss = loadPropertyAsBoolean("reloadCss");
         mockUserAgent = loadPropertyAsString("mockUserAgent");
 
         sqlUsername = loadPropertyAsString("sqlUsername");
@@ -232,7 +218,6 @@ public class Vars {
         resourcesFilePath = loadPropertyAsString("resourcesFilePath");
         resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
 
-        reloadCss = loadPropertyAsBoolean("reloadCss");
         sendEmails =  loadPropertyAsBoolean("sendEmails");
         logSentEmails = loadPropertyAsBoolean("logSentEmails");
         resourcesFilePath = loadPropertyAsString("resourcesFilePath");

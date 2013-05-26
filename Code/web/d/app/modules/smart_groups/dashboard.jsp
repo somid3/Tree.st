@@ -1,6 +1,5 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="./load.jsp" %>
 <%
     Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
 

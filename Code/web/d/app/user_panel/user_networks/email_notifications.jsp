@@ -1,7 +1,6 @@
 <%@ include file="../../setup.jsp" %>
 <% appDisableBlocked = false; %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="../load.jsp" %>
 <%
     String app_d_title = null;
     String app_d_message = null;

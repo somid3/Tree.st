@@ -32,26 +32,39 @@
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-
                     <span
                         style="
                         font-family: <%= HtmlDesign.fontFamily %>;
                         font-weight: bold;
-                        font-size: 20px;
-                        color: <%= HtmlDesign.highlight %>">
+                        font-size: 20px;">
 
-                    <%= EmailDesign.aBegin(c_hTreeLink, EmailDesign.aStyleNoDeco) %>
-                        <span style="color: <%= HtmlDesign.highlight %>">
-                            <%= Vars.name %>
-                        </span>
-                    <%= EmailDesign.aEnd %>
+                    <%
+                    // Display the platform name is there is no network defined
+                    if (c_network == null) { %>
+
+                        <%= EmailDesign.aBegin(c_hTreeLink, EmailDesign.aStyleNoDeco) %>
+                            <span style="color: <%= HtmlDesign.highlight %>">
+                                <%= Vars.name %>
+                            </span>
+                        <%= EmailDesign.aEnd %>
+                    <% } %>
 
                     <% if (c_network != null) { %>
 
                         <%= EmailDesign.aBegin(c_hNetworkLink, EmailDesign.aStyleNoDeco) %>
-                        <span style="color: <%= HtmlDesign.dim %>">
-                            / <%= StringUtils.concat(c_network.getName(), 20, "&hellip;") %>
-                        </span>
+
+                        <% if (NetworkIntegerSettingEnum.UI_HAS_LOGO.getValueByNetworkId(c_network.getId()) == 0) { %>
+
+                            <span style="color: <%= HtmlDesign.dim %>">
+                                / <%= StringUtils.concat(c_network.getName(), 20, "&hellip;") %>
+                            </span>
+
+                        <% } else { %>
+
+                            <img src="<%= c_network.getLogoResourceUrl() %>"
+
+                        <% } %>
+
                         <%= EmailDesign.aEnd %>
 
                     <% } %>
@@ -70,17 +83,13 @@
 
                     <% if (c_title != null) { %>
 
-                        <span
-                            style="
-                            font-family: <%= HtmlDesign.fontFamily %>;
-                            font-weight: bold;
-                            font-size: 20px;
-                            color: <%= HtmlDesign.dim %>">
-
+                        <span style=" color: <%= HtmlDesign.dim %>">
                             &mdash; <%= c_title %>
                         </span>
 
                     <% } %>
+
+                    </span>
 
                 </td>
             </tr>

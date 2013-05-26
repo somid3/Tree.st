@@ -32,28 +32,29 @@
 
     <div class="left">
 
-        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
+        <div class="thumbnail sm_shadow"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
 
-            <div class="thumbnail"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
+        <% if (viewMyself && !viewed.hasFace()) {
+            String hUploadPhotoId = HtmlUtils.getRandomId(); %>
+            <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow6">Upload photo</div>
+            <script type="text/javascript">
+                Animations.dance("#<%= hUploadPhotoId %>", 1000, 3000);
+            </script>
+        <% } %>
 
-            <% if (viewMyself && !viewed.hasFace()) {
-                String hUploadPhotoId = HtmlUtils.getRandomId(); %>
-                <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow6">Upload photo</div>
-                <script type="text/javascript">
-                    Animations.dance("#<%= hUploadPhotoId %>", 1000, 3000);
-                </script>
-            <% } %>
+        <% if (!viewMyself) { %>
+            <div class="points">
+                <div class="sm_button sm_text w50 center sm_shadow" style="background-color: white">
+                    <%= userToNetwork.getCurrentPoints() %> pts.
+                </div>
+            </div>
+        <% } %>
 
-        </a>
     </div>
 
     <div class="right">
 
         <div class="top">
-
-            <% if (!viewMyself) { %>
-                <div class="points smd_text white"><%= userToNetwork.getCurrentPoints() %> pts.</div>
-            <% } %>
 
             <div class="title lg_header"><%= viewed.getName() %></div>
 

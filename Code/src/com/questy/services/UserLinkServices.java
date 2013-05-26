@@ -16,6 +16,7 @@ import com.questy.utils.Vars;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 
 public class UserLinkServices extends ParentService  {
 
@@ -30,27 +31,28 @@ public class UserLinkServices extends ParentService  {
         // Currently non-transactional
         Connection conn = null;
 
-        // Retrieving network
-        Network network = NetworkDao.getById(conn, networkId);
-
         // Validating
         if (fromUserId.equals(toUserId))
             throw new UIException("Go to 'My profile'");
 
+        // Getting network settings
+        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+
         // Validating for timing attacks
         if (Vars.enableTimelocks) {
+
             // Validating for minute attack
-            Integer perMinute = NetworkIntegerSettingEnum.USER_LINKS_PER_MINUTE.getValueByNetworkId(networkId);
+            Integer perMinute = networkIntegerSettings.get(NetworkIntegerSettingEnum.USER_LINKS_PER_MINUTE);
             Integer lastMinute = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.minutesAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastMinute >= perMinute) throw new UIException("Limit: " + perMinute + " views per minute");
 
             // Validating for hour attack
-            Integer perHour = NetworkIntegerSettingEnum.USER_LINKS_PER_HOUR.getValueByNetworkId(networkId);
+            Integer perHour = networkIntegerSettings.get(NetworkIntegerSettingEnum.USER_LINKS_PER_HOUR);
             Integer lastHour = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.hoursAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastHour >= perHour) throw new UIException("Limit: " + perHour + " views per hour");
 
             // Validating for day attack
-            Integer perDay = NetworkIntegerSettingEnum.USER_LINKS_PER_DAY.getValueByNetworkId(networkId);
+            Integer perDay = networkIntegerSettings.get(NetworkIntegerSettingEnum.USER_LINKS_PER_DAY);
             Integer lastDay = UserLinkDao.countByNetworkIdAndFromUserIdAndCreatedAfterAndDirection(conn, networkId, fromUserId, DateUtils.daysAgo(1), UserLinkDirectionEnum.ME_TO_TARGET);
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " views per day");
         }
@@ -148,8 +150,8 @@ public class UserLinkServices extends ParentService  {
         // Retrieving user to network
         UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(conn, userId, networkId);
 
-        if (!networkId.equals(userToNetwork.getNetworkId()))
-            throw new RuntimeException("Network ids need to match");
+        if (userToNetwork == null)
+            throw new RuntimeException("User is not a member of network");
 
         // Giving preference to user set value if not null
         if (userToNetwork.getPointsPerLink() != null)

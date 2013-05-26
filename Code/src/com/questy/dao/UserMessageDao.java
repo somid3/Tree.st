@@ -61,7 +61,7 @@ public class UserMessageDao extends ParentDao {
             "`network_id`, " +
             "`from_user_id`, " +
             "`to_user_id`, " +
-            "`messages`" +
+            "`message`" +
             ") values (NOW(), ?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

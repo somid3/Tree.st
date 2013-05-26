@@ -42,9 +42,9 @@
                 </div>
                 <div class="gather">
 
-                    <span class="md_text dim">http://<%= Vars.domain %>/</span>
+                    <span class="md_text dim"><%= Vars.domain %>/</span>
 
-                    <div class="input square"><input class="lg_input w150" maxlength="30"></div>
+                    <div class="input"><input class="lg_input w150" maxlength="30"></div>
 
                     <div class="feedback">
                         <div class="error"></div>
@@ -59,7 +59,7 @@
                     <div class="small sm_text dim">What is the name of your community? For example "Garage Bands of San Francisco"</div>
                 </div>
                 <div class="gather">
-                    <div class="input square"><input class="lg_input w300" maxlength="60"></div>
+                    <div class="input"><input class="lg_input w300" maxlength="60"></div>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     <div class="big vl_text dim">Purpose & Description</div>
                     <div class="small sm_text dim">In one or two lines, describe the purpose of your community. For instance "Musicians of San Francisco, find other artists near you to play music together."</div>
                 </div>
-                <div class="gather"><div class="input square"><textarea class="md_input w300" maxlength="250"></textarea></div></div>
+                <div class="gather"><div class="input"><textarea class="md_input w300" maxlength="250"></textarea></div></div>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="gather">
                     <div class="title">Your Quality</div>
-                    <div class="input square"><textarea class="md_input"></textarea></div>
+                    <div class="input"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@
                 </div>
                 <div class="gather">
                     <div class="title">Your Quality</div>
-                    <div class="input square"><textarea class="md_input"></textarea></div>
+                    <div class="input"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@
                 </div>
                 <div class="gather">
                     <div class="title">Your Quality</div>
-                    <div class="input square"><textarea class="md_input"></textarea></div>
+                    <div class="input"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
                 </div>
                 <div class="gather">
                     <div class="title">Your Quality</div>
-                    <div class="input square"><textarea class="md_input"></textarea></div>
+                    <div class="input"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
@@ -178,7 +178,7 @@
                 </div>
                 <div class="gather">
                     <div class="title">Your Quality</div>
-                    <div class="input square"><textarea class="md_input"></textarea></div>
+                    <div class="input"><textarea class="md_input"></textarea></div>
                 </div>
             </div>
 
@@ -211,7 +211,7 @@
     <div id="create_loading"><img src="../img/loading.gif"></div>
 
     <a href="#" onclick="Create.create(event)">
-        <div id="submit" class="start sp_header white">Create!</div>
+        <div id="submit" class="start sp_header white">Start</div>
     </a>
 
 </div>

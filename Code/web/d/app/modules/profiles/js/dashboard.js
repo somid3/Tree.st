@@ -123,15 +123,6 @@ function ProfileDashboard () {
 
 }
 
-
-
-
-
-
-
-
-
-
 ProfileDashboard.displayLoading = function () {
     var $loading = $("#profile_loading");
     var $canvas = $("#profile_canvas");
@@ -143,4 +134,58 @@ ProfileDashboard.displayLoading = function () {
 ProfileDashboard.hideLoading = function () {
     var $loading = $("#profile_loading");
     $loading.hide();
+};
+
+
+function UserMessage () {};
+
+UserMessage.send = function (event, networkId, toUserId, callback) {
+
+    Event.preventDefault(event);
+
+    // Gathering objects
+    var $quote = $("#quote");
+    var $loadingDiv = $("#send_message_loading");
+    var $errorDiv = $("#send_message_error");
+    var $sendMessage = $("#send_message");
+    var $messageSent = $("#message_sent");
+
+    // Defining parameters
+    var parameters = {};
+    parameters.nid = networkId;
+    parameters.tuid = toUserId;
+    parameters.qu = $quote.val();
+
+    // Resetting for submission
+    $loadingDiv.show();
+    $errorDiv.hide();
+
+    $.post('./modules/profiles/actions/send_message.jsp', parameters, function(response) {
+
+        // Parsing the results
+        var responseDoc = $.parseXML($.trim(response));
+        var $response = $(responseDoc);
+
+        // Did an error occur
+        var $responseError = $response.find("error");
+        if($responseError.length > 0) {
+
+            $errorDiv.fadeIn().html($responseError.text());
+            $loadingDiv.fadeOut();
+
+        } else {
+
+            // Retrieve used points
+            var usedPoints = $response.find("points").text();
+
+            // Update points
+            Points.increment(usedPoints);
+
+            // Hiding send message and displaying message sent
+            $sendMessage.hide()
+            $messageSent.fadeIn();
+        }
+
+    });
+
 };

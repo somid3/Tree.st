@@ -38,6 +38,13 @@ public enum NetworkIntegerSettingEnum {
     USER_LINKS_PER_HOUR                 (402, 60),
     USER_LINKS_PER_DAY                  (403, 120),
 
+    USER_MESSAGE_POINTS_PER             (404, 5),
+    USER_MESSAGES_PER_MINUTE            (405, 2),
+    USER_MESSAGES_PER_HOUR              (406, 20),
+    USER_MESSAGES_PER_DAY               (407, 60),
+    USER_MESSAGE_MIN_LENGTH             (408, 10),
+    USER_MESSAGE_MAX_LENGTH             (409, 500),
+
     SMART_RESULTS_DISPLAY_SINCE         (500, 1),
 
     /**

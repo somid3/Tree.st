@@ -1,6 +1,5 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
-<%@ include file="./load.jsp" %>
 
 <script type="text/javascript">
     AMD = new AllMembersDashboard();

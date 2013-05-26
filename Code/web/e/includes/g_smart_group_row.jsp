@@ -23,7 +23,7 @@
             <td>
                 <span style="font-family: <%= HtmlDesign.fontFamily %>; font-size: 18px;">
 
-                <%= EmailDesign.aBegin(f_hSmartGroupLink)%>
+                <%= EmailDesign.aBegin(f_hSmartGroupLink, EmailDesign.aStyleNoDeco)%>
                     <span style="color: <%= HtmlDesign.highlight6 %>"><b><%= StringUtils.concat(g_smartGroup.getName(), 30, "...") %></b></span>
                 <%= EmailDesign.aEnd %>
 

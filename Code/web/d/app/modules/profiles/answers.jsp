@@ -49,20 +49,6 @@
     Answer userAnswer = null;
     String hOptionStyle = null; %>
 
-    <% if (!viewMyself) { %>
-        <div id="profile_answer_keys" class="canvas_container">
-            <div class="container">
-                <span class="title sm_text dim2">Key: </span>
-                <span class="key" style="border-left: 2px solid green">&nbsp;</span>
-                <span class="title sm_text dim">Question you share in common</span>
-                <span class="key" style="background-color: green">&nbsp;</span>
-                <span class="title sm_text dim">Answers you share in common</span>
-            </div>
-        </div>
-    <% } %>
-
-
-
     <%
 
     // Looping over all approved networks
@@ -109,12 +95,7 @@
                 question = QuestionServices.getByNetworkIdAndRef(question.getNetworkId(), question.getRef()); %>
 
 
-                <% if (userAnswer != null) { %>
-                    <div class="answer" style="border-left: 4px solid green">
-                <% } else { %>
-                    <div class="answer" style="border-left: 4px solid #ddd">
-                <% } %>
-
+                    <div class="answer">
                         <div class="question">
                         <div class="text smd_text dim"><%= question.getText() %></div>
                         <div class="qualities">

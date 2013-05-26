@@ -72,7 +72,7 @@
             <td></td>
             <td valign="top" align="center">
                 <br/>
-                <%= EmailDesign.aBegin(f_hSharedItemLink)%>
+                <%= EmailDesign.aBegin(f_hSharedItemLink, EmailDesign.aStyleNoDeco)%>
                     <%= EmailDesign.spanButtonBegin() %>
 
                         Comment
