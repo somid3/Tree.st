@@ -155,13 +155,17 @@
 
             <div class="answer">
                 <div class="buttons">
+
+                    <div id="question_submit_error" class="sm_text white"></div>
+
                     <a href="#" onclick="QD.submit(event)"><div class="submit lg_button submit_button md_text white">Submit</div></a>
                     <a href="#" onclick="QD.skip(event)"><div class="skip lg_button dark_button md_text white">Skip</div></a>
+                    <div id="question_submit_loading"><img src="./img/sm_loading.gif"></div>
                 </div>
                 <div class="settings">
                     <div class="visibility">
 
-                        <img src="./modules/collaborate/img/lock.png" alt="">
+                        <img src="./modules/questions/img/lock.png" alt="">
 
                         <%
                             app_d_title = "Answer Visibility";
@@ -202,7 +206,7 @@
         <% if (!homeCollectMode) { %>
             <div class="output shadow"></div>
             <script type="text/javascript">
-                $(".output").load("./modules/collaborate/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});
+                $(".output").load("./modules/questions/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});
             </script>
         <% }%>
 

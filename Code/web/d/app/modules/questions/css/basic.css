@@ -116,6 +116,20 @@
     width: 100%;
 }
 
+#question_submit_error {
+    float: left;
+    padding: 5px;
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
+    margin-top: 5px;
+    display: none;
+}
+
+#question_submit_loading {
+    float: right;
+    margin: 5px;
+    display: none;
+}
+
 .question_display .input .answer .buttons .skip {
     float: right;
 }

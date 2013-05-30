@@ -39,8 +39,6 @@ public class CronServices {
             // Looping over smart groups
             for (SmartGroup group : groups) {
 
-                System.out.println(group.getNetworkId() + " - " + group.getSmartGroupRef());
-
                 // Running search to create scores and add new mappings
                 queryXml = QueryXmlReader.parseAndLoad(group.getQuery());
                 QueryServices.createScoresAndMappings(network.getId(), group.getSmartGroupRef(), queryXml);

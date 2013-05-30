@@ -14,7 +14,7 @@
     } catch (UIException e) {
 
         // Confirmation failed, checksum is incorrect
-        webUtils.redirect("/d/logout");
+        webUtils.redirect("/d/signout");
     }
 
 %>

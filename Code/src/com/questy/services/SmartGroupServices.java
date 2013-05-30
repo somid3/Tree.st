@@ -119,6 +119,10 @@ public class SmartGroupServices extends ParentService  {
 
         // Updating the smart group's name and details...
         SmartGroupDao.updateDetailsByNetworkIdAndRef(null, networkId, smartGroupRef, name, description, visibility);
+
+        // Create user to smart group mappings
+        UserToSmartGroupServices.createSmartGroupMappings(networkId, smartGroupRef);
+
     }
 
 

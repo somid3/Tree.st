@@ -15,6 +15,21 @@
         <div class="error smd_text"></div>
 
         <div class="element">
+            <div class="name sm_text dim">Current password</div>
+            <div class="input">
+
+                <%
+                    app_d_title = "Current Password";
+                    app_d_message = "Smart groups are the places of great conversations. Here set the rate at which you receive new message notifications or digests.";
+                    app_d_position = HtmlDesign.Positions.BOTTOM;
+                %>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+                <input name="pass" type="password" class="md_input w250 bottom_line">
+            </div>
+        </div>
+
+        <div class="element">
             <div class="name sm_text dim">Your first name</div>
             <div class="input">
 
@@ -44,22 +59,7 @@
             </div>
         </div>
 
-        <div class="element">
-            <div class="name sm_text dim">Current password</div>
-            <div class="input">
-
-                <%
-                    app_d_title = "Current Password";
-                    app_d_message = "Smart groups are the places of great conversations. Here set the rate at which you receive new message notifications or digests.";
-                    app_d_position = HtmlDesign.Positions.BOTTOM;
-                %>
-                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
-                <input name="pass" type="password" class="md_input w250 bottom_line">
-            </div>
-        </div>
-
-        <div class="note sm_text dim">
+        <div class="note smd_text dim">
             After you save your settings the application<br/>
             will refresh itself and all your changes will take effect.
         </div>

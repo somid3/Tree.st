@@ -23,6 +23,7 @@
 
 #networks .networks {
     border: 1px solid #669933;
+    border-right: 3px solid #669933;
     background-color: #fff;
     padding: 4px;
 }
@@ -51,7 +52,7 @@
 
 #networks .item .contents .name {
     float: left;
-    padding: 3px 0 0 5px;
+    padding: 3px 0 0 10px;
 }
 
 #networks .item .contents .icon {
@@ -89,7 +90,6 @@
 #networks .selected {
     background-color: <%= HtmlDesign.highlight3 %>;
     color: #fff;
-    font-weight: bold;
 }
 
 
@@ -100,6 +100,7 @@
 /* Displays the current networks of the user*/
 #currently {
     border: 1px solid #bbb;
+    border-right: 3px solid #bbb;
     background-color: #fff;
     padding: 4px;
     margin-bottom: 15px;
@@ -116,23 +117,9 @@
     /*top: -2px;*/
 }
 
-#currently .header {
-    position: relative;
-    top: -13px;
-    background-color: #fff;
-    border-right: 2px solid <%= HtmlDesign.dim3 %>;
-    border-top: 1px solid <%= HtmlDesign.dim3 %>;
-    padding: 5px;
-    width: 130px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-
-
 #currently .shortcut {
-    margin: 2px;
-    padding: 0;
+    padding: 2px;
+    margin: 2px 0;
 }
 
 #currently .shortcut .contents {
@@ -141,7 +128,7 @@
 
 #currently .shortcut .contents .name {
     float: left;
-    padding: 3px 0 0 5px;
+    padding: 3px 0 0 10px;
 }
 
 #currently .shortcut .contents .icon {

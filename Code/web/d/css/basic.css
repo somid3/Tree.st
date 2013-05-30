@@ -201,7 +201,7 @@ div.rounded {
 
 .form-verhor .actionable .loading {
     float: left;
-    margin: 2px 5px;
+    margin: 10px 5px;
     display: none;
 }
 
@@ -481,6 +481,12 @@ div.sm_glow6 {
     -moz-box-shadow:    0px 0px 10px 2px <%= HtmlDesign.highlight6 %>;
     -webkit-box-shadow: 0px 0px 10px 2px <%= HtmlDesign.highlight6 %>;
     box-shadow:         0px 0px 10px 2px <%= HtmlDesign.highlight6 %>;
+}
+
+div.sm_glow7 {
+    -moz-box-shadow:    0px 0px 10px 2px white;
+    -webkit-box-shadow: 0px 0px 10px 2px white;
+    box-shadow:         0px 0px 10px 2px white;
 }
 
 div.vl_shadow {

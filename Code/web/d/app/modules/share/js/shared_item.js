@@ -21,7 +21,8 @@ function SharedItem () {
         parameters.sgr = this.smartGroupRef;
         parameters.t = $tellMe.val();
                             
-        // Display loading
+        // Display loading, hiding error
+        $error.hide();
         $loading.show();
 
         var tmp_this = this;
@@ -38,9 +39,7 @@ function SharedItem () {
             if($responseError.length > 0) {
 
                 // Display error
-                $error.fadeIn(1000).html($responseError.text()).fadeOut(1000);
-
-                // Hiding loading
+                $error.fadeIn(1000).html($responseError.text());
                 $loading.fadeOut();
 
                 return false;

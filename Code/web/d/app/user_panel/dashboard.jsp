@@ -7,7 +7,7 @@
             <div class="title lg_header"><%= me.getName() %></div>
         </div>
         <div class="settings">
-           <a href="/d/logout"><div class="setting sm_text highlight2">Log out</div></a>
+           <a href="/d/signout"><div class="setting sm_text highlight2">Sign out</div></a>
         </div>
     </div>
     <div class="menu">

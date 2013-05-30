@@ -67,7 +67,7 @@ function NetworkDashboard () {
 
         if (sendTo == null  || sendTo == NetworkDashboard.Section.QUESTIONS)
 
-            this.clickItem(event, '#network_shortcut_questions', './modules/collaborate/question_display.jsp', parameters, callback);
+            this.clickItem(event, '#network_shortcut_questions', './modules/questions/question_display.jsp', parameters, callback);
 
         else if (sendTo == NetworkDashboard.Section.SMART_SEARCH)
 
@@ -103,7 +103,7 @@ function NetworkDashboard () {
 
         else if (sendTo == NetworkDashboard.Section.BLOCKED)
 
-            this.clickItem(event, null, './modules/collaborate/blocked.jsp', parameters, callback);
+            this.clickItem(event, null, './modules/questions/blocked.jsp', parameters, callback);
     };
 
 }

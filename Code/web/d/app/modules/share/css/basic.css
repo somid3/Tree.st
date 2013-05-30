@@ -157,6 +157,7 @@
 .shared_item_box > .right .add_comment {
     width: 510px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 .shared_item_box > .right .add_comment > .top {
@@ -165,7 +166,7 @@
 }
 
 .shared_item_box > .right .add_comment > .top .error {
-    margin-left: 25px;
+    margin-left: 70px;
     margin-bottom: 5px;
     padding: 5px;
     background-color: <%= HtmlDesign.errorBackgroundColor %>;
@@ -173,16 +174,17 @@
     width: 200px;
 }
 
-.shared_item_box  > .right .add_comment > .top .loading {
-    display: none;
-    position: absolute;
-    top: 10px;
-}
-
 .shared_item_box  > .right .add_comment > .left {
     margin: 0 5px 0 25px;
     padding: 0;
     float: left;
+    position: relative;
+}
+
+.shared_item_box  > .right .add_comment > .left .loading {
+    display: none;
+    position: absolute;
+    left: -20px;
 }
 
 .shared_item_box > .right .add_comment > .left .face img {
@@ -198,7 +200,7 @@
 
 .shared_item_box  > .right .add_comment > .right .box {
     padding: 2px;
-    width: 250px;
+    width: 350px;
     border: 1px solid #bbb;
 }
 
@@ -206,7 +208,7 @@
     border: none;
     font-size: 12px;
     width: 240px;
-    height: 30px;
+    height: 50px;
 }
 
 

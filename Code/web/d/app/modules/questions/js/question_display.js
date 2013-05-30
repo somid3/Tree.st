@@ -26,6 +26,9 @@ function QuestionDisplay () {
         var $optionDiv = $('#' + hOptionId);
         var $optionHiddenInput = $('#' + hOptionId + ' input[name="is_set"]');
 
+        // Hiding the loading and error
+        QuestionDisplay.hideLoadingAndError();
+
         // Is the option already selected?
         if (OptionInput.isSelected($optionHiddenInput)) {
 
@@ -65,6 +68,9 @@ function QuestionDisplay () {
 
         if (isLocked) return false;
 
+        // Hiding the loading and error
+        QuestionDisplay.hideLoadingAndError();
+
         // Validating option value
         if (Forms.valGreaterThan("#" + this.hAddOptionInputId, 0)) {
 
@@ -73,7 +79,7 @@ function QuestionDisplay () {
 
             // Creating new option
             var tmp_this = this;
-            $.post('./modules/collaborate/add_option.jsp', {nid: this.networkId, qr: this.answeringQuestionRef, text: text},
+            $.post('./modules/questions/add_option.jsp', {nid: this.networkId, qr: this.answeringQuestionRef, text: text},
                 function(data) {
 
                     // Presenting new div on interface
@@ -99,6 +105,7 @@ function QuestionDisplay () {
 
             // Displaying error
             Animations.shake("#" + this.hAddOptionButtonId);
+            QuestionDisplay.displayError("Can not accept empty option")
 
         }
 
@@ -109,6 +116,9 @@ function QuestionDisplay () {
 
         // Binding all keystroke events to the filter input
         $("#" + hFilterOptionsInputId).bind("propertychange keyup input paste", function(event){
+
+            // Hiding the loading and error
+            QuestionDisplay.hideLoadingAndError();
 
             // Converting filter to lower case to enable case-insensitive search
             var filter = $("#" + hFilterOptionsInputId).val().toLowerCase();
@@ -204,8 +214,12 @@ function QuestionDisplay () {
         // Checking that some options have been selected
         if (selectedOptionRefs.length == 0) {
            Animations.shake(".submit");
+           QuestionDisplay.displayError("Select an option");
            return;
         }
+
+        // Displaying the loading
+        QuestionDisplay.displayLoading();
 
         // Beginning submission, locking down
         isLocked = true;
@@ -217,7 +231,7 @@ function QuestionDisplay () {
         var tmp_this = this;
 
         // Report answer
-        $.post('./modules/collaborate/actions/answer.jsp', {nid: tmp_this.networkId, aqr: tmp_this.answeringQuestionRef, vis: visibility, ors: selectedOptionRefs},
+        $.post('./modules/questions/actions/answer.jsp', {nid: tmp_this.networkId, aqr: tmp_this.answeringQuestionRef, vis: visibility, ors: selectedOptionRefs},
 
             function(response) {
 
@@ -230,7 +244,7 @@ function QuestionDisplay () {
                     var $div = $("<div/>");
                     $div
                         .css('display', 'none')
-                        .load("./modules/collaborate/question_display.jsp", {btb: tmp_this.backToBackCount + 1, fqr: tmp_this.answeringQuestionRef, nid: tmp_this.networkId}, function() { NetworkDashboard.hideLoading(); })
+                        .load("./modules/questions/question_display.jsp", {btb: tmp_this.backToBackCount + 1, fqr: tmp_this.answeringQuestionRef, nid: tmp_this.networkId}, function() { NetworkDashboard.hideLoading(); })
                         .prependTo("#canvas").
                         fadeIn(250);
 
@@ -331,7 +345,7 @@ function QuestionDisplay () {
         // Display question
         var $div = $("<div/>");
         $div.css('display', 'none')
-        .load("./modules/collaborate/question_display.jsp", {agqr: againQuestionRef, nid: networkId})
+        .load("./modules/questions/question_display.jsp", {agqr: againQuestionRef, nid: networkId})
         .prependTo("#canvas")
         .fadeIn(250);
 
@@ -340,6 +354,29 @@ function QuestionDisplay () {
     };
 }
 
+QuestionDisplay.displayLoading = function () {
+    var $loading = $("#question_submit_loading");
+    var $error = $("#question_submit_error");
+
+    $error.empty().hide();
+    $loading.show();
+};
+
+QuestionDisplay.displayError = function (errorMessage) {
+    var $loading = $("#question_submit_loading");
+    var $error = $("#question_submit_error");
+
+    $error.text(errorMessage).fadeIn();
+    $loading.hide();
+};
+
+QuestionDisplay.hideLoadingAndError = function () {
+    var $loading = $("#question_submit_loading");
+    var $error = $("#question_submit_error");
+
+    $error.hide();
+    $loading.hide();
+};
 
 
 

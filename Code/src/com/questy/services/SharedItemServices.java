@@ -2,12 +2,15 @@ package com.questy.services;
 
 import com.questy.dao.NetworkDao;
 import com.questy.dao.SharedItemDao;
+import com.questy.dao.SmartGroupDao;
 import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.SharedItem;
+import com.questy.domain.SmartGroup;
 import com.questy.domain.UserToNetwork;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
+import com.questy.enums.SmartGroupVisibilityEnum;
 import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
@@ -62,12 +65,29 @@ public class SharedItemServices extends ParentService  {
         // Retrieving points per shared item
         Integer pointsPerSharedItem = networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER);
 
-        // Check that the from user has the required number of points
         UserToNetwork fromUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(conn, userId, networkId);
+
+        // Check that the from user has the required number of points
         if (fromUserToNetwork.getCurrentPoints() < (pointsPerSharedItem * -1)) {
 
             // User does not have enough points, return null
             throw new UIException("Not enough points");
+        }
+
+        // Check that the user has the authority to add a message
+        SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
+
+        // Only editors can submit messages to official smart groups
+        if (smartGroup.getVisibility().equals(SmartGroupVisibilityEnum.OFFICIAL)) {
+
+            if (fromUserToNetwork.getRole().isLowerThan(RoleEnum.EDITOR))
+                throw new UIException("Members can not post in official groups");
+
+        // Visitors can not post messages to smart groups
+        } else if (smartGroup.getVisibility().equals(SmartGroupVisibilityEnum.SHARED)) {
+
+            if (fromUserToNetwork.getRole().isLowerThan(RoleEnum.MEMBER))
+                throw new UIException("Visitors can not post in groups");
         }
 
         // Retrieving max ref

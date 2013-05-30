@@ -8,6 +8,9 @@
 
     // Retrieving max length for messages
     Integer messageMaxLength = NetworkIntegerSettingEnum.USER_MESSAGE_MAX_LENGTH.getValueByNetworkId(homeId);
+
+    // Retrieving network settings
+    Integer pointsPer = NetworkIntegerSettingEnum.USER_MESSAGE_POINTS_PER.getValueByNetworkId(homeId);
 %>
 
 <div class="canvas_container" style="background-color: <%= HtmlDesign.dim %>;">
@@ -15,11 +18,10 @@
 
     <div class="w450 center">
 
-        <div id="message_sent" style="display: none;">
-            <%
-                String  app_a_message = "Your message has been sent!";
-                boolean app_a_withCanvasContainer = false; %>
-                <%@ include file="../../includes/app_a_mini_message.jsp" %>
+        <div id="message_sent" class="white vl_text" style="display: none; font-family: adam; padding: 20px; text-align: center; line-height: 1.5em;">
+
+            Your message has been sent!
+
         </div>
 
         <div id="send_message" style="display: inline-block;">
@@ -43,6 +45,10 @@
                 <a href="#" onclick="UserMessage.send(event, <%= homeId %>, <%= toUserId %>)">
                     <div class="submit_button md_button md_text w100" style="float: right; border: solid 1px white">
                         Send
+
+                        <% if (pointsPer != 0) { %>
+                            <span class="sm_text">(<%= pointsPer %> pts.)</span>
+                        <% } %>
                     </div>
                 </a>
 

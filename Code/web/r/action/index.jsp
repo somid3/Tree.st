@@ -7,7 +7,7 @@
     // Retrieving and validating user
     User user = UserDao.getByIdAndSaltChecksum(null, userId, saltChecksum);
     if (user == null)
-        webUtils.redirect("/d/logout");
+        webUtils.redirect("/d/signout");
 
 
 

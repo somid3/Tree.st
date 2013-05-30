@@ -15,6 +15,21 @@
         <div class="error smd_text"></div>
 
         <div class="element">
+            <div class="name sm_text dim">Current password</div>
+            <div class="input">
+
+                <%
+                    app_d_title = "Current Password";
+                    app_d_message = "Given that this change can alter your login capability, we ask all our users to enter their current password again.";
+                    app_d_position = HtmlDesign.Positions.BOTTOM;
+                %>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+                <input name="pass" type="password" class="md_input w250 bottom_line">
+            </div>
+        </div>
+
+        <div class="element">
             <div class="name sm_text dim">New password:</div>
             <div class="input">
 
@@ -44,22 +59,7 @@
             </div>
         </div>
 
-        <div class="element">
-            <div class="name sm_text dim">Current password</div>
-            <div class="input">
-
-                <%
-                    app_d_title = "Current Password";
-                    app_d_message = "Given that this change can alter your login capability, we ask all our users to enter their current password again.";
-                    app_d_position = HtmlDesign.Positions.BOTTOM;
-                %>
-                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
-                <input name="pass" type="password" class="md_input w250 bottom_line">
-            </div>
-        </div>
-
-        <div class="note sm_text dim">
+        <div class="note smd_text dim">
             After your settings are saved you will be<br/>
             automatically logged out and requested to log back in
         </div>

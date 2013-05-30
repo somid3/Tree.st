@@ -8,7 +8,7 @@
         /* No -- that means user did not authenticate successfully */
 
         // Check sum authentication failed, send to log out page
-        webUtils.redirect("/d/logout");
+        webUtils.redirect("/d/signout");
     }
 
     // Setting environment variables for the app
@@ -18,7 +18,7 @@
     // Retrieving logged user
     User me = UserDao.getByIdAndSaltChecksum(null, meId, myChecksum);
     if (me == null)
-        webUtils.redirect("/d/logout");
+        webUtils.redirect("/d/signout");
 
     // Is there a current network?
     Integer homeId = StringUtils.parseInt(request.getParameter("nid"));
@@ -33,13 +33,13 @@
 
     // Ensuring the mapping has to exist
     if (home != null && meToHome == null)
-        webUtils.redirect("/d/logout");
+        webUtils.redirect("/d/signout");
 
     // Ensuring user has not been blocked from a network
     if (meToHome != null &&
         meToHome.getBlockedOn() != null &&
         appDisableBlocked)
-            webUtils.redirect("/d/logout");
+            webUtils.redirect("/d/signout");
 
     // Determines whether a community should be in collect mode only or not
     Boolean homeCollectMode = false;

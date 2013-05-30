@@ -117,8 +117,8 @@
 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">
     <div class="shortcut" id="network_shortcut_questions">
         <div class="contents">
-            <div class="icon"><img src="./modules/networks/img/collaborate.png" alt="Collaborate"></div>
-            <div class="name smd_text">Collaborate</div>
+            <div class="icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
+            <div class="name smd_text">Details</div>
         </div>
         <% if (nextQuestionRef != null) { %>
             <div class="bullet" id="<%= NetworkHtml.getBulletId(homeId) %>"><img src="./img/dot-green-16.png"></div>

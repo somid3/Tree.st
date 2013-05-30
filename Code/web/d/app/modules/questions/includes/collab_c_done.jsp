@@ -32,7 +32,7 @@
     <div class="canvas_container">
         <div class="container">
 
-            <div><img src="./modules/collaborate/img/done.png"></div>
+            <div><img src="./modules/questions/img/done.png"></div>
 
             <div class="vl_text dim">
 

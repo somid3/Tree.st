@@ -10,7 +10,7 @@
     Integer count = SharedItemDao.countByNetworkIdAndSmartGroupRefAndCreatedAfter(null, homeId, smartGroupRef, DateUtils.BEGINNING_OF_TIME);
 
     // Retrieving network settings
-    Integer pointsPerSharedItem = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(homeId);
+    Integer pointsPer = NetworkIntegerSettingEnum.SHARED_ITEM_POINTS_PER.getValueByNetworkId(homeId);
 
     String hMinitipId = HtmlUtils.getRandomId();
 %>
@@ -35,8 +35,8 @@
         <a href="#" onclick="SI.addSharedItem(event)">
             <div class="share_it lg_button submit_button">
             Share
-            <% if (pointsPerSharedItem != 0) { %>
-                <span class="sm_text">(<%= pointsPerSharedItem %> pts.)</span>
+            <% if (pointsPer != 0) { %>
+                <span class="sm_text">(<%= pointsPer %> pts.)</span>
             <% } %>
             </div>
         </a>

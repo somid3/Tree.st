@@ -98,8 +98,8 @@
                 line-height: 1.5em;
                 text-align: center;
                 margin: 30px 0;">
-                The easiest, fastest way to</br>
-                meet people who enjoy a gluten-free</br>
+                The easiest, fastest way to<br/>
+                meet people who enjoy a gluten-free<br/>
                 lifestyle, who like the same things you do
             </div>
 

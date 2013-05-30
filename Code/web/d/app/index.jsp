@@ -54,8 +54,8 @@
 <script type="text/javascript" src="./modules/share/js/shared_vote.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/share/css/basic.css?<%= Vars.rev %>">
 
-<script type="text/javascript" src="./modules/collaborate/js/question_display.js?<%= Vars.rev %>"></script>
-<link rel=stylesheet type="text/css" href="./modules/collaborate/css/basic.css?<%= Vars.rev %>">
+<script type="text/javascript" src="./modules/questions/js/question_display.js?<%= Vars.rev %>"></script>
+<link rel=stylesheet type="text/css" href="./modules/questions/css/basic.css?<%= Vars.rev %>">
 
 <script type="text/javascript" src="./modules/tooltips/js/tooltips.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/tooltips/css/basic.css?<%= Vars.rev %>">
@@ -254,13 +254,13 @@
             });
         });
 
-        routie('/comm/:nid/collaborate', function(nid) {
+        routie('/comm/:nid/details', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.QUESTIONS);
             });
         });
 
-        routie('/comm/:nid/collaborate/:agqr', function(nid, againQuestionRef) {
+        routie('/comm/:nid/details/:agqr', function(nid, againQuestionRef) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.QUESTIONS, {agqr: againQuestionRef});
             });

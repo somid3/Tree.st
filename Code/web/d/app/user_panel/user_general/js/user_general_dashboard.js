@@ -134,7 +134,7 @@ function UserGeneralDashboard () {
             hFormId,
             './user_panel/user_general/actions/password_change.jsp',
             function () {
-                URL.redirect("/d/logout")
+                URL.redirect("/d/signout")
             }
         );
     };

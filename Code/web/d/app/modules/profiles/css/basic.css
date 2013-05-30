@@ -48,11 +48,11 @@
 }
 
 #profile_dashboard .right .top {
-    height: 135px;
+    height: 125px;
 }
 
 #profile_dashboard .right .top .title {
-    margin-bottom: 5px;
+    margin: 10px 0 5px 0;
 }
 
 

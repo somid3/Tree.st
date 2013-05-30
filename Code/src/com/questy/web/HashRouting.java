@@ -54,11 +54,11 @@ public class HashRouting {
     };
 
     public static String questions(Integer networkId) {
-        return HASH + "/comm/" + networkId + "/collaborate";
+        return HASH + "/comm/" + networkId + "/details";
     };
 
     public static String questionAgain(Integer networkId, Integer questionRef) {
-        return HASH + "/comm/" + networkId + "/collaborate/" + questionRef;
+        return HASH + "/comm/" + networkId + "/details/" + questionRef;
     };
 
     public static String blocked(Integer networkId) {

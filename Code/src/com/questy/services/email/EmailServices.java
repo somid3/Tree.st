@@ -250,7 +250,6 @@ public class EmailServices extends ParentService {
         Integer userId,
         EmailNotificationRateEnum callingRate) throws SQLException {
 
-
         // Currently non-transactional
         Connection conn = null;
 
@@ -259,8 +258,7 @@ public class EmailServices extends ParentService {
         if(unsubscribed)
             return;
 
-
-        // Retrieving user       �
+        // Retrieving user
         User user = UserDao.getById(conn, userId);
 
         // Retrieving network
@@ -425,7 +423,6 @@ public class EmailServices extends ParentService {
         // Looping through all smart group members
         User toUser = null;
         EmailNotificationRateEnum rate = null;
-        Boolean unsubscribed = null;
         String messageOnSubject = null;
         String subtitleOnSubject = null;
         String customizeMessage = null;

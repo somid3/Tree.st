@@ -42,7 +42,7 @@
         // Change digest rate
         {
             StringBuilder buf = new StringBuilder();
-            buf.append("Change your 'new message' notification rate to:</br></br>");
+            buf.append("Change your 'new message' notification rate to:<br/><br/>");
             buf.append(EmailServices.helperCreateActionRateUrls(EmailActionEnum.CHANGE_ACTIVE_SMART_GROUP_DIGEST_RATE, networkId));
             e_removals.add(buf.toString());
         }

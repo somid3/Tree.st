@@ -1,4 +1,17 @@
 <%@ include file="./all.jsp" %>
+<%
+    // Removing cookie with user id
+    webUtils.deleteCookieByName("uid");
+
+    // Removing cookie with user checksum
+    webUtils.deleteCookieByName("scs");
+
+    // Removing cookie with user's email
+    webUtils.deleteCookieByName("ue");
+
+    // Removing cookie with user session checksum
+    webUtils.deleteCookieByName("uscs");
+%>
 
 <!DOCTYPE HTML>
 <html>
@@ -22,14 +35,14 @@
 
 <a href="/" class="no_deco">
     <div class="w300 center">
-        <div class="updated">
+        <div class="signout">
 
             <div class="center"><img src="./img/done.png"></div>
 
             <br/>
 
             <div class="message vl_header dim">
-                Your account has been updated. <span class="highlight2">Click to continue.</span>
+                You have signed out successfully.</span>
             </div>
 
         </div>

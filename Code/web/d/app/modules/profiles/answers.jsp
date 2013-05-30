@@ -185,7 +185,7 @@
 
                 <% } else {
 
-                    app_a_message = viewed.getFirstName() + " has not collaborated yet!";
+                    app_a_message = viewed.getFirstName() + " has not provided any details yet!";
                     boolean app_a_withCanvasContainer = false; %>
                     <%@ include file="../../includes/app_a_mini_message.jsp" %>
 

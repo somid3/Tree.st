@@ -10,10 +10,8 @@ function SmartSearch () {
         var $errorDiv = $form.find(".error");
         var $loadingDiv = $form.find(".loading");
 
-        // Hiding error
+        // Hiding error, showing loading...
         $errorDiv.hide();
-
-        // Show loading
         $loadingDiv.show();
 
         // Adding system parameters to data
@@ -45,7 +43,9 @@ function SmartSearch () {
                 Animations.flyToTarget(event, "#create_smart_group", "#network_shortcut_smart_groups", false, true, function() {
 
                     // Changing page to smart group display
-                    ND.go(event, NetworkDashboard.Section.SMART_GROUPS)
+                    ND.go(event, NetworkDashboard.Section.SMART_GROUP, parameters, function() {
+                        SmartGroupDashboard.go(event, SmartGroupDashboard.Section.SHARED_ITEMS, parameters);
+                    })
 
                 });
 

@@ -82,7 +82,7 @@ public class UserToSmartGroupServices extends ParentService {
         // Retrieve smart group
         SmartGroup smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
 
-        // Is this a non-private smart group?
+        // Is this a private smart group? If so, skip it
         if (smartGroup.getVisibility() == SmartGroupVisibilityEnum.PRIVATE)
             return;
 

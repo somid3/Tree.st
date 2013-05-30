@@ -21,6 +21,9 @@
 
     // Determining whether we should display user email addresses
     Integer displayEmails = NetworkIntegerSettingEnum.NETWORK_DISPLAY_TEXT_EMAILS.getValueByNetworkId(homeId);
+
+    // Retrieving network settings
+    Integer pointsPer = NetworkIntegerSettingEnum.USER_MESSAGE_POINTS_PER.getValueByNetworkId(homeId);
 %>
 <script type="text/javascript">
     PD = new ProfileDashboard();
@@ -35,10 +38,7 @@
 
         <% if (viewMyself && !viewed.hasFace()) {
             String hUploadPhotoId = HtmlUtils.getRandomId(); %>
-            <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow6">Upload photo</div>
-            <script type="text/javascript">
-                Animations.dance("#<%= hUploadPhotoId %>", 1000, 3000);
-            </script>
+            <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow7">Upload photo</div>
         <% } %>
 
         <% if (!viewMyself) { %>
@@ -70,6 +70,10 @@
                     <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
                         <div id="profile_message" class="clickable md_button dark_button md_text selected">
                             Message <%= viewed.getFirstName() %>
+
+                            <% if (pointsPer != 0) { %>
+                                <span class="sm_text">(<%= pointsPer %> pts.)</span>
+                            <% } %>
                         </div>
                     </a>
 
