@@ -24,7 +24,7 @@
 
 
     /**
-     * Quality finder
+     * Filter finder
      */
     {
         /**

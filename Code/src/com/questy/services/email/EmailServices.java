@@ -39,18 +39,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/email_confirmation.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(emailToConfirm);
-        ser.setSubject("Confirm your email");
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(emailToConfirm);
+        ams.setSubject("Confirm your email");
+        ams.setMessageText(EmailServices.customizeMessage(message, user));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
 
@@ -64,18 +62,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_not_found.jsp");
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.name);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(email);
-        ser.setSubject("Password reset for " + Vars.name);
-        ser.setMessageText(message);
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(Vars.name);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(email);
+        ams.setSubject("Password reset for " + Vars.name);
+        ams.setMessageText(message);
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void passwordReset (Integer userId, String checksum) throws SQLException {
@@ -92,18 +88,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(user.getEmail());
-        ser.setSubject("Password reset for " + Vars.name);
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(user.getEmail());
+        ams.setSubject("Password reset for " + Vars.name);
+        ams.setMessageText(EmailServices.customizeMessage(message, user));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void passwordResetDone (Integer userId) throws SQLException {
@@ -119,18 +113,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_done.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(user.getEmail());
-        ser.setSubject("Password updated on " + Vars.name);
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(user.getEmail());
+        ams.setSubject("Password updated on " + Vars.name);
+        ams.setMessageText(EmailServices.customizeMessage(message, user));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void firstPhotoUpload(Integer userId) throws SQLException {
@@ -150,18 +142,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/first_photo_upload.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(user.getEmail());
-        ser.setSubject("Please upload your photo on " + Vars.name);
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(user.getEmail());
+        ams.setSubject("Please upload your photo on " + Vars.name);
+        ams.setMessageText(EmailServices.customizeMessage(message, user));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void userLinkCreated (
@@ -191,17 +181,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_link.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(toUser.getEmail());
-        ser.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just viewed you!");
-        ser.setMessageText(EmailServices.customizeMessage(message, toUser));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(toUser.getEmail());
+        ams.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just viewed you!");
+        ams.setMessageText(EmailServices.customizeMessage(message, toUser));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void userMessage (
@@ -228,17 +217,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_message.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(toUser.getEmail());
-        ser.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just messaged you!");
-        ser.setMessageText(EmailServices.customizeMessage(message, toUser));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(toUser.getEmail());
+        ams.setSubject(fromUser.getFirstName() + " from \"" + network.getName() + "\" just messaged you!");
+        ams.setMessageText(EmailServices.customizeMessage(message, toUser));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     /**
@@ -272,17 +260,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_smart_group_mappings.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(user.getEmail());
-        ser.setSubject("Say hello!");
-        ser.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(user.getEmail());
+        ams.setSubject("Say hello!");
+        ams.setMessageText(EmailServices.customizeMessage(message, user));
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
 
@@ -313,20 +300,17 @@ public class EmailServices extends ParentService {
         User toUser = UserDao.getById(null, sharedItem.getUserId());
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-        ser.setFromEmail(Vars.supportEmail);
-        ser.addRecipient(toUser.getEmail());
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+        ams.setFromEmail(Vars.supportEmail);
+        ams.addRecipient(toUser.getEmail());
 
         // Creating subject
-        ser.setSubject("Someone commented on your message!");
+        ams.setSubject("Someone commented on your message!");
 
-        // Sending the email
-        ser.setMessageText(EmailServices.customizeMessage(message, toUser));
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     public static void newSharedCommentForCommentators(
@@ -369,19 +353,17 @@ public class EmailServices extends ParentService {
             toUser = UserDao.getById(null, sharedComment.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonMailSender ser = new AmazonMailSender();
-            ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-            ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-            ser.setFromEmail(Vars.supportEmail);
-            ser.addRecipient(toUser.getEmail());
+            AmazonEmailSender ams = new AmazonEmailSender();
+            ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+            ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+            ams.setFromEmail(Vars.supportEmail);
+            ams.addRecipient(toUser.getEmail());
 
             // Creating subject
-            ser.setSubject("Someone commented after you did!");
+            ams.setSubject("Someone commented after you did!");
 
-            // Sending the email
-            ser.setMessageText(EmailServices.customizeMessage(message, toUser));
-            Thread thread = new Thread(ser);
-            thread.start();
+            // Queueing the email
+            AmazonMailQueue.queueEmail(ams);
 
             // Add user to list of users who received a notification
             sentUsers.add(sharedComment.getUserId());
@@ -437,7 +419,7 @@ public class EmailServices extends ParentService {
             toUser = UserDao.getById(null, userToSmartGroup.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonMailSender ser = new AmazonMailSender();
+            AmazonEmailSender ser = new AmazonEmailSender();
             ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
             ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
             ser.setFromEmail(Vars.supportEmail);
@@ -450,12 +432,10 @@ public class EmailServices extends ParentService {
 
             // Customizing the message with receiver information
             customizeMessage = EmailServices.customizeMessage(message, toUser);
-
-            // Sending the email
             ser.setMessageText(customizeMessage);
-            Thread thread = new Thread(ser);
-            thread.start();
 
+            // Queueing the email
+            AmazonMailQueue.queueEmail(ser);
         }
 
     }
@@ -494,8 +474,8 @@ public class EmailServices extends ParentService {
 
                 // Rallying up the total count of smart groups and messages in the digest
                 if (digestSharedItemCount > 0) {
-                    digestTotalSmartGroupCount =+ 1;
-                    digestTotalSharedItemCount =+ digestSharedItemCount;
+                    digestTotalSmartGroupCount = digestTotalSmartGroupCount + 1;
+                    digestTotalSharedItemCount = digestTotalSharedItemCount + digestSharedItemCount;
                 }
 
             }
@@ -515,26 +495,25 @@ public class EmailServices extends ParentService {
             toUser = UserDao.getById(null, userToNetwork.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonMailSender ser = new AmazonMailSender();
-            ser.setMessageMine(EmailMimeEnum.HTML_UTF8);
-            ser.setFromName(network.getName() + " @ " + Vars.supportEmailName);
-            ser.setFromEmail(Vars.supportEmail);
-            ser.addRecipient(toUser.getEmail());
+            AmazonEmailSender ams = new AmazonEmailSender();
+            ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
+            ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
+            ams.setFromEmail(Vars.supportEmail);
+            ams.addRecipient(toUser.getEmail());
 
             // Creating subject
-            ser.setSubject(
-                network.getName() + " digest with " +
-                digestTotalSharedItemCount + " messages in " +
-                digestTotalSmartGroupCount + " smart groups"
+            ams.setSubject(
+                    network.getName() + " digest with " +
+                            digestTotalSharedItemCount + " messages in " +
+                            digestTotalSmartGroupCount + " smart groups"
             );
 
             // Customizing the message with receiver information
             customizeMessage = EmailServices.customizeMessage(message, toUser);
+            ams.setMessageText(customizeMessage);
 
-            // Sending the email
-            ser.setMessageText(customizeMessage);
-            Thread thread = new Thread(ser);
-            thread.start();
+            // Queueing the email
+            AmazonMailQueue.queueEmail(ams);
         }
 
     }

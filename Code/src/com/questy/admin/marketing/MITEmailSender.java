@@ -3,7 +3,8 @@ package com.questy.admin.marketing;
 import com.questy.admin.dao.MITEmailDao;
 import com.questy.admin.domain.MITEmail;
 import com.questy.enums.EmailMimeEnum;
-import com.questy.utils.AmazonMailSender;
+import com.questy.utils.AmazonEmailSender;
+import com.questy.utils.AmazonMailQueue;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -82,17 +83,15 @@ public class MITEmailSender {
         message = message.replaceAll("\\[first_name\\]", firstName);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
-        ser.setFromName("omid@mit.edu");
-        ser.setFromEmail("omid@mit.edu");
-        ser.addRecipient(email);
-        ser.setSubject("meets others at MIT + get $50 to ...");
-        ser.setMessageText(message);
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
+        ams.setFromName("omid@mit.edu");
+        ams.setFromEmail("omid@mit.edu");
+        ams.addRecipient(email);
+        ams.setSubject("meets others at MIT + get $50 to ...");
+        ams.setMessageText(message);
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 }

@@ -138,8 +138,6 @@ public class Vars {
     /**
      * Queue of outgoing emails
      */
-    public static int emailAmazonQueueCount;
-
     public static String supportEmail = "hello@treelift.com";
 
     public static String supportEmailName = "Treelift";

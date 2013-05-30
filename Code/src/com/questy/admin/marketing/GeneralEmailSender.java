@@ -4,11 +4,11 @@ import com.questy.admin.domain.GeneralEmail;
 import com.questy.admin.dao.GeneralEmailDao;
 import com.questy.enums.EmailMimeEnum;
 import com.questy.helpers.SqlLimit;
-import com.questy.utils.AmazonMailSender;
+import com.questy.utils.AmazonEmailSender;
+import com.questy.utils.AmazonMailQueue;
 import com.questy.utils.StringUtils;
 
 import java.io.FileReader;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Date;
@@ -51,18 +51,17 @@ public class GeneralEmailSender {
         message = message.replaceAll("\\[keyword_3\\]", generalEmail.getKeyword3());
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
 
-        ser.setFromName("socrates@mit.edu"); ser.setFromEmail("socrates@mit.edu");
+        ams.setFromName("socrates@mit.edu"); ams.setFromEmail("socrates@mit.edu");
 
-        ser.addRecipient(generalEmail.getEmail());
-        ser.setSubject("tool for your association");
-        ser.setMessageText(message);
+        ams.addRecipient(generalEmail.getEmail());
+        ams.setSubject("tool for your association");
+        ams.setMessageText(message);
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 
     /**

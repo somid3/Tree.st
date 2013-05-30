@@ -21,17 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class AmazonMailSender implements Runnable {
+public class AmazonEmailSender implements Runnable {
 
     private Transport AWSTransport;
     private Session AWSsession;
     private Message message;
-
-    // Retry related variables
-    private int sendRetries;
-    private int maxSendRetries = 5;
-    private int retrySleep = 10000;
-    private Exception retryException;
 
     // General email variables
     private String fromName;
@@ -48,37 +42,17 @@ public class AmazonMailSender implements Runnable {
      */
     private List<Triple<byte[], String, String>> attachments;
 
-    private void initAWSTransport() throws MessagingException {
-
-        String keyId = Vars.emailAmazonKeyId;
-        String secretKey = Vars.emailAmazonSecretKey;
-
-        BasicAWSCredentials credentials = new BasicAWSCredentials(keyId, secretKey);
-
-        Properties props = new Properties();
-        props.setProperty("mail.transport.protocol", "aws");
-        props.setProperty("mail.aws.user", credentials.getAWSAccessKeyId());
-        props.setProperty("mail.aws.password", credentials.getAWSSecretKey());
-
-        AWSsession = Session.getInstance(props);
-        AWSTransport = new AWSJavaMailTransport(AWSsession, null);
-        AWSTransport.connect();
-    }
-
-    private synchronized void sendEmail() {
+    private void sendEmail() {
 
         // Repeat until message is sent or limit is reached
         boolean sent = false;
+
         while (!sent) {
 
             try {
 
-                // Have we already attempted to send this message multiple times?
-                if (sendRetries >= maxSendRetries)
-                    throw new Exception("Could not send email after " + maxSendRetries + " attempts", retryException);
-
                 // Starting the AWS session and transport
-                initAWSTransport();
+                startTransport();
 
                 String addressesCharset = "utf-8";
 
@@ -143,45 +117,21 @@ public class AmazonMailSender implements Runnable {
                 // Email was sent, break from the while
                 sent = true;
 
-            } catch (HttpHostConnectException e) {
-
-                // Clarifying that the email was not sent
-                sent = false;
-
-                // Attempting to retry
-                doRetry(e);
-
-            } catch (ConnectException e) {
-
-                // Clarifying that the email was not sent
-                sent = false;
-
-                // Attempting to retry
-                doRetry(e);
-
             } catch (Exception e) {
 
                 System.out.println("Failed -- " + getMessageSummary());
                 throw new RuntimeException(e);
 
-            }
+            } finally {
 
+                // Ending the transport
+                endTransport();
+
+            }
 
         }
 
-
     }
-
-    public synchronized void run() {
-
-        start();
-        sendEmail();
-        end();
-
-    }
-
-
-
 
     private void transportingMessage () throws MessagingException, IOException {
 
@@ -204,70 +154,39 @@ public class AmazonMailSender implements Runnable {
 
     }
 
-    private void doRetry(Exception e) {
-
-        // Increasing retry count to document failure
-        sendRetries++;
-
-        // Saving exception in case this is the last one
-        retryException = e;
-
-        // Waiting for next retry
-        sleep(retrySleep);
-
-        // Should this be logged?
-        if (Vars.logSentEmails)
-            System.out.println("Retry " + sendRetries + " -- " + getMessageSummary());
-
-    }
-
     private String getMessageSummary () {
         return "Email to " + recipients + " with subject: " + subject;
 
     }
 
-    private synchronized void start() {
+    private void startTransport() throws MessagingException {
 
-        // Increase the email queue count
-        Vars.emailAmazonQueueCount++;
+        String keyId = Vars.emailAmazonKeyId;
+        String secretKey = Vars.emailAmazonSecretKey;
 
-        // Calculate how much to sleep based on queue
-        Integer sleepMilli = Vars.emailAmazonQueueCount * Vars.emailAmazonMillisecondDelayPerQueue;
+        BasicAWSCredentials credentials = new BasicAWSCredentials(keyId, secretKey);
 
-        // Sleep to wait queue turn
-        sleep(sleepMilli);
+        Properties props = new Properties();
+        props.setProperty("mail.transport.protocol", "aws");
+        props.setProperty("mail.aws.user", credentials.getAWSAccessKeyId());
+        props.setProperty("mail.aws.password", credentials.getAWSSecretKey());
 
+        AWSsession = Session.getInstance(props);
+        AWSTransport = new AWSJavaMailTransport(AWSsession, null);
+        AWSTransport.connect();
     }
 
-
-    private synchronized void end() {
-
-        // Decrease the email queue count
-        Vars.emailAmazonQueueCount--;
+    private void endTransport() {
 
         try {
-
             AWSTransport.close();
-
         } catch (MessagingException e) {
-
             e.printStackTrace();
-
         }
     }
 
-    private synchronized void sleep(Integer milliseconds) {
-
-        try {
-
-            Thread.sleep(milliseconds);
-
-        } catch (InterruptedException e) {
-
-            e.printStackTrace();
-
-        }
-
+    public void run() {
+       sendEmail();
     }
 
 
@@ -316,22 +235,6 @@ public class AmazonMailSender implements Runnable {
         return messageMine;
     }
 
-    public int getRetrySleep() {
-        return retrySleep;
-    }
-
-    public void setRetrySleep(int retrySleep) {
-        this.retrySleep = retrySleep;
-    }
-
-    public int getMaxSendRetries() {
-        return maxSendRetries;
-    }
-
-    public void setMaxSendRetries(int maxSendRetries) {
-        this.maxSendRetries = maxSendRetries;
-    }
-
     public void setMessageMine(EmailMimeEnum messageMine) {
         this.messageMine = messageMine;
     }
@@ -343,4 +246,5 @@ public class AmazonMailSender implements Runnable {
         );
 
     }
+
 }

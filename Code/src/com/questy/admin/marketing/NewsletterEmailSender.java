@@ -1,7 +1,5 @@
 package com.questy.admin.marketing;
 
-import com.questy.admin.dao.MITEmailDao;
-import com.questy.admin.domain.MITEmail;
 import com.questy.dao.UserDao;
 import com.questy.dao.UserToNetworkDao;
 import com.questy.domain.User;
@@ -10,13 +8,12 @@ import com.questy.enums.AllMembersViewEnum;
 import com.questy.enums.EmailMimeEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.helpers.SqlLimit;
-import com.questy.utils.AmazonMailSender;
+import com.questy.utils.AmazonEmailSender;
+import com.questy.utils.AmazonMailQueue;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class NewsletterEmailSender {
 
@@ -71,17 +68,15 @@ public class NewsletterEmailSender {
         message = message.replaceAll("\\[first_name\\]", firstName);
 
         // Creating runnable to send email on new thread
-        AmazonMailSender ser = new AmazonMailSender();
-        ser.setMessageMine(EmailMimeEnum.TEXT_UTF8);
-        ser.setFromName("omid@mit.edu");
-        ser.setFromEmail("omid@mit.edu");
-        ser.addRecipient(email);
-        ser.setSubject("hack at MIT + get $50 ...");
-        ser.setMessageText(message);
+        AmazonEmailSender ams = new AmazonEmailSender();
+        ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
+        ams.setFromName("omid@mit.edu");
+        ams.setFromEmail("omid@mit.edu");
+        ams.addRecipient(email);
+        ams.setSubject("hack at MIT + get $50 ...");
+        ams.setMessageText(message);
 
-        // Sending the email
-        Thread thread = new Thread(ser);
-        thread.start();
-
+        // Queueing the email
+        AmazonMailQueue.queueEmail(ams);
     }
 }

@@ -133,7 +133,7 @@
         margin-top: 10px;
         background-color: white;
         text-align: center;
-        opacity:0.6;
+        opacity:0.8;
     }
 
 </style>
@@ -174,9 +174,9 @@
         </div>
         <div id="signup-error" class="error sm_text"></div>
         <div id="signup-content">
-            <div id="signup-email-div"><input class="md_input" type="text" placeholder="Email" id="signup-email"></div>
-            <div id="signup-password-div"><input class="md_input" type="password" placeholder="Password" id="signup-password"></div>
-            <div id="signup-name-div"><input class="md_input" type="text" placeholder="Full name" id="signup-name"></div>
+            <div id="signup-email-div"><input class="md_input w200" type="text" placeholder="Email" id="signup-email"></div>
+            <div id="signup-password-div"><input class="md_input w200" type="password" placeholder="Password" id="signup-password"></div>
+            <div id="signup-name-div"><input class="md_input w200" type="text" placeholder="Full name" id="signup-name"></div>
             <a href="#" onclick="Signup.signup(event, <%= networkId %>, '<%= networkChecksum %>');">
                 <div id="signup-button" class="sm_button submit_button md_header">Sign up</div>
             </a>
@@ -185,7 +185,7 @@
 
     <div id="provided-by">
         <span class="sm_text dim">Provided by</span>
-        <a href="http://<%= Vars.domain %>"><img src="/d/assets/sm_logo.png"></a>
+        <a href="http://<%= Vars.domain %>"><img src="/d/assets/vsm_logo.png"></a>
     </div>
 
 </div>
