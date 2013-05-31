@@ -265,7 +265,7 @@ public class EmailServices extends ParentService {
         ams.setFromName(network.getName() + " @ " + Vars.supportEmailName);
         ams.setFromEmail(Vars.supportEmail);
         ams.addRecipient(user.getEmail());
-        ams.setSubject("Say hello!");
+        ams.setSubject("Say hello to " + network.getName() + "!");
         ams.setMessageText(EmailServices.customizeMessage(message, user));
 
         // Queueing the email

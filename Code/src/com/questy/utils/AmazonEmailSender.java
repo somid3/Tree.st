@@ -4,7 +4,6 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.simpleemail.AWSJavaMailTransport;
 import com.questy.enums.EmailMimeEnum;
 import com.questy.helpers.Triple;
-import org.apache.http.conn.HttpHostConnectException;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -16,7 +15,6 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -161,8 +159,8 @@ public class AmazonEmailSender implements Runnable {
 
     private void startTransport() throws MessagingException {
 
-        String keyId = Vars.emailAmazonKeyId;
-        String secretKey = Vars.emailAmazonSecretKey;
+        String keyId = Vars.amazonEmailPublishableKey;
+        String secretKey = Vars.amazonEmailSecretKey;
 
         BasicAWSCredentials credentials = new BasicAWSCredentials(keyId, secretKey);
 

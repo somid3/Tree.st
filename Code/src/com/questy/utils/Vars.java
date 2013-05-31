@@ -123,25 +123,38 @@ public class Vars {
      * Based on the email queue location, the number of milliseconds an email thread
      * should wait before transmitting its message
      */
-    public static Integer emailAmazonMillisecondDelayPerQueue = 100;
+    public static Integer amazonEmailMillisecondDelayPerQueue = 100;
 
     /**
      * Amazon SES credentials
      */
-    public static String emailAmazonKeyId = "17PSBE0Y2JY8PAC6VBR2";
+    public static String amazonEmailPublishableKey = "17PSBE0Y2JY8PAC6VBR2";
 
     /**
      * Amazon SES credentials
      */
-    public static String emailAmazonSecretKey = "eAQCx/eHMPrnRtLKbhLNg8x+c/CTtOvruOwqybvv";
+    public static String amazonEmailSecretKey = "eAQCx/eHMPrnRtLKbhLNg8x+c/CTtOvruOwqybvv";
 
     /**
-     * Queue of outgoing emails
+     * Email address of outgoing emails
      */
     public static String supportEmail = "hello@treelift.com";
 
+    /**
+     * Email name of outgoing emails
+     */
     public static String supportEmailName = "Treelift";
 
+
+    /***************************
+     * Credit Card variables
+     **************************/
+
+    /**
+     * Stripe keys
+     */
+    public static String stripeTestingPublishableKey = "pk_test_4EIShk90uGIpyYmJHDBnzlhn";
+    public static String stripeTestingSecretKey = "sk_test_WutmScOcz03UgVX66Nhghg1L";
 
 
 

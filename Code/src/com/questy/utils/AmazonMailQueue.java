@@ -57,7 +57,7 @@ public class AmazonMailQueue implements Runnable {
             }
 
             // Control for throttle
-            sleep(Vars.emailAmazonMillisecondDelayPerQueue);
+            sleep(Vars.amazonEmailMillisecondDelayPerQueue);
 
         }
     }
