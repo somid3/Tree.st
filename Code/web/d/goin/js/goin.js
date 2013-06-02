@@ -203,17 +203,16 @@ Payment.createToken = function (event) {
     Payment.displayLoading();
 
     // Retrieving values
-    var number = $("#payment_ccnumber").val();
+    var number = $("#payment_cc").val();
     var expiration = $("#payment_exp").val();
     var cvc = $("#payment_cvc").val();
 
-    // Retrieving objects
-    var $error = $("#payment_error");
-    var $loading = $("#payment_loading");
-
     // Separating expiration month and year
-    var month = 01;
-    var year = 2014;
+    var expirationTokens = expiration.split("/");
+    var month = expirationTokens[0];
+    var year = 20 + expirationTokens[1];
+
+    console.log(month + "-" + year);
 
     Stripe.card.createToken({
         number: number,
@@ -252,6 +251,63 @@ Payment.response = function (status, response) {
     }
 
 };
+
+Payment.checkCC = function () {
+    var value = $("#payment_cc").val();
+    var $bad = $("#payment_check_cc_bad");
+    var $good = $("#payment_check_cc_good");
+    var $image = $("#payment_check_cc_type");
+
+    if (Stripe.card.validateCardNumber(value)) {
+        $bad.hide(); $good.fadeIn();
+    } else {
+        $good.hide(); $bad.fadeIn();
+    }
+
+    var ccImages = {};
+    ccImages["Visa"] = "cc_visa.png";
+    ccImages["MasterCard"] = "cc_mastercard.png";
+    ccImages["American Express"] = "cc_american.png";
+    ccImages["Discover"] = "cc_discover.png";
+    ccImages["Diners Club"] = "cc_diners.png";
+    ccImages["JCB"] = "cc_jcb.png";
+    ccImages["Unknown"] = "cc_gray.png";
+
+    var ccUsed = Stripe.card.cardType(value);
+    var ccUsedSrc = ccImages[ccUsed];
+    $image.attr("src", "/d/goin/img/" + ccUsedSrc);
+};
+
+Payment.checkExp = function () {
+    var value = $("#payment_exp").val();
+    var tokens = value.split("/");
+    var month = tokens[0];
+    var year = 20 + tokens[1];
+    var $bad = $("#payment_check_exp_bad");
+    var $good = $("#payment_check_exp_good");
+
+    console.log(month + "-" + year);
+
+    if (Stripe.card.validateExpiry(month, year)) {
+        $bad.hide(); $good.fadeIn();
+    } else {
+        $good.hide(); $bad.fadeIn();
+    }
+};
+
+Payment.checkCvc = function () {
+    var value = $("#payment_cvc").val();
+    var $bad = $("#payment_check_cvc_bad");
+    var $good = $("#payment_check_cvc_good");
+
+    if (Stripe.card.validateCVC(value)) {
+        $bad.hide(); $good.fadeIn();
+    } else {
+        $good.hide(); $bad.fadeIn();
+    }
+};
+
+
 
 Payment.displayLoading = function () {
     var $loading = $("#payment_loading");

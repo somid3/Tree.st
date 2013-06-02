@@ -101,8 +101,9 @@
     #signup_loading,
     #payment_loading {
         float: right;
-        position: relative;
+        position: absolute;
         display: none;
+        left: 230px;
     }
 
     #signup_email_div,
@@ -132,8 +133,7 @@
     }
 
     #payment_cards {
-        margin: 10px auto;
-        width: 140px;
+        margin: 10px 0 0 15px;
     }
 
     .payment_cc_image {
@@ -144,22 +144,30 @@
         margin-top: 20px;
     }
 
-    #payment_ccnumber_div {
+    #payment_cc_div {
         background-color: white;
         padding: 4px;
         width: 225px;
         border: solid 1px <%= HtmlDesign.dim3 %>;
     }
 
-    #payment_ccnumber {}
+    #payment_cc {}
 
-    #payment_ccnumber_check,
-    #payment_exp_check,
-    #payment_cvc_check {
+    .payment_check {
         float: right;
         position: relative;
-        top: -10px;
         width: 20px;
+    }
+
+    #payment_check_cc_good,
+    #payment_check_exp_good,
+    #payment_check_cvc_good {
+        display: none;
+    }
+
+    #payment_check_cc_type {
+        width: 40px;
+        margin-left: 2px;
     }
 
     #payment_exp_div {
@@ -200,7 +208,7 @@
     <div id="sign">
         <div id="signin" class="shadow">
             <div id="signin_loading"><img src="/d/goin/img/sm_loading.gif"></div>
-            <div id="signin_error" class="error sm_text"></div>
+            <div id="signin_error" class="center error sm_text"></div>
             <div id="signin_content">
                 <div id="signin_email_div"><input class="md_input w200" type="text" placeholder="Email" id="signin_email"></div>
                 <div id="signin_fields">
@@ -232,7 +240,7 @@
                     <div id="signup_loading"><img src="/d/goin/img/sm_loading.gif"></div>
                     New? &mdash; Sign up!
                 </div>
-                <div id="signup_error" class="error sm_text"></div>
+                <div id="signup_error" class="center error sm_text"></div>
                 <div id="signup_content">
                     <div id="signup_email_div"><input class="md_input w200" type="text" placeholder="Email" id="signup_email"></div>
                     <div id="signup_password_div"><input class="md_input w200" type="password" placeholder="Password" id="signup_password"></div>
@@ -259,35 +267,44 @@
             </div>
 
             <div id="payment_cards">
-                <img src="/d/goin/img/visa.png" class="payment_cc_image">
-                <img src="/d/goin/img/mastercard.png" class="payment_cc_image">
-                <img src="/d/goin/img/american.png" class="payment_cc_image">
-                <img src="/d/goin/img/discover.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_visa.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_mastercard.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_american.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_discover.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_diners.png" class="payment_cc_image">
+                <img src="/d/goin/img/cc_jcb.png" class="payment_cc_image">
             </div>
 
-            <div id="payment_error" class="error sm_text"></div>
             <div id="payment_content">
+                <div id="payment_error" class="center error sm_text"></div>
 
-                <div class="smd_text dim" style="margin-bottom: 5px;">Credit card:</div>
-                <div id="payment_ccnumber_div">
-                    <input class="md_input w175" type="text" placeholder="5555-5555-5555-5555" id="payment_ccnumber">
-                    <img src="/d/goin/img/check_gray.png" id="payment_ccnumber_check">
+                <div class="smd_text dim" style="margin-bottom: 5px;">
+                    Credit card &mdash;
+                    <img src="/d/goin/img/cc_gray.png" id="payment_check_cc_type">
+                </div>
+                <div id="payment_cc_div">
+                    <input class="md_input w175" type="text" maxlength="19" placeholder="5555-5555-5555-5555" data-stripe="number" id="payment_cc">
+                    <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_cc_good">
+                    <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_cc_bad">
+
                 </div>
 
                 <div id="payment_expcvc_div">
                     <div style="float: left; margin-right: 10px;">
                         <div class="smd_text dim" style="margin-bottom: 5px;">Expires:</div>
                         <div id="payment_exp_div">
-                            <input class="md_input w50" type="text" placeholder="MM/YY" id="payment_exp">
-                            <img src="/d/goin/img/check_gray.png" id="payment_exp_check">
+                            <input class="md_input w50" type="text" maxlength="5" placeholder="MM/YY" id="payment_exp">
+                            <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_exp_good">
+                            <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_exp_bad">
                         </div>
                     </div>
 
                     <div style="float: left">
                         <div class="smd_text dim" style="margin-bottom: 5px;">Card code:</div>
                         <div id="payment_cvc_div">
-                            <input class="md_input w50" type="text" placeholder="CVC" id="payment_cvc">
-                            <img src="/d/goin/img/check_gray.png" id="payment_cvc_check">
+                            <input class="md_input w50" type="text" maxlength="3" placeholder="CVC" id="payment_cvc">
+                            <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_cvc_good">
+                            <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_cvc_bad">
                         </div>
                     </div>
                 </div>
@@ -311,7 +328,7 @@
 
     <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
         <div id="provided_by">
-            <div class="vsm_text dim">Provided by</div>
+            <div class="vsm_text dim2" style="margin-bottom: 3px;">Provided by</div>
             <img src="/d/assets/vsm_logo.png">
         </div>
     </a>
@@ -330,6 +347,11 @@
         }
     });
 
+    // Starting the focus on the email field
+    $(function() {
+        $("#signin_email").focus();
+    });
+
     // Binding the return key for the form
     $('#signup').keypress( function(event) {
         if(event.which == $.ui.keyCode.ENTER){
@@ -346,9 +368,21 @@
         }
     });
 
-    // Starting the focus on the email field
-    $(function() {
-        $("#signin_email").focus();
+    // Constantly validating credit card number
+    $('#payment_cc').keyup(function() {
+        Payment.checkCC();
+    });
+
+    // Constantly validating expiration date
+    $('#payment_exp').keyup( function() {
+        Payment.checkExp();
+        return false;
+    });
+
+    // Constantly validating CVC code
+    $('#payment_cvc').keyup( function() {
+        Payment.checkCvc();
+        return false;
     });
 
     // Setting up Stripe
