@@ -9,7 +9,7 @@
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
 
-    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
+    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_LOGO_SET);
     String singularVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
     String pluralVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
 %>
@@ -117,11 +117,20 @@
 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">
     <div class="shortcut" id="network_shortcut_questions">
         <div class="contents">
-            <div class="icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
+            <div class="tab icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
             <div class="name smd_text">Details</div>
         </div>
         <% if (nextQuestionRef != null) { %>
-            <div class="bullet" id="<%= NetworkHtml.getBulletId(homeId) %>"><img src="./img/dot-green-16.png"></div>
+            <div class="bullet <%= NetworkHtml.getBulletClass(homeId) %>"><img src="./img/dot-green-16.png"></div>
         <% } %>
     </div>
 </a>
+
+<%--<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">--%>
+    <%--<div class="shortcut" id="network_shortcut_messages">--%>
+        <%--<div class="contents">--%>
+            <%--<div class="tab icon"><img src="./modules/networks/img/email.png" alt="Details"></div>--%>
+            <%--<div class="name smd_text">Messages</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</a>--%>

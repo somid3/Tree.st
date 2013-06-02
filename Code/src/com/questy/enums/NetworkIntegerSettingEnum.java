@@ -62,17 +62,26 @@ public enum NetworkIntegerSettingEnum {
      * the only functionality of the community is to gather user details. User's can not
      * search for one another or create smart groups
      */
-    MODE_COLLECT_ONLY                   (9000, 0),
+    IS_MODE_COLLECT_ONLY                (9000, 0),
 
     /**
      * Allows new users who join this community to not need to confirm their emails
      * the first time they join this network
      */
-    MODE_NO_CONFIRM                     (9001, 0),
+    IS_MODE_NO_CONFIRM                  (9001, 0),
 
-    UI_HAS_BACKGROUND                   (10000, 0),
-    UI_HAS_ICON                         (10001, 0),
-    UI_HAS_LOGO                         (10002, 0)
+
+    IS_UI_BACKGROUND_SET                (10000, 0),
+    IS_UI_ICON_SET                      (10001, 0),
+    IS_UI_LOGO_SET                      (10002, 0),
+
+
+    /**
+     * Whether or not this network expects the user to pay before signing up
+     */
+    IS_PAYMENT_REQUIRED                 (11000, 0),
+
+
 
     ;
 

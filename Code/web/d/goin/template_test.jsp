@@ -25,7 +25,6 @@
     if (network == null)
         webUtils.redirect("./notfound.jsp");
 
-
     /**
      * Testing if user is already logged in and if it should be sent to the application
      */
@@ -48,7 +47,6 @@
     /**
      * Retrieving network settings
      */
-
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
 %>
@@ -57,6 +55,7 @@
 <head>
     <title><%= network.getName() %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
@@ -293,7 +292,7 @@
             width:300px;
             top:30px;
             position: fixed;
-            height: 500px;
+            height: 700px;
             overflow: hidden;">
 
             <div id="goin"></div>

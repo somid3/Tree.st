@@ -16,7 +16,7 @@
     <% for (UserToNetwork meToNetwork : meToNetworks) {
 
         network = NetworkDao.getById(null, meToNetwork.getNetworkId());
-        hasIcon = NetworkIntegerSettingEnum.UI_HAS_ICON.getValueByNetworkId(meToNetwork.getNetworkId());
+        hasIcon = NetworkIntegerSettingEnum.IS_UI_ICON_SET.getValueByNetworkId(meToNetwork.getNetworkId());
         hTargetId = "settings" + network.getId(); %>
 
         <div class="user_setting">

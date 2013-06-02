@@ -2,7 +2,6 @@
 <%@page contentType="text/css" %>
 
 #main {
-    margin: auto;
 }
 
 
@@ -15,9 +14,8 @@
 
 
 #header #logo {
-    display: inline-block;
-    margin: 5px 0 0 0;
-
+    float: left;
+    margin: 5px 60px 0 0;
 }
 
 #header #logo #default_logo {
@@ -40,7 +38,8 @@
 
 
 #header #dashboard {
-    display: inline-block;
+    float: left;
+    margin-right: 50px;
 }
 
 #header #user {
@@ -49,7 +48,7 @@
     background-color: #8c8c80;
     border-left: 2px solid #fff;
     width: 140px;
-    float: right;
+    float: left;
 }
 
 #header #user .face {
@@ -82,16 +81,13 @@
     color: #fff;
 }
 
+#left {
+    width: 185px;
+    float: left;
+    margin-right: 50px;
+}
 
-
-
-
-
-
-
-/* Center */
 #center {
-    width: 600px;
     float: left;
 }
 

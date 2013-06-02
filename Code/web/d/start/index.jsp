@@ -36,14 +36,15 @@
     String startMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_MESSAGE);
     String startBody = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_BODY);
 
-    Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_BACKGROUND);
-    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_LOGO);
+    Integer hasBackground = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_BACKGROUND_SET);
+    Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_LOGO_SET);
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title><%= Vars.name %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>

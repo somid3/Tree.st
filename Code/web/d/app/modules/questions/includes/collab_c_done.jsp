@@ -60,7 +60,7 @@
 <script type="text/javascript">
 
     // Now that there no more questions, hide the network bullet
-    $("#<%= NetworkHtml.getBulletId(collab_c_network.getId())%>").fadeOut(1000);
+    $(".<%= NetworkHtml.getBulletClass(collab_c_network.getId())%>").fadeOut();
 
 </script>
 

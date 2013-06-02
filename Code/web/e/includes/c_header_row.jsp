@@ -54,7 +54,7 @@
 
                         <%= EmailDesign.aBegin(c_hNetworkLink, EmailDesign.aStyleNoDeco) %>
 
-                        <% if (NetworkIntegerSettingEnum.UI_HAS_LOGO.getValueByNetworkId(c_network.getId()) == 0) { %>
+                        <% if (NetworkIntegerSettingEnum.IS_UI_LOGO_SET.getValueByNetworkId(c_network.getId()) == 0) { %>
 
                             <span style="color: <%= HtmlDesign.dim %>">
                                 / <%= StringUtils.concat(c_network.getName(), 20, "&hellip;") %>

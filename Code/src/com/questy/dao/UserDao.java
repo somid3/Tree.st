@@ -303,6 +303,27 @@ public class UserDao extends ParentDao {
         end(conn, ps, null);
     }
 
+    public static void updateStripeId (
+            Connection conn,
+            Integer userId,
+            String stripeId) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "update `users` " +
+            "set `stripe_id` = ? " +
+            "where `id` = ? " +
+            "limit 1;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, stripeId);
+        ps.setInt(2, userId);
+        ps.execute();
+
+        end(conn, ps, null);
+    }
+
     public static void updateEmailByUserId (
             Connection conn,
             Integer userId,
@@ -377,6 +398,7 @@ public class UserDao extends ParentDao {
         out.setFaceUrl(DatabaseUtils.getString(rs, "face_url"));
         out.setFaceOn(DatabaseUtils.getTimestamp(rs, "face_on"));
         out.setFaceRef(DatabaseUtils.getInt(rs, "face_ref"));
+        out.setStripeId(DatabaseUtils.getString(rs, "stripe_id"));
         return out;
     }
 

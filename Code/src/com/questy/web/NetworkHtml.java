@@ -2,7 +2,7 @@ package com.questy.web;
 
 public class NetworkHtml {
 
-    public static String getBulletId(Integer networkId) {
+    public static String getBulletClass(Integer networkId) {
         return "bullet" + networkId;
     };
 

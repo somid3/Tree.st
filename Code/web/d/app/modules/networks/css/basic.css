@@ -1,12 +1,6 @@
 <%@include file="../../../setup.jsp" %>
 <%@page contentType="text/css" %>
 
-#left {
-    width: 185px;
-    float: left;
-    margin-right: 15px;
-}
-
 /* List of networks the user is in */
 #networks {
 }
@@ -23,7 +17,7 @@
 
 #networks .networks {
     border: 1px solid #669933;
-    border-right: 3px solid #669933;
+    /*border-right: 3px solid #669933;*/
     background-color: #fff;
     padding: 4px;
 }
@@ -100,7 +94,7 @@
 /* Displays the current networks of the user*/
 #currently {
     border: 1px solid <%= HtmlDesign.dim3 %>;
-    border-right: 3px solid <%= HtmlDesign.dim3 %>;
+    /*border-right: 3px solid <%= HtmlDesign.dim3 %>;*/
     background-color: #fff;
     padding: 4px;
     margin-bottom: 15px;
@@ -129,6 +123,10 @@
 #currently .shortcut .contents .name {
     float: left;
     padding: 3px 0 0 10px;
+}
+
+#currently .shortcut .contents .tab {
+    margin-left: 10px;
 }
 
 #currently .shortcut .contents .icon {

@@ -30,9 +30,10 @@
     </div>
 </div>
 
+
 <div class="attention shadow w800 center">
     <div id="playing-video" class="left shadow">
-        <iframe src="http://player.vimeo.com/video/56698814?autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="http://player.vimeo.com/video/67458399" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
     <div class="right">
         <div class="actions">
@@ -61,14 +62,14 @@
 </div>
 
 <a name="request"></a>
-<div class="w800 center">
+<div class="w600 center">
     <div class="statement">
         <div class="main sp_header">Let's Get Started!</div>
         <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
     </div>
 </div>
 
-<div class="w800 center contact shadow">
+<div class="w700 center contact shadow">
     <a href="#top"><img style="float: right" src="/d/assets/logo.png"></a>
     <div id="wufoo-z7x3p9">
     <a href="http://treest.wufoo.com/forms/z7x3p9">Loading form...</a>.

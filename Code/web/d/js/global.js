@@ -97,30 +97,6 @@ Divs.maxHeight = function (selector, maxHeight, setHeightTo, callbackHeightUnder
 
 };
 
-function Textareas() {}
-
-/* Serializes a form into a hash */
-Textareas.autosize = function (selector, minHeight) {
-
-    var $textarea = $(selector);
-
-    $textarea.keydown(function () {
-
-        // Retrieve height of content
-        var contentHeight = $textarea.height();
-
-        if (contentHeight > minHeight) {
-
-            // Set height of text area to that of content
-            $textarea.css("height", contentHeight)
-
-        }
-
-
-    });
-
-}
-
 function Forms() {}
 
 /* Serializes a form into a hash */

@@ -17,6 +17,7 @@ public class User extends Parent {
     private String faceUrl;
     private Date faceOn;
     private Integer faceRef;
+    private String stripeId;
 
     public Date getCreatedOn() {
         return createdOn;
@@ -84,7 +85,6 @@ public class User extends Parent {
             return faceUrl;
         else {
             return "/resources/fruits/" + (getId() % 19) + ".jpg";
-//            return "/resources/users/0/faces/0_face_none.jpg";
         }
 
     }
@@ -109,4 +109,11 @@ public class User extends Parent {
         this.faceRef = faceRef;
     }
 
+    public String getStripeId() {
+        return stripeId;
+    }
+
+    public void setStripeId(String stripeId) {
+        this.stripeId = stripeId;
+    }
 }

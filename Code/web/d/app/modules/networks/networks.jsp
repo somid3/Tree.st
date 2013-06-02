@@ -31,8 +31,8 @@
 
         nextQuestionRef = FlowRuleServices.getNextQuestionRef(meId, network.getId());
         networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
-        hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.UI_HAS_ICON);
-        collectModeSetting = networkIntegerSettings.get(NetworkIntegerSettingEnum.MODE_COLLECT_ONLY);
+        hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_ICON_SET);
+        collectModeSetting = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_COLLECT_ONLY);
         meToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, meId,  network.getId());
 
         if (meToNetwork.getBlockedOn() != null) { %>
@@ -53,8 +53,8 @@
                 <div class="tags">
 
                     <% if (nextQuestionRef != null) { %>
-                        <div class="bullet" id="<%= NetworkHtml.getBulletId(network.getId()) %>"><img src="./img/dot-green-16.png"></div>
-                        <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletId(network.getId()) %>", 10000, 30000)</script>
+                        <div class="bullet <%= NetworkHtml.getBulletClass(network.getId()) %>"><img src="./img/dot-green-16.png"></div>
+                        <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletClass(network.getId()) %>", 10000, 30000)</script>
                     <% } %>
 
                     <% if (meToNetwork.getBlockedOn() != null) { %>

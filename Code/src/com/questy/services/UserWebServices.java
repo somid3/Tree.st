@@ -2,6 +2,7 @@ package com.questy.services;
 
 import com.questy.dao.*;
 import com.questy.domain.*;
+import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.UserIntegerSettingEnum;
@@ -11,14 +12,16 @@ import com.questy.helpers.UIException;
 import com.questy.services.email.EmailConfirmationServices;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.StringUtils;
-import com.questy.utils.Vars;
+import com.questy.utils.StripeServices;
 import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
+import com.stripe.exception.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class UserWebServices extends ParentService {
 
@@ -81,13 +84,18 @@ public class UserWebServices extends ParentService {
         return UserServices.checkAuthenticity(userId, sessionChecksum, webUtils.getUserAgent());
     }
 
-    public static String signup(
+    public static String signup (
             WebUtils webUtils,
             Integer networkId,
             String networkChecksum,
             String emailToConfirm,
             String passwordText,
-            String fullname) throws SQLException {
+            String fullname,
+            String cardToken) throws SQLException {
+
+        /**
+         * Retrieving Relevant Settings & Declaring Variables
+         */
 
         // Currently non-transactional
         Connection conn = null;
@@ -96,6 +104,21 @@ public class UserWebServices extends ParentService {
 
         // Retrieve network
         Network network = NetworkDao.getByIdAndChecksum(conn, networkId, networkChecksum);
+
+        // Retrieve network settings
+        Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
+        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+
+        // Extracting important networks settings
+        Boolean networkAllowNonConfirmed = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_NO_CONFIRM) == 1;
+        Boolean networkRequiresPayment = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED) == 1;
+
+
+
+
+        /**
+         * Validating Inputs
+         */
 
         // Validating email
         if (!StringUtils.isEmail(emailToConfirm))
@@ -112,72 +135,68 @@ public class UserWebServices extends ParentService {
             throw new UIException("Please use an email that ends with " + emailEndingTest.getY());
 
         // Validate password length, complexity, etc
-        if (passwordText.length() < 6)
-            throw new UIException("Your password needs to be greater than five characters in length");
+        if (StringUtils.isEmpty(passwordText) || passwordText.length() < 6)
+            throw new UIException("Password needs to be greater than five characters in length");
 
         // Check if the email already exists as an account
         User user = UserDao.getByEmail(null, emailToConfirm);
 
-        // Determining if this network should allow new users to just enter into the app without confirmation
-        Boolean networkAllowNonConfirmed = NetworkIntegerSettingEnum.MODE_NO_CONFIRM.getBooleanByNetworkId(network.getId());
+        // Checking for duplicate email
+        if (user != null) {
+
+            // Yes, but was the provided password correct?
+            String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+            User authUser =  UserDao.getByEmailAndPasswordHash(conn, user.getEmail(), providedPasswordHash);
+            if (authUser == null)
+                throw new UIException("Email already exists, password does not match");
+        }
+
+        // Check for correct full name
+        if (user == null) {
+
+            // Validate full name
+            if (StringUtils.isEmpty(fullname) || !fullname.contains(" "))
+                throw new UIException("Please provide your full name");
+        }
+
+
+
+
+        /**
+         * Is Payment Information Required?
+         */
+
+        // Does community require payments details?
+        boolean isPaymentRequired = false;
+        if (networkRequiresPayment) {
+
+            if (user == null && StringUtils.isEmpty(cardToken))
+                isPaymentRequired = true;
+
+            else if (user != null && StringUtils.isEmpty(user.getStripeId()) && StringUtils.isEmpty(cardToken))
+                isPaymentRequired = true;
+        }
+
+        // Does the user need to provide payment information?
+        if (isPaymentRequired) {
+            buf.append("<payment/>");
+            return buf.toString();
+        }
+
+
+
+
+        /**
+         * Creating and Updating User
+         */
 
         Boolean persistent = true;
 
-        // Does the user already exist?
-        if (user != null) {
+        // Does the user need to be created?
+        if (user == null) {
 
-            // Yes, the user already exists...
-
-            // Create password hash
-            String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
-
-            // Yes, but was the provided password correct?
-            UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
-            if (userSession == null)
-                throw new UIException("Email already used for another " + Vars.name + " user -- provide the correct password");
-
-            // Add user to network and its dependants
-            NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
-
-            // Has the user been confirmed by email?
-            Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
-
-            // Determine if the network requires users to confirm their emails
-            if (networkAllowNonConfirmed)
-                isEmailConfirmed = true;
-
-            // Doe the user pass the email confirmation test?
-            if (!isEmailConfirmed) {
-
-                // Send confirmation email
-                EmailConfirmationServices.sendEmailConfirmation(user.getId());
-
-                // Add email confirmation action to response
-                buf.append("<confirm/>");
-
-            } else {
-
-                // Install login cookies at client
-                UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
-
-                // Add send to application action in response
-                buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
-
-            }
-
-        // Email does not already exist
-        } else {
-
-            // Validate first name
-            if (fullname.isEmpty())
-                throw new UIException("Please provide your name");
-
-            // Validate last name
+            // Splitting full name
             String[] splitName = fullname.split(" ");
-            if (splitName.length <= 1)
-                throw new UIException("Please provide your last name");
-
-            // Identifying first and last name
             String first = splitName[0];
             String last = splitName[1];
 
@@ -186,38 +205,57 @@ public class UserWebServices extends ParentService {
 
             // Retrieve new user
             user = UserDao.getById(null, userId);
+        }
 
-            // Adding user to network, and all its dependencies
-            NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
+        // Does the user have a stride id set?
+        if (networkRequiresPayment &&
+            StringUtils.isEmpty(user.getStripeId())) {
 
-            // Sending first email confirmation
-            EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
-
-            // Determine if user needs to be confirmed by email
-            if (networkAllowNonConfirmed) {
-
-                // Create password hash
-                String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
-
-                UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
-
-                // Install login cookies at client
-                UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
-
-                // Add send to application action in response
-                buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
-
-            }  else {
-
-                // Add email confirmation action to response
-                buf.append("<confirm/>");
-
+            // No, create stripe customer and update user
+            try {
+                String stripeId = StripeServices.createCustomer(cardToken);
+                UserDao.updateStripeId(null, user.getId(), stripeId);
+            } catch (Exception e) {
+                throw new UIException(e.getMessage());
             }
+        }
+
+        // Adding user to network and its dependants, if needed
+        NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
+
+        // Has the user been confirmed by email?
+        Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
+
+        // Determine if the network requires users to confirm their emails
+        if (networkAllowNonConfirmed)
+            isEmailConfirmed = true;
+
+        // Sending user to confirmation page or app
+        if (!isEmailConfirmed) {
+
+            // Send confirmation email
+            EmailConfirmationServices.sendEmailConfirmation(user.getId());
+
+            // Add email confirmation action to response
+            buf.append("<confirm/>");
+
+        } else {
+
+            // Create user session
+            String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+            UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
+
+            // Install login cookies at client
+            UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
+
+            // Add send to application action in response
+            buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
 
         }
 
         return buf.toString();
     }
+
 
     public static String signin (
             WebUtils webUtils,

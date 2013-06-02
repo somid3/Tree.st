@@ -2,10 +2,7 @@
 <% appDisableBlocked = false; %>
 <%@ include file="auth.jsp" %>
 <%
-    // If in development mode, make sure all scripts refresh
-    Vars.setDevelopmentRev();
-
-     // Getting initiation hash in case user has no hash
+    // Getting initiation hash in case user has no hash
     String initiationHash = UserWebServices.getInitialHash(meId);
 %>
 <!DOCTYPE HTML>
@@ -71,7 +68,7 @@
 
 <div id="header" class="square">
 
-    <div class="w800 center">
+    <div class="w850 center">
 
         <a href="/d/app">
             <div id="logo">
@@ -107,11 +104,10 @@
                 <% } %>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="main" class="w800">
+<div id="main" class="w850 center">
 
     <div id="left">
         <div id="currently">
@@ -121,7 +117,7 @@
         </div>
     </div>
 
-    <div id="center">
+    <div id="center" class="w600">
 
         <div id="canvas"></div>
 

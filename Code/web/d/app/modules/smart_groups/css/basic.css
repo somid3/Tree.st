@@ -178,7 +178,7 @@
 }
 
 #smart_search_tools .tool {
-    border: 1px solid #ccc;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
     margin-right: 5px;
     padding: 3px 5px;
     float: left;
@@ -387,7 +387,7 @@
     padding: 5px 5px 0 5px;
     position: relative;
     margin-bottom: 10px;
-    border: solid 1px <%= HtmlDesign.dim4 %>;
+    border: solid 1px <%= HtmlDesign.dim3 %>;
 }
 
 #smart_group_dashboard .name {

@@ -21,7 +21,7 @@ public class UserWebServicesTest {
 
        String newEmail = StringUtils.random() + "@" + StringUtils.random() + ".com";
 
-       UserWebServices.signup(null, network.getId(), network.getChecksum(), newEmail, "password", "Test Tester");
+       UserWebServices.signup(null, network.getId(), network.getChecksum(), newEmail, "password", "Test Tester", null);
 
        User user = UserDao.getByEmail(null, newEmail);
 

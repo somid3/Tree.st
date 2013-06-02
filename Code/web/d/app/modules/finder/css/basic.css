@@ -1,11 +1,9 @@
 <%@include file="../../../setup.jsp" %>
 <%@page contentType="text/css" %>
 
-/* Network Dashboard */
 #network_dashboard {
     width: 390px;
-    top: -8px;
-    left: 60px;
+    top: 15px;
     position: relative;
 }
 

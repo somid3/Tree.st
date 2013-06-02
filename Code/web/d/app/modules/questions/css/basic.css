@@ -12,7 +12,7 @@
     margin-bottom: 5px;
     background-color: #fff;
     padding: 5px;
-    border: 1px solid #bbb;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
     width: 587px;
 }
 

@@ -13,54 +13,48 @@ import java.util.Map;
 
 public enum NetworkAlphaSettingEnum {
 
-    MANIFESTO_TITLE    (0, ""),
-    MANIFESTO_CONTENT    (1, ""),
+    MANIFESTO_TITLE                     (0, ""),
+    MANIFESTO_CONTENT                   (1, ""),
 
     /**
      * Path name used to identify a network from the root domain name
      */
-    URL_PATH(3, null),
+    URL_PATH                            (3, null),
 
     /**
      * Message that appears on main page of community, above the manifesto
      */
-    START_MESSAGE(4, ""),
+    START_MESSAGE                       (4, ""),
 
     /**
      * Layout that appears below the manifesto but is the main page of the community
      */
-    START_BODY(5, ""),
-
-    /**
-     * System message in case there are outages to be expected for the community
-     */
-    @Deprecated
-    SYSTEM_MESSAGE(6, ""),
+    START_BODY                          (5, ""),
 
     /**
      * Word used to describe a singular user
      */
-    VOCAB_USER_SINGULAR (1000, "Member"),
+    VOCAB_USER_SINGULAR                 (1000, "Member"),
 
     /**
      * Word used to describe a plural user
      */
-    VOCAB_USER_PLURAL (1001, "Members"),
+    VOCAB_USER_PLURAL                   (1001, "Members"),
 
     /**
      * Vocabulary used to display up vote something
      */
-    SHARED_VOTE_UP_VOCAB (2000, "Like"),
+    SHARED_VOTE_UP_VOCAB                (2000, "Like"),
 
     /**
      * Vocabulary used to display down vote something
      */
-    SHARED_VOTE_DOWN_VOCAB (2001, "Dislike"),
+    SHARED_VOTE_DOWN_VOCAB              (2001, "Dislike"),
 
     /**
      * Top header color
      */
-    UI_HEADER_BACKGROUND_COLOR (10001, HtmlDesign.headerColor),
+    UI_HEADER_BACKGROUND_COLOR          (10001, HtmlDesign.headerColor),
 
     ;
 

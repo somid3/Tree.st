@@ -22,7 +22,7 @@ public class Vars {
      * Last production revision number, current format is the date
      * of the last push to production
      */
-    public static Long rev = 20130113L;
+    public static Long rev = null;
 
     /**
      * Current stage
@@ -42,14 +42,14 @@ public class Vars {
 
     public static final String name = "Treelift";
 
-    public static String domain = "www.treelift.com";
+    public static String domain = null;
 
 
     /***************************
      * Application variables
      **************************/
 
-    public static Boolean enableTimelocks = true;
+    public static Boolean enableTimelocks = null;
 
 
 
@@ -71,7 +71,7 @@ public class Vars {
      * Resource upload variables
      **************************/
 
-    public static String resourcesUrl = "/resources/";
+    public static String resourcesUrl = null;
 
     public static String resourcesFilePath = null;
 
@@ -102,7 +102,7 @@ public class Vars {
     /**
      * Domain name used to create the URL where email templates will be generated
      */
-    public static String emailTemplateDomain = "localhost:8080";
+    public static String emailTemplateDomain = null;
 
     /**
      * Should the server send emails or publish them to the console?
@@ -128,12 +128,12 @@ public class Vars {
     /**
      * Amazon SES credentials
      */
-    public static String amazonEmailPublishableKey = "17PSBE0Y2JY8PAC6VBR2";
+    public static String amazonEmailPublishableKey = null;
 
     /**
      * Amazon SES credentials
      */
-    public static String amazonEmailSecretKey = "eAQCx/eHMPrnRtLKbhLNg8x+c/CTtOvruOwqybvv";
+    public static String amazonEmailSecretKey = null;
 
     /**
      * Email address of outgoing emails
@@ -153,8 +153,8 @@ public class Vars {
     /**
      * Stripe keys
      */
-    public static String stripeTestingPublishableKey = "pk_test_4EIShk90uGIpyYmJHDBnzlhn";
-    public static String stripeTestingSecretKey = "sk_test_WutmScOcz03UgVX66Nhghg1L";
+    public static String stripePublishableKey = null;
+    public static String stripeSecretKey = null;
 
 
 
@@ -162,11 +162,11 @@ public class Vars {
      * SQL variables
      **************************/
 
-    public static String sqlUsername = "";
-    public static String sqlPassword = "";
-    public static String sqlHost = "";
-    public static String sqlDatabaseName = "";
-    public static String sqlParameters = "";
+    public static String sqlUsername = null;
+    public static String sqlPassword = null;
+    public static String sqlHost = null;
+    public static String sqlDatabaseName = null;
+    public static String sqlParameters = null;
 
 
 
@@ -177,11 +177,15 @@ public class Vars {
         try {
             // Setting up the global variables
             if (Vars.isInDevelopment())
-                setToDevelopment();
+                loadProperties("dev.properties");
             else if (Vars.isInStaging())
-                setToStaging();
+                loadProperties("stage.properties");
             else if (Vars.isInProduction())
-                setToProduction();
+                loadProperties("prod.properties");
+
+            // Load the variables from the properties
+            Vars.rev = new Date().getTime();
+            setVariables();
 
             // Display in the console the stage
             yell();
@@ -194,88 +198,36 @@ public class Vars {
 
 
 
-    private static void setToDevelopment () throws IOException {
-        loadProperties("dev.properties");
+    private static void setVariables () {
 
         domain = loadPropertyAsString("domain");
-        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
+        enableTimelocks = loadPropertyAsBoolean("enableTimeLocks");
 
+        resourcesUrl = loadPropertyAsString("resourcesUrl");
         resourcesFilePath = loadPropertyAsString("resourcesFilePath");
         resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
 
+        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
         sendEmails =  loadPropertyAsBoolean("sendEmails");
         logSentEmails = loadPropertyAsBoolean("logSentEmails");
+        amazonEmailPublishableKey = loadPropertyAsString("amazonEmailPublishableKey");
+        amazonEmailSecretKey = loadPropertyAsString("amazonEmailSecretKey");
+
+        sqlUsername = loadPropertyAsString("sqlUsername");
+        sqlPassword = loadPropertyAsString("sqlPassword");
+        sqlHost = loadPropertyAsString("sqlHost");
+        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
+        sqlParameters = loadPropertyAsString("sqlParameters");
+
+        stripePublishableKey = loadPropertyAsString("stripePublishableKey");
+        stripeSecretKey = loadPropertyAsString("stripeSecretKey");
 
         mockUserAgent = loadPropertyAsString("mockUserAgent");
-
-        sqlUsername = loadPropertyAsString("sqlUsername");
-        sqlPassword = loadPropertyAsString("sqlPassword");
-        sqlHost = loadPropertyAsString("sqlHost");
-        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
-        sqlParameters = loadPropertyAsString("sqlParameters");
-
-//        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
-//        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 8 on Windows
-
-        //loadProperties("dev.properties");
-    }
-
-    private static void setToStaging () throws IOException {
-        loadProperties("stage.properties");
-
-        domain = loadPropertyAsString("domain");
-        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
-
-        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
-        resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
-
-        sendEmails =  loadPropertyAsBoolean("sendEmails");
-        logSentEmails = loadPropertyAsBoolean("logSentEmails");
-        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
-        sendAllEmailsTo = loadPropertyAsString("sendAllEmailsTo");
-
-        sqlUsername = loadPropertyAsString("sqlUsername");
-        sqlPassword = loadPropertyAsString("sqlPassword");
-        sqlHost = loadPropertyAsString("sqlHost");
-        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
-        sqlParameters = loadPropertyAsString("sqlParameters");
-
-//        mockUserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)";  // Mock IE 9 on Windows
-
-
-
-    }
-
-    private static void setToProduction() throws IOException {
-        loadProperties("prod.properties");
-
-        sendEmails =  loadPropertyAsBoolean("sendEmails");
-        emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
-
-        resourcesFilePath = loadPropertyAsString("resourcesFilePath");
-        resourcesTempFilePath = loadPropertyAsString("resourcesTempFilePath");
-
-
-        sqlUsername = loadPropertyAsString("sqlUsername");
-        sqlPassword = loadPropertyAsString("sqlPassword");
-        sqlHost = loadPropertyAsString("sqlHost");
-        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
-        sqlParameters = loadPropertyAsString("sqlParameters");
-
     }
 
 
-    /**
-     * Loads a properties relative to the Vars class given the file name
-     *
-     * @param fileName
-     * @throws IOException
-     */
     private static void loadProperties(String fileName) throws IOException {
-
-        // Load the properties file relative to the Vars class
         properties.load(Vars.class.getResourceAsStream(fileName));
-
     }
 
     private static String loadPropertyAsString(String property){
@@ -286,42 +238,16 @@ public class Vars {
         return Boolean.parseBoolean((String) properties.getProperty(property));
     }
 
-
     public static boolean isInDevelopment () {
-
-        if (deploymentStage == DeploymentStages.DEVELOPMENT)
-            return true;
-        else
-            return false;
+        return (deploymentStage == DeploymentStages.DEVELOPMENT);
     }
 
     public static boolean isInStaging () {
-
-        if (deploymentStage == DeploymentStages.STAGING)
-            return true;
-        else
-            return false;
+        return (deploymentStage == DeploymentStages.STAGING);
     }
 
     public static boolean isInProduction () {
-
-        if (deploymentStage == DeploymentStages.PRODUCTION)
-            return true;
-        else
-            return false;
-    }
-
-
-
-    /**
-     * Updates the revision dynamically to make sure a new revision number is created every time. Used
-     * to prevent caching on browsers while developing
-     *
-     */
-    public static void setDevelopmentRev () {
-
-        if (Vars.isInDevelopment())
-            Vars.rev = new Date().getTime();
+        return (deploymentStage == DeploymentStages.PRODUCTION);
     }
 
     /**
