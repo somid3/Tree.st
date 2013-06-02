@@ -79,6 +79,7 @@
 <head>
     <title><%= network.getName() %></title>
     <%@ include file="../includes/google_analytics.jsp"%>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>

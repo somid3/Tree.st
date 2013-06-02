@@ -15,7 +15,6 @@ import com.questy.utils.StringUtils;
 import com.questy.utils.StripeServices;
 import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
-import com.stripe.exception.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -154,9 +153,13 @@ public class UserWebServices extends ParentService {
         // Check for correct full name
         if (user == null) {
 
-            // Validate full name
-            if (StringUtils.isEmpty(fullname) || !fullname.contains(" "))
-                throw new UIException("Please provide your full name");
+            // Validate first name
+            if (StringUtils.isEmpty(fullname))
+                throw new UIException("Please provide your first name");
+
+            // Validate last name
+            if (fullname.split(" ").length < 2)
+                throw new UIException("Please provide your last name");
         }
 
 
@@ -187,10 +190,11 @@ public class UserWebServices extends ParentService {
 
 
         /**
-         * Creating and Updating User
+         * Creating or Updating User
          */
 
         Boolean persistent = true;
+        Boolean isNewUser = false;
 
         // Does the user need to be created?
         if (user == null) {
@@ -205,13 +209,16 @@ public class UserWebServices extends ParentService {
 
             // Retrieve new user
             user = UserDao.getById(null, userId);
-        }
+
+            // Documenting new user was created
+            isNewUser = true;
+        };
 
         // Does the user have a stride id set?
         if (networkRequiresPayment &&
             StringUtils.isEmpty(user.getStripeId())) {
 
-            // No, create stripe customer and update user
+            // No stride id set, and network requires payment -- create stripe customer and update user
             try {
                 String stripeId = StripeServices.createCustomer(cardToken);
                 UserDao.updateStripeId(null, user.getId(), stripeId);
@@ -226,15 +233,19 @@ public class UserWebServices extends ParentService {
         // Has the user been confirmed by email?
         Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
 
-        // Determine if the network requires users to confirm their emails
-        if (networkAllowNonConfirmed)
-            isEmailConfirmed = true;
-
         // Sending user to confirmation page or app
-        if (!isEmailConfirmed) {
+        if (!networkAllowNonConfirmed && !isEmailConfirmed) {
 
-            // Send confirmation email
-            EmailConfirmationServices.sendEmailConfirmation(user.getId());
+
+            if (isNewUser)
+
+                // User is new and we need to begin a new email confirmation
+                EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
+
+            else
+
+                // User already existed and we just need to re-send the same confirmation email
+                EmailConfirmationServices.sendEmailConfirmation(user.getId());
 
             // Add email confirmation action to response
             buf.append("<confirm/>");

@@ -23,13 +23,13 @@ public enum UserIntegerSettingEnum {
      * Whether the user has confirmed the main email address point of
      * contact
      */
-    IS_ACCOUNT_CONFIRMED(100, 0),
+    IS_ACCOUNT_CONFIRMED                                        (100, 0),
 
     /*
      * Total number of email confirmation requests that the user has
      * received
      */
-    NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT (101, 0),
+    NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT                    (101, 0),
 
 
 
@@ -40,18 +40,18 @@ public enum UserIntegerSettingEnum {
      * After a certain number of requests the user will stop receiving
      * photo upload requests
      */
-    NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT (200, 0),
+    NUMBER_OF_FIRST_PHOTO_UPLOAD_EMAILS_SENT                    (200, 0),
 
     /*
      * Whether the user has requested to not receive any more reminders
      * to upload his or her first photo
      */
-    IS_UNSUBSCRIBED_FROM_FIRST_PHOTO_UPLOAD_EMAILS (201, 0),
+    IS_UNSUBSCRIBED_FROM_FIRST_PHOTO_UPLOAD_EMAILS              (201, 0),
 
     /*
      * Total number of photos the user has uploaded to the profile
      */
-    NUMBER_OF_PHOTOS_UPLOADED (202, 0),
+    NUMBER_OF_PHOTOS_UPLOADED                                   (202, 0),
 
 
 
@@ -59,19 +59,19 @@ public enum UserIntegerSettingEnum {
      * Tip that appears on top of the shared feed area informing the user that
      * shared items can be created only from within a smart group
      */
-    TIP_SHARED_ITEMS_HOW                 (1000, 1),
+    TIP_SHARED_ITEMS_HOW                                        (1000, 1),
 
     /**
      * Tip on top of all the shared groups that informs a user that the search
      * tool needs to be used to create a smart group
      */
-    TIP_SMART_GROUPS_CREATE              (1001, 1),
+    TIP_SMART_GROUPS_CREATE                                     (1001, 1),
 
     /**
      * Tip on top of all the questions that informs the user how to go about
      * creating his or her profile
      */
-    TIP_QUESTIONS_HOW                    (1002, 1),
+    TIP_QUESTIONS_HOW                                           (1002, 1),
 
     ;
 

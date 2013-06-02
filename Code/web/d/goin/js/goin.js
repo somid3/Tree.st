@@ -242,11 +242,16 @@ Payment.response = function (status, response) {
         var $paymentToken = $("#card_token");
         $paymentToken.val(token);
 
-        // Submitting signup
-        Signup.signup(null);
+        // Hiding the payment form
+        Animations.outTop("#payment", function() {
+
+            // Submitting signup
+            Signup.signup(null);
+        });
+
     }
 
-}
+};
 
 Payment.displayLoading = function () {
     var $loading = $("#payment_loading");

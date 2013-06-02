@@ -12,7 +12,7 @@
 
     try {
 
-//        buf.append(UserWebServices.signup(webUtils, networkId, networkChecksum, email, passwordText, name, cardToken));
+        buf.append(UserWebServices.signup(webUtils, networkId, networkChecksum, email, passwordText, name, cardToken));
 
     } catch (UIException e) {
 
@@ -23,8 +23,6 @@
 
     }
 
-    buf = new StringBuilder();
-    buf.append("<payment/>");
 %>
 <?xml version="1.0"?>
 <signup>

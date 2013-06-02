@@ -9,15 +9,14 @@
 
     #confirm {
         background-color: <%= HtmlDesign.highlight %>;
-        border: solid 2px white;
+        border: solid 1px white;
         padding: 10px;
-        width: 260px;
+        width: 240px;
         display: none;
     }
 
     #console {
         width: 264px;
-        padding: 10px 10px 5px 10px;
     }
 
     #signin {
@@ -25,6 +24,7 @@
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
+        display: none;
     }
 
     #signin_error {
@@ -76,19 +76,20 @@
         margin-top: 5px;
     }
 
-    #signup,
-    #payment {
+    #signup{
         margin-top: 20px;
         background-color: white;
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
+        display: none;
     }
 
     #signup_title,
     #payment_title {
-        margin-bottom: 10px;
+        margin: 10px 0;
         width: 230px;
+        text-align: center;
     }
 
     #signup_error,
@@ -106,32 +107,8 @@
 
     #signup_email_div,
     #signup_name_div,
-    #signup_password_div{
+    #signup_password_div {
         margin-bottom: 5px;
-        background-color: white;
-        padding: 4px;
-        width: 225px;
-        border: solid 1px <%= HtmlDesign.dim3 %>;
-    }
-
-    #payment_ccnumber_div {
-        margin-bottom: 5px;
-        background-color: white;
-        padding: 4px;
-        width: 225px;
-        border: solid 1px <%= HtmlDesign.dim3 %>;
-    }
-
-    #payment_exp_div {
-        margin-bottom: 10px;
-        background-color: white;
-        padding: 4px;
-        width: 225px;
-        border: solid 1px <%= HtmlDesign.dim3 %>;
-    }
-
-    #payment_cvc_div {
-        margin-bottom: 10px;
         background-color: white;
         padding: 4px;
         width: 225px;
@@ -139,7 +116,71 @@
     }
 
     #signup_button {
-        width: 212px;
+        width: 215px;
+    }
+
+    #payment {
+        background-color: white;
+        border: solid 1px <%= HtmlDesign.dim2 %>;
+        padding: 10px;
+        width: 240px;
+        /*display: none;*/
+    }
+
+    #payment_details {
+        margin: 10px 0;
+    }
+
+    #payment_cards {
+        margin: 10px auto;
+        width: 140px;
+    }
+
+    .payment_cc_image {
+        width: 32px;
+    }
+
+    #payment_content {
+        margin-top: 20px;
+    }
+
+    #payment_ccnumber_div {
+        background-color: white;
+        padding: 4px;
+        width: 225px;
+        border: solid 1px <%= HtmlDesign.dim3 %>;
+    }
+
+    #payment_ccnumber {}
+
+    #payment_ccnumber_check,
+    #payment_exp_check,
+    #payment_cvc_check {
+        float: right;
+        position: relative;
+        top: -10px;
+        width: 20px;
+    }
+
+    #payment_exp_div {
+        margin-bottom: 10px;
+        background-color: white;
+        padding: 4px;
+        width: 100px;
+        border: solid 1px <%= HtmlDesign.dim3 %>;
+    }
+
+    #payment_cvc_div {
+        margin-bottom: 10px;
+        background-color: white;
+        padding: 4px;
+        width: 102px;
+        border: solid 1px <%= HtmlDesign.dim3 %>;
+    }
+
+    #payment_expcvc_div {
+        margin-top: 10px;
+        display: inline-block;
     }
 
     #provided_by {
@@ -205,17 +246,52 @@
         </div>
     </div>
 
-    <div id="payment" style="display: none;">
+    <div id="payment">
         <div id="payment_form">
             <div id="payment_title" class="vl_text dim">
                 <div id="payment_loading"><img src="/d/goin/img/sm_loading.gif"></div>
                 Payment Details
             </div>
+
+            <div id="payment_details" class="sm_text dim2">
+                We accept all mayor credit & debit cards. In your statement we will
+                be listed as <span class="highlight">Treelift</span>
+            </div>
+
+            <div id="payment_cards">
+                <img src="/d/goin/img/visa.png" class="payment_cc_image">
+                <img src="/d/goin/img/mastercard.png" class="payment_cc_image">
+                <img src="/d/goin/img/american.png" class="payment_cc_image">
+                <img src="/d/goin/img/discover.png" class="payment_cc_image">
+            </div>
+
             <div id="payment_error" class="error sm_text"></div>
             <div id="payment_content">
-                <div id="payment_ccnumber_div"><input class="md_input w200" type="text" placeholder="...._...._...._...." id="payment_ccnumber"></div>
-                <div id="payment_exp_div"><input class="md_input w200" type="text" placeholder="mm/yy" id="payment_exp"></div>
-                <div id="payment_cvc_div"><input class="md_input w200" type="text" placeholder="CVC" id="payment_cvc"></div>
+
+                <div class="smd_text dim" style="margin-bottom: 5px;">Credit card:</div>
+                <div id="payment_ccnumber_div">
+                    <input class="md_input w175" type="text" placeholder="5555-5555-5555-5555" id="payment_ccnumber">
+                    <img src="/d/goin/img/check_gray.png" id="payment_ccnumber_check">
+                </div>
+
+                <div id="payment_expcvc_div">
+                    <div style="float: left; margin-right: 10px;">
+                        <div class="smd_text dim" style="margin-bottom: 5px;">Expires:</div>
+                        <div id="payment_exp_div">
+                            <input class="md_input w50" type="text" placeholder="MM/YY" id="payment_exp">
+                            <img src="/d/goin/img/check_gray.png" id="payment_exp_check">
+                        </div>
+                    </div>
+
+                    <div style="float: left">
+                        <div class="smd_text dim" style="margin-bottom: 5px;">Card code:</div>
+                        <div id="payment_cvc_div">
+                            <input class="md_input w50" type="text" placeholder="CVC" id="payment_cvc">
+                            <img src="/d/goin/img/check_gray.png" id="payment_cvc_check">
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <a href="#" onclick="Payment.createToken(event);">
                 <div id="payment_button" class="sm_button submit_button md_header">Let's go</div>
@@ -233,10 +309,12 @@
         <p class="note smd_text white">For the safety and privacy of all our members we require everyone to confirm their email address.</p>
     </div>
 
-    <div id="provided_by">
-        <div class="vsm_text dim">Provided by</div>
-        <a href="http://<%= Vars.domain %>"><img src="/d/assets/vsm_logo.png"></a>
-    </div>
+    <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
+        <div id="provided_by">
+            <div class="vsm_text dim">Provided by</div>
+            <img src="/d/assets/vsm_logo.png">
+        </div>
+    </a>
 
 </div>
 

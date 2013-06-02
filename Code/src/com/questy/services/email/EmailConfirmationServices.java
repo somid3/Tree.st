@@ -1,26 +1,19 @@
 package com.questy.services.email;
 
 import com.questy.dao.UserDao;
-import com.questy.domain.Network;
 import com.questy.domain.User;
 import com.questy.domain.UserSession;
-import com.questy.enums.RoleEnum;
 import com.questy.enums.UserAlphaSettingEnum;
 import com.questy.enums.UserIntegerSettingEnum;
-import com.questy.helpers.SqlLimit;
 import com.questy.helpers.UIException;
-import com.questy.services.FlowRuleServices;
-import com.questy.services.NetworkServices;
 import com.questy.services.UserWebServices;
 import com.questy.utils.StringUtils;
-import com.questy.web.HashRouting;
 import com.questy.web.WebUtils;
 
 import javax.servlet.jsp.SkipPageException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * This class deals with confirming the mail email address a user defines. This is
@@ -61,14 +54,6 @@ public class EmailConfirmationServices {
 
     public static void sendEmailConfirmation(Integer userId) throws SQLException {
 
-        // Check email checksum is defined
-        String emailChecksum = UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.getValueByUserId(userId);
-        if (!emailChecksum.isEmpty()) {
-
-            // Save email confirmation checksum for user
-            UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.setValueByUserId(userId, StringUtils.random());
-        }
-
         // Update confirmation email count
         UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.incrementValueByUserId(userId, 1);
 
@@ -106,8 +91,13 @@ public class EmailConfirmationServices {
         // Clearing the email checksum setting
         UserAlphaSettingEnum.EMAIL_CONFIRMATION_CHECKSUM.deleteByUserId(userId);
 
+        // Reset confirmation email count
+        UserIntegerSettingEnum.NUMBER_OF_EMAIL_CONFIRMATION_EMAILS_SENT.deleteByUserId(userId);
+
         // Confirm account
         UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.setValueByUserId(userId, 1);
+
+
 
         // Email confirmation was successful, retrieve user
         User user = UserDao.getById(null, userId);

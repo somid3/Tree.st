@@ -201,7 +201,7 @@ public class Vars {
     private static void setVariables () {
 
         domain = loadPropertyAsString("domain");
-        enableTimelocks = loadPropertyAsBoolean("enableTimeLocks");
+        enableTimelocks = loadPropertyAsBoolean("enableTimelocks");
 
         resourcesUrl = loadPropertyAsString("resourcesUrl");
         resourcesFilePath = loadPropertyAsString("resourcesFilePath");
@@ -210,6 +210,7 @@ public class Vars {
         emailTemplateDomain = loadPropertyAsString("emailTemplateDomain");
         sendEmails =  loadPropertyAsBoolean("sendEmails");
         logSentEmails = loadPropertyAsBoolean("logSentEmails");
+        sendAllEmailsTo = loadPropertyAsString("sendAllEmailsTo");
         amazonEmailPublishableKey = loadPropertyAsString("amazonEmailPublishableKey");
         amazonEmailSecretKey = loadPropertyAsString("amazonEmailSecretKey");
 
