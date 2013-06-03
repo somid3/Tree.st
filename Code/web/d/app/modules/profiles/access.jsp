@@ -7,7 +7,7 @@
     User viewed = UserDao.getById(null, viewUserId);
 
     // Retrieving viewed user's mapping to network
-    Integer pointsForLink = UserLinkServices.getPointsPerLink(homeId, viewUserId);
+    Integer pointsPerLink = NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(homeId);
 
     String hCardId = HtmlUtils.getRandomId();
     String hConnectButtonId = HtmlUtils.getRandomId();
@@ -35,15 +35,15 @@
         <div class="connect vl_button active_button" id="<%= hConnectButtonId %>">Yes</div>
     </a>
 
-    <% if (pointsForLink > 0) { %>
+    <% if (pointsPerLink > 0) { %>
     <div class="requires vl_text highlight2">
-        Gain <span class="sp_header"><%= pointsForLink %></span> points
+        Gain <span class="sp_header"><%= pointsPerLink %></span> points
     </div>
     <% } %>
 
-    <% if (pointsForLink < 0) { %>
+    <% if (pointsPerLink < 0) { %>
         <div class="requires vl_text highlight2">
-            Requires <span class="sp_header"><%= pointsForLink * -1 %></span> points
+            Requires <span class="sp_header"><%= pointsPerLink * -1 %></span> points
         </div>
     <% } %>
 

@@ -44,12 +44,10 @@
     <div id="smart_search_results"> <%
 
             Integer ul_a_toUserId = null;
-            Integer ul_a_networkId = null;
-            UserToNetwork ul_a_meToHome = meToHome;
+            Integer ul_a_networkUserLinkPointsPer = NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(homeId);
             for (SmartGroupResult result : results) {
 
-                ul_a_toUserId = result.getUserId();
-                ul_a_networkId = result.getNetworkId(); %>
+                ul_a_toUserId = result.getUserId(); %>
 
                 <div class="smart_search_result">
 

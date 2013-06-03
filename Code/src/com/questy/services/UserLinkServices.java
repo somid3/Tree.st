@@ -57,8 +57,8 @@ public class UserLinkServices extends ParentService  {
             if (lastDay >= perDay) throw new UIException("Limit: " + perDay + " views per day");
         }
 
-        // Calculate the points required for a link to the user being connected to
-        Integer pointsForLink = getPointsPerLink(networkId, toUserId);
+        // How many points does the network require per link?
+        Integer pointsPerLink = networkIntegerSettings.get(NetworkIntegerSettingEnum.USER_LINK_POINTS_PER);
 
         // Check that the from user has the required number of points
         UserToNetwork fromUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(conn, fromUserId, networkId);
@@ -68,7 +68,7 @@ public class UserLinkServices extends ParentService  {
          * we only check for points when the "to user" will actually reduce points from the
          * "from user"
          */
-        if (fromUserToNetwork.getCurrentPoints() < (pointsForLink * -1)) {
+        if (fromUserToNetwork.getCurrentPoints() < (pointsPerLink * -1)) {
 
             // User does not have enough points, return null
             throw new UIException("Not enough points");
@@ -93,7 +93,7 @@ public class UserLinkServices extends ParentService  {
                 UserLinkDao.insert(conn, networkId, toUserId, fromUserId, UserLinkDirectionEnum.TARGET_TO_ME);
 
                 // Update points from me
-                UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsForLink);
+                UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsPerLink);
 
                 // Send notification email
                 EmailServices.userLinkCreated(fromUserId, toUserId, networkId);
@@ -121,7 +121,7 @@ public class UserLinkServices extends ParentService  {
                         fromUserId);
 
                 // Update points from me
-                UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsForLink);
+                UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsPerLink);
 
                 // Send notification email
                 EmailServices.userLinkCreated(fromUserId, toUserId, networkId);
@@ -137,7 +137,7 @@ public class UserLinkServices extends ParentService  {
             else if (fromLink.getDirection() == UserLinkDirectionEnum.BOTH)
                 finalDirection = UserLinkDirectionEnum.BOTH;
 
-            return new Tuple<UserLinkDirectionEnum, Integer>(finalDirection, pointsForLink);
+            return new Tuple<UserLinkDirectionEnum, Integer>(finalDirection, pointsPerLink);
         }
 
     }
@@ -154,10 +154,7 @@ public class UserLinkServices extends ParentService  {
             throw new RuntimeException("User is not a member of network");
 
         // Giving preference to user set value if not null
-        if (userToNetwork.getPointsPerLink() != null)
-            return userToNetwork.getPointsPerLink();
-        else
-            return NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(networkId);
+        return NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(networkId);
     }
 
 

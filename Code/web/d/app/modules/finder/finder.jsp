@@ -250,12 +250,8 @@
             <div class="find_group md_header white">People (<%= matches.size() %>)</div> <%
 
             // Variables for user window
-            Integer ul_a_networkId = homeId;
             Integer ul_a_toUserId = null;
-            UserToNetwork ul_a_meToHome = meToHome;
-
-
-            // Looping through all the matches
+            Integer ul_a_networkUserLinkPointsPer = NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(homeId);
             for (User match : matches) {
                 ul_a_toUserId = match.getId();
 

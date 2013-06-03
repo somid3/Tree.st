@@ -14,7 +14,6 @@ public class UserToNetwork extends Parent {
     private Integer sharedUpVotes;
     private Integer sharedDownVotes;
 
-    private Integer pointsPerLink;
     private Date blockedOn;
     private RoleEnum role;
 
@@ -50,14 +49,6 @@ public class UserToNetwork extends Parent {
 
     public void setCurrentPoints(Integer currentPoints) {
         this.currentPoints = currentPoints;
-    }
-
-    public Integer getPointsPerLink() {
-        return pointsPerLink;
-    }
-
-    public void setPointsPerLink(Integer pointsPerLink) {
-        this.pointsPerLink = pointsPerLink;
     }
 
     public RoleEnum getRole() {

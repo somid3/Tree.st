@@ -2,22 +2,21 @@
     /* Inputs variables
      *
      * Integer ul_a_toUserId = null;
-     * Integer ul_a_networkId = null;
-     * UserToNetwork ul_a_meToHome = null;
+     * Integer ul_a_networkUserLinkPointsPer = null;
      */
 
     // Retrieving user whose card will be displayed
     User ul_a_toUser = UserDao.getById(null, ul_a_toUserId);
 
     // Retrieving user to network to get points...
-    UserToNetwork ul_a_toUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, ul_a_toUserId, ul_a_networkId);
+    UserToNetwork ul_a_toUserToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, ul_a_toUserId, homeId);
 
     // Attempt to see if the user has user link
-    UserLink ul_a_toUserLink = UserLinkDao.getByNetworkIdAndFromUserIdAndToUserId(null, ul_a_networkId, ul_a_meToHome.getUserId(), ul_a_toUserId);
+    UserLink ul_a_toUserLink = UserLinkDao.getByNetworkIdAndFromUserIdAndToUserId(null, homeId, meToHome.getUserId(), ul_a_toUserId);
 
-    Boolean displayDetails = false;
+    Boolean ul_a_displayDetails = false;
     if (ul_a_toUserLink != null && ul_a_toUserLink.getDirection() != UserLinkDirectionEnum.TARGET_TO_ME)
-        displayDetails = true;
+        ul_a_displayDetails = true;
 
     String ul_a_hCardId = HtmlUtils.getRandomId();
     String ul_a_hConnectButtonId = HtmlUtils.getRandomId();
@@ -31,10 +30,13 @@
 
                <%
                    // Changing the link on the photo depending if a user link exists
-                   if (displayDetails) { %>
-                   <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId, ul_a_meToHome.getUserId())%>');">
+                   if (ul_a_displayDetails) { %>
+                   <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, ul_a_toUserId, meToHome.getUserId())%>');">
+
                <% } else { %>
-                   <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
+
+                   <a href="#" onclick="UserLink.connect(event, <%= homeId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
+
                <% } %>
 
                    <div class="card_face">
@@ -47,19 +49,23 @@
 
            <div class="card_right">
 
-               <% if (displayDetails) { %>
+               <%
+                   /**
+                   * ALREADY CONNECTED USE CASE -  Users are already linked up
+                   */
+                   if (ul_a_displayDetails) { %>
 
                    <div class="card_top">
 
                        <div class="card_details">
-                           <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId, ul_a_meToHome.getUserId())%>');">
+                           <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, ul_a_toUserId, meToHome.getUserId())%>');">
                                <div class="name smd_header highlight2"><%= StringUtils.concat(ul_a_toUser.getName(), 18, "&hellip;") %></div>
                            </a>
                        </div>
 
                        <div class="card_shortcuts">
 
-                           <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(ul_a_networkId, ul_a_toUserId, ul_a_meToHome.getUserId())%>');">
+                           <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, ul_a_toUserId, meToHome.getUserId())%>');">
                                <div class="card_shortcut">
                                    <div class="text sm_text highlight2">Profile</div>
                                </div>
@@ -77,18 +83,15 @@
                    </div>
 
                <%
-                   /* CREATE NEW CONNECTION USE CASE
-                    *
-                    * Users are not linked, display connect button and required points
+                   /**
+                    * CREATE NEW CONNECTION USE CASE -  Users are not linked, display connect button and required points
                     */
-                   } else {
-
-                       Integer ul_a_pointsForLink = UserLinkServices.getPointsPerLink(ul_a_networkId, ul_a_toUser.getId()); %>
+                   } else { %>
 
                        <div class="card_top">
 
                            <div class="card_details">
-                               <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
+                               <a href="#" onclick="UserLink.connect(event, <%= homeId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>', '<%= ul_a_hConnectButtonId %>')">
                                    <div class="name smd_header highlight2"><%= StringUtils.concat(ul_a_toUser.getName(), 18, "&hellip;") %></div>
                                </a>
                            </div>
@@ -101,16 +104,16 @@
 
                            <div class="loading"><img src="./img/sm_loading.gif"></div>
 
-                           <a href="#" onclick="UserLink.connect(event, <%= ul_a_networkId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>',  '<%= ul_a_hConnectButtonId %>')">
+                           <a href="#" onclick="UserLink.connect(event, <%= homeId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>',  '<%= ul_a_hConnectButtonId %>')">
                                <div id="<%= ul_a_hConnectButtonId %>" class="connect lg_button active_button">View</div>
                            </a>
 
-                           <% if (ul_a_pointsForLink < 0) { %>
-                               <div class="sm_text highlight2">Requires <span class="vl_header"><%= ul_a_pointsForLink * -1 %></span> points</div>
+                           <% if (ul_a_networkUserLinkPointsPer < 0) { %>
+                               <div class="sm_text highlight2">Requires <span class="vl_header"><%= ul_a_networkUserLinkPointsPer * -1 %></span> points</div>
                            <% } %>
 
-                           <% if (ul_a_pointsForLink > 0) { %>
-                               <div class="sm_text highlight2">Gain <span class="vl_header"><%= ul_a_pointsForLink %></span> points</div>
+                           <% if (ul_a_networkUserLinkPointsPer > 0) { %>
+                               <div class="sm_text highlight2">Gain <span class="vl_header"><%= ul_a_networkUserLinkPointsPer %></span> points</div>
                            <% } %>
 
                        </div>
@@ -126,8 +129,8 @@
             * Displaying the admin card if the user is an editor or above, and if the
             * card being displayed is no the same card that belows to the user.
             */
-           if (ul_a_meToHome.getRole().isHigherThan(RoleEnum.MEMBER) &&
-                !ul_a_meToHome.getUserId().equals(ul_a_toUserId)) { %>
+           if (meToHome.getRole().isHigherThan(RoleEnum.MEMBER) &&
+                !meToHome.getUserId().equals(ul_a_toUserId)) { %>
 
             <div class="admin_card">
                  <% UserToNetwork ul_c_userToNetwork = ul_a_toUserToNetwork; %>

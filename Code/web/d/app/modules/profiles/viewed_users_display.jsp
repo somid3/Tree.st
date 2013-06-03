@@ -18,12 +18,10 @@
     if (count > 0) {
 
         Integer ul_a_toUserId = null;
-        Integer ul_a_networkId = null;
-        UserToNetwork ul_a_meToHome = meToHome;
+        Integer ul_a_networkUserLinkPointsPer = NetworkIntegerSettingEnum.USER_LINK_POINTS_PER.getValueByNetworkId(homeId);
         for (UserLink viewedUserLink : viewedUserLinks) {
 
-            ul_a_toUserId = viewedUserLink.getToUserId();
-            ul_a_networkId = viewedUserLink.getNetworkId(); %>
+            ul_a_toUserId = viewedUserLink.getToUserId(); %>
 
             <div class="user_link">
                 <%@ include file="../user_links/includes/ul_a_card.jsp" %>

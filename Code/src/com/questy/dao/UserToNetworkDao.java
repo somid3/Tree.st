@@ -224,30 +224,6 @@ public class UserToNetworkDao extends ParentDao {
         end(conn, ps, null);
     }
 
-    public static void updatePointsPerLink(
-            Connection conn,
-            Integer networkId,
-            Integer userId,
-            Integer pointsPerLink) throws SQLException {
-
-        conn = start(conn);
-
-        String sql =
-            "update `users_to_networks` " +
-            "set `points_per_link` = ? " +
-            "where `network_id` = ? " +
-            "and `user_id` = ?;";
-
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, pointsPerLink);
-        ps.setInt(2, networkId);
-        ps.setInt(3, userId);
-        ps.execute();
-
-        end(conn, ps, null);
-    }
-
-
     public static void removeByUserIdAndNetworkId (
             Connection conn,
             Integer userId,
@@ -302,7 +278,6 @@ public class UserToNetworkDao extends ParentDao {
         out.setSharedUpVotes(DatabaseUtils.getInt(rs, "shared_up_votes"));
         out.setSharedDownVotes(DatabaseUtils.getInt(rs, "shared_down_votes"));
 
-        out.setPointsPerLink(DatabaseUtils.getInt(rs, "points_per_link"));
         out.setRole(RoleEnum.getById(DatabaseUtils.getInt(rs, "role")));
         return out;
     }
