@@ -60,7 +60,7 @@ public class UserServices extends ParentService  {
     }
 
 
-    // TODO: this does not belong here, create other class
+    // TODO: this does not belong here, create other class like UserToQuestionServices
     public static void deleteUserAnswers(Integer userId) throws SQLException {
 
         // Currently non-transactional

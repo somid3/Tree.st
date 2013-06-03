@@ -84,40 +84,19 @@ public class UserWebServices extends ParentService {
     }
 
     public static String signup (
-            WebUtils webUtils,
-            Integer networkId,
-            String networkChecksum,
-            String emailToConfirm,
-            String passwordText,
-            String fullname,
-            String cardToken) throws SQLException {
-
-        /**
-         * Retrieving Relevant Settings & Declaring Variables
-         */
+        WebUtils webUtils,
+        Integer networkId,
+        String networkChecksum,
+        String emailToConfirm,
+        String passwordText,
+        String fullname,
+        String cardToken) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
 
-        StringBuilder buf = new StringBuilder();
-
         // Retrieve network
         Network network = NetworkDao.getByIdAndChecksum(conn, networkId, networkChecksum);
-
-        // Retrieve network settings
-        Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
-        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
-
-        // Extracting important networks settings
-        Boolean networkAllowNonConfirmed = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_NO_CONFIRM) == 1;
-        Boolean networkRequiresPayment = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED) == 1;
-
-
-
-
-        /**
-         * Validating Inputs
-         */
 
         // Validating email
         if (!StringUtils.isEmail(emailToConfirm))
@@ -140,66 +119,61 @@ public class UserWebServices extends ParentService {
         // Check if the email already exists as an account
         User user = UserDao.getByEmail(null, emailToConfirm);
 
-        // Checking for duplicate email
-        if (user != null) {
+        // Do we need to sign up a new user, or an existing one?
+        String out = null;
+        if (user == null)
+            signupNewUser(
+                webUtils,
+                network,
+                emailToConfirm,
+                passwordText,
+                fullname,
+                cardToken);
+        else
+            signupExistingUser(
+                webUtils,
+                network,
+                user,
+                passwordText,
+                cardToken);
 
-            // Yes, but was the provided password correct?
-            String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
-            User authUser =  UserDao.getByEmailAndPasswordHash(conn, user.getEmail(), providedPasswordHash);
-            if (authUser == null)
-                throw new UIException("Email already exists, password does not match");
-        }
-
-        // Check for correct full name
-        if (user == null) {
-
-            // Validate first name
-            if (StringUtils.isEmpty(fullname))
-                throw new UIException("Please provide your first name");
-
-            // Validate last name
-            if (fullname.split(" ").length < 2)
-                throw new UIException("Please provide your last name");
-        }
-
+        return out;
+    }
 
 
+    private static String signupNewUser (
+        WebUtils webUtils,
+        Network network,
+        String emailToConfirm,
+        String passwordText,
+        String fullname,
+        String cardToken) throws SQLException {
 
-        /**
-         * Is Payment Information Required?
-         */
+        // Retrieve network settings
+        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
 
-        // Does community require payments details?
-        boolean isPaymentRequired = false;
-        if (networkRequiresPayment) {
+        // Extracting important networks settings
+        Boolean networkAllowNonConfirmed = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_NO_CONFIRM) == 1;
+        Boolean networkRequiresPayment = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED) == 1;
 
-            if (user == null && StringUtils.isEmpty(cardToken))
-                isPaymentRequired = true;
+        // Validate full name
+        if (StringUtils.isEmpty(fullname))
+            throw new UIException("Please provide your first name");
 
-            else if (user != null && StringUtils.isEmpty(user.getStripeId()) && StringUtils.isEmpty(cardToken))
-                isPaymentRequired = true;
-        }
+        // Validating last name
+        if (fullname.split(" ").length < 2)
+            throw new UIException("Please provide your last name");
 
-        // Does the user need to provide payment information?
-        if (isPaymentRequired) {
-            buf.append("<payment/>");
-            return buf.toString();
-        }
+        // Send user to provide payment details?
+        if (networkRequiresPayment && StringUtils.isEmpty(cardToken))
+            return "<payment/>";
 
+        // If needed, create stripe customer
+        String stripeId = createStripeCustomer(networkRequiresPayment, cardToken);
 
-
-
-        /**
-         * Creating or Updating User
-         */
-
-        Boolean persistent = true;
-        Boolean isNewUser = false;
-
-        // Does the user need to be created?
-        if (user == null) {
-
-            // Splitting full name
+        // Create user
+        User user  = null;
+        {
             String[] splitName = fullname.split(" ");
             String first = splitName[0];
             String last = splitName[1];
@@ -209,70 +183,111 @@ public class UserWebServices extends ParentService {
 
             // Retrieve new user
             user = UserDao.getById(null, userId);
-
-            // Documenting new user was created
-            isNewUser = true;
-        };
-
-        // Does the user have a stride id set?
-        if (networkRequiresPayment &&
-            StringUtils.isEmpty(user.getStripeId())) {
-
-            // No stride id set, and network requires payment -- create stripe customer and update user
-            try {
-                String stripeId = StripeServices.createCustomer(cardToken);
-                UserDao.updateStripeId(null, user.getId(), stripeId);
-            } catch (Exception e) {
-                throw new UIException(e.getMessage());
-            }
         }
+
+        // Update stripe id
+        if (!StringUtils.isEmpty(stripeId))
+            UserDao.updateStripeId(null, user.getId(), stripeId);
 
         // Adding user to network and its dependants, if needed
         NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
-        // Has the user been confirmed by email?
-        Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
-
-        // Sending user to confirmation page or app
-        if (!networkAllowNonConfirmed && !isEmailConfirmed) {
-
-
-            if (isNewUser)
-
-                // User is new and we need to begin a new email confirmation
-                EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
-
-            else
-
-                // User already existed and we just need to re-send the same confirmation email
-                EmailConfirmationServices.sendEmailConfirmation(user.getId());
-
-            // Add email confirmation action to response
-            buf.append("<confirm/>");
-
-        } else {
-
-            // Create user session
-            String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
-            UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), providedPasswordHash, persistent);
-
-            // Install login cookies at client
-            UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), persistent);
-
-            // Add send to application action in response
-            buf.append("<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />");
-
+        // Begin confirmation email reminders?
+        if (!networkAllowNonConfirmed) {
+            EmailConfirmationServices.beginEmailConfirmation(user.getId(), emailToConfirm);
+            return "<confirm/>";
         }
 
-        return buf.toString();
+        // We are all good, send user to application
+        return beginApplication(webUtils, network, user, passwordText);
     }
+
+    private static String signupExistingUser (
+        WebUtils webUtils,
+        Network network,
+        User user,
+        String passwordText,
+        String cardToken) throws SQLException {
+
+        // Retrieve network settings
+        Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
+
+        // Extracting important networks settings
+        Boolean networkAllowNonConfirmed = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_NO_CONFIRM) == 1;
+        Boolean networkRequiresPayment = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED) == 1;
+
+        // Checking for duplicate email
+        String passwordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+        User authUser =  UserDao.getByEmailAndPasswordHash(null, user.getEmail(), passwordHash);
+        if (authUser == null)
+            throw new UIException("Email already exists, password does not match");
+
+        // Send user to provide payment details?
+        if (networkRequiresPayment &&
+            StringUtils.isEmpty(user.getStripeId()) &&
+            StringUtils.isEmpty(cardToken))
+            return "<payment/>";
+
+        // If needed, create stripe customer
+        String stripeId = createStripeCustomer(networkRequiresPayment, cardToken);
+
+        // Update stripe id
+        if (!StringUtils.isEmpty(stripeId))
+            UserDao.updateStripeId(null, user.getId(), stripeId);
+
+        // Adding user to network and its dependants, if needed
+        NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
+
+        // Send email confirmation email again?
+        if (!networkAllowNonConfirmed) {
+            EmailConfirmationServices.sendEmailConfirmation(user.getId());
+            return "<confirm/>";
+        }
+
+        // We are all good, send user to application
+        return beginApplication(webUtils, network, user, passwordText);
+    }
+
+    private static String beginApplication (
+            WebUtils webUtils,
+            Network network,
+            User user,
+            String passwordText
+            ) throws SQLException {
+
+        String passwordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+        UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, user.getEmail(), passwordHash, true);
+
+        // Install login cookies at client
+        UserWebServices.installCookies(webUtils, user.getId(), userSession.getChecksum(), true);
+
+        // Add send to application action in response
+        return "<app go='" + NetworkServices.getInitialHash(user.getId(), network.getId()) + "' />";
+
+    }
+
+    private static String createStripeCustomer (Boolean networkRequiresPayment, String cardToken) {
+
+        String stripeId = null;
+        if (networkRequiresPayment) {
+            try { stripeId = StripeServices.createCustomer(cardToken); }
+            catch (Exception e) {
+                e.printStackTrace();
+                throw new UIException(e.getMessage());
+            }
+        }
+
+        return stripeId;
+    }
+
+
 
 
     public static String signin (
             WebUtils webUtils,
             Integer networkId,
             String email,
-            String passwordText,
+            String passwordProvided,
             Boolean keep) throws SQLException {
 
         StringBuilder buf = new StringBuilder();
@@ -285,7 +300,7 @@ public class UserWebServices extends ParentService {
         User user = UserDao.getByEmail(null, email);
 
         // Validating password
-        if (StringUtils.emptyIfNull(passwordText).isEmpty())
+        if (StringUtils.emptyIfNull(passwordProvided).isEmpty())
             throw new UIException("Please provide a password");
 
         // Validating credentials
@@ -293,7 +308,7 @@ public class UserWebServices extends ParentService {
             throw new UIException("Incorrect email address or password");
 
         // Creating hashed password for login
-        String providedPasswordHash = UserDao.hashPassword(passwordText, user.getPasswordSalt());
+        String providedPasswordHash = UserDao.hashPassword(passwordProvided, user.getPasswordSalt());
 
         // Logging user in, creating a new user session
         UserSession userSession = UserWebServices.authenticateAndCreateSession(webUtils, email, providedPasswordHash, keep);

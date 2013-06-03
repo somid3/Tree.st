@@ -104,6 +104,7 @@ Signup.signup = function (event) {
     // Retrieving objects
     var $payment = $("#payment");
     var $confirm = $("#confirm");
+    var $signup = $("#signup");
 
     var parameters = {};
     parameters.nid = networkId;
@@ -144,19 +145,15 @@ Signup.signup = function (event) {
 
         } else if($response.find("confirm").length > 0) {
 
-            // Move the start form out
-            Animations.outTop("#sign", function () {
-                $confirm.fadeIn();
-            });
+            $signup.hide();
+            $confirm.fadeIn();
 
             return false;
 
         } else if($response.find("payment").length > 0) {
 
-            // Hide the sign up form
-            Animations.outTop("#sign", function() {
-                $payment.fadeIn();
-            });
+            $signup.hide();
+            $payment.fadeIn();
 
             return false;
 
@@ -181,6 +178,10 @@ Signup.displayError = function (errorMessage) {
     var $loading = $("#signup_loading");
     var $error = $("#signup_error");
     $error.text(errorMessage).fadeIn();
+
+    // Clearing card token to restart payment
+    $("#card_token").val("");
+
     $loading.hide();
 };
 
@@ -204,15 +205,13 @@ Payment.createToken = function (event) {
 
     // Retrieving values
     var number = $("#payment_cc").val();
-    var expiration = $("#payment_exp").val();
+    var exp = $("#payment_exp").val();
     var cvc = $("#payment_cvc").val();
 
     // Separating expiration month and year
-    var expirationTokens = expiration.split("/");
-    var month = expirationTokens[0];
-    var year = 20 + expirationTokens[1];
-
-    console.log(month + "-" + year);
+    var expTokens = exp.split("/");
+    var month = expTokens[0];
+    var year = 20 + expTokens[1];
 
     Stripe.card.createToken({
         number: number,
@@ -228,6 +227,10 @@ Payment.response = function (status, response) {
 
     Payment.displayLoading();
 
+    // Retrieving objects
+    var $payment = $("#payment");
+    var $signup = $("#signup");
+
     if (response.error) {
 
         Payment.displayError(response.error.message);
@@ -238,15 +241,16 @@ Payment.response = function (status, response) {
         var token = response['id'];
 
         // Insert the token into the form so it gets submitted to the server
-        var $paymentToken = $("#card_token");
-        $paymentToken.val(token);
+        var $cardToken = $("#card_token");
+        $cardToken.val(token);
 
-        // Hiding the payment form
-        Animations.outTop("#payment", function() {
+        Payment.hideLoadingAndError();
 
-            // Submitting signup
-            Signup.signup(null);
-        });
+        $payment.hide();
+        $signup.fadeIn();
+
+        // Submitting signup
+        Signup.signup(null);
 
     }
 

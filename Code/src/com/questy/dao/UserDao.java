@@ -317,6 +317,7 @@ public class UserDao extends ParentDao {
             "limit 1;";
 
         PreparedStatement ps = conn.prepareStatement(sql);
+
         ps.setString(1, stripeId);
         ps.setInt(2, userId);
         ps.execute();

@@ -9,9 +9,7 @@ import java.util.Map;
 
 public class StripeServices {
 
-    static {
-        Stripe.apiKey = Vars.stripeSecretKey;
-    }
+    static { Stripe.apiKey = Vars.stripeSecretKey; }
 
     public static String createCustomer (
         String cardToken) throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException {
@@ -22,4 +20,5 @@ public class StripeServices {
 
         return customer.getId();
     }
+
 }

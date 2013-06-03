@@ -24,7 +24,6 @@
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
-        display: none;
     }
 
     #signin_error {
@@ -82,7 +81,7 @@
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
-        display: none;
+        position: absolute;
     }
 
     #signup_title,
@@ -121,11 +120,12 @@
     }
 
     #payment {
+        margin-top: 20px;
         background-color: white;
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
-        /*display: none;*/
+        display: none;
     }
 
     #payment_details {
@@ -254,7 +254,7 @@
         </div>
     </div>
 
-    <div id="payment">
+    <div id="payment" class="shadow">
         <div id="payment_form">
             <div id="payment_title" class="vl_text dim">
                 <div id="payment_loading"><img src="/d/goin/img/sm_loading.gif"></div>
