@@ -122,20 +122,20 @@ public class UserWebServices extends ParentService {
         // Do we need to sign up a new user, or an existing one?
         String out = null;
         if (user == null)
-            signupNewUser(
-                webUtils,
-                network,
-                emailToConfirm,
-                passwordText,
-                fullname,
-                cardToken);
+            out = signupNewUser(
+                    webUtils,
+                    network,
+                    emailToConfirm,
+                    passwordText,
+                    fullname,
+                    cardToken);
         else
-            signupExistingUser(
-                webUtils,
-                network,
-                user,
-                passwordText,
-                cardToken);
+            out = signupExistingUser(
+                    webUtils,
+                    network,
+                    user,
+                    passwordText,
+                    cardToken);
 
         return out;
     }
@@ -229,7 +229,9 @@ public class UserWebServices extends ParentService {
             return "<payment/>";
 
         // If needed, create stripe customer
-        String stripeId = createStripeCustomer(networkRequiresPayment, cardToken);
+        String stripeId = null;
+        if (StringUtils.isEmpty(user.getStripeId()))
+            stripeId = createStripeCustomer(networkRequiresPayment, cardToken);
 
         // Update stripe id
         if (!StringUtils.isEmpty(stripeId))
@@ -239,9 +241,14 @@ public class UserWebServices extends ParentService {
         NetworkServices.addUserToNetworkWithDependencies(network.getId(), user.getId(), RoleEnum.MEMBER);
 
         // Send email confirmation email again?
-        if (!networkAllowNonConfirmed) {
-            EmailConfirmationServices.sendEmailConfirmation(user.getId());
-            return "<confirm/>";
+        {
+            // Has the user previously confirmed by email?
+            Boolean isEmailConfirmed = UserIntegerSettingEnum.IS_ACCOUNT_CONFIRMED.getBooleanByUserId(user.getId());
+
+            if (!networkAllowNonConfirmed && !isEmailConfirmed) {
+                EmailConfirmationServices.sendEmailConfirmation(user.getId());
+                return "<confirm/>";
+            }
         }
 
         // We are all good, send user to application

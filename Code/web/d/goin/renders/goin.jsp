@@ -8,6 +8,7 @@
 <style>
 
     #confirm {
+        margin-top: 20px;
         background-color: <%= HtmlDesign.highlight %>;
         border: solid 1px white;
         padding: 10px;
@@ -81,7 +82,6 @@
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
-        position: absolute;
     }
 
     #signup_title,
@@ -195,7 +195,7 @@
         margin-top: 20px;
         background-color: white;
         text-align: center;
-        padding: 2px 5px;
+        padding: 3px 5px 0 2px;
         float: right;
     }
 
@@ -316,7 +316,7 @@
         </div>
     </div>
 
-    <div id="confirm">
+    <div id="confirm" class="shadow">
 
         <div><span class="sp_text white">Confirm</span></div>
         <p class="note lg_text white">Visit your email inbox and click on the provided link.</p>
@@ -327,10 +327,7 @@
     </div>
 
     <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
-        <div id="provided_by">
-            <div class="vsm_text dim2" style="margin-bottom: 3px;">Provided by</div>
-            <img src="/d/assets/vsm_logo.png">
-        </div>
+        <div id="provided_by"><img src="/d/goin/img/provided_by.png"></div>
     </a>
 
 </div>
