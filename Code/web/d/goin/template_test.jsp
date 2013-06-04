@@ -331,21 +331,16 @@
             </div>
 
             <div class="center vl_text dim" style="position: relative">
-
                 <img src="./test/pricing2.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
-
                 <div style="display: inline-block">
-
                     <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
                         <img src="./test/coach1.png" style="width: 100px;">
                     </div>
-
                     <div style="width: 300px; float: left;">
                         <p class="mission lg_text dim">
                             If you have any questions or feedback we'd love to hear from you!
                         </p>
                     </div>
-
                 </div>
 
                 <div style="width: 200px;" class="lg_button active_button center">
