@@ -73,14 +73,14 @@
 
     <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div style="position: absolute; left: 460px; top: 10px;"><img src="./test/pricing2.png" style="width: 150px;"></div>
+        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing2.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
             <img src="./test/capture.png" width="200px">
         </div>
 
         <script type="text/javascript">
-            Animations.toPosition("#capture", -75, 60, 5000);
+            $(window).load(function() { Animations.toPosition("#capture", -75, 60, 5000); })
         </script>
 
         <div style="padding: 20px 10px 10px 10px;">
@@ -89,7 +89,7 @@
                 <img src="./test/logo.png">
             </div>
 
-            <div class="magnet vl_header" style="width: 100%; padding: 10px 0 10px 5px; line-height: 1.5em; text-align: center; margin: 20px auto;">
+            <div class="magnet vl_header" style="width: 100%; padding: 10px 0 10px 15px; line-height: 1.5em; text-align: center; margin: 20px auto;">
                 The easiest, fastest way to get<br/>
                 personalized, one-on-one training <br/>
                 &mdash; and start getting fit today!
@@ -102,7 +102,25 @@
 
             </div>
 
-            <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+            <style>
+                .break {
+                    position: relative;
+                }
+
+                .lets_start {
+                    z-index: 30;
+                    float: right;
+                    width: 150px;
+                    position: absolute;
+                    top: 20px;
+                    left: 580px;
+                }
+
+            </style>
+
+            <div class="break">
+                <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+            </div>
 
             <style>
                 .benefit {
@@ -123,7 +141,6 @@
                 .benefit > .content > .text {
                    line-height: 1.6em;
                 }
-
             </style>
 
             <div id="benefits" style="position: relative; height: 810px;">
@@ -131,7 +148,7 @@
                 <img src="./test/trainer2.png" id="trainer1" style="position: absolute; left: -100px; top: -100px; width: 400px;">
                 <img src="./test/trainer1.png" id="trainer2" style="z-index: 10; position: absolute; top: 340px; left: 200px; width: 550px;">
 
-                <div class="benefit shadow" style="width: 180px; position: absolute; left: 340px; top: -50px;">
+                <div class="benefit shadow" style="width: 180px; position: absolute; left: 330px; top: -50px;">
                     <div class="content">
                         <div class="title vl_header dim">Get Personalized Advice</div>
                         <div class="text lg_text dim">
@@ -153,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="benefit shadow" style="width: 180px; position: absolute; left: 380px; top: 210px;">
+                <div class="benefit shadow" style="width: 180px; position: absolute; left: 390px; top: 210px;">
                     <div class="content">
                         <div class="title vl_header dim">Earn Cash</div>
                         <div class="text lg_text dim">
@@ -175,14 +192,32 @@
                 </div>
             </div>
             <script type="text/javascript">
-                $("#benefits").hover(
-                    function() {
+                var animateTrainer1 = true;
+                var animateTrainer2 = true;
+                $(window).scroll(function () {
+                    var scrollTop = $(window).scrollTop();
+
+                    if (scrollTop > 400 && animateTrainer1) {
+                        animateTrainer1 = false;
                         Animations.toPosition("#trainer1", 0, -100, 4000);
+                    }
+
+                    if (scrollTop > 700 && animateTrainer2) {
+                        animateTrainer2 = false;
                         Animations.toPosition("#trainer2", 100, 340, 4000);
-                    });
+                    }
+                });
             </script>
 
-            <img src="./test/break2.png" style="z-index: 20; margin-top: 20px; width: 590px; position: relative; left: -10px">
+            <div class="break">
+                <img src="./test/break6.png" style="z-index: 20; margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <a href="#" onclick="Animations.scrollToTop();">
+                    <div class="lets_start md_button sm_text dark_button white square">
+                        <div class="md_header"> Let's go!</div>
+                        <div>Scroll to top & Sign up!</div>
+                    </div>
+                </a>
+            </div>
 
             <style>
                 .testimonial {
@@ -247,7 +282,15 @@
                 </div>
             </div>
 
-            <img src="./test/break4.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+            <div class="break">
+                <img src="./test/break4.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <a href="#" onclick="Animations.scrollToTop();">
+                    <div class="lets_start md_button sm_text dark_button white square">
+                        <div class="md_header"> Awesome!</div>
+                        <div>Scroll to top & Let's start!</div>
+                    </div>
+                </a>
+            </div>
 
             <style>
                 .mission {
@@ -260,7 +303,7 @@
             <div class="w450 center vl_text dim" style="position: relative">
                 <img src="./test/join_community.png" style="z-index: 10; position: absolute; left: -100px; top: -50px; width: 120px;">
 
-                <div class="center" style="width: 120px;"><img src="./test/sep.png"></div>
+                <div class="center" style="width: 120px; position: relative; top: 10px;"><img src="./test/sep.png"></div>
 
                 <p class="mission">
                 Our mission is simple, our cause noble &mdash; we
@@ -277,7 +320,15 @@
                 <div class="center" style="width: 120px;"><img src="./test/sep.png"></div>
             </div>
 
-            <img src="./test/break3.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+            <div class="break">
+                <img src="./test/break5.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <a href="#" onclick="Animations.scrollToTop();">
+                    <div class="lets_start md_button sm_text dark_button white square">
+                        <div class="md_header">Start Now!</div>
+                        <div>Scroll to top &<br/>Let's change the world</div>
+                    </div>
+                </a>
+            </div>
 
             <div class="center vl_text dim" style="position: relative">
 
@@ -311,22 +362,8 @@
     </div>
 
 
-    <div class="w300 square" style="
-        float: left;
-        position: relative">
-
-        <div style="
-            margin-left: 20px;
-            padding: 0;
-            width:300px;
-            top:30px;
-            position: fixed;
-            height: 700px;
-            overflow: hidden;">
-
-            <div id="goin"></div>
-
-        </div>
+    <div class="w300 square" style="float: left; position: relative; top: 20px; left: 20px;">
+        <div id="goin"></div>
     </div>
 
 </div>
