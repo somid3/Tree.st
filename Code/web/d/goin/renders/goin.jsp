@@ -59,6 +59,11 @@
         border: solid 1px <%= HtmlDesign.dim3 %>;
     }
 
+    #signin_tools {
+        display: inline-block;
+        width: 100%;
+    }
+
     #signin_remember {
         float: left;
     }
@@ -73,7 +78,8 @@
     }
 
     #signin_forgot {
-        margin-top: 5px;
+        margin-top: 2px;
+        float: right;
     }
 
     #signup{
@@ -218,17 +224,14 @@
                     </a>
                 </div>
                 <div id="signin_tools">
-                  <span id="signin_remember">
-                      <a href="#">
-                          <input id="signin_keep" type="checkbox" name="signin_keep">
-                          <label for="signin_keep"><span class="sm_text dim">Keep me in</span></label>
-                      </a>
-                  </span>
-
-                    <span class="dim">&mdash;</span>
-
+                    <span id="signin_remember">
+                        <a href="#">
+                            <input id="signin_keep" type="checkbox" name="signin_keep">
+                            <label for="signin_keep"><span class="sm_text dim">Keep me in</span></label>
+                        </a>
+                    </span>
                     <a href="/d/forgot">
-                        <span class="sm_text dim" id="signin_forgot">Forgot password?</span>
+                        <span class="sm_text highlight2" id="signin_forgot">Forgot password?</span>
                     </a>
                 </div>
             </div>
@@ -327,7 +330,7 @@
     </div>
 
     <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
-        <div id="provided_by"><img src="/d/goin/img/provided_by.png"></div>
+        <div id="provided_by" class="shadow"><img src="/d/goin/img/provided_by.png"></div>
     </a>
 
 </div>

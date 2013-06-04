@@ -64,13 +64,17 @@ Signin.signin = function (event) {
 Signin.displayLoading = function () {
     var $loading = $("#signin_loading");
     var $error = $("#signin_error");
+    var $button = $("#signin_button");
+    $button.removeClass("submit_button").addClass("dark_button");
     $error.empty().hide();
-    $loading.show();
+    $loading.show();     
 };
 
 Signin.displayError = function (errorMessage) {
     var $loading = $("#signin_loading");
     var $error = $("#signin_error");
+    var $button = $("#signin_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.text(errorMessage).fadeIn();
     $loading.hide();
 };
@@ -78,6 +82,8 @@ Signin.displayError = function (errorMessage) {
 Signin.hideLoadingAndError = function () {
     var $loading = $("#signin_loading");
     var $error = $("#signin_error");
+    var $button = $("#signin_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.hide();
     $loading.hide();
 };
@@ -170,6 +176,8 @@ Signup.signup = function (event) {
 Signup.displayLoading = function () {
     var $loading = $("#signup_loading");
     var $error = $("#signup_error");
+    var $button = $("#signup_button");
+    $button.removeClass("submit_button").addClass("dark_button");
     $error.empty().hide();
     $loading.show();
 };
@@ -177,6 +185,8 @@ Signup.displayLoading = function () {
 Signup.displayError = function (errorMessage) {
     var $loading = $("#signup_loading");
     var $error = $("#signup_error");
+    var $button = $("#signup_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.text(errorMessage).fadeIn();
 
     // Clearing card token to restart payment
@@ -188,6 +198,8 @@ Signup.displayError = function (errorMessage) {
 Signup.hideLoadingAndError = function () {
     var $loading = $("#signup_loading");
     var $error = $("#signup_error");
+    var $button = $("#signup_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.hide();
     $loading.hide();
 };
@@ -316,6 +328,8 @@ Payment.checkCvc = function () {
 Payment.displayLoading = function () {
     var $loading = $("#payment_loading");
     var $error = $("#payment_error");
+    var $button = $("#payment_button");
+    $button.removeClass("submit_button").addClass("dark_button");
     $error.empty().hide();
     $loading.show();
 };
@@ -323,6 +337,8 @@ Payment.displayLoading = function () {
 Payment.displayError = function (errorMessage) {
     var $loading = $("#payment_loading");
     var $error = $("#payment_error");
+    var $button = $("#payment_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.text(errorMessage).fadeIn();
     $loading.hide();
 };
@@ -330,6 +346,8 @@ Payment.displayError = function (errorMessage) {
 Payment.hideLoadingAndError = function () {
     var $loading = $("#payment_loading");
     var $error = $("#payment_error");
+    var $button = $("#payment_button");
+    $button.removeClass("dark_button").addClass("submit_button");
     $error.hide();
     $loading.hide();
 };

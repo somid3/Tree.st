@@ -1,5 +1,7 @@
 <%@ include file="../all.jsp" %>
 <%
+    Thread.sleep(1000);
+
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
 

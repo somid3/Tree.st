@@ -65,41 +65,34 @@
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 
-<body style="background-color: green;">
+<body style="background-color: #bbb;">
 
 <%@ include file="../includes/browser_check.jsp"%>
 
-
 <div class="center w900">
 
-    <div class="w600 square glow4" style="
-        background-color: white;
-        float: left;
-        position: relative">
+    <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div class="w300" style="
-            float: left;
-            position: absolute;
-            left: -170px;
-            top: 50px;
-            ">
+        <div style="position: absolute; left: 460px; top: 10px;"><img src="./test/pricing2.png" style="width: 150px;"></div>
 
-          <img src="img/face1.png" width="200px">
-
+        <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
+            <img src="./test/capture.png" width="200px">
         </div>
 
+        <script type="text/javascript">
+            Animations.toPosition("#capture", -75, 60, 5000);
+        </script>
 
         <div style="padding: 20px 10px 10px 10px;">
 
-            <div class="logo gg_header" style="margin-left: 30px;">ghappy</div>
+            <div id="logo" style="position: relative; left: 170px; top: 10px;">
+                <img src="./test/logo.png">
+            </div>
 
-            <div class="magnet vl_header" style="
-                line-height: 1.5em;
-                text-align: center;
-                margin: 30px 0;">
-                The easiest, fastest way to<br/>
-                meet people who enjoy a gluten-free<br/>
-                lifestyle, who like the same things you do
+            <div class="magnet vl_header" style="width: 100%; padding: 10px 0 10px 5px; line-height: 1.5em; text-align: center; margin: 20px auto;">
+                The easiest, fastest way to get<br/>
+                personalized, one-on-one training <br/>
+                &mdash; and start getting fit today!
             </div>
 
             <div class="video center" style="
@@ -109,16 +102,93 @@
 
             </div>
 
-            <div style="
-                text-align: center;
-                margin-top: 30px;">
-                <img src="./img/sep.png">
+            <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+
+            <style>
+                .benefit {
+                    display: inline-block;
+                    padding: 20px;
+                    background-color: white;
+                }
+
+                .benefit > .content {
+                    float: left;
+                }
+
+                .benefit > .content > .title {
+                    margin-bottom: 5px;
+                    font-family: Helvetica;
+                }
+
+                .benefit > .content > .text {
+                   line-height: 1.6em;
+                }
+
+            </style>
+
+            <div id="benefits" style="position: relative; height: 810px;">
+
+                <img src="./test/trainer2.png" id="trainer1" style="position: absolute; left: -100px; top: -100px; width: 400px;">
+                <img src="./test/trainer1.png" id="trainer2" style="z-index: 10; position: absolute; top: 340px; left: 200px; width: 550px;">
+
+                <div class="benefit shadow" style="width: 180px; position: absolute; left: 340px; top: -50px;">
+                    <div class="content">
+                        <div class="title vl_header dim">Get Personalized Advice</div>
+                        <div class="text lg_text dim">
+                            We analyze you with over 250 dimensions
+                            and give you personalized advice
+                            to live a healthier life
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit shadow" style="width: 180px; position: absolute; left: -30px; top: 150px;">
+                    <div class="content">
+                        <div class="title vl_header dim">Digital Content</div>
+                        <div class="text lg_text dim">
+                            Get unique recipes, tips, exercise routines,
+                            and knowledge to live a healthier and
+                            and more energetic lifestyle
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit shadow" style="width: 180px; position: absolute; left: 380px; top: 210px;">
+                    <div class="content">
+                        <div class="title vl_header dim">Earn Cash</div>
+                        <div class="text lg_text dim">
+                            For each friend you subscribe you will earn
+                            $10, it's that simple.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit shadow" style="z-index: 20; width: 180px; position: absolute; left: 40px; top: 600px;">
+                    <div class="content">
+                        <div class="title vl_header dim">Community</div>
+                        <div class="text lg_text dim">
+                            Have fun! Make friends and get know others
+                            who are getting fit &mdash; professionals, students,
+                            athletes.
+                        </div>
+                    </div>
+                </div>
             </div>
+            <script type="text/javascript">
+                $("#benefits").hover(
+                    function() {
+                        Animations.toPosition("#trainer1", 0, -100, 4000);
+                        Animations.toPosition("#trainer2", 100, 340, 4000);
+                    });
+            </script>
+
+            <img src="./test/break2.png" style="z-index: 20; margin-top: 20px; width: 590px; position: relative; left: -10px">
 
             <style>
                 .testimonial {
-                    margin: 30px 0 0 30px;
+                    margin: 20px 0 0 30px;
                     display: inline-block;
+                    padding: 20px;
                 }
 
                 .testimonial > .content {
@@ -140,22 +210,23 @@
 
                 .testimonial > .content > .location {
                     margin-top: 5px;
+                    float: right;
                 }
             </style>
 
-            <div class="testimonial">
-                <div class="face"><img src="./img/face1.png"></div>
+            <div class="testimonial shadow" style="position: relative; left: -20px;">
+                <div class="face"><img src="./test/face1.png"></div>
                 <div class="content">
                     <div class="quote dim">
-                        &ldquo;Seriously, this is the only gluten-free
+                        &ldquo;Seriously, this is the only healthy living
                         community that has changed my life&hellip;&rdquo;
                     </div>
                     <div class="location md_text dim2">Jane (Scottsdale, AZ)</div>
                 </div>
             </div>
 
-            <div class="testimonial">
-                <div class="face"><img src="./img/face2.png"></div>
+            <div class="testimonial shadow" style="position: relative; left: 20px;">
+                <div class="face"><img src="./test/face2.png"></div>
                 <div class="content">
                     <div class="quote dim">
                         &ldquo;I've learned great recipes, yoga moves,
@@ -165,122 +236,80 @@
                 </div>
             </div>
 
-            <div class="testimonial">
-                <div class="face"><img src="./img/face3.png"></div>
+            <div class="testimonial shadow" style="position: relative; left: -20px;">
+                <div class="face"><img src="./test/face3.png"></div>
                 <div class="content">
                     <div class="quote dim">
-                        &ldquo;I wish I had learned of ghappy
-                        five years ago, so many new friends&hellip;&rdquo;
+                        &ldquo;I wish I had learned of FitArrow
+                        five years ago, I'm sleeping so much better&hellip;&rdquo;
                     </div>
                     <div class="location md_text dim2">Brian (Boston, MA)</div>
                 </div>
             </div>
 
-            <style>
-                .sec-title {
-                    font-style: italic;
-                    font-family: Georgia;
-                    text-align: center;
-                }
-            </style>
-
-            <div style="
-                text-align: center;
-                margin-top: 30px;">
-                <img src="./img/sep.png">
-            </div>
-
-            <div class="sec-title vl_text">Benefits</div>
-
-            <style>
-                .benefit {
-                    margin: 30px 0 0 45px;
-                    display: inline-block;
-                }
-
-                .benefit > .icon {
-                    float: left;
-                    margin-top: 10px;
-                }
-
-                .benefit > .content {
-                    width: 350px;
-                    float: left;
-                    margin: 0 0 0 20px;
-                }
-
-                .benefit > .content > .title {
-                    margin-bottom: 5px;
-                    font-family: Helvetica;
-                }
-
-                .benefit > .content > .text {
-                   line-height: 1.5em;
-                }
-
-            </style>
-
-            <div class="benefit">
-                <div class="icon"><img src="./img/ben1.png"></div>
-                <div class="content">
-                    <div class="title vl_text highlight">Strong Community to Network</div>
-                    <div class="text lg_text dim">
-                        Discover and meet other members based
-                        on details that are unique to you and
-                        create new friendships
-                    </div>
-                </div>
-            </div>
-
-            <div class="benefit">
-                <div class="icon"><img src="./img/ben2.png"></div>
-                <div class="content">
-                    <div class="title vl_text highlight">Digital Magazine</div>
-                    <div class="text lg_text dim">
-                        Get unique recipes, tips, exercise routines,
-                        and knowledge to live a healthier and
-                        happier gluten-free lifestyle
-                    </div>
-                </div>
-            </div>
-
-            <div class="benefit">
-                <div class="icon"><img src="./img/ben3.png"></div>
-                <div class="content">
-                    <div class="title vl_text highlight">Earn Cash: $2 or $100</div>
-                    <div class="text lg_text dim">
-                        For each friend you subscribe you will earn
-                        $2, it's that simple. For each of your articles or
-                        videos we publish in our magazine, you will
-                        get $100 for sharing your knowledge
-                    </div>
-                </div>
-            </div>
-
-            <div style="
-                text-align: center;
-                margin-top: 30px;">
-                <img src="./img/sep.png">
-            </div>
-
-            <div class="sec-title vl_text">Mission</div>
+            <img src="./test/break4.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
 
             <style>
                 .mission {
-                    line-height: 1.3em;
-                    font-family: Helvetica;
+                    line-height: 1.5em;
+                    font-family: Georgina;
+                    margin: 15px;
                 }
             </style>
 
-            <div class="mission w400 center lg_text dim" style="">
-                <p>Our mission is simple &mdash; to improve the
-                quality of life of the amazing people who
-                enjoy eating gluten-free foods</p>
+            <div class="w450 center vl_text dim" style="position: relative">
+                <img src="./test/join_community.png" style="z-index: 10; position: absolute; left: -100px; top: -50px; width: 120px;">
+
+                <div class="center" style="width: 120px;"><img src="./test/sep.png"></div>
+
+                <p class="mission">
+                Our mission is simple, our cause noble &mdash; we
+                are a community of movers, shakers, and producers of a
+                healthy lifestyle. We are engineers, nurses, artists,
+                students, parents, who actively help one another
+                improve our health.</p>
+
+                <p class="mission">Partnered with trainers and coaches who guide us, we
+                inspire and help one another to eat better and live
+                an active lifestyle. If you like our mission, we
+                welcome you to join us.</p>
+
+                <div class="center" style="width: 120px;"><img src="./test/sep.png"></div>
             </div>
 
-        </div>
+            <img src="./test/break3.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
 
+            <div class="center vl_text dim" style="position: relative">
+
+                <img src="./test/pricing2.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
+
+                <div style="display: inline-block">
+
+                    <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
+                        <img src="./test/coach1.png" style="width: 100px;">
+                    </div>
+
+                    <div style="width: 300px; float: left;">
+                        <p class="mission lg_text dim">
+                            If you have any questions or feedback we'd love to hear from you!
+                        </p>
+                    </div>
+
+                </div>
+
+                <div style="width: 200px;" class="lg_button active_button center">
+                    <a href="mail:hello@fitarrow.com">
+                        <span class="lg_header white">hello@fitarrow.com</span>
+                    </a>
+                </div>
+
+                <br/>
+                <br/>
+                <br/>
+            </div>
+        </div>
     </div>
+
 
     <div class="w300 square" style="
         float: left;
@@ -298,7 +327,6 @@
             <div id="goin"></div>
 
         </div>
-
     </div>
 
 </div>
