@@ -95,10 +95,11 @@
                 &mdash; and start getting fit today!
             </div>
 
-            <div class="video center" style="
-                width: 550px;
-                height: 310px;
-                background-color: black;">
+            <div class="video center lg_shadow" style="width: 500px; height: 281px; background-color: black;">
+
+                <div>
+                    <iframe src="http://player.vimeo.com/video/67688246?byline=0portrait=0&autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
 
             </div>
 
