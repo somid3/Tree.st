@@ -1,4 +1,4 @@
-package com.questy.admin;
+package com.questy.admin.networks;
 
 import com.questy.dao.QuestionDao;
 import com.questy.domain.Question;
@@ -1012,7 +1012,7 @@ public class Basic {
                         "Acquire                                    ",
                         "Acronymble                                 ",
                         "Adel Verpflichtet                          ",
-                        "Afrikan tŠhti                              ",
+                        "Afrikan tï¿½hti                              ",
                         "Agon                                       ",
                         "Agricola                                   ",
                         "Air Charter                                ",
@@ -1261,7 +1261,7 @@ public class Basic {
                         "Sugoroku                                   ",
                         "Summit                                     ",
                         "Super Quiz                                 ",
-                        "T‰b                                        ",
+                        "Tï¿½b                                        ",
                         "Tablut                                     ",
                         "Taj Mahal                                  ",
                         "Take It Easy                               ",
@@ -1456,7 +1456,7 @@ public class Basic {
                     "Dholuo (Luo proper)                          ",
                     "Dogri (Kangri)                               ",
                     "Dutch                                        ",
-                    "Efik (IbibioÐEfik)                           ",
+                    "Efik (Ibibioï¿½Efik)                           ",
                     "English                                      ",
                     "Ewe                                          ",
                     "Farsi                                        ",
@@ -1501,7 +1501,7 @@ public class Basic {
                     "Korean                                       ",
                     "Kurdish                                      ",
                     "Kyrgyz                                       ",
-                    "LaoÐIsan                                     ",
+                    "Laoï¿½Isan                                     ",
                     "Lithuanian                                   ",
                     "Lombard                                      ",
                     "Luyia                                        ",
@@ -1516,7 +1516,7 @@ public class Basic {
                     "Mandingo (Maninka)                           ",
                     "Marathi                                      ",
                     "Marwari                                      ",
-                    "MazanderaniÐGilaki                           ",
+                    "Mazanderaniï¿½Gilaki                           ",
                     "Min Bei                                      ",
                     "Min Dong (Fuzhou)                            ",
                     "Min Nan (Amoy, Hokkien,Taiwanese)            ",
@@ -1549,7 +1549,7 @@ public class Basic {
                     "Sinhalese                                    ",
                     "Slovak                                       ",
                     "Somali                                       ",
-                    "SothoÐTswana                                 ",
+                    "Sothoï¿½Tswana                                 ",
                     "Southern Quechua                             ",
                     "Southern Thai                                ",
                     "Spanish (Castilian)                          ",

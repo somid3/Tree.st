@@ -1,4 +1,4 @@
-package com.questy.admin;
+package com.questy.admin.networks;
 
 import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.QuestionDao;

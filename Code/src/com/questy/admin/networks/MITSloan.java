@@ -1,4 +1,4 @@
-package com.questy.admin;
+package com.questy.admin.networks;
 
 import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.QuestionDao;
@@ -285,7 +285,7 @@ public class MITSloan {
                             "Credit Suisse                             ",
                             "CSMG Global                               ",
                             "Cummins                                   ",
-                            "Dalberg Ñ Global Development              ",
+                            "Dalberg ï¿½ Global Development              ",
                             "Dell                                      ",
                             "Deloitte                                  ",
                             "Deutsche Bank                             ",
@@ -418,7 +418,7 @@ public class MITSloan {
                             "VMWare                                    ",
                             "Walt Disney Company                       ",
                             "Wellington Management                     ",
-                            "WomenÕs World Banking                     ",
+                            "Womenï¿½s World Banking                     ",
                             "XL Hybrids                                ",
                             "Zynga                                     "
                      });

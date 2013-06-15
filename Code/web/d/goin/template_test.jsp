@@ -119,8 +119,31 @@
 
             </style>
 
+
+            <div id="guarantee" style="position: relative; margin: 20px 0 20px 20px; display: inline-block; width: 590px; height: 150px;">
+
+                <img src="./test/curved-trainer.png" style="width: 550px; position: relative;">
+
+                <div style="position: absolute; top: -10px; left: 110px; z-index: 10;">
+                    <img src="./test/guarantee.png" style="width: 125px;">
+                </div>
+
+                <div style="position: absolute; top: 10px; left: 190px; width: 180px; padding: 5px 5px 5px 40px; background-color: white;" class="sm_glow">
+                    <span class="sm_text highlight" style="font-style: italic;">
+                        With our 14-day money back guarantee &mdash;
+                        its now risk-free to invest in your health!
+                    </span>
+                </div>
+            </div>
+
             <div class="break">
                 <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <a href="#" onclick="Animations.scrollToTop();">
+                    <div class="lets_start md_button sm_text dark_button white square">
+                        <div class="md_header"> Let's go!</div>
+                        <div>Sign me up!</div>
+                    </div>
+                </a>
             </div>
 
             <style>
@@ -151,11 +174,11 @@
 
                 <div class="benefit shadow" style="width: 180px; position: absolute; left: 330px; top: -50px;">
                     <div class="content">
-                        <div class="title vl_header dim">Get Personalized Advice</div>
+                        <div class="title vl_header dim">Personal Advice</div>
                         <div class="text lg_text dim">
-                            We analyze you with over 250 dimensions
+                            We first study you with over 250 dimensions
                             and give you personalized advice
-                            to live a healthier life
+                            to get fit quick!
                         </div>
                     </div>
                 </div>
@@ -215,7 +238,7 @@
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header"> Let's go!</div>
-                        <div>Scroll to top & Sign up!</div>
+                        <div>Sign me up!</div>
                     </div>
                 </a>
             </div>
@@ -288,7 +311,7 @@
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header"> Awesome!</div>
-                        <div>Scroll to top & Let's start!</div>
+                        <div>Let's start!</div>
                     </div>
                 </a>
             </div>
@@ -326,7 +349,7 @@
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header">Start Now!</div>
-                        <div>Scroll to top &<br/>Let's change the world</div>
+                        <div>Let's get you in shape</div>
                     </div>
                 </a>
             </div>
