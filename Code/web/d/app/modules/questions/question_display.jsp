@@ -12,7 +12,8 @@
 
     // Testing if the user has been answering questions too fast
     Boolean isFatigued = false;
-    if (backToBackCount > 5 && !homeCollectMode)
+    Integer causeFatigueCount = 15;
+    if (backToBackCount >= causeFatigueCount && !homeCollectMode)
         isFatigued = true;
 
     // Creating random html ids

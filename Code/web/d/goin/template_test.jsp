@@ -54,6 +54,7 @@
 <html>
 <head>
     <title><%= network.getName() %></title>
+    <link rel="icon" type="image/png" href="./test/favicon.png">
     <%@ include file="../includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
@@ -76,7 +77,7 @@
         <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing2.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
-            <img src="./test/capture.png" width="200px">
+            <img src="./test/capture.png" style="width: 200;">
         </div>
 
         <script type="text/javascript">
@@ -120,7 +121,7 @@
             </style>
 
 
-            <div id="guarantee" style="position: relative; margin: 20px 0 20px 20px; display: inline-block; width: 590px; height: 150px;">
+            <div id="guarantee" style="position: relative; margin: 40px 0 0px 20px; display: inline-block; width: 590px; height: 250px;">
 
                 <img src="./test/curved-trainer.png" style="width: 550px; position: relative;">
 
@@ -134,16 +135,6 @@
                         its now risk-free to invest in your health!
                     </span>
                 </div>
-            </div>
-
-            <div class="break">
-                <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
-                <a href="#" onclick="Animations.scrollToTop();">
-                    <div class="lets_start md_button sm_text dark_button white square">
-                        <div class="md_header"> Let's go!</div>
-                        <div>Sign me up!</div>
-                    </div>
-                </a>
             </div>
 
             <style>
@@ -373,9 +364,12 @@
                     </a>
                 </div>
 
-                <br/>
-                <br/>
-                <br/>
+                <div id="disclaimer" style="width: 300px; margin: 100px auto; text-align: center;">
+                    <span class="sm_text dim2">
+                        Please consult a physician before starting any diet or exercise plan. Your results may vary.
+                    </span>
+                </div>
+
             </div>
         </div>
     </div>

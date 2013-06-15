@@ -73,7 +73,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "Where do you prefer to work out...", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "In what location(s) do you prefer to work out?", 10, 2, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -95,7 +95,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "What days of the week do you have to work out?", 10, 7, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "What days of the week do you prefer to work out?", 10, 7, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -164,28 +164,6 @@ public class FitArrow {
 
             // Adding question to list
             questions.put("sleep", addedQuestion);
-        }
-
-        {
-            // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "What is your current occupation?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
-
-            // Adding options
-            addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
-            QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
-                    {
-                        "Student",
-                        "Consulting",
-                        "Financial Services",
-                        "Other",
-                    });
-            addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
-
-            // Adding flow rules
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
-
-            // Adding question to list
-            questions.put("occupation", addedQuestion);
         }
 
         {
@@ -287,7 +265,7 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("smoke");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("smoke cigars", addedQuestion);
@@ -318,7 +296,7 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("smoke");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("smoke year", addedQuestion);
@@ -340,7 +318,7 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("smoke");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("smoke stop", addedQuestion);
@@ -385,7 +363,7 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("alcohol");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("alcohol drinks", addedQuestion);
@@ -475,7 +453,7 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("pains");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
                 questions.put("pains location", addedQuestion);
@@ -509,7 +487,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "For breakfast, how often do you eat in your home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "About how often do you eat breakfast at home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -533,7 +511,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "For lunch, how often do you eat in your home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "About how often do you eat lunch at home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -557,7 +535,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "For dinner, how often do you eat in your home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "About how often do you eat dinner at home?", 10, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -640,36 +618,38 @@ public class FitArrow {
                 // Adding flow rules
                 flowQuestion = questions.get("trainer");
                 flowOption = flowQuestion.findOptionByText("Yes");
-                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
                 // Adding question to list
+                flowQuestion = questions.get("trainer");
+                flowOption = flowQuestion.findOptionByText("Yes");
                 questions.put("trainer specialties", addedQuestion);
             }
 
-        {
-            // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "What group of trainees do you specialize in?", 10, 2, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            {
+                // Adding question
+                addedQuestionRef = QuestionServices.insert(userId, networkId, "What group of trainees do you specialize in?", 10, 2, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
-            // Adding options
-            addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
-            QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
-                    {
-                        "Children                ",
-                        "Teenagers               ",
-                        "Adults                  ",
-                        "Pregnant mothers        ",
-                        "Post-surgery trainees",
-                    });
-            addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+                // Adding options
+                addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+                QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                        {
+                            "Children             ",
+                            "Teenagers            ",
+                            "Adults               ",
+                            "Pregnant mothers     ",
+                            "Post-surgery trainees",
+                        });
+                addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
 
-            // Adding flow rules
-            flowQuestion = questions.get("trainer");
-            flowOption = flowQuestion.findOptionByText("Yes");
-            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+                // Adding flow rules
+                flowQuestion = questions.get("trainer");
+                flowOption = flowQuestion.findOptionByText("Yes");
+                FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, flowOption.getRef(), addedQuestion.getRef());
 
-            // Adding question to list
-            questions.put("trainer groups", addedQuestion);
-        }
+                // Adding question to list
+                questions.put("trainer groups", addedQuestion);
+            }
 
     }
 
