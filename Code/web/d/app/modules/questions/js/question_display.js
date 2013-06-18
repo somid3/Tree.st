@@ -194,11 +194,11 @@ function QuestionDisplay () {
 
                 if (selectedOptions > 0)
 
-                    $answerStatus.html("<b>" + selectedOptions + "</b> option(s) picked, select up to <b>" + selectMore + "</b> more, or submit");
+                    $answerStatus.html("<b>" + selectedOptions + "</b> option(s) picked, select up to <b>" + selectMore + "</b> more option");
 
                 else {
 
-                    $answerStatus.html("Multiple choice, select up to <b>" + selectMore + "</b> options");
+                    $answerStatus.html("Select up to <b>" + selectMore + "</b> options");
 
                 }
 
