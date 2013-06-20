@@ -165,7 +165,6 @@ public class Vars {
     public static String sqlUsername = null;
     public static String sqlPassword = null;
     public static String sqlHost = null;
-    public static String sqlDatabaseName = null;
     public static String sqlParameters = null;
 
 
@@ -217,7 +216,6 @@ public class Vars {
         sqlUsername = loadPropertyAsString("sqlUsername");
         sqlPassword = loadPropertyAsString("sqlPassword");
         sqlHost = loadPropertyAsString("sqlHost");
-        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
         sqlParameters = loadPropertyAsString("sqlParameters");
 
         stripePublishableKey = loadPropertyAsString("stripePublishableKey");

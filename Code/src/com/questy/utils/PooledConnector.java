@@ -23,7 +23,7 @@ public abstract class PooledConnector {
                 ComboPooledDataSource cpds = new ComboPooledDataSource();
                 cpds.setDriverClass("com.mysql.jdbc.Driver");
 
-                cpds.setJdbcUrl("jdbc:mysql://localhost:3306/questy?zeroDateTimeBehavior=convertToNull");
+                cpds.setJdbcUrl("jdbc:mysql://" + Vars.sqlHost + ":3306/questy?zeroDateTimeBehavior=convertToNull");
                 cpds.setUser(Vars.sqlUsername);
                 cpds.setPassword(Vars.sqlPassword); //changed
 

@@ -42,16 +42,17 @@ public class FitArrow {
         // Create network
         Integer networkId = NetworkDao.insert(null, "FitArrow");
 
-        // Adding start message
-        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE);
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE, "The easiest, fastest way to get personalized, one-on-one training — and start getting fit today!");
+        // Setting network integer settings
+        NetworkIntegerSettingDao.insert(null, networkId, NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED, 1);
+        NetworkIntegerSettingDao.insert(null, networkId, NetworkIntegerSettingEnum.IS_UI_LOGO_SET, 1);
+        NetworkIntegerSettingDao.insert(null, networkId, NetworkIntegerSettingEnum.IS_UI_ICON_SET, 1);
 
-        // Adding url path
+        // Setting network alpha settings
         NetworkAlphaSettingDao.deleteByValue(null, NetworkAlphaSettingEnum.URL_PATH, "fitarrow");
         NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.URL_PATH, "fitarrow");
-
-        // Is payment required?
-        NetworkIntegerSettingDao.insert(null, networkId, NetworkIntegerSettingEnum.IS_PAYMENT_REQUIRED, 1);
+        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR, "#444");
+        NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE);
+        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.START_MESSAGE, "The easiest, fastest way to get personalized, one-on-one training — and start getting fit today!");
 
         // Retrieving network to display details
         Network network = NetworkDao.getById(null, networkId);
@@ -837,7 +838,7 @@ public class FitArrow {
 
         {
             // Adding question
-            addedQuestionRef = QuestionServices.insert(userId, networkId, "In your medical history, select all the conditions you've had or currently have?", 10, 10, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "In your medical history, select all the conditions you've had or currently have? Click 'Skip' if you haven't had any", 10, 10, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
             // Adding options
             addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
