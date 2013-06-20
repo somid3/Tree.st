@@ -88,6 +88,7 @@
         border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
+        position: relative;
     }
 
     #signup_title,
@@ -132,6 +133,7 @@
         padding: 10px;
         width: 240px;
         display: none;
+        position: relative;
     }
 
     #payment_details {

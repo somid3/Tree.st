@@ -302,8 +302,6 @@ Payment.checkExp = function () {
     var $bad = $("#payment_check_exp_bad");
     var $good = $("#payment_check_exp_good");
 
-    console.log(month + "-" + year);
-
     if (Stripe.card.validateExpiry(month, year)) {
         $bad.hide(); $good.fadeIn();
     } else {
