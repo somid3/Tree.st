@@ -13,6 +13,7 @@
 
 #profile_dashboard .left {
     float: left;
+    position: relative;
 }
 
 #profile_dashboard .left .thumbnail {
@@ -20,8 +21,9 @@
     width: 160px;
     height: 160px;
     background-color: #fff;
-    position: relative;
+    position: absolute;
     top: -12px;
+    left: -12px;
 }
 
 #profile_dashboard .left .thumbnail img {
@@ -32,6 +34,7 @@
 #profile_dashboard .left .points {
     position: absolute;
     top: 140px;
+    left: -12px;
     width: 160px;
 }
 
@@ -43,7 +46,7 @@
 #profile_dashboard .right {
     float: right;
     margin-left: 5px;
-    width: 405px;
+    width: 425px;
     height: 160px;
 }
 

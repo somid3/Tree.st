@@ -41,7 +41,7 @@
 
                    <div class="card_face">
                        <img src="<%= ul_a_toUser.getFaceUrl() %>"/>
-                       <div class="points sm_text dim shadow"><%= ul_a_toUserToNetwork.getCurrentPoints() %> pts.</div>
+                       <div class="points vsm_text dim shadow"><%= ul_a_toUserToNetwork.getCurrentPoints() %> pts.</div>
                  </div>
                </a>
 

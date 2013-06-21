@@ -46,6 +46,41 @@ public class AppResourceDao extends ParentDao {
         return out;
     }
 
+
+    public static Integer countByUserIdAndAppAndType(
+           Connection conn,
+           Integer userId,
+           AppEnum app,
+           AppResourceTypeEnum type) throws SQLException {
+
+       conn = start(conn);
+
+       String sql =
+           "select count(*) as `count` " +
+           "from `app_resources` " +
+           "where `user_id` = ? " +
+           "and `app` = ? " +
+           "and `type` = ? " +
+           "and `temporary` is not true " +
+           "and `hidden` is not true " +
+           "limit 1;";
+
+       PreparedStatement ps = conn.prepareStatement(sql);
+       ps.setInt(1, userId);
+       ps.setInt(2, app.getId());
+       ps.setInt(3, type.getId());
+       ResultSet rs = ps.executeQuery();
+
+       Integer out = null;
+
+       while (rs.next())
+           out = DatabaseUtils.getInt(rs, "count");
+
+       end(conn, ps, rs);
+       return out;
+   }
+
+
     public static AppResource getByUserIdAndAppAndTypeAndRefAndChecksum (
             Connection conn,
             Integer userId,

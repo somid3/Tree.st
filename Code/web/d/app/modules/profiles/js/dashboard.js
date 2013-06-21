@@ -5,10 +5,11 @@
 ProfileDashboard.Section = {
     SHARED: 1,
     QUESTIONS: 2,
-    SMART_GROUPS: 3,
-    VIEWED_USERS: 4,
-    USER_LINK_NEEDED: 5,
-    MESSAGE: 6
+    PHOTOS: 3,
+    SMART_GROUPS: 4,
+    VIEWED_USERS: 5,
+    USER_LINK_NEEDED: 6,
+    MESSAGE: 7
 };
 
 function ProfileDashboard () {
@@ -62,6 +63,9 @@ function ProfileDashboard () {
 
         if (go == null  || go == ProfileDashboard.Section.QUESTIONS)
             this.clickItem(event, '#profile_shortcut_answers', './modules/profiles/answers.jsp', parameters);
+
+        else if (go == null  || go == ProfileDashboard.Section.PHOTOS)
+            this.clickItem(event, '#profile_shortcut_photos', './modules/profiles/photos.jsp', parameters);
 
         else if (go == ProfileDashboard.Section.VIEWED_USERS)
             this.clickItem(event, '#profile_shortcut_user_links', './modules/profiles/viewed_users.jsp', parameters);

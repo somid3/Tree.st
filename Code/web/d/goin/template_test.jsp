@@ -74,7 +74,7 @@
 
     <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing4.png" style="width: 120px;"></div>
+        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
             <img src="./test/capture.png" style="width: 200px;">
@@ -122,13 +122,15 @@
                 <img src="./test/curved-trainer.png" style="width: 550px; position: relative;">
 
                 <div style="position: absolute; top: -10px; left: 110px; z-index: 10;">
-                    <img src="./test/guarantee.png" style="width: 125px;">
+                    <%--<img src="./test/guarantee.png" style="width: 125px;">--%>
+                    <%--<img src="./test/pricing.png" style="width: 120px;">--%>
                 </div>
 
-                <div style="position: absolute; top: 5px; left: 190px; width: 180px; padding: 10px 10px 10px 45px; background-color: white;" class="sm_glow">
-                    <span class="sm_text highlight" style="font-style: italic;">
-                        With our 14-day money back guarantee &mdash;
-                        its now risk-free to invest in your health!
+                <div style="position: absolute; top: 5px; left: 140px; width: 220px; padding: 10px; background-color: white;" class="sm_glow">
+                    <span class="smd_text highlight" style="font-style: italic;">
+                        Its never been easier to learn from a personal trainer who will get to know you...
+
+                        <%--With our 14-day money back guarantee &mdash; its now risk-free to invest in your health!--%>
                     </span>
                 </div>
             </div>
@@ -342,7 +344,7 @@
             </div>
 
             <div class="center vl_text dim" style="position: relative">
-                <img src="./test/pricing4.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
+                <img src="./test/pricing.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
                 <div style="display: inline-block">
                     <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
                         <img src="./test/coach1.png" style="width: 100px;">

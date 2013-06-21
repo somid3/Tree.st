@@ -43,7 +43,7 @@
 
         <% if (!viewMyself) { %>
             <div class="points">
-                <div class="sm_button sm_text w50 center sm_shadow" style="background-color: white">
+                <div class="sm_button vsm_text w50 center sm_shadow" style="background-color: white">
                     <%= userToNetwork.getCurrentPoints() %> pts.
                 </div>
             </div>
@@ -87,34 +87,43 @@
         <% if (!requireUserLink) {
 
             Integer countViewedUsers = UserLinkDao.countByNetworkIdAndFromUserIdAndNotDirection(null, homeId, viewed.getId(), UserLinkDirectionEnum.TARGET_TO_ME);
-            Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, homeId, viewed.getId()); %>
+            Integer countSharedItems = SharedItemDao.countByNetworkIdAndUserId(null, homeId, viewed.getId());
+            Integer countPhotos = AppResourceDao.countByUserIdAndAppAndType(null, viewed.getId(), AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED); %>
+
             <div class="shortcuts">
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.QUESTIONS);">
                     <div class="clickable shortcut" id="profile_shortcut_answers">
-                        <div class="text sm_text highlight2">Profile</div>
+                        <div class="text sm_text highlight2">Details</div>
                     </div>
                 </a>
 
-                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
-                        <div class="clickable shortcut" id="profile_shortcut_user_links">
-                            <div class="text sm_text highlight2">Viewed</div>
-                            <div class="count vsm_text white"><%= countViewedUsers %></div>
-                        </div>
-                    </a>
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.PHOTOS);">
+                    <div class="clickable shortcut" id="profile_shortcut_photos">
+                        <div class="text sm_text highlight2">Photos</div>
+                        <div class="count vsm_text white"><%= countPhotos %></div>
+                    </div>
+                </a>
 
-                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SMART_GROUPS);">
-                        <div class="clickable shortcut" id="profile_shortcut_smart_groups">
-                            <div class="text sm_text highlight6">Smart Groups</div>
-                        </div>
-                    </a>
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.VIEWED_USERS);">
+                    <div class="clickable shortcut" id="profile_shortcut_user_links">
+                        <div class="text sm_text highlight2">Viewed</div>
+                        <div class="count vsm_text white"><%= countViewedUsers %></div>
+                    </div>
+                </a>
 
-                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
-                        <div class="clickable shortcut" id="profile_shortcut_shared">
-                            <div class="text sm_text highlight2">Shared</div>
-                            <div class="count vsm_text white"><%= countSharedItems %></div>
-                        </div>
-                    </a>
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SMART_GROUPS);">
+                    <div class="clickable shortcut" id="profile_shortcut_smart_groups">
+                        <div class="text sm_text highlight6">Smart Groups</div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.SHARED);">
+                    <div class="clickable shortcut" id="profile_shortcut_shared">
+                        <div class="text sm_text highlight2">Shared</div>
+                        <div class="count vsm_text white"><%= countSharedItems %></div>
+                    </div>
+                </a>
 
             </div>
         <% } %>
