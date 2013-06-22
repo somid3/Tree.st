@@ -10,7 +10,7 @@
 
     // Does the smart group reference belong to any smart group
     List<SharedItem> sharedItems = null;
-    if (SmartGroupDao.isNetworkRef(smartGroupRef)) {
+    if (smartGroupRef.equals(SmartGroup.ANY_SMART_GROUP_REF)) {
 
         // Yes... retrieving the shared messages of the user or the network as a whole
 

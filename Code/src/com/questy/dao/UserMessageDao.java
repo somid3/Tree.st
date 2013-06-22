@@ -2,6 +2,7 @@ package com.questy.dao;
 
 import com.questy.domain.UserLink;
 import com.questy.domain.UserMessage;
+import com.questy.domain.UserMessageGroup;
 import com.questy.enums.UserLinkDirectionEnum;
 import com.questy.helpers.SqlLimit;
 import com.questy.utils.DatabaseUtils;
@@ -11,6 +12,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserMessageDao extends ParentDao {
+
+    public static List<UserMessage> getByNetworkIdAndBetweenUserIds (
+        Connection conn,
+        Integer networkId,
+        Integer userId1,
+        Integer userId2,
+        SqlLimit limit) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `user_messages` " +
+            "where `network_id` = ? " +
+            "and ((`from_user_id` = ? and `to_user_id` = ?) or (`from_user_id` = ? and `to_user_id` = ?)) " +
+            "order by `created_on` asc " +
+            "limit ?, ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, networkId);
+        ps.setInt(2, userId1);
+        ps.setInt(3, userId2);
+        ps.setInt(4, userId2);
+        ps.setInt(5, userId1);
+        ps.setInt(6, limit.getStartFrom());
+        ps.setInt(7, limit.getDuration());
+        ResultSet rs = ps.executeQuery();
+
+        List<UserMessage> out = new ArrayList<UserMessage>();
+
+        while (rs.next())
+            out.add(loadPrimitives(rs));
+
+        end(conn, ps, rs);
+        return out;
+    }
 
     public static Integer countByNetworkIdAndFromUserIdAndCreatedAfter (
             Connection conn,

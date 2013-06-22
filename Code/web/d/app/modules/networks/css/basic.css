@@ -142,6 +142,13 @@
     padding-top: 3px;
 }
 
+#currently .shortcut .notifications {
+    float: right;
+    margin: 3px 5px 0 0;
+    padding: 3px 5px;
+    background-color: <%= HtmlDesign.dim2 %>;
+    color: white;
+}
 
 
 

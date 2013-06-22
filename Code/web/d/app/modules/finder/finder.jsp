@@ -1,5 +1,8 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
+
+<div class="canvas_header">Filter Results</div>
+
 <%
     String searchText = StringUtils.parseString(request.getParameter("s"));
 

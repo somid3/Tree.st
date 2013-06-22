@@ -18,7 +18,7 @@
     <div class="error"></div>
 
     <div class="message md_text dim">
-        Do you wish to view <%= viewed.getFirstName() %>'s profile ...
+        Do you wish to view <%= viewed.getFirstName() %>'s profile?
     </div>
 
     <a href="#" onclick="

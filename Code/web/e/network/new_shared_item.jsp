@@ -10,7 +10,7 @@
 
     // Retrieving smart group
     SmartGroup smartGroup = null;
-    if (!SmartGroupDao.isNetworkRef(smartGroupRef))
+    if (!smartGroupRef.equals(SmartGroup.ANY_SMART_GROUP_REF))
         smartGroup = SmartGroupDao.getByNetworkIdAndRef(null, networkId, smartGroupRef);
 
     // Retrieving shared item

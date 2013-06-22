@@ -8,7 +8,7 @@
     // Random id for the moving car...
     String collab_b_hImageId = HtmlUtils.getRandomId();
 %>
-<div class="question_note">
+<div class="first_note">
     <div class="canvas_container">
         <div class="container">
 

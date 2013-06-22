@@ -42,11 +42,23 @@
         SI.displaySharedItems();
     </script>
 
-<% } else {
+<% } else { %>
 
-    Integer share_e_networkId = homeId; %>
+    <div class="first_note">
+        <div class="canvas_container">
+            <div class="container">
 
-    <%@ include file="./includes/share_e_first.jsp" %>
+                <div><img src="./modules/share/img/first.png"></div>
+
+                <div class="vl_text dim">Be the first one to share a message!</div>
+
+                <div class="vl_text dim">Create or click on any
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(homeId) %>');"><span class="highlight6">Smart Groups</span></a><br/>
+                and share your message from there!</div>
+
+            </div>
+        </div>
+    </div>
 
 <% } %>
 </div>

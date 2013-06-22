@@ -11,6 +11,7 @@ import com.questy.helpers.Tuple;
 import com.questy.helpers.UIException;
 import com.questy.services.email.EmailServices;
 import com.questy.utils.DateUtils;
+import com.questy.utils.StringUtils;
 import com.questy.utils.Vars;
 
 import java.sql.Connection;
@@ -72,19 +73,26 @@ public class UserMessageServices extends ParentService  {
         // Update points from me
         UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsPerMessage);
 
+        // Creating summary for message groups
+        String summary = StringUtils.concat(quote, 120, "");
+
         // Update from user message group
         {
             // Set replied to true
             getOrCreateUserMessageGroup(networkId, fromUserId, toUserId);
-            UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateSummaryByNetworkIdAndFromUserIdAndToUserId(null, summary, networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateUpdatedOnByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, true, networkId, fromUserId, toUserId);
         }
 
         // Update to user message group
         {
             // Set replied and read to false
-            UserMessageGroup toGroup = getOrCreateUserMessageGroup(networkId, toUserId, fromUserId);
+            getOrCreateUserMessageGroup(networkId, toUserId, fromUserId);
             UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
             UserMessageGroupDao.updateReadByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
+            UserMessageGroupDao.updateSummaryByNetworkIdAndFromUserIdAndToUserId(null, summary, networkId, toUserId, fromUserId);
+            UserMessageGroupDao.updateUpdatedOnByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
         }
 
         // Save message

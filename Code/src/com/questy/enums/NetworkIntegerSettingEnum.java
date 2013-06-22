@@ -13,9 +13,6 @@ public enum NetworkIntegerSettingEnum {
     // Number of points a user gains by viewing others
     NETWORK_JOIN_POINTS_PER             (0, 5),
 
-    // If value is 1, network will display all user emails as text
-    NETWORK_DISPLAY_TEXT_EMAILS         (1, 0),
-
     SHARED_ITEM_POINTS_PER              (200, 10),
     SHARED_ITEM_DISPLAY_CREATED_ON      (201, 1),
     SHARED_ITEMS_PER_FIVE_MINUTES       (202, 2),
@@ -56,13 +53,6 @@ public enum NetworkIntegerSettingEnum {
      * that contain more than X number of members within them
      */
     SMART_GROUP_RESULTS_LIMIT           (600, 300),
-
-    /**
-     * If set to a value other than zero, then collect mode will be enabled, in this mode
-     * the only functionality of the community is to gather user details. User's can not
-     * search for one another or create smart groups
-     */
-    IS_MODE_COLLECT_ONLY                (9000, 0),
 
     /**
      * Allows new users who join this community to not need to confirm their emails

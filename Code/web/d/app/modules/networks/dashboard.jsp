@@ -6,10 +6,6 @@
     if (meToHome.getBlockedOn() != null)
         return;
 
-    // Ensuring we are not in collect only mode
-    if (homeCollectMode)
-        return;
-
     // Retrieving user to network
     UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, meId, homeId);
 %>

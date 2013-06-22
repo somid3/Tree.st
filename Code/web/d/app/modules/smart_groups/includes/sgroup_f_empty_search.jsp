@@ -9,7 +9,7 @@
     String sgroup_f_settingUserSingular = sgroup_f_networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
 %>
 
-<div class="question_note">
+<div class="first_note">
     <div class="canvas_container">
         <div class="container">
 

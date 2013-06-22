@@ -12,8 +12,6 @@
     Collections.reverse(networks);
 
     Integer hasIcon = null;
-    Integer collectModeSetting = null;
-    Boolean collectMode = false;
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = null;
     UserToNetwork meToNetwork = null;
 %>
@@ -32,15 +30,12 @@
         nextQuestionRef = FlowRuleServices.getNextQuestionRef(meId, network.getId());
         networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
         hasIcon = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_ICON_SET);
-        collectModeSetting = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_MODE_COLLECT_ONLY);
         meToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, meId,  network.getId());
 
         if (meToNetwork.getBlockedOn() != null) { %>
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.blocked(network.getId())%>')">
-        <% } else if (collectModeSetting == 0 ) { %>
-            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.network(network.getId())%>')">
         <% } else { %>
-            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(network.getId())%>')">
+            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.network(network.getId())%>')">
         <% } %>
 
                 <div class="item" id="<%= NetworkHtml.getNetworkId(network.getId()) %>">

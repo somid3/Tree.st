@@ -8,7 +8,9 @@ NetworkDashboard.Section = {
     ALL: 7,
     FINDER: 8,
     MEMBER: 9,
-    BLOCKED: 10
+    BLOCKED: 10,
+    MESSAGE_GROUPS: 11,
+    MESSAGES: 12
 };
 
 function NetworkDashboard () {
@@ -92,6 +94,14 @@ function NetworkDashboard () {
         else if (sendTo == NetworkDashboard.Section.PROFILE)
 
             this.clickItem(event, '#network_shortcut_profile', './modules/profiles/dashboard.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.MESSAGE_GROUPS)
+
+            this.clickItem(event, '#network_shortcut_messages', './modules/user_messages/groups.jsp', parameters, callback);
+
+        else if (sendTo == NetworkDashboard.Section.MESSAGES)
+
+            this.clickItem(event, '#network_shortcut_messages', './modules/user_messages/messages.jsp', parameters, callback);
 
         else if (sendTo == NetworkDashboard.Section.ALL)
 

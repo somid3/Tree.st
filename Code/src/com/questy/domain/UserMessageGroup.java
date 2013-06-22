@@ -10,6 +10,7 @@ public class UserMessageGroup extends Parent {
     private Date updatedOn;
     private Boolean isRead;
     private Boolean isReplied;
+    private String summary;
 
     public UserMessageGroup() {}
 
@@ -45,7 +46,7 @@ public class UserMessageGroup extends Parent {
         this.toUserId = toUserId;
     }
 
-    public Boolean getRead() {
+    public Boolean isRead() {
         return isRead;
     }
 
@@ -53,12 +54,20 @@ public class UserMessageGroup extends Parent {
         isRead = read;
     }
 
-    public Boolean getReplied() {
+    public Boolean isReplied() {
         return isReplied;
     }
 
     public void setReplied(Boolean replied) {
         isReplied = replied;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 }
 

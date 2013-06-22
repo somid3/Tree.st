@@ -13,7 +13,7 @@
     // Testing if the user has been answering questions too fast
     Boolean isFatigued = false;
     Integer causeFatigueCount = 15;
-    if (backToBackCount >= causeFatigueCount && !homeCollectMode)
+    if (backToBackCount >= causeFatigueCount)
         isFatigued = true;
 
     // Creating random html ids
@@ -61,6 +61,8 @@
     QD.hAddOptionInputId = '<%= hAddOptionInputId %>';
     QD.hAddOptionButtonId = '<%= hAddOptionButtonId %>';
 </script>
+
+<div class="canvas_header">Profile Details</div>
 
 <% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_QUESTIONS_HOW, meId)) { %>
     <div class="minitip" id="<%= hMinitipId %>">
@@ -204,12 +206,10 @@
             </div>
         </div>
 
-        <% if (!homeCollectMode) { %>
-            <div class="output shadow"></div>
-            <script type="text/javascript">
-                $(".output").load("./modules/questions/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});
-            </script>
-        <% }%>
+        <div class="output shadow"></div>
+        <script type="text/javascript">
+            $(".output").load("./modules/questions/question_display_faces.jsp", {nid: <%= homeId %>, qr: <%= answeringQuestionRef %>});
+        </script>
 
         <script type="text/javascript">
             QD.updateOrSubmit(null);

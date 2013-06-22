@@ -40,6 +40,9 @@
 <script type="text/javascript" src="./modules/profiles/js/dashboard.js?<%= Vars.rev %>"></script>
 <link rel=stylesheet type="text/css" href="./modules/profiles/css/basic.css?<%= Vars.rev %>">
 
+<script type="text/javascript" src="./modules/user_messages/js/user_messages.js?<%= Vars.rev %>"></script>
+<%--<link rel=stylesheet type="text/css" href="./modules/user_messages/css/basic.css?<%= Vars.rev %>">--%>
+
 <script type="text/javascript" src="./modules/smart_groups/js/smart_search.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/dashboard.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="./modules/smart_groups/js/smart_group_tools.js?<%= Vars.rev %>"></script>
@@ -265,6 +268,18 @@
         routie('/comm/:nid/profile', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.PROFILE, {vuid: <%= meId %>});
+            });
+        });
+
+        routie('/comm/:nid/messages', function(nid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.MESSAGE_GROUPS);
+            });
+        });
+
+        routie('/comm/:nid/messages/:uid', function(nid, tuid) {
+            LeftMenu.goToNetwork(null, nid, function() {
+                ND.go(null, NetworkDashboard.Section.MESSAGES, {tuid: tuid});
             });
         });
 

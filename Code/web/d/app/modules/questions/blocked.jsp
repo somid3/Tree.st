@@ -10,7 +10,7 @@
             SqlLimit.ALL);
 %>
 
-<div class="question_note">
+<div class="first_note">
     <div class="canvas_container">
         <div class="container">
 

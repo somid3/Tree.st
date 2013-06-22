@@ -559,13 +559,4 @@ public class SmartGroupDao extends ParentDao {
         return out;
     }
 
-    public static boolean isNetworkRef (Integer smartGroupRef) {
-
-        if (smartGroupRef.equals(SmartGroup.ANY_SMART_GROUP_REF))
-            return true;
-        else
-            return  false;
-
-    }
-
 }

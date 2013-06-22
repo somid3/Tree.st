@@ -376,7 +376,7 @@ public class EmailServices extends ParentService {
             Integer sharedItemRef) throws SQLException {
 
         // Validating
-        if (SmartGroupDao.isNetworkRef(smartGroupRef))
+        if (smartGroupRef.equals(SmartGroup.ANY_SMART_GROUP_REF))
             throw new RuntimeException("A non-network smart group reference is required");
 
         // Creating email message

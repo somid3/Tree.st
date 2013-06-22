@@ -19,9 +19,6 @@
     // Retrieving user to network
     UserToNetwork userToNetwork = UserToNetworkDao.getByUserIdAndNetworkId(null, viewUserId, homeId);
 
-    // Determining whether we should display user email addresses
-    Integer displayEmails = NetworkIntegerSettingEnum.NETWORK_DISPLAY_TEXT_EMAILS.getValueByNetworkId(homeId);
-
     // Retrieving network settings
     Integer pointsPer = NetworkIntegerSettingEnum.USER_MESSAGE_POINTS_PER.getValueByNetworkId(homeId);
 %>
@@ -59,25 +56,15 @@
 
             <% if (!requireUserLink) { %>
 
-                <% if (displayEmails == 1) { %>
+                <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
+                    <div id="profile_message" class="clickable md_button dark_button md_text selected">
+                        Message <%= viewed.getFirstName() %>
 
-                    <a href="mailto:<%= viewed.getEmail() %>" target="_new">
-                        <div class="comment md_text highlight2"><%= viewed.getEmail() %></div>
-                    </a>
-
-                <% } else { %>
-
-                    <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
-                        <div id="profile_message" class="clickable md_button dark_button md_text selected">
-                            Message <%= viewed.getFirstName() %>
-
-                            <% if (pointsPer != 0) { %>
-                                <span class="sm_text">(<%= pointsPer %> pts.)</span>
-                            <% } %>
-                        </div>
-                    </a>
-
-                <% } %>
+                        <% if (pointsPer != 0) { %>
+                            <span class="sm_text">(<%= pointsPer %> pts.)</span>
+                        <% } %>
+                    </div>
+                </a>
 
             <% } %>
 

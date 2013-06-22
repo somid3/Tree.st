@@ -73,6 +73,12 @@ public enum UserIntegerSettingEnum {
      */
     TIP_QUESTIONS_HOW                                           (1002, 1),
 
+    /**
+     * Tip on top of the messages dialog that informs users how to use
+     * the messaging system
+     */
+    TIP_MESSAGES_HOW                                            (1003, 1),
+
     ;
 
 

@@ -96,7 +96,6 @@
 #center #canvas_loading { display: none; }
 
 
-/* No items message */
 .canvas_mini_message {
     width: 100%;
 }
@@ -153,6 +152,34 @@
     display: block;
     margin: 10px auto;
 }
+
+.canvas_header {
+    text-align: center;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #888;
+}
+
+
+.first_note {
+    width: 100%;
+}
+
+.first_note .container {
+    padding: 20px;
+}
+
+.first_note .container div {
+    margin-bottom: 15px;
+    font-family: adam;
+    text-align: center;
+    line-height: 1.3em;
+}
+
+
+
 
 
 
