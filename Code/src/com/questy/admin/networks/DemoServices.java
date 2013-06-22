@@ -1263,6 +1263,11 @@ public class DemoServices {
         demoUsersIds.add(3161);
         demoUsersIds.add(3162);
         demoUsersIds.add(3163);
+        demoUsersIds.add(3218);
+        demoUsersIds.add(3219);
+        demoUsersIds.add(3220);
+        demoUsersIds.add(3221);
+        demoUsersIds.add(3222);
     }
 
     public static void main (String[] args) throws Exception  {

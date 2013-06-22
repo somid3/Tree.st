@@ -126,11 +126,11 @@
     </div>
 </a>
 
-<%--<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">--%>
-    <%--<div class="shortcut" id="network_shortcut_messages">--%>
-        <%--<div class="contents">--%>
-            <%--<div class="tab icon"><img src="./modules/networks/img/email.png" alt="Details"></div>--%>
-            <%--<div class="name smd_text">Messages</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</a>--%>
+<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.messages(homeId)%>')">
+    <div class="shortcut" id="network_shortcut_messages">
+        <div class="contents">
+            <div class="tab icon"><img src="./modules/networks/img/email.png" alt="Details"></div>
+            <div class="name smd_text">Messages</div>
+        </div>
+    </div>
+</a>

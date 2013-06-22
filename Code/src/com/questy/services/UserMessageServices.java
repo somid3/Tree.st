@@ -1,11 +1,9 @@
 package com.questy.services;
 
-import com.questy.dao.NetworkDao;
-import com.questy.dao.UserLinkDao;
-import com.questy.dao.UserMessageDao;
-import com.questy.dao.UserToNetworkDao;
+import com.questy.dao.*;
 import com.questy.domain.Network;
 import com.questy.domain.UserLink;
+import com.questy.domain.UserMessageGroup;
 import com.questy.domain.UserToNetwork;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.UserLinkDirectionEnum;
@@ -74,6 +72,21 @@ public class UserMessageServices extends ParentService  {
         // Update points from me
         UserToNetworkDao.incrementPointsByUserIdAndNetworkId(conn, fromUserId, networkId, pointsPerMessage);
 
+        // Update from user message group
+        {
+            // Set replied to true
+            getOrCreateUserMessageGroup(networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, fromUserId, toUserId);
+        }
+
+        // Update to user message group
+        {
+            // Set replied and read to false
+            UserMessageGroup toGroup = getOrCreateUserMessageGroup(networkId, toUserId, fromUserId);
+            UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
+            UserMessageGroupDao.updateReadByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
+        }
+
         // Save message
         UserMessageDao.insert(conn, networkId, fromUserId, toUserId, quote);
 
@@ -81,7 +94,18 @@ public class UserMessageServices extends ParentService  {
         EmailServices.userMessage(fromUserId, toUserId, networkId, quote);
 
         return pointsPerMessage;
-
     }
 
+    private static UserMessageGroup getOrCreateUserMessageGroup (Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException {
+
+        UserMessageGroup out = UserMessageGroupDao.getByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
+
+        if (out == null) {
+            UserMessageGroupDao.insert(null, networkId, fromUserId, toUserId, false, false);
+            out = UserMessageGroupDao.getByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
+        }
+
+        return out;
+    }
 }
+
