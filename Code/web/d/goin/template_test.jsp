@@ -74,7 +74,7 @@
 
     <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing.png" style="width: 120px;"></div>
+        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing5.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
             <img src="./test/capture.png" style="width: 200px;">
@@ -91,13 +91,13 @@
             </div>
 
             <div class="magnet vl_header" style="width: 100%; padding: 10px 0 10px 15px; line-height: 1.5em; text-align: center; margin: 20px auto;">
-                The easiest, fastest way to get<br/>
-                personalized, one-on-one training <br/>
-                &mdash; and start getting fit today!
+                FitArrow gives you a real<br/>
+                personal trainer &mdash; Online.<br/>
+                The easiest, fastest way to get fit.
             </div>
 
             <div class="video center lg_shadow" style="width: 500px; height: 281px; background-color: black;">
-                <iframe width="500" height="281" src="https://www.youtube.com/embed/sogVLwKhje0?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+                <iframe width="500" height="281" src="https://www.youtube.com/embed/sogVLwKhje0?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <style>
@@ -116,23 +116,18 @@
 
             </style>
 
+            <div id="guarantee" style="position: relative; margin: 40px 0 0 20px; display: inline-block; width: 590px; height: 250px;">
 
-            <div id="guarantee" style="position: relative; margin: 40px 0 0px 20px; display: inline-block; width: 590px; height: 250px;">
-
-                <img src="./test/curved-trainer.png" style="width: 550px; position: relative;">
-
-                <div style="position: absolute; top: -10px; left: 110px; z-index: 10;">
-                    <%--<img src="./test/guarantee.png" style="width: 125px;">--%>
-                    <%--<img src="./test/pricing.png" style="width: 120px;">--%>
-                </div>
-
-                <div style="position: absolute; top: 5px; left: 140px; width: 220px; padding: 10px; background-color: white;" class="sm_glow">
-                    <span class="smd_text highlight" style="font-style: italic;">
-                        Its never been easier to learn from a personal trainer who will get to know you...
-
-                        <%--With our 14-day money back guarantee &mdash; its now risk-free to invest in your health!--%>
+                <div class="center" style="width: 290px; padding: 10px 20px; background-color: <%= HtmlDesign.highlight %>;">
+                    <span class="smd_text white" style="font-style: italic;">
+                        With our <span style="font-weight: bold">30-day money back guarantee</span> &mdash; its risk-free to get your own personal trainer!
                     </span>
                 </div>
+
+                <div style="position: absolute; top: -20px; left: 40px;">
+                    <img src="./test/curved-trainer.png" style="width: 550px;">
+                </div>
+
             </div>
 
             <style>
@@ -344,7 +339,7 @@
             </div>
 
             <div class="center vl_text dim" style="position: relative">
-                <img src="./test/pricing.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
+                <img src="./test/pricing5.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
                 <div style="display: inline-block">
                     <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
                         <img src="./test/coach1.png" style="width: 100px;">
