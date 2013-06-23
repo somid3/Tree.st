@@ -1,5 +1,8 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
+
+<div class="canvas_header">Profile Details</div>
+
 <%
     // Retrieving network
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
@@ -61,8 +64,6 @@
     QD.hAddOptionInputId = '<%= hAddOptionInputId %>';
     QD.hAddOptionButtonId = '<%= hAddOptionButtonId %>';
 </script>
-
-<div class="canvas_header">Profile Details</div>
 
 <% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_QUESTIONS_HOW, meId)) { %>
     <div class="minitip" id="<%= hMinitipId %>">

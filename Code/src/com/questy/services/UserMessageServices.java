@@ -83,6 +83,7 @@ public class UserMessageServices extends ParentService  {
             UserMessageGroupDao.updateSummaryByNetworkIdAndFromUserIdAndToUserId(null, summary, networkId, fromUserId, toUserId);
             UserMessageGroupDao.updateUpdatedOnByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
             UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, true, networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateReadByNetworkIdAndFromUserIdAndToUserId(null, true, networkId, fromUserId, toUserId);
         }
 
         // Update to user message group

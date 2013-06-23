@@ -50,18 +50,17 @@
             </div>
 
             <div class="bottom">
-                <% if (share_a_networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON) != 0) { %>
-                    <span class="ago sm_text dim2"><%= PrettyDate.toString( share_a_sharedComment.getCreatedOn()) %></span>
-                <% } %>
-
                 <% {
                     SharedVotable share_b_sharedVotable = share_a_sharedComment;
                     Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_a_networkAlphaSettings;
                     Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_a_networkIntegerSettings; %>
                 <%@ include file="share_b_shared_vote.jsp" %>
                 <% } %>
-            </div>
 
+                <% if (share_a_networkIntegerSettings.get(NetworkIntegerSettingEnum.SHARED_COMMENT_DISPLAY_CREATED_ON) != 0) { %>
+                    <span class="ago sm_text dim2"><%= PrettyDate.toString( share_a_sharedComment.getCreatedOn()) %></span>
+                <% } %>
+            </div>
         </div>
     </div>
 </div>

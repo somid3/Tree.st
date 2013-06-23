@@ -2,6 +2,8 @@ package com.questy.web;
 
 import com.questy.utils.StringUtils;
 
+import java.util.List;
+
 
 public class HtmlUtils {
 
@@ -43,7 +45,13 @@ public class HtmlUtils {
      */
     public static String paragraphize (String input) {
 
-        return input.replaceAll("\\n", "<br/>");
+        String[] tokens = input.split("\\n");
+
+        StringBuilder out = new StringBuilder(input.length());
+        for (String token : tokens)
+            out.append("<p>").append(token).append("</p>");
+
+        return out.toString();
 
     }
 

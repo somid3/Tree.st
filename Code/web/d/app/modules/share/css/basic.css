@@ -145,70 +145,10 @@
 }
 
 .shared_item_box > .right > .content .ago {
-    margin-right: 5px;
+    margin-left: 5px;
     float: left;
 }
 
-.shared_item_box > .comments {
-    margin-top: 20px;
-}
-
-.shared_item_box > .right .add_comment {
-    width: 510px;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-.shared_item_box > .right .add_comment > .top {
-    display: block;
-    position: relative;
-}
-
-.shared_item_box > .right .add_comment > .top .error {
-    margin-left: 70px;
-    margin-bottom: 5px;
-    padding: 5px;
-    background-color: <%= HtmlDesign.errorBackgroundColor %>;
-    display: none;
-    width: 200px;
-}
-
-.shared_item_box  > .right .add_comment > .left {
-    margin: 0 5px 0 25px;
-    padding: 0;
-    float: left;
-    position: relative;
-}
-
-.shared_item_box  > .right .add_comment > .left .loading {
-    display: none;
-    position: absolute;
-    left: -20px;
-}
-
-.shared_item_box > .right .add_comment > .left .face img {
-    width: 30px;
-    height: 30px;
-}
-
-.shared_item_box  > .right .add_comment > .right {
-    float: left;
-    width: 400px;
-    margin-left: 10px;
-}
-
-.shared_item_box  > .right .add_comment > .right .box {
-    padding: 2px;
-    width: 350px;
-    border: 1px solid #bbb;
-}
-
-.shared_item_box  > .right .add_comment > .right .box .tell_me {
-    border: none;
-    font-size: 12px;
-    width: 240px;
-    height: 50px;
-}
 
 
 /* Shared item line */
@@ -265,9 +205,11 @@
 
 /* Shared comment */
 .shared_comment {
-    margin-top: 10px;
+    margin-top: 5px;
+    padding-top: 10px;
     display: inline-block;
-    width: 500px;
+    width: 580px;
+    border-top: solid 1px <%= HtmlDesign.dim4 %>;
 }
 
 .shared_comment  > .left {
@@ -277,13 +219,13 @@
 }
 
 .shared_comment  > .right {
-    width: 420px;
+    width: 510px;
     margin-left: 10px;
     float: left;
 }
 
 .shared_comment  > .right .box {
-    width: 350px;
+    width: 450px;
 }
 
 .shared_comment  > .right  .delete {
@@ -291,7 +233,8 @@
 }
 
 .shared_comment  > .right .ago {
-    margin-right: 5px;
+    margin-left: 5px;
+    float: left;
 }
 
 .shared_comment  > .right .bottom {
@@ -299,8 +242,72 @@
 }
 
 
+
+
+
+.add_shared_comment {
+    width: 580px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.add_shared_comment > .top {
+    display: block;
+    position: relative;
+}
+
+.add_shared_comment > .top .error {
+    margin-left: 70px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: <%= HtmlDesign.errorBackgroundColor %>;
+    display: none;
+    width: 200px;
+}
+
+.add_shared_comment > .left {
+    margin: 0 5px 0 25px;
+    padding: 0;
+    float: left;
+    position: relative;
+}
+
+.add_shared_comment > .left .loading {
+    display: none;
+    position: absolute;
+    left: -20px;
+}
+
+.add_shared_comment > .left .face img {
+    width: 30px;
+    height: 30px;
+}
+
+.add_shared_comment > .right {
+    float: left;
+    width: 510px;
+    margin-left: 10px;
+}
+
+.add_shared_comment > .right .box {
+    padding: 2px;
+    width: 444px;
+    border: 1px solid #bbb;
+}
+
+.add_shared_comment > .right .box .tell_me {
+    border: none;
+    font-size: 12px;
+    width: 440px;
+    height: 50px;
+}
+
+
+
+
 /* Shared Votes */
 .shared_vote {
+    float: left;
     margin-left: 5px;
     display: inline-block;
 }

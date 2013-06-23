@@ -13,8 +13,6 @@
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);
 
     Integer hasLogo = networkIntegerSettings.get(NetworkIntegerSettingEnum.IS_UI_LOGO_SET);
-    String singularVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR);
-    String pluralVocabulary = networkAlphaSettings.get(NetworkAlphaSettingEnum.VOCAB_USER_PLURAL);
 %>
 
 <script type="text/javascript">
@@ -39,16 +37,6 @@
     if (meToHome.getBlockedOn() != null)
         return;
 %>
-
-
-<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.all(homeId)%>')">
-    <div class="shortcut" id="network_shortcut_all">
-        <div class="contents">
-            <div class="icon"><img src="./modules/networks/img/premium.png" alt="All <%= home.getTotalMembers() %> <%= pluralVocabulary %>"></div>
-            <div class="name smd_text">All <%= home.getTotalMembers() %> <%= pluralVocabulary %></div>
-        </div>
-    </div>
-</a>
 
 <div class="help">
     <div class="help-rel">
@@ -87,7 +75,16 @@
     <div class="shortcut" id="network_shortcut_smart_search">
         <div class="contents">
             <div class="icon"><img src="./modules/networks/img/smart_search.png" alt="Smart Search"></div>
-            <div class="name smd_text"><%= singularVocabulary %> Search</div>
+            <div class="name smd_text">Member Search</div>
+        </div>
+    </div>
+</a>
+
+<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.all(homeId)%>')">
+    <div class="shortcut" id="network_shortcut_all">
+        <div class="contents">
+            <div class="icon"><img src="./modules/networks/img/premium.png" alt="All"></div>
+            <div class="name smd_text">All Members</div>
         </div>
     </div>
 </a>

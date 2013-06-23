@@ -7,9 +7,10 @@
     Integer searchOptionRef = StringUtils.parseInt(request.getParameter("sor"));
 
     SmartGroup smartGroup = SmartGroupServices.getOrCreateSearchSmartGroup(homeId, meId);
-
-    Map<NetworkAlphaSettingEnum, String> sgroup_f_networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(homeId);
 %>
+
+<div class="canvas_header">Search Results</div>
+
 <div id="smart_search_welcome">
     <%@ include file="includes/sgroup_f_empty_search.jsp" %>
 </div>

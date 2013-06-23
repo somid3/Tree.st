@@ -39,7 +39,7 @@
     <div class="right">
         <div class="top">
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_c_sharedItem.getNetworkId(), share_c_sharedItem.getUserId(), me.getId())%>');">
-                <span class="name sm_header highlight2"><%= share_c_author.getName() %></span>
+                <span class="name smd_header highlight2"><%= share_c_author.getName() %></span>
             </a>
 
             <% if (share_c_sharedItem.getSmartGroupRef() != share_c_fromSmartGroupRef) {
@@ -71,70 +71,65 @@
             <div class="box smd_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_c_sharedItem.getText() ) )%></div>
 
             <div>
-
-                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
-                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
-                <% } %>
-
                 <% {
                     SharedVotable share_b_sharedVotable = share_c_sharedItem;
                     Map<NetworkAlphaSettingEnum, String> share_b_networkAlphaSettings = share_c_networkAlphaSettings;
                     Map<NetworkIntegerSettingEnum, Integer> share_b_networkIntegerSettings = share_c_networkIntegerSettings; %>
                     <%@ include file="share_b_shared_vote.jsp" %>
                 <% } %>
+
+                <% if (share_c_settingSharedItemDisplayCreatedOn != 0) { %>
+                     <span class="ago sm_text dim2"><%= PrettyDate.toString(share_c_sharedItem.getCreatedOn()) %></span>
+                <% } %>
             </div>
 
         </div>
-
-        <%-- Comments --%>
-        <div class="comments" id="<%= share_c_hSharedCommentsId %>">
-
-            <%
-                // Retrieving all shared comments of shared item
-                List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
-
-                Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;
-                Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = share_c_networkIntegerSettings;
-                for (SharedComment share_a_sharedComment : sharedComments) { %>
-
-                    <%@ include file="share_a_shared_comment.jsp" %>
-            <% } %>
-
-        </div>
-
-        <%-- Adding new comment form, begins hidden --%>
-        <div class="add_comment" id="<%= share_c_hNewSharedCommentId %>">
-
-            <div class="top">
-                <div class="error sm_text white"></div>
-            </div>
-
-            <div class="left">
-                <div class="loading"><img src="/d/app/img/sm_loading.gif"></div>
-                <div class="face">
-                    <img src="<%= me.getFaceUrl() %>" alt="">
-                </div>
-            </div>
-
-            <div class="right">
-                <div class="box">
-                    <textarea
-                        onkeydown="SharedComment.addSharedComment(
-                                    event,
-                                    <%= share_c_sharedItem.getNetworkId() %>,
-                                    <%= share_c_sharedItem.getSmartGroupRef() %>,
-                                    <%= share_c_sharedItem.getSharedItemRef() %>,
-                                    '<%= share_c_hNewSharedCommentId %>',
-                                    '<%= share_c_hSharedCommentsId %>')"
-                        class="tell_me"
-                        id="<%= share_c_hNewSharedCommentTextId %>"
-                        placeholder="<%= share_c_addCommentPlaceHolder %>"></textarea>
-                </div>
-            </div>
-
-        </div>
-
     </div>
+
+    <div id="<%= share_c_hSharedCommentsId %>">
+    <%
+        // Retrieving all shared comments of shared item
+        List<SharedComment> sharedComments = SharedCommentDao.getByNetworkIdAndSmartGroupRefAndSharedItemRef(null, share_c_sharedItem.getNetworkId(), share_c_sharedItem.getSmartGroupRef(), share_c_sharedItem.getSharedItemRef(), SqlLimit.ALL);
+
+        Map<NetworkAlphaSettingEnum, String> share_a_networkAlphaSettings = share_c_networkAlphaSettings;
+        Map<NetworkIntegerSettingEnum, Integer> share_a_networkIntegerSettings = share_c_networkIntegerSettings;
+        for (SharedComment share_a_sharedComment : sharedComments) { %>
+
+            <%@ include file="share_a_shared_comment.jsp" %>
+    <% } %>
+    </div>
+
+    <%-- Adding new comment form, begins hidden --%>
+    <div class="add_shared_comment" id="<%= share_c_hNewSharedCommentId %>">
+
+        <div class="top">
+            <div class="error sm_text white"></div>
+        </div>
+
+        <div class="left">
+            <div class="loading"><img src="/d/app/img/sm_loading.gif"></div>
+            <div class="face">
+                <img src="<%= me.getFaceUrl() %>" alt="">
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="box">
+                <textarea
+                    onkeydown="SharedComment.addSharedComment(
+                                event,
+                                <%= share_c_sharedItem.getNetworkId() %>,
+                                <%= share_c_sharedItem.getSmartGroupRef() %>,
+                                <%= share_c_sharedItem.getSharedItemRef() %>,
+                                '<%= share_c_hNewSharedCommentId %>',
+                                '<%= share_c_hSharedCommentsId %>')"
+                    class="tell_me"
+                    id="<%= share_c_hNewSharedCommentTextId %>"
+                    placeholder="<%= share_c_addCommentPlaceHolder %>"></textarea>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <% } %>

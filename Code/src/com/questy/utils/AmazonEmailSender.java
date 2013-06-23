@@ -42,90 +42,86 @@ public class AmazonEmailSender implements Runnable {
 
     private void sendEmail() {
 
-        // Repeat until message is sent or limit is reached
-        boolean sent = false;
+        // Should the email be sent?
+        if (!Vars.sendEmails) {
+            System.out.println(messageText);
+            return;
+        }
 
-        while (!sent) {
+        try {
 
-            try {
+            // Starting the AWS session and transport
+            startTransport();
 
-                // Starting the AWS session and transport
-                startTransport();
+            String addressesCharset = "utf-8";
 
-                String addressesCharset = "utf-8";
+            // Create new message
+            message = new MimeMessage(AWSsession);
 
-                // Create new message
-                message = new MimeMessage(AWSsession);
+            // Adding author
+            message.setFrom(new InternetAddress(fromEmail, fromName, addressesCharset));
 
-                // Adding author
-                message.setFrom(new InternetAddress(fromEmail, fromName, addressesCharset));
+            // Deciding whether to send an emails to the actual recipients or not...
+            if (Vars.sendAllEmailsTo != null) {
 
-                // Deciding whether to send an emails to the actual recipients or not...
-                if (Vars.sendAllEmailsTo != null) {
+                // Do we need to send all emails to a particular address?
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(Vars.sendAllEmailsTo, null, addressesCharset));
 
-                    // Do we need to send all emails to a particular address?
-                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(Vars.sendAllEmailsTo, null, addressesCharset));
+            } else {
 
-                } else {
+                // Adding recipients
+                for (String toEmail : recipients)
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
+            }
 
-                    // Adding recipients
-                    for (String toEmail : recipients)
-                        message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
+            // Adding subject
+            message.setSubject(subject);
+
+            // Adding message
+            Multipart multipart = new MimeMultipart();
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Dealing with defining the charset to be used for the email
+            messageBodyPart.setHeader("Content-Type", messageMine.getMime());
+            messageBodyPart.setHeader("Content-Transfer-Encoding", "quoted-printable");
+            messageBodyPart.setContent(messageText, messageMine.getMime());
+
+            // Adding the textual body of the message
+            multipart.addBodyPart(messageBodyPart);
+
+            // Adding attachments
+            if (attachments != null && attachments.size() != 0) {
+
+                for (Triple<byte[], String, String> attachment : attachments) {
+                    messageBodyPart = new MimeBodyPart();
+
+                    // Dealing with defining the charset to be used for the email
+                    DataSource source = new ByteArrayDataSource(attachment.getX(), attachment.getY());
+                    messageBodyPart.setDataHandler(new DataHandler(source));
+                    messageBodyPart.setFileName(attachment.getZ());
+                    multipart.addBodyPart(messageBodyPart);
                 }
-
-                // Adding subject
-                message.setSubject(subject);
-
-                // Adding message
-                Multipart multipart = new MimeMultipart();
-                BodyPart messageBodyPart = new MimeBodyPart();
-
-                // Dealing with defining the charset to be used for the email
-                messageBodyPart.setHeader("Content-Type", messageMine.getMime());
-                messageBodyPart.setHeader("Content-Transfer-Encoding", "quoted-printable");
-                messageBodyPart.setContent(messageText, messageMine.getMime());
-
-                // Adding the textual body of the message
-                multipart.addBodyPart(messageBodyPart);
-
-                // Adding attachments
-                if (attachments != null && attachments.size() != 0) {
-
-                    for (Triple<byte[], String, String> attachment : attachments) {
-                        messageBodyPart = new MimeBodyPart();
-
-                        // Dealing with defining the charset to be used for the email
-                        DataSource source = new ByteArrayDataSource(attachment.getX(), attachment.getY());
-                        messageBodyPart.setDataHandler(new DataHandler(source));
-                        messageBodyPart.setFileName(attachment.getZ());
-                        multipart.addBodyPart(messageBodyPart);
-                    }
-
-                }
-
-                // Encoding the email to contain multiple parts
-                message.setContent(multipart);
-
-                // Compacting and saving the message
-                message.saveChanges();
-
-                // Transporting the message, either to the network or to system out, etc
-                transportingMessage();
-
-                // Email was sent, break from the while
-                sent = true;
-
-            } catch (Exception e) {
-
-                System.out.println("Failed -- " + getMessageSummary());
-                throw new RuntimeException(e);
-
-            } finally {
-
-                // Ending the transport
-                endTransport();
 
             }
+
+            // Encoding the email to contain multiple parts
+            message.setContent(multipart);
+
+            // Compacting and saving the message
+            message.saveChanges();
+
+            // Transporting the message, either to the network or to system out, etc
+            transportingMessage();
+
+        } catch (Exception e) {
+
+            System.out.println("Failed -- " + getMessageSummary());
+            throw new RuntimeException(e);
+
+        } finally {
+
+            // Ending the transport
+            endTransport();
 
         }
 
@@ -133,23 +129,12 @@ public class AmazonEmailSender implements Runnable {
 
     private void transportingMessage () throws MessagingException, IOException {
 
-        if (Vars.sendEmails) {
+        // Sending the email
+        AWSTransport.sendMessage(message, null);
 
-            // Sending the email
-            AWSTransport.sendMessage(message, null);
-
-            // Log sent emails?
-            if (Vars.logSentEmails)
-                System.out.println("Sent -- " + getMessageSummary());
-
-        } else {
-
-            // Output the email content
-            PrintStream out = System.out;
-            message.writeTo(out);
-
-        }
-
+        // Log sent emails?
+        if (Vars.logSentEmails)
+            System.out.println("Sent -- " + getMessageSummary());
     }
 
     private String getMessageSummary () {

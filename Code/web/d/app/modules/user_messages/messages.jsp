@@ -21,7 +21,8 @@
 <div class="canvas_header">
     Messages with
     <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, toUser.getId(), meId)%>');">
-    <span class="highlight2"><%= toUser.getName() %></span>
+        <span class="highlight2"><%= toUser.getName() %></span>
+    </a>
 </div>
 
 <%
@@ -45,9 +46,12 @@
                 <div style="float: left; width: 520px; margin-left: 10px;">
 
                     <div style="width: 100%; display: inline-block">
-                        <div style="float: left; margin-top: 5px;">
-                            <span class="smd_header dim"><%= StringUtils.concat(author.getName(), 20, "...") %></span>
-                        </div>
+
+                        <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, toUser.getId(), meId)%>');">
+                            <div style="float: left; margin-top: 5px;">
+                                <span class="smd_header highlight2"><%= StringUtils.concat(author.getName(), 20, "...") %></span>
+                            </div>
+                        </a>
 
                         <div style="float: right;">
                             <span class="sm_text dim2"><%= PrettyDate.toString(userMessage.getCreatedOn()) %></span>
@@ -55,7 +59,7 @@
                     </div>
 
                     <div style="width: 100%; display: inline-block">
-                        <span class="smd_text dim"><%= userMessage.getMessage() %></span>
+                        <span class="sm_text dim"><%= HtmlUtils.paragraphize(userMessage.getMessage()) %></span>
                     </div>
                 </div>
             </div>
