@@ -74,14 +74,18 @@
 
     <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div style="position: absolute; left: 490px; top: 10px;"><img src="./test/pricing5.png" style="width: 120px;"></div>
+        <div id="free" style="position: absolute; left: 490px; top: 30px;"><img src="./test/pricing.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
             <img src="./test/capture.png" style="width: 200px;">
         </div>
 
         <script type="text/javascript">
-            $(window).load(function() { Animations.toPosition("#capture", -75, 60, 5000); })
+            $(window).load(function() {
+                Animations.toPosition("#capture", -75, 60, 3000, function() {
+                    Animations.toPosition("#free", 490, 60, 1000);
+                })
+            });
         </script>
 
         <div style="padding: 20px 10px 10px 10px;">
@@ -90,10 +94,8 @@
                 <img src="./test/logo.png">
             </div>
 
-            <div class="magnet vl_header" style="width: 100%; padding: 10px 0 10px 15px; line-height: 1.5em; text-align: center; margin: 20px auto;">
-                FitArrow gives you a real<br/>
-                personal trainer &mdash; Online.<br/>
-                The easiest, fastest way to get fit.
+            <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
+                <span class="vl_header dim">The easiest way to get your</br> health-related questions</br> answered by personal trainers</span>
             </div>
 
             <div class="video center lg_shadow" style="width: 500px; height: 281px; background-color: black;">
@@ -116,18 +118,14 @@
 
             </style>
 
-            <div id="guarantee" style="position: relative; margin: 40px 0 0 20px; display: inline-block; width: 590px; height: 250px;">
-
-                <div class="center" style="width: 290px; padding: 10px 20px; background-color: <%= HtmlDesign.highlight %>;">
-                    <span class="smd_text white" style="font-style: italic;">
-                        With our <span style="font-weight: bold">30-day money back guarantee</span> &mdash; its risk-free to get your own personal trainer!
-                    </span>
-                </div>
-
-                <div style="position: absolute; top: -20px; left: 40px;">
-                    <img src="./test/curved-trainer.png" style="width: 550px;">
-                </div>
-
+            <div class="break">
+                <img src="./test/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <a href="#" onclick="Animations.scrollToTop();">
+                    <div class="lets_start md_button sm_text dark_button white square">
+                        <div class="md_header">Start Now!</div>
+                        <div>Let's get you in shape</div>
+                    </div>
+                </a>
             </div>
 
             <style>
@@ -158,43 +156,38 @@
 
                 <div class="benefit shadow" style="width: 180px; position: absolute; left: 330px; top: -50px;">
                     <div class="content">
-                        <div class="title vl_header dim">Personal Advice</div>
+                        <div class="title vl_header dim">Personal Trainers</div>
                         <div class="text lg_text dim">
-                            We first study you with over 250 dimensions
-                            and give you personalized advice
-                            to get fit quick!
+                            <p>Get personalized advice to help
+                            you improve your health and fitness.</p>
+
+                            <p>Ask our personal trainers any question and
+                            get quick answers.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="benefit shadow" style="width: 180px; position: absolute; left: -30px; top: 150px;">
                     <div class="content">
-                        <div class="title vl_header dim">Digital Content</div>
+                        <div class="title vl_header dim">Quick Answers</div>
                         <div class="text lg_text dim">
-                            Get unique recipes, tips, exercise routines,
+                            <p>Trying to achieve a fitness goal? Ask our
+                            personal trainers and get all your answers in one place.</p>
+
+                            <p>Get unique recipes, tips, exercise routines,
                             and knowledge to live a healthier and
-                            and more energetic lifestyle
+                            and more energetic lifestyle</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="benefit shadow" style="width: 180px; position: absolute; left: 390px; top: 210px;">
+                <div class="benefit shadow" style="z-index: 20; width: 180px; position: absolute; left: 70px; top: 560px;">
                     <div class="content">
-                        <div class="title vl_header dim">Earn Cash</div>
+                        <div class="title vl_header dim">Rich Community</div>
                         <div class="text lg_text dim">
-                            For each friend you subscribe you will earn
-                            $10, it's that simple.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="benefit shadow" style="z-index: 20; width: 180px; position: absolute; left: 40px; top: 600px;">
-                    <div class="content">
-                        <div class="title vl_header dim">Community</div>
-                        <div class="text lg_text dim">
-                            Have fun! Make friends and get know others
+                            <p>Have fun! Make friends and get know others
                             who are getting fit &mdash; professionals, students,
-                            athletes.
+                            athletes.</p>
                         </div>
                     </div>
                 </div>
@@ -339,7 +332,6 @@
             </div>
 
             <div class="center vl_text dim" style="position: relative">
-                <img src="./test/pricing5.png" style="z-index: 10; position: absolute; left: 420px; top: -50px; width: 150px;">
                 <div style="display: inline-block">
                     <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
                         <img src="./test/coach1.png" style="width: 100px;">
@@ -357,12 +349,20 @@
                     </a>
                 </div>
 
-                <div id="disclaimer" style="width: 300px; margin: 100px auto; text-align: center;">
-                    <span class="sm_text dim2">
-                        Please consult a physician before starting any diet or exercise plan. Your results may vary.
-                    </span>
+
+                <div style="position: relative; margin: 0 0 0 10px; display: inline-block; width: 590px; height: 80px;">
+
+                    <div style="position: absolute; top: -20px; left: 40px;">
+                        <img src="./test/curved-trainer.png" style="width: 550px;">
+                    </div>
+
                 </div>
 
+                <div id="disclaimer" style="width: 300px; margin: 100px auto; text-align: center;">
+                    <span class="md_text dim2">
+                        Please consult a physician before starting any diet or exercise plan.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
