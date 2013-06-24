@@ -6,7 +6,7 @@
     Integer startFrom = StringUtils.parseInt(request.getParameter("from"));
 
     // Determine if viewing myself, or if a user link is required
-    UserLinkServices.viewMyselfOrValidateUsersLinked(networkId, meId, viewUserId);
+    UserLinkServices.jspViewMyselfOrValidateUsersLinked(networkId, meId, viewUserId);
 
     Integer duration = 20;
     SqlLimit limit = new SqlLimit(startFrom, duration);

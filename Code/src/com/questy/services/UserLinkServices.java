@@ -14,6 +14,7 @@ import com.questy.services.email.EmailServices;
 import com.questy.utils.DateUtils;
 import com.questy.utils.Vars;
 
+import javax.servlet.jsp.JspException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
@@ -26,10 +27,14 @@ public class UserLinkServices extends ParentService  {
      * If a bi-directional link already exists, then no database actions are taken
      *
      */
-    public static Tuple<UserLinkDirectionEnum, Integer> linkUsers(Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException {
+    public static Tuple<UserLinkDirectionEnum, Integer> linkUsers(Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException, JspException {
 
         // Currently non-transactional
         Connection conn = null;
+
+        // Validate to and from users are in network
+        UserToNetworkServices.jspValidateUserInNetwork(fromUserId, networkId);
+        UserToNetworkServices.jspValidateUserInNetwork(toUserId, networkId);
 
         // Validating
         if (fromUserId.equals(toUserId))
@@ -163,7 +168,7 @@ public class UserLinkServices extends ParentService  {
      * requires that the "from user" be linked to the "to user"
      *
      */
-    public static Boolean viewMyselfOrValidateUsersLinked (Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException {
+    public static Boolean jspViewMyselfOrValidateUsersLinked (Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException, JspException {
 
         Boolean viewMyself = false;
         if (fromUserId.equals(toUserId))
@@ -173,9 +178,11 @@ public class UserLinkServices extends ParentService  {
             // If not myself, determining if user has a link with the viewed user
             UserLink link = UserLinkDao.getByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
             if (link == null || link.getDirection() == UserLinkDirectionEnum.TARGET_TO_ME)
-                throw new RuntimeException("User link required");
+                throw new JspException("User link required");
         }
 
         return viewMyself;
     }
+
+
 }

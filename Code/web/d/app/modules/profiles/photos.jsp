@@ -4,7 +4,7 @@
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    boolean viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
+    UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
 
     // Retrieving user face photos that are not temporary
     List<AppResource> scaleds = AppResourceDao.getByUserIdAndAppAndTypeAndTemp(null, viewUserId, AppEnum.FACES, AppResourceTypeEnum.FACE_ORIGINAL_SCALED, false);

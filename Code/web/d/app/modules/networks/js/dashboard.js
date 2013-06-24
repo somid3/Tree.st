@@ -137,11 +137,6 @@ NetworkDashboard.hideLoading = function () {
     $canvasLoading.hide();
 };
 
-NetworkDashboard.toggleAward = function () {
-    var $award = $("#award");
-    $award.fadeToggle();
-};
-
 NetworkDashboard.showCustomLogo = function (logoSource) {
 
     $("#default_logo").hide();

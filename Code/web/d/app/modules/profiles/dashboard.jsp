@@ -4,12 +4,15 @@
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
     Integer go = StringUtils.parseInt(request.getParameter("go"));
 
+    // Validate viewed user is in this network
+    UserToNetworkServices.jspValidateUserInNetwork(viewUserId, homeId);
+
     // Have these two users seen each other, or is the user viewing itself?
     boolean requireUserLink = false;
     boolean viewMyself = false;
     try {
-        viewMyself = UserLinkServices.viewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
-    } catch (RuntimeException e) {
+        viewMyself = UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
+    } catch (Exception e) {
         requireUserLink = true;
     }
 
@@ -58,7 +61,7 @@
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
                     <div id="profile_message" class="clickable md_button dark_button md_text selected">
-                        Message <%= viewed.getFirstName() %>
+                        Message
 
                         <% if (pointsPer != 0) { %>
                             <span class="sm_text">(<%= pointsPer %> pts.)</span>

@@ -45,3 +45,114 @@ function UserMessageGroups () {
     };
 
 }
+
+
+function UserMessage () {};
+
+UserMessage.sendFromProfile = function (event, networkId, toUserId, callback) {
+
+    Event.preventDefault(event);
+
+    // Gathering objects
+    var $quote = $("#send_user_message_quote");
+    var $sendMessage = $("#send_user_message_container");
+    var $messageSent = $("#user_message_sent");
+
+    // Defining parameters
+    var parameters = {};
+    parameters.nid = networkId;
+    parameters.tuid = toUserId;
+    parameters.qu = $quote.val();
+
+    UserMessage.displayLoading();
+
+    $.post('./modules/user_messages/actions/send_message.jsp', parameters, function(response) {
+
+        // Parsing the results
+        var responseDoc = $.parseXML($.trim(response));
+        var $response = $(responseDoc);
+
+        // Did an error occur
+        var $responseError = $response.find("error");
+        if($responseError.length > 0) {
+
+            UserMessage.displayError($responseError.text());
+
+        } else {
+
+            // Retrieve used points
+            var usedPoints = $response.find("points").text();
+
+            // Update points
+            Points.increment(usedPoints);
+
+            // Hiding send message and displaying message sent
+            $sendMessage.hide()
+            $messageSent.fadeIn();
+        }
+
+    });
+
+};
+
+UserMessage.sendFromMessages = function (event, networkId, toUserId, callback) {
+
+    Event.preventDefault(event);
+
+    // Gathering objects
+    var $quote = $("#send_user_message_quote");
+    var $sendMessage = $("#send_user_message_container");
+    var $messageSent = $("#user_message_sent");
+
+    // Defining parameters
+    var parameters = {};
+    parameters.nid = networkId;
+    parameters.tuid = toUserId;
+    parameters.qu = $quote.val();
+
+    UserMessage.displayLoading();
+
+    $.post('./modules/user_messages/actions/send_message.jsp', parameters, function(response) {
+
+        // Parsing the results
+        var responseDoc = $.parseXML($.trim(response));
+        var $response = $(responseDoc);
+
+        // Did an error occur
+        var $responseError = $response.find("error");
+        if($responseError.length > 0) {
+
+            UserMessage.displayError($responseError.text());
+
+        } else {
+
+            // Retrieve used points
+            var usedPoints = $response.find("points").text();
+
+            // Update points
+            Points.increment(usedPoints);
+
+            // Hiding send message and displaying message sent
+            $sendMessage.hide()
+            $messageSent.fadeIn();
+        }
+
+    });
+
+};
+
+UserMessage.displayLoading = function () {
+    var $loadingDiv = $("#send_user_message_loading");
+    var $errorDiv = $("#send_user_message_error");
+
+    $loadingDiv.show();
+    $errorDiv.hide();
+};
+
+UserMessage.displayError = function (errorMessage) {
+    var $loadingDiv = $("#send_user_message_loading");
+    var $errorDiv = $("#send_user_message_error");
+
+    $errorDiv.html(errorMessage).fadeIn();
+    $loadingDiv.hide();
+};

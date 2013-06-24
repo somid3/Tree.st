@@ -114,7 +114,7 @@ public class HashRouting {
     };
 
     public static String member(Integer networkId, Integer toUserId, Integer myUserId) {
-        if (toUserId != myUserId)
+        if (!toUserId.equals(myUserId))
             return HASH + "/comm/" + networkId + "/member/" + toUserId;
         else
             return profile(networkId);
