@@ -4,6 +4,8 @@
      *    Network f_network = null;
      *    SmartGroup f_smartGroup = null;
      *    SharedItem f_sharedItem = null;
+     *    Boolean f_sharedItemDisplayDates = null;
+     *    Boolean f_sharedCommentDisplayDates = null;
      */
 
 {
@@ -19,7 +21,7 @@
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("gh", HashRouting.sharedItem(f_sharedItem.getId(), f_sharedItem.getSmartGroupRef(), f_sharedItem.getSharedItemRef()));
+        query.add("gh", HashRouting.sharedItem(f_sharedItem.getNetworkId(), f_sharedItem.getSmartGroupRef(), f_sharedItem.getSharedItemRef()));
         f_hSharedItemLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 
@@ -53,11 +55,9 @@
                     font-size: 14px;
                     line-height: 1.5em;">
 
-                &ldquo;<%= HtmlUtils.linkify(StringUtils.concat(f_sharedItem.getText(), 300, "&hellip;")) %>&rdquo;<br/>
+                    &ldquo;<%= HtmlUtils.linkify(StringUtils.concat(f_sharedItem.getText(), 300, "&hellip;")) %>&rdquo;<br/>
 
-                &mdash; <i><%= EmailDesign.aBegin(f_hSharedItemAuthorLink)%><%= f_author.getName() %><%= EmailDesign.aEnd %></i>
-
-                <span style="color: <%= HtmlDesign.dim2%>"> / <%= PrettyDate.toString(f_sharedItem.getCreatedOn()) %></span>
+                    &mdash; <i><%= EmailDesign.aBegin(f_hSharedItemAuthorLink)%><%= f_author.getName() %><%= EmailDesign.aEnd %></i>
 
                 </span>
 
@@ -72,13 +72,7 @@
                 <%= EmailDesign.aBegin(f_hSharedItemLink, EmailDesign.aStyleNoDeco)%>
                     <%= EmailDesign.spanButtonBegin() %>
 
-                        Comment
-
-                        <% if (f_sharedItem.getTotalComments() > 0) { %>
-                            (<%= f_sharedItem.getTotalComments() %>)
-                        <% } %>
-
-                        or view full message
+                        View full message
 
                     <%= EmailDesign.spanEnd %>
                 <%= EmailDesign.aEnd%>
@@ -117,11 +111,9 @@
                         font-size: 12px;
                         line-height: 1.5em;">
 
-                    &ldquo;<%= HtmlUtils.linkify(StringUtils.concat(f_sharedComment.getText(), 300, "&hellip;")) %>&rdquo;<br/>
+                        &ldquo;<%= HtmlUtils.linkify(StringUtils.concat(f_sharedComment.getText(), 300, "&hellip;")) %>&rdquo;<br/>
 
-                    &mdash; <i><%= EmailDesign.aBegin(f_hSharedCommentAuthorLink)%><%= f_commentator.getName() %><%= EmailDesign.aEnd %></i>
-
-                    <span style="color: <%= HtmlDesign.dim2%>"> / <%= PrettyDate.toString(f_sharedComment.getCreatedOn()) %></span>
+                        &mdash; <i><%= EmailDesign.aBegin(f_hSharedCommentAuthorLink)%><%= f_commentator.getName() %><%= EmailDesign.aEnd %></i>
 
                     </span>
                     <br/>

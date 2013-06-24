@@ -46,8 +46,6 @@ public enum NetworkIntegerSettingEnum {
     USER_MESSAGE_MIN_LENGTH             (408, 10),
     USER_MESSAGE_MAX_LENGTH             (409, 500),
 
-    SMART_RESULTS_DISPLAY_SINCE         (500, 1),
-
     /**
      * Regular members of a community can not create "shared" smart groups
      * that contain more than X number of members within them

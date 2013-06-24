@@ -34,7 +34,7 @@
 
                 <div id="send_user_message_error" class="sm_text white" style="float: left; display: none; padding: 5px; background-color: <%= HtmlDesign.errorBackgroundColor %>;"></div>
 
-                <a href="#" onclick="UserMessage.sendFromProfile(event, <%= homeId %>, <%= toUserId %>)">
+                <a href="#" onclick="UserMessage.send(event, <%= homeId %>, <%= toUserId %>)">
                     <div class="submit_button md_button md_text w100" style="float: right; border: solid 1px white">
                         Send
 

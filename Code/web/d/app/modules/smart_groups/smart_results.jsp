@@ -7,9 +7,6 @@
     // Retrieving smart group
     SmartGroup group = SmartGroupDao.getByNetworkIdAndRef(null, homeId, smartGroupRef);
 
-    // Retrieving whether to display lasted date of result
-    Integer displaySince = NetworkIntegerSettingEnum.SMART_RESULTS_DISPLAY_SINCE.getValueByNetworkId(homeId);
-
     // Is the smart group private?
     if (group.getVisibility() == SmartGroupVisibilityEnum.PRIVATE) {
 
@@ -64,12 +61,6 @@
 
                             <% } %>
                         </div>
-
-                        <% if (displaySince > 0) { %>
-                            <div>
-                                <div class="since vsm_text dim2">since <%= PrettyDate.toString(result.getLatestDate()).toLowerCase() %></div>
-                            </div>
-                        <% }%>
 
                     </div>
                </div>

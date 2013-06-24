@@ -64,7 +64,7 @@
 
                         <% } else { %>
 
-                            <img src="<%= Vars.domain + c_network.getLogoResourceUrl() %>">
+                            <img src="http://<%= Vars.domain + c_network.getLogoResourceUrl() %>">
 
                         <% } %>
 

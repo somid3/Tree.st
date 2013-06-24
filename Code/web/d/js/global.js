@@ -446,8 +446,10 @@ Animations.scrollTo = function (hItemId) {
     // Retrieve selected item
     var $item = $("#" + hItemId);
 
+    console.log($item.prop("scrollHeight"));
+
     // Scrolling to the bottom of the div that contains all options
-    $("html, body").animate({ scrollTop: $item.prop("scrollHeight") }, 500);
+    $("html, body").animate({ scrollTop: $item.offset().top }, 500);
 
 };
 

@@ -45,6 +45,11 @@
             else
                 author = toUser;
 %>
+
+            <% if (lastUserMessage.equals(userMessage)) { %>
+                <div id="user_message_last"></div>
+            <% } %>
+
             <div class="user_message canvas_container" style="display: inline-block">
 
                 <div style="float: left;">
@@ -76,10 +81,8 @@
         <% } %>
 
         <script type="text/javascript">
-            // Scroll user to last message area
-            Animations.scrollTo("send_user_message_container");
+            Animations.scrollTo("user_message_last");
         </script>
-
 <%
     } else {
 

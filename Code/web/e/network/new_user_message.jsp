@@ -16,7 +16,7 @@
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("gh", HashRouting.profileMessages(network.getId(), toUserId));
+        query.add("gh", HashRouting.profileMessages(network.getId(), fromUserId));
         hUserMessageLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 

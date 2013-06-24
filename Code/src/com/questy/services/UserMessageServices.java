@@ -93,7 +93,7 @@ public class UserMessageServices extends ParentService  {
             UserMessageGroupDao.updateRepliedByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
             UserMessageGroupDao.updateReadByNetworkIdAndFromUserIdAndToUserId(null, false, networkId, toUserId, fromUserId);
             UserMessageGroupDao.updateSummaryByNetworkIdAndFromUserIdAndToUserId(null, summary, networkId, toUserId, fromUserId);
-            UserMessageGroupDao.updateUpdatedOnByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
+            UserMessageGroupDao.updateUpdatedOnByNetworkIdAndFromUserIdAndToUserId(null, networkId, toUserId, fromUserId);
         }
 
         // Save message
