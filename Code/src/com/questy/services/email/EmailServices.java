@@ -196,11 +196,15 @@ public class EmailServices extends ParentService {
     public static void userMessage (
         Integer fromUserId,
         Integer toUserId,
-        Integer networkId,
-        String quote) throws SQLException {
+        Integer networkId) throws SQLException {
 
         // Currently non-transactional
         Connection conn = null;
+
+        // Does the message receiver wish to receive these messages instantaneously?
+        Boolean unsubscribed = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_USER_MESSAGE_EMAIL_NOTIFICATIONS.getBooleanByUserIdAndNetworkId(toUserId, networkId);
+        if(unsubscribed)
+            return;
 
         // Retrieving user
         User fromUser = UserDao.getById(conn, fromUserId);
@@ -212,8 +216,8 @@ public class EmailServices extends ParentService {
         // Creating message
         UrlQuery query = new UrlQuery();
         query.add("fuid", fromUserId);
+        query.add("tuid", toUserId);
         query.add("nid", networkId);
-        query.add("qu", quote);
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_message.jsp?" + query);
 
         // Creating runnable to send email on new thread

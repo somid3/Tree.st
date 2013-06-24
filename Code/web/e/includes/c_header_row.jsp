@@ -11,17 +11,19 @@
     String c_hNetworkLink = null;
     String c_hSmartGroupLink = null;
 
-    UrlQuery c_query = new UrlQuery();
-
     if (c_network != null) {
+        UrlQuery c_query = new UrlQuery();
         c_query.add("uid", EmailServices.TO_USER_ID);
         c_query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        c_query.add("nid", c_network.getId());
+        c_query.add("gh", HashRouting.network(c_network.getId()));
         c_hNetworkLink = "http://" + Vars.domain + "/r/go/?" + c_query;
     }
 
     if (c_smartGroup != null) {
-        c_query.add("sgr", c_smartGroup.getSmartGroupRef());
+        UrlQuery c_query = new UrlQuery();
+        c_query.add("uid", EmailServices.TO_USER_ID);
+        c_query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
+        c_query.add("gh", HashRouting.smartGroup(c_network.getId(), c_smartGroup.getSmartGroupRef()));
         c_hSmartGroupLink = "http://" + Vars.domain + "/r/go/?" + c_query;
     }
 
@@ -62,7 +64,7 @@
 
                         <% } else { %>
 
-                            <img src="<%= Vars.domain + c_network.getLogoResourceUrl() %>"
+                            <img src="<%= Vars.domain + c_network.getLogoResourceUrl() %>">
 
                         <% } %>
 

@@ -253,13 +253,13 @@
             });
         });
 
-        routie('/comm/:nid/details', function(nid) {
+        routie('/comm/:nid/profile/details', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.QUESTIONS);
             });
         });
 
-        routie('/comm/:nid/details/:agqr', function(nid, againQuestionRef) {
+        routie('/comm/:nid/profile/details/:agqr', function(nid, againQuestionRef) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.QUESTIONS, {agqr: againQuestionRef});
             });
@@ -271,13 +271,13 @@
             });
         });
 
-        routie('/comm/:nid/messages', function(nid) {
+        routie('/comm/:nid/profile/messages', function(nid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.MESSAGE_GROUPS);
             });
         });
 
-        routie('/comm/:nid/messages/:uid', function(nid, tuid) {
+        routie('/comm/:nid/profile/messages/:uid', function(nid, tuid) {
             LeftMenu.goToNetwork(null, nid, function() {
                 ND.go(null, NetworkDashboard.Section.MESSAGES, {tuid: tuid});
             });

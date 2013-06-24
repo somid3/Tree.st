@@ -106,7 +106,7 @@
     </div>
 </a>
 
-<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(homeId)%>')">
+<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileQuestions(homeId)%>')">
     <div class="shortcut" id="network_shortcut_questions">
         <div class="contents">
             <div class="tab icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
@@ -118,7 +118,7 @@
     </div>
 </a>
 
-<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.messages(homeId)%>')">
+<a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileMessages(homeId)%>')">
     <div class="shortcut" id="network_shortcut_messages">
         <div class="contents">
             <div class="tab icon"><img src="./modules/networks/img/email.png" alt="Details"></div>

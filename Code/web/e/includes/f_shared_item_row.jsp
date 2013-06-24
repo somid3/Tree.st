@@ -19,9 +19,7 @@
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("nid", sharedItem.getNetworkId());
-        query.add("sgr", sharedItem.getSmartGroupRef());
-        query.add("sir", sharedItem.getSharedItemRef());
+        query.add("gh", HashRouting.sharedItem(f_sharedItem.getId(), f_sharedItem.getSmartGroupRef(), f_sharedItem.getSharedItemRef()));
         f_hSharedItemLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 
@@ -30,8 +28,7 @@
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("vuid", f_sharedItem.getUserId());
-        query.add("nid", f_sharedItem.getNetworkId());
+        query.add("gh", HashRouting.member(f_sharedItem.getNetworkId(), f_sharedItem.getUserId()));
         f_hSharedItemAuthorLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 
@@ -103,8 +100,7 @@
                     UrlQuery query = new UrlQuery();
                     query.add("uid", EmailServices.TO_USER_ID);
                     query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-                    query.add("vuid", f_sharedComment.getUserId());
-                    query.add("nid", f_sharedComment.getNetworkId());
+                    query.add("gh", HashRouting.member(f_sharedComment.getNetworkId(), f_sharedComment.getUserId()));
                     f_hSharedCommentAuthorLink = "http://" + Vars.domain + "/r/go/?" + query;
                 }
         %>

@@ -53,20 +53,24 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/finder";
     };
 
-    public static String questions(Integer networkId) {
-        return HASH + "/comm/" + networkId + "/details";
+    public static String profile(Integer networkId) {
+        return HASH + "/comm/" + networkId + "/profile";
     };
 
-    public static String questionAgain(Integer networkId, Integer questionRef) {
-        return HASH + "/comm/" + networkId + "/details/" + questionRef;
+    public static String profileQuestions(Integer networkId) {
+        return HASH + "/comm/" + networkId + "/profile/details";
     };
 
-    public static String messages(Integer networkId) {
-        return HASH + "/comm/" + networkId + "/messages";
+    public static String profileQuestionAgain(Integer networkId, Integer questionRef) {
+        return HASH + "/comm/" + networkId + "/profile/details/" + questionRef;
     };
 
-    public static String messages(Integer networkId, Integer toUserId) {
-        return HASH + "/comm/" + networkId + "/messages/" + toUserId;
+    public static String profileMessages(Integer networkId) {
+        return HASH + "/comm/" + networkId + "/profile/messages";
+    };
+
+    public static String profileMessages(Integer networkId, Integer toUserId) {
+        return HASH + "/comm/" + networkId + "/profile/messages/" + toUserId;
     };
 
     public static String blocked(Integer networkId) {
@@ -109,15 +113,15 @@ public class HashRouting {
         return HASH + "/comm/" + networkId + "/search";
     };
 
-    public static String profile(Integer networkId) {
-        return HASH + "/comm/" + networkId + "/profile";
-    };
-
     public static String member(Integer networkId, Integer toUserId, Integer myUserId) {
         if (!toUserId.equals(myUserId))
             return HASH + "/comm/" + networkId + "/member/" + toUserId;
         else
             return profile(networkId);
+    };
+
+    public static String member(Integer networkId, Integer toUserId) {
+        return HASH + "/comm/" + networkId + "/member/" + toUserId;
     };
 
 }

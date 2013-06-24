@@ -55,6 +55,12 @@ public enum EmailActionEnum {
      */
     CHANGE_ACTIVE_SMART_GROUP_DIGEST_RATE(204),
 
+    /**
+     * Ensure that the user no longer receives new user message
+     * notifications from the particular network
+     */
+    UNSUBSCRIBE_FROM_NEW_USER_MESSAGE_NOTIFICATIONS (205),
+
 
 
     ;

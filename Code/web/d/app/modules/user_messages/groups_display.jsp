@@ -25,7 +25,7 @@
 
             %>
 
-            <a href="#" class="no_deco" onclick="HashRouting.setHash(event, '<%= HashRouting.messages(homeId, userMessageGroup.getToUserId())%>')">
+            <a href="#" class="no_deco" onclick="HashRouting.setHash(event, '<%= HashRouting.profileMessages(homeId, userMessageGroup.getToUserId())%>')">
                 <div class="user_message_group canvas_container" style="position: relative; display: inline-block; <%= nonReadHtmlClass%>">
 
                     <% if (userMessageGroup.isReplied()) { %>
@@ -59,12 +59,5 @@
                 </div>
             </a>
         <% } %>
-
-    <% } else {
-
-        String app_a_message = "No more message";
-        boolean app_a_withCanvasContainer = true; %>
-        <%@ include file="../../includes/app_a_mini_message.jsp" %>
-        <script>Pagination.unbindScrollPagination();</script>
 
     <% } %>

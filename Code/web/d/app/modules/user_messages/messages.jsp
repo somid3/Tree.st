@@ -36,6 +36,7 @@
     if (count > 0) {
 
         User author = null;
+        UserMessage lastUserMessage = userMessages.get(userMessages.size() - 1);
         for (UserMessage userMessage : userMessages) {
 
             // Determining the author of the message
@@ -68,11 +69,16 @@
                     </div>
 
                     <div style="width: 100%; display: inline-block">
-                        <span class="sm_text dim"><%= HtmlUtils.paragraphize(userMessage.getMessage()) %></span>
+                        <span class="smd_text dim"><%= HtmlUtils.paragraphize(userMessage.getMessage()) %></span>
                     </div>
                 </div>
             </div>
         <% } %>
+
+        <script type="text/javascript">
+            // Scroll user to last message area
+            Animations.scrollTo("send_user_message_container");
+        </script>
 
 <%
     } else {
@@ -84,33 +90,41 @@
 
 <%  } %>
 
-<div id="send_user_message_container" style="display: inline-block;">
 
-    <div class="white smd_text" style="padding: 5px 0 10px 0; text-align: center;">
-        Messages can be no longer than <%= messageMaxLength %> characters
-    </div>
+<div class="canvas_container" style="background-color: <%= HtmlDesign.dim %>; margin-top: 10px;">
+    <div class="w450 center">
 
-    <div style=" padding: 5px; background-color: white; display: inline-block;">
-        <textarea id="send_user_message_quote" class="md_input w450" style="height: 100px" maxlength="<%= messageMaxLength %>" placeholder="Type your message here..."></textarea>
-    </div>
+        <div id="user_message_sent" class="white vl_text" style="display: none; font-family: adam; padding: 20px; text-align: center; line-height: 1.5em;">
+            Your message has been sent!
+        </div>
 
-    <div style="margin: 10px 0 0 0; display: inline-block; width: 100%">
+        <div id="send_user_message_container" style="display: inline-block;">
 
-        <div id="send_user_message_error" class="sm_text white" style="float: left; display: none; padding: 5px; background-color: <%= HtmlDesign.errorBackgroundColor %>;"></div>
-
-        <a href="#" onclick="UserMessage.sendFromProfile(event, <%= homeId %>, <%= toUserId %>)">
-            <div class="submit_button md_button md_text w100" style="float: right; border: solid 1px white">
-                Send
-
-                <% if (pointsPer != 0) { %>
-                    <span class="sm_text">(<%= pointsPer %> pts.)</span>
-                <% } %>
+            <div class="white" style="padding: 5px 0 10px 0; text-align: center;">
+                <div class="md_text">Message <%= toUser.getFirstName() %></div>
             </div>
-        </a>
 
-        <div id="send_user_message_loading" style="float: right; margin: 5px 10px 0 0; display: none;"><img src="./img/sm_loading_white.gif"></div>
+            <div style=" padding: 5px; background-color: white; display: inline-block;">
+                <textarea id="send_user_message_quote" class="md_input w450" style="height: 100px" maxlength="<%= messageMaxLength %>" placeholder="Type your message here..."></textarea>
+            </div>
 
+            <div style="margin: 10px 0 0 0; display: inline-block; width: 100%">
+
+                <div id="send_user_message_error" class="sm_text white" style="float: left; display: none; padding: 5px; background-color: <%= HtmlDesign.errorBackgroundColor %>;"></div>
+
+                <a href="#" onclick="UserMessage.send(event, <%= homeId %>, <%= toUserId %>)">
+                    <div class="submit_button md_button md_text w100" style="float: right; border: solid 1px white">
+                        Send
+
+                        <% if (pointsPer != 0) { %>
+                            <span class="sm_text">(<%= pointsPer %> pts.)</span>
+                        <% } %>
+                    </div>
+                </a>
+
+                <div id="send_user_message_loading" style="float: right; margin: 5px 10px 0 0; display: none;"><img src="./img/sm_loading_white.gif"></div>
+            </div>
+        </div>
     </div>
-
 </div>
 

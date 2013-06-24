@@ -1,8 +1,8 @@
 <%@ include file="../../all.jsp"%>
 <%
     Integer fromUserId = StringUtils.parseInt(request.getParameter("fuid"));
+    Integer toUserId = StringUtils.parseInt(request.getParameter("tuid"));
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    String quote = StringUtils.parseString(request.getParameter("qu"));
 
     // Retrieving from user
     User fromUser = UserDao.getById(null, fromUserId);
@@ -11,18 +11,20 @@
     Network network = NetworkDao.getById(null, networkId);
 
     // Creating link to view user who created user link
-    String hAuthorProfileLink = null;
+    String hUserMessageLink = null;
     {
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("vuid", fromUser.getId());
-        query.add("nid", network.getId());
-        hAuthorProfileLink = "http://" + Vars.domain + "/r/go/?" + query;
+        query.add("gh", HashRouting.profileMessages(network.getId(), toUserId));
+        hUserMessageLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 
+    // Retrieving message sent
+    UserMessageGroup messageGroup = UserMessageGroupDao.getByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
+
     // Replacing new lines with html new lines
-    quote = quote.replace("\n", "<br/>");
+    String quote = StringUtils.concat(messageGroup.getSummary(), 100, "...");
 %>
 <%@ include file="../includes/a_container_start.jsp"%>
 
@@ -38,7 +40,7 @@
         <table width="100%" cellspacing="10">
             <tr>
                 <td valign="top" align="left" width="110">
-                    <%= EmailDesign.aBegin(hAuthorProfileLink)%>
+                    <%= EmailDesign.aBegin(hUserMessageLink)%>
                         <img width="100" height="100" src="http://<%= Vars.domain %>/<%= fromUser.getFaceUrl() %>">
                     <%= EmailDesign.aEnd %>
                 </td>
@@ -62,16 +64,29 @@
                             font-style: italic">
 
                         "<%= quote %>"
-                        </span><br/>
-                        <br/>
-                        To reply, go to
-                        <%= EmailDesign.aBegin(hAuthorProfileLink)%><%= fromUser.getFirstName() %>'s profile<%= EmailDesign.aEnd %>
-                        and click on 'Message'<br/>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td valign="top" align="center">
+                    <br/>
+                    <%= EmailDesign.aBegin(hUserMessageLink) %>
+                        <%= EmailDesign.spanButtonBegin() %>
 
-                        <br/>
-                        Best,<br/>
-                        <%= Vars.supportEmailName %>
+                            View your messages
 
+                        <%= EmailDesign.spanEnd %>
+                    <%= EmailDesign.aEnd%>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <br/>
+                    Best,<br/>
+                    <%= network.getName() %>
                     </span>
                 </td>
             </tr>
@@ -80,6 +95,13 @@
     </td>
 </tr>
 
-<% List<String> e_removals = new ArrayList<String>(); %>
+<%
+    UrlQuery parameters = new UrlQuery();
+    parameters.add("nid", networkId);
+    String unsubscribeLink = HtmlUtils.createHref("Unsubscribe", EmailServices.helperCreateActionUrl(EmailActionEnum.UNSUBSCRIBE_FROM_NEW_USER_MESSAGE_NOTIFICATIONS, parameters));
+
+    List<String> e_removals = new ArrayList<String>();
+    e_removals.add(unsubscribeLink + " from 'new message' notifications at " + StringUtils.concat(network.getName(), 15, "..."));
+%>
 <%@ include file="../includes/e_footer_row.jsp"%>
 <%@ include file="../includes/b_container_end.jsp"%>

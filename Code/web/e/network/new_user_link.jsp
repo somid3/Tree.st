@@ -15,8 +15,7 @@
         UrlQuery query = new UrlQuery();
         query.add("uid", EmailServices.TO_USER_ID);
         query.add("scs", EmailServices.TO_USER_SALT_CHECKSUM);
-        query.add("vuid", fromUser.getId());
-        query.add("nid", network.getId());
+        query.add("gh", HashRouting.member(network.getId(), fromUser.getId()));
         hAuthorProfileLink = "http://" + Vars.domain + "/r/go/?" + query;
     }
 %>
@@ -50,7 +49,7 @@
                     <%= fromUser.getFirstName() %> from "<%= network.getName() %>" just viewed you!<br/>
                     <br/>
                     Best,<br/>
-                    <%= Vars.supportEmailName %>
+                    <%= network.getName() %>
                     </span>
                 </td>
             </tr>

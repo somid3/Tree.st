@@ -41,6 +41,28 @@
         </div>
 
         <div class="element">
+            <div class="name sm_text dim">"New message" notifications</div>
+            <div class="input">
+
+                <%
+                    app_d_title = "'New message'";
+                    app_d_message = "When someone in this community sends you a private and personal message, you can receive a notification.";
+                    app_d_position = HtmlDesign.Positions.BOTTOM;
+
+                    app_e_selectedValue = UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_USER_MESSAGE_EMAIL_NOTIFICATIONS.getValueByUserIdAndNetworkId(meId, homeId);
+                    app_e_options.clear();
+                    app_e_options.put("Receive", 0);
+                    app_e_options.put("Do not receive", 1);
+                %>
+                <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
+
+                <select name="nmsg_notif" class="field">
+                    <%@ include file="../../includes/app_e_options.jsp"%>
+                </select>
+            </div>
+        </div>
+
+        <div class="element">
             <div class="name sm_text dim">"Auto-magically added to new smart group" notifications</div>
             <div class="input">
 

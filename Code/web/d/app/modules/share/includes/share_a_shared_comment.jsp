@@ -43,7 +43,7 @@
 
             <div class="box">
                 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(share_a_sharedComment.getNetworkId(), share_a_sharedComment.getUserId(), me.getId())%>');">
-                    <span class="sm_header highlight2"><%= share_a_author.getName() %></span>:
+                    <span class="sm_header highlight2"><%= share_a_author.getName() %></span>
                 </a>
 
                 <span class="sm_text dim"><%= HtmlUtils.paragraphize ( HtmlUtils.linkify( share_a_sharedComment.getText() )) %></span>

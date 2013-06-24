@@ -2,7 +2,6 @@ package com.questy.services;
 
 import com.questy.dao.*;
 import com.questy.domain.*;
-import com.questy.enums.NetworkAlphaSettingEnum;
 import com.questy.enums.NetworkIntegerSettingEnum;
 import com.questy.enums.RoleEnum;
 import com.questy.enums.UserIntegerSettingEnum;
@@ -443,7 +442,7 @@ public class UserWebServices extends ParentService {
 
         // Determining where to send initially...
         if (nextQuestionRef != null)
-            return HashRouting.questions(firstNetwork.getId());
+            return HashRouting.profileQuestions(firstNetwork.getId());
         else
             return HashRouting.sharedItems(firstNetwork.getId());
     }

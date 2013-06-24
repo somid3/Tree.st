@@ -32,18 +32,10 @@
         Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
         UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_USER_LINK_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
 
-
-
-
-
     } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SMART_GROUP_MAPPINGS_NOTIFICATIONS) {
 
         Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
         UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_NEW_SMART_GROUP_MAPPINGS_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
-
-
-
-
 
     } else if (action == EmailActionEnum.FLAG_SMART_GROUP) {
 
@@ -51,21 +43,10 @@
          Integer smartGroupRef = StringUtils.parseInt(request.getParameter("sgr"));
          UserToSmartGroupServices.changeState(UserToSmartGroupStateEnum.FLAGGED, networkId, smartGroupRef, userId);
 
-
-
-
-
-
-
-     } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SHARED_ITEM_NOTIFICATIONS) {
+    } else if (action ==  EmailActionEnum.UNSUBSCRIBE_FROM_NEW_SHARED_ITEM_NOTIFICATIONS) {
 
          Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
          UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.setValueByUserIdAndNetworkId(userId, networkId, EmailNotificationRateEnum.NEVER.getId());
-
-
-
-
-
 
     } else if (action == EmailActionEnum.CHANGE_ACTIVE_SMART_GROUP_DIGEST_RATE) {
 
@@ -75,11 +56,10 @@
          );
          UserToNetworkIntegerSettingEnum.NEW_SHARED_ITEM_DIGEST_EMAIL_RATE.setValueByUserIdAndNetworkId(userId, networkId, rate.getId());
 
+    } else if (action == EmailActionEnum.UNSUBSCRIBE_FROM_NEW_USER_MESSAGE_NOTIFICATIONS) {
 
-
-
-
-
+        Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
+        UserToNetworkIntegerSettingEnum.IS_UNSUBSCRIBED_FROM_USER_MESSAGE_EMAIL_NOTIFICATIONS.setValueByUserIdAndNetworkId(userId, networkId, 1);
 
     }
 

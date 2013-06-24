@@ -100,7 +100,7 @@ public class UserMessageServices extends ParentService  {
         UserMessageDao.insert(conn, networkId, fromUserId, toUserId, quote);
 
         // Send notification email
-        EmailServices.userMessage(fromUserId, toUserId, networkId, quote);
+        EmailServices.userMessage(fromUserId, toUserId, networkId);
 
         return pointsPerMessage;
     }

@@ -47,7 +47,7 @@
             </div>
 
             <% if (firstDependentAndAvailableNetwork != null) { %>
-                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(firstDependentAndAvailableNetwork.getId())%>');">
+                <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileQuestions(firstDependentAndAvailableNetwork.getId())%>');">
                     <div class="vl_text highlight2">Continue and complete your &quot;<%= firstDependentAndAvailableNetwork.getName() %>&quot; profile!</div>
                 </a>
             <% } %>

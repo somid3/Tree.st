@@ -533,7 +533,7 @@ public class NetworkServices extends ParentService {
 
         // Determining where to send initially...
         if (nextQuestionRef != null)
-            return HashRouting.questions(firstNetwork.getId());
+            return HashRouting.profileQuestions(firstNetwork.getId());
         else
             return HashRouting.sharedItems(firstNetwork.getId());
     }

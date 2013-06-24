@@ -14,14 +14,10 @@
 %>
 
 <div class="canvas_container" style="background-color: <%= HtmlDesign.dim %>;">
-
-
     <div class="w450 center">
 
         <div id="user_message_sent" class="white vl_text" style="display: none; font-family: adam; padding: 20px; text-align: center; line-height: 1.5em;">
-
             Your message has been sent!
-
         </div>
 
         <div id="send_user_message_container" style="display: inline-block;">

@@ -153,7 +153,7 @@
 
                     <div class="details">
                         <% if (viewMyself && home.equals(approvedNetwork)) { %>
-                            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questionAgain(question.getNetworkId(), question.getRef()) %>');">
+                            <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileQuestionAgain(question.getNetworkId(), question.getRef()) %>');">
                                 <div class="again sm_text highlight2">Update</div>
                             </a>
                         <% } %>
@@ -174,7 +174,7 @@
                         <div class="canvas_mini_message">
                             <div class="container">
                                 <div class="content">
-                                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.questions(approvedNetwork.getId()) %>');">
+                                    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileQuestions(approvedNetwork.getId()) %>');">
                                         <div class="message smd_text highlight2">
                                             Complete your profile!
                                         </div>
