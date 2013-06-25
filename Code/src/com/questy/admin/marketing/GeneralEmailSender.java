@@ -15,10 +15,13 @@ import java.util.Date;
 
 public class GeneralEmailSender {
 
-    public static void main (String[] args) throws SQLException {
+    public static void main (String[] args) throws Exception {
+
+        // Load CVS to database
+//        CVSToDatabase("/Users/omid/Desktop/HrDirectors.csv");
 
         // Send email to folks in particular industry
-        sendEmails(1531, "Association");
+        sendEmails(1, "HR Director");
 
     }
 
@@ -43,9 +46,8 @@ public class GeneralEmailSender {
     public static void sendEmail(GeneralEmail generalEmail) throws SQLException {
 
         // Creating message
-        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("associations_email_2.html"), "UTF-8");
+        String message = StringUtils.convertStreamToString( GeneralEmailSender.class.getResourceAsStream("hr_email_1.html"), "UTF-8");
 
-        message = message.replaceAll("\\[from_url\\]", generalEmail.getFromUrl());
         message = message.replaceAll("\\[keyword_1\\]", generalEmail.getKeyword1());
         message = message.replaceAll("\\[keyword_2\\]", generalEmail.getKeyword2());
         message = message.replaceAll("\\[keyword_3\\]", generalEmail.getKeyword3());
@@ -54,10 +56,10 @@ public class GeneralEmailSender {
         AmazonEmailSender ams = new AmazonEmailSender();
         ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
 
-        ams.setFromName("socrates@mit.edu"); ams.setFromEmail("socrates@mit.edu");
+        ams.setFromName("omid@treelift.com"); ams.setFromEmail("omid@treelift.com");
 
         ams.addRecipient(generalEmail.getEmail());
-        ams.setSubject("tool for your association");
+        ams.setSubject("HR tool");
         ams.setMessageText(message);
 
         // Queueing the email
@@ -79,10 +81,11 @@ public class GeneralEmailSender {
         while ((nextLine = reader.readNext()) != null) {
 
             GeneralEmail ge = new GeneralEmail();
-            ge.setEmail(nextLine[0]);
-            ge.setFromUrl(nextLine[2]);
-            ge.setKeyword1(nextLine[3]);
-            ge.setIndustry("Association");
+            ge.setEmail(nextLine[6]);
+            ge.setKeyword1(nextLine[1]);
+            ge.setKeyword2(nextLine[8]);
+            ge.setKeyword3(nextLine[18]);
+            ge.setIndustry("HR Director");
 
             // Validation: checking no duplicate emails
             if(GeneralEmailDao.getCountByEmail(null, ge.getEmail()) > 0)
@@ -92,12 +95,10 @@ public class GeneralEmailSender {
             GeneralEmailDao.insert(
                 null,
                 ge.getEmail(),
-                ge.getFromUrl(),
                 ge.getIndustry(),
                 ge.getKeyword1(),
-                "",
-                "");
-
+                ge.getKeyword2(),
+                ge.getKeyword3());
         }
 
     }

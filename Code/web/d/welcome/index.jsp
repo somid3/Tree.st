@@ -24,7 +24,7 @@
     <div class="w700 center">
         <div class="block">
             <div class="main sp_header white">Allow your members to find each other via qualities that are unique to your organization</div>
-            <div class="sub vl_text white">The fastest, easiest way to connect groups</div>
+            <div class="sub vl_text white">The fastest, easiest, and safest way to connect your human resources</div>
 
         </div>
     </div>
@@ -64,7 +64,7 @@
 <a name="request"></a>
 <div class="w600 center">
     <div class="statement">
-        <div class="main sp_header">Let's Get Started!</div>
+        <div class="main sp_header">Let's Get Started</div>
         <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
     </div>
 </div>

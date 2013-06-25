@@ -93,7 +93,6 @@ public class GeneralEmailDao extends ParentDao{
     public static Integer insert (
         Connection conn,
         String email,
-        String fromUrl,
         String industry,
         String keyword1,
         String keyword2,
@@ -104,22 +103,20 @@ public class GeneralEmailDao extends ParentDao{
         String sql =
             "insert into `general_emails` (" +
             "`email`, " +
-            "`from_url`, " +
             "`industry`, " +
             "`keyword_1`, " +
             "`keyword_2`, " +
             "`keyword_3` " +
-            ") values (?, ?, ?, ?, ?, ?);";
+            ") values (?, ?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 
         ps.setString(1, email);
-        ps.setString(2, StringUtils.substring(fromUrl, 0, 250));
-        ps.setString(3, industry);
-        ps.setString(4, keyword1);
-        ps.setString(5, keyword2);
-        ps.setString(6, keyword3);
+        ps.setString(2, industry);
+        ps.setString(3, keyword1);
+        ps.setString(4, keyword2);
+        ps.setString(5, keyword3);
         ps.execute();
 
         Integer generatedId = DatabaseUtils.getFirstGeneratedKey(ps.getGeneratedKeys());
@@ -132,7 +129,6 @@ public class GeneralEmailDao extends ParentDao{
         GeneralEmail out = new GeneralEmail();
         out.setId(DatabaseUtils.getInt(rs, "id"));
         out.setEmail(DatabaseUtils.getString(rs, "email"));
-        out.setFromUrl(DatabaseUtils.getString(rs, "from_url"));
         out.setKeyword1(DatabaseUtils.getString(rs, "keyword_1"));
         out.setKeyword2(DatabaseUtils.getString(rs, "keyword_2"));
         out.setKeyword3(DatabaseUtils.getString(rs, "keyword_3"));

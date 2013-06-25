@@ -19,8 +19,8 @@
             </a>
 
             <div id="contact_details">
-                <div class="smd_text highlight2">hello@treelift.com</div>
-                <div class="smd_text dim2">1-800-555-5555</div>
+                <a href="mailto:hello@treelift.com"><div class="smd_text highlight2">hello@treelift.com</div></a>
+                <div class="smd_text dim2">1-888-682-3976</div>
             </div>
 
             <div id="shortcuts">

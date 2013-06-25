@@ -6,7 +6,6 @@ public class GeneralEmail {
 
     private Integer id;
     private String email;
-    private String fromUrl;
     private String industry;
     private String keyword1;
     private String keyword2;
@@ -27,14 +26,6 @@ public class GeneralEmail {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getFromUrl() {
-        return fromUrl;
-    }
-
-    public void setFromUrl(String url) {
-        this.fromUrl = url;
     }
 
     public Integer getId() {
