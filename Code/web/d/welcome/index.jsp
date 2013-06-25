@@ -33,7 +33,7 @@
 
 <div class="attention shadow w800 center">
     <div id="playing-video" class="left shadow">
-        <iframe width="500" height="281" src="https://www.youtube.com/embed/pGOVuZ83x0A?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="500" height="281" src="https://www.youtube.com/embed/pGOVuZ83x0A?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="right">
         <div class="actions">
@@ -82,7 +82,7 @@
     'height':'828',
     'async':true,
     'header':'show'};
-    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+    s.src = 'https://wufoo.com/scripts/embed/form.js';
     s.onload = s.onreadystatechange = function() {
     var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
     try { z7x3p9 = new WufooForm();z7x3p9.initialize(options);z7x3p9.display(); } catch (e) {}};

@@ -26,9 +26,15 @@ body {
     float: left;
 }
 
+#contact_details {
+    float: left;
+    margin: 5px 0 0 110px;
+}
+
+
 #shortcuts {
     float: right;
-    padding: 4px;
+    padding: 0 4px 4px 4px;
     display: inline-block;
 }
 

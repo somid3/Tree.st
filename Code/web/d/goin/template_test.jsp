@@ -90,16 +90,16 @@
 
         <div style="padding: 20px 10px 10px 10px;">
 
-            <div id="logo" style="position: relative; left: 170px; top: 10px;">
+            <div id="logo" style="position: relative; left: 200px; top: 10px;">
                 <img src="./test/logo.png">
             </div>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
-                <span class="vl_header dim">The easiest way to get your</br> health-related questions</br> answered by personal trainers</span>
+                <span class="vl_header dim">The easiest way to get your<br/> health-related questions<br/> answered by professional trainers</span>
             </div>
 
             <div class="video center lg_shadow" style="width: 500px; height: 281px; background-color: black;">
-                <iframe width="500" height="281" src="https://www.youtube.com/embed/sogVLwKhje0?rel=0" frameborder="0" allowfullscreen></iframe>
+                <iframe width="500" height="281" src="https://www.youtube.com/embed/sogVLwKhje0?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <style>

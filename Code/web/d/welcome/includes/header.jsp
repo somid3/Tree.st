@@ -18,6 +18,11 @@
                 </div>
             </a>
 
+            <div id="contact_details">
+                <div class="smd_text highlight2">hello@treelift.com</div>
+                <div class="smd_text dim2">1-800-555-5555</div>
+            </div>
+
             <div id="shortcuts">
 
                 <% header_active = header_path.equals("welcome") ? "active" : ""; %>

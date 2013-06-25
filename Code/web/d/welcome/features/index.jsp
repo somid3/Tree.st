@@ -60,11 +60,6 @@
                 </div>
                 <div class="column">
                     <div class="feature-title shadow">
-                        <div class="title md_header dim">Nested Communities</div>
-                        <div class="desc sm_text dim">Administrators can create private sub-communities nested within an organization's larger Tree.st community based on factors such as department, team, location, etc.</div>
-                        <div class="img"><img src="./img/nested-communities.png"></div>
-                    </div>
-                    <div class="feature-title shadow">
                         <div class="title md_header dim">Unique Profiles</div>
                         <div class="desc sm_text dim">Members can create social profiles with organization-specific criteria that you determine -- such as interests, research, expertise, department, skills, affiliations, etc.</div>
                         <div class="img"><img src="./img/unique-profiles.png"></div>
@@ -73,6 +68,11 @@
                         <div class="title md_header dim">Email Notifications</div>
                         <div class="desc sm_text dim">Stop individually adding members to groups. Group them automatically based on qualities.</div>
                         <div class="img"><img src="./img/email-notifications.png"></div>
+                    </div>
+                    <div class="feature-title shadow">
+                        <div class="title md_header dim">Nested Communities</div>
+                        <div class="desc sm_text dim">Administrators can create private sub-communities nested within an organization's larger Tree.st community based on factors such as department, team, location, etc.</div>
+                        <div class="img"><img src="./img/nested-communities.png"></div>
                     </div>
                     <div class="feature-title shadow">
                         <div class="title md_header dim">"Offline" Networking</div>
