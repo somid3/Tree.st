@@ -165,6 +165,17 @@ public class WebUtils {
         throw new SkipPageException();
     }
 
+    public String getRequestedPath() {
+        String path = (String) request.getAttribute("javax.servlet.forward.request_uri");
+        return path.substring(1).toLowerCase();
+    }
+
+    public String getRequestedDomain() {
+        String domain = request.getServerName();
+        return domain.toLowerCase();
+    }
+
+
     /**
      * Dumps all the data contained by a http servlet request,
      * used for debugging purposes
@@ -290,27 +301,5 @@ public class WebUtils {
         aThrowable.printStackTrace(printWriter);
         return result.toString();
     }
-
-
-    public UrlQuery parameterNamesStartWith(String startsWith) {
-
-        if (startsWith.isEmpty())
-            throw new RuntimeException("Starts with can not be empty");
-
-        UrlQuery query = new UrlQuery();
-        Enumeration enume = request.getParameterNames();
-        String attr = null;
-
-        while (enume.hasMoreElements()) {
-            attr = (String) enume.nextElement();
-
-            if (attr.startsWith(startsWith))
-                query.add(attr, request.getParameter(attr));
-
-        }
-
-        return query;
-    }
-
 
 }

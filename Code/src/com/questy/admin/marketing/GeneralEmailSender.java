@@ -21,7 +21,7 @@ public class GeneralEmailSender {
 //        CVSToDatabase("/Users/omid/Desktop/HrDirectors.csv");
 
         // Send email to folks in particular industry
-        sendEmails(1, "HR Director");
+        sendEmails(500, "HR Director");
 
     }
 

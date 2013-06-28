@@ -190,4 +190,18 @@ public class StringUtils {
         return (input == null || input.isEmpty());
 
     }
+
+    public static String remainderAfterFirstToken (String token, String input) {
+
+        if (StringUtils.isEmpty(input))
+            return "";
+
+        String out = "";
+        int firstSlash = input.indexOf(token);
+        if (firstSlash > 0 )
+            out = input.substring(firstSlash + token.length(), input.length());
+
+        return out;
+    }
+
 }

@@ -25,7 +25,6 @@
         <div class="block">
             <div class="main sp_header white">Allow your members to find each other via qualities that are unique to your organization</div>
             <div class="sub vl_text white">The fastest, easiest, and safest way to connect your human resources</div>
-
         </div>
     </div>
 </div>

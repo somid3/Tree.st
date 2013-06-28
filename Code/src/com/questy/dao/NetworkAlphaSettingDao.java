@@ -13,7 +13,11 @@ import java.util.List;
 
 public class NetworkAlphaSettingDao extends ParentDao {
 
-    public static NetworkAlphaSetting getByNetworkIdAndSettingEnum(Connection conn, Integer networkId, NetworkAlphaSettingEnum setting) throws SQLException {
+    public static NetworkAlphaSetting getByNetworkIdAndSettingEnum (
+        Connection conn,
+        Integer networkId,
+        NetworkAlphaSettingEnum setting) throws SQLException {
+
         conn = start(conn);
 
         String sql =
@@ -37,7 +41,11 @@ public class NetworkAlphaSettingDao extends ParentDao {
         return out;
     }
 
-    public static NetworkAlphaSetting getByValueAndSetting(Connection conn, String value, NetworkAlphaSettingEnum setting) throws SQLException {
+    public static NetworkAlphaSetting getByValueAndSettingEnum(
+            Connection conn,
+            String value,
+            NetworkAlphaSettingEnum setting) throws SQLException {
+
         conn = start(conn);
 
         String sql =
@@ -61,7 +69,34 @@ public class NetworkAlphaSettingDao extends ParentDao {
         return out;
     }
 
-    public static List<NetworkAlphaSetting> getByNetworkId (Connection conn, Integer networkId) throws SQLException {
+    public static List<NetworkAlphaSetting> getBySettingEnum(
+        Connection conn,
+        NetworkAlphaSettingEnum setting) throws SQLException {
+
+        conn = start(conn);
+
+        String sql =
+            "select * " +
+            "from `network_alpha_settings` " +
+            "where `setting_id` = ?;";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, setting.getId());
+        ResultSet rs = ps.executeQuery();
+
+        List<NetworkAlphaSetting> out = new ArrayList<NetworkAlphaSetting>();
+
+        while (rs.next())
+            out.add(loadPrimitives(rs));
+
+        end(conn, ps, rs);
+        return out;
+    }
+
+    public static List<NetworkAlphaSetting> getByNetworkId (
+        Connection conn,
+        Integer networkId) throws SQLException {
+
         conn = start(conn);
 
         String sql =
@@ -84,9 +119,9 @@ public class NetworkAlphaSettingDao extends ParentDao {
 
 
     public static Integer deleteByValue (
-            Connection conn,
-            NetworkAlphaSettingEnum settingEnum,
-            String value) throws SQLException {
+        Connection conn,
+        NetworkAlphaSettingEnum settingEnum,
+        String value) throws SQLException {
 
         conn = start(conn);
 
@@ -107,9 +142,9 @@ public class NetworkAlphaSettingDao extends ParentDao {
 
 
     public static Integer deleteByNetworkIdAndSetting (
-            Connection conn,
-            Integer networkId,
-            NetworkAlphaSettingEnum settingEnum) throws SQLException {
+        Connection conn,
+        Integer networkId,
+        NetworkAlphaSettingEnum settingEnum) throws SQLException {
 
         conn = start(conn);
 

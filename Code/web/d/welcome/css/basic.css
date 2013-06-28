@@ -97,7 +97,7 @@ body {
     height: 300px;
     padding: 10px;
     margin-bottom: 40px;
-    margin-top: -15px;
+    margin-top: 15px;
     border: solid 1px <%= HtmlDesign.dim3 %>;
 }
 

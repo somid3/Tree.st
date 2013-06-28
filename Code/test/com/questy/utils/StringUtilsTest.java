@@ -20,7 +20,7 @@ public class StringUtilsTest {
     @Test
     public void parseString() throws UnsupportedEncodingException {
 
-        System.out.print(StringUtils.parseString("´¨"));
+        System.out.print(StringUtils.parseString("ï¿½ï¿½"));
 
     }
 
@@ -35,4 +35,14 @@ public class StringUtilsTest {
     }
 
 
+    @Test
+    public void remainderAfterToken () {
+
+        Assert.assertEquals("secondFolder/thirdFolder",
+            StringUtils.remainderAfterFirstToken("/", "firstFolder/secondFolder/thirdFolder"));
+
+        Assert.assertEquals("",
+            StringUtils.remainderAfterFirstToken("/", "firstFolder"));
+
+    }
 }

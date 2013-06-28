@@ -1,4 +1,4 @@
-<%@ include file="./all.jsp" %>
+<%@ include file="all.jsp" %>
 <%
     // Retrieving network details
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
@@ -43,18 +43,18 @@
 <html>
 <head>
     <title><%= Vars.name %></title>
-    <%@ include file="../includes/google_analytics.jsp"%>
+    <%@ include file="../d/includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../goin/js/goin.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/js/global.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/goin/js/goin.js?<%= Vars.rev %>"></script>
 
-<link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="css/start.css?<%= Vars.rev %>">
 <body>
-<%@ include file="../includes/browser_check.jsp"%>
+<%@ include file="../d/includes/browser_check.jsp"%>
 <div id="main">
 
     <div id="header">

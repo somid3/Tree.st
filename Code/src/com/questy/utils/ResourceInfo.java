@@ -17,12 +17,4 @@ public class ResourceInfo {
         return Vars.resourcesUrl + "networks/" + networkId + "/" ;
     }
 
-    public static String getSmartGroupUrl(Integer networkId, Integer smartGroupRef) {
-        networkId = IntegerUtils.zeroIfNull(networkId);
-        smartGroupRef = IntegerUtils.zeroIfNull(smartGroupRef);
-        return Vars.resourcesUrl + "networks/" + networkId + "/smart_groups/" + smartGroupRef + "/";
-    }
-
-
-
 }

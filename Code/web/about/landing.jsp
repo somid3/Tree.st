@@ -1,4 +1,4 @@
-<%@ include file="./all.jsp" %>
+<%@ include file="all.jsp" %>
 <%
     /**
      * Retrieving URL parameters
@@ -9,9 +9,6 @@
 
     // Network checksum to avoid automatic visits
     String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
-
-    // Used to determine if a user referred this person, and what award user should receive
-    Integer referralUserId = StringUtils.parseInt(request.getParameter("ruid"));
 
     // Reference on landing to be used
     Integer landingRef = StringUtils.parseInt(request.getParameter("lr"));
@@ -78,14 +75,14 @@
 <html>
 <head>
     <title><%= network.getName() %></title>
-    <%@ include file="../includes/google_analytics.jsp"%>
+    <%@ include file="../d/includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../goin/js/goin.js?<%= Vars.rev %>"></script>
-<link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
+<script type="text/javascript" src="../d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/js/global.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="../d/goin/js/goin.js?<%= Vars.rev %>"></script>
+<link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
 
 <%= landing.getHtml() %>
 
@@ -93,6 +90,6 @@
     var params = {};
     params.nid = <%= networkId%>;
     params.ncs = '<%= networkChecksum%>';
-    Transitions.load("#goin", "../goin/renders/goin.jsp", params);
+    Transitions.load("#goin", "../d/goin/renders/goin.jsp", params);
 </script>
 </html>

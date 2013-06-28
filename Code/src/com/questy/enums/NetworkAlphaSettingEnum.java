@@ -1,9 +1,7 @@
 package com.questy.enums;
 
 import com.questy.dao.NetworkAlphaSettingDao;
-import com.questy.dao.NetworkIntegerSettingDao;
 import com.questy.domain.NetworkAlphaSetting;
-import com.questy.domain.NetworkIntegerSetting;
 import com.questy.web.HtmlDesign;
 
 import java.sql.SQLException;
@@ -13,12 +11,10 @@ import java.util.Map;
 
 public enum NetworkAlphaSettingEnum {
 
-    MANIFESTO_TITLE                     (0, ""),
-    MANIFESTO_CONTENT                   (1, ""),
-
     /**
      * Path name used to identify a network from the root domain name
      */
+    @Deprecated
     URL_PATH                            (3, null),
 
     /**
@@ -30,6 +26,16 @@ public enum NetworkAlphaSettingEnum {
      * Layout that appears below the manifesto but is the main page of the community
      */
     START_BODY                          (5, ""),
+
+    /**
+     * Domain used to identify a particular network
+     */
+    URL_DOMAIN                          (6, null),
+
+    /**
+     * Jsp file name of the custom landing page of the network
+     */
+    CUSTOM_LANDING                      (7, null),
 
     /**
      * Word used to describe a singular user
@@ -92,7 +98,7 @@ public enum NetworkAlphaSettingEnum {
 
     public Integer getNetworkIdByValue (String value) throws SQLException {
 
-        NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByValueAndSetting(null, value, this);
+        NetworkAlphaSetting setting = NetworkAlphaSettingDao.getByValueAndSettingEnum(null, value, this);
 
         if (setting == null)
             return null;

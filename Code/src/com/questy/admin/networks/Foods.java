@@ -34,10 +34,6 @@ public class Foods {
         NetworkAlphaSettingEnum.START_MESSAGE.setValueByNetworkId(networkId, "Meet others around the world by their favorite food preferences!");
         NetworkAlphaSettingEnum.START_BODY.setValueByNetworkId(networkId, "");
 
-        // Adding manifesto title
-        NetworkAlphaSettingEnum.MANIFESTO_TITLE.setValueByNetworkId(networkId, "Purpose & Privacy");
-        NetworkAlphaSettingEnum.MANIFESTO_CONTENT.setValueByNetworkId(networkId, "");
-
         /**
          * Creating questions for network
          */
