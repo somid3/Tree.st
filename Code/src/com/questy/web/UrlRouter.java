@@ -4,17 +4,13 @@ import com.questy.dao.NetworkAlphaSettingDao;
 import com.questy.dao.NetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.NetworkAlphaSetting;
-import com.questy.enums.BrowserAcceptanceEnum;
 import com.questy.enums.NetworkAlphaSettingEnum;
-import com.questy.utils.StringUtils;
-import com.questy.utils.UrlQuery;
 import com.questy.utils.Vars;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class UrlRouter {
 

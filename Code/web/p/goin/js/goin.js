@@ -22,7 +22,7 @@ Signin.signin = function (event) {
     parameters.p = password;
     parameters.k = keep;
 
-    $.post("/d/goin/actions/signin.jsp", parameters, function(response) {
+    $.post("/p/goin/actions/signin.jsp", parameters, function(response) {
 
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));
@@ -120,7 +120,7 @@ Signup.signup = function (event) {
     parameters.n = name;
     parameters.ct = cardToken;
 
-    $.post("/d/goin/actions/signup.jsp", parameters, function(response) {
+    $.post("/p/goin/actions/signup.jsp", parameters, function(response) {
 
         // Parsing the results
         var responseDoc = $.parseXML($.trim(response));

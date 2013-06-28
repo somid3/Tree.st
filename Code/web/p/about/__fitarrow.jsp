@@ -1,83 +1,36 @@
-<%@ include file="../d/goin/all.jsp" %>
+<%@ include file="all.jsp" %>
 <%
-    /**
-     * Retrieving URL parameters
-     */
-
-    // Network id being viewed
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-
-    // Network checksum to avoid automatic visits
-    String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
-
-    // Used to determine if a user referred this person, and what award user should receive
-    Integer referralUserId = StringUtils.parseInt(request.getParameter("ruid"));
-
-
-    /**
-     * Getting objects and validating
-     */
-
-    // Retrieving network
-    Network network = NetworkDao.getByIdAndChecksum(null, networkId, networkChecksum);
-
-    // Validating variables
-    if (network == null)
-        webUtils.redirect("./notfound.jsp");
-
-    /**
-     * Testing if user is already logged in and if it should be sent to the application
-     */
-
-    // Authenticate user session by cookies and send to the specific network
-    boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
-    if (wasAuthGood) {
-
-        Integer userId = webUtils.getCookieValueAsInteger("uid");
-
-        // Is the user part of this network?
-        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
-        if (utn != null)
-
-            // Yes, send user to application with network initial hash
-            webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
-    }
-
-
-    /**
-     * Retrieving network settings
-     */
-    Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
-    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+    // Retrieve network from domain
+    Network network = UrlRouter.getNetworkByDomain(webUtils);
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title><%= network.getName() %></title>
-    <link rel="icon" type="image/png" href="fitarrow/favicon.png">
-    <%@ include file="../d/includes/google_analytics.jsp"%>
+    <link rel="icon" type="image/png" href="img/fitarrow/favicon.png">
+    <%@ include file="/d/includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<script type="text/javascript" src="../d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/goin/js/goin.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/global.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/p/goin/js/goin.js?<%= Vars.rev %>"></script>
 
-<link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="../d/goin/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="/d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="/p/goin/css/basic.css?<%= Vars.rev %>">
 
 <body style="background-color: #bbb;">
 
-<%@ include file="../d/includes/browser_check.jsp"%>
+<%@ include file="/d/includes/browser_check.jsp"%>
 
 <div class="center w900">
 
     <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
 
-        <div id="free" style="position: absolute; left: 490px; top: 30px;"><img src="fitarrow/pricing.png" style="width: 120px;"></div>
+        <div id="free" style="position: absolute; left: 490px; top: 30px;"><img src="img/fitarrow/pricing.png" style="width: 120px;"></div>
 
         <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
-            <img src="fitarrow/capture.png" style="width: 200px;">
+            <img src="img/fitarrow/capture.png" style="width: 200px;">
         </div>
 
         <script type="text/javascript">
@@ -91,7 +44,7 @@
         <div style="padding: 20px 10px 10px 10px;">
 
             <div id="logo" style="position: relative; left: 200px; top: 10px;">
-                <img src="fitarrow/logo.png">
+                <img src="img/fitarrow/logo.png">
             </div>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
@@ -119,7 +72,7 @@
             </style>
 
             <div class="break">
-                <img src="fitarrow/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <img src="img/fitarrow/break1.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header">Start Now!</div>
@@ -151,8 +104,8 @@
 
             <div id="benefits" style="position: relative; height: 810px;">
 
-                <img src="fitarrow/trainer2.png" id="trainer1" style="position: absolute; left: -100px; top: -100px; width: 400px;">
-                <img src="fitarrow/trainer1.png" id="trainer2" style="z-index: 10; position: absolute; top: 340px; left: 200px; width: 550px;">
+                <img src="img/fitarrow/trainer2.png" id="trainer1" style="position: absolute; left: -100px; top: -100px; width: 400px;">
+                <img src="img/fitarrow/trainer1.png" id="trainer2" style="z-index: 10; position: absolute; top: 340px; left: 200px; width: 550px;">
 
                 <div class="benefit shadow" style="width: 180px; position: absolute; left: 330px; top: -50px;">
                     <div class="content">
@@ -211,7 +164,7 @@
             </script>
 
             <div class="break">
-                <img src="fitarrow/break6.png" style="z-index: 20; margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <img src="img/fitarrow/break6.png" style="z-index: 20; margin-top: 20px; width: 590px; position: relative; left: -10px">
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header"> Let's go!</div>
@@ -251,7 +204,7 @@
             </style>
 
             <div class="testimonial shadow" style="position: relative; left: -20px;">
-                <div class="face"><img src="fitarrow/face1.png"></div>
+                <div class="face"><img src="img/fitarrow/face1.png"></div>
                 <div class="content">
                     <div class="quote dim">
                         &ldquo;Seriously, this is the only healthy living
@@ -262,7 +215,7 @@
             </div>
 
             <div class="testimonial shadow" style="position: relative; left: 20px;">
-                <div class="face"><img src="fitarrow/face2.png"></div>
+                <div class="face"><img src="img/fitarrow/face2.png"></div>
                 <div class="content">
                     <div class="quote dim">
                         &ldquo;I've learned great recipes, yoga moves,
@@ -273,7 +226,7 @@
             </div>
 
             <div class="testimonial shadow" style="position: relative; left: -20px;">
-                <div class="face"><img src="fitarrow/face3.png"></div>
+                <div class="face"><img src="img/fitarrow/face3.png"></div>
                 <div class="content">
                     <div class="quote dim">
                         &ldquo;I wish I had learned of FitArrow
@@ -284,7 +237,7 @@
             </div>
 
             <div class="break">
-                <img src="fitarrow/break4.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <img src="img/fitarrow/break4.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header"> Awesome!</div>
@@ -302,9 +255,9 @@
             </style>
 
             <div class="w450 center vl_text dim" style="position: relative">
-                <img src="fitarrow/join_community.png" style="z-index: 10; position: absolute; left: -100px; top: -50px; width: 120px;">
+                <img src="img/fitarrow/join_community.png" style="z-index: 10; position: absolute; left: -100px; top: -50px; width: 120px;">
 
-                <div class="center" style="width: 120px; position: relative; top: 10px;"><img src="fitarrow/sep.png"></div>
+                <div class="center" style="width: 120px; position: relative; top: 10px;"><img src="img/fitarrow/sep.png"></div>
 
                 <p class="mission">
                 Our mission is simple, our cause noble &mdash; we
@@ -318,11 +271,11 @@
                 an active lifestyle. If you like our mission, we
                 welcome you to join us.</p>
 
-                <div class="center" style="width: 120px;"><img src="fitarrow/sep.png"></div>
+                <div class="center" style="width: 120px;"><img src="img/fitarrow/sep.png"></div>
             </div>
 
             <div class="break">
-                <img src="fitarrow/break5.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
+                <img src="img/fitarrow/break5.png" style="margin-top: 20px; width: 590px; position: relative; left: -10px">
                 <a href="#" onclick="Animations.scrollToTop();">
                     <div class="lets_start md_button sm_text dark_button white square">
                         <div class="md_header">Start Now!</div>
@@ -334,7 +287,7 @@
             <div class="center vl_text dim" style="position: relative">
                 <div style="display: inline-block">
                     <div class="shadow" style="float: left; margin: 0 30px 0 0; position: relative; top: -50px; left: 20px;">
-                        <img src="fitarrow/coach1.png" style="width: 100px;">
+                        <img src="img/fitarrow/coach1.png" style="width: 100px;">
                     </div>
                     <div style="width: 300px; float: left;">
                         <p class="mission lg_text dim">
@@ -353,7 +306,7 @@
                 <div style="position: relative; margin: 0 0 0 10px; display: inline-block; width: 590px; height: 80px;">
 
                     <div style="position: absolute; top: -20px; left: 40px;">
-                        <img src="fitarrow/curved-trainer.png" style="width: 550px;">
+                        <img src="img/fitarrow/curved-trainer.png" style="width: 550px;">
                     </div>
 
                 </div>
@@ -376,9 +329,9 @@
 
 <script type="text/javascript">
     var params = {};
-    params.nid = <%= networkId%>;
-    params.ncs = '<%= networkChecksum%>';
-    Transitions.load("#goin", "./renders/goin.jsp", params);
+    params.nid = <%= network.getId() %>;
+    params.ncs = '<%= network.getChecksum() %>';
+    Transitions.load("#goin", "../goin/renders/goin.jsp", params);
 </script>
 
 </body>

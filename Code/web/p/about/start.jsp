@@ -1,15 +1,7 @@
 <%@ include file="all.jsp" %>
 <%
-    // Retrieving network details
-    Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
-    String networkChecksum = StringUtils.parseString(request.getParameter("ncs"));
-
-    // Retrieving network
-    Network network = NetworkDao.getByIdAndChecksum(null, networkId, networkChecksum);
-
-    // Validating variables
-    if (network == null)
-        webUtils.redirect("./notfound.jsp");
+    // Retrieve network from domain
+    Network network = UrlRouter.getNetworkByDomain(webUtils);
 
     // Authenticate user session by cookies and send to the specific network
     boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
@@ -18,7 +10,7 @@
         Integer userId = webUtils.getCookieValueAsInteger("uid");
 
         // Is the user part of this network?
-        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, networkId);
+        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, network.getId());
         if (utn != null)
 
             // Yes, send user to application with network initial hash
@@ -30,8 +22,8 @@
     if (defaultEmail == null) defaultEmail = "";
 
     // Retrieving network settings
-    Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(networkId);
-    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(networkId);
+    Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(network.getId());
+    Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
 
     String startMessage = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_MESSAGE);
     String startBody = networkAlphaSettings.get(NetworkAlphaSettingEnum.START_BODY);
@@ -43,18 +35,18 @@
 <html>
 <head>
     <title><%= Vars.name %></title>
-    <%@ include file="../d/includes/google_analytics.jsp"%>
+    <%@ include file="/d/includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<script type="text/javascript" src="../d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/js/global.js?<%= Vars.rev %>"></script>
-<script type="text/javascript" src="../d/goin/js/goin.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/d/js/global.js?<%= Vars.rev %>"></script>
+<script type="text/javascript" src="/p/goin/js/goin.js?<%= Vars.rev %>"></script>
 
-<link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="/d/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="css/start.css?<%= Vars.rev %>">
 <body>
-<%@ include file="../d/includes/browser_check.jsp"%>
+<%@ include file="/d/includes/browser_check.jsp"%>
 <div id="main">
 
     <div id="header">
@@ -102,8 +94,8 @@
     $("body").css('background-image','url(<%= network.getBackgroundResourceUrl(hasBackground == 0) %>)');
 
     var params = {};
-    params.nid = <%= networkId%>;
-    params.ncs = '<%= networkChecksum%>';
+    params.nid = <%= network.getId() %>;
+    params.ncs = '<%= network.getChecksum() %>';
     Transitions.load("#goin", "../goin/renders/goin.jsp", params);
 </script>
 

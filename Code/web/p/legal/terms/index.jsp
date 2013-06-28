@@ -6,7 +6,7 @@
     <title><%= Vars.name %></title>
 </head>
 <link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
-<link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="css/basic.css?<%= Vars.rev %>">
 
 <body>
 

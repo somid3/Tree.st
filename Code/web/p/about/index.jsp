@@ -6,8 +6,11 @@
     // Does the network have a custom landing page?
     {
         String customLandingJsp = NetworkAlphaSettingEnum.CUSTOM_LANDING.getValueByNetworkId(network.getId());
-        if (!StringUtils.isEmpty(customLandingJsp))
-            webUtils.stealth(customLandingJsp);
+        if (!StringUtils.isEmpty(customLandingJsp)) {
+            System.out.println("going to custom " + customLandingJsp);
+            webUtils.stealth("/p/about/" + customLandingJsp);
+        }
+
     }
 
     // Does the network have a formal landing page?
@@ -21,10 +24,12 @@
             UrlQuery urlQuery = new UrlQuery();
             urlQuery.add("lr", landingRef);
 
-            webUtils.stealth("./landing.jsp?" + urlQuery);
+            System.out.println("going to landing");
+            webUtils.stealth("/p/about/landing.jsp?" + urlQuery);
         }
     }
 
     // Send user to default start page
-    webUtils.stealth("./start.jsp");
+    System.out.println("going to start");
+    webUtils.stealth("/p/about/start.jsp");
 %>

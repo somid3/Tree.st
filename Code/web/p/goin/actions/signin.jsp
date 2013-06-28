@@ -1,7 +1,5 @@
 <%@ include file="../all.jsp" %>
 <%
-    Thread.sleep(1000);
-
     Integer networkId = StringUtils.parseInt(request.getParameter("nid"));
     String email = StringUtils.parseString(request.getParameter("e"));
     String passwordText = StringUtils.parseString(request.getParameter("p"));

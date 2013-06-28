@@ -215,7 +215,7 @@
 
     <div id="sign">
         <div id="signin" class="shadow">
-            <div id="signin_loading"><img src="/d/goin/img/sm_loading.gif"></div>
+            <div id="signin_loading"><img src="/goin/img/sm_loading.gif"></div>
             <div id="signin_error" class="center error sm_text"></div>
             <div id="signin_content">
                 <div id="signin_email_div"><input class="md_input w200" type="text" placeholder="Email" id="signin_email"></div>
@@ -242,7 +242,7 @@
         <div id="signup" class="shadow">
             <div id="signup_form">
                 <div id="signup_title" class="vl_text dim">
-                    <div id="signup_loading"><img src="/d/goin/img/sm_loading.gif"></div>
+                    <div id="signup_loading"><img src="/p/goin/img/sm_loading.gif"></div>
                     New? &mdash; Sign up!
                 </div>
                 <div id="signup_error" class="center error sm_text"></div>
@@ -262,7 +262,7 @@
     <div id="payment" class="shadow">
         <div id="payment_form">
             <div id="payment_title" class="vl_text dim">
-                <div id="payment_loading"><img src="/d/goin/img/sm_loading.gif"></div>
+                <div id="payment_loading"><img src="/p/goin/img/sm_loading.gif"></div>
                 Payment Details
             </div>
 
@@ -272,12 +272,12 @@
             </div>
 
             <div id="payment_cards">
-                <img src="/d/goin/img/cc_visa.png" class="payment_cc_image">
-                <img src="/d/goin/img/cc_mastercard.png" class="payment_cc_image">
-                <img src="/d/goin/img/cc_american.png" class="payment_cc_image">
-                <img src="/d/goin/img/cc_discover.png" class="payment_cc_image">
-                <img src="/d/goin/img/cc_diners.png" class="payment_cc_image">
-                <img src="/d/goin/img/cc_jcb.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_visa.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_mastercard.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_american.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_discover.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_diners.png" class="payment_cc_image">
+                <img src="/p/goin/img/cc_jcb.png" class="payment_cc_image">
             </div>
 
             <div id="payment_content">
@@ -285,12 +285,12 @@
 
                 <div class="smd_text dim" style="margin-bottom: 5px;">
                     Credit card &mdash;
-                    <img src="/d/goin/img/cc_gray.png" id="payment_check_cc_type">
+                    <img src="/p/goin/img/cc_gray.png" id="payment_check_cc_type">
                 </div>
                 <div id="payment_cc_div">
                     <input class="md_input w175" type="text" maxlength="19" placeholder="5555-5555-5555-5555" data-stripe="number" id="payment_cc">
-                    <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_cc_good">
-                    <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_cc_bad">
+                    <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_cc_good">
+                    <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_cc_bad">
 
                 </div>
 
@@ -299,8 +299,8 @@
                         <div class="smd_text dim" style="margin-bottom: 5px;">Expires:</div>
                         <div id="payment_exp_div">
                             <input class="md_input w50" type="text" maxlength="5" placeholder="MM/YY" id="payment_exp">
-                            <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_exp_good">
-                            <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_exp_bad">
+                            <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_exp_good">
+                            <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_exp_bad">
                         </div>
                     </div>
 
@@ -308,8 +308,8 @@
                         <div class="smd_text dim" style="margin-bottom: 5px;">Card code:</div>
                         <div id="payment_cvc_div">
                             <input class="md_input w50" type="text" maxlength="3" placeholder="CVC" id="payment_cvc">
-                            <img src="/d/goin/img/check_green.png" class="payment_check" id="payment_check_cvc_good">
-                            <img src="/d/goin/img/check_gray.png" class="payment_check" id="payment_check_cvc_bad">
+                            <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_cvc_good">
+                            <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_cvc_bad">
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
     </div>
 
     <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
-        <div id="provided_by" class="shadow"><img src="/d/goin/img/provided_by.png"></div>
+        <div id="provided_by" class="shadow"><img src="/p/goin/img/provided_by.png"></div>
     </a>
 
 </div>
