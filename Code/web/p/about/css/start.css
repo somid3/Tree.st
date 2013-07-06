@@ -27,6 +27,7 @@
 #start > #right {
     float: right;
     width: 300px;
+    margin-top: 65px;
 }
 
 #start > #left {
@@ -35,6 +36,7 @@
 }
 
 #start > #left > #welcome {
+    margin-top: 20px;
     margin-bottom: 20px;
     width: 480px;
     padding: 10px;

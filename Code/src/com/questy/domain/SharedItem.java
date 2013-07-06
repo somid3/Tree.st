@@ -2,8 +2,10 @@ package com.questy.domain;
 
 import com.questy.dao.SharedCommentDao;
 import com.questy.ifaces.SharedVotable;
+import com.questy.utils.StringUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.Date;
+import java.util.*;
 
 public class SharedItem extends Parent implements SharedVotable {
 
@@ -102,4 +104,39 @@ public class SharedItem extends Parent implements SharedVotable {
         this.downVotes = downVotes;
     }
 
+    public String getTitle() {
+
+        List<Integer> firstItems = new ArrayList<Integer>();
+
+        firstItems.add(text.indexOf("?"));
+        firstItems.add(text.indexOf(":"));
+        firstItems.add(text.indexOf("\n"));
+
+        Integer minFirstItem = text.length();
+        for (Integer firstItem : firstItems) {
+            if (firstItem < minFirstItem)
+                minFirstItem = firstItem;
+        }
+
+        Integer hardConcatAt = 80;
+        String out = null;
+
+        if (minFirstItem < hardConcatAt) {
+
+            out = text.substring(0, minFirstItem);
+
+        } else {
+
+            String hardTitle = text.substring(0, hardConcatAt);
+            Integer lastSpaceIndex = hardTitle.lastIndexOf(" ");
+
+            if (lastSpaceIndex > 0)
+                out = StringUtils.concat(text, lastSpaceIndex , "...");
+            else
+                out = StringUtils.concat(text, hardConcatAt , "...");
+
+        }
+
+        return out;
+    }
 }

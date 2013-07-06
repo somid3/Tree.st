@@ -1,0 +1,167 @@
+<%@include file="../all.jsp" %>
+<%@page contentType="text/css" %>
+
+
+.page {
+ background-color: white;
+ float: left;
+ position: relative;
+ width: 590px;
+ border-right: solid 5px #888;
+ border-left: solid 5px #888;
+}
+#nav {
+    display: inline-block;
+    width: 100%;
+}
+
+#nav > .nav-button {
+    background-color: <%= HtmlDesign.dim %>;
+    padding: 5px 10px;
+    margin: 10px 5px 0 0;
+    float: right;
+}
+
+#nav > .nav-button:hover {
+    background-color: <%= HtmlDesign.highlight2 %>;
+}
+
+#nav > .nav-highlighted {
+    background-color: <%= HtmlDesign.highlight2 %>;
+}
+
+#details {
+    width: 100%;
+    display: inline-block;
+}
+
+#pagination {
+    display: inline-block;
+    margin-top: 10px;
+    float: right;
+}
+
+.pagination-button {
+    padding: 5px 0;
+    text-align: center;
+    display: inline;
+    margin: 0 5px;
+    float: left;
+}
+
+.pagination-button:hover {
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.itemline {
+    border-top: solid 1px <%= HtmlDesign.dim3 %>;
+    display: inline-block;
+    width: 560px;
+    padding: 10px 5px;
+}
+
+.itemline-datum {
+    margin-right: 2px;
+    background-color: blue;
+}
+
+.itemline-data {
+    float: left;
+    width: 75px;
+}
+
+.itemline-summ-count {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.itemline-summ-title {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.itemline-details {
+    float: right;
+    width: 400px;
+}
+
+.itemline-bottom {
+   margin-top: 10px;
+}
+
+.itemline-title {
+    height: 50px;
+}
+
+
+
+
+
+
+
+
+.itembox {
+
+}
+
+.itembox-details {
+    margin-top: 10px;
+}
+
+.itembox-comments {
+    margin-top: 20px;
+}
+
+
+
+
+
+.commentbox {
+    border-bottom: solid 1px <%= HtmlDesign.dim3 %>;
+    display: inline-block;
+    width: 560px;
+    padding: 10px 5px;
+}
+
+.commentbox-votes {
+    float: left;
+}
+
+.commentbox-summ-count {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.commentbox-summ-title {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.commentbox-details {
+    float: right;
+    width: 480px;
+}
+
+.commentbox-bottom {
+    margin-top: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.commentbox-date {
+    float: left;
+}
+
+.commentbox-author {
+    float: right;
+}

@@ -17,8 +17,7 @@
             webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
         }
     }
-%>
 
-show header<br/>
-show menu<br/>
-iitems<br/>
+    if (network != null)
+        webUtils.redirect("/p/about/");
+%>

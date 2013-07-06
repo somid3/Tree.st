@@ -59,4 +59,8 @@ public class UrlQuery {
     public List<Tuple<String, Object>> getParams() {
         return params;
     }
+
+    public void clearParams() {
+        params.clear();
+    }
 }

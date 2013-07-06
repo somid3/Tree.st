@@ -30,6 +30,5 @@
     }
 
     // Send user to default start page
-    System.out.println("going to start");
     webUtils.stealth("/p/about/start.jsp");
 %>

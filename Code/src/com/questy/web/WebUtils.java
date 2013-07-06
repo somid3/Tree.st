@@ -1,7 +1,6 @@
 package com.questy.web;
 
 import com.questy.utils.StringUtils;
-import com.questy.utils.UrlQuery;
 import com.questy.utils.Vars;
 
 import javax.servlet.RequestDispatcher;
@@ -46,8 +45,8 @@ public class WebUtils {
 
     public String getUserAgent() {
 
-        if (Vars.mockUserAgent != null)
-            return Vars.mockUserAgent;
+        if (Vars.testingMockUserAgent != null)
+            return Vars.testingMockUserAgent;
 
         return request.getHeader("User-Agent");
     }

@@ -1,7 +1,6 @@
 package com.questy.utils;
 
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
@@ -27,8 +26,8 @@ public class Vars {
     /**
      * Current stage
      */
-//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
-    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
+    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
@@ -88,7 +87,15 @@ public class Vars {
      * User agent parameters
      **********************/
 
-    public static String mockUserAgent = null;
+    /**
+     * Makes the application believe the user is using a different browser
+     */
+    public static String testingMockUserAgent = null;
+
+    /**
+     * Changes the requested domain name for the network routing mechanism to the one provided
+     */
+    public static String testingRequestingDomain = null;
 
 
 
@@ -221,7 +228,8 @@ public class Vars {
         stripePublishableKey = loadPropertyAsString("stripePublishableKey");
         stripeSecretKey = loadPropertyAsString("stripeSecretKey");
 
-        mockUserAgent = loadPropertyAsString("mockUserAgent");
+        testingMockUserAgent = loadPropertyAsString("mockUserAgent");
+        testingRequestingDomain = loadPropertyAsString("testingRequestingDomain");
     }
 
 

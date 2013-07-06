@@ -12,17 +12,50 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 
-    public static String concat (String input, Integer length, String ifLongPostfix) {
+    public static String concat (String input, Integer maxLength, String ifLongPostfix) {
 
       if (input == null) return "";
 
       String out = null;
-      if (input.length() > length)
-          out = input.substring(0, length).trim() +  ifLongPostfix;
+      if (input.length() > maxLength && !StringUtils.isEmpty(ifLongPostfix))
+          out = input.substring(0, maxLength).trim() +  ifLongPostfix;
+      else if (input.length() > maxLength)
+          out = input.substring(0, maxLength).trim();
       else
           out = input;
 
       return out;
+    }
+
+    public static String concat (
+        String input,
+        List<String> exitWiths,
+        Integer maxLength,
+        String ifMaxLengthExitWith,
+        String ifMaxlengthPostfix) {
+
+        String hardOut = StringUtils.concat(input, maxLength, "");
+
+        Integer minIndex = maxLength;
+        Integer exitWithIndex = null;
+        for (String exitWith : exitWiths) {
+
+            exitWithIndex = hardOut.lastIndexOf(exitWith);
+
+            if (exitWithIndex > 0 && exitWithIndex < minIndex)
+                minIndex = exitWithIndex + exitWith.length();
+        }
+
+        if (minIndex >= maxLength) {
+
+            exitWithIndex = hardOut.lastIndexOf(ifMaxLengthExitWith);
+
+            if (exitWithIndex > 0 && exitWithIndex < minIndex)
+                minIndex = exitWithIndex + ifMaxLengthExitWith.length();
+
+        }
+
+        return StringUtils.concat(input, minIndex, ifMaxlengthPostfix);
     }
 
     public static String quoteIt (String input) {

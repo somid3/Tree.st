@@ -3,7 +3,6 @@ package com.questy.utils;
 import static java.lang.System.out;
 
 import com.questy.admin.dao.GeneralEmailDao;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.Connection;
@@ -29,7 +28,7 @@ public class VarsTest {
 
         out.println("domain " + Vars.domain);
         out.println("boolean check == " + (Vars.sendEmails instanceof Boolean));
-        out.println("mockUserAgent " + Vars.mockUserAgent);
+        out.println("mockUserAgent " + Vars.testingMockUserAgent);
         out.println("emailTemplateDomain " + Vars.emailTemplateDomain);
         out.println("sqlUsername " + Vars.sqlUsername);
         out.println("sqlPassword " + Vars.sqlPassword);

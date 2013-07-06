@@ -17,35 +17,31 @@
 <script type="text/javascript" src="/p/goin/js/goin.js?<%= Vars.rev %>"></script>
 
 <link rel=stylesheet type="text/css" href="/d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="/p/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="/p/goin/css/basic.css?<%= Vars.rev %>">
 
 <body style="background-color: #bbb;">
-
-<%@ include file="/d/includes/browser_check.jsp"%>
-
 <div class="center w900">
+    <div class="page square">
 
-    <div class="square" style="background-color: white; float: left; position: relative; width: 590px; border-right: solid 5px #888; border-left: solid 5px #888;">
-
-        <div id="free" style="position: absolute; left: 490px; top: 30px;"><img src="img/fitarrow/pricing.png" style="width: 120px;"></div>
-
-        <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 50px; ">
-            <img src="img/fitarrow/capture.png" style="width: 200px;">
+        <div id="free" style="position: absolute; left: 490px; top: 80px;"><img src="./img/fitarrow/pricing.png" style="width: 120px;"></div>
+        <div id="capture" class="w300" style=" float: left; position: absolute; left: -170px; top: 80px; ">
+            <img src="./img/fitarrow/capture.png" style="width: 200px;">
         </div>
 
         <script type="text/javascript">
             $(window).load(function() {
-                Animations.toPosition("#capture", -75, 60, 3000, function() {
-                    Animations.toPosition("#free", 490, 60, 1000);
-                })
+                Animations.toPosition("#capture", -75, 80, 3000)
             });
         </script>
 
         <div style="padding: 20px 10px 10px 10px;">
 
-            <div id="logo" style="position: relative; left: 200px; top: 10px;">
-                <img src="img/fitarrow/logo.png">
-            </div>
+            <%
+                Network p_network = network;
+                String p_section = "items";
+            %>
+            <%@ include file="../includes/p_navigation.jsp" %>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
                 <span class="vl_header dim">The easiest way to get your<br/> health-related questions<br/> answered by professional trainers</span>

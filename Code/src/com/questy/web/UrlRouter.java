@@ -5,6 +5,7 @@ import com.questy.dao.NetworkDao;
 import com.questy.domain.Network;
 import com.questy.domain.NetworkAlphaSetting;
 import com.questy.enums.NetworkAlphaSettingEnum;
+import com.questy.utils.StringUtils;
 import com.questy.utils.Vars;
 
 import java.sql.SQLException;
@@ -44,11 +45,13 @@ public class UrlRouter {
     public static Network getNetworkByDomain (WebUtils webUtils) throws Exception  {
 
         String domain = webUtils.getRequestedDomain();
-        domain = "fitarrow.com";
 
-        Network network = null;
+        // Are we testing requesting a different domain?
+        if (!StringUtils.isEmpty(Vars.testingRequestingDomain))
+            domain = Vars.testingRequestingDomain;
 
         // Ensuring domain is not that of the server's
+        Network network = null;
         if (domain.equals(Vars.domain)) {
 
             network = null;

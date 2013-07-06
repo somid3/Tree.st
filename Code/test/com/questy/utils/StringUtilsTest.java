@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StringUtilsTest {
@@ -12,7 +14,32 @@ public class StringUtilsTest {
     @Test
     public void concatTest () {
 
-        System.out.println( StringUtils.concat("Omid Sadeghpour", 5, "..."));
+        Assert.assertEquals("Omid...", StringUtils.concat("Omid Sadeghpour", 4, "..."));
+        Assert.assertEquals("Omid S...", StringUtils.concat("Omid Sadeghpour", 6, "..."));
+
+    }
+
+    @Test
+    public void concatHeavyTest () {
+
+        List<String> exitWiths = new ArrayList<String>();
+        exitWiths.add("?");
+        exitWiths.add(":");
+        exitWiths.add("\n");
+        exitWiths.add("--");
+
+        Integer maxLength = 80;
+        String ifMaxLengthExitWith = " ";
+        String ifMaxLengthPostfix = "...";
+
+        System.out.println(
+            StringUtils.concat(
+                "Omid Sadeghpour",
+                exitWiths,
+                maxLength,
+                ifMaxLengthExitWith,
+                ifMaxLengthPostfix)
+        );
 
 
     }

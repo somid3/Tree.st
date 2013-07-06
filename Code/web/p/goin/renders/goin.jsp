@@ -215,7 +215,7 @@
 
     <div id="sign">
         <div id="signin" class="shadow">
-            <div id="signin_loading"><img src="/goin/img/sm_loading.gif"></div>
+            <div id="signin_loading"><img src="/p/goin/img/sm_loading.gif"></div>
             <div id="signin_error" class="center error sm_text"></div>
             <div id="signin_content">
                 <div id="signin_email_div"><input class="md_input w200" type="text" placeholder="Email" id="signin_email"></div>

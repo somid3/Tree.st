@@ -3,24 +3,6 @@
     // Retrieve network from domain
     Network network = UrlRouter.getNetworkByDomain(webUtils);
 
-    // Authenticate user session by cookies and send to the specific network
-    boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
-    if (wasAuthGood) {
-
-        Integer userId = webUtils.getCookieValueAsInteger("uid");
-
-        // Is the user part of this network?
-        UserToNetwork utn = UserToNetworkDao.getByUserIdAndNetworkId(null, userId, network.getId());
-        if (utn != null)
-
-            // Yes, send user to application with network initial hash
-            webUtils.redirect("/d/app" + NetworkServices.getInitialHash(userId, network.getId()));
-    }
-
-    // Retrieving log in details
-    String defaultEmail = webUtils.getCookieValue("ue");
-    if (defaultEmail == null) defaultEmail = "";
-
     // Retrieving network settings
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(network.getId());
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(network.getId());
@@ -44,33 +26,19 @@
 <script type="text/javascript" src="/p/goin/js/goin.js?<%= Vars.rev %>"></script>
 
 <link rel=stylesheet type="text/css" href="/d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="/p/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="css/start.css?<%= Vars.rev %>">
 <body>
-<%@ include file="/d/includes/browser_check.jsp"%>
 <div id="main">
-
-    <div id="header">
-
-        <% if (hasLogo == 0) { %>
-
-            <div id="default_logo">
-                <span id="path" class="sp_header dim">
-                    <%= StringUtils.concat(network.getName(), 15, "&hellip;")%>
-                </span>
-            </div>
-
-        <%} else {%>
-
-            <div id="custom_logo">
-                <a href="/"><img src="<%= network.getLogoResourceUrl() %>"></a>
-            </div>
-
-        <% } %>
-
-    </div>
 
     <div id="start">
         <div id="left">
+
+            <%
+                Network p_network = network;
+                String p_section = "items";
+            %>
+            <%@ include file="../includes/p_navigation.jsp" %>
 
             <% if (!startMessage.isEmpty()) { %>
                 <div id="welcome" class="canvas_container vl_header dim"><%= startMessage %></div>
