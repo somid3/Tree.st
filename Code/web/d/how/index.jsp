@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css" href="../css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 <body>
-<%@ include file="../includes/browser_check.jsp"%>
+
 <div id="main">
     <div id="header">
         <div id="logo">

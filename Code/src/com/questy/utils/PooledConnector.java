@@ -25,11 +25,7 @@ public abstract class PooledConnector {
 
                 cpds.setJdbcUrl("jdbc:mysql://" + Vars.sqlHost + ":3306/questy?zeroDateTimeBehavior=convertToNull");
                 cpds.setUser(Vars.sqlUsername);
-                cpds.setPassword(Vars.sqlPassword); //changed
-
-////////                cpds.setJdbcUrl("jdbc:mysql://72.167.164.208:3306/questy?zeroDateTimeBehavior=convertToNull");
-////////                cpds.setUser("omid");
-////////                cpds.setPassword("y0l0s3");
+                cpds.setPassword(Vars.sqlPassword);
 
                 // Warn developer localhost is not the database of choice
                 if (!cpds.getJdbcUrl().contains("localhost")) {

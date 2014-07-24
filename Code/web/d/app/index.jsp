@@ -67,7 +67,6 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 
 <body>
-<%@ include file="../includes/browser_check.jsp"%>
 
 <div id="header" class="square">
 

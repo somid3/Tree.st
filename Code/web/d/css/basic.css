@@ -81,16 +81,6 @@ div.rounded {
 
 
 
-/* --------------------------------- */
-/*    Browser warning objects        */
-/* --------------------------------- */
-#browser_warning {
-    width: 100%;
-    background-color: <%= HtmlDesign.errorBackgroundColor %>;
-    font-size: 12px;
-    padding: 10px 0 10px 0;
-    text-align: center;
-}
 
 
 

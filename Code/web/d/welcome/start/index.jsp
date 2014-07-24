@@ -17,7 +17,6 @@
 <link rel=stylesheet type="text/css" href="./css/start.css">
 
 <body>
-<%@ include file="../../includes/browser_check.jsp"%>
 
 <% String header_path = "start"; %>
 <%@ include file="../includes/header.jsp"%>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title><%= Vars.name %></title>
-    <%@ include file="../includes/google_analytics.jsp"%>
+    <%--<%@ include file="../includes/google_analytics.jsp"%>--%>
 </head>
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
@@ -14,7 +14,6 @@
 <link rel=stylesheet type="text/css" href="./css/basic.css?<%= Vars.rev %>">
 
 <body>
-<%@ include file="../includes/browser_check.jsp"%>
 <a name="top"/>
 
 <% String header_path = "welcome"; %>
