@@ -26,6 +26,8 @@
 
     String hScaledImageId = HtmlUtils.getRandomId();
     String scaledFaceUrl = scaled.getUrl();
+
+    System.out.println("test -- " + scaledFaceUrl);
 %>
 
 <script type="text/javascript">
@@ -58,14 +60,6 @@
                         <div>
                             <div class="thumb" style="width:60px;height:60px;">
                                 <img id="temp_x60" class="x60" src="<%= scaledFaceUrl %>" alt="">
-                            </div>
-
-                            <div class="thumb" style="width:40px;height:40px;">
-                                <img id="temp_x40" class="x40" src="<%= scaledFaceUrl %>" alt="">
-                            </div>
-
-                            <div class="thumb" style="width:20px;height:20px;">
-                                <img id="temp_x20" class="x20" src="<%= scaledFaceUrl %>" alt="">
                             </div>
                         </div>
                     </div>

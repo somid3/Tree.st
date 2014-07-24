@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
-</Context>
+    <Resources>
+        <PreResources
+            className="org.apache.catalina.webresources.DirResourceSet"
+            base="/Users/o.sadeghpour/Engineering/Code/Tree.st/Resources"
+            webAppMount="/resources"
+            internalPath="/"/>
+    </Resources>
+ </Context>

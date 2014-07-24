@@ -22,7 +22,6 @@
 
     #signin {
         background-color: white;
-        border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
     }
@@ -85,7 +84,6 @@
     #signup{
         margin-top: 20px;
         background-color: white;
-        border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
         position: relative;
@@ -129,7 +127,6 @@
     #payment {
         margin-top: 20px;
         background-color: white;
-        border: solid 1px <%= HtmlDesign.dim2 %>;
         padding: 10px;
         width: 240px;
         display: none;
@@ -214,7 +211,7 @@
     <input type="hidden" id="network_checksum" value="<%= networkChecksum %>">
 
     <div id="sign">
-        <div id="signin" class="shadow">
+        <div id="signin">
             <div id="signin_loading"><img src="/p/goin/img/sm_loading.gif"></div>
             <div id="signin_error" class="center error sm_text"></div>
             <div id="signin_content">
@@ -239,7 +236,7 @@
             </div>
         </div>
 
-        <div id="signup" class="shadow">
+        <div id="signup">
             <div id="signup_form">
                 <div id="signup_title" class="vl_text dim">
                     <div id="signup_loading"><img src="/p/goin/img/sm_loading.gif"></div>
@@ -259,7 +256,7 @@
         </div>
     </div>
 
-    <div id="payment" class="shadow">
+    <div id="payment">
         <div id="payment_form">
             <div id="payment_title" class="vl_text dim">
                 <div id="payment_loading"><img src="/p/goin/img/sm_loading.gif"></div>
@@ -321,7 +318,7 @@
         </div>
     </div>
 
-    <div id="confirm" class="shadow">
+    <div id="confirm">
 
         <div><span class="sp_text white">Confirm</span></div>
         <p class="note lg_text white">Visit your email inbox and click on the provided link.</p>
@@ -332,7 +329,7 @@
     </div>
 
     <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
-        <div id="provided_by" class="shadow"><img src="/p/goin/img/provided_by.png"></div>
+        <div id="provided_by"><img src="/p/goin/img/provided_by.png"></div>
     </a>
 
 </div>

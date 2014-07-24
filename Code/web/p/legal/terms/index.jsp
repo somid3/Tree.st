@@ -5,13 +5,13 @@
 <head>
     <title><%= Vars.name %></title>
 </head>
-<link rel=stylesheet type="text/css" href="../d/css/basic.css?<%= Vars.rev %>">
+<link rel=stylesheet type="text/css" href="../../../d/css/basic.css?<%= Vars.rev %>">
 <link rel=stylesheet type="text/css" href="css/basic.css?<%= Vars.rev %>">
 
 <body>
 
 <div id="logo">
-    <a href="/"><img src="../d/assets/logo.png"></a>
+    <a href="/"><img src="../../../d/assets/logo.png"></a>
 </div>
 
 <div class="w800 center">

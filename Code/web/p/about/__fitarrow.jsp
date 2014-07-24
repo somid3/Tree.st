@@ -41,7 +41,6 @@
                 Network p_network = network;
                 String p_section = "items";
             %>
-            <%@ include file="../includes/p_navigation.jsp" %>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
                 <span class="vl_header dim">The easiest way to get your<br/> health-related questions<br/> answered by professional trainers</span>

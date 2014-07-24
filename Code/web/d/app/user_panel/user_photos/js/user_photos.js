@@ -96,24 +96,6 @@ function UserPhotos () {
             marginTop: '-' + Math.round(ry * coords.y) + 'px'
         });
 
-        rx = 40 / coords.w;
-        ry = 40 / coords.h;
-        $('#temp_x40').css({
-            width: Math.round(rx * refWidth) + 'px',
-            height: Math.round(ry * refHeight) + 'px',
-            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-            marginTop: '-' + Math.round(ry * coords.y) + 'px'
-        });
-
-        rx = 20 / coords.w;
-        ry = 20 / coords.h;
-        $('#temp_x20').css({
-            width: Math.round(rx * refWidth) + 'px',
-            height: Math.round(ry * refHeight) + 'px',
-            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-            marginTop: '-' + Math.round(ry * coords.y) + 'px'
-        });
-
         /**
          * Saves the coordinates set on Jcrop to the parent object
          */

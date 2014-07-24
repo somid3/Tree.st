@@ -38,7 +38,6 @@
                 Network p_network = network;
                 String p_section = "items";
             %>
-            <%@ include file="../includes/p_navigation.jsp" %>
 
             <% if (!startMessage.isEmpty()) { %>
                 <div id="welcome" class="canvas_container vl_header dim"><%= startMessage %></div>

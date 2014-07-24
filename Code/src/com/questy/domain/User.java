@@ -1,6 +1,7 @@
 package com.questy.domain;
 
 import com.questy.utils.StringUtils;
+import com.questy.utils.Vars;
 
 import java.util.Date;
 
@@ -84,7 +85,7 @@ public class User extends Parent {
         if (hasFace())
             return faceUrl;
         else {
-            return "/resources/fruits/" + (getId() % 19) + ".jpg";
+            return "/resources/defaults/profile.png";
         }
 
     }
