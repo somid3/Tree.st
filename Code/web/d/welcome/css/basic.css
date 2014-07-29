@@ -53,7 +53,6 @@ body {
 }
 
 .main-block {
-    background-image: url('/d/welcome/img/block-background.jpg');
     background-color: #339900;
     padding: 30px 0;
 }
@@ -62,15 +61,14 @@ body {
 }
 
 .block .main {
-    text-shadow: 2px 2px <%= HtmlDesign.dim %>;
     text-align: center;
-    line-height: 1.4em;
+    line-height: 1.6em;
+    text-shadow: 2px 2px #2e813a;
 }
 
 .block .sub {
-    text-shadow: 2px 2px <%= HtmlDesign.dim %>;
+    text-shadow: 2px 2px #2e813a;
     text-align: center;
-    font-style: italic;
     width: 700px;
     margin: 0 auto;
     line-height: 1.5em;
@@ -188,12 +186,10 @@ body {
 }
 
 .actions .action {
-    /*background-image: url('/d/welcome/img/action-background.png');*/
     padding: 10px;
-    background-color: <%= HtmlDesign.highlight2 %>;
+    background-color: #777;
     width: 220px;
     position: relative;
-    border: solid 1px <%= HtmlDesign.dim4 %>;
 }
 
 .actions .action .free {

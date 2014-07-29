@@ -48,7 +48,7 @@ public class Vars {
      * Application variables
      **************************/
 
-    public static Boolean enableTimelocks = null;
+    public static Boolean enableTimelocks = true;
 
 
 
@@ -109,7 +109,7 @@ public class Vars {
     /**
      * Domain name used to create the URL where email templates will be generated
      */
-    public static String emailTemplateDomain = null;
+    public static String emailTemplateDomain = "localhost:8080";
 
     /**
      * Should the server send emails or publish them to the console?
@@ -172,7 +172,7 @@ public class Vars {
     public static String sqlUsername = null;
     public static String sqlPassword = null;
     public static String sqlHost = null;
-    public static String sqlParameters = null;
+    public static String sqlDatabaseName = "questy";
 
 
 
@@ -223,7 +223,7 @@ public class Vars {
         sqlUsername = loadPropertyAsString("sqlUsername");
         sqlPassword = loadPropertyAsString("sqlPassword");
         sqlHost = loadPropertyAsString("sqlHost");
-        sqlParameters = loadPropertyAsString("sqlParameters");
+        sqlDatabaseName = loadPropertyAsString("sqlDatabaseName");
 
         stripePublishableKey = loadPropertyAsString("stripePublishableKey");
         stripeSecretKey = loadPropertyAsString("stripeSecretKey");

@@ -64,15 +64,15 @@ public class AmazonEmailSender implements Runnable {
             // Deciding whether to send an emails to the actual recipients or not...
             if (Vars.sendAllEmailsTo != null) {
 
-                // Do we need to send all emails to a particular address?
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(Vars.sendAllEmailsTo, null, addressesCharset));
+                System.out.println("*** Overriding email recipients to: " + Vars.sendAllEmailsTo);
+                recipients.clear();
+                recipients.add(Vars.sendAllEmailsTo);
 
-            } else {
-
-                // Adding recipients
-                for (String toEmail : recipients)
-                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
             }
+
+            // Adding recipients
+            for (String toEmail : recipients)
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
 
             // Adding subject
             message.setSubject(subject);

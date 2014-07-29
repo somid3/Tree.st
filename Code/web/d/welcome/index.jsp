@@ -29,59 +29,20 @@
 </div>
 
 
-<div class="attention shadow w800 center">
-    <div id="playing-video" class="left shadow">
+<div class="attention w800 center">
+    <div id="playing-video" class="left">
         <iframe width="500" height="281" src="https://www.youtube.com/embed/pGOVuZ83x0A?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="right">
-        <div class="actions">
 
-            <a href="#request" class="no_deco">
-                <div id="request-demo" class="action shadow">
-                    <img class="free" src="./img/free.png">
-                    <div><span class="md_header white underline">Request a Demo</span></div>
-                    <div><span class="smd_text white">Learn how we can add value to your organization</span></div>
-                </div>
-            </a>
-
-            <div class="or shadow">
-                <span class="sm_header white">Or</span>
-            </div>
-
-            <a href="./start" class="no_deco">
-                <div id="start-today" class="action shadow">
-                    <div><span class="md_header white underline">Start Today:</span></div>
-                    <div><span class="smd_text white">Create your own community in under a minute</span></div>
-                </div>
-            </a>
-
-        </div>
-    </div>
 </div>
 
 <a name="request"></a>
 <div class="w600 center">
     <div class="statement">
-        <div class="main sp_header">Let's Get Started</div>
-        <div class="sub smd_text dim">Fill out the form below and one of our engineers will contact you in no time.</div>
+        <div class="main sp_header">Contact Us Today</div>
+        <div class="sub md_text dim">Call us at 1-510-499-5497 or email at <a href="mailto:hello@treelift.com">hello@treelift.com</a></div>
     </div>
 </div>
-
-<div class="w800 center contact shadow">
-    <iframe height="500" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%; border:none;" src="https://treest.wufoo.com/embed/z7x3p9/"></iframe>
-</div>
-
-<script type="text/javascript">
-
-    $("#request-demo").mouseenter( function() {
-        Animations.bounce("#request-demo");
-    })
-
-    $("#start-today").mouseenter( function() {
-        Animations.bounce("#start-today");
-    })
-
-</script>
 
 <%@ include file="../includes/footer.jsp"%>
 </body>
