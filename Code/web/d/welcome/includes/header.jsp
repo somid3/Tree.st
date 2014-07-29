@@ -20,7 +20,7 @@
 
             <div id="contact_details">
                 <a href="mailto:hello@treelift.com"><div class="md_text highlight2">hello@treelift.com</div></a>
-                <div class="md_text dim2">1-510-499-5497</div>
+                <div class="md_text">1-510-499-5497</div>
             </div>
 
             <div id="shortcuts">

@@ -23,7 +23,7 @@
     <div class="w700 center">
         <div class="block">
             <div class="main sp_header white">Allow your members to find each other via qualities that are unique to your organization</div>
-            <div class="sub vl_text white">The fastest, easiest, and safest way to connect your human resources</div>
+            <div class="sub vl_text white">The fastest and easiest way to connect your members</div>
         </div>
     </div>
 </div>
@@ -31,18 +31,26 @@
 
 <div class="attention w800 center">
     <div id="playing-video" class="left">
-        <iframe width="500" height="281" src="https://www.youtube.com/embed/pGOVuZ83x0A?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="//player.vimeo.com/video/67458399" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
-
+    <div class="right">
+        <br/>
+        The most customizable community platform.<br/>
+        <br/>
+        With Treelift automatically cluster your members and enable them to
+        easily find each other.
+    </div>
 </div>
 
 <a name="request"></a>
 <div class="w600 center">
     <div class="statement">
         <div class="main sp_header">Contact Us Today</div>
-        <div class="sub md_text dim">Call us at 1-510-499-5497 or email at <a href="mailto:hello@treelift.com">hello@treelift.com</a></div>
+        <div class="sub md_text dim">Call us at <span class="md_text">1-510-499-5497</span> or email at <span class="md_text highlight2">hello@treelift.com</span></div>
     </div>
 </div>
+
+
 
 <%@ include file="../includes/footer.jsp"%>
 </body>

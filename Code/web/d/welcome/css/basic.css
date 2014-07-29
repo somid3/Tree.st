@@ -106,28 +106,6 @@ body {
     position: relative;
 }
 
-.attention .left .persona {
-    position: absolute;
-    top: -40px;
-    left: 0;
-}
-
-.attention .left .info {
-    width: 150px;
-    position: absolute;
-    top: 200px;
-    left: 40px;
-}
-
-.attention .left .quote {
-    position: absolute;
-    width: 190px;
-    line-height: 1.5em;
-    /*top: -10px;*/
-    left: 35px;
-    z-index: 10;
-}
-
 .attention .left span {
     padding: 8px 6px;
     background-color: <%= HtmlDesign.highlight3 %>;
@@ -139,19 +117,11 @@ body {
     padding: 5px;
     width: 250px;
     position: relative;
+    line-height: 1.6em;
+    font-size: 1.2em;
+    color: #555;
 }
 
-.attention .right #begin-case {
-    position: absolute;
-    top: 220px;
-    left: 50px;
-    margin: 10px;
-    padding: 10px;
-    background-color: <%= HtmlDesign.highlight3 %>;
-    border: 2px solid white;
-    width: 210px;
-
-}
 
 #playing-video {
     width: 500px;
