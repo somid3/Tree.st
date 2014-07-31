@@ -1,0 +1,143 @@
+#
+# Pem setup
+#
+chmod 444 Treeliftcom.pem
+
+#
+# Deploy
+#
+
+pem="/Users/o.sadeghpour/Engineering/AWS Instances/Treeliftcom.pem"
+target="/Users/o.sadeghpour/Engineering/Code/Tree.st/Code/out/artifacts/Tree_st_war/Tree.st_war.war"
+host=54.191.192.123
+
+
+scp -i "$pem" "$target" ubuntu@$host:~/ROOT.war
+
+ssh -i "$pem" ubuntu@$host
+
+sudo ~/Servers/running/bin/catalina.sh stop
+sudo rm -rf ~/Deployments
+sudo mkdir ~/Deployments
+sleep 5
+sudo mv ~/ROOT.war ~/Deployments
+sudo ~/Servers/running/bin/catalina.sh start
+tail -f ~/Servers/running/logs/catalina.out
+
+
+
+# Look at the logs
+tail -f ~/Servers/running/logs/catalina.out
+tail -n 2000 ~/Servers/running/logs/catalina.out
+
+
+
+
+#
+# Install
+#
+
+# Java 8
+
+
+
+
+
+# Tomcat 8
+
+wget http://www.us.apache.org/dist/tomcat/tomcat-8/v8.0.9/bin/apache-tomcat-8.0.9.tar.gz
+mv apache-tomcat-8.0.9.tar.gz ~/Servers/
+cd ~/Servers/
+tar xzvf ~/Servers/apache-tomcat-8.0.9.tar.gz
+
+
+
+# DEPLOY
+
+# UPDATE YOU VARIABLES.JAVA CLASS
+# UPDATE YOU VARIABLES.JAVA CLASS
+# UPDATE YOU VARIABLES.JAVA CLASS
+
+# BACK UP DATABASE
+# BACK UP DATABASE
+# BACK UP DATABASE
+
+#-------------
+# Remove login
+#-------------
+
+# Log into remove machine
+ssh -l somid3 72.167.164.208
+
+#----------
+# Deploying
+#----------
+
+# Get the date, to get in sudo mode
+sudo date
+
+# Stop tomcat
+sudo /etc/init.d/tomcat stop
+sleep 5
+
+# Clean tomcat
+sudo rm -rf /deployables/*
+
+# Copy new deployable
+sudo mv /ROOT.war /deployables/ROOT.war
+
+
+
+
+
+
+
+
+
+
+# SETUP NEW TOMCAT INSTANCE
+
+sudo /etc/init.d/tomcat stop
+sleep 5
+sudo rm -r /usr/lib/tomcat/6.0.35-old
+sleep 1
+sudo mv /usr/lib/tomcat/6.0.35 /usr/lib/tomcat/6.0.35-old
+sleep 1
+sudo cp -r /usr/lib/tomcat/6.0.35-clean /usr/lib/tomcat/6.0.35
+sleep 1
+sudo chmod +x /usr/lib/tomcat/6.0.35/bin/*.sh
+
+
+
+# GITHUB
+
+# To push whatever has been committed to the master repository
+git push origin master:master
+
+# BOOT UP
+
+# Start VNC server
+
+tightvncserver -kill :1
+sleep 5
+tightvncserver
+
+
+vncserver
+
+# SETUP CRON TAB
+crontab -e
+* * * * * `wget -qO /dev/null http://www.treelift.com/c/every_minute/`
+1 * * * * `wget -qO /dev/null http://www.treelift.com/c/every_hour/`
+1 1 * * * `wget -qO /dev/null http://www.treelift.com/c/every_day/`
+
+# VIEW ALL CRON TABS
+crontab -l
+
+vi: save and quit
+
+
+
+
+
+

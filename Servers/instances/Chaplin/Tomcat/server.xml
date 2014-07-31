@@ -1,0 +1,4 @@
+<Host name="tree.st" appBase="/webapps/tree.st/deployables" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false"> 
+    <Alias>www.tree.st</Alias> 
+    <Context docBase="/webapps/tree.st/resources" path="/resources" /> 
+</Host>
