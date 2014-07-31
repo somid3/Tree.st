@@ -68,9 +68,6 @@ public class UrlRouter {
 
         }
 
-        if (network == null)
-            webUtils.redirect("/d/welcome");
-
         return network;
     }
 

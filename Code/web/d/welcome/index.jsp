@@ -3,7 +3,7 @@
 <html>
 <head>
     <title><%= Vars.name %></title>
-    <%--<%@ include file="../includes/google_analytics.jsp"%>--%>
+    <%@ include file="../includes/google_analytics.jsp"%>
 </head>
 <script type="text/javascript" src="../js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
@@ -33,12 +33,14 @@
     <div id="playing-video" class="left">
         <iframe src="//player.vimeo.com/video/67458399" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
-    <div class="right">
+    <div class="right md_text dim">
         <br/>
         The most customizable community platform.<br/>
         <br/>
         With Treelift automatically cluster your members and enable them to
-        easily find each other.
+        easily find each other.<br/>
+        <br/>
+        Experience some demos from the <a href="/d/how" class="md_text highlight2">MIT community</a>.
     </div>
 </div>
 

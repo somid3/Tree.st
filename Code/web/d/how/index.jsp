@@ -26,7 +26,7 @@
         <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">People Finder:</span>
-                <span class="smd_text dim2">Discover how to create really complex searches on Tree</span>
+                <span class="smd_text dim2">Discover how to create really complex searches on Treelift</span>
             </div>
             <iframe src="http://player.vimeo.com/video/52804267?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
@@ -44,7 +44,7 @@
         <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Share:</span>
-                <span class="smd_text dim2">Broadcast messages to all the members of a smart group</span>
+                <span class="smd_text dim2">Broadcast messages to all the members of a Smart Group</span>
             </div>
             <iframe src="http://player.vimeo.com/video/52804266?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
@@ -53,7 +53,7 @@
         <div class="video lg_shadow">
             <div class="desc">
                 <span class="md_header dim">Communities:</span>
-                <span class="smd_text dim2">Learn more about how communities work on Tree</span>
+                <span class="smd_text dim2">Learn more about how communities work on Treelift</span>
             </div>
             <iframe src="http://player.vimeo.com/video/52805307?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>

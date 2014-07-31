@@ -1,20 +1,47 @@
 package com.questy.utils;
+import com.questy.enums.EmailMimeEnum;
+import com.questy.helpers.Triple;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.mail.util.ByteArrayDataSource;
 
-public class AmazonSmtpSender {
+public class AmazonSmtpSender implements Runnable {
 
-    static final String FROM = "hello@treelift.com";   // Replace with your "From" address. This address must be verified.
-    static final String TO = "hello@treelift.com";  // Replace with a "To" address. If you have not yet requested
-    // production access, this address must be verified.
+    private Transport AWSTransport;
+    private Session AWSsession;
+    private Message message;
 
-    static final String BODY = "This email was sent through the Amazon SES SMTP interface by using Java.";
-    static final String SUBJECT = "Amazon SES test (SMTP interface accessed using Java)";
+    // General email variables
+    private String fromName;
+    private String fromEmail;
+    private List<String> recipients = new ArrayList<String>();
+
+    private String subject;
+    private String messageText;
+    private EmailMimeEnum messageMine = EmailMimeEnum.TEXT_UTF8;
+
+    /**
+     * Triple containing the attachment byte array, the attachment
+     * MIME type, and the attachment filename in respective order
+     */
+    private List<Triple<byte[], String, String>> attachments;
+
+
+
+
+
+
 
     // Supply your SMTP credentials below. Note that your SMTP credentials are different from your AWS credentials.
-    static final String SMTP_USERNAME = "AKIAJHKTWQDFSZ6AIYDQ";  // Replace with your SMTP username.
-    static final String SMTP_PASSWORD = "*5rtavQfdQhc";  // Replace with your SMTP password.
+    static final String SMTP_USERNAME = "AKIAJVFHNHZJH7MDCGIQ";  // Replace wißth your SMTP username.
+    static final String SMTP_PASSWORD = "AnQfVMQLtfBl0Mlzp+T4YoeKR/yPCniIp6GzsirFTGDQ";  // Replace with your SMTP password.
 
     // Amazon SES SMTP host name. This example uses the us-east-1 region.
     static final String HOST = "email-smtp.us-west-2.amazonaws.com";
@@ -23,7 +50,7 @@ public class AmazonSmtpSender {
     // STARTTLS to encrypt the connection.
     static final int PORT = 25;
 
-    public static void main(String[] args) throws Exception {
+    private void startSessionAndTransport() throws Exception {
 
         // Create a Properties object to contain connection configuration information.
         Properties props = System.getProperties();
@@ -38,38 +65,181 @@ public class AmazonSmtpSender {
         props.put("mail.smtp.starttls.required", "true");
 
         // Create a Session object to represent a mail session with the specified properties.
-        Session session = Session.getDefaultInstance(props);
-
-        // Create a message with the specified information.
-        MimeMessage msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress(FROM));
-        msg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
-        msg.setSubject(SUBJECT);
-        msg.setContent(BODY,"text/plain");
+        AWSsession = Session.getDefaultInstance(props);
 
         // Create a transport.
-        Transport transport = session.getTransport();
+        AWSTransport = AWSsession.getTransport();
+    }
+
+
+    private String getMessageSummary () {
+        return "Email to " + recipients + " with subject: " + subject;
+
+    }
+
+    private void endSessionAndTransport() {
+        try { AWSTransport.close(); }
+        catch (MessagingException e) { /* Do nothing */ }
+    }
+
+    private void transportingMessage () throws MessagingException, IOException {
+
+        // Connect to Amazon SES using the SMTP username and password you specified above.
+        AWSTransport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+
+        // Sending the email
+        AWSTransport.sendMessage(message, message.getAllRecipients());
+
+        // Log sent emails?
+        if (Vars.logSentEmails)
+            System.out.println("Sent -- " + getMessageSummary());
+
+    }
+
+    private void sendEmail() {
+
+        // Should the email be sent?
+        if (!Vars.sendEmails) {
+            System.out.println(messageText);
+            return;
+        }
 
         // Send the message.
-        try
-        {
-            System.out.println("Attempting to send an email through the Amazon SES SMTP interface...");
+        try {
+            startSessionAndTransport();
+            String addressesCharset = "utf-8";
+
+            // Create a message with the specified information.
+            MimeMessage msg = new MimeMessage(AWSsession);
+
+            // Adding author
+            message.setFrom(new InternetAddress(fromEmail, fromName, addressesCharset));
+
+            // Hacking recipient if needed
+            if (Vars.sendAllEmailsTo != null) {
+
+                System.out.println("*** Overriding email recipients to: " + Vars.sendAllEmailsTo);
+                recipients.clear();
+                recipients.add(Vars.sendAllEmailsTo);
+
+            }
+
+            // Adding recipients
+            for (String toEmail : recipients)
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
+
+            // Adding subject
+            msg.setSubject(subject);
+
+            // Adding message
+            Multipart multipart = new MimeMultipart();
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Encoding the email to contain multiple parts incase of attachments
+            message.setContent(multipart);
+
+            // Dealing with defining the charset to be used for the email
+            messageBodyPart.setHeader("Content-Type", messageMine.getMime());
+            messageBodyPart.setHeader("Content-Transfer-Encoding", "quoted-printable");
+            messageBodyPart.setContent(messageText, messageMine.getMime());
+            multipart.addBodyPart(messageBodyPart);
+
+            // Adding attachments
+            if (attachments != null && attachments.size() != 0) {
+
+                for (Triple<byte[], String, String> attachment : attachments) {
+                    messageBodyPart = new MimeBodyPart();
+
+                    // Dealing with defining the charset to be used for the email
+                    DataSource source = new ByteArrayDataSource(attachment.getX(), attachment.getY());
+                    messageBodyPart.setDataHandler(new DataHandler(source));
+                    messageBodyPart.setFileName(attachment.getZ());
+                    multipart.addBodyPart(messageBodyPart);
+                }
+
+            }
+
+            // Compacting and saving the message
+            message.saveChanges();
+
+            // Transporting the message, either to the network or to system out, etc
+            transportingMessage();
+
+
+
+
 
             // Connect to Amazon SES using the SMTP username and password you specified above.
-            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+            AWSTransport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
 
             // Send the email.
-            transport.sendMessage(msg, msg.getAllRecipients());
+            AWSTransport.sendMessage(msg, msg.getAllRecipients());
             System.out.println("Email sent!");
-        }
-        catch (Exception ex) {
+
+        } catch (Exception ex) {
+
             System.out.println("The email was not sent.");
             System.out.println("Error message: " + ex.getMessage());
-        }
-        finally
-        {
+
+        } finally {
+
             // Close and terminate the connection.
-            transport.close();
+            endSessionAndTransport();
         }
     }
+
+    public void run() {
+        sendEmail();
+    }
+
+
+
+    public String getFromName() {
+        return fromName;
+    }
+
+    public void setFromName(String fromName) {
+        this.fromName = fromName;
+    }
+
+    public String getFromEmail() {
+        return fromEmail;
+    }
+
+    public void setFromEmail(String fromEmail) {
+        this.fromEmail = fromEmail;
+    }
+
+    public List<String> getRecipients() {
+        return recipients;
+    }
+
+    public void addRecipient(String recipient) {
+        recipients.add(recipient) ;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public EmailMimeEnum getMessageMine() {
+        return messageMine;
+    }
+
+    public void setMessageMine(EmailMimeEnum messageMine) {
+        this.messageMine = messageMine;
+    }
+
 }

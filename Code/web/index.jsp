@@ -20,4 +20,6 @@
 
     if (network != null)
         webUtils.redirect("/p/about/");
+    else
+        webUtils.redirect("/d/welcome/");
 %>
