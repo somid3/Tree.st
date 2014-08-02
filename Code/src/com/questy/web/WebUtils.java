@@ -128,30 +128,6 @@ public class WebUtils {
     }
 
     /**
-     * Internal include of a particular page. This method stops the processing of a jsp page
-     *
-     * @param pathFromRootPage Should start with a slash "/" and must represent the location to a sevlet or a jsp page from the root of the context
-     * @throws ServletException
-     * @throws IOException
-     * @throws SkipPageException
-     */
-    public void stealth(String pathFromRootPage) throws ServletException, IOException, SkipPageException {
-
-        if (pathFromRootPage == null)
-            throw new IllegalStateException("Path from root page can not be null");
-
-        if (!pathFromRootPage.startsWith("/"))
-            throw new IllegalStateException("Path from root page must be a non-absolute url, that is, it must start with a forward slash");
-
-        RequestDispatcher rd;
-        rd = request.getRequestDispatcher(pathFromRootPage);
-        rd.include(request, response);
-        response.flushBuffer();
-        throw new SkipPageException();
-    }
-
-
-    /**
      * Redirection to a particular page
      *
      * @param location Absolute location relative to the root

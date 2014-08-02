@@ -93,8 +93,7 @@
 
 /* Displays the current networks of the user*/
 #currently {
-    border: 1px solid <%= HtmlDesign.dim3 %>;
-    /*border-right: 3px solid <%= HtmlDesign.dim3 %>;*/
+    border: 1px solid <%= HtmlDesign.dim4 %>;
     background-color: #fff;
     padding: 4px;
     margin-bottom: 15px;
@@ -108,7 +107,6 @@
 #currently .help-rel {
     position: relative;
     left: -30px;
-    /*top: -2px;*/
 }
 
 #currently .shortcut {

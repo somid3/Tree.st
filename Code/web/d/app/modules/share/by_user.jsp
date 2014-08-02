@@ -4,7 +4,7 @@
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
+    UserLinkServices.viewMyselfOrLinkedUsers(homeId, meId, viewUserId);
 
     // Retrieving total number of shared items
     Integer count = SharedItemDao.countByNetworkIdAndUserId(null, homeId, viewUserId);

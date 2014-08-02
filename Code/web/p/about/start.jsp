@@ -18,7 +18,7 @@
 <head>
     <title><%= Vars.name %></title>
     <%@ include file="/d/includes/google_analytics.jsp"%>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="//js.stripe.com/v2/"></script>
 </head>
 <script type="text/javascript" src="/d/js/jquery-1.9.0.min.js?<%= Vars.rev %>"></script>
 <script type="text/javascript" src="/d/js/jquery-ui-1.9.2.custom.min.js?<%= Vars.rev %>"></script>
@@ -33,11 +33,6 @@
 
     <div id="start">
         <div id="left">
-
-            <%
-                Network p_network = network;
-                String p_section = "items";
-            %>
 
             <% if (!startMessage.isEmpty()) { %>
                 <div id="welcome" class="canvas_container vl_header dim"><%= startMessage %></div>

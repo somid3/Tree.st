@@ -1,8 +1,6 @@
 <%@ include file="../../setup.jsp" %>
 <%@ include file="../../auth.jsp" %>
 
-<div class="canvas_header">Profile Details</div>
-
 <%
     // Retrieving network
     Map<NetworkIntegerSettingEnum, Integer> networkIntegerSettings = NetworkIntegerSettingEnum.getMapByNetworkId(homeId);

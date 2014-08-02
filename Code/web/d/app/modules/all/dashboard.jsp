@@ -6,8 +6,6 @@
     AMD.networkId = <%= homeId %>;
 </script>
 
-<div class="canvas_header">All Members</div>
-
 <div id="all_members_dashboard">
 
         <div class="shortcuts">

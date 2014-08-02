@@ -87,8 +87,6 @@
 .user_card {
     width: 280px;
     background-color: #fff;
-    border-right: 2px #bbb solid;
-    border-bottom: 2px #bbb solid;
     padding: 5px;
     position: relative;
     float: left;

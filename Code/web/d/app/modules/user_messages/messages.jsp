@@ -25,13 +25,6 @@
     Integer count = userMessages.size();
 %>
 
-<div class="canvas_header">
-    Messages with
-    <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.member(homeId, toUser.getId(), meId)%>');">
-        <span class="highlight2"><%= toUser.getName() %></span>
-    </a>
-</div>
-
 <%
     if (count > 0) {
 

@@ -513,7 +513,7 @@ div.sm_shadow {
 div.canvas_container {
     padding: 5px;
     width: 587px;
-    border: 1px solid <%= HtmlDesign.dim3 %>;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
     background-color: #fff;
 }
 

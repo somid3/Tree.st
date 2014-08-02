@@ -9,8 +9,6 @@
     SmartGroup smartGroup = SmartGroupServices.getOrCreateSearchSmartGroup(homeId, meId);
 %>
 
-<div class="canvas_header">Search Results</div>
-
 <div id="smart_search_welcome">
     <%@ include file="includes/sgroup_f_empty_search.jsp" %>
 </div>

@@ -12,8 +12,6 @@
     UMG.networkId = <%= homeId %>;
 </script>
 
-<div class="canvas_header">Messages</div>
-
 <% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_MESSAGES_HOW, meId)) { %>
     <div class="minitip" id="<%= hMinitipId %>">
         <div class="lg_header tip">Tip:</div>

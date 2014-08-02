@@ -4,7 +4,7 @@
     Integer toUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, toUserId);
+    UserLinkServices.viewMyselfOrLinkedUsers(homeId, meId, toUserId);
 
     // Retrieving max length for messages
     Integer messageMaxLength = NetworkIntegerSettingEnum.USER_MESSAGE_MAX_LENGTH.getValueByNetworkId(homeId);

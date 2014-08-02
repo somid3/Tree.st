@@ -23,7 +23,7 @@
 %>
 
 <div id="<%= ul_a_hCardId %>">
-    <div class="user_card">
+    <div class="user_card sm_shadow">
        <div>
 
            <div class="card_left">

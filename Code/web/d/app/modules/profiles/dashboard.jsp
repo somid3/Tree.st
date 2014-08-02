@@ -11,7 +11,7 @@
     boolean requireUserLink = false;
     boolean viewMyself = false;
     try {
-        viewMyself = UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
+        viewMyself = UserLinkServices.viewMyselfOrLinkedUsers(homeId, meId, viewUserId);
     } catch (Exception e) {
         requireUserLink = true;
     }
@@ -36,11 +36,6 @@
 
         <div class="thumbnail sm_shadow"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
 
-        <% if (viewMyself && !viewed.hasFace()) {
-            String hUploadPhotoId = HtmlUtils.getRandomId(); %>
-            <div id="<%= hUploadPhotoId %>" class="upload md_text lg_button error_button sm_glow7">Upload photo</div>
-        <% } %>
-
         <% if (!viewMyself) { %>
             <div class="points">
                 <div class="sm_button vsm_text w50 center sm_shadow" style="background-color: white">
@@ -57,7 +52,7 @@
 
             <div class="title lg_header"><%= viewed.getName() %></div>
 
-            <% if (!requireUserLink) { %>
+            <% if (!viewMyself && !requireUserLink) { %>
 
                 <a href="#" onclick="PD.go(event, ProfileDashboard.Section.MESSAGE);">
                     <div id="profile_message" class="clickable md_button dark_button md_text selected">

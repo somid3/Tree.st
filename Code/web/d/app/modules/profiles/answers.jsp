@@ -4,7 +4,7 @@
     Integer viewUserId = StringUtils.parseInt(request.getParameter("vuid"));
 
     // Determine if viewing myself, or if a user link is required
-    boolean viewMyself = UserLinkServices.jspViewMyselfOrValidateUsersLinked(homeId, meId, viewUserId);
+    boolean viewMyself = UserLinkServices.viewMyselfOrLinkedUsers(homeId, meId, viewUserId);
 
     // Retrieving user being viewed
     User viewed = null;

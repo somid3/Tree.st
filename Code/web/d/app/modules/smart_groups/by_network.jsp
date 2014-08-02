@@ -17,8 +17,6 @@
 
 %>
 
-<div class="canvas_header">Smart Groups</div>
-
 <% if (TooltipServices.displayMinitip(UserIntegerSettingEnum.TIP_SMART_GROUPS_CREATE, meId)) {
     String vocabUserSingle = NetworkAlphaSettingEnum.VOCAB_USER_SINGULAR.getValueByNetworkId(homeId); %>
 

@@ -168,17 +168,22 @@ public class UserLinkServices extends ParentService  {
      * requires that the "from user" be linked to the "to user"
      *
      */
-    public static Boolean jspViewMyselfOrValidateUsersLinked (Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException, JspException {
+    public static Boolean viewMyselfOrLinkedUsers(Integer networkId, Integer fromUserId, Integer toUserId) throws SQLException, JspException {
 
         Boolean viewMyself = false;
-        if (fromUserId.equals(toUserId))
-           viewMyself = true;
-        else {
+
+        if (fromUserId.equals(toUserId)) {
+
+            viewMyself = true;
+
+        } else {
 
             // If not myself, determining if user has a link with the viewed user
             UserLink link = UserLinkDao.getByNetworkIdAndFromUserIdAndToUserId(null, networkId, fromUserId, toUserId);
-            if (link == null || link.getDirection() == UserLinkDirectionEnum.TARGET_TO_ME)
+            if (link == null || link.getDirection() == UserLinkDirectionEnum.TARGET_TO_ME) {
+
                 throw new JspException("User link required");
+            }
         }
 
         return viewMyself;

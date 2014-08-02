@@ -33,7 +33,7 @@
             <div class="column">
                 <div class="feature-title sm_shadow">
                     <div class="title md_header dim">Multi-layered Searching</div>
-                    <div class="desc sm_text dim">Members can search for one another within an organization based on any combination of organization-specific criteria.</div>
+                    <div class="desc sm_text dim">Members can search for one another within an organization based on any combination of organization-specific qualities.</div>
                     <div class="img"><img src="./img/combi-searching.png"></div>
                 </div>
                 <div class="feature-title sm_shadow">
@@ -51,6 +51,28 @@
                     <div class="desc sm_text dim">All Tree.st services follow common practices enabling our technology to work on most mobile devices and tables.</div>
                     <div class="img"><img src="./img/mobile-friendly.png"></div>
                 </div>
+            </div>
+            <div class="column">
+                <div class="feature-title sm_shadow">
+                    <div class="title md_header dim">Unique Profiles</div>
+                    <div class="desc sm_text dim">Members can create social profiles with organization-specific qualities -- such as interests, research, expertise, department, skills, affiliations, etc.</div>
+                    <div class="img"><img src="./img/unique-profiles.png"></div>
+                </div>
+                <div class="feature-title sm_shadow">
+                    <div class="title md_header dim">Email Notifications</div>
+                    <div class="desc sm_text dim">Stop individually adding members to groups. Treelift automatically clusters your members based on unique qualities.</div>
+                    <div class="img"><img src="./img/nested-communities.png"></div>
+                </div>
+                <div class="feature-title sm_shadow">
+                    <div class="title md_header dim">"Offline" Networking</div>
+                    <div class="desc sm_text dim">Allow your members to discover one another online, and connect offline. Create a collaborative culture by connecting members with similar interests and goal.</div>
+                    <div class="img"><img src="./img/social-networking.png"></div>
+                </div>
+                <div class="feature-title sm_shadow">
+                    <div class="title md_header dim">100% Private</div>
+                    <div class="desc sm_text dim">Each Tree.st is completely private. Control who has access to your community and the information each member can see.</div>
+                    <div class="img"><img src="./img/private.png"></div>
+                </div>
                 <div class="feature-title sm_shadow">
                     <div class="title md_header dim">24/7 On The Cloud</div>
                     <div class="desc sm_text dim">With a 99.9% up-time, Tree.st delivers the versatility and robustness comparable to enterprise-solution standards.</div>
@@ -59,30 +81,8 @@
             </div>
             <div class="column">
                 <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">Unique Profiles</div>
-                    <div class="desc sm_text dim">Members can create social profiles with organization-specific criteria that you determine -- such as interests, research, expertise, department, skills, affiliations, etc.</div>
-                    <div class="img"><img src="./img/unique-profiles.png"></div>
-                </div>
-                <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">Email Notifications</div>
-                    <div class="desc sm_text dim">Stop individually adding members to groups. Group them automatically based on qualities.</div>
-                    <div class="img"><img src="./img/email-notifications.png"></div>
-                </div>
-                <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">Nested Communities</div>
-                    <div class="desc sm_text dim">Administrators can create private sub-communities nested within an organization's larger Tree.st community based on factors such as department, team, location, etc.</div>
-                    <div class="img"><img src="./img/nested-communities.png"></div>
-                </div>
-                <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">"Offline" Networking</div>
-                    <div class="desc sm_text dim">Allow your members to discover one another online, and connect offline. Create a collaborative culture by connecting members with similar interests and goal.</div>
-                    <div class="img"><img src="./img/social-networking.png"></div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="feature-title sm_shadow">
                     <div class="title md_header dim">"Smart" Groups</div>
-                    <div class="desc sm_text dim">This patented software tool will automatically enable your members to organize others within the organization based on criteria that is specific to the individual.</div>
+                    <div class="desc sm_text dim">Treelift will automatically enable your members to organize themselves within your organization based on very unique qualities.</div>
                     <div class="img"><img src="./img/smart-groups.png"></div>
                 </div>
                 <div class="feature-title sm_shadow">
@@ -99,11 +99,6 @@
                     <div class="title md_header dim">Message Voting</div>
                     <div class="desc sm_text dim">Recognize your most impactful members by empowering others to vote on the information that is the most helpful to the entire community.</div>
                     <div class="img"><img src="./img/message-voting.png"></div>
-                </div>
-                <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">100% Private</div>
-                    <div class="desc sm_text dim">Each Tree.st is completely private. Control who has access to your community and the information each member can see.</div>
-                    <div class="img"><img src="./img/private.png"></div>
                 </div>
             </div>
         </div>
