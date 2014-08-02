@@ -47,8 +47,8 @@
 <a name="request"></a>
 <div class="w600 center">
     <div class="statement">
-        <div class="main sp_header">Contact Us Today</div>
-        <div class="sub md_text dim">Call us at <span class="md_text">1-510-499-5497</span> or email at <span class="md_text highlight2">hello@treelift.com</span></div>
+        <div class="main sp_header">Let's connect your members today</div>
+        <div class="sub lg_text dim">Call us at <span class="md_text">1-510-499-5497</span> or email us at <span class="md_text highlight2">hello@treelift.com</span></div>
     </div>
 </div>
 
