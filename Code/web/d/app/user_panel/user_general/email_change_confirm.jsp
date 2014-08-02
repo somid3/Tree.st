@@ -6,5 +6,5 @@
 
 <span class="lg_text highlight">
     Please visit your email inbox at <span class="lg_header"><%= newEmail %></span>
-    and click on the provided link. Don't forget to visit your <span class="sp_header">spam</span> folder.
+    and click on the provided link. Don't forget to visit your spam folder.
 </span>

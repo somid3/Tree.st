@@ -37,7 +37,7 @@
 
     <p class="lg_text white">Visit your email inbox, we sent you a reset link that is valid for one hour only</p>
 
-    <p class="lg_text white">Don't forget to visit your <span class="vl_header">spam</span> folder.
+    <p class="lg_text white">Don't forget to visit your spam folder.
     Need help? email <a href="mailto:<%=Vars.supportEmail%>"><span class="lg_header white"><%=Vars.supportEmail%></span></a></p>
 
     <p class="smd_text white">

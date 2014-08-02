@@ -3,7 +3,7 @@ package com.questy.admin.marketing;
 import com.questy.admin.dao.MITEmailDao;
 import com.questy.admin.domain.MITEmail;
 import com.questy.enums.EmailMimeEnum;
-import com.questy.utils.AmazonEmailSender;
+import com.questy.utils.AmazonSmtpSender;
 import com.questy.utils.AmazonMailQueue;
 
 import java.sql.Connection;
@@ -83,7 +83,7 @@ public class MITEmailSender {
         message = message.replaceAll("\\[first_name\\]", firstName);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender ams = new AmazonEmailSender();
+        AmazonSmtpSender ams = new AmazonSmtpSender();
         ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
         ams.setFromName("omid@mit.edu");
         ams.setFromEmail("omid@mit.edu");

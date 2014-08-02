@@ -1,10 +1,6 @@
 package com.questy;
 
-import com.questy.enums.EmailMimeEnum;
 import com.questy.services.email.EmailServices;
-import com.questy.utils.AmazonEmailSender;
-import com.questy.utils.AmazonMailQueue;
-import com.questy.utils.Vars;
 
 import java.util.Random;
 

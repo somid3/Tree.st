@@ -7,7 +7,7 @@ public class AmazonMailQueue implements Runnable {
 
     private static AmazonMailQueue instance = null;
 
-    private Queue<AmazonEmailSender> emailQueue;
+    private Queue<AmazonSmtpSender> emailQueue;
 
     static {
 
@@ -21,7 +21,7 @@ public class AmazonMailQueue implements Runnable {
 
     private AmazonMailQueue() {
 
-        emailQueue = new LinkedList<AmazonEmailSender>();
+        emailQueue = new LinkedList<AmazonSmtpSender>();
 
     }
 
@@ -42,7 +42,8 @@ public class AmazonMailQueue implements Runnable {
     public void run() {
 
         // Begin timer to send messages
-        AmazonEmailSender outboundEmail = null;
+        AmazonSmtpSender outboundEmail = null;
+
         while(true) {
 
             // Are there any emails in the queue?
@@ -67,7 +68,7 @@ public class AmazonMailQueue implements Runnable {
      *
      * @param email
      */
-    public static void queueEmail(AmazonEmailSender email) {
+    public static void queueEmail(AmazonSmtpSender email) {
         instance.emailQueue.add(email);
     }
 }

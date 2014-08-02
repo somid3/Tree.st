@@ -1,5 +1,6 @@
 <%@ include file="./all.jsp"%>
 
 <%
-  AmazonSmtpSender.main(null);
+    EmailServices.confirmationEmail(3);
+
 %>

@@ -130,7 +130,7 @@ public class Vars {
      * Based on the email queue location, the number of milliseconds an email thread
      * should wait before transmitting its message
      */
-    public static Integer amazonEmailMillisecondDelayPerQueue = 100;
+    public static Integer amazonEmailMillisecondDelayPerQueue = 200;
 
     /**
      * Amazon SES credentials

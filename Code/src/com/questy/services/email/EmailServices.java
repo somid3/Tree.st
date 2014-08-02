@@ -39,16 +39,16 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/email_confirmation.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
-        aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
-        aes.setFromName(Vars.supportEmailName);
-        aes.setFromEmail(Vars.supportEmail);
-        aes.addRecipient(emailToConfirm);
-        aes.setSubject("Confirm your email");
-        aes.setMessageText(EmailServices.customizeMessage(message, user));
+        AmazonSmtpSender ass = new AmazonSmtpSender();
+        ass.setMessageMine(EmailMimeEnum.HTML_UTF8);
+        ass.setFromName(Vars.supportEmailName);
+        ass.setFromEmail(Vars.supportEmail);
+        ass.addRecipient(emailToConfirm);
+        ass.setSubject("Confirm your email");
+        ass.setMessageText(EmailServices.customizeMessage(message, user));
 
         // Queueing the email
-        AmazonMailQueue.queueEmail(aes);
+        AmazonMailQueue.queueEmail(ass);
     }
 
 
@@ -62,7 +62,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_not_found.jsp");
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(Vars.supportEmailName);
         aes.setFromEmail(Vars.supportEmail);
@@ -88,7 +88,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_reset.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(Vars.supportEmailName);
         aes.setFromEmail(Vars.supportEmail);
@@ -113,7 +113,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/password_done.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender ams = new AmazonEmailSender();
+        AmazonSmtpSender ams = new AmazonSmtpSender();
         ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
         ams.setFromName(Vars.supportEmailName);
         ams.setFromEmail(Vars.supportEmail);
@@ -142,7 +142,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(GLOBAL_CREATOR_URL + "/first_photo_upload.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(Vars.supportEmailName);
         aes.setFromEmail(Vars.supportEmail);
@@ -181,7 +181,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_link.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(network.getName());
         aes.setFromEmail(Vars.supportEmail);
@@ -221,7 +221,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_user_message.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(network.getName());
         aes.setFromEmail(Vars.supportEmail);
@@ -264,7 +264,7 @@ public class EmailServices extends ParentService {
         String message = UrlUtils.getUrlContents(NETWORK_CREATOR_URL + "/new_smart_group_mappings.jsp?" + query);
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(network.getName());
         aes.setFromEmail(Vars.supportEmail);
@@ -304,7 +304,7 @@ public class EmailServices extends ParentService {
         User author = UserDao.getById(null, sharedItem.getUserId());
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender aes = new AmazonEmailSender();
+        AmazonSmtpSender aes = new AmazonSmtpSender();
         aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
         aes.setFromName(network.getName());
         aes.setFromEmail(Vars.supportEmail);
@@ -356,7 +356,7 @@ public class EmailServices extends ParentService {
             author = UserDao.getById(null, sharedComment.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonEmailSender aes = new AmazonEmailSender();
+            AmazonSmtpSender aes = new AmazonSmtpSender();
             aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
             aes.setFromName(network.getName());
             aes.setFromEmail(Vars.supportEmail);
@@ -421,7 +421,7 @@ public class EmailServices extends ParentService {
             toUser = UserDao.getById(null, userToSmartGroup.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonEmailSender aes = new AmazonEmailSender();
+            AmazonSmtpSender aes = new AmazonSmtpSender();
             aes.setMessageMine(EmailMimeEnum.HTML_UTF8);
             aes.setFromName(network.getName());
             aes.setFromEmail(Vars.supportEmail);
@@ -497,7 +497,7 @@ public class EmailServices extends ParentService {
             toUser = UserDao.getById(null, userToNetwork.getUserId());
 
             // Creating runnable to send email on new thread
-            AmazonEmailSender ams = new AmazonEmailSender();
+            AmazonSmtpSender ams = new AmazonSmtpSender();
             ams.setMessageMine(EmailMimeEnum.HTML_UTF8);
             ams.setFromName(network.getName());
             ams.setFromEmail(Vars.supportEmail);

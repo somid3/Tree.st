@@ -14,8 +14,8 @@ import javax.mail.util.ByteArrayDataSource;
 
 public class AmazonSmtpSender implements Runnable {
 
-    private Transport AWSTransport;
-    private Session AWSsession;
+    private Transport transport;
+    private Session session;
     private Message message;
 
     // General email variables
@@ -48,7 +48,7 @@ public class AmazonSmtpSender implements Runnable {
 
     // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 25 because we will use
     // STARTTLS to encrypt the connection.
-    static final int PORT = 25;
+    static final int PORT = 587;
 
     private void startSessionAndTransport() throws Exception {
 
@@ -65,10 +65,13 @@ public class AmazonSmtpSender implements Runnable {
         props.put("mail.smtp.starttls.required", "true");
 
         // Create a Session object to represent a mail session with the specified properties.
-        AWSsession = Session.getDefaultInstance(props);
+        session = Session.getDefaultInstance(props);
 
         // Create a transport.
-        AWSTransport = AWSsession.getTransport();
+        transport = session.getTransport();
+
+        // Create a message with the specified information.
+        message = new MimeMessage(session);
     }
 
 
@@ -78,17 +81,17 @@ public class AmazonSmtpSender implements Runnable {
     }
 
     private void endSessionAndTransport() {
-        try { AWSTransport.close(); }
+        try { transport.close(); }
         catch (MessagingException e) { /* Do nothing */ }
     }
 
     private void transportingMessage () throws MessagingException, IOException {
 
         // Connect to Amazon SES using the SMTP username and password you specified above.
-        AWSTransport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+        transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
 
         // Sending the email
-        AWSTransport.sendMessage(message, message.getAllRecipients());
+        transport.sendMessage(message, message.getAllRecipients());
 
         // Log sent emails?
         if (Vars.logSentEmails)
@@ -107,10 +110,8 @@ public class AmazonSmtpSender implements Runnable {
         // Send the message.
         try {
             startSessionAndTransport();
-            String addressesCharset = "utf-8";
 
-            // Create a message with the specified information.
-            MimeMessage msg = new MimeMessage(AWSsession);
+            String addressesCharset = "utf-8";
 
             // Adding author
             message.setFrom(new InternetAddress(fromEmail, fromName, addressesCharset));
@@ -129,7 +130,7 @@ public class AmazonSmtpSender implements Runnable {
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, null, addressesCharset));
 
             // Adding subject
-            msg.setSubject(subject);
+            message.setSubject(subject);
 
             // Adding message
             Multipart multipart = new MimeMultipart();
@@ -165,15 +166,12 @@ public class AmazonSmtpSender implements Runnable {
             // Transporting the message, either to the network or to system out, etc
             transportingMessage();
 
-
-
-
-
             // Connect to Amazon SES using the SMTP username and password you specified above.
-            AWSTransport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
 
-            // Send the email.
-            AWSTransport.sendMessage(msg, msg.getAllRecipients());
+            // Send the email
+            transport.sendMessage(message, message.getAllRecipients());
+
             System.out.println("Email sent!");
 
         } catch (Exception ex) {

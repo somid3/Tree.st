@@ -4,7 +4,7 @@ import com.questy.admin.domain.GeneralEmail;
 import com.questy.admin.dao.GeneralEmailDao;
 import com.questy.enums.EmailMimeEnum;
 import com.questy.helpers.SqlLimit;
-import com.questy.utils.AmazonEmailSender;
+import com.questy.utils.AmazonSmtpSender;
 import com.questy.utils.AmazonMailQueue;
 import com.questy.utils.StringUtils;
 
@@ -53,7 +53,7 @@ public class GeneralEmailSender {
         message = message.replaceAll("\\[keyword_3\\]", generalEmail.getKeyword3());
 
         // Creating runnable to send email on new thread
-        AmazonEmailSender ams = new AmazonEmailSender();
+        AmazonSmtpSender ams = new AmazonSmtpSender();
         ams.setMessageMine(EmailMimeEnum.TEXT_UTF8);
 
         ams.setFromName("omid@treelift.com"); ams.setFromEmail("omid@treelift.com");
