@@ -53,8 +53,8 @@ body {
 }
 
 .main-block {
-    background-color: #339900;
-    padding: 30px 0;
+    background-color: #777;
+    padding: 40px 0;
 }
 
 .block {
@@ -63,11 +63,11 @@ body {
 .block .main {
     text-align: center;
     line-height: 1.6em;
-    text-shadow: 2px 2px #2e813a;
+    text-shadow: 2px 2px #444;
 }
 
 .block .sub {
-    text-shadow: 2px 2px #2e813a;
+    text-shadow: 2px 2px #444;
     text-align: center;
     width: 700px;
     margin: 0 auto;
@@ -90,13 +90,13 @@ body {
 }
 
 .attention {
-    background-image: url('/d/welcome/img/attention-background.png');
+    /*background-image: url('/d/welcome/img/attention-background.png');*/
     background-color: white;
     height: 300px;
     padding: 10px;
-    margin-bottom: 40px;
-    margin-top: 15px;
     border: solid 1px <%= HtmlDesign.dim3 %>;
+    position: relative;
+    top: -15px;
 }
 
 
@@ -173,6 +173,8 @@ body {
 
 
 .features {
+    position: relative;
+    top: -20px;
 
 }
 

@@ -10,8 +10,7 @@
     padding: 20px;
     width: 300px;
     background-color: #fff;
-    border-bottom: 2px solid #bbb;
-    border-right: 2px solid #bbb;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 #form {
@@ -48,7 +47,7 @@
     width: 300px;
     padding: 20px;
     background-color: <%= HtmlDesign.highlight %>;
-    border: 2px solid white;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
     display: none;
 }
 

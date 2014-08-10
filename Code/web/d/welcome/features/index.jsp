@@ -21,8 +21,8 @@
 <div class="main-block">
     <div class="w800 center">
         <div class="block">
-            <div class="main gg_header white">Patent-pending Awesomeness!</div>
-            <div class="sub vl_text white">All our features will make your community thrive!</div>
+            <div class="main gg_header white">Purpose Driven Community Features</div>
+            <div class="sub vl_text white">All our unique features will make your community thrive</div>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
                     <div class="img"><img src="./img/unique-profiles.png"></div>
                 </div>
                 <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">Email Notifications</div>
+                    <div class="title md_header dim">Auto Clustering</div>
                     <div class="desc sm_text dim">Stop individually adding members to groups. Treelift automatically clusters your members based on unique qualities.</div>
                     <div class="img"><img src="./img/nested-communities.png"></div>
                 </div>
@@ -72,11 +72,6 @@
                     <div class="title md_header dim">100% Private</div>
                     <div class="desc sm_text dim">Each Tree.st is completely private. Control who has access to your community and the information each member can see.</div>
                     <div class="img"><img src="./img/private.png"></div>
-                </div>
-                <div class="feature-title sm_shadow">
-                    <div class="title md_header dim">24/7 On The Cloud</div>
-                    <div class="desc sm_text dim">With a 99.9% up-time, Tree.st delivers the versatility and robustness comparable to enterprise-solution standards.</div>
-                    <div class="img"><img src="./img/cloud.png"></div>
                 </div>
             </div>
             <div class="column">

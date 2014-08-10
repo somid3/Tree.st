@@ -18,8 +18,7 @@
         </div>
 
         <div class="element">
-            <div class="text smd_header dim">Email</div>
-            <div><input id="email" type="text" name="email" class="lg_input" value="<%= defaultEmail %>"></div>
+             <div><input id="email" type="text" name="email" class="lg_input" placeholder="Email address" value="<%= defaultEmail %>"></div>
         </div>
 
         <div class="element">
@@ -35,14 +34,10 @@
 <div id="check" class="center">
     <div><span class="sp_text white">Email Sent</span></div>
 
-    <p class="lg_text white">Visit your email inbox, we sent you a reset link that is valid for one hour only</p>
+    <p class="lg_text white">Visit your inbox, we sent you a reset link that is valid only for one hour</p>
 
     <p class="lg_text white">Don't forget to visit your spam folder.
     Need help? email <a href="mailto:<%=Vars.supportEmail%>"><span class="lg_header white"><%=Vars.supportEmail%></span></a></p>
-
-    <p class="smd_text white">
-        We need to validate your identity via email before you can set a new password for your account
-    </p>
 </div>
 
 <script type="text/javascript">

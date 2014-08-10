@@ -24,6 +24,7 @@
         background-color: white;
         padding: 10px;
         width: 240px;
+        border: 1px solid <%= HtmlDesign.dim4 %>;
     }
 
     #signin_error {
@@ -85,6 +86,7 @@
         margin-top: 20px;
         background-color: white;
         padding: 10px;
+        border: 1px solid <%= HtmlDesign.dim4 %>;
         width: 240px;
         position: relative;
     }

@@ -6,7 +6,7 @@
     padding: 5px 5px 0 5px;
     position: relative;
     margin-bottom: 10px;
-    border: 1px solid <%= HtmlDesign.dim3 %>;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 #all_members_dashboard .shortcuts {
