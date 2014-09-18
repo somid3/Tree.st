@@ -69,6 +69,7 @@ public class AmazonMailQueue implements Runnable {
      * @param email
      */
     public static void queueEmail(AmazonSmtpSender email) {
+
         instance.emailQueue.add(email);
     }
 }

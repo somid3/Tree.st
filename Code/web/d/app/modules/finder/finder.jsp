@@ -36,7 +36,6 @@
         // Retrieving all networks from user
         List<Network> networks = NetworkServices.getNetworkWithAllDependantsMappedToUser(meId, homeId, RoleEnum.VISITOR);
 
-        Integer networkCounter = 0;
         Integer totalItems = null;
         String highlighted = null;
         String questionText = null;
@@ -68,11 +67,7 @@
 
                 // If there are no matches go to the next network
                 if (totalItems == 0)
-                    continue; %>
-
-                <div class="find_network sm_button dark_button sm_text">
-                    <%= network.getName() %> (<%= totalItems %>)
-                </div> <%
+                    continue;
 
                 // Looping over matched questions
                 for (Question question : matchedQuestions) {
@@ -92,7 +87,7 @@
                     <a href="#">
                         <div class="find_question smd_text"
                             onclick="HashRouting.setHash(event, '<%= HashRouting.smartSearchAdd(homeId, question.getNetworkId(), question.getRef()) %>');">
-                            <%= highlighted %> <span class="dim2">(<%= question.getTotalAnswers() %>)</span>
+                            <%= highlighted %>
                         </div>
                     </a> <%
 
@@ -151,7 +146,7 @@
 
        <div class="finder_results canvas_container">
 
-           <div class="find_group md_header white">Smart Groups (<%= matches.size() %>)</div> <%
+           <div class="find_group md_header white">Smart Groups</div> <%
 
            // Looping through all the matches
            for (SmartGroup match : matches) {
@@ -200,7 +195,7 @@
 
         <div class="finder_results canvas_container">
 
-        <div class="find_group md_header white">Shared Messages (<%= matches.size() %>)</div> <%
+        <div class="find_group md_header white">Shared Messages</div> <%
 
         // Looping through all the matches
         for (SharedItem match : matches) {
@@ -248,7 +243,7 @@
 
         %> <div class="finder_results canvas_container">
 
-            <div class="find_group md_header white">People (<%= matches.size() %>)</div> <%
+            <div class="find_group md_header white">Members</div> <%
 
             // Variables for user window
             Integer ul_a_toUserId = null;

@@ -16,7 +16,7 @@
 <div id="main">
     <div id="header">
         <div id="logo">
-            <span class="sp_header highlight"><img src="/d/assets/logo.png"></span>
+            <span class="sp_header highlight"><img style="border-radius: 5px;" src="/d/assets/logo.png"></span>
          </div>
     </div>
 

@@ -224,8 +224,8 @@ function QuestionDisplay () {
         // Beginning submission, locking down
         isLocked = true;
         
-        // Get visibility
-        var visibility = $('.question_container select[name=visibility]').val();
+        // Mark all visibilities as public
+        var visibility = 9;
 
         // Animating the current question to slide out
         var tmp_this = this;

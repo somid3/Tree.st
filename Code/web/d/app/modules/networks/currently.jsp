@@ -20,16 +20,6 @@
     // Moving the currently menu
     Animations.toPosition("#currently", 0, 0, 600);
 
-    // Changing header color
-    $("#header").css("background-color", "<%= networkAlphaSettings.get(NetworkAlphaSettingEnum.UI_HEADER_BACKGROUND_COLOR) %>")
-
-    // Changing the logo and logo url
-     <% if (hasLogo != 0) { %>
-        NetworkDashboard.showCustomLogo("<%= home.getLogoResourceUrl() %>");
-    <% } else { %>
-        NetworkDashboard.showDefaultLogo("<%= StringUtils.concat(home.getName().replaceAll("\"", "'"), 14, "...") %>");
-    <% } %>
-
 </script>
 
 <%
@@ -75,7 +65,7 @@
     <div class="shortcut" id="network_shortcut_smart_search">
         <div class="contents">
             <div class="icon"><img src="./modules/networks/img/smart_search.png" alt="Smart Search"></div>
-            <div class="name smd_text">Member Search</div>
+            <div class="name smd_text">Doctor Search</div>
         </div>
     </div>
 </a>
@@ -84,7 +74,7 @@
     <div class="shortcut" id="network_shortcut_all">
         <div class="contents">
             <div class="icon"><img src="./modules/networks/img/premium.png" alt="All"></div>
-            <div class="name smd_text">All Members</div>
+            <div class="name smd_text">All Doctors</div>
         </div>
     </div>
 </a>
@@ -109,7 +99,7 @@
 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileQuestions(homeId)%>')">
     <div class="shortcut" id="network_shortcut_questions">
         <div class="contents">
-            <div class="tab icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
+            <div class="icon"><img src="./modules/networks/img/questions.png" alt="Details"></div>
             <div class="name smd_text">Details</div>
         </div>
         <% if (nextQuestionRef != null) { %>
@@ -121,7 +111,7 @@
 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.profileMessages(homeId)%>')">
     <div class="shortcut" id="network_shortcut_messages">
         <div class="contents">
-            <div class="tab icon"><img src="./modules/networks/img/email.png" alt="Details"></div>
+            <div class="icon"><img src="./modules/networks/img/email.png" alt="Details"></div>
             <div class="name smd_text">Messages</div>
         </div>
         <% if (unReadUserMessageGroupCount > 0) { %>

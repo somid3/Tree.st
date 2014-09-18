@@ -207,7 +207,7 @@
     </div>
 
     <div id="create_error" class="error"></div>
-    <div id="create_loading"><img src="../img/loading.gif"></div>
+    <div id="create_loading"><img src="/d/assets/loading.gif"></div>
 
     <a href="#" onclick="Create.create(event)">
         <div id="submit" class="start sp_header white">Start</div>

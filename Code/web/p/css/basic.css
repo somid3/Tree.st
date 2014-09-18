@@ -6,9 +6,9 @@
  background-color: white;
  float: left;
  position: relative;
- width: 590px;
- border-right: solid 5px #888;
- border-left: solid 5px #888;
+ width: 598px;
+ border-right: solid 1px #888;
+ border-left: solid 1px #888;
 }
 #nav {
     display: inline-block;

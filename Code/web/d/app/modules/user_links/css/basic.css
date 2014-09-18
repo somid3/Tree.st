@@ -59,7 +59,7 @@
 #smart_search_results .smart_search_result .result_details {
     margin-top: -3px;
     float: right;
-    background: #eee;
+    background: transparent;
     padding: 3px;
     position: relative;
     top: -5px;
@@ -69,13 +69,14 @@
     padding: 1px;
     display: inline-block;
     float: right;
+    background-color: transparent;
 }
 
 #smart_search_results .smart_search_result .result_details .flares .flare {
     float: right;
     margin: 2px;
     padding: 4px;
-    background-color: <%= HtmlDesign.highlight3 %>;
+    background-color: <%= HtmlDesign.dim3 %>;
 }
 
 #smart_search_results .smart_search_result .result_details .since {
@@ -91,6 +92,7 @@
     position: relative;
     float: left;
     margin-bottom: -4px;
+    border: solid 1px <%= HtmlDesign.dim4 %>;
 }
 
 .user_card .card_left {
@@ -101,6 +103,7 @@
 .user_card .card_left .card_face img {
     width: 100px;
     height: 100px;
+    border-radius: 10px;
 }
 
 .user_card .card_left .card_face .points {

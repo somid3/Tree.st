@@ -107,7 +107,7 @@
         </div>
 
         <div class="left">
-            <div class="loading"><img src="/d/app/img/sm_loading.gif"></div>
+            <div class="loading"><img src="/d/assets/sm_loading.gif"></div>
             <div class="face">
                 <img src="<%= me.getFaceUrl() %>" alt="">
             </div>

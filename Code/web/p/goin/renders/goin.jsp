@@ -214,7 +214,7 @@
 
     <div id="sign">
         <div id="signin">
-            <div id="signin_loading"><img src="/p/goin/img/sm_loading.gif"></div>
+            <div id="signin_loading"><img src="/d/assets/sm_loading.gif"></div>
             <div id="signin_error" class="center error sm_text"></div>
             <div id="signin_content">
                 <div id="signin_email_div"><input class="md_input w200" type="text" placeholder="Email" id="signin_email"></div>
@@ -241,7 +241,7 @@
         <div id="signup">
             <div id="signup_form">
                 <div id="signup_title" class="vl_text dim">
-                    <div id="signup_loading"><img src="/p/goin/img/sm_loading.gif"></div>
+                    <div id="signup_loading"><img src="/d/assets/sm_loading.gif"></div>
                     New? &mdash; Sign up!
                 </div>
                 <div id="signup_error" class="center error sm_text"></div>
@@ -258,67 +258,6 @@
         </div>
     </div>
 
-    <div id="payment">
-        <div id="payment_form">
-            <div id="payment_title" class="vl_text dim">
-                <div id="payment_loading"><img src="/p/goin/img/sm_loading.gif"></div>
-                Payment Details
-            </div>
-
-            <div id="payment_details" class="sm_text dim2">
-                We accept all mayor credit & debit cards. In your statement we will
-                be listed as <span class="highlight">Treelift</span>
-            </div>
-
-            <div id="payment_cards">
-                <img src="/p/goin/img/cc_visa.png" class="payment_cc_image">
-                <img src="/p/goin/img/cc_mastercard.png" class="payment_cc_image">
-                <img src="/p/goin/img/cc_american.png" class="payment_cc_image">
-                <img src="/p/goin/img/cc_discover.png" class="payment_cc_image">
-                <img src="/p/goin/img/cc_diners.png" class="payment_cc_image">
-                <img src="/p/goin/img/cc_jcb.png" class="payment_cc_image">
-            </div>
-
-            <div id="payment_content">
-                <div id="payment_error" class="center error sm_text"></div>
-
-                <div class="smd_text dim" style="margin-bottom: 5px;">
-                    Credit card &mdash;
-                    <img src="/p/goin/img/cc_gray.png" id="payment_check_cc_type">
-                </div>
-                <div id="payment_cc_div">
-                    <input class="md_input w175" type="text" maxlength="19" placeholder="5555-5555-5555-5555" data-stripe="number" id="payment_cc">
-                    <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_cc_good">
-                    <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_cc_bad">
-
-                </div>
-
-                <div id="payment_expcvc_div">
-                    <div style="float: left; margin-right: 10px;">
-                        <div class="smd_text dim" style="margin-bottom: 5px;">Expires:</div>
-                        <div id="payment_exp_div">
-                            <input class="md_input w50" type="text" maxlength="5" placeholder="MM/YY" id="payment_exp">
-                            <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_exp_good">
-                            <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_exp_bad">
-                        </div>
-                    </div>
-
-                    <div style="float: left">
-                        <div class="smd_text dim" style="margin-bottom: 5px;">Card code:</div>
-                        <div id="payment_cvc_div">
-                            <input class="md_input w50" type="text" maxlength="3" placeholder="CVC" id="payment_cvc">
-                            <img src="/p/goin/img/check_green.png" class="payment_check" id="payment_check_cvc_good">
-                            <img src="/p/goin/img/check_gray.png" class="payment_check" id="payment_check_cvc_bad">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <a href="#" onclick="Payment.createToken(event);">
-                <div id="payment_button" class="sm_button submit_button md_header">Let's go</div>
-            </a>
-        </div>
-    </div>
 
     <div id="confirm">
 
@@ -330,9 +269,6 @@
         <p class="note smd_text white">For the safety and privacy of all our members we require everyone to confirm their email address.</p>
     </div>
 
-    <a href="http://<%= Vars.domain %>" class="no_deco" target="_new">
-        <div id="provided_by"><img src="/p/goin/img/provided_by.png"></div>
-    </a>
 
 </div>
 
@@ -361,33 +297,6 @@
         }
     });
 
-    // Binding the return key for the form
-    $('#payment').keypress( function(event) {
-        if(event.which == $.ui.keyCode.ENTER){
-            Payment.createToken(event);
-            return false;
-        }
-    });
-
-    // Constantly validating credit card number
-    $('#payment_cc').keyup(function() {
-        Payment.checkCC();
-    });
-
-    // Constantly validating expiration date
-    $('#payment_exp').keyup( function() {
-        Payment.checkExp();
-        return false;
-    });
-
-    // Constantly validating CVC code
-    $('#payment_cvc').keyup( function() {
-        Payment.checkCvc();
-        return false;
-    });
-
-    // Setting up Stripe
-    Stripe.setPublishableKey('<%= Vars.stripePublishableKey%>');
 </script>
 
 

@@ -23,7 +23,7 @@
 %>
 
 <div id="<%= ul_a_hCardId %>">
-    <div class="user_card sm_shadow">
+    <div class="user_card">
        <div>
 
            <div class="card_left">
@@ -41,7 +41,6 @@
 
                    <div class="card_face">
                        <img src="<%= ul_a_toUser.getFaceUrl() %>"/>
-                       <div class="points vsm_text dim shadow"><%= ul_a_toUserToNetwork.getCurrentPoints() %> pts.</div>
                  </div>
                </a>
 
@@ -102,7 +101,7 @@
 
                        <div class="card_create">
 
-                           <div class="loading"><img src="./img/sm_loading.gif"></div>
+                           <div class="loading"><img src="/d/assets/sm_loading.gif"></div>
 
                            <a href="#" onclick="UserLink.connect(event, <%= homeId %>, <%= ul_a_toUser.getId() %>, '<%= ul_a_hCardId %>',  '<%= ul_a_hConnectButtonId %>')">
                                <div id="<%= ul_a_hConnectButtonId %>" class="connect lg_button active_button">View</div>

@@ -30,7 +30,7 @@
     </div>
 
     <div id="points">
-        <span id="available_points" class="lg_header white"><%= utn.getCurrentPoints() %></span>
+        <span id="available_points" class="lg_text white"><%= utn.getCurrentPoints() %></span>
         <div class="vsm_text white">Points</div>
     </div>
 

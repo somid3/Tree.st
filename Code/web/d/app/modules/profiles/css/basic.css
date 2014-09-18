@@ -20,7 +20,7 @@
     float: left;
     width: 160px;
     height: 160px;
-    background-color: #fff;
+    background-color: transparent;
     position: absolute;
     top: -12px;
     left: -12px;
@@ -29,6 +29,7 @@
 #profile_dashboard .left .thumbnail img {
     width: 160px;
     height: 160px;
+    border-radius: 15px;
 }
 
 #profile_dashboard .left .points {

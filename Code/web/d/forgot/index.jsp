@@ -44,7 +44,7 @@
 <body>
 
 <div id="logo">
-    <a href="/"><img src="/d/assets/logo.png"></a>
+    <a href="/"><img style="border-radius: 5px;" src="/d/assets/logo.png"></a>
 </div>
 
 <div id="action"></div>

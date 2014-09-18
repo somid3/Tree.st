@@ -13,7 +13,7 @@
         <div class="canvas_container">
     <% } %>
 
-        <img src="./img/loading.gif">
+        <img src="/d/assets/loading.gif">
 
     <% if (app_c_withCanvasContainer) { %>
         </div>

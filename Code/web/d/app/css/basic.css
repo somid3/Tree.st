@@ -1,50 +1,36 @@
 <%@include file="../setup.jsp" %>
 <%@page contentType="text/css" %>
 
+
 #main {
 }
 
 
 #header {
-    height: 60px;
+    height: 50px;
     margin-bottom: 15px;
-    background-color: #8c8c80;
-    border-bottom: solid 1px <%= HtmlDesign.dim3 %>;;
+    background-color: #888;
+    border-bottom: solid 1px <%= HtmlDesign.dim3 %>;
 }
 
 
 #header #logo {
     float: left;
-    margin: 5px 60px 0 0;
+    margin: 0 90px 0 0;
+    padding: 10px 10px 0 0;
+    width: 160px;
+    position: relative;
+    top: -5px;
 }
-
-#header #logo #default_logo {
-    padding: 10px 10px 0 10px;
-    background-color: <%= HtmlDesign.headerColor %>;
-    float: left;
-    width: 158px;
-    height: 40px;
-}
-
-#header #logo #custom_logo {
-    display: none;
-}
-
-#header #logo #custom_logo img {
-    height: 50px;
-    width: 180px;
-}
-
 
 #header #dashboard {
     float: left;
-    margin-right: 50px;
+    margin-right: 40px;
 }
 
 #header #user {
-    margin-top: 5px;
-    padding: 5px;
-    background-color: #8c8c80;
+    padding: 10px 5px 0 0;
+    /*background-color: #8c8c80;*/
     width: 140px;
     float: left;
 }
@@ -64,8 +50,8 @@
 
 #header #user #thumbnail img {
     float: right;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin-right: 5px;
 }
 

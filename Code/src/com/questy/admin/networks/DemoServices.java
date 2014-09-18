@@ -1243,37 +1243,32 @@ public class DemoServices {
     // List of demo users
     static {
 
-        demoUsersIds.add(3144);
-        demoUsersIds.add(3145);
-        demoUsersIds.add(3146);
-        demoUsersIds.add(3147);
-        demoUsersIds.add(3148);
-        demoUsersIds.add(3149);
-        demoUsersIds.add(3150);
-        demoUsersIds.add(3151);
-        demoUsersIds.add(3152);
-        demoUsersIds.add(3153);
-        demoUsersIds.add(3154);
-        demoUsersIds.add(3155);
-        demoUsersIds.add(3156);
-        demoUsersIds.add(3157);
-        demoUsersIds.add(3158);
-        demoUsersIds.add(3159);
-        demoUsersIds.add(3160);
-        demoUsersIds.add(3161);
-        demoUsersIds.add(3162);
-        demoUsersIds.add(3163);
-        demoUsersIds.add(3218);
-        demoUsersIds.add(3219);
-        demoUsersIds.add(3220);
-        demoUsersIds.add(3221);
-        demoUsersIds.add(3222);
+        demoUsersIds.add(6);
+        demoUsersIds.add(7);
+        demoUsersIds.add(8);
+        demoUsersIds.add(9);
+        demoUsersIds.add(10);
+        demoUsersIds.add(11);
+        demoUsersIds.add(12);
+        demoUsersIds.add(13);
+        demoUsersIds.add(14);
+        demoUsersIds.add(15);
+        demoUsersIds.add(16);
+        demoUsersIds.add(17);
+        demoUsersIds.add(18);
+        demoUsersIds.add(19);
+        demoUsersIds.add(20);
+        demoUsersIds.add(21);
+        demoUsersIds.add(22);
+        demoUsersIds.add(23);
+        demoUsersIds.add(24);
+        demoUsersIds.add(25);
     }
 
     public static void main (String[] args) throws Exception  {
 
 //        createRandomUsers(20);
-        demoize(2032);
+        demoize(5);
 
     }
 
@@ -1323,7 +1318,7 @@ public class DemoServices {
 
             // Updating face
             faceId = (userId % 20) + 20;
-            UserDao.updateFaceByUserId(null, userId, 1, "/resources/faces/" + faceId + ".jpg");
+            UserDao.updateFaceByUserId(null, userId, 1, "/resources/defaults/demo.png");
 
             // Documenting action
             DemoServices.log("Created user id: " + userId + " with face id: " + faceId);

@@ -88,13 +88,7 @@
 
                 <span class="lg_header"><%= question.getText() %></span>
 
-                <% if (question.getPoints() >= 100) { %>
-                    <div class="pts md_button submit_button smd_text white">+<%= question.getPoints() %> pts.</div>
-                <% } else if (question.getPoints() >= 50) { %>
-                    <div class="pts md_button dark_button smd_text white">+<%= question.getPoints() %> pts.</div>
-                <% } else if (question.getPoints() > 0) { %>
-                    <div class="pts md_button light_button smd_text dim">+<%= question.getPoints() %> pts.</div>
-                <% } %>
+                <div class="pts md_button dark_button smd_text dim">+<%= question.getPoints() %> pts.</div>
 
                 <% if (question.getPoints() > 0) {
 
@@ -107,7 +101,7 @@
 
             </div>
 
-            <div class="answer_status smd_text highlight3"></div>
+            <div class="answer_status smd_text highlight"></div>
 
             <div class="options_wrap">
 
@@ -162,46 +156,9 @@
 
                     <a href="#" onclick="QD.submit(event)"><div class="submit lg_button submit_button md_text white">Submit</div></a>
                     <a href="#" onclick="QD.skip(event)"><div class="skip lg_button dark_button md_text white">Skip</div></a>
-                    <div id="question_submit_loading"><img src="./img/sm_loading.gif"></div>
+                    <div id="question_submit_loading"><img src="/d/assets/sm_loading.gif"></div>
                 </div>
-                <div class="settings">
-                    <div class="visibility">
 
-                        <img src="./modules/questions/img/lock.png" alt="">
-
-                        <%
-                            app_d_title = "Answer Visibility";
-                            app_d_message = "Each answer can have a different visibility. 'Public' answers can be viewed in the public internet. 'Protected' answers are only visible by community members. 'Private' answers can only be viewed by you.";
-                            app_d_position = HtmlDesign.Positions.LEFT; %>
-                        <%@ include file="../../includes/app_d_mini_tooltip.jsp"%>
-
-                        <select name="visibility" class="smd_text">
-                            <%
-                                String selected = "";
-                                AnswerVisibilityEnum maxVisibility = AnswerVisibilityEnum.PUBLIC;
-                                AnswerVisibilityEnum defaultVisibility = AnswerVisibilityEnum.PROTECTED;
-
-                                if (question.getMaxVisibility() != null)
-                                    maxVisibility = question.getMaxVisibility();
-
-                                if (question.getDefaultVisibility() != null)
-                                    defaultVisibility = question.getDefaultVisibility();
-
-                                for (AnswerVisibilityEnum ave : AnswerVisibilityEnum.values()) {
-
-                                    if (ave.isLowerThan(maxVisibility)) {
-
-                                        if (defaultVisibility == ave)
-                                            selected = " selected";
-                                        else
-                                            selected = ""; %>
-
-                                        <option value="<%= ave.getId() %>"<%= selected %>><%= ave.getDescription() %></option>
-                                    <% } %>
-                                <% } %>
-                        </select>
-                    </div>
-                </div>
             </div>
         </div>
 

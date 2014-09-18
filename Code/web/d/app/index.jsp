@@ -74,8 +74,7 @@
 
         <a href="/d/app">
             <div id="logo">
-                <div id="default_logo" class="lg_header white"><%= Vars.name %></div>
-                <div id="custom_logo"><img/></div>
+                <img style="border-radius: 5px; width: 160px;" src="/d/assets/logo_app.png"/>
             </div>
         </a>
 
@@ -84,7 +83,7 @@
         <div id="user">
             <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.settingsPhotoUpload() %>');">
                 <div class="face">
-                    <div id="thumbnail"><img src="<%= me.getFaceUrl() %>" alt=""></div>
+                    <div id="thumbnail"><img style="border-radius: 5px;" src="<%= me.getFaceUrl() %>" alt=""></div>
                 </div>
             </a>
 
@@ -336,6 +335,7 @@
     Transitions.load("#networks", "./modules/networks/networks.jsp", function() {
         HashRouting.routes();
     });
+
 </script>
 
 <%@ include file="../includes/footer.jsp"%>

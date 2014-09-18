@@ -29,14 +29,14 @@
 <body>
 
 <div id="logo">
-    <a href="/"><img src="/d/assets/logo.png"></a>
+    <a href="/"><img style="border-radius: 5px;" src="/d/assets/logo.png"></a>
 </div>
 
 <a href="/" class="no_deco">
-    <div class="w300 center">
+    <div class="center" style="width: 340px;">
         <div class="signout">
 
-            <div class="center"><img src="./img/done.png"></div>
+            <div class="center"><img src="/d/assets/done.png"></div>
 
             <br/>
 

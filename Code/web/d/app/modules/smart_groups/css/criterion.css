@@ -66,7 +66,7 @@
     margin-left: 2px;
     margin-bottom: 2px;
     padding: 5px;
-    background-color: <%= HtmlDesign.highlight3 %>;
+    background-color: <%= HtmlDesign.dim2 %>;
 }
 
 #smart_search_criterion .text {

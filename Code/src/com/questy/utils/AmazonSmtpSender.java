@@ -46,7 +46,7 @@ public class AmazonSmtpSender implements Runnable {
     // Amazon SES SMTP host name. This example uses the us-east-1 region.
     static final String HOST = "email-smtp.us-west-2.amazonaws.com";
 
-    // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 25 because we will use
+    // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
     // STARTTLS to encrypt the connection.
     static final int PORT = 587;
 

@@ -2,17 +2,16 @@
 <%@page contentType="text/css" %>
 
 #logo {
-    margin: 10px auto;
-    width: 130px;
+    margin: 20px auto;
+    width: 160px;
 }
 
 .updated {
-    text-align: center;
     padding: 20px;
+    text-align: center;
     width: 300px;
-    background-color: white;
-    border-right: 2px solid <%= HtmlDesign.dim3 %>;
-    border-bottom: 2px solid <%= HtmlDesign.dim3 %>;
+    background-color: #fff;
+    border: 1px solid <%= HtmlDesign.dim4 %>;
 }
 
 .updated .message {

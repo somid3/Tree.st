@@ -116,7 +116,7 @@
         </div>
 
         <div class="actionable">
-            <div class="loading"><img src="./img/sm_loading.gif"></div>
+            <div class="loading"><img src="/d/assets/sm_loading.gif"></div>
             <a href="#" onclick="UserNetworksDashboard.submitEmailNotifications(event, <%= homeId %>, '<%= hSettingsId %>', '<%= hFormId %>')"><div class="action md_button submit_button">Save Settings</div></a>
             <a href="#" onclick="UserNetworksDashboard.cancelSetting(event, '<%= hSettingsId %>')"><div class="action light_button md_button">Cancel</div></a>
         </div>

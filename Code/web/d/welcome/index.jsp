@@ -37,7 +37,7 @@
         <br/>
         The most customizable community platform.<br/>
         <br/>
-        With Treelift automatically cluster your members in a private and safe network, and enable them to
+        With Treelift automatically cluster your members in a private and safe network, and enables them to
         easily find each other.<br/>
         <br/>
         View some more <a href="/d/how" class="md_text highlight2">demo videos</a>. For personalized demo, contact us.<br/>

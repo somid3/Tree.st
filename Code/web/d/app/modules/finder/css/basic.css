@@ -3,7 +3,7 @@
 
 #network_dashboard {
     width: 390px;
-    top: 15px;
+    top: 10px;
     position: relative;
 }
 
@@ -75,11 +75,6 @@
     margin-bottom: 5px;
 }
 
-
-.finder_results .find_network {
-    padding: 4px;
-    float: right;
-}
 
 .finder_results .find_question {
     padding: 5px 0;

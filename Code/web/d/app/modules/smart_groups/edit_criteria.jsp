@@ -48,31 +48,9 @@
     </div>
 
     <div class="question">
-        <div class="slider" id="<%= hQuestionSliderId %>">
-            <div class="ticks">
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 1);"><div class="tick t01 sm_text">1</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 10);"><div class="tick t10 sm_text">10</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 20);"><div class="tick t20 sm_text">20</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 30);"><div class="tick t30 sm_text">30</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 40);"><div class="tick t40 sm_text">40</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 50);"><div class="tick t50 sm_text">50</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 60);"><div class="tick t60 sm_text">60</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 70);"><div class="tick t70 sm_text">70</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 80);"><div class="tick t80 sm_text">80</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 90);"><div class="tick t90 sm_text">90</div></a>
-                <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaQuestionId %>', '<%= hQuestionScoreId %>', 99);"><div class="tick t99 sm_text">99</div></a>
-            </div>
-            <div class="labels">
-                <div class="label sm_text dim" style="float: left">not important</div>
-                <div class="label sm_header dim" style="float: right">muy importante!</div>
-            </div>
-        </div>
-        <a href="#" onclick="SS.showOrHideSlider(event, '<%= hQuestionSliderId %>')">
-            <div class="score" id="<%= hQuestionScoreId %>"><%= criteriaQuestionXml.getScore() %></div>
-        </a>
+
         <div class="text">
             <span class="lg_header"><%= criteriaQuestion.getText() %></span>
-            <span class="sm_text dim2"> (<%= network.getName() %>)</span>
         </div>
     </div>
 
@@ -130,34 +108,11 @@
              }; %>
 
             <div id="<%= hEditOptionId %>" class="option">
-                <div class="slider" id="<%= hOptionSliderId %>">
-                    <div class="ticks">
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 1);"><div class="tick t01 sm_text">1</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 10);"><div class="tick t10 sm_text">10</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 20);"><div class="tick t20 sm_text">20</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 30);"><div class="tick t30 sm_text">30</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 40);"><div class="tick t40 sm_text">40</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 50);"><div class="tick t50 sm_text">50</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 60);"><div class="tick t60 sm_text">60</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 70);"><div class="tick t70 sm_text">70</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 80);"><div class="tick t80 sm_text">80</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 90);"><div class="tick t90 sm_text">90</div></a>
-                        <a href="#" onclick="SS.changeTick(event, '<%= hCriteriaOptionId %>', '<%= hOptionScoreId %>', 99);"><div class="tick t99 sm_text">99</div></a>
-                    </div>
-                    <div class="labels">
-                        <div class="label sm_text dim" style="float: left">not important</div>
-                        <div class="label sm_header dim" style="float: right">muy importante!</div>
-                    </div>
-                </div>
-                <a href="#" onclick="SS.showOrHideSlider(event, '<%= hOptionSliderId %>')">
-                    <div class="score" id="<%= hOptionScoreId %>"><%= hOptionScore %></div>
-                </a>
 
                 <a href="#" onclick="SS.optionClick(event, '<%= hEditOptionId %>', '<%= hCriteriaQuestionId %>', '<%= hCriteriaOptionId %>')">
-                    <div class="bar" style="background-position: <%= MathUtils.barLength(questionOption.getTotalAnswers(), criteriaQuestion.getTotalOptionAnswers(), 330)%>px;">
+                    <div class="bar">
                         <input type="hidden" name="is_set">
                         <span class="smd_text"><%= questionOption.getText() %></span>
-                        <div class="stats sm_text dim2"><%= MathUtils.percentage(questionOption.getTotalAnswers(), criteriaQuestion.getTotalOptionAnswers())%>%, <%= questionOption.getTotalAnswers() %> ppl.</div>
                     </div>
                 </a>
 

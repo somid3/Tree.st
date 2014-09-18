@@ -400,10 +400,10 @@ function SmartSearch () {
             $editOptionBar.addClass(OptionInput.optionSelectedClass);
 
             // Display option score
-            $editOptionScore.css("display", "block");
+            // $editOptionScore.css("display", "block");
 
             // Display question score
-            $editQuestionScore.css("display", "block");
+            // $editQuestionScore.css("display", "block");
 
             isHighlighted = true;
         }

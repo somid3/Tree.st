@@ -34,7 +34,7 @@
 
     <div class="left">
 
-        <div class="thumbnail sm_shadow"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
+        <div class="thumbnail"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
 
         <% if (!viewMyself) { %>
             <div class="points">

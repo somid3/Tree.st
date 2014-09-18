@@ -45,7 +45,7 @@
             </div>
             <div class="actionable">
                 <div class="error smd_text"></div>
-                <div class="loading"><img src="./img/sm_loading.gif"></div>
+                <div class="loading"><img src="/d/assets/sm_loading.gif"></div>
                 <a href="#" onclick="SS.createSmartGroup(event, <%= homeId %>, <%= smartGroupRef %>, '<%= hFormId %>')"><div class="action md_button pink_button">Save Smart Group</div></a>
             </div>
         </div>
