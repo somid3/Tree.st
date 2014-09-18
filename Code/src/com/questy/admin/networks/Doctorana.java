@@ -35,7 +35,7 @@ public class Doctorana {
 
     public static void create(Integer networkId) throws Exception {
 
-        Integer userId = 2;
+        Integer userId = 1;
 
         Integer addedQuestionRef = null;
         Question addedQuestion = null;
@@ -65,7 +65,7 @@ public class Doctorana {
         }
         {
              // Adding question
-             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are you specialties", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are you specialties", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
              // Adding options
              addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -108,7 +108,7 @@ public class Doctorana {
 
         {
              // Adding question
-             addedQuestionRef = QuestionServices.insert(userId, networkId, "What country do you currently practice in?", 50, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+             addedQuestionRef = QuestionServices.insert(userId, networkId, "What country do you currently practice in?", 50, 1, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
              // Adding options
              addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -147,7 +147,7 @@ public class Doctorana {
 
         {
              // Adding question
-             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are you looking for?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, true);
+             addedQuestionRef = QuestionServices.insert(userId, networkId, "What are you looking to do?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
 
              // Adding options
              addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
@@ -155,9 +155,11 @@ public class Doctorana {
                  {
                      "Meet other doctors",
                      "Find referral partners",
-                     "Collaborate on cases",
-                     "Read news and Research alerts",
+                     "Collaborate on patient cases",
+                     "Get medical news and research alerts",
                      "Gain medical education",
+                     "Help build this community",
+                     "Learn of new medicines and therapies",
                      "Other needs...",
                  });
              addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
@@ -167,6 +169,51 @@ public class Doctorana {
 
              // Adding question to list
              questions.put("needs", addedQuestion);
+        }
+
+        {
+            // Adding question
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "Do you work in a clinic or a hospital?", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+
+            // Adding options
+            addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+            QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                    {
+                            "A small clinic - under 10 doctors",
+                            "A large clinic - over 10 doctors",
+                            "In a small hospital - over 30 doctors",
+                            "A large hospital - over 100 doctors",
+                            "Other",
+                    });
+            addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+            // Adding flow rules
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+
+            // Adding question to list
+            questions.put("size", addedQuestion);
+        }
+
+        {
+            // Adding question
+            addedQuestionRef = QuestionServices.insert(userId, networkId, "Select all the environments you practice in...", 50, 5, AnswerVisibilityEnum.PUBLIC, AnswerVisibilityEnum.PROTECTED, false);
+
+            // Adding options
+            addedQuestion = QuestionDao.getByNetworkIdAndRef(null, networkId, addedQuestionRef);
+            QuestionOptionServices.addOptions(addedQuestion.getNetworkId(), addedQuestion.getRef(), userId, new String[]
+                    {
+                            "Military clinic or hospital",
+                            "Government-owned clinic or hospital",
+                            "Private practice, clinic or hospital",
+                            "Other",
+                    });
+            addedQuestion = QuestionServices.getByNetworkIdAndRef(networkId, addedQuestion.getRef());
+
+            // Adding flow rules
+            FlowRuleServices.insert(addedQuestion.getNetworkId(), Question.ROOT_QUESTION_REF, QuestionOption.ANY_OPTION_REF, addedQuestion.getRef());
+
+            // Adding question to list
+            questions.put("money", addedQuestion);
         }
 
     }

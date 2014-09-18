@@ -16,6 +16,8 @@
     UserToNetwork meToNetwork = null;
 %>
 
+<% if (networks.size() > 1) { %>
+
 <div class="networks">
 
     <div class="help">
@@ -23,9 +25,6 @@
             <a href="/d/how/#communities" target="_help"><img src="./img/help.png" alt="Help"></a>
         </div>
     </div>
-
-    <% if (networks.size() > 1) { %>
-
 
         <div class="switch sm_header highlight3">Switch Communities</div>
 
@@ -67,6 +66,6 @@
 
         <% } %>
 
-    <% } %>
-
 </div>
+
+<% } %>
