@@ -40,11 +40,11 @@ public class AmazonSmtpSender implements Runnable {
 
 
     // Supply your SMTP credentials below. Note that your SMTP credentials are different from your AWS credentials.
-    static final String SMTP_USERNAME = "AKIAJVFHNHZJH7MDCGIQ";  // Replace wißth your SMTP username.
-    static final String SMTP_PASSWORD = "AnQfVMQLtfBl0Mlzp+T4YoeKR/yPCniIp6GzsirFTGDQ";  // Replace with your SMTP password.
+    static final String SMTP_USERNAME = Vars.amazonEmailPublishableKey;  // Replace wißth your SMTP username.
+    static final String SMTP_PASSWORD = Vars.amazonEmailSecretKey;  // Replace with your SMTP password.
 
     // Amazon SES SMTP host name. This example uses the us-east-1 region.
-    static final String HOST = "email-smtp.us-west-2.amazonaws.com";
+    static final String HOST = Vars.amazonEmailServer;
 
     // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
     // STARTTLS to encrypt the connection.
@@ -166,18 +166,10 @@ public class AmazonSmtpSender implements Runnable {
             // Transporting the message, either to the network or to system out, etc
             transportingMessage();
 
-            // Connect to Amazon SES using the SMTP username and password you specified above.
-            transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
-
-            // Send the email
-            transport.sendMessage(message, message.getAllRecipients());
-
-            System.out.println("Email sent!");
-
         } catch (Exception ex) {
 
-            System.out.println("The email was not sent.");
             System.out.println("Error message: " + ex.getMessage());
+            ex.printStackTrace();
 
         } finally {
 

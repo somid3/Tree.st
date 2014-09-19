@@ -26,9 +26,9 @@ public class Vars {
     /**
      * Current stage
      */
-//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -143,6 +143,11 @@ public class Vars {
     public static String amazonEmailSecretKey = null;
 
     /**
+     * Amazon SES Server
+     */
+    public static String amazonEmailServer = null;
+
+    /**
      * Email address of outgoing emails
      */
     public static String supportEmail = "hello@doctorana.com";
@@ -219,6 +224,11 @@ public class Vars {
         sendAllEmailsTo = loadPropertyAsString("sendAllEmailsTo");
         amazonEmailPublishableKey = loadPropertyAsString("amazonEmailPublishableKey");
         amazonEmailSecretKey = loadPropertyAsString("amazonEmailSecretKey");
+        amazonEmailServer = loadPropertyAsString("amazonEmailServer");
+
+        supportEmail = loadPropertyAsString("supportEmail");
+        supportEmailName = loadPropertyAsString("supportEmailName");
+
 
         sqlUsername = loadPropertyAsString("sqlUsername");
         sqlPassword = loadPropertyAsString("sqlPassword");
