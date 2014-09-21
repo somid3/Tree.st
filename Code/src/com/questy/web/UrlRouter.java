@@ -42,31 +42,18 @@ public class UrlRouter {
 
     }
 
-    public static Network getNetworkByDomain (WebUtils webUtils) throws Exception  {
+    public static Network getNetworkByRootDomain(WebUtils webUtils) throws Exception  {
 
-        String domain = webUtils.getRequestedDomain();
-
-        // Are we testing requesting a different domain?
-        if (!StringUtils.isEmpty(Vars.testingRequestingDomain))
-            domain = Vars.testingRequestingDomain;
+        String domain = webUtils.getRootDomain();
 
         // Ensuring domain is not that of the server's
         Network network = null;
-        if (domain.equals(Vars.domain)) {
+        Integer networkId = registeredDomains.get( domain );
 
-            network = null;
-
-        } else {
-
-            // Retrieving network to which the domain belongs to
-            Integer networkId = registeredDomains.get( domain );
-
-            if (networkId == null)
-               network = null;
-            else
-                network = NetworkDao.getById(null, networkId);
-
-        }
+        if (networkId == null)
+           network = null;
+        else
+            network = NetworkDao.getById(null, networkId);
 
         return network;
     }

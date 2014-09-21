@@ -76,7 +76,7 @@ public class AmazonSmtpSender implements Runnable {
 
 
     private String getMessageSummary () {
-        return "Email to " + recipients + " with subject: " + subject;
+        return "Email to " + recipients + " with subject '" + subject + "' from " + fromEmail;
 
     }
 
@@ -90,12 +90,14 @@ public class AmazonSmtpSender implements Runnable {
         // Connect to Amazon SES using the SMTP username and password you specified above.
         transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
 
+        // Log sent emails?
+        if (Vars.logSentEmails)
+            System.out.println("Email log -- " + getMessageSummary());
+
         // Sending the email
         transport.sendMessage(message, message.getAllRecipients());
 
-        // Log sent emails?
-        if (Vars.logSentEmails)
-            System.out.println("Sent -- " + getMessageSummary());
+
 
     }
 

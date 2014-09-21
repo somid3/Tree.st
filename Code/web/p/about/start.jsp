@@ -1,7 +1,7 @@
 <%@ include file="all.jsp" %>
 <%
     // Retrieve network from domain
-    Network network = UrlRouter.getNetworkByDomain(webUtils);
+    Network network = UrlRouter.getNetworkByRootDomain(webUtils);
 
     // Retrieving network settings
     Map<NetworkAlphaSettingEnum, String> networkAlphaSettings = NetworkAlphaSettingEnum.getMapByNetworkId(network.getId());

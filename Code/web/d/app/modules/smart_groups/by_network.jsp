@@ -43,12 +43,12 @@
 
 <div id="smart_group_tools" class="canvas_container">
 
-    <div style="float: left;">
-        <span class="title sm_text dim2">Visibility:</span>
-        <a href="#" onclick=""><div id="<%= hOfficialId %>" class="view sm_text light_button">Official</div></a>
-        <a href="#" onclick=""><div id="<%= hSharedId %>" class="view sm_text light_button">Shared</div></a>
-        <a href="#" onclick=""><div id="<%= hPrivateId %>" class="view sm_text light_button">Yours</div></a>
-    </div>
+    <%--<div style="float: left;">--%>
+        <%--<span class="title sm_text dim2">Visibility:</span>--%>
+        <%--<a href="#" onclick=""><div id="<%= hOfficialId %>" class="view sm_text light_button">Official</div></a>--%>
+        <%--<a href="#" onclick=""><div id="<%= hSharedId %>" class="view sm_text light_button">Shared</div></a>--%>
+        <%--<a href="#" onclick=""><div id="<%= hPrivateId %>" class="view sm_text light_button">Yours</div></a>--%>
+    <%--</div>--%>
 
     <div style="float: right;">
         <span class="title sm_text dim2">Display:</span>

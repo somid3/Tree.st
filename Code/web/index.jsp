@@ -1,7 +1,7 @@
 <%@ include file="all.jsp" %>
 <%
     // Retrieve network by domain
-    Network network = UrlRouter.getNetworkByDomain(webUtils);
+    Network network = UrlRouter.getNetworkByRootDomain(webUtils);
 
     // Is the user logged in an should be sent to the application?
     boolean wasAuthGood = UserWebServices.authenticateViaCookies(webUtils);
@@ -20,6 +20,4 @@
 
     if (network != null)
         webUtils.redirect("/p/about/");
-    else
-        webUtils.redirect("/d/welcome/");
 %>

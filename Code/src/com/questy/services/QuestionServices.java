@@ -24,11 +24,8 @@ public class QuestionServices extends ParentService  {
         // Retrieving options
         List<QuestionOption> options = QuestionOptionDao.getByNetworkIdAndQuestionRef(conn, networkId, question.getRef());
 
-        // If question can have new options added, then display options alphabetically
-        if (question.getAllowAddOptions())
-            options = QuestionOptionServices.sortByText(options);
-        else
-            options = QuestionOptionServices.sortById(options);
+        // Sort options alphabetically
+        options = QuestionOptionServices.sortByText(options);
 
         // Setting dependencies
         question.setOptions(options);

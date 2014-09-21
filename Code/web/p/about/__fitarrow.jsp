@@ -1,13 +1,13 @@
 <%@ include file="all.jsp" %>
 <%
     // Retrieve network from domain
-    Network network = UrlRouter.getNetworkByDomain(webUtils);
+    Network network = UrlRouter.getNetworkByRootDomain(webUtils);
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title><%= network.getName() %></title>
-    <link rel="icon" type="image/png" href="img/fitarrow/favicon.png">
+    <link rel="icon" type="image/png" href="/d/assets/favicon.png">
     <%@ include file="/d/includes/google_analytics.jsp"%>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>

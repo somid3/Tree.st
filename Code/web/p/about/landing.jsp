@@ -1,7 +1,7 @@
 <%@ include file="all.jsp" %>
 <%
     // Retrieve network from domain
-    Network network = UrlRouter.getNetworkByDomain(webUtils);
+    Network network = UrlRouter.getNetworkByRootDomain(webUtils);
 
     // Reference on landing to be used
     Integer landingRef = StringUtils.parseInt(request.getParameter("lr"));

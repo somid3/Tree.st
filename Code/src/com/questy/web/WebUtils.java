@@ -140,14 +140,35 @@ public class WebUtils {
         throw new SkipPageException();
     }
 
-    public String getRequestedPath() {
+    public String getPath() {
         String path = (String) request.getAttribute("javax.servlet.forward.request_uri");
         return path.substring(1).toLowerCase();
     }
 
-    public String getRequestedDomain() {
-        String domain = request.getServerName();
-        return domain.toLowerCase();
+    public String getRootDomain() {
+
+        String serverName = null;
+
+        // Are we testing requesting a different domain?
+        if (!StringUtils.isEmpty(Vars.testingRequestingDomain))
+            serverName = Vars.testingRequestingDomain;
+        else
+            serverName = request.getServerName();
+
+        return getRootDomain(serverName);
+    }
+
+    public static String getRootDomain(String serverName) {
+        String[] parts = serverName.split("\\.");
+        String rootDomain = null;
+
+        if (parts.length > 2) {
+            rootDomain = parts[parts.length - 2] + '.' + parts[parts.length - 1];
+        } else {
+            rootDomain = serverName;
+        }
+
+        return rootDomain.toLowerCase();
     }
 
 

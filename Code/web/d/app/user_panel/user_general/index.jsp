@@ -21,13 +21,13 @@
         <% hShortcutsId = HtmlUtils.getRandomId(); %>
         <div id="<%= hShortcutsId %>" class="shortcuts">
             <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/name_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Name change</div></a>
+            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/name_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Update Name</div></a>
 
             <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/email_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Email change</div></a>
+            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/email_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Change Email</div></a>
 
             <% hShortcutId = HtmlUtils.getRandomId(); %>
-            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/password_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Password update</div></a>
+            <a href="#" onclick="UGD.clickItem(event, '<%= hShortcutsId %>', '<%= hShortcutId %>', '<%= hTargetId %>', './user_panel/user_general/password_change.jsp')"><div id="<%= hShortcutId %>" class="shortcut sm_text light_button">Change Password</div></a>
         </div>
 
         <div id="<%= hTargetId %>"></div>

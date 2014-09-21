@@ -1,14 +1,14 @@
 <%@ include file="all.jsp" %>
 <%
     // Retrieve network from domain
-    Network network = UrlRouter.getNetworkByDomain(webUtils);
+    Network network = UrlRouter.getNetworkByRootDomain(webUtils);
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title><%= network.getName() %></title>
-    <link rel="shortcut icon" href=".img/doctorana/favicon.ico" type="image/x-icon">
-    <link rel="icon" href=".img/doctorana/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/d/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/d/assets/favicon.ico" type="image/x-icon">
 
     <%@ include file="/d/includes/google_analytics.jsp"%>
 
