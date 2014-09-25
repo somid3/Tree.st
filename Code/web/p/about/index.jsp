@@ -159,7 +159,7 @@
                 </div>
 
                 <div style="width: 200px;" class="lg_button submit_button center">
-                    <a href="mail:<%= Vars.supportEmail %>">
+                    <a href="mailto:<%= Vars.supportEmail %>">
                         <span class="lg_header white"><%= Vars.supportEmail %></span>
                     </a>
                 </div>

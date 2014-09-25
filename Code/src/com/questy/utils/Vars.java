@@ -26,9 +26,9 @@ public class Vars {
     /**
      * Current stage
      */
-    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
+//    private static final DeploymentStages deploymentStage = DeploymentStages.DEVELOPMENT;
 //    public static final DeploymentStages deploymentStage = DeploymentStages.STAGING;
-//    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
+    public static final DeploymentStages deploymentStage = DeploymentStages.PRODUCTION;
 
 
 
@@ -39,7 +39,7 @@ public class Vars {
      * Overall variables
      **************************/
 
-    public static final String name = "Doctorana";
+    public static String name = null;
 
     public static String domain = null;
 
@@ -211,6 +211,7 @@ public class Vars {
 
     private static void setVariables () {
 
+        name = loadPropertyAsString("name");
         domain = loadPropertyAsString("domain");
         enableTimelocks = loadPropertyAsBoolean("enableTimelocks");
 

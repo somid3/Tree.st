@@ -24,7 +24,7 @@
 
                     Dear <%= EmailServices.TO_USER_FIRST_NAME %>,<br/>
                     <br/>
-                    Just wanted to let you know that recently your password was updated at Tree.st<br/>
+                    Just wanted to let you know that your password was recently updated at <%= Vars.name %><br/>
                     <br/>
                     If you were unaware of this update, contact us immediately at <%= Vars.supportEmail %><br/>
                     <br/>
