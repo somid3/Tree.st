@@ -74,7 +74,7 @@
 
         <a href="/d/app">
             <div id="logo">
-                <img style="border-radius: 5px; width: 160px;" src="/d/assets/logo_app.png"/>
+                <img style="border-radius: 5px; width: 100px;" src="/d/assets/logo_app.png"/>
             </div>
         </a>
 

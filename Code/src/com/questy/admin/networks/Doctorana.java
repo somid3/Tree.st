@@ -24,11 +24,11 @@ public class Doctorana {
 
         // Adding domain
         NetworkAlphaSettingDao.deleteByValue(null, NetworkAlphaSettingEnum.URL_DOMAIN, networkDomain);
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.URL_DOMAIN, "doctorana.com");
+        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.URL_DOMAIN, "docji.com");
 
         // Adding custom landing
         NetworkAlphaSettingDao.deleteByNetworkIdAndSetting(null, networkId, NetworkAlphaSettingEnum.CUSTOM_LANDING);
-        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.CUSTOM_LANDING, "__doctorana.jsp");
+        NetworkAlphaSettingDao.insert(null, networkId, NetworkAlphaSettingEnum.CUSTOM_LANDING, "__docji.jsp");
 
         create(networkId);
     }

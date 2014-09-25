@@ -36,14 +36,6 @@
 
         <div class="thumbnail"><img src="<%= viewed.getFaceUrl() %>" alt=""></div>
 
-        <% if (!viewMyself) { %>
-            <div class="points">
-                <div class="sm_button vsm_text w50 center sm_shadow" style="background-color: white">
-                    <%= userToNetwork.getCurrentPoints() %> pts.
-                </div>
-            </div>
-        <% } %>
-
     </div>
 
     <div class="right">

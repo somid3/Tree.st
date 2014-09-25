@@ -6,5 +6,5 @@
         System.out.println("*** 404 NOT FOUND *** " + path);
 
     // Sending user to real 404 page
-    webUtils.redirect("/d/welcome?404");
+    webUtils.redirect("/p/about?404");
 %>

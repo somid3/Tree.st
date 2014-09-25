@@ -1,28 +1,36 @@
 #
 # Pem setup
 #
-chmod 444 Treeliftcom.pem
+chmod 400 Treeliftcom.pem
 
 #
 # Deploy
 #
 
+
+#Doctorana
+pem="/Users/o.sadeghpour/Engineering/AWS Instances/Doctorana.pem"
+target="/Users/o.sadeghpour/Engineering/Code/Tree.st/Code/out/artifacts/Tree_st_war/Tree.st_war.war"
+host=54.72.59.241
+
+#Treelift
 pem="/Users/o.sadeghpour/Engineering/AWS Instances/Treeliftcom.pem"
 target="/Users/o.sadeghpour/Engineering/Code/Tree.st/Code/out/artifacts/Tree_st_war/Tree.st_war.war"
 host=54.191.192.123
 
-
 scp -i "$pem" "$target" ubuntu@$host:~/ROOT.war
+
 
 ssh -i "$pem" ubuntu@$host
 
 sudo ~/Servers/running/bin/catalina.sh stop
 sudo rm -rf ~/Deployments
 sudo mkdir ~/Deployments
-sleep 5
+sleep 2
 sudo mv ~/ROOT.war ~/Deployments
 sudo ~/Servers/running/bin/catalina.sh start
 tail -f ~/Servers/running/logs/catalina.out
+# tail -n 1000 ~/Servers/running/logs/catalina.out
 
 
 
@@ -39,52 +47,35 @@ tail -n 2000 ~/Servers/running/logs/catalina.out
 
 # Java 8
 
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
 
 
 
 
 # Tomcat 8
 
-wget http://www.us.apache.org/dist/tomcat/tomcat-8/v8.0.9/bin/apache-tomcat-8.0.9.tar.gz
-mv apache-tomcat-8.0.9.tar.gz ~/Servers/
+mkdir Servers
+mkdir Deployments
+mkdir Resources
+
+wget http://psg.mtu.edu/pub/apache/tomcat/tomcat-8/v8.0.12/bin/apache-tomcat-8.0.12.tar.gz
+mv apache-tomcat-8.0.12.tar.gz ~/Servers/
 cd ~/Servers/
-tar xzvf ~/Servers/apache-tomcat-8.0.9.tar.gz
+tar xzvf ~/Servers/apache-tomcat-8.0.12.tar.gz
+mv apache-tomcat-8.0.12.tar.gz running
 
-
+# Change ./conf/server.xml
+<Host name="localhost"  appBase="/home/ubuntu/Deployments" unpackWARs="true" autoDeploy="true">
+<Connector port="80" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
 
 # DEPLOY
 
 # UPDATE YOU VARIABLES.JAVA CLASS
-# UPDATE YOU VARIABLES.JAVA CLASS
-# UPDATE YOU VARIABLES.JAVA CLASS
-
 # BACK UP DATABASE
-# BACK UP DATABASE
-# BACK UP DATABASE
-
-#-------------
-# Remove login
-#-------------
-
-# Log into remove machine
-ssh -l somid3 72.167.164.208
-
-#----------
-# Deploying
-#----------
-
-# Get the date, to get in sudo mode
-sudo date
-
-# Stop tomcat
-sudo /etc/init.d/tomcat stop
-sleep 5
-
-# Clean tomcat
-sudo rm -rf /deployables/*
-
-# Copy new deployable
-sudo mv /ROOT.war /deployables/ROOT.war
+# UPDATE DATABASE
+# UPDATE CONTEXT.XML
 
 
 
@@ -92,38 +83,6 @@ sudo mv /ROOT.war /deployables/ROOT.war
 
 
 
-
-
-
-# SETUP NEW TOMCAT INSTANCE
-
-sudo /etc/init.d/tomcat stop
-sleep 5
-sudo rm -r /usr/lib/tomcat/6.0.35-old
-sleep 1
-sudo mv /usr/lib/tomcat/6.0.35 /usr/lib/tomcat/6.0.35-old
-sleep 1
-sudo cp -r /usr/lib/tomcat/6.0.35-clean /usr/lib/tomcat/6.0.35
-sleep 1
-sudo chmod +x /usr/lib/tomcat/6.0.35/bin/*.sh
-
-
-
-# GITHUB
-
-# To push whatever has been committed to the master repository
-git push origin master:master
-
-# BOOT UP
-
-# Start VNC server
-
-tightvncserver -kill :1
-sleep 5
-tightvncserver
-
-
-vncserver
 
 # SETUP CRON TAB
 crontab -e
