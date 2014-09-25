@@ -150,12 +150,12 @@ public class Vars {
     /**
      * Email address of outgoing emails
      */
-    public static String supportEmail = "hello@doctorana.com";
+    public static String supportEmail = null;
 
     /**
      * Email name of outgoing emails
      */
-    public static String supportEmailName = "Doctorana";
+    public static String supportEmailName = null;
 
 
     /***************************

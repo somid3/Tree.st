@@ -14,13 +14,13 @@ import com.questy.services.QuestionServices;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Doctorana {
+public class Docji {
 
     public static void main(String[] args) throws Exception {
 
         // Creating new network
-        Integer networkId = NetworkDao.insert(null, "Doctorana");
-        String networkDomain = "doctorana.com";
+        Integer networkId = NetworkDao.insert(null, "Docji");
+        String networkDomain = "docji.com";
 
         // Adding domain
         NetworkAlphaSettingDao.deleteByValue(null, NetworkAlphaSettingEnum.URL_DOMAIN, networkDomain);
