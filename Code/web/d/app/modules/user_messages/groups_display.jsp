@@ -29,7 +29,7 @@
                 <div class="user_message_group canvas_container" style="position: relative; display: inline-block; <%= nonReadHtmlClass%>">
 
                     <% if (userMessageGroup.isReplied()) { %>
-                        <div style="position: absolute; left: -12px; top: 20px;">
+                        <div style="position: absolute; left: -20px; top: 20px;">
                             <img src="./modules/user_messages/img/replied.png">
                         </div>
                     <% } %>

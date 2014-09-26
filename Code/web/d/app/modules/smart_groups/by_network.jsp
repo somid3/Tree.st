@@ -35,7 +35,7 @@
         </div>
         <div class="close">
             <a href="#" onclick="Tooltips.closeMinitip(event, '<%= hMinitipId %>', <%= UserIntegerSettingEnum.TIP_SMART_GROUPS_CREATE.getId()%>)">
-                <img src="./img/close_dark.png">
+                <img src="./img/close_tip.png">
             </a>
         </div>
     </div>

@@ -46,7 +46,7 @@
     background-color: white;
     padding: 10px;
     width: 572px;
-    border: 4px solid <%= HtmlDesign.highlight5 %>;
+    border: 4px solid <%= HtmlDesign.highlight %>;
     display: inline-block;
 }
 
@@ -57,14 +57,19 @@
 
 .minitip > .content {
     float: left;
-    width: 480px;
+    width: 450px;
     padding: 0 10px;
     line-height: 1.5em;
 }
 
 .minitip > .close {
     float: right;
+    position: relative;
+    top: -10px;
+    left: 10px;
 }
 .minitip > .close img {
     padding: 10px;
+    width: 37px;
+    height: 37px;
 }

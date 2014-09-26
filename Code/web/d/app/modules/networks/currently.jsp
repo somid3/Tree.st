@@ -103,7 +103,7 @@
             <div class="name smd_text">Details</div>
         </div>
         <% if (nextQuestionRef != null) { %>
-            <div class="bullet <%= NetworkHtml.getBulletClass(homeId) %>"><img src="./img/dot-green-16.png"></div>
+            <div class="bullet <%= NetworkHtml.getBulletClass(homeId) %>"><img src="./img/dot-16.png"></div>
         <% } %>
     </div>
 </a>

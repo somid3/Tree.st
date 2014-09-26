@@ -116,11 +116,11 @@
 
                         if (viewedUserAnswerOption.getOptionRef() == 0) { %>
 
-                            <div class="smd_text dim2">Skipped</div>
+                            <div class="smd_text dim">Skipped</div>
 
                         <% } else if (questionOption == null) { %>
 
-                            <div class="smd_text highlight3">Option has been removed (<%= viewedUserAnswerOption.getQuestionRef() %> <%= viewedUserAnswerOption.getOptionRef() %>)</div>
+                            <div class="smd_text highlight">Option has been removed (<%= viewedUserAnswerOption.getQuestionRef() %> <%= viewedUserAnswerOption.getOptionRef() %>)</div>
 
                         <% } else {
 

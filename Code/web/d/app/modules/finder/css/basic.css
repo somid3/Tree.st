@@ -83,8 +83,8 @@
 
 .finder_results .found {
     padding: 2px;
-    border: 1px solid <%= HtmlDesign.highlight3 %>;
-    background-color: #c9fbcc;
+    border: 1px solid <%= HtmlDesign.highlight %>;
+    background-color: #c4e1ff;
 }
 
 .finder_results .finder_member_result {

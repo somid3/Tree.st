@@ -16,7 +16,7 @@
 }
 
 #networks .networks {
-    border: 1px solid #669933;
+    border: 1px solid <%= HtmlDesign.dim3 %>;
     /*border-right: 3px solid #669933;*/
     background-color: #fff;
     padding: 4px;

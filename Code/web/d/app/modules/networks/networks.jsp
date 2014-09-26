@@ -51,7 +51,7 @@
                     <div class="tags">
 
                         <% if (nextQuestionRef != null) { %>
-                            <div class="bullet <%= NetworkHtml.getBulletClass(network.getId()) %>"><img src="./img/dot-green-16.png"></div>
+                            <div class="bullet <%= NetworkHtml.getBulletClass(network.getId()) %>"><img src="./img/dot-16.png"></div>
                             <script type="text/javascript">Animations.dance("#<%= NetworkHtml.getBulletClass(network.getId()) %>", 10000, 30000)</script>
                         <% } %>
 

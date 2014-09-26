@@ -23,8 +23,8 @@
 }
 
 .question_display .input .is_set {
-    border: 2px solid #339900;
-    background: green;
+    border: 2px solid <%= HtmlDesign.highlight %>;
+    background: <%= HtmlDesign.highlight %>;
     color: white;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .question_display .input .option:hover {
-    border: 2px solid #339900;
+    border: 2px solid <%= HtmlDesign.highlight %>;
 }
 
 .question_display .input .abc {

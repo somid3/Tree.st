@@ -44,13 +44,14 @@
             </div>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
-                <span class="sp_header dim">The easiest way for doctors to<br/> connect in the Middle East</span>
+                <span class="vl_header dim">The easiest way for doctors to<br/> connect in the United Arab Emirates</span>
             </div>
 
             <style>
                 .break {
                     position: relative;
                 }
+
 
                 .lets_start {
                     z-index: 30;
@@ -97,7 +98,7 @@
                     <div class="content">
                         <div class="title vl_header dim">Consult</div>
                         <div class="text lg_text dim">
-                            <p>Form teams with other doctors to explore exchange experiences on particular cases</p>
+                            <p>Form teams with other doctors to explore and exchange experiences on particular cases</p>
                         </div>
                     </div>
                 </div>
