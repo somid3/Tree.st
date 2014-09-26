@@ -31,11 +31,8 @@
 
                 <a href="#" onclick="HashRouting.setHash(event, '<%= HashRouting.smartGroups(collab_c_network.getId()) %>');">
                     <span class="vl_text highlight2">Smart Groups</span>
-                </a>
+                </a>!
 
-                of <%= Vars.name %>
-
-                 
             </div>
 
 

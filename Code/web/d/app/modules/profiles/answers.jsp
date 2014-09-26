@@ -128,7 +128,7 @@
                             if (userAnswer != null) {
 
                                 if (userAnswer.findOptionByRef(questionOption.getRef()) != null)
-                                    hOptionStyle = "background-color: green;";
+                                    hOptionStyle = "background-color: " + HtmlDesign.highlight + ";";
                                 else
                                     hOptionStyle = null;
 

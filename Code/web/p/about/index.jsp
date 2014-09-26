@@ -39,8 +39,8 @@
                 String p_section = "items";
             %>
 
-            <div style="width: 300px; position: relative; left: -45px;">
-                <img src="/d/assets/md_logo.png">
+            <div class="center" style="width: 250px;">
+                <img src="/d/assets/md_logo-ar.png">
             </div>
 
             <div class="magnet" style="width: 100%; padding: 10px 0 10px 15px; line-height: 2em; text-align: center; margin: 20px auto;">
@@ -116,7 +116,7 @@
                     <div class="content">
                         <div class="title vl_header dim">Learn</div>
                         <div class="text lg_text dim">
-                            <p>Share and learn from others the latest news about the practice of medicine in the Middle-East</p>
+                            <p>Share and learn from others the latest news about the practice of medicine in the United Arab Emirates</p>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
 
                 <p class="mission">
                     Our mission is simple. To create a safe and secure platform
-                    for doctors in the Middle East to exchange experiences,
+                    for doctors in the United Arab Emirates to exchange experiences,
                     find opportunities for collaboration, and find like-minded
                     professionals who understand their concerns and challenges.
                 </p>
